@@ -19,8 +19,8 @@ module.exports = {
   ...require('./rating'),
   // Game-state normalization + mode helpers.
   ...require('./state'),
-  // Archetype scouting metadata.
-  ...require('./data/archetypeScout'),
+  // Archetype scouting metadata + the canonical bot roster.
+  ...require('./data'),
   // The shared insight engine (AIPlayer class) and the hand evaluator.
   AIPlayer: require('./ai/aiPlayer'),
   pokerEvaluator,

@@ -12,14 +12,14 @@
     "./eval": "./src/eval/pokerEvaluator.js",
     "./ai": "./src/ai/aiPlayer.js",
     "./state": "./src/state/index.js",
-    "./data": "./src/data/archetypeScout.js"
+    "./data": "./src/data/index.js"
   },
   "files": [
     "src",
     "README.md"
   ],
   "scripts": {
-    "test": "node test/handInsightsMath.test.js && node test/review.test.js && node test/frameToHeroState.test.js && node test/loads.test.js"
+    "test": "node test/handInsightsMath.test.js && node test/review.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/loads.test.js"
   },
   "keywords": [
     "poker",

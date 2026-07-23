@@ -28,7 +28,7 @@ const expectFns = {
     'buildBotJourney', 'recordBotMatchResult', 'calculateAiRatingDelta',
     'deriveBandRating', 'applyRoomRatingBands',
     'normalizeGameState', 'normalizePlayerList', 'normalizePuzzleState', 'normalizeGameMode',
-    'getArchetypeScout', 'getArchetypeMeta',
+    'getArchetypeScout', 'getArchetypeMeta', 'getBotById', 'isKnownBotId',
     'evaluateHand', 'compareHands',
   ],
   './review': [
@@ -48,7 +48,7 @@ const expectFns = {
     'normalizeGameState', 'normalizePlayerList', 'normalizePuzzleState',
     'normalizeGameMode', 'isRankedMode',
   ],
-  './data': ['getArchetypeScout', 'getArchetypeMeta'],
+  './data': ['getArchetypeScout', 'getArchetypeMeta', 'getBotById', 'isKnownBotId'],
 };
 
 for (const [key, fns] of Object.entries(expectFns)) {
@@ -64,7 +64,7 @@ assert.strictEqual(typeof AIPlayer, 'function', './ai exports the AIPlayer class
 assert.strictEqual(typeof core.AIPlayer, 'function', 'main barrel re-exports AIPlayer');
 
 // Key non-function data structures exist on the main barrel.
-['GRADE_THEME', 'GRADE_RULES', 'GRADE_SCORE', 'ROOM_RATING_BAND', 'ARCHETYPE_SCOUT', 'ARCHETYPE_META', 'GAME_MODES', 'RATING_TIERS'].forEach((k) => {
+['GRADE_THEME', 'GRADE_RULES', 'GRADE_SCORE', 'ROOM_RATING_BAND', 'ARCHETYPE_SCOUT', 'ARCHETYPE_META', 'GAME_MODES', 'RATING_TIERS', 'BOT_ROSTER', 'BOT_ROSTER_BY_ID'].forEach((k) => {
   assert.strictEqual(typeof core[k], 'object', `main barrel exposes ${k}`);
 });
 

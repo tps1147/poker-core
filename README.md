@@ -21,7 +21,7 @@ const { calculateAiRatingDelta, deriveBandRating } = require('poker-core/rating'
 const { normalizeGameState, normalizePuzzleState } = require('poker-core/state');
 const { evaluateHand, compareHands } = require('poker-core/eval');
 const AIPlayer = require('poker-core/ai');
-const { getArchetypeScout } = require('poker-core/data');
+const { getArchetypeScout, BOT_ROSTER, getBotById } = require('poker-core/data');
 
 // …or everything from the top-level barrel:
 const core = require('poker-core');
@@ -64,10 +64,14 @@ poker-core/
       index.js                barrel
     data/
       archetypeScout.js       ARCHETYPE_SCOUT / _META         (NEW, extracted from botProfiles)
+      botRoster.js            BOT_ROSTER / getBotById          (NEW, canonical 16-bot ladder,
+                                                               ratings derived via ratingBands)
+      index.js                barrel
   test/
     handInsightsMath.test.js  plain-node
     review.test.js            plain-node (engine + review pipeline, real AIPlayer)
     frameToHeroState.test.js  plain-node
+    botRoster.test.js         plain-node (roster shape, derived ratings, lookups)
     loads.test.js             smoke: index + every subpath export is callable
 ```
 
