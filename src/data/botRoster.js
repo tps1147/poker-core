@@ -5,8 +5,11 @@
 // lines are deliberately NOT copied — those React-Native asset requires are the only
 // reason BOT_PROFILES could not already be shared (see archetypeScout.js, which pulled
 // the archetype metadata across for the same reason). Flavor-only fields (personality,
-// description, badge, country, avatar, stats) are left behind too: nothing here may
-// influence how a bot PLAYS, only who it IS.
+// description, badge, country, avatar) are left behind.
+//
+// `stats` (vpip/pfr/aggression) ARE carried: they tune how a bot plays, and the server
+// canonicalizes them from here at game creation. Without that, a client could request a
+// high-rated bot's identity but hand it a pushover's play style and farm the rating.
 //
 // WHY THIS EXISTS: pokerServer computes bot-journey progression (ELO / mastery /
 // milestones) at match end. Before this module the server had to take the opponent's
@@ -45,6 +48,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: true,
     unlockCondition: { type: 'default' },
     learningTieIn: 'Starting hands and pot control',
+    stats: { vpip: 65, pfr: 15, aggression: 0.8 },
   },
   {
     id: 'slow-steve',
@@ -54,6 +58,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'rookie-bob', count: 2 },
     learningTieIn: 'Bet sizing basics',
+    stats: { vpip: 30, pfr: 12, aggression: 0.9 },
   },
   {
     id: 'lucky-larry',
@@ -63,6 +68,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'practiceWins', count: 4 },
     learningTieIn: 'Drawing odds',
+    stats: { vpip: 55, pfr: 25, aggression: 1.5 },
   },
   {
     id: 'friendly-frank',
@@ -72,6 +78,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'lucky-larry', count: 2 },
     learningTieIn: 'Value betting',
+    stats: { vpip: 70, pfr: 8, aggression: 0.6 },
   },
 
   // ---------------- INTERMEDIATE ♦ Chip Mine (4) ----------------
@@ -83,6 +90,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'difficultyWins', difficulty: 'BEGINNER', count: 8 },
     learningTieIn: 'Opening ranges',
+    stats: { vpip: 22, pfr: 18, aggression: 1.2 },
   },
   {
     id: 'solid-sarah',
@@ -92,6 +100,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'cautious-claire', count: 3 },
     learningTieIn: 'Board texture',
+    stats: { vpip: 28, pfr: 22, aggression: 2.1 },
   },
   {
     id: 'tricky-tom',
@@ -101,6 +110,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'solid-sarah', count: 3 },
     learningTieIn: 'Bluff catching',
+    stats: { vpip: 26, pfr: 20, aggression: 2.5 },
   },
   {
     id: 'aggressive-alex',
@@ -110,6 +120,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'tricky-tom', count: 3 },
     learningTieIn: 'Defense against aggression',
+    stats: { vpip: 32, pfr: 28, aggression: 3.2 },
   },
 
   // ---------------- ADVANCED ♠ Spade Keep (4) ----------------
@@ -121,6 +132,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'difficultyWins', difficulty: 'INTERMEDIATE', count: 12 },
     learningTieIn: 'Position and initiative',
+    stats: { vpip: 30, pfr: 24, aggression: 2.7 },
   },
   {
     id: 'mathematical-mike',
@@ -130,6 +142,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'position-pete', count: 4 },
     learningTieIn: 'Pot odds and equity',
+    stats: { vpip: 24, pfr: 19, aggression: 2.3 },
   },
   {
     id: 'iron-warden',
@@ -139,6 +152,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'mathematical-mike', count: 4 },
     learningTieIn: 'Value vs bluff balance',
+    stats: { vpip: 23, pfr: 18, aggression: 2.4 },
   },
   {
     id: 'shade-stalker',
@@ -148,6 +162,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'iron-warden', count: 4 },
     learningTieIn: 'Reading traps',
+    stats: { vpip: 25, pfr: 19, aggression: 2.6 },
   },
 
   // ---------------- EXPERT ♥ Final Table (4) ----------------
@@ -159,6 +174,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'difficultyWins', difficulty: 'ADVANCED', count: 12 },
     learningTieIn: 'Pot geometry',
+    stats: { vpip: 22, pfr: 18, aggression: 2.5 },
   },
   {
     id: 'neon-jester',
@@ -168,6 +184,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'gem-golem', count: 5 },
     learningTieIn: 'Defending vs aggression',
+    stats: { vpip: 38, pfr: 32, aggression: 3.6 },
   },
   {
     id: 'mirage',
@@ -177,6 +194,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'neon-jester', count: 5 },
     learningTieIn: 'Range awareness',
+    stats: { vpip: 24, pfr: 19, aggression: 2.8 },
   },
   {
     id: 'the-house',
@@ -186,6 +204,7 @@ const BOT_PROFILE_DATA = Object.freeze([
     isUnlocked: false,
     unlockCondition: { type: 'botWins', botId: 'mirage', count: 5 },
     learningTieIn: 'Closing out a match',
+    stats: { vpip: 21, pfr: 17, aggression: 2.6 },
   },
 ]);
 

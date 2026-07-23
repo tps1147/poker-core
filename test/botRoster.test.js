@@ -97,3 +97,14 @@ assert.ok(Object.isFrozen(BOT_ROSTER), 'BOT_ROSTER is frozen');
 assert.ok(Object.isFrozen(BOT_ROSTER[0]), 'roster entries are frozen');
 
 console.log('botRoster checks passed');
+
+// stats are carried so the SERVER can canonicalize how a bot plays (not just what it's
+// rated). Without them a client could claim a boss's identity, hand it a pushover's
+// play style, and farm the rating — see canonicalizeBotConfig in pokerServer.
+BOT_ROSTER.forEach((bot) => {
+  assert.ok(bot.stats, `${bot.id} has stats`);
+  assert.ok(Number.isFinite(bot.stats.vpip) && bot.stats.vpip > 0 && bot.stats.vpip <= 100, `${bot.id} vpip sane`);
+  assert.ok(Number.isFinite(bot.stats.pfr) && bot.stats.pfr >= 0 && bot.stats.pfr <= bot.stats.vpip, `${bot.id} pfr <= vpip`);
+  assert.ok(Number.isFinite(bot.stats.aggression) && bot.stats.aggression > 0, `${bot.id} aggression sane`);
+});
+console.log('botRoster stats checks passed');
