@@ -248,7 +248,14 @@ const gradeHand = (timeline, insightEngine) => {
         frameIndex: frame.index,
         action: kind,
         grade: 'good',
-        metrics: { strength: null, equityPct: null, neededPct: null, toCall: frame.toCall, pot: frame.potBefore },
+        metrics: {
+          strength: null,
+          equityPct: null,
+          neededPct: null,
+          toCall: frame.toCall,
+          pot: frame.potBefore,
+          equityBasis: null, // nothing was computed, so nothing to attribute
+        },
         note: kind === 'call' ? 'Completed the blind (not graded)' : 'Folded the small blind (not graded)',
       });
       return;
@@ -286,6 +293,10 @@ const gradeHand = (timeline, insightEngine) => {
         neededPct,
         toCall: frame.toCall,
         pot: frame.potBefore,
+        // 'outs' (rule-of-2-and-4) or 'strength' (vs-random estimate). Surfaced
+        // so the UI can say WHICH model produced the equity every price claim
+        // rests on, instead of presenting both with the same confidence.
+        equityBasis: insight.equityBasis,
       },
       note,
     });

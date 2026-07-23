@@ -361,6 +361,10 @@ assert.deepStrictEqual(foldBlunder.metrics, {
   neededPct: 28.1,
   toCall: 900,
   pot: 2300,
+  // equityBasis records WHICH model produced equityPct ('outs' = rule of
+  // 2-and-4, 'strength' = the vs-random estimate). Additive: no grade or note
+  // depends on it. This stub has no draw, so the estimate is what was quoted.
+  equityBasis: 'strength',
 });
 assert.ok(foldBlunder.note.includes('2.6:1'), 'note quotes the pot price');
 assert.ok(foldBlunder.note.includes('45% equity'), 'note quotes equity');

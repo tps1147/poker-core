@@ -112,4 +112,7 @@ const buildMatchReview = (handDocs, heroUserId, engine) => {
   };
 };
 
-module.exports = { buildMatchReview, GRADE_SEVERITY, KEY_HAND_LIMIT, LEAK_MIN_REPEATS };
+// LEAK_TAGS is exported so consumers can RE-COUNT a tag's (action, grade) pair
+// against hands[].decisions instead of restating the pairs. leakTags alone is
+// an assertion; recounting from the same rule makes it a falsifiable claim.
+module.exports = { buildMatchReview, GRADE_SEVERITY, KEY_HAND_LIMIT, LEAK_MIN_REPEATS, LEAK_TAGS };

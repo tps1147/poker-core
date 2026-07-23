@@ -23,6 +23,7 @@ const expectFns = {
   '.': [
     'buildReplayTimeline', 'gradeHand', 'buildMatchReview', 'toDrillPuzzle',
     'frameToHeroState', 'buildTerminalFrame', 'gradeTheme',
+    'costOfDecision', 'rankHandsByCost', 'rankDrillSpots', 'buildMatchNarrative', 'verdictFor',
     'computeHandInsights', 'createOpponentTracker', 'summarizeOpponentRead',
     'normalizeCards', 'computeEquity', 'computePotOdds',
     'buildBotJourney', 'recordBotMatchResult', 'calculateAiRatingDelta',
@@ -34,6 +35,9 @@ const expectFns = {
   './review': [
     'buildReplayTimeline', 'gradeHand', 'classifyAction', 'buildMatchReview',
     'toDrillPuzzle', 'frameToHeroState', 'buildTerminalFrame', 'gradeTheme',
+    'costOfDecision', 'errorCostOfDecision', 'handCost', 'totalErrorCost',
+    'rankHandsByCost', 'rankDrillSpots',
+    'buildMatchNarrative', 'verdictFor', 'signedChips', 'leakTagCounts',
   ],
   './insights': [
     'computeHandInsights', 'createOpponentTracker', 'normalizeCards',
