@@ -659,4 +659,93 @@ assert.deepStrictEqual(Object.keys(buildMatchReview([], 'nobody', drawEngine)).s
   'accuracyPct', 'grades', 'hands', 'keyHands', 'leakTags',
 ]);
 
+// --- integration: the drill CTA's actual path ------------------------------
+//
+// rankDrillSpots only earns its timeline filter if the spots it returns can
+// REALLY be converted. Stub timelines would pass the filter and still produce
+// no puzzle, leaving the screen's primary button dead. This runs the whole
+// chain on a real hand doc: doc → timeline → grades → review → spots →
+// puzzles.
+
+const { buildReplayTimeline } = require('../src/review/replayTimeline');
+const { toDrillPuzzle } = require('../src/review/drillFromFrame');
+
+const HERO_ID = 'hero-1';
+const BOT_ID = 'bot-1';
+const act = (playerId, phase, action, amount) => ({
+  playerId, phase, action, amount, timestamp: '2026-07-23T00:00:00.000Z',
+});
+const community = [card('K', '♠'), card('9', '♦'), card('4', '♣'), card('J', '♥'), card('3', '♠')];
+
+// Hero completes the blind (exempt), then calls a 1000 bet into 1200 with a
+// 15% hand — needed 45.5%, so a clear blunder worth about 671 chips of EV.
+const integrationDoc = {
+  _id: 'hand-integration-1',
+  handNumber: 12,
+  gameType: 'solo',
+  players: [
+    {
+      userId: HERO_ID, username: 'hero', position: 'BTN',
+      startingChips: 10000, endingChips: 8900, netChange: -1100,
+      cards: [card('7', '♦'), card('2', '♣')],
+      handResult: 'lost', isDealer: true, isSmallBlind: true, isBigBlind: false,
+    },
+    {
+      userId: BOT_ID, username: 'Sharky', position: 'BB',
+      startingChips: 10000, endingChips: 11100, netChange: 1100,
+      cards: [card('K', '♥'), card('9', '♠')],
+      handResult: 'won', isDealer: false, isSmallBlind: false, isBigBlind: true,
+    },
+  ],
+  communityCards: community,
+  actions: [
+    act(HERO_ID, 'blinds', 'small blind', 50),
+    act(BOT_ID, 'blinds', 'big blind', 100),
+    act(HERO_ID, 'preflop', 'call', 50),
+    act(BOT_ID, 'preflop', 'check', 0),
+    act(BOT_ID, 'flop', 'bet', 1000),
+    act(HERO_ID, 'flop', 'call', 1000),
+  ],
+  winner: { userId: BOT_ID, handName: 'Two Pair', amount: 2200 },
+  showdown: { occurred: true },
+};
+
+const weakEngine = {
+  evaluateHandStrength: () => 0.15,
+  hasFlushDraw: () => ({ isFlushDraw: false, outs: 0 }),
+  evaluateDrawingHands: () => ({ straightOuts: 0 }),
+};
+
+const realTimeline = buildReplayTimeline(integrationDoc, HERO_ID);
+assert.ok(realTimeline, 'the fixture doc builds a timeline');
+const realReview = buildMatchReview([integrationDoc], HERO_ID, weakEngine);
+assert.strictEqual(realReview.hands.length, 1);
+assert.strictEqual(realReview.grades.blunder, 1, 'the overpriced call grades a blunder');
+
+const realSpots = rankDrillSpots(realReview, { 'hand-integration-1': realTimeline });
+assert.strictEqual(realSpots.length, 1, 'the blunder is drillable');
+assert.strictEqual(realSpots[0].cost, 671, '(1200 + 1000) * |15 - 45.5| / 100');
+assert.strictEqual(
+  realSpots[0].cost,
+  costOfDecision(realSpots[0].decision),
+  'the ranked cost is the decision cost'
+);
+
+// The payoff: every ranked spot really converts, and its spotId is the
+// puzzle's own id — which is what the drilled-state tracking keys on.
+realSpots.forEach((spot) => {
+  const puzzle = toDrillPuzzle(realTimeline, spot.decision, integrationDoc);
+  assert.ok(puzzle, `spot ${spot.spotId} converts to a puzzle`);
+  assert.strictEqual(puzzle.id, spot.spotId, 'spotId matches the puzzle id exactly');
+  assert.ok(puzzle.initialState && puzzle.progression, 'the puzzle has the shape LearningPuzzlePlay needs');
+});
+
+// The exempt blind completion is NOT offered as a drill.
+assert.strictEqual(realReview.hands[0].decisions.length, 2, 'both hero decisions were recorded');
+assert.strictEqual(realReview.hands[0].decisions[0].grade, 'good', 'the blind completion stays ungraded');
+
+// And a hand with no timeline entry yields no spots at all, so the CTA hides
+// rather than staging something that cannot be built.
+assert.deepStrictEqual(rankDrillSpots(realReview, {}), []);
+
 console.log('review narrative + decision cost checks passed');
