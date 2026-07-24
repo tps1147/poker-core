@@ -73,6 +73,18 @@ const buildReplayTimeline = (handDoc, heroUserId) => {
 
   for (let i = 0; i < actions.length; i++) {
     const raw = actions[i];
+    // A malformed action entry (null/primitive) means we can't know how many
+    // chips it moved, so every later frame's pot, stacks and toCall would be
+    // reconstructed off a corrupted running total. We DELIBERATELY return null
+    // here rather than skipping the entry: skipping would keep the hand
+    // "replayable" but silently mis-grade every downstream hero decision (wrong
+    // pot odds → fabricated grades that pollute accuracy/histogram/leaks), which
+    // is worse than not grading it at all. Returning null no longer LOSES the
+    // hand — buildMatchReview now surfaces a null timeline as an un-replayable
+    // hands[] row (replayable:false) carrying the doc's stored netChange. So the
+    // two fixes compose: this stays strict (no silent corruption), matchReview
+    // stops dropping nulls. Clean-action hands never hit this path and remain
+    // byte-identical to before (proven by the existing timeline/grading tests).
     if (!raw || typeof raw !== 'object') return null;
 
     const phase = typeof raw.phase === 'string' ? raw.phase : 'preflop';

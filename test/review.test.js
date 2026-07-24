@@ -465,9 +465,138 @@ assert.deepStrictEqual(
 // blunder and one missed value bet, so those tags stay quiet.
 assert.deepStrictEqual(review.leakTags, ['chasing-bad-prices']);
 
-// Empty / malformed input: perfect score, nothing to show, no throw.
+// Empty input: perfect score, nothing to show, no throw.
 assert.strictEqual(buildMatchReview([], HERO, stubEngine).accuracyPct, 100);
-assert.strictEqual(buildMatchReview([{ bogus: true }], HERO, stubEngine).hands.length, 0);
+// LOSSLESS: an un-buildable doc is no longer DROPPED — it surfaces as a single
+// un-replayable row (netChange falls back to 0 with no hero seat) instead of
+// vanishing. It stays out of the accuracy math: un-replayable ≠ hero error.
+const bogusReview = buildMatchReview([{ bogus: true }], HERO, stubEngine);
+assert.strictEqual(bogusReview.hands.length, 1);
+assert.strictEqual(bogusReview.hands[0].replayable, false);
+assert.strictEqual(bogusReview.hands[0].netChange, 0);
+assert.deepStrictEqual(bogusReview.hands[0].grades, []);
+assert.strictEqual(bogusReview.hands[0].worstGrade, null);
+assert.strictEqual(bogusReview.accuracyPct, 100);
+
+// --- lossless match review (every doc becomes a hands[] row) ----------------
+// Regression for the "hands silently vanish" bug: a doc whose replay timeline
+// can't be reconstructed used to be dropped from review.hands entirely, so
+// review.hands.length could be fewer than the hands actually played. Now every
+// doc MUST appear — an un-buildable one marked replayable:false, contributing
+// nothing to the graded aggregates (accuracy / histogram / leaks).
+
+// Buildable rows now carry replayable:true (the full 6-hand review above).
+review.hands.forEach((h) => assert.strictEqual(h.replayable, true, 'all 6 real hands are replayable'));
+
+// Un-buildable via empty actions: no timeline, but the doc's own hero seat still
+// records netChange (-50 here) — that stored value must be surfaced on the row.
+const emptyActionsHand = {
+  ...mkHand({
+    id: 'hand-empty',
+    handNumber: 7,
+    heroCards: [card('2', '♣'), card('3', '♦')],
+    botCards: [card('A', '♦'), card('A', '♣')],
+    community: [],
+    actions: [
+      act(HERO, 'blinds', 'small blind', 50),
+      act(BOT, 'blinds', 'big blind', 100),
+      act(HERO, 'preflop', 'fold', 0),
+    ],
+    potTotal: 150,
+    winnerId: BOT,
+    winnerAmount: 150,
+  }),
+  actions: [], // ← zero actions ⇒ buildReplayTimeline returns null
+};
+assert.strictEqual(emptyActionsHand.players[0].netChange, -50); // hero seat keeps its net
+assert.strictEqual(buildReplayTimeline(emptyActionsHand, HERO), null);
+
+// Un-buildable via hero mismatch: neither seat is HERO, so no hero timeline can
+// be built AND no hero netChange exists to read — it must fall back to 0.
+const OTHER = '64fabc0123456789abcdefff';
+const foreignBase = mkHand({
+  id: 'hand-foreign',
+  handNumber: 8,
+  heroCards: [card('K', '♣'), card('K', '♦')],
+  botCards: [card('Q', '♦'), card('Q', '♣')],
+  community: [card('2', '♠'), card('7', '♦'), card('9', '♥')],
+  actions: [
+    act(HERO, 'blinds', 'small blind', 50),
+    act(BOT, 'blinds', 'big blind', 100),
+    act(HERO, 'preflop', 'raise', 250),
+    act(BOT, 'preflop', 'fold', 0),
+  ],
+  potTotal: 300,
+  winnerId: HERO,
+  winnerAmount: 300,
+});
+// Reseat the hero off HERO so the doc has no hero seat at all.
+const foreignHand = {
+  ...foreignBase,
+  players: foreignBase.players.map((p) => ({ ...p, userId: p.userId === HERO ? OTHER : p.userId })),
+};
+assert.strictEqual(buildReplayTimeline(foreignHand, HERO), null);
+
+// Fixture 1: 3 docs — one gradeable (handA), two un-buildable. All three appear.
+const lossless = buildMatchReview([handA, emptyActionsHand, foreignHand], HERO, stubEngine);
+assert.strictEqual(lossless.hands.length, 3, 'every doc becomes a hands[] row');
+assert.deepStrictEqual(lossless.hands.map((h) => h.replayable), [true, false, false]);
+const [cleanRow, emptyRow, foreignRow] = lossless.hands;
+// The two un-buildable rows are inert but carry their stored (or fallback) net.
+assert.deepStrictEqual([emptyRow.grades, emptyRow.decisions], [[], []]);
+assert.strictEqual(emptyRow.worstGrade, null);
+assert.strictEqual(emptyRow.netChange, -50); // surfaced from the doc's hero seat
+assert.deepStrictEqual([foreignRow.grades, foreignRow.decisions], [[], []]);
+assert.strictEqual(foreignRow.worstGrade, null);
+assert.strictEqual(foreignRow.netChange, 0); // no hero seat ⇒ fallback to 0
+// Accuracy + histogram come ONLY from the gradeable hand (handA: good, good,
+// blunder). The un-buildable hands move neither aggregate.
+assert.strictEqual(cleanRow.replayable, true);
+assert.deepStrictEqual(cleanRow.grades, ['good', 'good', 'blunder']);
+assert.deepStrictEqual(lossless.grades, { brilliant: 0, good: 2, inaccuracy: 0, mistake: 0, blunder: 1 });
+assert.strictEqual(lossless.accuracyPct, 72); // (1 + 1 + 0.15) / 3 = 0.7166… → 72
+// Key-hand selection must not crash on the empty-grades path. With 3 hands and a
+// limit of 4, all three are keyed: the graded blunder ranks first, the un-
+// buildable hands fill remaining slots ranked by |netChange| and read as a plain
+// 'big-swing' (they carry no blunder/mistake/all-in signal).
+assert.strictEqual(lossless.keyHands.length, 3);
+assert.deepStrictEqual(lossless.keyHands.map((h) => h.handNumber), [1, 7, 8]);
+assert.deepStrictEqual(lossless.keyHands[0].keyReasons, ['blunder']); // handA
+assert.deepStrictEqual(lossless.keyHands[1].keyReasons, ['big-swing']); // empty (|net| 50)
+assert.deepStrictEqual(lossless.keyHands[2].keyReasons, ['big-swing']); // foreign (|net| 0)
+
+// Fixture 2: one malformed action inside an otherwise-good hand. DECISION: the
+// timeline returns null (we do NOT skip the bad entry — skipping would corrupt
+// pot/stack reconstruction and silently mis-grade every later decision), so the
+// hand surfaces as replayable:false via the lossless path, never as bogus
+// grades. Full rationale lives in the comment in replayTimeline.js.
+const malformedActionHand = {
+  ...handA,
+  _id: 'hand-a-malformed',
+  handNumber: 9,
+  actions: [handA.actions[0], handA.actions[1], null, ...handA.actions.slice(2)],
+};
+assert.strictEqual(
+  buildReplayTimeline(malformedActionHand, HERO),
+  null,
+  'a single malformed action makes the timeline unbuildable (not skipped)'
+);
+const withMalformed = buildMatchReview([handA, malformedActionHand], HERO, stubEngine);
+assert.strictEqual(withMalformed.hands.length, 2);
+assert.strictEqual(withMalformed.hands[1].replayable, false);
+assert.strictEqual(withMalformed.hands[1].netChange, -700); // stored hero net survives
+assert.deepStrictEqual(withMalformed.hands[1].grades, []);
+assert.strictEqual(withMalformed.hands[1].worstGrade, null);
+// Regression lock: the clean hand grades identically whether or not a malformed
+// sibling sits beside it — a corrupted neighbor must never leak into its
+// grading or move the accuracy total.
+const soloClean = buildMatchReview([handA], HERO, stubEngine);
+assert.strictEqual(withMalformed.hands[0].replayable, true);
+assert.deepStrictEqual(withMalformed.hands[0].grades, soloClean.hands[0].grades);
+assert.strictEqual(withMalformed.hands[0].grades.join(), 'good,good,blunder');
+assert.strictEqual(withMalformed.hands[0].worstGrade, soloClean.hands[0].worstGrade);
+assert.strictEqual(withMalformed.hands[0].netChange, soloClean.hands[0].netChange);
+assert.strictEqual(withMalformed.accuracyPct, soloClean.accuracyPct);
 
 // --- drill conversion ------------------------------------------------------
 
