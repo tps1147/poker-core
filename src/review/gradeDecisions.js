@@ -85,11 +85,14 @@ const GRADE_RULES = {
   // "Draw-driven hand" ceiling for the brilliant priced-in call. Honest-scale
   // arithmetic: pure air tops out at 0.20 (highCardStrength's max), the
   // weakest pair OF THE HERO'S OWN reads 0.34, and evaluateDrawingHands caps
-  // a draw's contribution at 0.30 — so air + any draw reads < 0.50 while any
-  // own-pair + draw reads ≥ 0.52. The old 0.4 predates strength including
-  // draw value; kept, it would have vetoed exactly the big-card combo draws
-  // (~0.44–0.48) this grade exists to celebrate.
-  DRAW_CALL_STRENGTH_MAX: 0.5, // was 0.4 on the old scale
+  // a draw's contribution at 0.30 — so air + any draw reads AT MOST exactly
+  // 0.50 (0.20 + 0.30, the ace-high two-overcard combo draw hits that cap on
+  // the nose), while any own-pair + draw reads ≥ 0.52. The bound is 0.52
+  // rather than 0.50 for precisely that boundary case: at 0.50 with a strict
+  // comparison, the BIGGEST big-card draws this grade exists to celebrate —
+  // the ones that cap out — were the ones excluded (adversarial review,
+  // 2026-08-26). 0.52 admits them and still excludes every made pair.
+  DRAW_CALL_STRENGTH_MAX: 0.52, // was 0.4 on the old scale; 0.5 for one day
   // Value threshold (river missed-value flag + the value-raise note).
   // band.value opens at 0.46 ("top pair and up"), but top pair spans
   // 0.50–0.56 (0.50 + kicker bonus), so a 0.46–0.50 threshold would flag
@@ -116,9 +119,14 @@ const GRADE_RULES = {
   // the 2026-08-26 re-tune, but the window it carves moved with the scale: at
   // the 44-needed floor the discounted test passes for strength < 0.72, so
   // two pair (0.62–0.66) clears the bar and trips (0.72) clears it against
-  // anything bigger than the minimum overbet — while set-and-up (0.78+) still
-  // reads as a profitable call even discounted, so folding a set, straight or
-  // flush to a jam correctly falls through to the bands and grades a blunder.
+  // anything bigger than the minimum overbet. Set-and-up (0.78+) usually
+  // reads as a profitable call even after the discount, so those folds fall
+  // through to the bands — but NOT always: against the very largest jams
+  // (needed in the mid-40s) even a straight's discounted equity dips under
+  // the needed price and the fold grades brilliant. That is the intended
+  // reading — folding a straight to a jam that beats it IS the celebrated
+  // laydown — the earlier absolute claim here was measured false at
+  // needed 44-47 (adversarial review, 2026-08-26).
   LAYDOWN_RANGE_DISCOUNT: 0.5,
 };
 
