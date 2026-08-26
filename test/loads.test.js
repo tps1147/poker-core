@@ -52,7 +52,7 @@ const expectFns = {
     'normalizeGameState', 'normalizePlayerList', 'normalizePuzzleState',
     'normalizeGameMode', 'isRankedMode',
   ],
-  './data': ['getArchetypeScout', 'getArchetypeMeta', 'getBotById', 'isKnownBotId'],
+  './data': ['getArchetypeScout', 'getArchetypeMeta', 'getBotById', 'isKnownBotId', 'canonicalKey', 'equityForTopPercent'],
 };
 
 for (const [key, fns] of Object.entries(expectFns)) {

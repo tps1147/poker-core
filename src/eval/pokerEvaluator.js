@@ -1,7 +1,19 @@
 // Converted from ESM to CommonJS during extraction into poker-core
-// (originally Poker.com/src/utils/pokerEvaluator.js). Only the two `export
+// (originally Poker.com/src/utils/pokerEvaluator.js). The two `export
 // function` keywords were changed to plain `function` and a module.exports
-// added at the end — the evaluation logic is byte-for-byte identical.
+// added at the end.
+//
+// TWO behavioral fixes on top of the extraction, both found by the
+// differential test against the server evaluator (test/honestRead.test.js):
+//
+// 1. FALSY DEUCES. The pair/trips/quads detectors return the RANK INDEX of the
+//    matched rank, and a deuce is index 0 — falsy. Every `if (result)`
+//    truthiness check therefore treated any made hand built on 2s as "no
+//    match": a pair of 2s, trips of 2s, quad 2s, and full houses whose pair
+//    was 2s all fell through to lower categories (KKK22 read as three of a
+//    kind, 22 as high card). Those checks now compare `!== false`.
+// 2. STRAIGHT FLUSH UNDER SIX SUITED CARDS (see the comment on hasRoyalFlush /
+//    hasStraightFlush below).
 
 const RANKS = '23456789TJQKA';
 const SUITS = '♠♥♦♣';
@@ -38,7 +50,7 @@ function evaluateHand(cards) {
     }
 
     const fourOfAKind = hasFourOfAKind(sortedCards);
-    if (fourOfAKind) {
+    if (fourOfAKind !== false) {
         return { rank: HAND_RANKINGS.FOUR_OF_A_KIND, name: 'Four of a Kind', value: fourOfAKind };
     }
 
@@ -58,7 +70,7 @@ function evaluateHand(cards) {
     }
 
     const threeOfAKind = hasThreeOfAKind(sortedCards);
-    if (threeOfAKind) {
+    if (threeOfAKind !== false) {
         return { rank: HAND_RANKINGS.THREE_OF_A_KIND, name: 'Three of a Kind', value: threeOfAKind };
     }
 
@@ -68,7 +80,7 @@ function evaluateHand(cards) {
     }
 
     const pair = hasOnePair(sortedCards);
-    if (pair) {
+    if (pair !== false) {
         return { rank: HAND_RANKINGS.ONE_PAIR, name: 'One Pair', value: pair };
     }
 
@@ -79,19 +91,28 @@ function evaluateHand(cards) {
     };
 }
 
+// Both straight-flush detectors examine ALL cards of the flush suit, not the
+// top-5 slice hasFlush returns. With 6+ suited cards among 7 the straight can
+// live below the five highest (K♦ + T♦9♦8♦7♦6♦: top-5 K,T,9,8,7 is no
+// straight, but T-6 is), and the old top-5 check missed it. The old royal
+// check also compared a DESCENDING rank string against 'TJQKA', which can
+// never match, so a royal always read as a plain straight flush.
 function hasRoyalFlush(cards) {
     const flush = hasFlush(cards);
     if (!flush) return false;
 
-    const ranks = flush.map(card => card.rank).join('');
-    return ranks.includes('TJQKA');
+    const suitedRanks = new Set(
+        cards.filter(card => card.suit === flush[0].suit).map(card => card.rank)
+    );
+    return ['T', 'J', 'Q', 'K', 'A'].every(rank => suitedRanks.has(rank));
 }
 
 function hasStraightFlush(cards) {
     const flush = hasFlush(cards);
     if (!flush) return false;
 
-    const straight = hasStraight(flush);
+    const suited = cards.filter(card => card.suit === flush[0].suit);
+    const straight = hasStraight(suited);
     return straight;
 }
 
@@ -107,12 +128,12 @@ function hasFourOfAKind(cards) {
 
 function hasFullHouse(cards) {
     const three = hasThreeOfAKind(cards);
-    if (!three) return false;
+    if (three === false) return false;
 
     const remainingCards = cards.filter(card => RANKS.indexOf(card.rank) !== three);
     const pair = hasOnePair(remainingCards);
 
-    if (pair) {
+    if (pair !== false) {
         return { three, pair };
     }
     return false;

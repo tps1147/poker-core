@@ -6,8 +6,11 @@
 //
 //   archetypeScout — player-type labels + scouting reads, keyed by archetype
 //   botRoster      — the canonical 16-bot journey ladder with band-derived ratings
+//   preflopEquity  — generated real pre-flop equity table (copied from the server) +
+//                    canonicalKey/equityForTopPercent helpers
 
 module.exports = {
   ...require('./archetypeScout'),
   ...require('./botRoster'),
+  ...require('./preflopEquity'),
 };

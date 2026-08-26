@@ -87,14 +87,16 @@ const mkHand = ({
   };
 };
 
-// Hand A — hero AKs raises pre, calls flop, folds turn getting 2.6:1 with 45%
-// equity (a fold blunder). Exercises reconstruction end to end.
+// Hand A — hero AKs raises pre, flops top pair top kicker (0.56 on the honest
+// scale), calls flop, then folds the turn getting 2.6:1 with 56% equity (a
+// fold blunder — the bot's flopped set is invisible to a price-based grader).
+// Exercises reconstruction end to end.
 const handA = mkHand({
   id: 'hand-a',
   handNumber: 1,
   heroCards: [card('A', '♠'), card('K', '♠')],
   botCards: [card('7', '♦'), card('7', '♣')],
-  community: [card('Q', '♥'), card('7', '♥'), card('2', '♠'), card('J', '♥')],
+  community: [card('K', '♥'), card('7', '♥'), card('2', '♠'), card('J', '♥')],
   actions: [
     act(HERO, 'blinds', 'small blind', 50),
     act(BOT, 'blinds', 'big blind', 100),
@@ -139,7 +141,7 @@ const handB = mkHand({
 });
 
 // Hand C — hero JTs calls a flop bet on a correctly priced flush draw
-// (brilliant), then folds the turn with equity edge +5 (a mistake).
+// (brilliant), then folds the turn with equity edge +6 (a mistake).
 const handC = mkHand({
   id: 'hand-c',
   handNumber: 3,
@@ -161,12 +163,13 @@ const handC = mkHand({
   winnerAmount: 2800,
 });
 
-// Hand D — hero KK value-raises the flop (good) and lays down to a huge river
-// overbet with a still-big hand (brilliant laydown).
+// Hand D — hero K8s flops two pair (0.66 on the honest scale), value-raises
+// the flop (good) and lays down to a huge river overbet with a hand that is
+// still two pair after the ace rolls off (brilliant laydown).
 const handD = mkHand({
   id: 'hand-d',
   handNumber: 4,
-  heroCards: [card('K', '♦'), card('K', '♥')],
+  heroCards: [card('K', '♦'), card('8', '♦')],
   botCards: [card('8', '♠'), card('8', '♥')],
   community: [card('K', '♠'), card('8', '♣'), card('3', '♦'), card('6', '♠'), card('A', '♥')],
   actions: [
@@ -187,32 +190,35 @@ const handD = mkHand({
   winnerAmount: 7600,
 });
 
-// Hand E — hero 76o calls a flop bet slightly under price (mistake), spews a
-// turn raise with air when a free card was available (inaccuracy), then checks
-// back the river with a monster (inaccuracy — missed value).
+// Hand E — hero AQo peels a small flop bet with bare overcards slightly under
+// price (mistake: 20% vs 25% needed — on the honest scale big-card air reads
+// 0.20, so only a cheap peel can land in the mistake band), spews a turn raise
+// with the same unimproved air when a free card was available (inaccuracy),
+// then spikes top pair top kicker on the river (0.56) and checks it back
+// (inaccuracy — missed value).
 const handE = mkHand({
   id: 'hand-e',
   handNumber: 5,
-  heroCards: [card('7', '♠'), card('6', '♦')],
+  heroCards: [card('A', '♠'), card('Q', '♦')],
   botCards: [card('Q', '♥'), card('J', '♦')],
-  community: [card('7', '♦'), card('4', '♣'), card('2', '♣'), card('9', '♠'), card('7', '♣')],
+  community: [card('7', '♦'), card('4', '♣'), card('2', '♣'), card('9', '♠'), card('Q', '♣')],
   actions: [
     act(HERO, 'blinds', 'small blind', 50),
     act(BOT, 'blinds', 'big blind', 100),
     act(HERO, 'preflop', 'call', 50),
     act(BOT, 'preflop', 'check', 0),
-    act(BOT, 'flop', 'raise', 300),
-    act(HERO, 'flop', 'call', 300),
+    act(BOT, 'flop', 'raise', 100),
+    act(HERO, 'flop', 'call', 100),
     act(BOT, 'turn', 'check', 0),
-    act(HERO, 'turn', 'raise', 500),
-    act(BOT, 'turn', 'call', 500),
+    act(HERO, 'turn', 'raise', 700),
+    act(BOT, 'turn', 'call', 700),
     act(BOT, 'river', 'check', 0),
     act(HERO, 'river', 'check', 0),
   ],
   potTotal: 1800,
   winnerId: HERO,
   winnerAmount: 1800,
-  winnerHandName: 'Three of a Kind',
+  winnerHandName: 'One Pair',
   showdown: true,
 });
 
@@ -242,14 +248,25 @@ const handF = mkHand({
 // --- stub insight engine ---------------------------------------------------
 // Scripted by hero hole ranks + visible board size so one engine instance can
 // drive every fixture deterministically through buildMatchReview.
-
+//
+// 2026-08-26: values re-encoded on the HONEST evaluateHandStrength scale that
+// GRADE_RULES is now tuned to (see AIPlayer.POSTFLOP_BANDS): preflop = real
+// equity vs a random hand, post-flop = the made-hand band plus draw value
+// where the story has a draw. AK = top pair top kicker 0.56 on the K-high
+// board; 98 = nine-high air 0.12 on the flop, then the board pairs fours
+// (a pair wholly on the board ≈ 0.28) — never a real hand; JT = jack-high
+// air 0.18 on the flop (the 9-out flush draw is quoted via outs, keeping the
+// equity basis 'outs' for the brilliant call), air + one-street draw value
+// 0.36 on the turn; K8 = flopped two pair 0.66 throughout; AQ = overcard air
+// 0.20 until the river pairs the queen (top pair top kicker 0.56);
+// Q2 = queen-high air, plus a turn gutshot's worth of value.
 const STRENGTH_SCRIPT = {
-  AK: { 0: 0.65, 3: 0.5, 4: 0.45 },
-  '98': { 0: 0.3, 3: 0.2, 4: 0.2, 5: 0.1 },
-  JT: { 0: 0.6, 3: 0.3, 4: 0.35 },
-  KK: { 0: 0.85, 3: 0.85, 4: 0.7, 5: 0.71 },
-  '76': { 0: 0.5, 3: 0.33, 4: 0.25, 5: 0.85 },
-  Q2: { 0: 0.4, 3: 0.15, 4: 0.1 },
+  AK: { 0: 0.67, 3: 0.56, 4: 0.56 },
+  '98': { 0: 0.48, 3: 0.12, 4: 0.28, 5: 0.28 },
+  JT: { 0: 0.58, 3: 0.18, 4: 0.36 },
+  K8: { 0: 0.58, 3: 0.66, 4: 0.66, 5: 0.66 },
+  AQ: { 0: 0.64, 3: 0.2, 4: 0.2, 5: 0.56 },
+  Q2: { 0: 0.48, 3: 0.14, 4: 0.22 },
 };
 const FLUSH_DRAW_OUTS = { JT: 9 };
 const holeKey = (cards) => `${cards[0].rank}${cards[1].rank}`;
@@ -351,13 +368,14 @@ assert.strictEqual(classifyAction('small blind', 0, 50), null);
 const decisionsA = gradeHand(timelineA, stubEngine);
 assert.strictEqual(decisionsA.length, 3);
 assert.deepStrictEqual(decisionsA.map((d) => d.grade), ['good', 'good', 'blunder']);
-// Fold blunder metrics: 900 to call into 2300 → needs 28.1%, had 45%.
+// Fold blunder metrics: 900 to call into 2300 → needs 28.1%, had 56% (top
+// pair top kicker on the honest scale — 2026-08-26 re-tune).
 const foldBlunder = decisionsA[2];
 assert.strictEqual(foldBlunder.frameIndex, 7);
 assert.strictEqual(foldBlunder.action, 'fold');
 assert.deepStrictEqual(foldBlunder.metrics, {
-  strength: 0.45,
-  equityPct: 45,
+  strength: 0.56,
+  equityPct: 56,
   neededPct: 28.1,
   toCall: 900,
   pot: 2300,
@@ -367,7 +385,7 @@ assert.deepStrictEqual(foldBlunder.metrics, {
   equityBasis: 'strength',
 });
 assert.ok(foldBlunder.note.includes('2.6:1'), 'note quotes the pot price');
-assert.ok(foldBlunder.note.includes('45% equity'), 'note quotes equity');
+assert.ok(foldBlunder.note.includes('56% equity'), 'note quotes equity');
 // Flop call: 400 into 1400 → needs 28.6%.
 assert.strictEqual(decisionsA[1].metrics.neededPct, 28.6);
 
@@ -377,16 +395,20 @@ assert.strictEqual(decisionsB[0].note, 'Completed the blind (not graded)'); // l
 const callBlunder = decisionsB[3];
 assert.strictEqual(callBlunder.action, 'call');
 assert.strictEqual(callBlunder.metrics.neededPct, 47.6);
-assert.strictEqual(callBlunder.metrics.equityPct, 10);
+// 28 = a pair sitting wholly on the board (the fours) — the honest scale
+// scores it as the high-card hand it really is, still 19.6 points under price.
+assert.strictEqual(callBlunder.metrics.equityPct, 28);
 
 const timelineC = buildReplayTimeline(handC, HERO);
 const decisionsC = gradeHand(timelineC, stubEngine);
 assert.deepStrictEqual(decisionsC.map((d) => d.grade), ['good', 'brilliant', 'mistake']);
-// Brilliant draw call: 9 outs → 36% on the flop vs 31.3% needed, weak made hand.
+// Brilliant draw call: 9 outs → 36% on the flop vs 31.3% needed, and the
+// made-hand read (0.18, jack-high air) is under DRAW_CALL_STRENGTH_MAX 0.50.
 assert.strictEqual(decisionsC[1].action, 'call');
 assert.strictEqual(decisionsC[1].metrics.equityPct, 36);
 assert.strictEqual(decisionsC[1].metrics.neededPct, 31.3);
-// Mistake fold: 35% equity vs 30% needed — inside the (+3, +8] band.
+// Mistake fold: 36% equity (air + one-street draw value) vs 30% needed —
+// inside the (+3, +8] band.
 assert.strictEqual(decisionsC[2].action, 'fold');
 assert.strictEqual(decisionsC[2].metrics.neededPct, 30);
 
@@ -394,26 +416,32 @@ const timelineD = buildReplayTimeline(handD, HERO);
 const decisionsD = gradeHand(timelineD, stubEngine);
 assert.deepStrictEqual(decisionsD.map((d) => d.grade), ['good', 'good', 'good', 'brilliant']);
 assert.ok(decisionsD[1].note.startsWith('Value raise'), 'flop value raise noted');
-// Brilliant laydown: premium strength 0.71 vs an overbet needing 44.1% —
-// the halved (range-discounted) equity, 35.5, is more than 8 points short,
-// while the raw 71% would have read as a call. Exercises all three gates
-// (LAYDOWN_STRENGTH 0.7, LAYDOWN_MIN_NEEDED 44, LAYDOWN_RANGE_DISCOUNT 0.5).
+// Brilliant laydown (2026-08-26 scale): two-pair strength 0.66 — above the
+// LAYDOWN_STRENGTH 0.60 two-pair floor — vs an overbet needing 44.1%. The
+// halved (range-discounted) equity, 33, is more than 8 points short, while
+// the raw 66% would have read as a call. Exercises all three gates
+// (LAYDOWN_STRENGTH 0.60, LAYDOWN_MIN_NEEDED 44, LAYDOWN_RANGE_DISCOUNT 0.5).
 const laydown = decisionsD[3];
 assert.strictEqual(laydown.action, 'fold');
 assert.strictEqual(laydown.metrics.neededPct, 44.1);
+assert.strictEqual(laydown.metrics.strength, 0.66);
 assert.ok(laydown.note.includes('Disciplined laydown'));
+assert.ok(laydown.note.includes('66% hand'), 'the celebrated fold quotes the honest number');
 
 const timelineE = buildReplayTimeline(handE, HERO);
 const decisionsE = gradeHand(timelineE, stubEngine);
 assert.deepStrictEqual(decisionsE.map((d) => d.grade), ['good', 'mistake', 'inaccuracy', 'inaccuracy']);
-// Mistake call: 33% vs 37.5% needed — inside the [-8, -3) band.
-assert.strictEqual(decisionsE[1].metrics.neededPct, 37.5);
-// Spew raise: 25% hand, no draw, free card available.
+// Mistake call: 20% (overcard air) vs 25% needed — inside the [-8, -3) band.
+assert.strictEqual(decisionsE[1].metrics.neededPct, 25);
+// Spew raise: 20% air — under SPEW_STRENGTH 0.28 (below any pair of the
+// hero's own) — no draw, free card available.
 assert.strictEqual(decisionsE[2].action, 'raise');
 assert.ok(decisionsE[2].note.includes('free'));
-// Missed value: river check with an 85% hand.
+// Missed value: river check with a 56% hand (top pair top kicker — at or
+// above VALUE_STRENGTH 0.55, the top of the top-pair band).
 assert.strictEqual(decisionsE[3].action, 'check');
 assert.ok(decisionsE[3].note.includes('missed value'));
+assert.ok(decisionsE[3].note.includes('56% hand'), 'the missed-value note quotes the honest number');
 
 const timelineF = buildReplayTimeline(handF, HERO);
 const decisionsF = gradeHand(timelineF, stubEngine);
@@ -702,7 +730,10 @@ const syntheticTimeline = (frames, heroRanks) => ({
 });
 
 // 1) Laydown gate must NOT launder a profitable-call fold into 'brilliant':
-// strength 0.56 folding at needed 42.9 (raw diff +13.1) is a blunder.
+// strength 0.56 folding at needed 42.9 (raw diff +13.1) is a blunder. On the
+// 2026-08-26 honest scale 0.56 is exactly top pair top kicker — one pair sits
+// below the LAYDOWN_STRENGTH 0.60 two-pair floor, so a top-pair fold can
+// never be celebrated, only priced.
 const midFoldEngine = {
   evaluateHandStrength: () => 0.56,
   hasFlushDraw: () => ({ isFlushDraw: false, outs: 0 }),

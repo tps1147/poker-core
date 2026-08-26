@@ -56,8 +56,11 @@ const LEAK_TAG_COPY = {
     icon: 'cash-remove',
   },
   'missing-value-bets': {
+    // 2026-08-26: worded to the honest strength scale — the flag fires at
+    // GRADE_RULES.VALUE_STRENGTH 0.55 (top pair, good kicker) and up, so the
+    // copy claims "strong enough to bet", not "big hands".
     title: 'Missing Value Bets',
-    body: 'You checked back strong hands on the river more than once. Big hands want one more bet, not a free showdown.',
+    body: 'You checked back river hands strong enough to bet more than once. Top pair with a good kicker or better usually wants one more bet, not a free showdown.',
     icon: 'cash-plus',
   },
 };

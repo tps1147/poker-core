@@ -1,17 +1,81 @@
 // Converted from ESM to CommonJS during extraction into poker-core (originally
-// Poker.com/src/game/AIPlayer.js). Only the module boundaries changed: the
-// `import { evaluateHand }` became a require, and `export default AIPlayer`
-// became `module.exports = AIPlayer`. The engine body is untouched.
+// Poker.com/src/game/AIPlayer.js), then re-based on the server's HONEST evaluation
+// internals (pokerServer/src/game/AIPlayer.js).
 //
 // poker-core uses this class as the shared INSIGHT ENGINE for Match Review and
 // the in-game HUD (evaluateHandStrength / evaluateDrawingHands / hasFlushDraw /
 // analyzeBoardTexture / countOvercards, plus evaluateHand exposed by callers).
-// The decision code (makeDecision/decideAction/…) rides along unchanged.
+//
+// WHY THE EVALUATION WAS REWRITTEN. This engine's read is what the HUD quotes as
+// "equity" and what Match Review grades the player's decisions against, while the
+// opponent (the server bot) decides on the server's honest read. The two had
+// drifted apart: here the post-flop switch assigned with Math.max against the
+// accumulated PRE-FLOP heuristic and its high-card branch assigned nothing at
+// all, so AK-high kept its ~0.85 pre-flop number on a 2-7-9 rainbow flop — total
+// air read as 85% while a made pair of sevens read 0.60. Players were being
+// graded on a scale where air outranked made hands. The evaluation internals
+// below (madeHandStrength / onePairStrength / highCardStrength, the exact
+// flush/straight out counting, and evaluateDrawingHands with board-subtraction
+// and river-returns-0) are ported VERBATIM from pokerServer/src/game/AIPlayer.js
+// so the two implementations cannot drift in meaning again — the differential
+// test in test/honestRead.test.js compares them output-for-output.
+//
+// PRE-FLOP goes one step further than the server bot: it returns REAL equity vs
+// a random hand from the generated table in ../data/preflopEquity.js (AA 0.8536,
+// AKs 0.6719, 32o 0.3239). The server deliberately kept its crude pre-flop
+// heuristic for the BOT because rewiring cost EV through its decision bands, but
+// this is an insight engine — nothing here trades EV on the number, so display
+// truth wins with no tradeoff.
+//
+// LEGACY DECISION CODE. makeDecision/decideAction and their helpers ride along
+// unchanged, and their internal thresholds (0.85 all-in, 0.75 strong, 0.45
+// medium, …) are LEGACY: they were tuned to the old inflated scale and are used
+// in production by nothing except the server's dev-only match-simulator hero,
+// which is deliberately a plain, middling player. Its behavior shifts with the
+// new scale; that is accepted. Do not re-tune them here — real decision logic
+// lives in the server's AIPlayer.
 
 const { evaluateHand } = require('../eval/pokerEvaluator');
+const { PREFLOP_EQUITY, canonicalKey } = require('../data/preflopEquity');
+
+const RANK_ORDER = '23456789TJQKA';
+
+// Same numbering as ../eval/pokerEvaluator.js HAND_RANKINGS and the server's
+// PokerHand.HAND_RANKINGS (10 = royal flush … 1 = high card).
+const HAND_RANKINGS = {
+    ROYAL_FLUSH: 10,
+    STRAIGHT_FLUSH: 9,
+    FOUR_OF_A_KIND: 8,
+    FULL_HOUSE: 7,
+    FLUSH: 6,
+    STRAIGHT: 5,
+    THREE_OF_A_KIND: 4,
+    TWO_PAIR: 3,
+    ONE_PAIR: 2,
+    HIGH_CARD: 1
+};
+
+// POST-FLOP DECISION BANDS, in the units evaluateHandStrength now reports post-flop.
+// Ported VERBATIM from pokerServer/src/game/AIPlayer.js so consumers reading this
+// scale (grading thresholds, HUD labels) share one written-down meaning with the
+// opponent's decision gates. Post-flop the number is a read of the hand actually
+// made: top pair is 0.50 and two pair is 0.66, so a threshold like 0.85 no longer
+// means "a strong hand" — it means "a flush or better".
+const POSTFLOP_BANDS = {
+    continue: 0.30,   // call one bet: any pair, or a real draw
+    medium:   0.30,
+    value:    0.46,   // bet or raise for value: top pair and up
+    strong:   0.60,   // two pair and up
+    stackOff: 0.62,   // put the stack in
+    slowplay: 0.76,   // trips and up is worth trapping with
+    monster:  0.86,   // flush and up: size up rather than make a standard value bet
+};
 
 class AIPlayer {
-    constructor() {
+    constructor(opts = {}) {
+        // Optional injected rng (server pattern: config.rng || Math.random). The
+        // only non-deterministic read in this file is shouldBluff.
+        this.rng = (opts && opts.rng) || Math.random;
         this.handStrength = 0;
         this.potOdds = 0;
         this.impliedOdds = 0;
@@ -134,218 +198,210 @@ class AIPlayer {
         }
     }
 
+    // Absolute hand strength in 0..1.
+    //
+    // PRE-FLOP (board < 3): real equity vs a random hand, from the generated table.
+    // POST-FLOP: a reading of the hand actually made plus honest draw value —
+    // never blended with the pre-flop number. Both halves match the server's
+    // scale; the post-flop half matches it to the last bit (see the header).
     evaluateHandStrength(holeCards, communityCards = []) {
         if (!holeCards || holeCards.length !== 2) return 0;
 
-        const [card1, card2] = holeCards;
-        const ranks = '23456789TJQKA';
-
-        let strength = 0;
-        let handType = 'high-card';
-
-        // Pre-flop hand strength evaluation with advanced ranges
-        if (card1.rank === card2.rank) { // Pocket pair
-            const rankIndex = ranks.indexOf(card1.rank);
-            strength = 0.5 + (rankIndex / ranks.length) * 0.4;
-            handType = 'pocket-pair';
-
-            // Premium pairs get significant extra weight
-            if (rankIndex >= ranks.indexOf('J')) {
-                strength += 0.2;
-                handType = 'premium-pair';
-            } else if (rankIndex >= ranks.indexOf('T')) {
-                strength += 0.15;
-                handType = 'medium-pair';
-            } else if (rankIndex >= ranks.indexOf('7')) {
-                strength += 0.1;
-                handType = 'small-pair';
-            }
-        } else {
-            const rank1 = ranks.indexOf(card1.rank);
-            const rank2 = ranks.indexOf(card2.rank);
-            const isSuited = card1.suit === card2.suit;
-            const gap = Math.abs(rank1 - rank2);
-
-            // Base strength from card ranks
-            strength = (rank1 + rank2) / (2 * ranks.length);
-
-            // Suited cards bonus - larger bonus for suited connectors
-            if (isSuited) {
-                strength += gap <= 1 ? 0.15 : 0.1;
-                handType = 'suited';
-            }
-
-            // Connected cards bonus
-            if (gap === 1) {
-                strength += 0.12;
-                handType = isSuited ? 'suited-connector' : 'connector';
-            } else if (gap === 2) {
-                strength += 0.08; // One-gapper bonus
-            } else if (gap === 3) {
-                strength += 0.04; // Two-gapper bonus
-            }
-
-            // Broadway cards (T,J,Q,K,A) significant bonus
-            if (rank1 >= ranks.indexOf('T') && rank2 >= ranks.indexOf('T')) {
-                strength += 0.18;
-                handType = 'broadway';
-            }
-
-            // Big Ace bonus
-            if ((rank1 === ranks.indexOf('A') && rank2 >= ranks.indexOf('T')) ||
-                (rank2 === ranks.indexOf('A') && rank1 >= ranks.indexOf('T'))) {
-                strength += 0.12;
-                handType = 'big-ace';
-            }
-
-            // High cards bonus
-            if (rank1 >= ranks.indexOf('J') || rank2 >= ranks.indexOf('J')) {
-                strength += 0.08;
-            }
+        if (!communityCards || communityCards.length < 3) {
+            const equity = PREFLOP_EQUITY[canonicalKey(holeCards[0], holeCards[1], RANK_ORDER)];
+            return typeof equity === 'number' ? equity : 0.5;
         }
 
-        // Post-flop evaluation with community cards
-        if (communityCards && communityCards.length >= 3) {
-            const allCards = [...holeCards, ...communityCards];
-            const handRank = evaluateHand(allCards);
+        const allCards = [...holeCards, ...communityCards];
+        const handEval = evaluateHand(allCards);
+        if (!handEval) return 0;
 
-            if (handRank) {
-                // Adjust strength based on made hands using proper hand rankings
-                switch (handRank.rank) {
-                    case 10: // Royal Flush
-                    case 9:  // Straight Flush
-                        strength = 0.99;
-                        break;
-                    case 8: // Four of a Kind
-                        strength = 0.95;
-                        break;
-                    case 7: // Full House
-                        strength = 0.90;
-                        break;
-                    case 6: // Flush
-                        strength = Math.max(strength, 0.80);
-                        break;
-                    case 5: // Straight
-                        strength = Math.max(strength, 0.75);
-                        break;
-                    case 4: // Three of a Kind
-                        strength = Math.max(strength, 0.70);
-                        break;
-                    case 3: // Two Pair
-                        strength = Math.max(strength, 0.60);
-                        break;
-                    case 2: // One Pair
-                        strength = Math.max(strength, 0.45);
-                        break;
-                    default: // High Card
-                        // Use pre-flop strength adjusted for board texture
-                        strength *= 0.7;
-                        break;
-                }
-            }
-
-            // Add drawing potential
-            const drawingPotential = this.evaluateDrawingHands(allCards);
-            strength += drawingPotential.totalValue;
-
-            // Board texture adjustments
-            const boardTexture = this.analyzeBoardTexture(communityCards);
-            strength = this.adjustForBoardTexture(strength, boardTexture, holeCards);
-        }
+        let strength = this.madeHandStrength(handEval, holeCards, communityCards);
+        strength += this.evaluateDrawingHands(
+            allCards, communityCards, 5 - communityCards.length).totalValue;
 
         return Math.min(Math.max(strength, 0), 1);
     }
 
-    evaluateDrawingHands(cards) {
-        let drawValue = 0;
-        let flushOuts = 0;
-        let straightOuts = 0;
+    // Post-flop made-hand strength. Category sets the band; position WITHIN the band comes from how
+    // the hole cards relate to the board, which is what separates top pair from a pair sitting on
+    // the board that the opponent shares. (Verbatim from the server.)
+    madeHandStrength(handEval, holeCards, communityCards) {
+        const R = HAND_RANKINGS;
+        const ri = (c) => RANK_ORDER.indexOf(c.rank);
+        const hole = holeCards.map(ri);
+        const board = communityCards.map(ri);
+        const boardSorted = [...new Set(board)].sort((a, b) => b - a);
+        const topBoard = boardSorted[0];
+        const hi = Math.max(hole[0], hole[1]);
+        const isPocket = hole[0] === hole[1];
+        const holePairsBoard = hole.filter((h) => board.includes(h)).length;
 
-        // Flush draw evaluation
-        const flushDraw = this.hasFlushDraw(cards);
-        if (flushDraw.isFlushDraw) {
-            flushOuts = flushDraw.outs;
-            drawValue += flushOuts * 0.021; // ~2.1% per out
+        switch (handEval.rank) {
+            case R.ROYAL_FLUSH:
+            case R.STRAIGHT_FLUSH:
+                return 0.99;
+            case R.FOUR_OF_A_KIND:
+                return 0.97;
+            case R.FULL_HOUSE:
+                return 0.93;
+            case R.FLUSH:
+                return 0.86 + (hi / 12) * 0.04;
+            case R.STRAIGHT:
+                return 0.80 + (hi / 12) * 0.04;
+            case R.THREE_OF_A_KIND:
+                // A set (pocket pair plus one on the board) is disguised and beats trips, where the
+                // board shows the pair and the opponent may be holding the same card.
+                return isPocket ? 0.78 : 0.72;
+            case R.TWO_PAIR:
+                if (holePairsBoard === 2) return 0.66;  // both hole cards paired, the real thing
+                if (isPocket) return 0.62;              // pocket pair alongside a paired board
+                if (holePairsBoard === 1) return 0.52;  // one pair mine, one shared with the board
+                return 0.30;                            // both pairs on the board, playing a kicker
+            case R.ONE_PAIR:
+                return this.onePairStrength(hole, board, boardSorted, topBoard, isPocket);
+            default:
+                return this.highCardStrength(hole, topBoard);
+        }
+    }
+
+    onePairStrength(hole, board, boardSorted, topBoard, isPocket) {
+        if (isPocket) {
+            const p = hole[0];
+            if (p > topBoard) return 0.58;                                   // overpair
+            if (boardSorted.length > 1 && p > boardSorted[1]) return 0.44;   // under the top card only
+            return 0.36;                                                     // buried underpair
         }
 
-        // Straight draw evaluation
-        const straightDraw = this.hasStraightDraw(cards);
-        if (straightDraw.isStraightDraw) {
-            straightOuts = straightDraw.outs;
-            drawValue += straightOuts * 0.021;
+        const paired = hole.filter((h) => board.includes(h));
+        if (paired.length === 0) {
+            // The pair is entirely on the board. Both players hold it, so this is really a
+            // high-card hand and must not be priced like a pair.
+            return 0.24 + (Math.max(hole[0], hole[1]) / 12) * 0.06;
         }
 
-        // Combo draws are very strong
-        if (flushDraw.isFlushDraw && straightDraw.isStraightDraw) {
-            drawValue += 0.15; // Significant bonus for combo draws
-        }
+        const p = paired[0];
+        const kicker = hole[0] === p ? hole[1] : hole[0];
+        const kickerBonus = (kicker / 12) * 0.06;
 
-        // Overcards potential
-        const overcards = this.countOvercards(cards);
-        if (overcards > 0) {
-            drawValue += overcards * 0.025; // Small bonus for overcards
-        }
+        if (p === topBoard) return 0.50 + kickerBonus;
+        if (boardSorted.length > 1 && p === boardSorted[1]) return 0.42 + kickerBonus * 0.5;
+        return 0.34 + kickerBonus * 0.5;
+    }
+
+    highCardStrength(hole, topBoard) {
+        const hi = Math.max(hole[0], hole[1]);
+        const overcards = hole.filter((h) => h > topBoard).length;
+        return 0.06 + (hi / 12) * 0.09 + overcards * 0.025;
+    }
+
+    // Draw equity, counted only when the draw actually belongs to this hand and there is still a
+    // card to come. Previously any four-flush or near-run of ranks on the board was credited to the
+    // bot even when it held none of the relevant cards, and draws were still being added on the
+    // river where nothing can improve.
+    //
+    // The arithmetic is the server's, verbatim. The RETURN SHAPE is poker-core's
+    // legacy object ({ totalValue, flushOuts, straightOuts, totalOuts }) because the
+    // HUD and Match Review read the out counts off it; the server returns the bare
+    // totalValue number. Legacy one-argument calls (cards = [hole0, hole1, ...board],
+    // the same convention countOvercards uses) get the board and cards-to-come
+    // inferred, so they too are board-subtracted and go dead on the river.
+    evaluateDrawingHands(cards, boardCards = undefined, cardsToCome = undefined) {
+        if (boardCards === undefined) boardCards = cards.length > 2 ? cards.slice(2) : [];
+        if (cardsToCome === undefined) cardsToCome = Math.max(0, 5 - (boardCards ? boardCards.length : 0));
+
+        if (cardsToCome <= 0) return { totalValue: 0, flushOuts: 0, straightOuts: 0, totalOuts: 0 };
+
+        const mine = this.rawDrawOuts(cards);
+        const board = boardCards ? this.rawDrawOuts(boardCards) : { flush: 0, straight: 0 };
+
+        // Subtracting the outs the board already had is what makes this the bot's own draw. A draw
+        // sitting on the board is available to whoever holds the right cards, which on any given
+        // hand is just as likely to be the opponent.
+        const flushOuts = Math.max(0, mine.flush - board.flush);
+        const straightOuts = Math.max(0, mine.straight - board.straight);
+
+        // Rule of 4 and 2, discounted: two cards to come is worth roughly 3.5% per out once you
+        // account for the draws that get charged off before the river.
+        const perOut = cardsToCome >= 2 ? 0.035 : 0.02;
+        let value = (flushOuts + straightOuts) * perOut;
+        if (flushOuts > 0 && straightOuts > 0) value += 0.08;
 
         return {
-            totalValue: Math.min(drawValue, 0.35), // Cap draw value
+            totalValue: Math.min(value, 0.3),
             flushOuts,
             straightOuts,
             totalOuts: flushOuts + straightOuts
         };
     }
 
-    hasFlushDraw(cards) {
-        const suitCounts = cards.reduce((acc, card) => {
-            acc[card.suit] = (acc[card.suit] || 0) + 1;
-            return acc;
-        }, {});
+    rawDrawOuts(cards) {
+        return { flush: this.flushOuts(cards), straight: this.straightOuts(cards) };
+    }
 
-        for (const [suit, count] of Object.entries(suitCounts)) {
-            if (count === 4) {
-                return { isFlushDraw: true, outs: 9, suit, type: 'flush-draw' };
-            }
-            if (count === 3) {
-                return { isFlushDraw: true, outs: 10, suit, type: 'backdoor-flush' };
-            }
+    flushOuts(cards) {
+        const counts = {};
+        for (const card of cards) counts[card.suit] = (counts[card.suit] || 0) + 1;
+        for (const suit of Object.keys(counts)) {
+            if (counts[suit] >= 5) return 0;   // already made, not a draw
+            if (counts[suit] === 4) return 9;
         }
+        return 0;
+    }
 
+    // Exact: count the CARDS that would complete a straight. This yields 8 for an open-ender, 4 for
+    // a gutshot and 8 for a double-gutshot without special-casing any of them. The old version
+    // reported a gutshot whenever any THREE ranks spanned 3 or 4, which fires on hands needing two
+    // more cards. 7-2 on a 4-8-J board was credited with a draw it does not have.
+    straightOuts(cards) {
+        const present = new Set(cards.map((c) => RANK_ORDER.indexOf(c.rank)));
+        if (this.makesStraight(present)) return 0;   // already made
+
+        let outs = 0;
+        for (let x = 0; x < 13; x++) {
+            if (present.has(x)) continue;
+            const test = new Set(present);
+            test.add(x);
+            // Four cards of that rank are live: x is absent from the known cards by construction.
+            if (this.makesStraight(test)) outs += 4;
+        }
+        return outs;
+    }
+
+    makesStraight(rankSet) {
+        const s = new Set(rankSet);
+        if (s.has(12)) s.add(-1);   // the ace plays low for the wheel
+        for (let start = -1; start <= 8; start++) {
+            let run = true;
+            for (let k = 0; k < 5; k++) {
+                if (!s.has(start + k)) { run = false; break; }
+            }
+            if (run) return true;
+        }
+        return false;
+    }
+
+    // Honest flush-draw read (only a genuine 4-card draw counts; a made flush is
+    // not a draw) with the LEGACY return shape the HUD reads: { isFlushDraw, outs,
+    // suit, type }. The 3-card "backdoor flush" the old engine reported as 10 outs
+    // no longer exists.
+    hasFlushDraw(cards) {
+        const counts = {};
+        for (const card of cards) counts[card.suit] = (counts[card.suit] || 0) + 1;
+        for (const suit of Object.keys(counts)) {
+            if (counts[suit] >= 5) return { isFlushDraw: false, outs: 0 };   // already made
+            if (counts[suit] === 4) return { isFlushDraw: true, outs: 9, suit, type: 'flush-draw' };
+        }
         return { isFlushDraw: false, outs: 0 };
     }
 
+    // Honest straight-draw read on the exact out count, legacy shape preserved:
+    // { isStraightDraw, outs, type }.
     hasStraightDraw(cards) {
-        const ranks = '23456789TJQKA';
-        const uniqueRanks = [...new Set(cards.map(card => ranks.indexOf(card.rank)))].sort((a, b) => a - b);
-
-        // Check for open-ended straight draws
-        for (let i = 0; i < uniqueRanks.length - 3; i++) {
-            const span = uniqueRanks[i + 3] - uniqueRanks[i];
-            if (span === 3) { // Four cards in a row, missing one end
-                return { isStraightDraw: true, outs: 8, type: 'open-ended' };
-            }
-        }
-
-        // Check for gutshot draws
-        for (let i = 0; i < uniqueRanks.length - 2; i++) {
-            const span = uniqueRanks[i + 2] - uniqueRanks[i];
-            if (span === 3 || span === 4) { // Potential gutshot
-                return { isStraightDraw: true, outs: 4, type: 'gutshot' };
-            }
-        }
-
-        // Check for double gutshot (similar to open-ended)
-        if (uniqueRanks.length >= 4) {
-            const gaps = [];
-            for (let i = 0; i < uniqueRanks.length - 1; i++) {
-                gaps.push(uniqueRanks[i + 1] - uniqueRanks[i]);
-            }
-
-            // Look for patterns like 1,2,1 or 2,1,1 which create double gutshots
-            if (gaps.filter(g => g === 1).length >= 2 && gaps.filter(g => g === 2).length >= 1) {
-                return { isStraightDraw: true, outs: 8, type: 'double-gutshot' };
-            }
-        }
-
-        return { isStraightDraw: false, outs: 0 };
+        const outs = this.straightOuts(cards);
+        return outs > 0
+            ? { isStraightDraw: true, outs, type: outs >= 8 ? 'open-ended' : 'gutshot' }
+            : { isStraightDraw: false, outs: 0 };
     }
 
     countOvercards(cards) {
@@ -405,6 +461,9 @@ class AIPlayer {
         };
     }
 
+    // LEGACY: no longer called by evaluateHandStrength (the honest read does not
+    // re-adjust made-hand bands for texture). Kept because it is part of the class
+    // surface the decision code was written against.
     adjustForBoardTexture(strength, boardTexture, holeCards) {
         // Adjust hand strength based on how it interacts with board texture
         let adjustment = 0;
@@ -430,12 +489,13 @@ class AIPlayer {
     calculateImpliedOdds(holeCards, communityCards, opponentChips, opponentModel) {
         if (!communityCards || communityCards.length < 3) return 0;
 
-        const drawingPotential = this.evaluateDrawingHands([...holeCards, ...communityCards]);
+        const drawingPotential = this.evaluateDrawingHands(
+            [...holeCards, ...communityCards], communityCards, 5 - communityCards.length);
 
         if (drawingPotential.totalOuts === 0) return 0;
 
         // Estimate how much we can win if we hit our draw
-        const opponentCallProbability = opponentModel.callFrequency || 0.4;
+        const opponentCallProbability = (opponentModel && opponentModel.callFrequency) || 0.4;
         const maxExtraction = Math.min(opponentChips * 0.6, 300); // Conservative estimate
         const expectedWinnings = maxExtraction * opponentCallProbability;
 
@@ -641,7 +701,7 @@ class AIPlayer {
 
     shouldBluff(gameState, boardTexture) {
         // Enhanced bluffing logic
-        const randomFactor = Math.random() < this.bluffFrequency * this.aggressionLevel;
+        const randomFactor = (this.rng ?? Math.random)() < this.bluffFrequency * this.aggressionLevel;
         const goodSpot = this.isGoodBluffSpot(gameState, boardTexture);
         const opponentWeakness = this.opponentModel.foldToRaise > 0.4;
 
@@ -682,5 +742,8 @@ class AIPlayer {
                (lateStreet || this.phase === 'flop');
     }
 }
+
+// The written-down meaning of the post-flop scale (see comment above the constant).
+AIPlayer.POSTFLOP_BANDS = POSTFLOP_BANDS;
 
 module.exports = AIPlayer;

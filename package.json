@@ -19,7 +19,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node test/handInsightsMath.test.js && node test/review.test.js && node test/reviewNarrative.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/loads.test.js"
+    "test": "node test/handInsightsMath.test.js && node test/review.test.js && node test/reviewNarrative.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/honestRead.test.js && node test/loads.test.js"
   },
   "keywords": [
     "poker",

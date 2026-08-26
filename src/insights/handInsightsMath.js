@@ -64,20 +64,32 @@ const computePotOdds = ({ callAmount = 0, potBeforeCall = 0 } = {}) => {
   };
 };
 
+// Label cuts re-tuned 2026-08-26 to the honest evaluateHandStrength scale.
+// Pre-flop the number is now REAL equity vs a random hand (data/preflopEquity:
+// AA .854 … 32o .324), so the cuts are drawn from that table:
+//   ≥ .77 Premium (the premium pairs JJ+ — QQ .7995 and JJ .7744 in, TT .7499 out)
+//   ≥ .62 Strong  (roughly the top decile: pairs 66+ and the big broadways)
+//   ≥ .50 Playable (the top half of hands — the median hand sits ≈ .508)
+//   ≥ .42 Marginal (above the bottom quartile ≈ .433)
+//   below  Weak   (true trash: 72o .342, 32o .324)
+// Post-flop the cuts ARE AIPlayer.POSTFLOP_BANDS: monster .86 (flush and up)
+// = Very strong, strong .60 (two pair and up) = Strong, value .46 (top pair
+// and up) = Decent, continue .30 (a pair of your own, or a real draw) = Weak,
+// below = Very weak (air, or a pair sitting wholly on the board).
 const strengthLabel = (strength, { madeHandName = null, phase = 'preflop' } = {}) => {
   const s = clamp01(strength);
   if (phase === 'preflop' || !madeHandName) {
-    if (s >= 0.8) return 'Premium hold';
+    if (s >= 0.77) return 'Premium hold';
     if (s >= 0.62) return 'Strong hold';
-    if (s >= 0.45) return 'Playable hold';
-    if (s >= 0.3) return 'Marginal hold';
+    if (s >= 0.5) return 'Playable hold';
+    if (s >= 0.42) return 'Marginal hold';
     return 'Weak hold';
   }
   let band;
-  if (s >= 0.85) band = 'Very strong';
-  else if (s >= 0.68) band = 'Strong';
-  else if (s >= 0.5) band = 'Decent';
-  else if (s >= 0.32) band = 'Weak';
+  if (s >= 0.86) band = 'Very strong';
+  else if (s >= 0.6) band = 'Strong';
+  else if (s >= 0.46) band = 'Decent';
+  else if (s >= 0.3) band = 'Weak';
   else band = 'Very weak';
   return `${band} — ${madeHandName}`;
 };

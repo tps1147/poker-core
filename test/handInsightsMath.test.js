@@ -73,6 +73,17 @@ assert.strictEqual(strengthLabel(0.55, { madeHandName: 'One Pair', phase: 'flop'
 // Postflop with no made-hand info falls back to hold bands rather than lying.
 assert.strictEqual(strengthLabel(0.7, { madeHandName: null, phase: 'flop' }), 'Strong hold');
 
+// 2026-08-26 re-tune: the cuts now sit on the honest scale — post-flop on
+// AIPlayer.POSTFLOP_BANDS, pre-flop on the real equity table.
+assert.strictEqual(strengthLabel(0.66, { madeHandName: 'Two Pair', phase: 'turn' }), 'Strong — Two Pair'); // band.strong 0.60
+assert.strictEqual(strengthLabel(0.5, { madeHandName: 'One Pair', phase: 'river' }), 'Decent — One Pair'); // top pair floor = band.value side
+assert.strictEqual(strengthLabel(0.34, { madeHandName: 'One Pair', phase: 'flop' }), 'Weak — One Pair'); // weakest pair of your own
+assert.strictEqual(strengthLabel(0.27, { madeHandName: 'One Pair', phase: 'river' }), 'Very weak — One Pair'); // pair wholly on the board
+assert.strictEqual(strengthLabel(0.7995, { phase: 'preflop' }), 'Premium hold'); // QQ
+assert.strictEqual(strengthLabel(0.7499, { phase: 'preflop' }), 'Strong hold'); // TT
+assert.strictEqual(strengthLabel(0.4508, { phase: 'preflop' }), 'Marginal hold'); // 76s
+assert.strictEqual(strengthLabel(0.3422, { phase: 'preflop' }), 'Weak hold'); // 72o
+
 // --- board texture labels ---
 assert.strictEqual(textureLabel({ isWet: true, isPaired: false }), 'Wet');
 assert.strictEqual(textureLabel({ isWet: false, isPaired: true }), 'Dry · Paired');

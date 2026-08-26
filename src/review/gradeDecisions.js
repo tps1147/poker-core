@@ -25,50 +25,100 @@ const {
 //   fold: diff > +8            → 'blunder'   (folded a clearly profitable call)
 //         diff in (+3, +8]     → 'mistake'
 //         otherwise            → 'good'      (correct side, or coin-flip ±3)
-//         BRILLIANT: strength ≥ 0.55 and DISCOUNTED equity beats needed by <-8
-//         (see LAYDOWN_RANGE_DISCOUNT below) — a disciplined big laydown.
+//         BRILLIANT: strength ≥ LAYDOWN_STRENGTH and DISCOUNTED equity beats
+//         needed by <-8 (see LAYDOWN_RANGE_DISCOUNT below) — a disciplined
+//         big laydown of a two-pair-or-better holding.
 //   call: diff < -8            → 'blunder'   (called way over the price)
 //         diff in [-8, -3)     → 'mistake'
 //         otherwise            → 'good'
-//         BRILLIANT: strength < 0.4, equity basis is OUTS, and outs equity ≥
-//         needed — a weak made hand continuing on a correctly priced draw.
+//         BRILLIANT: strength < DRAW_CALL_STRENGTH_MAX, equity basis is OUTS,
+//         and outs equity ≥ needed — a draw-driven hand (no made pair of the
+//         hero's own) continuing at the right price.
 //
 // Not facing a bet:
-//   check: 'good' by default. River check with strength ≥ 0.8 → 'inaccuracy'
-//          (missed value at the last aggro opportunity — v1 approximates
-//          "last opportunity" as any hero river check).
+//   check: 'good' by default. River check with strength ≥ VALUE_STRENGTH →
+//          'inaccuracy' (missed value at the last aggro opportunity — v1
+//          approximates "last opportunity" as any hero river check).
 //   preflop limp / open raise: 'good' — ungraded in v1. That includes any
 //          preflop decision facing toCall ≤ bigBlind (completing or folding
 //          the small blind), where the crude equity model would misfire.
 //
 // Raises:
-//   strength ≥ 0.8 → 'good' (value raise).
-//   strength < 0.3 with zero outs when a free/cheap continue existed
+//   strength ≥ VALUE_STRENGTH → 'good' (value raise).
+//   strength < SPEW_STRENGTH with zero outs when a free/cheap continue existed
 //   (toCall === 0, or diff ≥ -3 so calling was ~priced) → 'inaccuracy' (spew).
 //   Everything else → 'good'. Deliberately conservative: bluffing is a
 //   legitimate strategy this engine cannot read, so v1 only punishes clear
 //   price violations, never aggression itself.
+//
+// 2026-08-26 RE-TUNE. evaluateHandStrength moved off the old inflated scale
+// (where AK-high kept its ~0.85 pre-flop number on any flop) onto the server's
+// honest read, whose meaning is written down in AIPlayer.POSTFLOP_BANDS
+// (src/ai/aiPlayer.js): top pair 0.50 (+ kicker bonus ≤ 0.06), overpair 0.58,
+// two pair 0.52–0.66, trips 0.72 / set 0.78, straight 0.80+, flush 0.86+;
+// band.value 0.46 = "top pair and up", band.strong 0.60 = "two pair and up",
+// stackOff 0.62, monster 0.86. Every strength-denominated constant below is
+// DERIVED from those bands rather than invented; the equity-point bands
+// (CLEAR_PTS / EDGE_PTS) are price math, not strength, and did not move.
 const GRADE_RULES = {
   CLEAR_PTS: 8, // beyond this many points, the decision is clearly right/wrong
   EDGE_PTS: 3, // inside this band it's a coin flip — never punished
-  // Brilliant laydowns are reserved for PREMIUM hands folding to MASSIVE bets.
-  // Both gates matter: with the old 0.55 floor and no sizing gate, any fold of a
-  // middling made hand to an ordinary bet short-circuited the raw-diff bands and
-  // could relabel a clear blunder (folding a profitable call) as "brilliant" —
-  // which also made the overfolding leak tag structurally unable to fire.
-  LAYDOWN_STRENGTH: 0.7, // premium-hand floor for the brilliant-laydown check
-  LAYDOWN_MIN_NEEDED: 44, // needed-equity floor ≈ 2x-pot+ overbets and jams only
-  DRAW_CALL_STRENGTH_MAX: 0.4, // "weak made hand" ceiling for the draw call
-  VALUE_STRENGTH: 0.8, // value-bet threshold (missed value / value raise)
-  SPEW_STRENGTH: 0.3, // below this with no draw, a raise risks pure spew
+  // Brilliant laydowns are reserved for genuinely strong hands (two pair and
+  // up) folding to MASSIVE bets. Both gates matter: with a low floor and no
+  // sizing gate, any fold of a middling made hand to an ordinary bet
+  // short-circuited the raw-diff bands and could relabel a clear blunder
+  // (folding a profitable call) as "brilliant" — which also made the
+  // overfolding leak tag structurally unable to fire.
+  //
+  // 0.60 IS POSTFLOP_BANDS.strong ("two pair and up"), the engine's own
+  // written-down line for a genuinely strong holding. On the river — where
+  // LAYDOWN_MIN_NEEDED puts nearly every celebrated laydown — draw value is 0,
+  // so the made-hand bands apply exactly: 0.60 sits in the engine's gap
+  // between an overpair (0.58 — still one pair; folding one pair to a jam is
+  // ordinary discipline, graded by the raw-diff bands) and the weakest
+  // two-pair holding (0.62). stackOff (0.62) would grade rivers identically
+  // (no made hand lands in [0.60, 0.62)) but would drop flop/turn
+  // strong-hand-plus-draw composites in that window; band.strong is also the
+  // semantic match for "the celebration is for folding two pair or better".
+  LAYDOWN_STRENGTH: 0.6, // was 0.7 on the old scale
+  LAYDOWN_MIN_NEEDED: 44, // needed-equity floor: massive overbets and jams only
+  // "Draw-driven hand" ceiling for the brilliant priced-in call. Honest-scale
+  // arithmetic: pure air tops out at 0.20 (highCardStrength's max), the
+  // weakest pair OF THE HERO'S OWN reads 0.34, and evaluateDrawingHands caps
+  // a draw's contribution at 0.30 — so air + any draw reads < 0.50 while any
+  // own-pair + draw reads ≥ 0.52. The old 0.4 predates strength including
+  // draw value; kept, it would have vetoed exactly the big-card combo draws
+  // (~0.44–0.48) this grade exists to celebrate.
+  DRAW_CALL_STRENGTH_MAX: 0.5, // was 0.4 on the old scale
+  // Value threshold (river missed-value flag + the value-raise note).
+  // band.value opens at 0.46 ("top pair and up"), but top pair spans
+  // 0.50–0.56 (0.50 + kicker bonus), so a 0.46–0.50 threshold would flag
+  // EVERY top-pair river check as missed value — and checking back weak-kicker
+  // top pair on the river is routine, not an error. 0.55 sits at the top of
+  // the top-pair span: top pair with a queen-or-better kicker (≥ 0.55), every
+  // overpair (0.58) and all two-pair-plus (0.62+) flag; thinner one-pair
+  // checks stay ungraded. Deliberately biased to the high end of the
+  // value band for exactly that noise reason.
+  VALUE_STRENGTH: 0.55, // was 0.8 on the old scale
+  // Pure-air ceiling for the spew-raise flag: "below any pair of the hero's
+  // own". The weakest genuine pair reads 0.34, pure high-card air tops out at
+  // 0.20, and a pair sitting wholly ON the board reads 0.24–0.30 ("really a
+  // high-card hand", per the engine's own comment). The ceiling must stay
+  // below band.continue (0.30, "can call one bet") — flagging at the engine's
+  // own continue line would call spew on hands the scale itself continues
+  // with. 0.28 leaves a six-point margin under every real pair while catching
+  // air and board-pair hands up to a ten-high kicker.
+  SPEW_STRENGTH: 0.28, // was 0.3 on the old scale
   // Raw vs-random equity always reads ≥ strength×100, while needed equity in
   // heads-up caps below 50% — so the literal "equity−needed < −8" laydown test
   // could never fire. A massive bet weights the villain toward the top of their
-  // range, so the laydown check halves raw equity first. The three constants
-  // are tuned TOGETHER: at 0.5, a premium-but-not-nuts hand (equity ~70-78) vs
-  // a jam clears the bar, while the near-nuts (equity 85+) still reads as a
-  // profitable call even discounted — so folding the nuts to a jam correctly
-  // falls through to the bands and grades a blunder.
+  // range, so the laydown check halves raw equity first. Unchanged at 0.5 in
+  // the 2026-08-26 re-tune, but the window it carves moved with the scale: at
+  // the 44-needed floor the discounted test passes for strength < 0.72, so
+  // two pair (0.62–0.66) clears the bar and trips (0.72) clears it against
+  // anything bigger than the minimum overbet — while set-and-up (0.78+) still
+  // reads as a profitable call even discounted, so folding a set, straight or
+  // flush to a jam correctly falls through to the bands and grades a blunder.
   LAYDOWN_RANGE_DISCOUNT: 0.5,
 };
 
@@ -139,8 +189,8 @@ const gradeOne = ({ kind, phase, toCall, potBefore, neededPct, insight }) => {
     const price = priceLine(potBefore, toCall, insight.equityPct, neededPct);
     // Brilliant runs first: a celebrated laydown must not fall through to the
     // raw-diff bands, which read every big-hand fold as a blunder. Gated to
-    // premium strength AND genuinely huge bets so it can never launder an
-    // ordinary-bet fold (a real potential blunder) into a celebration.
+    // two-pair-plus strength AND genuinely huge bets so it can never launder
+    // an ordinary-bet fold (a real potential blunder) into a celebration.
     const discounted = insight.equityPct * GRADE_RULES.LAYDOWN_RANGE_DISCOUNT;
     if (
       insight.strength >= GRADE_RULES.LAYDOWN_STRENGTH &&
