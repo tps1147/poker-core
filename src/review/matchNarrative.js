@@ -77,18 +77,46 @@ const spell = (n) => {
 };
 const capitalize = (text) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
 
-// Signed chip figure, compacted at a million so a stat cell can't blow out.
-// Shared with the UI so a number quoted in prose and the same number in a cell
-// can never disagree.
+// Signed chip figures, shared with both UIs so a number quoted in prose and the
+// same number in a cell can never disagree.
+//
+// THE MINUS IS U+2212, NOT A HYPHEN, and that is not typographic fussiness: a
+// hyphen is narrower than a digit, so one negative in a column of figures throws
+// the whole column out of alignment. Both clients' number components exist to
+// fix exactly that, and this helper feeds them.
+//
+// TWO REGISTERS, because one threshold cannot serve both callers. Prose reads
+// "the hand itself still ran +24,530"; a stat cell needs "+24.5K" or it blows
+// out. So signedChips keeps full precision for sentences, and
+// signedChipsCompact abbreviates on the same rungs the clients' Num components
+// use. Same value, same sign, two documented registers — the split web already
+// makes between fmt and fmtRating.
+const MINUS = '−';
+
+const signFor = (n) => (n > 0 ? '+' : n < 0 ? MINUS : '');
+
+// Prose. Groups, never abbreviates below a million.
 const signedChips = (value) => {
   const n = Number(value) || 0;
-  const sign = n > 0 ? '+' : n < 0 ? '-' : '';
   const abs = Math.abs(n);
   if (abs >= 1000000) {
     const compact = (abs / 1000000).toFixed(2).replace(/\.?0+$/, '');
-    return `${sign}${compact}M`;
+    return signFor(n) + compact + 'M';
   }
-  return `${sign}${abs.toLocaleString()}`;
+  return signFor(n) + abs.toLocaleString();
+};
+
+// Cells. Abbreviates from ten thousand, with M and B rungs above — without
+// those rungs a 5,000,000 stack prints as "5000.0K", which is not a smaller
+// string than the number it replaced.
+const signedChipsCompact = (value) => {
+  const n = Number(value) || 0;
+  const abs = Math.abs(n);
+  const s = signFor(n);
+  if (abs >= 1e9) return s + (abs / 1e9).toFixed(1) + 'B';
+  if (abs >= 1e6) return s + (abs / 1e6).toFixed(1) + 'M';
+  if (abs >= 1e4) return s + (abs / 1e3).toFixed(1) + 'K';
+  return s + Math.round(abs).toLocaleString();
 };
 
 const netPhraseFor = (net) => {
@@ -367,6 +395,7 @@ module.exports = {
   verdictFor,
   // Shared with the UI so prose and pixels quote identical figures.
   signedChips,
+  signedChipsCompact,
   leakTagCounts,
   MAX_NARRATIVE_SENTENCES: MAX_SENTENCES,
 };

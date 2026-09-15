@@ -20,6 +20,7 @@ const {
   VERDICT_BANDS,
   verdictFor,
   signedChips,
+  signedChipsCompact,
   leakTagCounts,
 } = require('../src/review/matchNarrative');
 const { GRADE_SCORE } = require('../src/review/gradeDecisions');
@@ -282,11 +283,25 @@ assert.strictEqual(VERDICT_BANDS.length, 6);
 // --- signedChips ------------------------------------------------------------
 
 assert.strictEqual(signedChips(400), '+400');
-assert.strictEqual(signedChips(-3400), '-3,400');
+// U+2212 MINUS, not a hyphen. A hyphen is narrower than a digit, so one
+// negative throws a whole column of figures out of alignment.
+assert.strictEqual(signedChips(-3400), '−3,400');
+assert.ok(!signedChips(-3400).includes('-'), 'no ASCII hyphen may survive in a chip figure');
 assert.strictEqual(signedChips(0), '0');
 assert.strictEqual(signedChips(1250000), '+1.25M', 'compacts at a million so a stat cell cannot blow out');
-assert.strictEqual(signedChips(-2000000), '-2M');
+assert.strictEqual(signedChips(-2000000), '−2M');
 assert.strictEqual(signedChips(undefined), '0');
+
+// The cell register: abbreviates from ten thousand, with rungs above so a
+// five-million stack does not print as the longer string "5000.0K".
+assert.strictEqual(signedChipsCompact(400), '+400');
+assert.strictEqual(signedChipsCompact(-3400), '−3,400');
+assert.strictEqual(signedChipsCompact(24530), '+24.5K');
+assert.strictEqual(signedChipsCompact(5000000), '+5.0M');
+assert.strictEqual(signedChipsCompact(-2500000000), '−2.5B');
+assert.strictEqual(signedChipsCompact(0), '0');
+// Prose keeps full precision at the same value the cell abbreviates.
+assert.strictEqual(signedChips(24530), '+24,530');
 
 // --- buildMatchNarrative: the six worked examples --------------------------
 
