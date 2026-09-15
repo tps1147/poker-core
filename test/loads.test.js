@@ -46,6 +46,7 @@ const expectFns = {
   './rating': [
     'buildBotJourney', 'recordBotMatchResult', 'calculateAiRatingDelta',
     'deriveBandRating', 'applyRoomRatingBands', 'normalizeDifficulty',
+    'getGauntletAccess', 'buildGauntletAccessMap', 'isBotMasteredByProgress',
   ],
   './eval': ['evaluateHand', 'compareHands'],
   './state': [
