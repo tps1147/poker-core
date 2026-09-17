@@ -15,6 +15,7 @@ const core = require('../src/index.js');
 const pkg = require('../package.json');
 const loaded = {};
 for (const [key, rel] of Object.entries(pkg.exports)) {
+  if (key.includes('*')) continue; // file patterns (learn/media json), not modules
   loaded[key] = require(path.join(__dirname, '..', rel));
 }
 
