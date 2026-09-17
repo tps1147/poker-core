@@ -195,5 +195,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/rabbits-burrow/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/rabbits-burrow/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/croquet-lawn/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/croquet-lawn/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/tea-garden/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/tea-garden/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/hall-of-mirrors/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/hall-of-mirrors/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/clubshire-court/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/clubshire-court/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/diamond-vault/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/diamond-vault/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/spade-keep/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/spade-keep/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/hand-rankings-workspace-v1/v2/heart-throne/hand-rankings-original-ada-v2-portrait.mp4",
+      "poster": "/academy/hand-rankings-workspace-v1/v2/heart-throne/hand-rankings-original-ada-v2-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }
