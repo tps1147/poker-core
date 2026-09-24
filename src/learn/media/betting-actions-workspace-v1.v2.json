@@ -1,0 +1,241 @@
+{
+  "id": "betting-actions-original-ada-v2",
+  "format": "continuous-coach-v4",
+  "template": "table-literacy",
+  "coach": {
+    "id": "ada",
+    "name": "Ada",
+    "role": "Your table-literacy coach"
+  },
+  "coachName": "Ada",
+  "title": "Every action has a job.",
+  "subject": "Betting actions",
+  "scene": {
+    "label": "Ada’s study"
+  },
+  "opening": {
+    "kicker": "Reason, then the button",
+    "heading": [
+      "Every action",
+      "has a job."
+    ],
+    "lead": "Three buttons. Three different jobs."
+  },
+  "contentId": "betting-actions-workspace-v1",
+  "contentVersion": 2,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 19,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/betting-actions-workspace-v1/v2/rabbits-burrow/betting-actions-original-ada-v2.mp4",
+  "captionedVideo": "/academy/betting-actions-workspace-v1/v2/betting-actions-original-ada-v2-captioned.mp4",
+  "poster": "/academy/betting-actions-workspace-v1/v2/rabbits-burrow/betting-actions-original-ada-v2-poster.jpg",
+  "captions": "/academy/betting-actions-workspace-v1/betting-actions-original-ada-v1.vtt",
+  "transcript": "/academy/betting-actions-workspace-v1/betting-actions-original-ada-v1-transcript.txt",
+  "narrationAudio": "/academy/betting-actions-workspace-v1/ada-original-actions-narration.wav",
+  "coachVideo": "/academy/betting-actions-workspace-v1/ada-original-actions-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 1.5,
+  "narrationDisclosure": "Ada’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "ADA’S THREE JOBS",
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Three jobs"
+    },
+    {
+      "beat": "deal",
+      "label": "See the price"
+    },
+    {
+      "beat": "hand",
+      "label": "Read the hand"
+    },
+    {
+      "beat": "decision",
+      "label": "Choose the job"
+    }
+  ],
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1140
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 1140
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "actions-example-v1",
+    "street": "flop",
+    "bet": 30,
+    "call": 30,
+    "board": [
+      "Qd",
+      "8c",
+      "3s"
+    ],
+    "hero": [
+      "Qs",
+      "Jh"
+    ],
+    "decisionLabel": "Fold, call or raise?",
+    "jobs": [
+      {
+        "job": "fold",
+        "label": "Fold",
+        "note": "Saves chips when the hand or price is wrong."
+      },
+      {
+        "job": "call",
+        "label": "Call",
+        "amount": "30 to call",
+        "note": "Keeps your hand alive and controls the pot."
+      },
+      {
+        "job": "raise",
+        "label": "Raise",
+        "note": "Builds value or applies pressure."
+      }
+    ],
+    "potBefore": 120,
+    "hand": {
+      "name": "One pair"
+    }
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-betting-actions-001",
+    "start": 0,
+    "end": 19,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 2.5,
+    "deal": 4.69,
+    "hand": [
+      {
+        "at": 7.1,
+        "tokens": [
+          "hero0"
+        ]
+      },
+      {
+        "at": 7.35,
+        "tokens": [
+          "board0"
+        ]
+      }
+    ],
+    "rank": 7.4,
+    "jobs": [
+      {
+        "at": 2.47,
+        "job": "fold"
+      },
+      {
+        "at": 6.07,
+        "job": "call"
+      },
+      {
+        "at": 10.96,
+        "job": "raise"
+      }
+    ],
+    "decision": 17.4
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 2.4166666666666665,
+      "text": "Every poker action has a job."
+    },
+    {
+      "start": 2.4166666666666665,
+      "end": 6,
+      "text": "Folding saves chips when the hand or price is wrong."
+    },
+    {
+      "start": 6,
+      "end": 10.916666666666666,
+      "text": "Calling keeps your hand alive when you have enough equity and want to control the pot."
+    },
+    {
+      "start": 10.916666666666666,
+      "end": 16,
+      "text": "Raising builds value or applies pressure when your story is strong enough."
+    },
+    {
+      "start": 16,
+      "end": 19,
+      "text": "The leak is clicking the button that feels safe."
+    }
+  ],
+  "sourceSha256": "c0d9984a91f059a48a723e0c3de95dc679ca8410e077fcbe58395eeeeeb40740",
+  "hand": {
+    "definition": "src/data/academy/lessons/betting-actions-workspace-v1.v2.js",
+    "handId": "act2-guided"
+  },
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/betting-actions-workspace-v1/v2/rabbits-burrow/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/rabbits-burrow/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/betting-actions-workspace-v1/v2/croquet-lawn/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/croquet-lawn/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/betting-actions-workspace-v1/v2/tea-garden/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/tea-garden/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/betting-actions-workspace-v1/v2/hall-of-mirrors/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/hall-of-mirrors/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/betting-actions-workspace-v1/v2/clubshire-court/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/clubshire-court/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/betting-actions-workspace-v1/v2/diamond-vault/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/diamond-vault/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/betting-actions-workspace-v1/v2/spade-keep/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/spade-keep/betting-actions-original-ada-v2-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/betting-actions-workspace-v1/v2/heart-throne/betting-actions-original-ada-v2.mp4",
+      "poster": "/academy/betting-actions-workspace-v1/v2/heart-throne/betting-actions-original-ada-v2-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

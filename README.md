@@ -6,9 +6,10 @@ hand insights, ratings, and game-state normalization — consumed by both the
 **mobile app** (Metro / React Native) and the **Next.js web app** (turbopack),
 and runnable under **plain node** for tests.
 
-Every module is CommonJS (`require` / `module.exports`). There is no `type`
-field in `package.json`, no transpile step, and no dependencies — Metro,
-turbopack, and node all consume the `.js` files directly.
+Every module is CommonJS (`require` / `module.exports`), except the film-first
+lessons under `src/learn`, which are `.mjs` ES modules (see "Learn" below).
+There is no `type` field in `package.json`, no transpile step, and no
+dependencies — Metro, turbopack, and node all consume the files directly.
 
 ## Install / consume
 
@@ -67,12 +68,64 @@ poker-core/
       botRoster.js            BOT_ROSTER / getBotById          (NEW, canonical 16-bot ladder,
                                                                ratings derived via ratingBands)
       index.js                barrel
+    learn/                    ES modules (.mjs): see "Learn" below
+      index.mjs               the poker-core/learn entry point (re-exports all of it)
+      scriptedHand.mjs        the scripted-hand driver
+      filmWatch.mjs           the film watch rule (WATCH_SHARE)
+      lessonRunController.mjs the lesson-run save controller
+      motion.mjs              table timings the driver schedules against
+      lessonModel.mjs         the pure lesson model (rail, ladder, score, recap, labels)
+      lessons/index.mjs       COURSE_ORDER, FILM_FIRST_LESSONS, lookups
+      lessons/<id>.v<n>.mjs   the 20 film-first definitions
+      media/<id>.v<n>.json    their film media (poker-core/learn/media/*)
+  scripts/
+    check-learn-media.mjs     HEAD-checks every learn film url on the CDN (network)
   test/
     handInsightsMath.test.js  plain-node
     review.test.js            plain-node (engine + review pipeline, real AIPlayer)
     frameToHeroState.test.js  plain-node
     botRoster.test.js         plain-node (roster shape, derived ratings, lookups)
     loads.test.js             smoke: index + every subpath export is callable
+    learn.test.mjs            learn entry point smoke
+    learnLessons.test.mjs     the 20 lessons, their media json and the lesson model
+```
+
+## Learn (film-first lessons)
+
+`poker-core/learn` is the one source of the film-first lessons for the web
+player, the phone player and the server's parity test. Unlike the rest of the
+package it is ES modules (`.mjs`), relative imports with extensions only, so
+plain node, Metro and the web bundler all load it unchanged:
+
+```js
+import {
+  FILM_FIRST_LESSONS, COURSE_ORDER, filmFirstLesson, nextInCourse, lessonHands,
+  mountState, runUntilBlocked, tableProps,        // the driver
+  railSegments, releasedAnswers, spotLadder, chipScore, recapRows, // the lesson model
+} from 'poker-core/learn';
+import outsMedia from 'poker-core/learn/media/outs-workspace-v1.v2.json';
+```
+
+- **Definitions.** The 20 lessons in course order (`FILM_FIRST_LESSONS`,
+  `COURSE_ORDER`). `filmFirstLesson(id)` accepts the definition id or the
+  catalog ids it was built from (`sourceLessonId`, `videoLessonId`), so pot odds
+  resolves as `pilot-pot-odds` and as `lesson-pot-odds-001`. No answer keys
+  ship here: the server registry grades.
+- **Media.** One json per lesson, named by the definition's `media` field.
+  Clients import it by path; there is no media index and no JSON import
+  attribute. A json carries `portraitByArea` and `portraitFrame` only when
+  every area's portrait film and poster is live on the CDN (HEAD 200); until
+  then the lesson plays its landscape film.
+- **One namespace.** `index.mjs` re-exports every module with `export *`, and
+  two `export *` of one name silently drop it, so a new export must not reuse
+  a name another learn module exports (`learnLessons.test.mjs` checks).
+
+Check the films before every commit that touches `src/learn/media` (a running
+portrait render writes portrait entries into these files before it uploads):
+
+```
+node scripts/check-learn-media.mjs         # read-only table, exit 1 on any failure
+node scripts/check-learn-media.mjs --fix   # also strips an incomplete portrait set
 ```
 
 ## The insight engine
@@ -100,7 +153,11 @@ node test/handInsightsMath.test.js
 node test/review.test.js
 node test/frameToHeroState.test.js
 node test/loads.test.js
+node test/learn.test.mjs
+node test/learnLessons.test.mjs
 ```
+
+(`scripts/check-learn-media.mjs` needs the network and is not part of `npm test`.)
 
 ## Purity notes (impurities intentionally left in)
 

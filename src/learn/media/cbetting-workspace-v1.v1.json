@@ -1,0 +1,235 @@
+{
+  "id": "cbetting-original-vale-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "vale",
+    "name": "Vale",
+    "role": "Postflop range coach"
+  },
+  "coachName": "Vale",
+  "title": "Earn the c-bet.",
+  "subject": "C-betting",
+  "scene": {
+    "label": "Vale’s study"
+  },
+  "opening": {
+    "kicker": "C-betting",
+    "heading": [
+      "Earn the",
+      "c-bet."
+    ],
+    "lead": "Does the flop favor the range that raised?"
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "The range that raised"
+    },
+    {
+      "beat": "texture",
+      "label": "King-seven-two rainbow"
+    },
+    {
+      "beat": "caller",
+      "label": "The caller misses"
+    },
+    {
+      "beat": "small",
+      "label": "A small c-bet"
+    },
+    {
+      "beat": "earn",
+      "label": "Earn it"
+    }
+  ],
+  "contentId": "cbetting-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 27.875,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/cbetting-workspace-v1/v1/rabbits-burrow/cbetting-original-vale-v1.mp4",
+  "captionedVideo": "/academy/cbetting-workspace-v1/v1/cbetting-original-vale-v1-captioned.mp4",
+  "poster": "/academy/cbetting-workspace-v1/v1/rabbits-burrow/cbetting-original-vale-v1-poster.jpg",
+  "captions": "/academy/cbetting-workspace-v1/cbetting-original-vale-v1.vtt",
+  "transcript": "/academy/cbetting-workspace-v1/cbetting-original-vale-v1-transcript.txt",
+  "narrationAudio": "/academy/cbetting-workspace-v1/vale-original-cbetting-narration.wav",
+  "coachVideo": "/academy/cbetting-workspace-v1/vale-original-cbetting-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 9.5,
+  "narrationDisclosure": "Vale’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "VALE’S C-BET EXAMPLE",
+  "transcriptContext": "Vale’s original words explain when a continuation bet works. The table shows A♣ Q♦ on K♦ 7♣ 2♠, a king-seven-two rainbow flop, with 60 in the pot and 970 behind for each player; those amounts are given for the exercise and are not spoken. You raised before the flop and Ace Andy called, and the film says so on screen. The range claims (your raise holds more strong kings and overpairs, the caller misses this board often) are labelled assumptions, not read from any card. No bet or check is made, no action is recommended, and Ace Andy’s cards stay hidden. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 970
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 970
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-vale-cbet-example",
+    "street": "flop",
+    "potBefore": 60,
+    "board": [
+      "Kd",
+      "7c",
+      "2s"
+    ],
+    "hero": [
+      "Ac",
+      "Qd"
+    ],
+    "textureTags": [
+      "You raised",
+      "Ace Andy called",
+      "Rainbow"
+    ],
+    "handNote": "Ace-queen has no pair yet on king-seven-two.",
+    "rangeLabel": "Assumed ranges"
+  },
+  "rangeList": [
+    "Your raise: more strong kings and overpairs",
+    "Ace Andy’s call: misses this flop often",
+    "Three suits: no flush draw"
+  ],
+  "sourceInterval": {
+    "lessonId": "lesson-cbetting-001",
+    "start": 0,
+    "end": 27.875,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 4.36,
+    "texture": 6.795,
+    "range": 8.955,
+    "caller": 14.07,
+    "small": 16.95,
+    "earn": 24.04
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 6,
+      "text": "A continuation bet works best when the flop favors the range that raised before the flop."
+    },
+    {
+      "start": 6,
+      "end": 13.5,
+      "text": "King-seven-two rainbow is a board where the raiser has more strong king-x, overpairs, and high-card advantage."
+    },
+    {
+      "start": 13.5,
+      "end": 16,
+      "text": "The caller misses this board often."
+    },
+    {
+      "start": 16,
+      "end": 21.25,
+      "text": "That makes a small c-bet effective, even when your exact hand is not made yet."
+    },
+    {
+      "start": 21.25,
+      "end": 23.916666666666668,
+      "text": "But c-betting is not automatic."
+    },
+    {
+      "start": 23.916666666666668,
+      "end": 27.875,
+      "text": "You earn it when your range has the advantage and the board cooperates."
+    }
+  ],
+  "sourceSha256": "e6246a4127ee0e12c2f5825a708b38bcff33ca0f60c7a9fdf347fcca796f15dc",
+  "hand": {
+    "definition": "src/data/academy/lessons/cbetting-workspace-v1.v1.js",
+    "handId": "cb1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "caller",
+      "until": "small",
+      "tone": "note",
+      "title": "Assumption",
+      "body": "The caller’s range misses this board often."
+    },
+    {
+      "beat": "small",
+      "until": "earn",
+      "tone": "note",
+      "title": "A small c-bet",
+      "body": "It can work before your hand is made, when the flop favors your range."
+    },
+    {
+      "beat": "earn",
+      "tone": "note",
+      "title": "Not automatic",
+      "body": "Earn it: your range has the advantage and the board cooperates."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/cbetting-workspace-v1/v1/rabbits-burrow/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/rabbits-burrow/cbetting-original-vale-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/cbetting-workspace-v1/v1/croquet-lawn/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/croquet-lawn/cbetting-original-vale-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/cbetting-workspace-v1/v1/tea-garden/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/tea-garden/cbetting-original-vale-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/cbetting-workspace-v1/v1/hall-of-mirrors/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/hall-of-mirrors/cbetting-original-vale-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/cbetting-workspace-v1/v1/clubshire-court/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/clubshire-court/cbetting-original-vale-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/cbetting-workspace-v1/v1/diamond-vault/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/diamond-vault/cbetting-original-vale-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/cbetting-workspace-v1/v1/spade-keep/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/spade-keep/cbetting-original-vale-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/cbetting-workspace-v1/v1/heart-throne/cbetting-original-vale-v1.mp4",
+      "poster": "/academy/cbetting-workspace-v1/v1/heart-throne/cbetting-original-vale-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

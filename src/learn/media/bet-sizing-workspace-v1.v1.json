@@ -1,0 +1,218 @@
+{
+  "id": "bet-sizing-original-vale-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "vale",
+    "name": "Vale",
+    "role": "Postflop range coach"
+  },
+  "coachName": "Vale",
+  "title": "Size tells the story.",
+  "subject": "Bet sizing",
+  "scene": {
+    "label": "Vale’s study"
+  },
+  "opening": {
+    "kicker": "One size for every board is a leak",
+    "heading": [
+      "Size tells",
+      "the story."
+    ],
+    "lead": "What does your bet say?"
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Size is a story"
+    },
+    {
+      "beat": "small",
+      "label": "A small bet"
+    },
+    {
+      "beat": "large",
+      "label": "A large bet"
+    },
+    {
+      "beat": "leak",
+      "label": "The leak"
+    }
+  ],
+  "contentId": "bet-sizing-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 20.416666666666668,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/bet-sizing-workspace-v1/v1/rabbits-burrow/bet-sizing-original-vale-v1.mp4",
+  "captionedVideo": "/academy/bet-sizing-workspace-v1/v1/bet-sizing-original-vale-v1-captioned.mp4",
+  "poster": "/academy/bet-sizing-workspace-v1/v1/rabbits-burrow/bet-sizing-original-vale-v1-poster.jpg",
+  "captions": "/academy/bet-sizing-workspace-v1/bet-sizing-original-vale-v1.vtt",
+  "transcript": "/academy/bet-sizing-workspace-v1/bet-sizing-original-vale-v1-transcript.txt",
+  "narrationAudio": "/academy/bet-sizing-workspace-v1/vale-original-bet-sizing-narration.wav",
+  "coachVideo": "/academy/bet-sizing-workspace-v1/vale-original-bet-sizing-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 4.8,
+  "narrationDisclosure": "Vale’s original AI-generated voice and performance, reused from the course.",
+  "transcriptContext": "Vale’s words name no cards, so the table carries a given example: heads-up, you hold A♥ K♦ on the button with 1,000 behind for both players. The hand is dealt as she says bet size is part of the story, the K♠ 7♣ 2♦ flop follows, and Ace Andy checks into a pot of 120 as she names capped ranges; the board’s texture tags, dry, rainbow and king high, settle as she says ranges. Beside the table the small bet, the large bet and the leak are each named only as she says them. The cards, the pot, the stacks and the check are given for the exercise; Vale speaks none of them, and the only amount she speaks is half-pot, which the film does not draw. The film makes no bet, recommends no size, and turns over no opponent card. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1000
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 1000
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-vale-bet-sizing-example",
+    "street": "flop",
+    "potBefore": 120,
+    "board": [
+      "Ks",
+      "7c",
+      "2d"
+    ],
+    "hero": [
+      "Ah",
+      "Kd"
+    ],
+    "textureTags": [
+      "Dry",
+      "Rainbow",
+      "King high"
+    ],
+    "handNote": "Given: you raised, Ace Andy called, and he checks to you."
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-bet-sizing-001",
+    "start": 0,
+    "end": 20.416666666666668,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 1.63,
+    "small": 2.7,
+    "texture": 4.43,
+    "large": 8.84,
+    "leak": 16.595
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 2.25,
+      "text": "Bet size is part of the story."
+    },
+    {
+      "start": 2.25,
+      "end": 8.333333333333334,
+      "text": "A small bet pressures capped ranges and denies cheap equity without risking too much."
+    },
+    {
+      "start": 8.333333333333334,
+      "end": 10.625,
+      "text": "A large bet says something different:"
+    },
+    {
+      "start": 10.625,
+      "end": 16.25,
+      "text": "I have strong value, or a bluff with enough backup to apply real pressure."
+    },
+    {
+      "start": 16.25,
+      "end": 20.416666666666668,
+      "text": "The leak is using the same half-pot size on every board."
+    }
+  ],
+  "sourceSha256": "d9688806ef2b78a2b29127136eb440db962d1c30560aef8645b17f2540f5f0be",
+  "hand": {
+    "definition": "src/data/academy/lessons/bet-sizing-workspace-v1.v1.js",
+    "handId": "bs1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "small",
+      "until": "large",
+      "tone": "note",
+      "title": "Small bet",
+      "body": "Pressures capped ranges and denies cheap equity. Risks little."
+    },
+    {
+      "beat": "large",
+      "until": "leak",
+      "tone": "note",
+      "title": "Large bet",
+      "body": "Strong value, or a bluff with enough backup."
+    },
+    {
+      "beat": "leak",
+      "tone": "leak",
+      "title": "The leak",
+      "body": "The same half-pot size on every board."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/rabbits-burrow/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/rabbits-burrow/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/croquet-lawn/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/croquet-lawn/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/tea-garden/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/tea-garden/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/hall-of-mirrors/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/hall-of-mirrors/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/clubshire-court/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/clubshire-court/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/diamond-vault/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/diamond-vault/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/spade-keep/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/spade-keep/bet-sizing-original-vale-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/heart-throne/bet-sizing-original-vale-v1.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/heart-throne/bet-sizing-original-vale-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

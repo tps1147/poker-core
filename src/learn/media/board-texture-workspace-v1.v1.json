@@ -1,0 +1,235 @@
+{
+  "id": "board-texture-original-vale-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "vale",
+    "name": "Vale",
+    "role": "Your postflop coach"
+  },
+  "coachName": "Vale",
+  "title": "Read the flop before you bet.",
+  "subject": "Board texture",
+  "scene": {
+    "label": "Vale’s study"
+  },
+  "opening": {
+    "kicker": "Board texture",
+    "heading": [
+      "Read the flop",
+      "before you bet."
+    ],
+    "lead": "How much can the next cards change?"
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "A dry board"
+    },
+    {
+      "beat": "wet",
+      "label": "A wet board"
+    },
+    {
+      "beat": "texture",
+      "label": "What it creates"
+    },
+    {
+      "beat": "leak",
+      "label": "Autopilot bets"
+    },
+    {
+      "beat": "range",
+      "label": "Read before you bet"
+    }
+  ],
+  "contentId": "board-texture-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 32.416666666666664,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/board-texture-workspace-v1/v1/rabbits-burrow/board-texture-original-vale-v1.mp4",
+  "captionedVideo": "/academy/board-texture-workspace-v1/v1/board-texture-original-vale-v1-captioned.mp4",
+  "poster": "/academy/board-texture-workspace-v1/v1/rabbits-burrow/board-texture-original-vale-v1-poster.jpg",
+  "captions": "/academy/board-texture-workspace-v1/board-texture-original-vale-v1.vtt",
+  "transcript": "/academy/board-texture-workspace-v1/board-texture-original-vale-v1-transcript.txt",
+  "narrationAudio": "/academy/board-texture-workspace-v1/vale-original-board-texture-narration.wav",
+  "coachVideo": "/academy/board-texture-workspace-v1/vale-original-board-texture-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 13.5,
+  "narrationDisclosure": "Vale’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "VALE’S WET BOARD",
+  "transcriptContext": "Vale’s original examples on our table, heads-up. As she names ace-seven-two, the three empty flop slots light one by one; that dry board is never dealt, and her words about it sit beside the table. As she says jack-ten-nine, the flop J♠ T♠ 9♥ deals. Vale names ranks only, so the suits are given for the example: two spades add the flush draw that makes a combo draw possible. Your ace-queen, the pot of 60 and the stacks of 970 (a raise to 30 on the button and a call from the big blind) are also given for the exercise; she does not speak them. As she says what the wet board creates, the words pairs, straights, two pairs and combo draws appear under the table, the flop cards lift, and the two spades light on combo draws. As she names the caller, Ace Andy checks to you. As she says to read the texture before you bet, her three questions appear beside the table, and none is answered. The film shows no bet, recommends no action, assumes no range and turns over no opponent card. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 970
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 970
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-vale-texture-example",
+    "street": "flop",
+    "board": [
+      "Js",
+      "Ts",
+      "9h"
+    ],
+    "hero": [
+      "Ah",
+      "Qd"
+    ],
+    "textureTags": [
+      "Pairs",
+      "Straights",
+      "Two pairs",
+      "Combo draws"
+    ],
+    "handNote": "Suits are given for this example: two spades add a flush draw.",
+    "rangeLabel": "Before you bet, read",
+    "rangeNotes": [
+      "What strong hands exist",
+      "What draws exist",
+      "Whose range connects harder"
+    ]
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-board-texture-001",
+    "start": 0,
+    "end": 32.416666666666664,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 3.48,
+    "wet": 12.01,
+    "texture": 14.19,
+    "leak": 20.185,
+    "range": 24.965
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.125,
+      "text": "The flop texture tells you how much can change."
+    },
+    {
+      "start": 3.125,
+      "end": 10.625,
+      "text": "A dry board like ace-seven-two has fewer draws and fewer strong connections, so small pressure works often."
+    },
+    {
+      "start": 10.625,
+      "end": 13.75,
+      "text": "A wet board like jack-ten-nine is different."
+    },
+    {
+      "start": 13.75,
+      "end": 19.833333333333332,
+      "text": "It creates pairs, straights, two pairs, combo draws, and pressure points everywhere."
+    },
+    {
+      "start": 19.833333333333332,
+      "end": 24.708333333333332,
+      "text": "When the board smashes the caller’s range, autopilot betting gets punished."
+    },
+    {
+      "start": 24.708333333333332,
+      "end": 32.416666666666664,
+      "text": "Before you bet, read the texture: what strong hands exist, what draws exist, and whose range connects harder."
+    }
+  ],
+  "sourceSha256": "1afb6f55259ce881e25ba7a4ab0a793bdc9421e5619498fdbf72b2b446e6c21d",
+  "hand": {
+    "definition": "src/data/academy/lessons/board-texture-workspace-v1.v1.js",
+    "handId": "bt1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "table",
+      "until": "wet",
+      "tone": "note",
+      "title": "A dry board",
+      "body": "Ace-seven-two. Fewer draws, fewer strong connections."
+    },
+    {
+      "beat": "wet",
+      "until": "leak",
+      "tone": "note",
+      "title": "A wet board",
+      "body": "Jack-ten-nine is different."
+    },
+    {
+      "beat": "leak",
+      "until": "range",
+      "tone": "leak",
+      "title": "Autopilot betting",
+      "body": "When the board smashes the caller’s range, autopilot betting gets punished."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/board-texture-workspace-v1/v1/rabbits-burrow/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/rabbits-burrow/board-texture-original-vale-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/board-texture-workspace-v1/v1/croquet-lawn/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/croquet-lawn/board-texture-original-vale-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/board-texture-workspace-v1/v1/tea-garden/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/tea-garden/board-texture-original-vale-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/board-texture-workspace-v1/v1/hall-of-mirrors/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/hall-of-mirrors/board-texture-original-vale-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/board-texture-workspace-v1/v1/clubshire-court/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/clubshire-court/board-texture-original-vale-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/board-texture-workspace-v1/v1/diamond-vault/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/diamond-vault/board-texture-original-vale-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/board-texture-workspace-v1/v1/spade-keep/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/spade-keep/board-texture-original-vale-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/board-texture-workspace-v1/v1/heart-throne/board-texture-original-vale-v1.mp4",
+      "poster": "/academy/board-texture-workspace-v1/v1/heart-throne/board-texture-original-vale-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "id": "outs-original-mina-v2",
+  "format": "continuous-coach-v4",
+  "template": "core-math",
+  "mode": "outs",
+  "coach": {
+    "id": "mina",
+    "name": "Mina",
+    "role": "Your poker math coach"
+  },
+  "coachName": "Mina",
+  "title": "Count clean outs first.",
+  "subject": "Outs",
+  "scene": {
+    "label": "Mina’s study"
+  },
+  "opening": {
+    "kicker": "Know what you are drawing to",
+    "heading": [
+      "Count clean",
+      "outs first."
+    ],
+    "lead": "Which cards actually save you?"
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Read the board"
+    },
+    {
+      "beat": "draw",
+      "label": "See the draw"
+    },
+    {
+      "beat": "outs",
+      "label": "Count the outs"
+    },
+    {
+      "beat": "rule",
+      "label": "Build the estimate"
+    },
+    {
+      "beat": "price",
+      "label": "Compare the price"
+    }
+  ],
+  "contentId": "outs-workspace-v1",
+  "contentVersion": 2,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 29.875,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2.mp4",
+  "captionedVideo": "/academy/outs-workspace-v1/v2/outs-original-mina-v2-captioned.mp4",
+  "poster": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-poster.jpg",
+  "captions": "/academy/outs-workspace-v1/outs-original-mina-v1.vtt",
+  "transcript": "/academy/outs-workspace-v1/outs-original-mina-v1-transcript.txt",
+  "narrationAudio": "/academy/outs-workspace-v1/mina-original-outs-narration.wav",
+  "coachVideo": "/academy/outs-workspace-v1/mina-original-outs-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 2.4,
+  "narrationDisclosure": "Mina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "MINA’S 9-OUT EXAMPLE",
+  "transcriptContext": "Mina’s original example: K♥ Q♥ on A♠ 7♥ 2♣ 9♥ with one card to come and 200 already in the pot. The nine hearts still unseen fan in as the clean outs as she names the count, and 9 × 2 lands on the roughly 18% she states: a quick one-card estimate under the clean-outs assumption, marked given because it is her spoken figure, never exact equity read from the hidden cards. The 25 ÷ 250 = 10% price line is drawn only because she speaks it. No action is recommended; the opponent’s cards stay hidden. The board is drawn as the game itself draws it: two seat pods carrying a name and the 1,200 stack the original lesson showed, a pot pill, the turn tag on your seat, and the real action bar under the felt, which is present so the posture of play is visible and never marks an answer. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1200
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 1200
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-mina-outs-example",
+    "street": "turn",
+    "potBefore": 200,
+    "bet": 25,
+    "call": 25,
+    "board": [
+      "As",
+      "7h",
+      "2c",
+      "9h"
+    ],
+    "hero": [
+      "Kh",
+      "Qh"
+    ],
+    "outs": 9,
+    "toCome": 1,
+    "outCards": [
+      "Ah",
+      "2h",
+      "3h",
+      "4h",
+      "5h",
+      "6h",
+      "8h",
+      "Th",
+      "Jh"
+    ],
+    "outsOf": {
+      "label": "hearts",
+      "total": 13,
+      "seen": 4
+    },
+    "outsHighlight": [
+      "hero0",
+      "hero1",
+      "board1",
+      "board3"
+    ],
+    "outsLabel": "Clean outs · hearts",
+    "outsNote": "Every heart still unseen.",
+    "given": {
+      "equity": 18
+    }
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-outs-001",
+    "start": 0,
+    "end": 29.875,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 4.75,
+    "draw": 9.3,
+    "outs": 17.3,
+    "rule": 20.3,
+    "estimate": 21.85,
+    "price": 27.7
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 5,
+      "text": "Before you ask if you should call, ask which cards actually save you."
+    },
+    {
+      "start": 5,
+      "end": 9.25,
+      "text": "You are on the turn with king-queen of hearts and one card to come."
+    },
+    {
+      "start": 9.25,
+      "end": 14.166666666666666,
+      "text": "The hearts are the cards that matter, but only if they likely make the best hand."
+    },
+    {
+      "start": 14.166666666666666,
+      "end": 16.25,
+      "text": "That is what a clean out means."
+    },
+    {
+      "start": 16.25,
+      "end": 19.375,
+      "text": "A normal flush draw starts with 9 clean outs."
+    },
+    {
+      "start": 19.375,
+      "end": 23.5,
+      "text": "On the turn, 9 outs is roughly 18% equity."
+    },
+    {
+      "start": 23.5,
+      "end": 29.875,
+      "text": "The call is only 25 into a final pot of 250, so the price needs 10%."
+    }
+  ],
+  "sourceSha256": "448f512b8b7116d0052bb9e879841c006cb3a2143ea50262028030afead0b0ef",
+  "hand": {
+    "definition": "src/data/academy/lessons/outs-workspace-v1.v2.js",
+    "handId": "outs2-guided",
+    "fallback": "src/app/design-lab/table-harness/hands.js"
+  },
+  "callouts": [
+    {
+      "beat": "draw",
+      "until": "rule",
+      "tone": "note",
+      "title": "Clean outs",
+      "body": "Count only the cards that likely make you the best hand."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

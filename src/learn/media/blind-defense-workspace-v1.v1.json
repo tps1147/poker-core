@@ -1,0 +1,232 @@
+{
+  "id": "blind-defense-original-reina-v1",
+  "format": "continuous-coach-v4",
+  "template": "preflop",
+  "coach": {
+    "id": "reina",
+    "name": "Reina",
+    "role": "Your preflop coach"
+  },
+  "coachName": "Reina",
+  "title": "Defend with a reason.",
+  "subject": "Blind defense",
+  "scene": {
+    "label": "Reina’s study"
+  },
+  "opening": {
+    "kicker": "Preflop discipline",
+    "heading": [
+      "Defend with",
+      "a reason."
+    ],
+    "lead": "Price, position and playability."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "The blind price"
+    },
+    {
+      "beat": "range",
+      "label": "Three things"
+    },
+    {
+      "beat": "hand",
+      "label": "Playability"
+    },
+    {
+      "beat": "contrast",
+      "label": "Dominated hands"
+    },
+    {
+      "beat": "seat",
+      "label": "Out of position"
+    }
+  ],
+  "contentId": "blind-defense-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 31.75,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/blind-defense-workspace-v1/v1/rabbits-burrow/blind-defense-original-reina-v1.mp4",
+  "captionedVideo": "/academy/blind-defense-workspace-v1/v1/blind-defense-original-reina-v1-captioned.mp4",
+  "poster": "/academy/blind-defense-workspace-v1/v1/rabbits-burrow/blind-defense-original-reina-v1-poster.jpg",
+  "captions": "/academy/blind-defense-workspace-v1/blind-defense-original-reina-v1.vtt",
+  "transcript": "/academy/blind-defense-workspace-v1/blind-defense-original-reina-v1-transcript.txt",
+  "narrationAudio": "/academy/blind-defense-workspace-v1/reina-original-blind-defense-narration.wav",
+  "coachVideo": "/academy/blind-defense-workspace-v1/reina-original-blind-defense-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 9.5,
+  "narrationDisclosure": "Reina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "REINA’S BIG BLIND EXAMPLE",
+  "transcriptContext": "Reina’s original words on defending the big blind, drawn on our six-handed table. You are in the big blind with J♣ T♣ and every player starts with 1,000. The blinds of 5 and 10 post, Rae, Ned and Ivy fold, Sol raises to 25 from the button, and Kit folds, so 40 is in the pot and you owe 15. Those amounts are given for the exercise: Reina speaks no amount, range or price, and no price is worked out on screen. As she names price, position and playability, the big blind and button tags and your two cards light in turn. King-four is named only in words; no such card is dealt. No action is recommended, the decision is left to you, and the other players’ cards stay face down. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1000
+    }
+  },
+  "workedExample": {
+    "id": "original-reina-big-blind-example",
+    "street": "preflop",
+    "position": "BB",
+    "board": [],
+    "hero": [
+      "Jc",
+      "Tc"
+    ],
+    "potBefore": 25,
+    "bet": 15,
+    "call": 15,
+    "actAfter": {
+      "BB": [
+        "BTN"
+      ]
+    },
+    "actAfterLabel": "Acts after you",
+    "handNote": "Jack-ten suited: straights, flushes, pair plus draw.",
+    "rangeLabel": "Three things to weigh",
+    "rangeNotes": [
+      "Price: what your call pays for.",
+      "Position: who acts first after the flop.",
+      "Playability: what the hand can become."
+    ],
+    "decisionLabel": "Fold or call?"
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-blind-defense-001",
+    "start": 0,
+    "end": 31.75,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 2.05,
+    "range": 12.29,
+    "hand": 16.58,
+    "contrast": 24.18,
+    "seat": 27.73,
+    "decision": 30.32
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 4.75,
+      "text": "The blind is already posted, so you often get a better price to continue."
+    },
+    {
+      "start": 4.75,
+      "end": 10.5,
+      "text": "But defending the blind is not pride, and it is not permission to play everything."
+    },
+    {
+      "start": 10.5,
+      "end": 16.25,
+      "text": "Good defense balances three things: price, position, and playability."
+    },
+    {
+      "start": 16.25,
+      "end": 21.583333333333332,
+      "text": "Jack-ten suited can make straights, flushes, and strong pair-plus-draw hands."
+    },
+    {
+      "start": 21.583333333333332,
+      "end": 26.875,
+      "text": "It realizes equity much better than a dominated offsuit hand like king-four."
+    },
+    {
+      "start": 26.875,
+      "end": 31.75,
+      "text": "You will be out of position, so your hand needs a reason to continue."
+    }
+  ],
+  "sourceSha256": "c5e22bd1e6fb25d590a7a8fdae1ad5cbe6bf4b3ef718a5ef927e25eb29397527",
+  "hand": {
+    "definition": "src/data/academy/lessons/blind-defense-workspace-v1.v1.js",
+    "handId": "bd1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "table",
+      "until": "range",
+      "tone": "note",
+      "title": "Given for this hand",
+      "body": "Blinds 5 and 10, 1,000 each, no rake. Sol raises to 25 from the button."
+    },
+    {
+      "beat": "contrast",
+      "until": "seat",
+      "tone": "leak",
+      "title": "Dominated",
+      "body": "When king-four pairs its king, a better king is often ahead."
+    },
+    {
+      "beat": "seat",
+      "until": "decision",
+      "tone": "note",
+      "title": "Out of position",
+      "body": "After the flop you act first, and Sol acts after you."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/blind-defense-workspace-v1/v1/rabbits-burrow/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/rabbits-burrow/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/blind-defense-workspace-v1/v1/croquet-lawn/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/croquet-lawn/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/blind-defense-workspace-v1/v1/tea-garden/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/tea-garden/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/blind-defense-workspace-v1/v1/hall-of-mirrors/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/hall-of-mirrors/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/blind-defense-workspace-v1/v1/clubshire-court/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/clubshire-court/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/blind-defense-workspace-v1/v1/diamond-vault/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/diamond-vault/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/blind-defense-workspace-v1/v1/spade-keep/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/spade-keep/blind-defense-original-reina-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/blind-defense-workspace-v1/v1/heart-throne/blind-defense-original-reina-v1.mp4",
+      "poster": "/academy/blind-defense-workspace-v1/v1/heart-throne/blind-defense-original-reina-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

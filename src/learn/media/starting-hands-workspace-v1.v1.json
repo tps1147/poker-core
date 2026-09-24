@@ -1,0 +1,234 @@
+{
+  "id": "starting-hands-original-reina-v1",
+  "format": "continuous-coach-v4",
+  "template": "preflop",
+  "coach": {
+    "id": "reina",
+    "name": "Reina",
+    "role": "Your preflop discipline coach"
+  },
+  "coachName": "Reina",
+  "title": "Discipline before the flop.",
+  "subject": "Starting hands",
+  "scene": {
+    "label": "Reina’s study"
+  },
+  "opening": {
+    "kicker": "Preflop discipline",
+    "heading": [
+      "Discipline",
+      "before the flop."
+    ],
+    "lead": "A face card does not mean profitable."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Before the flop"
+    },
+    {
+      "beat": "trouble",
+      "label": "Dominated trouble"
+    },
+    {
+      "beat": "range",
+      "label": "What good hands make"
+    },
+    {
+      "beat": "bad",
+      "label": "Second-best hands"
+    }
+  ],
+  "contentId": "starting-hands-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 33.875,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/starting-hands-workspace-v1/v1/rabbits-burrow/starting-hands-original-reina-v1.mp4",
+  "captionedVideo": "/academy/starting-hands-workspace-v1/v1/starting-hands-original-reina-v1-captioned.mp4",
+  "poster": "/academy/starting-hands-workspace-v1/v1/rabbits-burrow/starting-hands-original-reina-v1-poster.jpg",
+  "captions": "/academy/starting-hands-workspace-v1/starting-hands-original-reina-v1.vtt",
+  "transcript": "/academy/starting-hands-workspace-v1/starting-hands-original-reina-v1-transcript.txt",
+  "narrationAudio": "/academy/starting-hands-workspace-v1/reina-original-starting-hands-narration.wav",
+  "coachVideo": "/academy/starting-hands-workspace-v1/reina-original-starting-hands-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 4.75,
+  "narrationDisclosure": "Reina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "REINA’S QUEEN-SEVEN EXAMPLE",
+  "transcriptContext": "Reina’s original example on our six-handed table: queen-seven offsuit, Q♦ 7♣, dealt to you under the gun as she names it. Reina speaks no seat, stack, blind or action, so the seat, the six players and the 1,000 stacks (100 big blinds at blinds of 5 and 10) are given for the lesson. As she says a face card does not mean profitable, the queen lights; on weak pairs and bad kickers the cards lift and the seven lights; on dominated trouble the five players who act after you light. The plan list names what good starting hands make, and the empty flop slots light as she says strong draws and again as she says discipline before the flop. No blind is posted and no bet is made, so the pot reads 0; no board is dealt and the other players’ cards stay face down. No action is recommended for the hand shown. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1000
+    }
+  },
+  "workedExample": {
+    "id": "original-reina-queen-seven-example",
+    "street": "preflop",
+    "position": "UTG",
+    "board": [],
+    "hero": [
+      "Qd",
+      "7c"
+    ],
+    "actAfter": {
+      "UTG": [
+        "MP",
+        "CO",
+        "BTN",
+        "SB",
+        "BB"
+      ]
+    },
+    "seatStatus": {
+      "UTG": "Given: first to act, five players behind, 1,000 each."
+    },
+    "handNote": "Queen-seven offsuit, under the gun.",
+    "rangeLabel": "What good starting hands make",
+    "rangeNotes": [
+      "Strong pairs",
+      "Strong draws",
+      "Nutted hands"
+    ]
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-starting-hands-001",
+    "start": 0,
+    "end": 33.875,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "sourceSha256": "e7efcd1fea3594a209a0895f0fd6b7ae0c9320d3b82f57f6f8eae638187cfc18",
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.625,
+      "text": "Most losing poker hands are born before the flop."
+    },
+    {
+      "start": 3.625,
+      "end": 11.125,
+      "text": "Queen-seven offsuit looks playable because it has a face card, but a face card does not mean profitable."
+    },
+    {
+      "start": 11.125,
+      "end": 16.125,
+      "text": "This hand makes weak pairs, bad kickers, and dominated trouble."
+    },
+    {
+      "start": 16.125,
+      "end": 21.625,
+      "text": "Good starting hands can make strong pairs, strong draws, or nutted hands."
+    },
+    {
+      "start": 21.625,
+      "end": 26.5,
+      "text": "Bad starting hands make second-best hands that cost you chips later."
+    },
+    {
+      "start": 26.5,
+      "end": 29.916666666666668,
+      "text": "The cleanest fix is discipline before the flop."
+    },
+    {
+      "start": 29.916666666666668,
+      "end": 33.875,
+      "text": "You do not need to outplay a mistake you never enter."
+    }
+  ],
+  "beats": {
+    "table": 1.82,
+    "seat": 3.76,
+    "hand": 4.22,
+    "trouble": 11.395,
+    "range": 16.68,
+    "bad": 22.065
+  },
+  "hand": {
+    "definition": "src/data/academy/lessons/starting-hands-workspace-v1.v1.js",
+    "handId": "sh1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "hand",
+      "until": "trouble",
+      "tone": "note",
+      "title": "A face card",
+      "body": "A face card does not mean profitable."
+    },
+    {
+      "beat": "trouble",
+      "until": "range",
+      "tone": "leak",
+      "title": "What this hand makes",
+      "body": "Weak pairs, bad kickers and dominated trouble."
+    },
+    {
+      "beat": "bad",
+      "tone": "leak",
+      "title": "Bad starting hands",
+      "body": "Second-best hands that cost you chips later."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/starting-hands-workspace-v1/v1/rabbits-burrow/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/rabbits-burrow/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/starting-hands-workspace-v1/v1/croquet-lawn/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/croquet-lawn/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/starting-hands-workspace-v1/v1/tea-garden/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/tea-garden/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/starting-hands-workspace-v1/v1/hall-of-mirrors/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/hall-of-mirrors/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/starting-hands-workspace-v1/v1/clubshire-court/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/clubshire-court/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/starting-hands-workspace-v1/v1/diamond-vault/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/diamond-vault/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/starting-hands-workspace-v1/v1/spade-keep/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/spade-keep/starting-hands-original-reina-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/starting-hands-workspace-v1/v1/heart-throne/starting-hands-original-reina-v1.mp4",
+      "poster": "/academy/starting-hands-workspace-v1/v1/heart-throne/starting-hands-original-reina-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

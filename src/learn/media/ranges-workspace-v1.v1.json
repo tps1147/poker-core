@@ -1,0 +1,237 @@
+{
+  "id": "ranges-original-vale-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "vale",
+    "name": "Vale",
+    "role": "Postflop range coach"
+  },
+  "coachName": "Vale",
+  "title": "Think in ranges.",
+  "subject": "Ranges",
+  "scene": {
+    "label": "Vale’s study"
+  },
+  "opening": {
+    "kicker": "Start broad, then narrow",
+    "heading": [
+      "Think in",
+      "ranges."
+    ],
+    "lead": "Not one hand because it scares you."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "A range, not a hand"
+    },
+    {
+      "beat": "preflop",
+      "label": "Preflop action"
+    },
+    {
+      "beat": "texture",
+      "label": "King-eight-three"
+    },
+    {
+      "beat": "range",
+      "label": "What still fits"
+    },
+    {
+      "beat": "fear",
+      "label": "Fear reading"
+    },
+    {
+      "beat": "narrow",
+      "label": "Street by street"
+    }
+  ],
+  "contentId": "ranges-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 30.75,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/ranges-workspace-v1/v1/rabbits-burrow/ranges-original-vale-v1.mp4",
+  "captionedVideo": "/academy/ranges-workspace-v1/v1/ranges-original-vale-v1-captioned.mp4",
+  "poster": "/academy/ranges-workspace-v1/v1/rabbits-burrow/ranges-original-vale-v1-poster.jpg",
+  "captions": "/academy/ranges-workspace-v1/ranges-original-vale-v1.vtt",
+  "transcript": "/academy/ranges-workspace-v1/ranges-original-vale-v1-transcript.txt",
+  "narrationAudio": "/academy/ranges-workspace-v1/vale-original-ranges-narration.wav",
+  "coachVideo": "/academy/ranges-workspace-v1/vale-original-ranges-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 2.4,
+  "narrationDisclosure": "Vale’s original AI-generated voice and performance, reused from the course.",
+  "transcriptContext": "Vale’s original example on our heads-up table: king-eight-three on the flop, with K♣ Q♣ in your hand and 930 behind each player. The hand is dealt as she says to put them on a range, and the flop lands as she says the flop. The preflop line is given for the exercise, because Vale does not say it: you raised to 70 on the button and Ace Andy called from the big blind, so the pot is 140. It is shown beside the table as she says preflop action, before any range. The range is named in her words only, strong value, ace-high, smaller pairs, worse kings and bluffs, and never read from Ace Andy’s cards, which stay face down. Fear reading is named as she says it, and the empty turn and river slots light as she says street by street, but no turn or river is dealt. The film shows no bet, recommends no action and makes no claim about who is ahead. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 930
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 930
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-vale-ranges-example",
+    "street": "flop",
+    "potBefore": 140,
+    "board": [
+      "Ks",
+      "8d",
+      "3h"
+    ],
+    "hero": [
+      "Kc",
+      "Qc"
+    ],
+    "textureTags": [
+      "King-eight-three"
+    ],
+    "handNote": "Given: you raised to 70 on the button and Ace Andy called from the big blind.",
+    "rangeLabel": "What still fits, in Vale’s words",
+    "rangeNotes": [
+      "Strong value",
+      "Ace-high and smaller pairs",
+      "Worse kings",
+      "Bluffs"
+    ]
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-ranges-001",
+    "start": 0,
+    "end": 30.75,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 5.375,
+    "preflop": 7.725,
+    "texture": 12.015,
+    "range": 16.625,
+    "fear": 23.025,
+    "narrow": 27.37
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 4.75,
+      "text": "Do not put villain on one exact hand because it scares you."
+    },
+    {
+      "start": 4.75,
+      "end": 11.458333333333334,
+      "text": "Put them on a range: the hands that fit their preflop action, then the hands that still fit the flop."
+    },
+    {
+      "start": 11.458333333333334,
+      "end": 20.75,
+      "text": "On king-eight-three, villain can have strong value, but they can also have ace-high, smaller pairs, worse kings, and bluffs."
+    },
+    {
+      "start": 20.75,
+      "end": 25.208333333333332,
+      "text": "If you decide they always have aces, you are not hand reading."
+    },
+    {
+      "start": 25.208333333333332,
+      "end": 27,
+      "text": "You are fear reading."
+    },
+    {
+      "start": 27,
+      "end": 30.75,
+      "text": "Start broad, then remove hands street by street."
+    }
+  ],
+  "sourceSha256": "9d29a57a530a434a9ba500b6f04ae0a77857be27af3dc96d1518c46b4d750c0c",
+  "hand": {
+    "definition": "src/data/academy/lessons/ranges-workspace-v1.v1.js",
+    "handId": "rng1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "preflop",
+      "until": "texture",
+      "tone": "note",
+      "title": "Given preflop line",
+      "body": "You raised to 70 on the button. Ace Andy called from the big blind."
+    },
+    {
+      "beat": "fear",
+      "until": "narrow",
+      "tone": "leak",
+      "title": "Fear reading",
+      "body": "Always aces is one scary hand, not a range."
+    },
+    {
+      "beat": "narrow",
+      "tone": "note",
+      "title": "Start broad",
+      "body": "Then remove hands street by street."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/ranges-workspace-v1/v1/rabbits-burrow/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/rabbits-burrow/ranges-original-vale-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/ranges-workspace-v1/v1/croquet-lawn/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/croquet-lawn/ranges-original-vale-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/ranges-workspace-v1/v1/tea-garden/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/tea-garden/ranges-original-vale-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/ranges-workspace-v1/v1/hall-of-mirrors/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/hall-of-mirrors/ranges-original-vale-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/ranges-workspace-v1/v1/clubshire-court/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/clubshire-court/ranges-original-vale-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/ranges-workspace-v1/v1/diamond-vault/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/diamond-vault/ranges-original-vale-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/ranges-workspace-v1/v1/spade-keep/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/spade-keep/ranges-original-vale-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/ranges-workspace-v1/v1/heart-throne/ranges-original-vale-v1.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/heart-throne/ranges-original-vale-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

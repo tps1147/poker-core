@@ -1,0 +1,209 @@
+{
+  "id": "ev-original-mina-v1",
+  "format": "continuous-coach-v4",
+  "template": "core-math",
+  "mode": "price",
+  "coach": {
+    "id": "mina",
+    "name": "Mina",
+    "role": "Your poker math coach"
+  },
+  "coachName": "Mina",
+  "title": "Judge the decision, not the result.",
+  "subject": "Expected value",
+  "scene": {
+    "label": "Mina’s study"
+  },
+  "opening": {
+    "kicker": "Good decisions can lose",
+    "heading": [
+      "Judge the",
+      "decision."
+    ],
+    "lead": "One hand is one result. The long run is the decision."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "The long run"
+    },
+    {
+      "beat": "startingPot",
+      "label": "Read the spot"
+    },
+    {
+      "beat": "possibleCall",
+      "label": "Build the final pot"
+    },
+    {
+      "beat": "result",
+      "label": "What you need"
+    }
+  ],
+  "contentId": "ev-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 17.875,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/ev-workspace-v1/v1/rabbits-burrow/ev-original-mina-v1.mp4",
+  "captionedVideo": "/academy/ev-workspace-v1/v1/ev-original-mina-v1-captioned.mp4",
+  "poster": "/academy/ev-workspace-v1/v1/rabbits-burrow/ev-original-mina-v1-poster.jpg",
+  "captions": "/academy/ev-workspace-v1/ev-original-mina-v1.vtt",
+  "transcript": "/academy/ev-workspace-v1/ev-original-mina-v1-transcript.txt",
+  "narrationAudio": "/academy/ev-workspace-v1/mina-original-ev-narration.wav",
+  "coachVideo": "/academy/ev-workspace-v1/mina-original-ev-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 2.4,
+  "narrationDisclosure": "Mina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "MINA’S 50-CHIP EXAMPLE",
+  "transcriptContext": "Mina’s original example on our table: Q♠ J♠ on T♠ 9♣ 2♥ 4♠ with one card to come and 200 already in the pot. The spade draw and the straight draw light as she names the combo draw. Ace Andy is all-in for 50, the fifty-chip call she names, so his chips fly to the pot and 50 is left to call. The ledger under the table builds 200, then 50, then your possible 50, to the final pot of 300 she states, and 50 ÷ 300 = 16.7% lands as she says you need about 17%. Your call stays a dashed, hypothetical term. The film states no chance of winning and recommends no action; the opponent’s cards stay hidden and no river is dealt. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1200
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 50
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-mina-ev-example",
+    "street": "turn",
+    "potBefore": 200,
+    "bet": 50,
+    "call": 50,
+    "board": [
+      "Ts",
+      "9c",
+      "2h",
+      "4s"
+    ],
+    "hero": [
+      "Qs",
+      "Js"
+    ]
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-ev-001",
+    "start": 0,
+    "end": 17.875,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 4.585,
+    "startingPot": 9.37,
+    "opponentBet": 11.69,
+    "possibleCall": 13,
+    "finalPot": 14.85,
+    "formula": 15.72,
+    "division": 16.11,
+    "result": 16.61
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 4.166666666666667,
+      "text": "A good poker decision can lose the hand and still make money."
+    },
+    {
+      "start": 4.166666666666667,
+      "end": 8.75,
+      "text": "Expected value is the long-run result of repeating the same decision."
+    },
+    {
+      "start": 8.75,
+      "end": 12.958333333333334,
+      "text": "In this spot, you have a combo draw and face a 50-chip call."
+    },
+    {
+      "start": 12.958333333333334,
+      "end": 17.875,
+      "text": "If you call, the final pot is 300, so you need about 17%."
+    }
+  ],
+  "sourceSha256": "2ca887084393e746b5d6e1c15e95891cb8b6bcf215e25c994f9eba117d414e6b",
+  "hand": {
+    "definition": "src/data/academy/lessons/ev-workspace-v1.v1.js",
+    "handId": "ev1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "table",
+      "until": "startingPot",
+      "tone": "note",
+      "title": "Expected value",
+      "body": "The long-run result of repeating the same decision."
+    },
+    {
+      "beat": "possibleCall",
+      "until": "formula",
+      "tone": "note",
+      "title": "Not in the pot yet",
+      "body": "Your 50 counts only because you would call."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/ev-workspace-v1/v1/rabbits-burrow/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/rabbits-burrow/ev-original-mina-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/ev-workspace-v1/v1/croquet-lawn/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/croquet-lawn/ev-original-mina-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/ev-workspace-v1/v1/tea-garden/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/tea-garden/ev-original-mina-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/ev-workspace-v1/v1/hall-of-mirrors/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/hall-of-mirrors/ev-original-mina-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/ev-workspace-v1/v1/clubshire-court/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/clubshire-court/ev-original-mina-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/ev-workspace-v1/v1/diamond-vault/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/diamond-vault/ev-original-mina-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/ev-workspace-v1/v1/spade-keep/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/spade-keep/ev-original-mina-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/ev-workspace-v1/v1/heart-throne/ev-original-mina-v1.mp4",
+      "poster": "/academy/ev-workspace-v1/v1/heart-throne/ev-original-mina-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

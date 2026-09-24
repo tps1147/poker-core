@@ -1,0 +1,244 @@
+{
+  "id": "bluffing-original-knox-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "knox",
+    "name": "Knox",
+    "role": "Pressure coach"
+  },
+  "coachName": "Knox",
+  "title": "Bluff with a story they can fold to.",
+  "subject": "Bluffing",
+  "scene": {
+    "label": "Knox’s study"
+  },
+  "opening": {
+    "kicker": "Tell a story they can fold to",
+    "heading": [
+      "Bluff with",
+      "a story."
+    ],
+    "lead": "Not because you missed."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "A credible line"
+    },
+    {
+      "beat": "questions",
+      "label": "Two questions"
+    },
+    {
+      "beat": "texture",
+      "label": "Knox’s hand"
+    },
+    {
+      "beat": "range",
+      "label": "The story"
+    },
+    {
+      "beat": "blocker",
+      "label": "Your ace"
+    },
+    {
+      "beat": "target",
+      "label": "His range"
+    }
+  ],
+  "contentId": "bluffing-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 33.291666666666664,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/bluffing-workspace-v1/v1/rabbits-burrow/bluffing-original-knox-v1.mp4",
+  "captionedVideo": "/academy/bluffing-workspace-v1/v1/bluffing-original-knox-v1-captioned.mp4",
+  "poster": "/academy/bluffing-workspace-v1/v1/rabbits-burrow/bluffing-original-knox-v1-poster.jpg",
+  "captions": "/academy/bluffing-workspace-v1/bluffing-original-knox-v1.vtt",
+  "transcript": "/academy/bluffing-workspace-v1/bluffing-original-knox-v1-transcript.txt",
+  "narrationAudio": "/academy/bluffing-workspace-v1/knox-original-bluffing-narration.wav",
+  "coachVideo": "/academy/bluffing-workspace-v1/knox-original-bluffing-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 14.5,
+  "narrationDisclosure": "Knox’s original AI-generated voice and performance, reused from the course.",
+  "transcriptContext": "Knox’s original example on our table: you hold A♠ J♠ and the board runs K♦ Q♠ 4♣ 8♥ 2♦, heads-up against Ace Andy with 300 in the pot and 850 behind each. The pot, the stacks and the line that built them (you raised before the flop and bet the flop and the turn, and Ace Andy called both) are given for the exercise; Knox does not speak them. The hand is dealt as he says your line, the board runs out as he sets up the two questions, your two cards light as he names ace-jack, the king and queen lift as he names the strong hands your line represents, your ace rings as he says it blocks some of the strongest calls, and Ace Andy checks as he says villain checks. Beside the table, the two questions, the hands your line represents and his capped range with many one-pair hands appear only as he says them, and that range is marked as a given read, not his cards. Poor showdown value is his description, not an equity figure. The film recommends no action, shows no bet and turns over no opponent card. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 850
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 850
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-knox-bluff-example",
+    "street": "river",
+    "board": [
+      "Kd",
+      "Qs",
+      "4c",
+      "8h",
+      "2d"
+    ],
+    "hero": [
+      "As",
+      "Js"
+    ],
+    "textureTags": [
+      "Ace-jack",
+      "Poor showdown value"
+    ],
+    "handNote": "Given line: you raised before the flop and bet the flop and the turn. Ace Andy called both.",
+    "rangeLabel": "What your line represents",
+    "rangeNotes": [
+      "Strong king-x",
+      "Ace-king",
+      "Ace-queen",
+      "Overpairs"
+    ]
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-bluffing-001",
+    "start": 0,
+    "end": 33.291666666666664,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 5.305,
+    "questions": 10.87,
+    "texture": 17.865,
+    "range": 22.295,
+    "blocker": 27.685,
+    "target": 29.98
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.2083333333333335,
+      "text": "Bluffing is not what you do because you missed."
+    },
+    {
+      "start": 3.2083333333333335,
+      "end": 10.041666666666666,
+      "text": "Bluffing is what you do when your line credibly represents value and your opponent can fold better hands."
+    },
+    {
+      "start": 10.041666666666666,
+      "end": 12.708333333333334,
+      "text": "Ask two questions before you fire:"
+    },
+    {
+      "start": 12.708333333333334,
+      "end": 17.458333333333332,
+      "text": "What strong hands am I representing, and what better hands can they release?"
+    },
+    {
+      "start": 17.458333333333332,
+      "end": 26.416666666666668,
+      "text": "Here, your ace-jack has poor showdown value, but your line can represent strong king-x, ace-king, ace-queen, and overpairs."
+    },
+    {
+      "start": 26.416666666666668,
+      "end": 29.666666666666668,
+      "text": "Your ace also blocks some of the strongest calls."
+    },
+    {
+      "start": 29.666666666666668,
+      "end": 33.291666666666664,
+      "text": "Villain checks a capped river with many one-pair hands."
+    }
+  ],
+  "sourceSha256": "92d4e0b6fe77c52135f283ceaed83499db2a614c9588b6ad815e740810b05d9d",
+  "hand": {
+    "definition": "src/data/academy/lessons/bluffing-workspace-v1.v1.js",
+    "handId": "bl1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "questions",
+      "until": "texture",
+      "tone": "note",
+      "title": "Two questions",
+      "body": "What strong hands am I representing? What better hands can they release?"
+    },
+    {
+      "beat": "blocker",
+      "until": "target",
+      "tone": "note",
+      "title": "Your ace",
+      "body": "It blocks some of the strongest calls."
+    },
+    {
+      "beat": "target",
+      "tone": "note",
+      "title": "His range · given read",
+      "body": "A capped river with many one-pair hands."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/bluffing-workspace-v1/v1/rabbits-burrow/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/rabbits-burrow/bluffing-original-knox-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/bluffing-workspace-v1/v1/croquet-lawn/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/croquet-lawn/bluffing-original-knox-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/bluffing-workspace-v1/v1/tea-garden/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/tea-garden/bluffing-original-knox-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/bluffing-workspace-v1/v1/hall-of-mirrors/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/hall-of-mirrors/bluffing-original-knox-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/bluffing-workspace-v1/v1/clubshire-court/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/clubshire-court/bluffing-original-knox-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/bluffing-workspace-v1/v1/diamond-vault/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/diamond-vault/bluffing-original-knox-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/bluffing-workspace-v1/v1/spade-keep/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/spade-keep/bluffing-original-knox-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/bluffing-workspace-v1/v1/heart-throne/bluffing-original-knox-v1.mp4",
+      "poster": "/academy/bluffing-workspace-v1/v1/heart-throne/bluffing-original-knox-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "id": "spr-original-mina-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "mina",
+    "name": "Mina",
+    "role": "Your poker math coach"
+  },
+  "coachName": "Mina",
+  "title": "Measure the depth first.",
+  "subject": "Stack-to-pot ratio",
+  "scene": {
+    "label": "Mina’s study"
+  },
+  "opening": {
+    "kicker": "Stack-to-pot ratio",
+    "heading": [
+      "Measure the",
+      "depth first."
+    ],
+    "lead": "How much room is left in the hand?"
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Find the effective stack"
+    },
+    {
+      "beat": "range",
+      "label": "Divide by the pot"
+    },
+    {
+      "beat": "low",
+      "label": "Low SPR"
+    },
+    {
+      "beat": "high",
+      "label": "High SPR"
+    }
+  ],
+  "contentId": "spr-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 21,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/spr-workspace-v1/v1/rabbits-burrow/spr-original-mina-v1.mp4",
+  "captionedVideo": "/academy/spr-workspace-v1/v1/spr-original-mina-v1-captioned.mp4",
+  "poster": "/academy/spr-workspace-v1/v1/rabbits-burrow/spr-original-mina-v1-poster.jpg",
+  "captions": "/academy/spr-workspace-v1/spr-original-mina-v1.vtt",
+  "transcript": "/academy/spr-workspace-v1/spr-original-mina-v1-transcript.txt",
+  "narrationAudio": "/academy/spr-workspace-v1/mina-original-spr-narration.wav",
+  "coachVideo": "/academy/spr-workspace-v1/mina-original-spr-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 6.5,
+  "narrationDisclosure": "Mina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "MINA’S SPR EXAMPLE",
+  "transcriptContext": "Mina’s original words define stack-to-pot ratio. The table shows A♦ K♣ on K♠ 8♥ 3♣ with 300 in the pot; you have 300 behind and Ace Andy has 900, so the effective stack is 300, the smaller of the two. The worked line 300 ÷ 300 = SPR 1 applies the formula she speaks to the amounts the table shows. No bet is made, no action is recommended, no commitment threshold is stated, and the opponent’s cards stay hidden. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 300
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 900
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-mina-spr-example",
+    "street": "flop",
+    "potBefore": 300,
+    "board": [
+      "Ks",
+      "8h",
+      "3c"
+    ],
+    "hero": [
+      "Ad",
+      "Kc"
+    ],
+    "stacks": {
+      "hero": 300,
+      "opponent": 900
+    },
+    "textureTags": [
+      "Pot 300",
+      "You 300",
+      "Ace Andy 900"
+    ],
+    "handNote": "Only 300 can go in: your stack is the smaller one.",
+    "rangeLabel": "Stack-to-pot ratio"
+  },
+  "rangeList": [
+    "Effective stack: 300, the smaller stack",
+    "Pot: 300",
+    "300 ÷ 300 = SPR 1"
+  ],
+  "sourceInterval": {
+    "lessonId": "lesson-spr-001",
+    "start": 0,
+    "end": 21,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 4.01,
+    "texture": 4.41,
+    "range": 5.45,
+    "low": 7.985,
+    "high": 15.055
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.9583333333333335,
+      "text": "Stack-to-pot ratio tells you how much room is left in the hand."
+    },
+    {
+      "start": 3.9583333333333335,
+      "end": 7,
+      "text": "Take the effective stack and divide it by the pot."
+    },
+    {
+      "start": 7,
+      "end": 14,
+      "text": "When SPR is low, strong one-pair hands become more willing to commit because there are not many future bets left."
+    },
+    {
+      "start": 14,
+      "end": 21,
+      "text": "When SPR is high, the same top pair can face huge turn and river pressure, so pot control matters more."
+    }
+  ],
+  "sourceSha256": "ce3a3d63052aeed368c1d6acb254fe450cdd2e0ddc347dc621ae1e6583373e36",
+  "hand": {
+    "definition": "src/data/academy/lessons/spr-workspace-v1.v1.js",
+    "handId": "spr1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "low",
+      "until": "high",
+      "tone": "note",
+      "title": "Low SPR",
+      "body": "Not many future bets are left."
+    },
+    {
+      "beat": "high",
+      "tone": "note",
+      "title": "High SPR",
+      "body": "More turn and river pressure. Pot control matters more."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/spr-workspace-v1/v1/rabbits-burrow/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/rabbits-burrow/spr-original-mina-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/spr-workspace-v1/v1/croquet-lawn/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/croquet-lawn/spr-original-mina-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/spr-workspace-v1/v1/tea-garden/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/tea-garden/spr-original-mina-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/spr-workspace-v1/v1/hall-of-mirrors/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/hall-of-mirrors/spr-original-mina-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/spr-workspace-v1/v1/clubshire-court/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/clubshire-court/spr-original-mina-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/spr-workspace-v1/v1/diamond-vault/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/diamond-vault/spr-original-mina-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/spr-workspace-v1/v1/spade-keep/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/spade-keep/spr-original-mina-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/spr-workspace-v1/v1/heart-throne/spr-original-mina-v1.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/heart-throne/spr-original-mina-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

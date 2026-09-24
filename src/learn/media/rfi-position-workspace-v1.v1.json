@@ -1,0 +1,244 @@
+{
+  "id": "rfi-position-original-reina-v1",
+  "format": "continuous-coach-v4",
+  "template": "preflop",
+  "coach": {
+    "id": "reina",
+    "name": "Reina",
+    "role": "Your preflop discipline coach"
+  },
+  "coachName": "Reina",
+  "title": "Your seat sets your opening range.",
+  "subject": "Raise first in by position",
+  "scene": {
+    "label": "Reina’s study"
+  },
+  "opening": {
+    "kicker": "Preflop discipline",
+    "heading": [
+      "Your seat sets",
+      "your opening range."
+    ],
+    "lead": "Tight early, wider late."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Raise first in"
+    },
+    {
+      "beat": "early",
+      "label": "Early position"
+    },
+    {
+      "beat": "seats",
+      "label": "Late position"
+    },
+    {
+      "beat": "hand",
+      "label": "The suited ace"
+    },
+    {
+      "beat": "mistake",
+      "label": "The leak"
+    }
+  ],
+  "contentId": "rfi-position-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 30.25,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/rfi-position-workspace-v1/v1/rabbits-burrow/rfi-position-original-reina-v1.mp4",
+  "captionedVideo": "/academy/rfi-position-workspace-v1/v1/rfi-position-original-reina-v1-captioned.mp4",
+  "poster": "/academy/rfi-position-workspace-v1/v1/rabbits-burrow/rfi-position-original-reina-v1-poster.jpg",
+  "captions": "/academy/rfi-position-workspace-v1/rfi-position-original-reina-v1.vtt",
+  "transcript": "/academy/rfi-position-workspace-v1/rfi-position-original-reina-v1-transcript.txt",
+  "narrationAudio": "/academy/rfi-position-workspace-v1/reina-original-rfi-position-narration.wav",
+  "coachVideo": "/academy/rfi-position-workspace-v1/reina-original-rfi-position-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 5.8,
+  "narrationDisclosure": "Reina’s original AI-generated voice and performance, reused from the course.",
+  "transcriptContext": "Reina’s own spot on our six-handed table: ace-five of spades, A♠ 5♠, dealt to you on the button, with every player sitting on 1,000. As she says the first player to enter the pot, the blinds post 5 and 10, the table’s own blinds for this lesson, so the pot reads 15; Reina names no blind, stack, open size or range width. As she says when everyone folds to you, under the gun, middle position and the cutoff fold, and the action waits on you. As she talks about early position, the under the gun tag and the five seats that act after it light; as she talks about late position, the cutoff and the button light, then the two blinds, the only players left behind you. The suited ace lights as she names it, the ace as she says it blocks strong aces, both spades as she says the nut flush, and the button as she says it gets to act last. No action is taken for you and none is recommended on screen: the decision is left to you in the hand that follows. The other players’ cards stay face down and no flop is dealt. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1000
+    }
+  },
+  "workedExample": {
+    "id": "original-reina-button-ace",
+    "street": "preflop",
+    "position": "BTN",
+    "board": [],
+    "hero": [
+      "As",
+      "5s"
+    ],
+    "actAfter": {
+      "BTN": [
+        "SB",
+        "BB"
+      ]
+    },
+    "actAfterLabel": "Act after you",
+    "seatStatus": {
+      "BTN": "Folded to you on the button. Only the blinds act after you."
+    },
+    "handNote": "Ace-five of spades on the button.",
+    "rangeLabel": "What Reina names",
+    "rangeNotes": [
+      "Blocks strong aces.",
+      "Can make the nut flush.",
+      "Acts last after the flop."
+    ]
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.75,
+      "text": "Raising first in means you are the first player to enter the pot."
+    },
+    {
+      "start": 3.75,
+      "end": 8,
+      "text": "When everyone folds to you, your seat decides how wide you can open."
+    },
+    {
+      "start": 8,
+      "end": 13.25,
+      "text": "Early position still has too many players waiting behind, so your range stays tight."
+    },
+    {
+      "start": 13.25,
+      "end": 17.25,
+      "text": "Late position has fewer threats and more control after the flop."
+    },
+    {
+      "start": 17.25,
+      "end": 20.708333333333332,
+      "text": "A suited ace on the button is not just a pretty hand."
+    },
+    {
+      "start": 20.708333333333332,
+      "end": 25.416666666666668,
+      "text": "It blocks strong aces, can make the nut flush, and gets to act last."
+    },
+    {
+      "start": 25.416666666666668,
+      "end": 30.25,
+      "text": "The mistake is folding every non-premium hand because it is not obvious."
+    }
+  ],
+  "beats": {
+    "table": 2.11,
+    "early": 8.26,
+    "seats": [
+      {
+        "at": 13.42,
+        "seat": "CO"
+      },
+      {
+        "at": 13.77,
+        "seat": "BTN"
+      }
+    ],
+    "hand": 17.515,
+    "range": 21.085,
+    "mistake": 25.785
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-rfi-position-001",
+    "start": 0,
+    "end": 30.25,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "sourceSha256": "a7861e5f7ebd6f721e86dde415611572620518e2f488fdde6570b95ef3104353",
+  "hand": {
+    "definition": "src/data/academy/lessons/rfi-position-workspace-v1.v1.js",
+    "handId": "rfi1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "early",
+      "until": "seats",
+      "tone": "note",
+      "title": "Early position",
+      "body": "Many players still act behind you, so the range stays tight."
+    },
+    {
+      "beat": "seats",
+      "until": "hand",
+      "tone": "note",
+      "title": "Late position",
+      "body": "Fewer players behind you, and you act last after the flop."
+    },
+    {
+      "beat": "mistake",
+      "tone": "leak",
+      "title": "The leak",
+      "body": "Folding every hand that is not premium."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/rfi-position-workspace-v1/v1/rabbits-burrow/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/rabbits-burrow/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/rfi-position-workspace-v1/v1/croquet-lawn/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/croquet-lawn/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/rfi-position-workspace-v1/v1/tea-garden/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/tea-garden/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/rfi-position-workspace-v1/v1/hall-of-mirrors/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/hall-of-mirrors/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/rfi-position-workspace-v1/v1/clubshire-court/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/clubshire-court/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/rfi-position-workspace-v1/v1/diamond-vault/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/diamond-vault/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/rfi-position-workspace-v1/v1/spade-keep/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/spade-keep/rfi-position-original-reina-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/rfi-position-workspace-v1/v1/heart-throne/rfi-position-original-reina-v1.mp4",
+      "poster": "/academy/rfi-position-workspace-v1/v1/heart-throne/rfi-position-original-reina-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

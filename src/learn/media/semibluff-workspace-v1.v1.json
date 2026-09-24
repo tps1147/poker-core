@@ -1,0 +1,203 @@
+{
+  "id": "semibluff-original-knox-v1",
+  "format": "continuous-coach-v4",
+  "template": "postflop",
+  "coach": {
+    "id": "knox",
+    "name": "Knox",
+    "role": "Pressure coach"
+  },
+  "coachName": "Knox",
+  "title": "Bet with a backup.",
+  "subject": "Semi-bluffing",
+  "scene": {
+    "label": "Knox’s study"
+  },
+  "opening": {
+    "kicker": "Semi-bluffing",
+    "heading": [
+      "Bet with",
+      "a backup."
+    ],
+    "lead": "Two ways to win the pot."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Two ways to win"
+    },
+    {
+      "beat": "texture",
+      "label": "Fold now"
+    },
+    {
+      "beat": "improve",
+      "label": "Improve later"
+    },
+    {
+      "beat": "backup",
+      "label": "No backup"
+    }
+  ],
+  "contentId": "semibluff-workspace-v1",
+  "contentVersion": 1,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 8.75,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/semibluff-workspace-v1/v1/rabbits-burrow/semibluff-original-knox-v1.mp4",
+  "captionedVideo": "/academy/semibluff-workspace-v1/v1/semibluff-original-knox-v1-captioned.mp4",
+  "poster": "/academy/semibluff-workspace-v1/v1/rabbits-burrow/semibluff-original-knox-v1-poster.jpg",
+  "captions": "/academy/semibluff-workspace-v1/semibluff-original-knox-v1.vtt",
+  "transcript": "/academy/semibluff-workspace-v1/semibluff-original-knox-v1-transcript.txt",
+  "narrationAudio": "/academy/semibluff-workspace-v1/knox-original-semibluff-narration.wav",
+  "coachVideo": "/academy/semibluff-workspace-v1/knox-original-semibluff-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 3.5,
+  "narrationDisclosure": "Knox’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "KNOX’S HAND",
+  "transcriptContext": "Knox’s original words on our table, heads-up. As he says two ways to win, the hand is dealt: 8♥ 7♥ for you, then 9♥ 6♣ 2♥ and the K♠ turn, with 100 in the pot and 950 behind each. Knox names no cards and no amounts, so the hand, the pot and the stacks are given for the exercise, as the note under the table says. As he says Villain can fold now, the table leans toward Ace Andy and fold now appears beside it. As he says you can improve later, your cards and the board cards they draw with lift, the empty river slot lights, and improve later appears. As he says firing with no backup, that contrast appears beside the table and your two cards lift once more. The film shows no bet, names no fold rate or chance to win, recommends no action and turns over no opponent card; the river is never dealt. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 950
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 950
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-knox-semibluff-example",
+    "street": "turn",
+    "board": [
+      "9h",
+      "6c",
+      "2h",
+      "Ks"
+    ],
+    "hero": [
+      "8h",
+      "7h"
+    ],
+    "handNote": "Your cards, the board, the pot and the stacks are given for this example."
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-fold-equity-semibluff-001",
+    "start": 0,
+    "end": 8.75,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 1.39,
+    "texture": 3.22,
+    "improve": 4.49,
+    "backup": 7.03
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 2.6666666666666665,
+      "text": "A semi-bluff gives you two ways to win."
+    },
+    {
+      "start": 2.6666666666666665,
+      "end": 5.541666666666667,
+      "text": "Villain can fold now, or you can improve later."
+    },
+    {
+      "start": 5.541666666666667,
+      "end": 8.75,
+      "text": "That is very different from firing with no backup."
+    }
+  ],
+  "sourceSha256": "1c297acaecff9ae9c1c2368ad7f326017d68453a3d62b491486337dba90ebe15",
+  "hand": {
+    "definition": "src/data/academy/lessons/semibluff-workspace-v1.v1.js",
+    "handId": "sb1-guided"
+  },
+  "callouts": [
+    {
+      "beat": "texture",
+      "until": "improve",
+      "tone": "note",
+      "title": "Fold now",
+      "body": "Ace Andy folds, and the pot is yours now."
+    },
+    {
+      "beat": "improve",
+      "until": "backup",
+      "tone": "note",
+      "title": "Improve later",
+      "body": "If he calls, the river can still make your hand."
+    },
+    {
+      "beat": "backup",
+      "tone": "leak",
+      "title": "No backup",
+      "body": "A bet with no draw behind it wins only when he folds."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/semibluff-workspace-v1/v1/rabbits-burrow/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/rabbits-burrow/semibluff-original-knox-v1-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/semibluff-workspace-v1/v1/croquet-lawn/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/croquet-lawn/semibluff-original-knox-v1-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/semibluff-workspace-v1/v1/tea-garden/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/tea-garden/semibluff-original-knox-v1-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/semibluff-workspace-v1/v1/hall-of-mirrors/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/hall-of-mirrors/semibluff-original-knox-v1-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/semibluff-workspace-v1/v1/clubshire-court/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/clubshire-court/semibluff-original-knox-v1-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/semibluff-workspace-v1/v1/diamond-vault/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/diamond-vault/semibluff-original-knox-v1-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/semibluff-workspace-v1/v1/spade-keep/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/spade-keep/semibluff-original-knox-v1-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/semibluff-workspace-v1/v1/heart-throne/semibluff-original-knox-v1.mp4",
+      "poster": "/academy/semibluff-workspace-v1/v1/heart-throne/semibluff-original-knox-v1-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

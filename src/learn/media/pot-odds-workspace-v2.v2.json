@@ -1,0 +1,227 @@
+{
+  "id": "pot-odds-original-mina-v2",
+  "format": "continuous-coach-v4",
+  "template": "core-math",
+  "coach": {
+    "id": "mina",
+    "name": "Mina",
+    "role": "Your poker math coach"
+  },
+  "coachName": "Mina",
+  "title": "Find your price.",
+  "subject": "Pot odds",
+  "scene": {
+    "label": "Mina’s study"
+  },
+  "opening": {
+    "kicker": "A better decision starts here",
+    "heading": [
+      "The price",
+      "comes first."
+    ],
+    "lead": "Build the pot. Find the price."
+  },
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Read the board"
+    },
+    {
+      "beat": "startingPot",
+      "label": "Build the pot"
+    },
+    {
+      "beat": "possibleCall",
+      "label": "Add your call"
+    },
+    {
+      "beat": "formula",
+      "label": "Cost over pot"
+    },
+    {
+      "beat": "result",
+      "label": "Your price"
+    }
+  ],
+  "contentId": "pot-odds-workspace-v2",
+  "contentVersion": 2,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 20.25,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/pot-odds-workspace-v2/v2/rabbits-burrow/pot-odds-original-mina-v2.mp4",
+  "captionedVideo": "/academy/pot-odds-workspace-v2/v2/pot-odds-original-mina-v2-captioned.mp4",
+  "poster": "/academy/pot-odds-workspace-v2/v2/rabbits-burrow/pot-odds-original-mina-v2-poster.jpg",
+  "captions": "/academy/pilot-v5/pot-odds-original-mina-v5.vtt",
+  "transcript": "/academy/pilot-v5/pot-odds-original-mina-v5-transcript.txt",
+  "narrationAudio": "/academy/pilot-v5/mina-original-price-narration.wav",
+  "coachVideo": "/academy/pilot-v5/mina-original-price-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 2.4,
+  "narrationDisclosure": "Mina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "MINA’S 50-CHIP EXAMPLE",
+  "transcriptContext": "Mina’s original example on our table: K♥ Q♥ on J♥ T♣ 4♥ 2♠ with one card to come and 150 already in the pot. Ace Andy is all-in for 50, so the chips fly to the pot as she says it and 50 is left to call. The ledger under the table builds 150, then 50, then your possible 50, to a final pot of 250, and the price lands on 50 ÷ 250 = 20% only as she speaks each number. Your call stays a dashed, hypothetical term: nothing enters the pot that you have not called. The film assigns no chance of winning and recommends no action; the opponent’s cards stay hidden and no river is dealt. The original voice and speaking animation play continuously at their original speed.",
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1200
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 50
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-mina-price-example",
+    "street": "turn",
+    "potBefore": 150,
+    "bet": 50,
+    "call": 50,
+    "board": [
+      "Jh",
+      "Tc",
+      "4h",
+      "2s"
+    ],
+    "hero": [
+      "Kh",
+      "Qh"
+    ]
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-pot-odds-001",
+    "start": 0,
+    "end": 20.25,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 3.4,
+    "startingPot": 6.06,
+    "opponentBet": 7.69,
+    "possibleCall": 9.14,
+    "finalPot": 11.81,
+    "formula": 14.515,
+    "division": 16.055,
+    "result": 18.995
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.75,
+      "text": "A draw is not a reason to call. The price is."
+    },
+    {
+      "start": 3.75,
+      "end": 6,
+      "text": "Start by building the final pot."
+    },
+    {
+      "start": 6,
+      "end": 9.125,
+      "text": "There is 150 out there, villain bets 50,"
+    },
+    {
+      "start": 9.125,
+      "end": 11.75,
+      "text": "and if you call, your 50 joins too."
+    },
+    {
+      "start": 11.75,
+      "end": 14.416666666666666,
+      "text": "That makes a final pot of 250."
+    },
+    {
+      "start": 14.416666666666666,
+      "end": 18.75,
+      "text": "The call costs 50, so the price is 50 divided by 250,"
+    },
+    {
+      "start": 18.75,
+      "end": 20.25,
+      "text": "or 20%."
+    }
+  ],
+  "sourceSha256": "5557b9e4f43c44cb389345ef4bf8c8fd33cf552ec43958771c5fcf1ab122e427",
+  "hand": {
+    "definition": "src/data/academy/lessons/pot-odds-workspace-v2.v2.js",
+    "handId": "pot2-guided"
+  },
+  "callouts": [
+    {
+      "beat": "table",
+      "until": "possibleCall",
+      "tone": "leak",
+      "title": "The leak",
+      "body": "Calling because you hold a draw. The price is the reason, not the draw."
+    },
+    {
+      "beat": "possibleCall",
+      "until": "formula",
+      "tone": "note",
+      "title": "Not in the pot yet",
+      "body": "Your 50 is not in the pot yet. It counts only because you would call."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/pot-odds-workspace-v2/v2/rabbits-burrow/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/rabbits-burrow/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/pot-odds-workspace-v2/v2/croquet-lawn/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/croquet-lawn/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/pot-odds-workspace-v2/v2/tea-garden/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/tea-garden/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/pot-odds-workspace-v2/v2/hall-of-mirrors/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/hall-of-mirrors/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/pot-odds-workspace-v2/v2/clubshire-court/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/clubshire-court/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/pot-odds-workspace-v2/v2/diamond-vault/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/diamond-vault/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/pot-odds-workspace-v2/v2/spade-keep/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/spade-keep/pot-odds-original-mina-v2-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/pot-odds-workspace-v2/v2/heart-throne/pot-odds-original-mina-v2.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/heart-throne/pot-odds-original-mina-v2-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}

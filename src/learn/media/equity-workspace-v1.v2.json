@@ -1,0 +1,184 @@
+{
+  "id": "equity-original-mina-v2",
+  "format": "continuous-coach-v4",
+  "template": "core-math",
+  "mode": "share",
+  "coach": {
+    "id": "mina",
+    "name": "Mina",
+    "role": "Your poker math coach"
+  },
+  "coachName": "Mina",
+  "title": "Judge your share.",
+  "subject": "Equity",
+  "scene": {
+    "label": "Mina’s study"
+  },
+  "opening": {
+    "kicker": "A hand is more than it looks",
+    "heading": [
+      "Future share",
+      "is equity."
+    ],
+    "lead": "How often it wins by the end."
+  },
+  "contentId": "equity-workspace-v1",
+  "contentVersion": 2,
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "durationSeconds": 8,
+  "audioStatus": "narrated-review",
+  "audioMode": "continuous-source",
+  "captionsBurnedIn": false,
+  "video": "/academy/equity-workspace-v1/v2/rabbits-burrow/equity-original-mina-v2.mp4",
+  "captionedVideo": "/academy/equity-workspace-v1/v2/equity-original-mina-v2-captioned.mp4",
+  "poster": "/academy/equity-workspace-v1/v2/rabbits-burrow/equity-original-mina-v2-poster.jpg",
+  "captions": "/academy/equity-workspace-v1/equity-original-mina-v1.vtt",
+  "transcript": "/academy/equity-workspace-v1/equity-original-mina-v1-transcript.txt",
+  "narrationAudio": "/academy/equity-workspace-v1/mina-original-equity-narration.wav",
+  "coachVideo": "/academy/equity-workspace-v1/mina-original-equity-coach.mp4",
+  "worldBackdrop": "/gauntlet-campaign-v1/world-dark.png",
+  "posterTime": 4.4,
+  "narrationDisclosure": "Mina’s original AI-generated voice and performance, reused from the course.",
+  "exampleLabel": "MINA’S ACE-KING EXAMPLE",
+  "rail": [
+    {
+      "beat": "table",
+      "label": "Read the hand"
+    },
+    {
+      "beat": "share",
+      "label": "Judge your share"
+    }
+  ],
+  "seats": {
+    "hero": {
+      "name": "You",
+      "stack": 1140
+    },
+    "opponent": {
+      "name": "Ace Andy",
+      "stack": 1140
+    }
+  },
+  "button": "hero",
+  "workedExample": {
+    "id": "original-mina-equity-example",
+    "street": "flop",
+    "potBefore": 120,
+    "board": [
+      "Qh",
+      "Tc",
+      "3s"
+    ],
+    "hero": [
+      "Ah",
+      "Kd"
+    ],
+    "share": 35,
+    "given": {
+      "equity": 35
+    },
+    "shareLabel": "Your share of the pot by the end"
+  },
+  "sourceInterval": {
+    "lessonId": "lesson-equity-001",
+    "start": 0,
+    "end": 8,
+    "playbackRate": 1,
+    "editedInternalPauses": false
+  },
+  "beats": {
+    "table": 2.7,
+    "share": 6.1
+  },
+  "cues": [
+    {
+      "start": 0,
+      "end": 3.25,
+      "text": "Your hand is not just what it is right now."
+    },
+    {
+      "start": 3.25,
+      "end": 5.75,
+      "text": "How often it wins by the end."
+    },
+    {
+      "start": 5.75,
+      "end": 8,
+      "text": "Future share is equity."
+    }
+  ],
+  "sourceSha256": "d2863b3013b7701938c0273c4c59b1d929d319e604af4768883bb0a662e64601",
+  "transcriptContext": "Mina’s original words define future share. The table shows A♥ K♦ on Q♥ T♣ 3♠ against one opponent whose cards stay hidden; the share bar fills to 35%, a stated exercise value labelled given, never read from the cards. No price is computed and no action is recommended. The original voice and speaking animation play continuously at their original speed.",
+  "hand": {
+    "definition": "src/data/academy/lessons/equity-workspace-v1.v2.js",
+    "handId": "eq2-guided"
+  },
+  "callouts": [
+    {
+      "beat": "table",
+      "until": "share",
+      "tone": "leak",
+      "body": "Judging a hand by what it is now, not by how often it wins by the end."
+    }
+  ],
+  "defaultArea": "rabbits-burrow",
+  "videoByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/equity-workspace-v1/v2/rabbits-burrow/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/rabbits-burrow/equity-original-mina-v2-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/equity-workspace-v1/v2/croquet-lawn/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/croquet-lawn/equity-original-mina-v2-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/equity-workspace-v1/v2/tea-garden/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/tea-garden/equity-original-mina-v2-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/equity-workspace-v1/v2/hall-of-mirrors/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/hall-of-mirrors/equity-original-mina-v2-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/equity-workspace-v1/v2/clubshire-court/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/clubshire-court/equity-original-mina-v2-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/equity-workspace-v1/v2/diamond-vault/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/diamond-vault/equity-original-mina-v2-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/equity-workspace-v1/v2/spade-keep/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/spade-keep/equity-original-mina-v2-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/equity-workspace-v1/v2/heart-throne/equity-original-mina-v2.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/heart-throne/equity-original-mina-v2-poster.jpg"
+    }
+  },
+  "filmFeltRect": {
+    "x": 22.82,
+    "y": 86.1,
+    "w": 867.03,
+    "h": 464.94
+  },
+  "filmFrame": {
+    "width": 1280,
+    "height": 720,
+    "column": {
+      "x": 0,
+      "y": 0,
+      "width": 1060,
+      "height": 836,
+      "scale": 0.861,
+      "dockReserve": 132
+    },
+    "reference": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}
