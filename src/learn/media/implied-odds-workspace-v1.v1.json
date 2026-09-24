@@ -229,5 +229,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/implied-odds-workspace-v1/v1/rabbits-burrow/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/rabbits-burrow/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/implied-odds-workspace-v1/v1/croquet-lawn/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/croquet-lawn/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/implied-odds-workspace-v1/v1/tea-garden/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/tea-garden/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/implied-odds-workspace-v1/v1/hall-of-mirrors/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/hall-of-mirrors/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/implied-odds-workspace-v1/v1/clubshire-court/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/clubshire-court/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/implied-odds-workspace-v1/v1/diamond-vault/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/diamond-vault/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/implied-odds-workspace-v1/v1/spade-keep/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/spade-keep/implied-odds-original-mina-v1-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/implied-odds-workspace-v1/v1/heart-throne/implied-odds-original-mina-v1-portrait.mp4",
+      "poster": "/academy/implied-odds-workspace-v1/v1/heart-throne/implied-odds-original-mina-v1-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }

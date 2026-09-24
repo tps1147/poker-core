@@ -214,5 +214,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/rabbits-burrow/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/rabbits-burrow/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/croquet-lawn/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/croquet-lawn/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/tea-garden/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/tea-garden/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/hall-of-mirrors/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/hall-of-mirrors/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/clubshire-court/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/clubshire-court/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/diamond-vault/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/diamond-vault/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/spade-keep/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/spade-keep/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/bet-sizing-workspace-v1/v1/heart-throne/bet-sizing-original-vale-v1-portrait.mp4",
+      "poster": "/academy/bet-sizing-workspace-v1/v1/heart-throne/bet-sizing-original-vale-v1-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }

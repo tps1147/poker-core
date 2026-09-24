@@ -53,8 +53,8 @@
   "audioStatus": "narrated-review",
   "audioMode": "continuous-source",
   "captionsBurnedIn": false,
-  "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2.mp4",
-  "captionedVideo": "/academy/outs-workspace-v1/v2/outs-original-mina-v2-captioned.mp4",
+  "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-r2.mp4",
+  "captionedVideo": "/academy/outs-workspace-v1/v2/outs-original-mina-v2-captioned-r2.mp4",
   "poster": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-poster.jpg",
   "captions": "/academy/outs-workspace-v1/outs-original-mina-v1.vtt",
   "transcript": "/academy/outs-workspace-v1/outs-original-mina-v1-transcript.txt",
@@ -192,35 +192,35 @@
   "defaultArea": "rabbits-burrow",
   "videoByArea": {
     "rabbits-burrow": {
-      "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-poster.jpg"
     },
     "croquet-lawn": {
-      "video": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2-poster.jpg"
     },
     "tea-garden": {
-      "video": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2-poster.jpg"
     },
     "hall-of-mirrors": {
-      "video": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2-poster.jpg"
     },
     "clubshire-court": {
-      "video": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2-poster.jpg"
     },
     "diamond-vault": {
-      "video": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2-poster.jpg"
     },
     "spade-keep": {
-      "video": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2-poster.jpg"
     },
     "heart-throne": {
-      "video": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2.mp4",
+      "video": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2-r2.mp4",
       "poster": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2-poster.jpg"
     }
   },
@@ -244,6 +244,62 @@
     "reference": {
       "width": 1440,
       "height": 900
+    }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/rabbits-burrow/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/croquet-lawn/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/tea-garden/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/hall-of-mirrors/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/clubshire-court/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/diamond-vault/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/spade-keep/outs-original-mina-v2-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2-portrait.mp4",
+      "poster": "/academy/outs-workspace-v1/v2/heart-throne/outs-original-mina-v2-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
     }
   }
 }

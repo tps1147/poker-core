@@ -223,5 +223,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/pot-odds-workspace-v2/v2/rabbits-burrow/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/rabbits-burrow/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/pot-odds-workspace-v2/v2/croquet-lawn/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/croquet-lawn/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/pot-odds-workspace-v2/v2/tea-garden/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/tea-garden/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/pot-odds-workspace-v2/v2/hall-of-mirrors/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/hall-of-mirrors/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/pot-odds-workspace-v2/v2/clubshire-court/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/clubshire-court/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/pot-odds-workspace-v2/v2/diamond-vault/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/diamond-vault/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/pot-odds-workspace-v2/v2/spade-keep/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/spade-keep/pot-odds-original-mina-v2-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/pot-odds-workspace-v2/v2/heart-throne/pot-odds-original-mina-v2-portrait.mp4",
+      "poster": "/academy/pot-odds-workspace-v2/v2/heart-throne/pot-odds-original-mina-v2-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }

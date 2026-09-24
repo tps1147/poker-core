@@ -216,5 +216,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/three-betting-workspace-v1/v1/rabbits-burrow/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/rabbits-burrow/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/three-betting-workspace-v1/v1/croquet-lawn/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/croquet-lawn/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/three-betting-workspace-v1/v1/tea-garden/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/tea-garden/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/three-betting-workspace-v1/v1/hall-of-mirrors/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/hall-of-mirrors/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/three-betting-workspace-v1/v1/clubshire-court/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/clubshire-court/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/three-betting-workspace-v1/v1/diamond-vault/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/diamond-vault/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/three-betting-workspace-v1/v1/spade-keep/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/spade-keep/three-betting-original-knox-v1-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/three-betting-workspace-v1/v1/heart-throne/three-betting-original-knox-v1-portrait.mp4",
+      "poster": "/academy/three-betting-workspace-v1/v1/heart-throne/three-betting-original-knox-v1-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 105,
+      "y": 410,
+      "width": 790,
+      "height": 836,
+      "scale": 1.1,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 126.72,
+      "y": 520,
+      "w": 825.55,
+      "h": 594
+    }
   }
 }

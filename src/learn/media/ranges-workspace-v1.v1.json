@@ -233,5 +233,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/ranges-workspace-v1/v1/rabbits-burrow/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/rabbits-burrow/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/ranges-workspace-v1/v1/croquet-lawn/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/croquet-lawn/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/ranges-workspace-v1/v1/tea-garden/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/tea-garden/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/ranges-workspace-v1/v1/hall-of-mirrors/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/hall-of-mirrors/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/ranges-workspace-v1/v1/clubshire-court/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/clubshire-court/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/ranges-workspace-v1/v1/diamond-vault/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/diamond-vault/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/ranges-workspace-v1/v1/spade-keep/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/spade-keep/ranges-original-vale-v1-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/ranges-workspace-v1/v1/heart-throne/ranges-original-vale-v1-portrait.mp4",
+      "poster": "/academy/ranges-workspace-v1/v1/heart-throne/ranges-original-vale-v1-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }

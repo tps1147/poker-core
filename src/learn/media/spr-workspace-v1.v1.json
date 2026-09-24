@@ -213,5 +213,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/spr-workspace-v1/v1/rabbits-burrow/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/rabbits-burrow/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/spr-workspace-v1/v1/croquet-lawn/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/croquet-lawn/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/spr-workspace-v1/v1/tea-garden/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/tea-garden/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/spr-workspace-v1/v1/hall-of-mirrors/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/hall-of-mirrors/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/spr-workspace-v1/v1/clubshire-court/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/clubshire-court/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/spr-workspace-v1/v1/diamond-vault/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/diamond-vault/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/spr-workspace-v1/v1/spade-keep/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/spade-keep/spr-original-mina-v1-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/spr-workspace-v1/v1/heart-throne/spr-original-mina-v1-portrait.mp4",
+      "poster": "/academy/spr-workspace-v1/v1/heart-throne/spr-original-mina-v1-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }

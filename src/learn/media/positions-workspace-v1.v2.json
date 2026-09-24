@@ -256,5 +256,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/positions-workspace-v1/v2/rabbits-burrow/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/rabbits-burrow/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/positions-workspace-v1/v2/croquet-lawn/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/croquet-lawn/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/positions-workspace-v1/v2/tea-garden/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/tea-garden/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/positions-workspace-v1/v2/hall-of-mirrors/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/hall-of-mirrors/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/positions-workspace-v1/v2/clubshire-court/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/clubshire-court/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/positions-workspace-v1/v2/diamond-vault/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/diamond-vault/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/positions-workspace-v1/v2/spade-keep/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/spade-keep/positions-original-reina-v2-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/positions-workspace-v1/v2/heart-throne/positions-original-reina-v2-portrait.mp4",
+      "poster": "/academy/positions-workspace-v1/v2/heart-throne/positions-original-reina-v2-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 105,
+      "y": 410,
+      "width": 790,
+      "height": 836,
+      "scale": 1.1,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 126.72,
+      "y": 520,
+      "w": 825.55,
+      "h": 594
+    }
   }
 }

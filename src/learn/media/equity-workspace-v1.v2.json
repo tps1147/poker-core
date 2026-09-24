@@ -180,5 +180,61 @@
       "width": 1440,
       "height": 900
     }
+  },
+  "portraitByArea": {
+    "rabbits-burrow": {
+      "video": "/academy/equity-workspace-v1/v2/rabbits-burrow/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/rabbits-burrow/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "croquet-lawn": {
+      "video": "/academy/equity-workspace-v1/v2/croquet-lawn/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/croquet-lawn/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "tea-garden": {
+      "video": "/academy/equity-workspace-v1/v2/tea-garden/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/tea-garden/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "hall-of-mirrors": {
+      "video": "/academy/equity-workspace-v1/v2/hall-of-mirrors/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/hall-of-mirrors/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "clubshire-court": {
+      "video": "/academy/equity-workspace-v1/v2/clubshire-court/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/clubshire-court/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "diamond-vault": {
+      "video": "/academy/equity-workspace-v1/v2/diamond-vault/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/diamond-vault/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "spade-keep": {
+      "video": "/academy/equity-workspace-v1/v2/spade-keep/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/spade-keep/equity-original-mina-v2-portrait-poster.jpg"
+    },
+    "heart-throne": {
+      "video": "/academy/equity-workspace-v1/v2/heart-throne/equity-original-mina-v2-portrait.mp4",
+      "poster": "/academy/equity-workspace-v1/v2/heart-throne/equity-original-mina-v2-portrait-poster.jpg"
+    }
+  },
+  "portraitFrame": {
+    "width": 1080,
+    "height": 1920,
+    "column": {
+      "x": 0,
+      "y": 392,
+      "width": 760,
+      "height": 836,
+      "scale": 1.42,
+      "dockReserve": 132
+    },
+    "safe": {
+      "top": 220,
+      "bottom": 360
+    },
+    "feltRect": {
+      "x": 26.98,
+      "y": 534,
+      "w": 1025.24,
+      "h": 766.8
+    }
   }
 }
