@@ -23,6 +23,7 @@ const { normalizeGameState, normalizePuzzleState } = require('poker-core/state')
 const { evaluateHand, compareHands } = require('poker-core/eval');
 const AIPlayer = require('poker-core/ai');
 const { getArchetypeScout, BOT_ROSTER, getBotById } = require('poker-core/data');
+const { nextPuzzleRequest, resolveAnswer, generatedAttemptPayload } = require('poker-core/puzzles');
 
 // …or everything from the top-level barrel:
 const core = require('poker-core');
@@ -68,6 +69,17 @@ poker-core/
       botRoster.js            BOT_ROSTER / getBotById          (NEW, canonical 16-bot ladder,
                                                                ratings derived via ratingBands)
       index.js                barrel
+    puzzles/                  the puzzle engine (NEW, see "Puzzles" below)
+      copy.js                 PUZZLE_COPY: every player-visible string it returns
+      seed.js                 seed range + the server's fnv1a32 / makeSeed / mulberry32
+      bands.js                band table, adaptive band, rating change, standing
+      topics.js               the five generator topics, labels, topicForSeed
+      daily.js                local day, daily puzzle, preview seed, daily goal
+      run.js                  run marks, runAfter, the saved-run record
+      request.js              nextPuzzleRequest (solve / topic / daily / rush)
+      answer.js               buttons, grade, maths, runout, identity, advance
+      attempt.js              the attempt bodies the server reads
+      index.js                barrel
     learn/                    ES modules (.mjs): see "Learn" below
       index.mjs               the poker-core/learn entry point (re-exports all of it)
       scriptedHand.mjs        the scripted-hand driver
@@ -85,6 +97,9 @@ poker-core/
     review.test.js            plain-node (engine + review pipeline, real AIPlayer)
     frameToHeroState.test.js  plain-node
     botRoster.test.js         plain-node (roster shape, derived ratings, lookups)
+    puzzles.test.js           plain-node (engine + parity with pokerServer 252d87e)
+    puzzles.esm.test.mjs      ESM named imports of poker-core/puzzles (as the web imports it)
+    fixtures/puzzleServerParity.json  golden values captured from the server's generator
     loads.test.js             smoke: index + every subpath export is callable
     learn.test.mjs            learn entry point smoke
     learnLessons.test.mjs     the 20 lessons, their media json and the lesson model
@@ -128,6 +143,43 @@ node scripts/check-learn-media.mjs         # read-only table, exit 1 on any fail
 node scripts/check-learn-media.mjs --fix   # also strips an incomplete portrait set
 ```
 
+## Puzzles
+
+`poker-core/puzzles` is the one puzzle engine for the phone, the web and the
+server: pure CommonJS, no I/O, no clock, no randomness of its own (callers pass
+a `seedSource`), so the same inputs give the same puzzle, grade and attempt
+everywhere.
+
+- **Bands.** `PUZZLE_BAND_TABLE`: beginner 1000 / K16, intermediate 1300 / K24
+  from 1250, advanced 1600 / K32 from 1550, with a seeded +/-75 nudge.
+  `adaptiveBand({ rating, rated, seed })` and the server's positional
+  `adaptiveDifficulty(rating, seed)` pick the band exactly as pokerServer
+  252d87e does; `normaliseDifficulty` grades unknowns ('expert') as beginner.
+- **Requests.** `nextPuzzleRequest({ mode, topic, difficulty, dayKey, seedSource, streak })`
+  gives the `{ topic, difficulty, seed }` for GET /puzzles/generate.
+- **Daily.** `todayKey(date, tzOffsetMinutes)` is the player's local day (the
+  same offset /puzzles/me/stats?tzOffset= takes). The daily puzzle is the same
+  spot for everyone: topic rotating by day, a fixed band (`DAILY_DIFFICULTY`,
+  never 'adaptive', which would serve each player a different spot), a seed
+  hashed from the day. `DAILY_PUZZLE_GOAL` is 10.
+- **Run.** Marks at 3, 5, 10, 15, 20. `runAfter`: correct +1, a hinted correct
+  keeps the run, wrong resets it.
+- **Answer.** `resolveAnswer(puzzle, action)`: the grade and best play, the
+  equity-vs-price maths from meta, the rest of the board from any starting
+  street (`dealPlan`), and the advance rule (correct moves on after 1.1s,
+  wrong waits for Next).
+- **Attempts.** `puzzleAttempt(...)` returns `{ endpoint, body }` with exactly
+  the body the server reads, including the served band so grading is honest.
+- **Copy.** `PUZZLE_COPY` holds every string the engine returns.
+- **Tiers.** There is no puzzle tier ladder here. `RATING_TIERS` in ./rating is
+  the AI-rating ladder (600 to 1200) and does not fit the puzzle rating (which
+  starts at 1200), so it is not reused and there is no `pointsToNextTier`. The
+  only puzzle ladder is the server's (User.updatePuzzleRanking); moving it here
+  is an owner decision.
+
+`normaliseDifficulty` (puzzle bands, lower case) and ./rating's
+`normalizeDifficulty` (bot room bands, upper case) are different functions.
+
 ## The insight engine
 
 `gradeDecisions` / `matchReview` and `computeHandInsights` take the insight
@@ -152,6 +204,8 @@ which runs each file under plain node:
 node test/handInsightsMath.test.js
 node test/review.test.js
 node test/frameToHeroState.test.js
+node test/puzzles.test.js
+node test/puzzles.esm.test.mjs
 node test/loads.test.js
 node test/learn.test.mjs
 node test/learnLessons.test.mjs

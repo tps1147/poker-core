@@ -55,7 +55,17 @@ const expectFns = {
     'normalizeGameMode', 'isRankedMode',
   ],
   './data': ['getArchetypeScout', 'getArchetypeMeta', 'getBotById', 'isKnownBotId', 'canonicalKey', 'equityForTopPercent'],
+  './puzzles': [
+    'adaptiveBand', 'adaptiveDifficulty', 'normaliseDifficulty', 'ratingForDifficulty', 'kFactorForDifficulty',
+    'generatedRatingChange', 'puzzleStanding', 'topicForSeed', 'todayKey', 'dayStart', 'dailySeed', 'dailyTopic',
+    'dailyRequest', 'isDailyPuzzle', 'previewSeed', 'dailyGoalProgress', 'nextRunMark', 'isRunMilestone', 'runAfter',
+    'runMilestoneReached', 'liveRun', 'nextPuzzleRequest', 'rushDifficultyForStreak', 'puzzleActions', 'gradeAnswer',
+    'answerMaths', 'formatAnswerMaths', 'dealPlan', 'dealStreets', 'puzzleIdentity', 'advanceRule', 'resolveAnswer',
+    'puzzleKind', 'generatedAttemptPayload', 'libraryAttemptPayload', 'puzzleAttempt',
+  ],
 };
+// The puzzle engine is on the main barrel too.
+expectFns['.'].push('nextPuzzleRequest', 'gradeAnswer', 'dealPlan', 'generatedAttemptPayload', 'adaptiveBand');
 
 for (const [key, fns] of Object.entries(expectFns)) {
   const mod = key === '.' ? core : loaded[key];
@@ -70,7 +80,8 @@ assert.strictEqual(typeof AIPlayer, 'function', './ai exports the AIPlayer class
 assert.strictEqual(typeof core.AIPlayer, 'function', 'main barrel re-exports AIPlayer');
 
 // Key non-function data structures exist on the main barrel.
-['GRADE_THEME', 'GRADE_RULES', 'GRADE_SCORE', 'ROOM_RATING_BAND', 'ARCHETYPE_SCOUT', 'ARCHETYPE_META', 'GAME_MODES', 'RATING_TIERS', 'BOT_ROSTER', 'BOT_ROSTER_BY_ID'].forEach((k) => {
+['GRADE_THEME', 'GRADE_RULES', 'GRADE_SCORE', 'ROOM_RATING_BAND', 'ARCHETYPE_SCOUT', 'ARCHETYPE_META', 'GAME_MODES', 'RATING_TIERS', 'BOT_ROSTER', 'BOT_ROSTER_BY_ID',
+  'PUZZLE_COPY', 'PUZZLE_BAND_TABLE', 'DIFFICULTY_RATING', 'PUZZLE_TOPICS', 'PUZZLE_RUN_MARKS'].forEach((k) => {
   assert.strictEqual(typeof core[k], 'object', `main barrel exposes ${k}`);
 });
 

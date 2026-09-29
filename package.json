@@ -2,7 +2,7 @@
   "name": "poker-core",
   "version": "0.1.0",
   "private": false,
-  "description": "Shared, no-build CommonJS poker logic (hand evaluation, AI insight engine, match review, hand insights, ratings, state normalization) extracted from the Poker.com mobile app and consumed by both the mobile app and the Next.js web app.",
+  "description": "Shared, no-build CommonJS poker logic (hand evaluation, AI insight engine, match review, hand insights, ratings, state normalization, the puzzle engine) extracted from the Poker.com mobile app and consumed by both the mobile app and the Next.js web app.",
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
@@ -13,6 +13,7 @@
     "./ai": "./src/ai/aiPlayer.js",
     "./state": "./src/state/index.js",
     "./data": "./src/data/index.js",
+    "./puzzles": "./src/puzzles/index.js",
     "./learn": "./src/learn/index.mjs",
     "./learn/media/*": "./src/learn/media/*"
   },
@@ -21,7 +22,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node test/handInsightsMath.test.js && node test/review.test.js && node test/reviewNarrative.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/honestRead.test.js && node test/gauntletAccess.test.js && node test/loads.test.js && node test/learn.test.mjs && node test/learnLessons.test.mjs"
+    "test": "node test/handInsightsMath.test.js && node test/review.test.js && node test/reviewNarrative.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/honestRead.test.js && node test/gauntletAccess.test.js && node test/puzzles.test.js && node test/puzzles.esm.test.mjs && node test/loads.test.js && node test/learn.test.mjs && node test/learnLessons.test.mjs"
   },
   "keywords": [
     "poker",

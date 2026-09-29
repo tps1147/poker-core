@@ -1,0 +1,2256 @@
+{
+ "_source": "pokerServer@252d87e src/services/PuzzleGeneratorService.js (adaptiveDifficulty, makeSeed, mulberry32, generatePuzzle), captured by running the server module read-only",
+ "DIFFICULTY_RATING": {
+  "beginner": 1000,
+  "intermediate": 1300,
+  "advanced": 1600
+ },
+ "ADAPTIVE_CUTOFFS": {
+  "intermediate": 1250,
+  "advanced": 1550
+ },
+ "ADAPTIVE_SPREAD": 75,
+ "TOPICS": [
+  "starting-hands",
+  "pot-odds",
+  "postflop-cbet",
+  "bluffing",
+  "hand-reading"
+ ],
+ "makeSeed": [
+  {
+   "args": [
+    "pot-odds",
+    "beginner",
+    3
+   ],
+   "value": 1666148692
+  },
+  {
+   "args": [
+    "adaptive",
+    "spread",
+    0
+   ],
+   "value": 1450598226
+  },
+  {
+   "args": [
+    "adaptive",
+    "spread",
+    1999999999
+   ],
+   "value": 3388590284
+  },
+  {
+   "args": [
+    "bluffing",
+    "advanced",
+    -7
+   ],
+   "value": 1628970076
+  },
+  {
+   "args": [
+    "hand-reading",
+    "intermediate",
+    123456789
+   ],
+   "value": 2642954225
+  }
+ ],
+ "mulberry32": [
+  {
+   "seed": 0,
+   "first": [
+    0.26642920868471265,
+    0.0003297457005828619,
+    0.2232720274478197
+   ]
+  },
+  {
+   "seed": 1,
+   "first": [
+    0.6270739405881613,
+    0.002735721180215478,
+    0.5274470399599522
+   ]
+  },
+  {
+   "seed": 2654435761,
+   "first": [
+    0.5464560757391155,
+    0.45955629041418433,
+    0.2470416973810643
+   ]
+  },
+  {
+   "seed": 4294967295,
+   "first": [
+    0.8964226141106337,
+    0.189478256739676,
+    0.7156526781618595
+   ]
+  }
+ ],
+ "bandGrid": {
+  "seeds": [
+   0,
+   199
+  ],
+  "rows": {
+   "800": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "1100": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "1174": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "1175": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "1176": "bbbbbbibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+   "1188": "bbbbbbibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbibbbbbbbbbbbbbbbbbbiibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbibbbibbbbbbbbbbbbbbbbibbbbbbbbbbbbbibbbibbbbbbbbbbbbbbbbbbbibbbibbbbbbbibbbbbbiibbbbbbbbbbbbbbbibbbi",
+   "1200": "ibbbbbibbbbbbbbbbbbbbbbbbbbibbbbbbbbibbbbbibbbbbbbbiibbbbbbbbiibbbbbbbbbbbbbibbbbbbbbbbbbbbbbbbibbbbibibibbbbbbbibibbbbbbibbbbbbbibbbbbibbiibbbbbibbbbbbiibbbbiibbbibbbibbbibibbbbiibbibbbbibbbbbbbibbbi",
+   "1249": "ibiibbibbbbiiibbbiibbbiibbiiiiibiibbibiiiiiibibbbibiibbbbbibbiiiibiibibibbibiiiiibbbbiiibbbbbbbiibbiiiibibbbbibbiiibbibbiibbibbbiibibiiibbiibbbiiibbbibiiibbbbiiibbibbbiibiiiiibibiiiiiiibbibibibbiibiii",
+   "1250": "ibiibbibbbbiiibbbiibbbiibbiiiiibiibbibiiiiiibibbbibiibbbbbibbiiiibiibibibbibiiiiibbbbiiibbbbbbbiibbiiiibibbbbibbiiibbibbiibbibbbiibibiiibbiibbbiiibbbibiiibbbbiiibbibbbiibiiiiibibiiiiiiibbibibibbiibiii",
+   "1251": "ibiibbibbbbiiibbbiibbbiibbiiiiibiibbibiiiiiibibbbibiibbbbbibbiiiibiibibibbibiiiiibbbbiiibbbbbbbiibbiiiibibbbbibbiiibbibbiibbibbbiibibiiibbiibbbiiibbbibiiibbbbiiibbibbbiibiiiiibibiiiiiiibbibibibbiibiii",
+   "1300": "ibiiibiibiiiiiibiiibiiiibbiiiiiiiibiibiiiiiiiiiiiiiiibiibiiiiiiiiiiiiibiiiibiiiiiiibbiiibbiiiiiiibbiiiiiiiibbiibiiiibibiiiiiiiiiiiiiiiiibiiibiiiiibiiiiiiiibiiiiiiiibiiiiiiiiiiiibiiiiiiiiiibiiibbiiiiii",
+   "1324": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiibiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1325": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1326": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1400": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1474": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1475": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1476": "iiiiiiaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+   "1500": "aiiiiiaiiiiiiiiiiiiiiiiiiiiaiiiiiiiiaiiiiiaiiiiiiiiaaiiiiiiiiaaiiiiiiiiiiiiiaiiiiiiiiiiiiiiiiiiaiiiiaiaiaiiiiiiiaiaiiiiiiaiiiiiiiaiiiiiaiiaaiiiiiaiiiiiiaaiiiiaaiiiaiiiaiiiaiaiiiiaaiiaiiiiaiiiiiiiaiiia",
+   "1549": "aiaaiiaiiiiaaaiiiaaiiiaaiiaaaaaiaaiiaiaaaaaaiaiiiaiaaiiiiiaiiaaaaiaaiaiaiiaiaaaaaiiiiaaaiiiiiiiaaiiaaaaiaiiiiaiiaaaiiaiiaaiiaiiiaaiaiaaaiiaaiiiaaaiiiaiaaaiiiiaaaiiaiiiaaiaaaaaiaiaaaaaaaiiaiaiaiiaaiaaa",
+   "1550": "aiaaiiaiiiiaaaiiiaaiiiaaiiaaaaaiaaiiaiaaaaaaiaiiiaiaaiiiiiaiiaaaaiaaiaiaiiaiaaaaaiiiiaaaiiiiiiiaaiiaaaaiaiiiiaiiaaaiiaiiaaiiaiiiaaiaiaaaiiaaiiiaaaiiiaiaaaiiiiaaaiiaiiiaaiaaaaaiaiaaaaaaaiiaiaiaiiaaiaaa",
+   "1551": "aiaaiiaiiiiaaaiiiaaiiiaaiiaaaaaiaaiiaiaaaaaaiaiiiaiaaiiiiiaiiaaaaiaaiaiaiiaiaaaaaiiiiaaaiiiiiiiaaiiaaaaiaiiiiaiiaaaiiaiiaaiiaiiiaaiaiaaaiiaaiiiaaaiiiaiaaaiiiiaaaiiaiiiaaiaaaaaiaiaaaaaaaiiaiaiaiiaaiaaa",
+   "1624": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "1625": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "1626": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "1800": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "2400": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+ },
+ "special": [
+  {
+   "rating": null,
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 42,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": null,
+   "seed": "__NaN",
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 42,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": "__undefined",
+   "seed": "__NaN",
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 42,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": "__NaN",
+   "seed": "__NaN",
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 42,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": "__Infinity",
+   "seed": "__NaN",
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 42,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": "1500",
+   "seed": "__NaN",
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 42,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": 0,
+   "seed": "__NaN",
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": 0,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": 11,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": 42,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 99,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 123456789,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": 2147483647,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 2147483648,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": 4294967296,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": 1249,
+   "seed": 3.7,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1249,
+   "seed": "__NaN",
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": null,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": "__undefined",
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 0,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": 1250,
+   "seed": 11,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": 1250,
+   "seed": 42,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 99,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 123456789,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": 1250,
+   "seed": 2147483647,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 2147483648,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": 4294967296,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": 1250,
+   "seed": 3.7,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1250,
+   "seed": "__NaN",
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": null,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": "__undefined",
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": 0,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 7,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": 11,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 21,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": 42,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 99,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 123456789,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 1999999999,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": 2147483647,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 2147483648,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": 4294967296,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": -5,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1549,
+   "seed": 3.7,
+   "band": "advanced"
+  },
+  {
+   "rating": 1549,
+   "seed": "__NaN",
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": null,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": "__undefined",
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 0,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 7,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1550,
+   "seed": 11,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 21,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1550,
+   "seed": 42,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 99,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 123456789,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 1999999999,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1550,
+   "seed": 2147483647,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 2147483648,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": 4294967296,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": -5,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1550,
+   "seed": 3.7,
+   "band": "advanced"
+  },
+  {
+   "rating": 1550,
+   "seed": "__NaN",
+   "band": "advanced"
+  },
+  {
+   "rating": 1200,
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 0,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1200,
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 42,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1200,
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 2147483648,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1200,
+   "seed": 4294967296,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1200,
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": 1200,
+   "seed": "__NaN",
+   "band": "intermediate"
+  },
+  {
+   "rating": 1188,
+   "seed": null,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": "__undefined",
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 0,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 7,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 11,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 21,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 42,
+   "band": "intermediate"
+  },
+  {
+   "rating": 1188,
+   "seed": 99,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 123456789,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 1999999999,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 2147483647,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 2147483648,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 4294967296,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": -5,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": 3.7,
+   "band": "beginner"
+  },
+  {
+   "rating": 1188,
+   "seed": "__NaN",
+   "band": "beginner"
+  }
+ ],
+ "puzzles": [
+  {
+   "title": "Starting Hand Decision",
+   "category": "Starting Hands",
+   "difficulty": "beginner",
+   "puzzleRating": 1000,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "starting-hands",
+    "beginner",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "preflop",
+    "playerCards": [
+     {
+      "rank": "9",
+      "suit": "♦"
+     },
+     {
+      "rank": "9",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [],
+    "opponentCards": [],
+    "pot": 450,
+    "opponentBet": 300,
+    "bigBlind": 100,
+    "position": "MP",
+    "action": "facing_raise"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "K",
+      "suit": "♦"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "6",
+      "suit": "♥"
+     }
+    ],
+    "turnCard": {
+     "rank": "7",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "2",
+     "suit": "♦"
+    },
+    "correctAction": "call",
+    "explanation": "You have about 59.4% equity and need 40% to call profitably (300 to win 750), so calling is correct."
+   },
+   "hint": {
+    "lesson": "Starting hand selection by position",
+    "tip": "Strong, well-positioned hands play a raise; weak ones fold. Compare your equity to the price."
+   },
+   "meta": {
+    "seed": 11,
+    "topic": "starting-hands",
+    "equity": 59.4,
+    "requiredEquity": 40,
+    "sims": 1600
+   }
+  },
+  {
+   "title": "Starting Hand Decision",
+   "category": "Starting Hands",
+   "difficulty": "advanced",
+   "puzzleRating": 1600,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "starting-hands",
+    "advanced",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "preflop",
+    "playerCards": [
+     {
+      "rank": "3",
+      "suit": "♦"
+     },
+     {
+      "rank": "5",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [],
+    "opponentCards": [],
+    "pot": 450,
+    "opponentBet": 300,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "facing_raise"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "5",
+      "suit": "♠"
+     },
+     {
+      "rank": "7",
+      "suit": "♥"
+     },
+     {
+      "rank": "9",
+      "suit": "♠"
+     }
+    ],
+    "turnCard": {
+     "rank": "6",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "4",
+     "suit": "♥"
+    },
+    "correctAction": "fold",
+    "explanation": "You have about 33.2% equity but need 40% to continue (300 to win 750). You're short of the price, so folding is correct."
+   },
+   "hint": {
+    "lesson": "Starting hand selection by position",
+    "tip": "Strong, well-positioned hands play a raise; weak ones fold. Compare your equity to the price."
+   },
+   "meta": {
+    "seed": 4,
+    "topic": "starting-hands",
+    "equity": 33.2,
+    "requiredEquity": 40,
+    "sims": 3000
+   }
+  },
+  {
+   "title": "Pot Odds Spot",
+   "category": "Pot Odds",
+   "difficulty": "beginner",
+   "puzzleRating": 1000,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "pot-odds",
+    "beginner",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "turn",
+    "playerCards": [
+     {
+      "rank": "J",
+      "suit": "♠"
+     },
+     {
+      "rank": "K",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "2",
+      "suit": "♠"
+     },
+     {
+      "rank": "K",
+      "suit": "♥"
+     },
+     {
+      "rank": "J",
+      "suit": "♥"
+     },
+     {
+      "rank": "Q",
+      "suit": "♦"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 1300,
+    "opponentBet": 711,
+    "bigBlind": 100,
+    "position": "MP",
+    "action": "facing_bet"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "2",
+      "suit": "♠"
+     },
+     {
+      "rank": "K",
+      "suit": "♥"
+     },
+     {
+      "rank": "J",
+      "suit": "♥"
+     }
+    ],
+    "turnCard": {
+     "rank": "Q",
+     "suit": "♦"
+    },
+    "riverCard": {
+     "rank": "4",
+     "suit": "♠"
+    },
+    "correctAction": "call",
+    "explanation": "You have about 71.1% equity and need 35.4% to call profitably (711 to win 2011), so calling is correct."
+   },
+   "hint": {
+    "lesson": "Calling with the right pot odds",
+    "tip": "Call only when your equity meets or beats the price the pot is laying you."
+   },
+   "meta": {
+    "seed": 3,
+    "topic": "pot-odds",
+    "equity": 71.1,
+    "requiredEquity": 35.4,
+    "sims": 1600
+   }
+  },
+  {
+   "title": "Pot Odds Spot",
+   "category": "Pot Odds",
+   "difficulty": "intermediate",
+   "puzzleRating": 1300,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "pot-odds",
+    "intermediate",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "turn",
+    "playerCards": [
+     {
+      "rank": "2",
+      "suit": "♦"
+     },
+     {
+      "rank": "5",
+      "suit": "♠"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "2",
+      "suit": "♣"
+     },
+     {
+      "rank": "K",
+      "suit": "♣"
+     },
+     {
+      "rank": "5",
+      "suit": "♦"
+     },
+     {
+      "rank": "3",
+      "suit": "♦"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 800,
+    "opponentBet": 680,
+    "bigBlind": 100,
+    "position": "BB",
+    "action": "facing_bet"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "2",
+      "suit": "♣"
+     },
+     {
+      "rank": "K",
+      "suit": "♣"
+     },
+     {
+      "rank": "5",
+      "suit": "♦"
+     }
+    ],
+    "turnCard": {
+     "rank": "3",
+     "suit": "♦"
+    },
+    "riverCard": {
+     "rank": "J",
+     "suit": "♥"
+    },
+    "correctAction": "raise",
+    "explanation": "You hold roughly 83% equity against the opponent's range — well ahead. Folding or just calling leaves value on the table, so raising for value is best."
+   },
+   "hint": {
+    "lesson": "Calling with the right pot odds",
+    "tip": "Call only when your equity meets or beats the price the pot is laying you."
+   },
+   "meta": {
+    "seed": 17,
+    "topic": "pot-odds",
+    "equity": 83,
+    "requiredEquity": 45.9,
+    "sims": 2200
+   }
+  },
+  {
+   "title": "Pot Odds Spot",
+   "category": "Pot Odds",
+   "difficulty": "advanced",
+   "puzzleRating": 1600,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "pot-odds",
+    "advanced",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "turn",
+    "playerCards": [
+     {
+      "rank": "A",
+      "suit": "♣"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "3",
+      "suit": "♥"
+     },
+     {
+      "rank": "K",
+      "suit": "♣"
+     },
+     {
+      "rank": "K",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♠"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 1300,
+    "opponentBet": 697,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "facing_bet"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "3",
+      "suit": "♥"
+     },
+     {
+      "rank": "K",
+      "suit": "♣"
+     },
+     {
+      "rank": "K",
+      "suit": "♠"
+     }
+    ],
+    "turnCard": {
+     "rank": "Q",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "6",
+     "suit": "♥"
+    },
+    "correctAction": "raise",
+    "explanation": "You hold roughly 77.1% equity against the opponent's range — well ahead. Folding or just calling leaves value on the table, so raising for value is best."
+   },
+   "hint": {
+    "lesson": "Calling with the right pot odds",
+    "tip": "Call only when your equity meets or beats the price the pot is laying you."
+   },
+   "meta": {
+    "seed": 21,
+    "topic": "pot-odds",
+    "equity": 77.1,
+    "requiredEquity": 34.9,
+    "sims": 3000
+   }
+  },
+  {
+   "title": "C-Bet Decision",
+   "category": "Post-Flop",
+   "difficulty": "intermediate",
+   "puzzleRating": 1300,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "postflop-cbet",
+    "intermediate",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "flop",
+    "playerCards": [
+     {
+      "rank": "A",
+      "suit": "♥"
+     },
+     {
+      "rank": "T",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "8",
+      "suit": "♣"
+     },
+     {
+      "rank": "9",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♦"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 800,
+    "opponentBet": 0,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "unopened_pot"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "8",
+      "suit": "♣"
+     },
+     {
+      "rank": "9",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♦"
+     }
+    ],
+    "turnCard": {
+     "rank": "3",
+     "suit": "♥"
+    },
+    "riverCard": {
+     "rank": "3",
+     "suit": "♠"
+    },
+    "correctAction": "check",
+    "explanation": "With only ~45.8% equity and no strong draw, betting bloats the pot out of position to your range. Checking to control the pot is best."
+   },
+   "hint": {
+    "lesson": "Continuation betting in position",
+    "tip": "C-bet your strong made hands and strong draws; check back marginal holdings."
+   },
+   "meta": {
+    "seed": 5,
+    "topic": "postflop-cbet",
+    "equity": 45.8,
+    "requiredEquity": null,
+    "sims": 2200
+   }
+  },
+  {
+   "title": "Bluff or Give Up",
+   "category": "Bluffing",
+   "difficulty": "advanced",
+   "puzzleRating": 1600,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "bluffing",
+    "advanced",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "flop",
+    "playerCards": [
+     {
+      "rank": "9",
+      "suit": "♠"
+     },
+     {
+      "rank": "6",
+      "suit": "♦"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "5",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "3",
+      "suit": "♠"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 900,
+    "opponentBet": 0,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "unopened_pot"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "5",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "3",
+      "suit": "♠"
+     }
+    ],
+    "turnCard": {
+     "rank": "8",
+     "suit": "♥"
+    },
+    "riverCard": {
+     "rank": "4",
+     "suit": "♦"
+    },
+    "correctAction": "check",
+    "explanation": "You have only ~24.9% equity and no real draw, so a bluff gets called or out-drawn too often. Checking and giving up is best."
+   },
+   "hint": {
+    "lesson": "Semi-bluffing with equity",
+    "tip": "Bluff with a draw (fold equity + outs), not with pure air against a sticky range."
+   },
+   "meta": {
+    "seed": 21,
+    "topic": "bluffing",
+    "equity": 24.9,
+    "requiredEquity": null,
+    "sims": 3000
+   }
+  },
+  {
+   "title": "Bluff or Give Up",
+   "category": "Bluffing",
+   "difficulty": "beginner",
+   "puzzleRating": 1000,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "bluffing",
+    "beginner",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "flop",
+    "playerCards": [
+     {
+      "rank": "6",
+      "suit": "♥"
+     },
+     {
+      "rank": "5",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "J",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "T",
+      "suit": "♠"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 500,
+    "opponentBet": 0,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "unopened_pot"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "J",
+      "suit": "♠"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "T",
+      "suit": "♠"
+     }
+    ],
+    "turnCard": {
+     "rank": "4",
+     "suit": "♥"
+    },
+    "riverCard": {
+     "rank": "T",
+     "suit": "♦"
+    },
+    "correctAction": "check",
+    "explanation": "You have only ~16.3% equity and no real draw, so a bluff gets called or out-drawn too often. Checking and giving up is best."
+   },
+   "hint": {
+    "lesson": "Semi-bluffing with equity",
+    "tip": "Bluff with a draw (fold equity + outs), not with pure air against a sticky range."
+   },
+   "meta": {
+    "seed": 8,
+    "topic": "bluffing",
+    "equity": 16.3,
+    "requiredEquity": null,
+    "sims": 1600
+   }
+  },
+  {
+   "title": "Read the Range",
+   "category": "Hand Reading",
+   "difficulty": "intermediate",
+   "puzzleRating": 1300,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "hand-reading",
+    "intermediate",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "river",
+    "playerCards": [
+     {
+      "rank": "7",
+      "suit": "♠"
+     },
+     {
+      "rank": "3",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "Q",
+      "suit": "♠"
+     },
+     {
+      "rank": "3",
+      "suit": "♥"
+     },
+     {
+      "rank": "6",
+      "suit": "♥"
+     },
+     {
+      "rank": "K",
+      "suit": "♥"
+     },
+     {
+      "rank": "4",
+      "suit": "♣"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 1200,
+    "opponentBet": 819,
+    "bigBlind": 100,
+    "position": "CO",
+    "action": "facing_bet"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "Q",
+      "suit": "♠"
+     },
+     {
+      "rank": "3",
+      "suit": "♥"
+     },
+     {
+      "rank": "6",
+      "suit": "♥"
+     }
+    ],
+    "turnCard": {
+     "rank": "K",
+     "suit": "♥"
+    },
+    "riverCard": {
+     "rank": "4",
+     "suit": "♣"
+    },
+    "correctAction": "fold",
+    "explanation": "You have about 28.5% equity but need 40.6% to continue (819 to win 2019). You're short of the price, so folding is correct."
+   },
+   "hint": {
+    "lesson": "Reading the opponent's range from their line",
+    "tip": "A big bet on a later street is value-heavy — fold marginal hands, continue only with real strength."
+   },
+   "meta": {
+    "seed": 9,
+    "topic": "hand-reading",
+    "equity": 28.5,
+    "requiredEquity": 40.6,
+    "sims": 2200
+   }
+  },
+  {
+   "title": "Read the Range",
+   "category": "Hand Reading",
+   "difficulty": "advanced",
+   "puzzleRating": 1600,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "hand-reading",
+    "advanced",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "turn",
+    "playerCards": [
+     {
+      "rank": "9",
+      "suit": "♣"
+     },
+     {
+      "rank": "3",
+      "suit": "♣"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "8",
+      "suit": "♣"
+     },
+     {
+      "rank": "3",
+      "suit": "♠"
+     },
+     {
+      "rank": "K",
+      "suit": "♠"
+     },
+     {
+      "rank": "5",
+      "suit": "♠"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 2100,
+    "opponentBet": 2189,
+    "bigBlind": 100,
+    "position": "SB",
+    "action": "facing_bet"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "8",
+      "suit": "♣"
+     },
+     {
+      "rank": "3",
+      "suit": "♠"
+     },
+     {
+      "rank": "K",
+      "suit": "♠"
+     }
+    ],
+    "turnCard": {
+     "rank": "5",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "6",
+     "suit": "♣"
+    },
+    "correctAction": "fold",
+    "explanation": "You have about 44.4% equity but need 51% to continue (2189 to win 4289). You're short of the price, so folding is correct."
+   },
+   "hint": {
+    "lesson": "Reading the opponent's range from their line",
+    "tip": "A big bet on a later street is value-heavy — fold marginal hands, continue only with real strength."
+   },
+   "meta": {
+    "seed": 30,
+    "topic": "hand-reading",
+    "equity": 44.4,
+    "requiredEquity": 51,
+    "sims": 3000
+   }
+  },
+  {
+   "title": "Pot Odds Spot",
+   "category": "Pot Odds",
+   "difficulty": "expert",
+   "puzzleRating": 1000,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "pot-odds",
+    "expert",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "flop",
+    "playerCards": [
+     {
+      "rank": "J",
+      "suit": "♠"
+     },
+     {
+      "rank": "6",
+      "suit": "♥"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "4",
+      "suit": "♦"
+     },
+     {
+      "rank": "9",
+      "suit": "♣"
+     },
+     {
+      "rank": "Q",
+      "suit": "♠"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 700,
+    "opponentBet": 406,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "facing_bet"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "4",
+      "suit": "♦"
+     },
+     {
+      "rank": "9",
+      "suit": "♣"
+     },
+     {
+      "rank": "Q",
+      "suit": "♠"
+     }
+    ],
+    "turnCard": {
+     "rank": "T",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "2",
+     "suit": "♥"
+    },
+    "correctAction": "fold",
+    "explanation": "You have about 17.3% equity but need 36.7% to continue (406 to win 1106). You're short of the price, so folding is correct."
+   },
+   "hint": {
+    "lesson": "Calling with the right pot odds",
+    "tip": "Call only when your equity meets or beats the price the pot is laying you."
+   },
+   "meta": {
+    "seed": 3,
+    "topic": "pot-odds",
+    "equity": 17.3,
+    "requiredEquity": 36.7,
+    "sims": 1600
+   }
+  },
+  {
+   "title": "C-Bet Decision",
+   "category": "Post-Flop",
+   "difficulty": "intermediate",
+   "puzzleRating": 1300,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "postflop-cbet",
+    "intermediate",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "flop",
+    "playerCards": [
+     {
+      "rank": "A",
+      "suit": "♥"
+     },
+     {
+      "rank": "7",
+      "suit": "♦"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "Q",
+      "suit": "♣"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "A",
+      "suit": "♦"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 500,
+    "opponentBet": 0,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "unopened_pot"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "Q",
+      "suit": "♣"
+     },
+     {
+      "rank": "Q",
+      "suit": "♥"
+     },
+     {
+      "rank": "A",
+      "suit": "♦"
+     }
+    ],
+    "turnCard": {
+     "rank": "J",
+     "suit": "♦"
+    },
+    "riverCard": {
+     "rank": "3",
+     "suit": "♠"
+    },
+    "correctAction": "raise",
+    "explanation": "You're ahead with ~74.8% equity on this board, so a value c-bet is correct."
+   },
+   "hint": {
+    "lesson": "Continuation betting in position",
+    "tip": "C-bet your strong made hands and strong draws; check back marginal holdings."
+   },
+   "meta": {
+    "seed": 0,
+    "topic": "postflop-cbet",
+    "equity": 74.8,
+    "requiredEquity": null,
+    "sims": 2200
+   }
+  },
+  {
+   "title": "Bluff or Give Up",
+   "category": "Bluffing",
+   "difficulty": "intermediate",
+   "puzzleRating": 1300,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "bluffing",
+    "intermediate",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "flop",
+    "playerCards": [
+     {
+      "rank": "7",
+      "suit": "♠"
+     },
+     {
+      "rank": "9",
+      "suit": "♠"
+     }
+    ],
+    "communityCards": [
+     {
+      "rank": "8",
+      "suit": "♦"
+     },
+     {
+      "rank": "3",
+      "suit": "♣"
+     },
+     {
+      "rank": "6",
+      "suit": "♣"
+     }
+    ],
+    "opponentCards": [],
+    "pot": 800,
+    "opponentBet": 0,
+    "bigBlind": 100,
+    "position": "BTN",
+    "action": "unopened_pot"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "8",
+      "suit": "♦"
+     },
+     {
+      "rank": "3",
+      "suit": "♣"
+     },
+     {
+      "rank": "6",
+      "suit": "♣"
+     }
+    ],
+    "turnCard": {
+     "rank": "J",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "9",
+     "suit": "♣"
+    },
+    "correctAction": "raise",
+    "explanation": "With an open-ended straight draw you have about 43.8% equity even when called, plus fold equity now — a semi-bluff (bet/raise) is +EV."
+   },
+   "hint": {
+    "lesson": "Semi-bluffing with equity",
+    "tip": "Bluff with a draw (fold equity + outs), not with pure air against a sticky range."
+   },
+   "meta": {
+    "seed": 2,
+    "topic": "bluffing",
+    "equity": 43.8,
+    "requiredEquity": null,
+    "sims": 2200
+   }
+  },
+  {
+   "title": "Starting Hand Decision",
+   "category": "Starting Hands",
+   "difficulty": "intermediate",
+   "puzzleRating": 1300,
+   "active": true,
+   "learningOnly": false,
+   "affectsRating": true,
+   "tags": [
+    "starting-hands",
+    "intermediate",
+    "generated"
+   ],
+   "initialState": {
+    "phase": "preflop",
+    "playerCards": [
+     {
+      "rank": "A",
+      "suit": "♣"
+     },
+     {
+      "rank": "A",
+      "suit": "♠"
+     }
+    ],
+    "communityCards": [],
+    "opponentCards": [],
+    "pot": 450,
+    "opponentBet": 300,
+    "bigBlind": 100,
+    "position": "UTG",
+    "action": "facing_raise"
+   },
+   "progression": {
+    "flopCards": [
+     {
+      "rank": "5",
+      "suit": "♦"
+     },
+     {
+      "rank": "4",
+      "suit": "♣"
+     },
+     {
+      "rank": "J",
+      "suit": "♥"
+     }
+    ],
+    "turnCard": {
+     "rank": "J",
+     "suit": "♠"
+    },
+    "riverCard": {
+     "rank": "7",
+     "suit": "♣"
+    },
+    "correctAction": "raise",
+    "explanation": "You hold roughly 83% equity against the opponent's range — well ahead. Folding or just calling leaves value on the table, so raising for value is best."
+   },
+   "hint": {
+    "lesson": "Starting hand selection by position",
+    "tip": "Strong, well-positioned hands play a raise; weak ones fold. Compare your equity to the price."
+   },
+   "meta": {
+    "seed": 66,
+    "topic": "starting-hands",
+    "equity": 83,
+    "requiredEquity": 40,
+    "sims": 2200
+   }
+  }
+ ]
+}
