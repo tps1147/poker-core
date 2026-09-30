@@ -115,4 +115,18 @@ check("the chapter hand and the chapter's standing", () => {
   assert.deepEqual([tableSt.sealed, tableSt.hasHand, tableSt.handOpen], [true, false, false]);
 });
 
-console.log(`curriculum checks passed (${checks}): five levels, the course tree, 20 live lessons in course order, a 118-lesson roadmap, the path, the lesson loop, the chapter hand`);
+check("covers: every live lesson has one, each names a live lesson, paths are CDN-relative", () => {
+  const { LESSON_COVERS, lessonCover, COVER_ASPECT } = learn;
+  const live = CHAPTERS.flatMap((c) => c.lessons.map((s) => s.lesson).filter(Boolean));
+  for (const id of live) assert.ok(LESSON_COVERS[id], `${id} has a cover`);
+  for (const id of Object.keys(LESSON_COVERS)) assert.ok(live.includes(id), `${id} is a live lesson`);
+  assert.deepEqual(lessonCover("pot-odds-workspace-v2"), {
+    still: "/academy/covers/pot-odds-workspace-v2.jpg",
+    loop: "/academy/covers/pot-odds-workspace-v2.mp4",
+  });
+  assert.equal(lessonCover("no-such-lesson"), null);
+  assert.equal(lessonCover(null), null);
+  assert.equal(COVER_ASPECT, 1.5);
+});
+
+console.log(`curriculum checks passed (${checks}): five levels, the course tree, 20 live lessons in course order, a 118-lesson roadmap, the path, the lesson loop, the chapter hand, the covers`);

@@ -15,5 +15,6 @@ export * from "./motion.mjs";
 export * from "./lessons/index.mjs";
 export * from "./lessonModel.mjs";
 export * from "./curriculum.mjs";
+export * from "./covers.mjs";
 export { createLessonRunController } from "./lessonRunController.mjs";
 export { default as handRankingsV2 } from "./lessons/hand-rankings-workspace-v1.v2.mjs";
