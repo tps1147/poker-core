@@ -3,23 +3,46 @@
 // the table itself grows more detailed arena by arena, so climbing the rating ladder shows on the
 // felt. Shared by the phone and the web so the two tables are the same table.
 //
-//   TABLE_SEATS        the six seats, clockwise from the top: which stat, its glyph
-//   tableDecor(index)  the arena's table: its motif, the rail features it has earned (cumulative,
-//                      one more per arena), how many motifs travel the rail, whether one crosses
-//                      the felt
+//   TABLE_SEATS        the six seats, clockwise from the top: which stat sits there (each app draws
+//                      the seat as its own vinyl object on a coaster: crown, chip stacks, trophy,
+//                      hourglass, brazier, dealt cards)
+//   TABLE_LAYOUT       the stage's proportions: the base table (a stadium) and the seat size
+//   tableDecor(index)  the arena's table: its emblem over the pot (grander as you climb), its motif,
+//                      the rail features it has earned (cumulative, one more per arena), how many
+//                      motifs travel the rail, whether one crosses the felt
 //   dealerSeat(stats)  where the dealer button sits: on the streak when you are on a run (3+ days),
 //                      else on today when today is up, else nowhere (never on a stat that is down)
 //   rankBand(rank)     the leaderboard's say on the table: 'crown' top 10, 'gilt' top 100, 'brass'
 //                      top 1,000, else null
 //   railPoint(t, rx, ry)  a point on the rail ellipse, t 0..1 clockwise from the top
+//   stadiumPoint(t, w, h) a point on the base table's own outline (a stadium: w wide, h tall, ends
+//                         of radius h/2), t 0..1 of its perimeter clockwise from the top centre,
+//                         with the outward normal: where the seats, studs and travellers sit
+//   stadiumPath(cx, cy, w, h)  that outline as SVG path data, clockwise from the top centre
 //
-// Glyphs are 24x24 path data, drawn the same way by react-native-svg and the web's <svg>: MOTIFS
-// (one per arena, the arena's own emblem) and SEAT_GLYPHS (cream on each seat's Flop52 chip).
+// MOTIFS are 24x24 path data (one per arena), drawn the same way by react-native-svg and the web's
+// <svg>.
 
 const { ARENAS } = require('./arenaClimb');
 
 // Every feature the rail can wear, in the order the arenas earn them (the first arena has none).
 const RAIL_FEATURES = Object.freeze(['inlay', 'studs', 'doubleRail', 'motifs', 'gems', 'filigree', 'crown']);
+
+// The emblem over the pot, by arena: a fresh sealed deck to start, then the dealer's puck, the card
+// crest, the suit compass, and the crown of cards (the flop as a crown) for the last two arenas.
+const EMBLEM_OF = Object.freeze({
+  'rabbits-burrow': 'deck',
+  'croquet-lawn': 'puck',
+  'tea-garden': 'card',
+  'hall-of-mirrors': 'card',
+  'clubshire-court': 'compass',
+  'diamond-vault': 'compass',
+  'spade-keep': 'crown',
+  'heart-throne': 'crown',
+});
+
+// The stage, as fractions of its width: the base table (stadium) in the middle, the seats on its edge.
+const TABLE_LAYOUT = Object.freeze({ tableW: 0.62, tableH: 0.44, stageH: 0.82, seat: 52 });
 
 const MOTIF_OF = Object.freeze({
   'rabbits-burrow': 'watch',
@@ -44,16 +67,6 @@ const MOTIFS = Object.freeze({
   heart: Object.freeze({ mode: 'fill', d: 'M12 20.5C6.5 16.2 3 13 3 9a4.5 4.5 0 0 1 9-1.2A4.5 4.5 0 0 1 21 9c0 4-3.5 7.2-9 11.5z' }),
 });
 
-// Cream line glyphs for the seat chips (stroke 1.8).
-const SEAT_GLYPHS = Object.freeze({
-  rank: 'M4 17.5 5.5 8l4.2 4L12 5.5l2.3 6.5 4.2-4 1.5 9.5z M4.5 20.5h15',
-  hands: 'M5.5 6.5h8a1.2 1.2 0 0 1 1.2 1.2v11.1a1.2 1.2 0 0 1-1.2 1.2h-8a1.2 1.2 0 0 1-1.2-1.2V7.7a1.2 1.2 0 0 1 1.2-1.2z M15.5 5l3.3.9a1.2 1.2 0 0 1 .8 1.5l-2.9 10.7',
-  winRate: 'M12 3.5a8.5 8.5 0 1 0 0 17a8.5 8.5 0 1 0 0-17z M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8z M12 11.2a.8.8 0 1 0 0 1.6a.8.8 0 1 0 0-1.6z',
-  streak: 'M12 3c.8 3.2 5 5.4 5 10.2a5 5 0 0 1-10 0c0-2.6 1.4-4.2 2.4-5.2.3 2 1.2 3 2.3 3.3-.5-2.8-.6-5.6.3-8.3z',
-  seasonHigh: 'M2.5 20.5 9 10l4 6 2.5-3.5 6 8z M15 12.5V4.5l4.5 1.8-4.5 1.8',
-  today: 'M12 19.5V5.5 M6.5 11 12 5.5 17.5 11 M5 21h14',
-});
-
 // Clockwise from the top of the table. `at` is the seat's angle on the rail (0 = top, 0.5 = bottom).
 // `label` is the short word under the figure (a phone's side seat has about 54pt for it); `name` is
 // what a screen reader hears.
@@ -74,6 +87,7 @@ function tableDecor(index) {
   return {
     arena,
     level: i,
+    emblem: EMBLEM_OF[arena.id],
     motif: MOTIF_OF[arena.id],
     features,
     travellers: 1 + Math.floor(i / 2),
@@ -100,4 +114,27 @@ function railPoint(t, rx, ry) {
   return { x: Math.sin(a) * rx, y: -Math.cos(a) * ry, angle: (a * 180) / Math.PI };
 }
 
-module.exports = { TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, SEAT_GLYPHS, tableDecor, dealerSeat, rankBand, railPoint };
+function stadiumPoint(t, w, h) {
+  const r = h / 2;
+  const s = Math.max(0, w / 2 - r);
+  const arc = Math.PI * r;
+  const perimeter = 4 * s + 2 * arc;
+  let d = (((Number(t) || 0) % 1) + 1) % 1 * perimeter;
+  if (d <= s) return { x: d, y: -r, nx: 0, ny: -1 };
+  d -= s;
+  if (d <= arc) { const a = d / r; return { x: s + Math.sin(a) * r, y: -Math.cos(a) * r, nx: Math.sin(a), ny: -Math.cos(a) }; }
+  d -= arc;
+  if (d <= 2 * s) return { x: s - d, y: r, nx: 0, ny: 1 };
+  d -= 2 * s;
+  if (d <= arc) { const a = d / r; return { x: -s - Math.sin(a) * r, y: Math.cos(a) * r, nx: -Math.sin(a), ny: Math.cos(a) }; }
+  d -= arc;
+  return { x: -s + d, y: -r, nx: 0, ny: -1 };
+}
+
+function stadiumPath(cx, cy, w, h) {
+  const r = h / 2;
+  const s = Math.max(0, w / 2 - r);
+  return `M ${cx} ${cy - r} H ${cx + s} A ${r} ${r} 0 0 1 ${cx + s} ${cy + r} H ${cx - s} A ${r} ${r} 0 0 1 ${cx - s} ${cy - r} Z`;
+}
+
+module.exports = { stadiumPoint, stadiumPath, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint };

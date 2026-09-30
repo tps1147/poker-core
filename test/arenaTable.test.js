@@ -1,14 +1,15 @@
 // The Stats table: seats, each arena's decor, the dealer seat, the rank band, the rail.
 //   node test/arenaTable.test.js
 const assert = require('node:assert/strict');
-const { ARENAS, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, SEAT_GLYPHS, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
+const { stadiumPoint, stadiumPath, ARENAS, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
 
 assert.deepEqual(TABLE_SEATS.map((s) => s.key), ['rank', 'winRate', 'seasonHigh', 'today', 'streak', 'hands']);
 for (const seat of TABLE_SEATS) {
-  assert.ok(SEAT_GLYPHS[seat.key], `${seat.key} has a glyph`);
   assert.ok(seat.label.length <= 8 && seat.name, `${seat.key}: a short label and a spoken name`);
 }
-for (const a of ARENAS) assert.ok(MOTIFS[MOTIF_OF[a.id]], `${a.id} has a motif`);
+for (const a of ARENAS) assert.ok(MOTIFS[MOTIF_OF[a.id]] && EMBLEM_OF[a.id], `${a.id} has a motif and an emblem`);
+assert.deepEqual(ARENAS.map((_, i) => tableDecor(i).emblem), ['deck', 'puck', 'card', 'card', 'compass', 'compass', 'crown', 'crown']);
+assert.ok(TABLE_LAYOUT.tableW > TABLE_LAYOUT.tableH, 'the table is a wide stadium, as every base table is');
 
 // Each arena earns one more rail feature than the last; the first has none, the last all.
 const counts = ARENAS.map((_, i) => Object.values(tableDecor(i).features).filter(Boolean).length);
@@ -32,4 +33,15 @@ const right = railPoint(0.25, 100, 50);
 assert.ok(Math.abs(top.x) < 1e-9 && Math.abs(top.y + 50) < 1e-9, 'the top of the rail');
 assert.ok(Math.abs(right.x - 100) < 1e-9 && Math.abs(right.y) < 1e-9, 'a quarter turn clockwise is the right end');
 
-console.log('arenaTable ok: seats, decor per arena, dealer seat, rank band, rail');
+// The stadium: w 300, h 160 -> ends of radius 80, straights 140 long.
+const near = (a, b) => Math.abs(a - b) < 1e-6;
+const s0 = stadiumPoint(0, 300, 160);
+assert.ok(near(s0.x, 0) && near(s0.y, -80) && s0.ny === -1, 'top centre, facing up');
+const perim = 4 * 70 + 2 * Math.PI * 80;
+const east = stadiumPoint((70 + Math.PI * 40) / perim, 300, 160);
+assert.ok(near(east.x, 150) && near(east.y, 0) && near(east.nx, 1), 'the right end, facing right');
+const south = stadiumPoint(0.5, 300, 160);
+assert.ok(near(south.x, 0) && near(south.y, 80) && south.ny === 1, 'half way round is the bottom centre');
+assert.ok(stadiumPath(150, 80, 300, 160).startsWith('M 150 0 H 220 A 80 80'));
+
+console.log('arenaTable ok: seats, decor per arena, dealer seat, rank band, rail, stadium');
