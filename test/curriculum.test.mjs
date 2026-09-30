@@ -127,6 +127,11 @@ check("covers: every live lesson has one, each names a live lesson, paths are CD
   assert.equal(lessonCover("no-such-lesson"), null);
   assert.equal(lessonCover(null), null);
   assert.equal(COVER_ASPECT, 1.5);
+  const { SKILL_MEDALS, skillMedal } = learn;
+  assert.equal(SKILL_MEDALS.length, 28, 'one medallion per skill node');
+  assert.equal(new Set(SKILL_MEDALS).size, 28);
+  assert.equal(skillMedal('t1-pot-odds'), '/academy/skills/t1-pot-odds.webp');
+  assert.equal(skillMedal('t9-nope'), null);
 });
 
 console.log(`curriculum checks passed (${checks}): five levels, the course tree, 20 live lessons in course order, a 118-lesson roadmap, the path, the lesson loop, the chapter hand, the covers`);

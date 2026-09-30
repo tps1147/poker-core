@@ -45,3 +45,23 @@ export function lessonCover(id) {
     loop: entry.loop ? `/academy/covers/${id}.mp4` : null,
   };
 }
+
+// Skill medallions: one brass medallion per skill-tree node (the 28 concept nodes the apps' tree
+// draws), cut round with a transparent edge so it sits on either theme:
+//   /academy/skills/<node id>.webp   320 x 320
+// A node missing here has no medallion yet; clients draw their plain dot.
+export const SKILL_MEDALS = Object.freeze([
+  "t0-hand-rankings", "t0-positions", "t0-betting-actions",
+  "t1-outs-rule-24", "t1-equity", "t1-pot-odds", "t1-implied-odds", "t1-ev", "t1-spr",
+  "t2-starting-hands", "t2-rfi-by-position", "t2-blind-defense", "t2-3betting",
+  "t3-ranges", "t3-board-texture", "t3-cbetting", "t3-bet-sizing",
+  "t4-fold-equity-semibluff", "t4-bluffing", "t4-mdf-bluffcatch", "t4-barreling-blockers",
+  "t5-range-narrowing", "t5-player-typing", "t5-gto-to-exploit",
+  "t6-bankroll", "t6-tilt", "t6-icm", "t6-multiway",
+]);
+const MEDAL_SET = new Set(SKILL_MEDALS);
+
+// A skill node's medallion as a CDN-relative path, or null.
+export function skillMedal(nodeId) {
+  return nodeId && MEDAL_SET.has(nodeId) ? `/academy/skills/${nodeId}.webp` : null;
+}
