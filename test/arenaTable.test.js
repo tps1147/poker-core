@@ -4,7 +4,10 @@ const assert = require('node:assert/strict');
 const { ARENAS, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, SEAT_GLYPHS, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
 
 assert.deepEqual(TABLE_SEATS.map((s) => s.key), ['rank', 'winRate', 'seasonHigh', 'today', 'streak', 'hands']);
-for (const seat of TABLE_SEATS) assert.ok(SEAT_GLYPHS[seat.key], `${seat.key} has a glyph`);
+for (const seat of TABLE_SEATS) {
+  assert.ok(SEAT_GLYPHS[seat.key], `${seat.key} has a glyph`);
+  assert.ok(seat.label.length <= 8 && seat.name, `${seat.key}: a short label and a spoken name`);
+}
 for (const a of ARENAS) assert.ok(MOTIFS[MOTIF_OF[a.id]], `${a.id} has a motif`);
 
 // Each arena earns one more rail feature than the last; the first has none, the last all.

@@ -55,13 +55,15 @@ const SEAT_GLYPHS = Object.freeze({
 });
 
 // Clockwise from the top of the table. `at` is the seat's angle on the rail (0 = top, 0.5 = bottom).
+// `label` is the short word under the figure (a phone's side seat has about 54pt for it); `name` is
+// what a screen reader hears.
 const TABLE_SEATS = Object.freeze([
-  Object.freeze({ key: 'rank', label: 'Rank', at: 0 }),
-  Object.freeze({ key: 'winRate', label: 'Win rate', at: 0.17 }),
-  Object.freeze({ key: 'seasonHigh', label: 'Season high', at: 0.33 }),
-  Object.freeze({ key: 'today', label: 'Today', at: 0.5 }),
-  Object.freeze({ key: 'streak', label: 'Streak', at: 0.67 }),
-  Object.freeze({ key: 'hands', label: 'Hands', at: 0.83 }),
+  Object.freeze({ key: 'rank', label: 'Rank', name: 'Rank', at: 0 }),
+  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', at: 0.17 }),
+  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', at: 0.33 }),
+  Object.freeze({ key: 'today', label: 'Today', name: 'Today', at: 0.5 }),
+  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', at: 0.67 }),
+  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', at: 0.83 }),
 ]);
 
 function tableDecor(index) {
