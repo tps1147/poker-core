@@ -8,8 +8,10 @@
 //                      hourglass, brazier, dealt cards)
 //   TABLE_LAYOUT       the stage's proportions: the base table (a stadium) and the seat size
 //   tableDecor(index)  the arena's table: its emblem over the pot (grander as you climb), its motif,
-//                      the rail features it has earned (cumulative, one more per arena), how many
-//                      motifs travel the rail, whether one crosses the felt
+//                      its rail (ARENA_RAILS: pattern, metal, sweep, twinkle), how many motifs travel
+//                      the rail, whether one crosses the felt
+//   railArt(pattern, w, h)  the rail's drawing round a w x h table, centre-relative: line paths,
+//                      accent paths, filled paths, stamped motifs (x, y, angle, size, motif), gems
 //   dealerSeat(stats)  where the dealer button sits: on the streak when you are on a run (3+ days),
 //                      else on today when today is up, else nowhere (never on a stat that is down)
 //   rankBand(rank)     the leaderboard's say on the table: 'crown' top 10, 'gilt' top 100, 'brass'
@@ -26,8 +28,20 @@
 
 const { ARENAS } = require('./arenaClimb');
 
-// Every feature the rail can wear, in the order the arenas earn them (the first arena has none).
-const RAIL_FEATURES = Object.freeze(['inlay', 'studs', 'doubleRail', 'motifs', 'gems', 'filigree', 'crown']);
+// THE RAIL, by arena: each arena's border drawn round the table in its card back's metal (the
+// Poker.com/src/assets/images/cardBacks set): a pattern, a metal (the dark-theme colour; each app
+// darkens it into ink for the light theme), an accent where the back has two metals, and the
+// animation it earns: sweep (a light running round the border) and twinkle (gems in turn).
+const ARENA_RAILS = Object.freeze([
+  Object.freeze({ pattern: 'ticks', metal: '#7fa3d6', accent: null, sweep: false, twinkle: false }),
+  Object.freeze({ pattern: 'hoops', metal: '#b8bdc6', accent: null, sweep: false, twinkle: false }),
+  Object.freeze({ pattern: 'vine', metal: '#c98a5e', accent: null, sweep: false, twinkle: false }),
+  Object.freeze({ pattern: 'deco', metal: '#dfe3ea', accent: null, sweep: true, twinkle: false }),
+  Object.freeze({ pattern: 'clubs', metal: '#45b487', accent: '#d6b780', sweep: true, twinkle: false }),
+  Object.freeze({ pattern: 'lattice', metal: '#d9ae55', accent: null, sweep: true, twinkle: true }),
+  Object.freeze({ pattern: 'battlement', metal: '#62c9b9', accent: '#dfe3ea', sweep: true, twinkle: true }),
+  Object.freeze({ pattern: 'filigree', metal: '#e3b95c', accent: '#f0d9a0', sweep: true, twinkle: true }),
+]);
 
 // The emblem over the pot, by arena: a fresh sealed deck to start, then the dealer's puck, the card
 // crest, the suit compass, and the crown of cards (the flop as a crown) for the last two arenas.
@@ -45,7 +59,7 @@ const EMBLEM_OF = Object.freeze({
 // The stage, as fractions of its width: the base table (stadium) in the middle, the seats on its edge.
 // The stage, as fractions of its width: the base table (a wide stadium) in the middle, the seats
 // standing on its top and bottom edges (`sink` of each seat over the cloth, the rest outside).
-const TABLE_LAYOUT = Object.freeze({ tableW: 0.74, tableH: 0.38, stageH: 0.86, seat: 52, sink: 12 });
+const TABLE_LAYOUT = Object.freeze({ tableW: 0.66, tableH: 0.33, stageH: 0.76, seat: 50, sink: 12 });
 
 const MOTIF_OF = Object.freeze({
   'rabbits-burrow': 'watch',
@@ -75,25 +89,23 @@ const MOTIFS = Object.freeze({
 // `label` is the short word by the figure (keep it to 8 characters); `name` is what a screen
 // reader hears.
 const TABLE_SEATS = Object.freeze([
-  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', row: 'top', x: -0.34 }),
+  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', row: 'top', x: -0.37 }),
   Object.freeze({ key: 'rank', label: 'Rank', name: 'Rank', row: 'top', x: 0 }),
-  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', row: 'top', x: 0.34 }),
-  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', row: 'bottom', x: -0.34 }),
+  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', row: 'top', x: 0.37 }),
+  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', row: 'bottom', x: -0.37 }),
   Object.freeze({ key: 'today', label: 'Today', name: 'Today', row: 'bottom', x: 0 }),
-  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', row: 'bottom', x: 0.34 }),
+  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', row: 'bottom', x: 0.37 }),
 ]);
 
 function tableDecor(index) {
   const i = Math.max(0, Math.min(ARENAS.length - 1, Number.isFinite(index) ? Math.floor(index) : 0));
   const arena = ARENAS[i];
-  const features = {};
-  RAIL_FEATURES.forEach((name, n) => { features[name] = i > n; });
   return {
     arena,
     level: i,
     emblem: EMBLEM_OF[arena.id],
     motif: MOTIF_OF[arena.id],
-    features,
+    rail: ARENA_RAILS[i],
     travellers: 1 + Math.floor(i / 2),
     crossing: i >= 2,
   };
@@ -151,4 +163,117 @@ function stadiumPath(cx, cy, w, h) {
   return `M ${cx} ${cy - r} H ${cx + s} A ${r} ${r} 0 0 1 ${cx + s} ${cy + r} H ${cx - s} A ${r} ${r} 0 0 1 ${cx - s} ${cy - r} Z`;
 }
 
-module.exports = { stadiumPoint, stadiumPath, edgePoint, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint };
+// THE RAIL'S DRAWING. Everything sits on the rail's centre line, GAP outside the table's edge,
+// placed by arc length so the spacing is even round the curves. at(d, off) is the point at arc
+// length d along that line pushed off further out, with its tangent (tx, ty) and outward normal.
+const GAP = 7;
+const fx = (n) => Number(n.toFixed(1));
+
+function railArt(pattern, w, h) {
+  const W2 = w + GAP * 2;
+  const H2 = h + GAP * 2;
+  const P = 4 * Math.max(0, W2 / 2 - H2 / 2) + Math.PI * H2;
+  const at = (d, off = 0) => {
+    const p = stadiumPoint(d / P, W2, H2);
+    return { x: p.x + p.nx * off, y: p.y + p.ny * off, nx: p.nx, ny: p.ny, tx: -p.ny, ty: p.nx };
+  };
+  const band = (off) => stadiumPath(0, 0, W2 + off * 2, H2 + off * 2);
+  const pt = (q) => `${fx(q.x)} ${fx(q.y)}`;
+  const move = (q, dt, dn) => ({ x: q.x + q.tx * dt + q.nx * dn, y: q.y + q.ty * dt + q.ny * dn });
+  const dot = (q, r) => `M ${fx(q.x - r)} ${fx(q.y)} a ${r} ${r} 0 1 0 ${r * 2} 0 a ${r} ${r} 0 1 0 ${-r * 2} 0`;
+  const angleOf = (q) => fx((Math.atan2(q.ty, q.tx) * 180) / Math.PI);
+  const every = (step, fn) => { const n = Math.max(1, Math.round(P / step)); for (let k = 0; k < n; k += 1) fn((k * P) / n, k, n); };
+  const gaps = (ks = [1, 3, 5, 7, 9, 11]) => ks.map((k) => { const q = at((k / 12) * P); return { x: fx(q.x), y: fx(q.y) }; });
+  const art = { lines: [], accents: [], fills: [], stamps: [], gems: [] };
+
+  if (pattern === 'ticks') {
+    // A pocket watch's dial: sixty ticks, every fifth long.
+    art.lines.push(band(-2.5));
+    let d = '';
+    for (let k = 0; k < 60; k += 1) { const q = at((k / 60) * P, -2.5); d += `M ${pt(q)} L ${pt(move(q, 0, k % 5 === 0 ? 7 : 3.5))} `; }
+    art.lines.push(d.trim());
+  } else if (pattern === 'hoops') {
+    // Croquet hoops standing on the rail, a ball between each pair.
+    art.lines.push(band(-1));
+    let d = ''; let balls = '';
+    every(30, (s, k, n) => {
+      const q = at(s, -1);
+      d += `M ${pt(move(q, -4, 0))} L ${pt(move(q, -4, 5))} Q ${pt(move(q, -4, 10))} ${pt(move(q, 0, 10))} Q ${pt(move(q, 4, 10))} ${pt(move(q, 4, 5))} L ${pt(move(q, 4, 0))} `;
+      balls += `${dot(at(s + P / n / 2, 1.8), 1.7)} `;
+    });
+    art.lines.push(d.trim()); art.fills.push(balls.trim());
+  } else if (pattern === 'vine') {
+    // A copper vine winding round the rail, leaves at its crests.
+    let d = '';
+    for (let s = 0; s <= P; s += 2) { const q = at(s, 2.8 * Math.sin((2 * Math.PI * s) / 18)); d += `${s === 0 ? 'M' : 'L'} ${pt(q)} `; }
+    art.lines.push(`${d.trim()} Z`);
+    let leaves = '';
+    every(18, (s, k) => {
+      const q = at(s + 4.5, k % 2 ? -4.5 : 4.5);
+      leaves += `M ${pt(move(q, -3.2, 0))} Q ${pt(move(q, 0, 2.4))} ${pt(move(q, 3.2, 0))} Q ${pt(move(q, 0, -2.4))} ${pt(move(q, -3.2, 0))} Z `;
+    });
+    art.fills.push(leaves.trim());
+  } else if (pattern === 'deco') {
+    // An art-deco double rail with sunbursts fanning from both ends.
+    art.lines.push(band(-2.5), band(2.5));
+    const r = H2 / 2 + 6;
+    const s0 = Math.max(0, W2 / 2 - H2 / 2);
+    let d = '';
+    [-1, 1].forEach((side) => {
+      for (let k = -4; k <= 4; k += 1) {
+        const a = (k * 15 * Math.PI) / 180;
+        const dx = side * Math.cos(a); const dy = Math.sin(a);
+        const len = k % 2 ? 6 : 11;
+        d += `M ${fx(side * s0 + dx * r)} ${fx(dy * r)} L ${fx(side * s0 + dx * (r + len))} ${fx(dy * (r + len))} `;
+      }
+    });
+    art.lines.push(d.trim());
+  } else if (pattern === 'clubs') {
+    // An emerald band, a chain of gold clubs round it.
+    art.lines.push(band(-2), band(2));
+    every(30, (s) => { const q = at(s); art.stamps.push({ x: fx(q.x), y: fx(q.y), angle: angleOf(q), size: 11, motif: 'club', accent: true }); });
+  } else if (pattern === 'lattice') {
+    // The vault's gold lattice: a chain of diamonds, every other one solid.
+    let outline = ''; let solid = '';
+    every(11, (s, k) => {
+      const q = at(s);
+      const rh = `M ${pt(move(q, -5, 0))} L ${pt(move(q, 0, 2.8))} L ${pt(move(q, 5, 0))} L ${pt(move(q, 0, -2.8))} Z `;
+      if (k % 2) solid += rh; else outline += rh;
+    });
+    art.lines.push(outline.trim()); art.fills.push(solid.trim());
+    art.gems = gaps();
+  } else if (pattern === 'battlement') {
+    // The keep's battlements along the outer edge, spades at the ends.
+    art.lines.push(band(-2.5));
+    let d = ''; let prev = 0;
+    const n = Math.round(P / 8);
+    for (let k = 0; k <= n; k += 1) {
+      const s = (k * P) / n; const off = k % 2 ? 6 : 1;
+      if (k === 0) d += `M ${pt(at(s, off))} `;
+      else d += `L ${pt(at(s, prev))} L ${pt(at(s, off))} `;
+      prev = off;
+    }
+    art.lines.push(`${d.trim()} Z`);
+    [0.25, 0.75].forEach((t) => { const q = at(t * P, 1); art.stamps.push({ x: fx(q.x), y: fx(q.y), angle: 0, size: 13, motif: 'spade', accent: true }); });
+    art.gems = gaps([1, 5, 7, 11]);
+  } else if (pattern === 'filigree') {
+    // The throne's gold filigree: a double rail and scrolls curling off it, hearts at the ends.
+    art.lines.push(band(-2.5), band(2));
+    let d = ''; let ends = '';
+    every(28, (s) => {
+      // A pair of scrolls back to back, each curling outward off the rail.
+      const q = at(s, 2);
+      [-1, 1].forEach((dir) => {
+        const b = move(q, dir * 8, 5);
+        d += `M ${pt(q)} Q ${pt(move(q, dir * 2, 9))} ${pt(b)} `;
+        ends += `${dot(b, 1.1)} `;
+      });
+    });
+    art.accents.push(d.trim()); art.fills.push(ends.trim());
+    [0.25, 0.75].forEach((t) => { const q = at(t * P, 1); art.stamps.push({ x: fx(q.x), y: fx(q.y), angle: 0, size: 14, motif: 'heart', accent: false }); });
+    art.gems = gaps([1, 5, 7, 11]);
+  }
+  return art;
+}
+
+module.exports = { railArt, ARENA_RAILS, stadiumPoint, stadiumPath, edgePoint, TABLE_SEATS, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint };

@@ -1,7 +1,7 @@
 // The Stats table: seats, each arena's decor, the dealer seat, the rank band, the rail.
 //   node test/arenaTable.test.js
 const assert = require('node:assert/strict');
-const { stadiumPoint, stadiumPath, edgePoint, ARENAS, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
+const { railArt, ARENA_RAILS, stadiumPoint, stadiumPath, edgePoint, ARENAS, TABLE_SEATS, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
 
 assert.deepEqual(TABLE_SEATS.map((s) => s.key), ['hands', 'rank', 'winRate', 'streak', 'today', 'seasonHigh']);
 assert.deepEqual(TABLE_SEATS.map((s) => s.row), ['top', 'top', 'top', 'bottom', 'bottom', 'bottom'], 'three a side, as a six-handed table');
@@ -12,11 +12,18 @@ for (const a of ARENAS) assert.ok(MOTIFS[MOTIF_OF[a.id]] && EMBLEM_OF[a.id], `${
 assert.deepEqual(ARENAS.map((_, i) => tableDecor(i).emblem), ['deck', 'puck', 'card', 'card', 'compass', 'compass', 'crown', 'crown']);
 assert.ok(TABLE_LAYOUT.tableW > TABLE_LAYOUT.tableH, 'the table is a wide stadium, as every base table is');
 
-// Each arena earns one more rail feature than the last; the first has none, the last all.
-const counts = ARENAS.map((_, i) => Object.values(tableDecor(i).features).filter(Boolean).length);
-assert.deepEqual(counts, [0, 1, 2, 3, 4, 5, 6, 7]);
-assert.equal(RAIL_FEATURES.length, ARENAS.length - 1);
-assert.deepEqual([tableDecor(2).motif, tableDecor(2).features.studs, tableDecor(2).features.doubleRail], ['teacup', true, false]);
+// Each arena has its own rail, and every rail draws something round a real table.
+assert.equal(ARENA_RAILS.length, ARENAS.length);
+assert.equal(new Set(ARENA_RAILS.map((r) => r.pattern)).size, ARENAS.length, 'eight different borders');
+assert.deepEqual([tableDecor(2).rail.pattern, tableDecor(7).rail.sweep, tableDecor(0).rail.sweep], ['vine', true, false]);
+for (const rail of ARENA_RAILS) {
+  const art = railArt(rail.pattern, 260, 130);
+  const drawn = art.lines.length + art.accents.length + art.fills.length + art.stamps.length;
+  assert.ok(drawn > 0, `${rail.pattern} draws`);
+  for (const d of [...art.lines, ...art.accents, ...art.fills]) assert.ok(/^M /.test(d) && !d.includes('NaN'), `${rail.pattern}: a clean path`);
+}
+assert.equal(railArt('lattice', 260, 130).gems.length, 6);
+assert.equal(railArt('clubs', 260, 130).stamps[0].motif, 'club');
 assert.deepEqual(ARENAS.map((_, i) => tableDecor(i).travellers), [1, 1, 2, 2, 3, 3, 4, 4]);
 assert.equal(tableDecor(-3).level, 0, 'clamped low');
 assert.equal(tableDecor(99).level, 7, 'clamped high');
