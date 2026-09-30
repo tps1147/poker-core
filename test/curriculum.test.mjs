@@ -132,6 +132,11 @@ check("covers: every live lesson has one, each names a live lesson, paths are CD
   assert.equal(new Set(SKILL_MEDALS).size, 28);
   assert.equal(skillMedal('t1-pot-odds'), '/academy/skills/t1-pot-odds.webp');
   assert.equal(skillMedal('t9-nope'), null);
+  const { chapterArt, CHAPTER_ART, CHAPTER_HAND_ART } = learn;
+  for (const ch of CHAPTERS.filter((c) => c.lessons.some((s) => s.lesson))) assert.ok(CHAPTER_ART[ch.id], `${ch.id} (live) has its art`);
+  assert.deepEqual(chapterArt('pressure'), { still: '/academy/chapters/pressure.jpg', loop: null });
+  assert.equal(chapterArt('how-a-hand-plays'), null, 'a planned chapter has none yet');
+  assert.ok(CHAPTER_HAND_ART.still && CHAPTER_HAND_ART.seal);
 });
 
 console.log(`curriculum checks passed (${checks}): five levels, the course tree, 20 live lessons in course order, a 118-lesson roadmap, the path, the lesson loop, the chapter hand, the covers`);

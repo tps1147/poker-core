@@ -65,3 +65,34 @@ const MEDAL_SET = new Set(SKILL_MEDALS);
 export function skillMedal(nodeId) {
   return nodeId && MEDAL_SET.has(nodeId) ? `/academy/skills/${nodeId}.webp` : null;
 }
+
+// Chapter art: each chapter's world, its lessons' islands joined into one larger island with a
+// winding path and the chip hero at its start, shown at the top of the chapter page (16:9):
+//   /academy/chapters/<chapter id>.jpg   the still, 1600 x 900
+//   /academy/chapters/<chapter id>.mp4   a seamless loop (when `loop`; the first set is stills only)
+export const CHAPTER_ART_ASPECT = 16 / 9;
+export const CHAPTER_ART = Object.freeze({
+  "table-literacy": Object.freeze({ loop: false }),
+  "math-spine-1": Object.freeze({ loop: false }),
+  "math-spine-2": Object.freeze({ loop: false }),
+  "preflop-discipline": Object.freeze({ loop: false }),
+  "postflop-fundamentals": Object.freeze({ loop: false }),
+  "pressure": Object.freeze({ loop: false }),
+});
+
+export function chapterArt(id) {
+  const entry = id ? CHAPTER_ART[id] : null;
+  if (!entry) return null;
+  return {
+    still: `/academy/chapters/${id}.jpg`,
+    loop: entry.loop ? `/academy/chapters/${id}.mp4` : null,
+  };
+}
+
+// The chapter hand's own art: its opening (the chip hero at a spotlit table, five cards face down,
+// the seal stamp waiting; 3:2, a still for now, loop null) and the seal it awards (cut round).
+export const CHAPTER_HAND_ART = Object.freeze({
+  still: "/academy/chapter-hand/intro.jpg",
+  loop: null,
+  seal: "/academy/chapter-hand/seal.webp",
+});
