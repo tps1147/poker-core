@@ -59,7 +59,7 @@ const EMBLEM_OF = Object.freeze({
 // The stage, as fractions of its width: the base table (stadium) in the middle, the seats on its edge.
 // The stage, as fractions of its width: the base table (a wide stadium) in the middle, the seats
 // standing on its top and bottom edges (`sink` of each seat over the cloth, the rest outside).
-const TABLE_LAYOUT = Object.freeze({ tableW: 0.66, tableH: 0.33, stageH: 0.76, seat: 50, sink: 12 });
+const TABLE_LAYOUT = Object.freeze({ tableW: 0.8, tableH: 0.4, stageH: 0.79, seat: 40, sink: 8 });
 
 const MOTIF_OF = Object.freeze({
   'rabbits-burrow': 'watch',
@@ -89,12 +89,12 @@ const MOTIFS = Object.freeze({
 // `label` is the short word by the figure (keep it to 8 characters); `name` is what a screen
 // reader hears.
 const TABLE_SEATS = Object.freeze([
-  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', row: 'top', x: -0.37 }),
+  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', row: 'top', x: -0.35 }),
   Object.freeze({ key: 'rank', label: 'Rank', name: 'Rank', row: 'top', x: 0 }),
-  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', row: 'top', x: 0.37 }),
-  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', row: 'bottom', x: -0.37 }),
+  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', row: 'top', x: 0.35 }),
+  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', row: 'bottom', x: -0.35 }),
   Object.freeze({ key: 'today', label: 'Today', name: 'Today', row: 'bottom', x: 0 }),
-  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', row: 'bottom', x: 0.37 }),
+  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', row: 'bottom', x: 0.35 }),
 ]);
 
 function tableDecor(index) {
