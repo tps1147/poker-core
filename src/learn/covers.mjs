@@ -96,3 +96,16 @@ export const CHAPTER_HAND_ART = Object.freeze({
   loop: null,
   seal: "/academy/chapter-hand/seal.webp",
 });
+
+// The Stats page's six skill rings wear these medallions (the tree node closest to what each
+// ring reads).
+export const RING_MEDALS = Object.freeze({
+  pokerMath: "t1-pot-odds",
+  handSelection: "t2-starting-hands",
+  aggression: "t2-3betting",
+  discipline: "t2-blind-defense",
+  postflop: "t3-cbetting",
+  steadiness: "t6-tilt",
+});
+
+export const ringMedal = (ringKey) => skillMedal(RING_MEDALS[ringKey]);

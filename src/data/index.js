@@ -8,9 +8,11 @@
 //   botRoster      — the canonical 16-bot journey ladder with band-derived ratings
 //   preflopEquity  — generated real pre-flop equity table (copied from the server) +
 //                    canonicalKey/equityForTopPercent helpers
+//   arenaClimb     — the eight arenas' rating gates and sigils, arenaClimb(rating), sigilLattice
 
 module.exports = {
   ...require('./archetypeScout'),
   ...require('./botRoster'),
   ...require('./preflopEquity'),
+  ...require('./arenaClimb'),
 };

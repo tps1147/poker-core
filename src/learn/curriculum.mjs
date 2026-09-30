@@ -261,3 +261,21 @@ export function chapterStanding(pathChapter, { provedIds = new Set(), seals = {}
   const sealed = hasHand ? !!seals?.[pathChapter.id] : all;
   return { proved, total: lessons.length, complete: all, sealed, handOpen: hasHand && all && !sealed, hasHand };
 }
+
+// A detected leak's FIX, the Stats page's "Fix this next": the lesson that teaches it (a live
+// definition id), and through its curriculum slot the puzzle topic to drill and the Gauntlet
+// archetype that punishes it. Leak keys are the apps' stats leak keys.
+export const LEAK_LESSONS = Object.freeze({
+  "leak-vpip": "starting-hands-workspace-v1",
+  "leak-passive": "cbetting-workspace-v1",
+  "leak-fold": "blind-defense-workspace-v1",
+  "leak-station": "ranges-workspace-v1",
+  "leak-math": "pot-odds-workspace-v2",
+});
+
+export function leakFix(leakKey) {
+  const lesson = LEAK_LESSONS[leakKey] || null;
+  const slot = lesson ? lessonSlot(lesson) : null;
+  if (!slot) return null;
+  return { lesson, name: slot.name, topic: slot.topic, opponent: slot.opponent, chapter: chapterOfLesson(lesson)?.id || null };
+}

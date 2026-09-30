@@ -137,6 +137,11 @@ check("covers: every live lesson has one, each names a live lesson, paths are CD
   assert.deepEqual(chapterArt('pressure'), { still: '/academy/chapters/pressure.jpg', loop: null });
   assert.equal(chapterArt('how-a-hand-plays'), null, 'a planned chapter has none yet');
   assert.ok(CHAPTER_HAND_ART.still && CHAPTER_HAND_ART.seal);
+  const { RING_MEDALS, ringMedal, LEAK_LESSONS, leakFix } = learn;
+  for (const key of Object.keys(RING_MEDALS)) assert.ok(ringMedal(key), `${key} wears a medallion`);
+  for (const key of Object.keys(LEAK_LESSONS)) { const fix = leakFix(key); assert.ok(fix && fix.name && fix.topic, `${key}: a lesson with a drill topic`); }
+  assert.deepEqual(leakFix('leak-passive'), { lesson: 'cbetting-workspace-v1', name: 'C-Betting: When The Flop Favors You', topic: 'postflop-cbet', opponent: 'tag', chapter: 'postflop-fundamentals' });
+  assert.equal(leakFix('leak-none'), null);
 });
 
 console.log(`curriculum checks passed (${checks}): five levels, the course tree, 20 live lessons in course order, a 118-lesson roadmap, the path, the lesson loop, the chapter hand, the covers`);
