@@ -1,7 +1,7 @@
 // The Stats table: seats, each arena's decor, the dealer seat, the rank band, the rail.
 //   node test/arenaTable.test.js
 const assert = require('node:assert/strict');
-const { railArt, ARENA_RAILS, stadiumPoint, stadiumPath, edgePoint, ARENAS, TABLE_SEATS, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
+const { ARENA_RAILS, stadiumPoint, stadiumPath, edgePoint, ARENAS, TABLE_SEATS, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
 
 assert.deepEqual(TABLE_SEATS.map((s) => s.key), ['hands', 'rank', 'winRate', 'streak', 'today', 'seasonHigh']);
 assert.deepEqual(TABLE_SEATS.map((s) => s.row), ['top', 'top', 'top', 'bottom', 'bottom', 'bottom'], 'three a side, as a six-handed table');
@@ -12,18 +12,14 @@ for (const a of ARENAS) assert.ok(MOTIFS[MOTIF_OF[a.id]] && EMBLEM_OF[a.id], `${
 assert.deepEqual(ARENAS.map((_, i) => tableDecor(i).emblem), ['deck', 'puck', 'card', 'card', 'compass', 'compass', 'crown', 'crown']);
 assert.ok(TABLE_LAYOUT.tableW > TABLE_LAYOUT.tableH, 'the table is a wide stadium, as every base table is');
 
-// Each arena has its own rail, and every rail draws something round a real table.
+// Each arena has its own ring, and every ring covers the table it dresses.
 assert.equal(ARENA_RAILS.length, ARENAS.length);
-assert.equal(new Set(ARENA_RAILS.map((r) => r.pattern)).size, ARENAS.length, 'eight different borders');
-assert.deepEqual([tableDecor(2).rail.pattern, tableDecor(7).rail.sweep, tableDecor(0).rail.sweep], ['vine', true, false]);
 for (const rail of ARENA_RAILS) {
-  const art = railArt(rail.pattern, 260, 130);
-  const drawn = art.lines.length + art.accents.length + art.fills.length + art.stamps.length;
-  assert.ok(drawn > 0, `${rail.pattern} draws`);
-  for (const d of [...art.lines, ...art.accents, ...art.fills]) assert.ok(/^M /.test(d) && !d.includes('NaN'), `${rail.pattern}: a clean path`);
+  const r = rail.ring;
+  assert.ok(r.x <= 0 && r.y <= 0 && r.x + r.w >= 1 && r.y + r.h >= 1, 'the ring reaches past the table on every side');
+  assert.ok(/^#[0-9a-f]{6}$/.test(rail.metal));
 }
-assert.equal(railArt('lattice', 260, 130).gems.length, 6);
-assert.equal(railArt('clubs', 260, 130).stamps[0].motif, 'club');
+assert.deepEqual([tableDecor(0).rail.shine, tableDecor(2).rail.shine], [false, true]);
 assert.deepEqual(ARENAS.map((_, i) => tableDecor(i).travellers), [1, 1, 2, 2, 3, 3, 4, 4]);
 assert.equal(tableDecor(-3).level, 0, 'clamped low');
 assert.equal(tableDecor(99).level, 7, 'clamped high');
