@@ -17,8 +17,9 @@
 //   railPoint(t, rx, ry)  a point on the rail ellipse, t 0..1 clockwise from the top
 //   stadiumPoint(t, w, h) a point on the base table's own outline (a stadium: w wide, h tall, ends
 //                         of radius h/2), t 0..1 of its perimeter clockwise from the top centre,
-//                         with the outward normal: where the seats, studs and travellers sit
+//                         with the outward normal: where the studs and travellers sit
 //   stadiumPath(cx, cy, w, h)  that outline as SVG path data, clockwise from the top centre
+//   edgePoint(x, row, w, h)    a seat's place: the top or bottom outline at x (a fraction of w)
 //
 // MOTIFS are 24x24 path data (one per arena), drawn the same way by react-native-svg and the web's
 // <svg>.
@@ -42,7 +43,9 @@ const EMBLEM_OF = Object.freeze({
 });
 
 // The stage, as fractions of its width: the base table (stadium) in the middle, the seats on its edge.
-const TABLE_LAYOUT = Object.freeze({ tableW: 0.62, tableH: 0.44, stageH: 0.82, seat: 52 });
+// The stage, as fractions of its width: the base table (a wide stadium) in the middle, the seats
+// standing on its top and bottom edges (`sink` of each seat over the cloth, the rest outside).
+const TABLE_LAYOUT = Object.freeze({ tableW: 0.74, tableH: 0.38, stageH: 0.86, seat: 52, sink: 12 });
 
 const MOTIF_OF = Object.freeze({
   'rabbits-burrow': 'watch',
@@ -67,16 +70,17 @@ const MOTIFS = Object.freeze({
   heart: Object.freeze({ mode: 'fill', d: 'M12 20.5C6.5 16.2 3 13 3 9a4.5 4.5 0 0 1 9-1.2A4.5 4.5 0 0 1 21 9c0 4-3.5 7.2-9 11.5z' }),
 });
 
-// Clockwise from the top of the table. `at` is the seat's angle on the rail (0 = top, 0.5 = bottom).
-// `label` is the short word under the figure (a phone's side seat has about 54pt for it); `name` is
-// what a screen reader hears.
+// Three seats along the top edge and three along the bottom, the way a six-handed table seats its
+// players: `x` is the seat's place along the table's width (-0.5 .. 0.5 of it), `row` its edge.
+// `label` is the short word by the figure (keep it to 8 characters); `name` is what a screen
+// reader hears.
 const TABLE_SEATS = Object.freeze([
-  Object.freeze({ key: 'rank', label: 'Rank', name: 'Rank', at: 0 }),
-  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', at: 0.17 }),
-  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', at: 0.33 }),
-  Object.freeze({ key: 'today', label: 'Today', name: 'Today', at: 0.5 }),
-  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', at: 0.67 }),
-  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', at: 0.83 }),
+  Object.freeze({ key: 'hands', label: 'Hands', name: 'Hands played', row: 'top', x: -0.34 }),
+  Object.freeze({ key: 'rank', label: 'Rank', name: 'Rank', row: 'top', x: 0 }),
+  Object.freeze({ key: 'winRate', label: 'Win rate', name: 'Win rate', row: 'top', x: 0.34 }),
+  Object.freeze({ key: 'streak', label: 'Streak', name: 'Streak', row: 'bottom', x: -0.34 }),
+  Object.freeze({ key: 'today', label: 'Today', name: 'Today', row: 'bottom', x: 0 }),
+  Object.freeze({ key: 'seasonHigh', label: 'Best', name: 'Season high', row: 'bottom', x: 0.34 }),
 ]);
 
 function tableDecor(index) {
@@ -131,10 +135,20 @@ function stadiumPoint(t, w, h) {
   return { x: -s + d, y: -r, nx: 0, ny: -1 };
 }
 
+// Where a seat sits: the table's top or bottom outline at `x` (a fraction of its width), centre-relative.
+function edgePoint(x, row, w, h) {
+  const r = h / 2;
+  const s = Math.max(0, w / 2 - r);
+  const px = x * w;
+  const over = Math.max(0, Math.abs(px) - s);
+  const dy = over >= r ? 0 : Math.sqrt(r * r - over * over);
+  return { x: px, y: row === 'top' ? -dy : dy };
+}
+
 function stadiumPath(cx, cy, w, h) {
   const r = h / 2;
   const s = Math.max(0, w / 2 - r);
   return `M ${cx} ${cy - r} H ${cx + s} A ${r} ${r} 0 0 1 ${cx + s} ${cy + r} H ${cx - s} A ${r} ${r} 0 0 1 ${cx - s} ${cy - r} Z`;
 }
 
-module.exports = { stadiumPoint, stadiumPath, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint };
+module.exports = { stadiumPoint, stadiumPath, edgePoint, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint };

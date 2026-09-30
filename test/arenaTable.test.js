@@ -1,9 +1,10 @@
 // The Stats table: seats, each arena's decor, the dealer seat, the rank band, the rail.
 //   node test/arenaTable.test.js
 const assert = require('node:assert/strict');
-const { stadiumPoint, stadiumPath, ARENAS, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
+const { stadiumPoint, stadiumPath, edgePoint, ARENAS, TABLE_SEATS, RAIL_FEATURES, MOTIFS, MOTIF_OF, EMBLEM_OF, TABLE_LAYOUT, tableDecor, dealerSeat, rankBand, railPoint } = require('../src/data');
 
-assert.deepEqual(TABLE_SEATS.map((s) => s.key), ['rank', 'winRate', 'seasonHigh', 'today', 'streak', 'hands']);
+assert.deepEqual(TABLE_SEATS.map((s) => s.key), ['hands', 'rank', 'winRate', 'streak', 'today', 'seasonHigh']);
+assert.deepEqual(TABLE_SEATS.map((s) => s.row), ['top', 'top', 'top', 'bottom', 'bottom', 'bottom'], 'three a side, as a six-handed table');
 for (const seat of TABLE_SEATS) {
   assert.ok(seat.label.length <= 8 && seat.name, `${seat.key}: a short label and a spoken name`);
 }
@@ -43,5 +44,8 @@ assert.ok(near(east.x, 150) && near(east.y, 0) && near(east.nx, 1), 'the right e
 const south = stadiumPoint(0.5, 300, 160);
 assert.ok(near(south.x, 0) && near(south.y, 80) && south.ny === 1, 'half way round is the bottom centre');
 assert.ok(stadiumPath(150, 80, 300, 160).startsWith('M 150 0 H 220 A 80 80'));
+assert.deepEqual(edgePoint(0, 'top', 300, 160), { x: 0, y: -80 });
+const endSeat = edgePoint(0.34, 'bottom', 300, 160);
+assert.ok(near(endSeat.x, 102) && endSeat.y > 0 && endSeat.y < 80, 'a seat past the straight sits on the curve');
 
 console.log('arenaTable ok: seats, decor per arena, dealer seat, rank band, rail, stadium');
