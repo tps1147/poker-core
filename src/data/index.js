@@ -9,10 +9,12 @@
 //   preflopEquity  — generated real pre-flop equity table (copied from the server) +
 //                    canonicalKey/equityForTopPercent helpers
 //   arenaClimb     — the eight arenas' rating gates and sigils, arenaClimb(rating), sigilLattice
+//   arenaTable     — the Stats table: seats, each arena's table decor and motif, dealer seat, rank band
 
 module.exports = {
   ...require('./archetypeScout'),
   ...require('./botRoster'),
   ...require('./preflopEquity'),
   ...require('./arenaClimb'),
+  ...require('./arenaTable'),
 };
