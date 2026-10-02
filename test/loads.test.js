@@ -54,6 +54,8 @@ const expectFns = {
     'normalizeGameState', 'normalizePlayerList', 'normalizePuzzleState',
     'normalizeGameMode', 'isRankedMode',
   ],
+  './social': ['normalizeEmoji', 'vetQuickChat', 'getSendCooldown', 'buildSocialContext',
+    'resolveSeatKey', 'normalizeSocialEvent', 'createSocialState', 'tableSocialReducer', 'getSocialDeadline'],
   './data': ['getArchetypeScout', 'getArchetypeMeta', 'getBotById', 'isKnownBotId', 'canonicalKey', 'equityForTopPercent'],
   './puzzles': [
     'adaptiveBand', 'adaptiveDifficulty', 'normaliseDifficulty', 'ratingForDifficulty', 'kFactorForDifficulty',
