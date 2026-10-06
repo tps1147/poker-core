@@ -14,6 +14,17 @@
 //    kind, 22 as high card). Those checks now compare `!== false`.
 // 2. STRAIGHT FLUSH UNDER SIX SUITED CARDS (see the comment on hasRoyalFlush /
 //    hasStraightFlush below).
+//
+// And one in compareHands (test/compareHands.test.js):
+//
+// 3. KICKERS. compareHands stopped at the category's headline value, so equal
+//    pairs, trips, quads, two pairs and high cards always tied whatever else
+//    was in the hand: A♠K♦ vs A♣Q♦ on A♥9♣7♦4♠2♥ came back 0. evaluateHand
+//    now returns `kickers` (rank indices, high to low) for those categories
+//    and compareHands breaks ties on them; equal kickers are still a split.
+// 4. WHEEL BEFORE SIX-HIGH. hasStraight checked A-2-3-4-5 before the regular
+//    runs, so A + 6-5-4-3-2 read as a five-high straight and lost to a plain
+//    6-high straight on the same board. Regular runs are now checked first.
 
 const RANKS = '23456789TJQKA';
 const SUITS = '♠♥♦♣';
@@ -51,7 +62,7 @@ function evaluateHand(cards) {
 
     const fourOfAKind = hasFourOfAKind(sortedCards);
     if (fourOfAKind !== false) {
-        return { rank: HAND_RANKINGS.FOUR_OF_A_KIND, name: 'Four of a Kind', value: fourOfAKind };
+        return { rank: HAND_RANKINGS.FOUR_OF_A_KIND, name: 'Four of a Kind', value: fourOfAKind, kickers: kickersOf(sortedCards, [fourOfAKind], 1) };
     }
 
     const fullHouse = hasFullHouse(sortedCards);
@@ -71,24 +82,46 @@ function evaluateHand(cards) {
 
     const threeOfAKind = hasThreeOfAKind(sortedCards);
     if (threeOfAKind !== false) {
-        return { rank: HAND_RANKINGS.THREE_OF_A_KIND, name: 'Three of a Kind', value: threeOfAKind };
+        return { rank: HAND_RANKINGS.THREE_OF_A_KIND, name: 'Three of a Kind', value: threeOfAKind, kickers: kickersOf(sortedCards, [threeOfAKind], 2) };
     }
 
     const twoPair = hasTwoPair(sortedCards);
     if (twoPair) {
-        return { rank: HAND_RANKINGS.TWO_PAIR, name: 'Two Pair', values: twoPair };
+        return { rank: HAND_RANKINGS.TWO_PAIR, name: 'Two Pair', values: twoPair, kickers: kickersOf(sortedCards, twoPair, 1) };
     }
 
     const pair = hasOnePair(sortedCards);
     if (pair !== false) {
-        return { rank: HAND_RANKINGS.ONE_PAIR, name: 'One Pair', value: pair };
+        return { rank: HAND_RANKINGS.ONE_PAIR, name: 'One Pair', value: pair, kickers: kickersOf(sortedCards, [pair], 3) };
     }
 
     return {
         rank: HAND_RANKINGS.HIGH_CARD,
         name: 'High Card',
-        value: RANKS.indexOf(sortedCards[0].rank)
+        value: RANKS.indexOf(sortedCards[0].rank),
+        kickers: kickersOf(sortedCards, [RANKS.indexOf(sortedCards[0].rank)], 4)
     };
+}
+
+// The `count` highest rank indices among the cards whose rank is not in
+// `usedRanks` (the pair/trips/quads already counted). `cards` is sorted high
+// to low, so the first `count` survivors are the kickers.
+function kickersOf(cards, usedRanks, count) {
+    return cards
+        .map(card => RANKS.indexOf(card.rank))
+        .filter(rank => !usedRanks.includes(rank))
+        .slice(0, count);
+}
+
+// Ranks the kicker lists high to low; a hand object without `kickers` (built
+// before they existed) compares as having none.
+function compareKickers(hand1, hand2) {
+    const k1 = hand1.kickers || [];
+    const k2 = hand2.kickers || [];
+    for (let i = 0; i < Math.min(k1.length, k2.length); i++) {
+        if (k1[i] !== k2[i]) return k1[i] - k2[i];
+    }
+    return 0;
 }
 
 // Both straight-flush detectors examine ALL cards of the flush suit, not the
@@ -152,18 +185,19 @@ function hasFlush(cards) {
 function hasStraight(cards) {
     const ranks = [...new Set(cards.map(card => RANKS.indexOf(card.rank)))].sort((a, b) => b - a);
 
-    // Check for Ace-low straight
+    // Check for regular straights first: A + 6-5-4-3-2 is a six-high straight,
+    // not the wheel (the wheel check used to run first and return 5-high).
+    for (let i = 0; i < ranks.length - 4; i++) {
+        if (ranks[i] - ranks[i + 4] === 4) {
+            return ranks[i];
+        }
+    }
+
+    // Then the Ace-low straight
     if (ranks.includes(12)) { // If we have an Ace
         const lowStraight = [12, 0, 1, 2, 3];
         if (lowStraight.every(rank => ranks.includes(rank))) {
             return 3; // Return the high card (5 in this case)
-        }
-    }
-
-    // Check for regular straights
-    for (let i = 0; i < ranks.length - 4; i++) {
-        if (ranks[i] - ranks[i + 4] === 4) {
-            return ranks[i];
         }
     }
     return false;
@@ -221,7 +255,9 @@ function compareHands(hand1, hand2) {
         case HAND_RANKINGS.FOUR_OF_A_KIND:
         case HAND_RANKINGS.THREE_OF_A_KIND:
         case HAND_RANKINGS.ONE_PAIR:
-            return hand1.value - hand2.value;
+        case HAND_RANKINGS.HIGH_CARD:
+            if (hand1.value !== hand2.value) return hand1.value - hand2.value;
+            return compareKickers(hand1, hand2);
 
         case HAND_RANKINGS.FULL_HOUSE:
             if (hand1.value.three !== hand2.value.three) {
@@ -244,10 +280,10 @@ function compareHands(hand1, hand2) {
                 return hand1.values[0] - hand2.values[0];
             }
             // Then compare lower pair
-            return hand1.values[1] - hand2.values[1];
-
-        case HAND_RANKINGS.HIGH_CARD:
-            return hand1.value - hand2.value;
+            if (hand1.values[1] !== hand2.values[1]) {
+                return hand1.values[1] - hand2.values[1];
+            }
+            return compareKickers(hand1, hand2);
 
         default:
             return 0;
