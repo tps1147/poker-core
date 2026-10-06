@@ -25,9 +25,16 @@
 // 4. WHEEL BEFORE SIX-HIGH. hasStraight checked A-2-3-4-5 before the regular
 //    runs, so A + 6-5-4-3-2 read as a five-high straight and lost to a plain
 //    6-high straight on the same board. Regular runs are now checked first.
+// 5. LETTER SUITS. The flush checks only matched the symbols ♠♥♦♣, so cards
+//    passed with s/h/d/c suits never made a flush or straight flush. Suits
+//    are now compared through suitOf, which maps letters to symbols.
 
 const RANKS = '23456789TJQKA';
 const SUITS = '♠♥♦♣';
+// Letter suits ('Ah', 'td' codes split into { rank, suit }) mean the same
+// suits; without this a letter-suited hand could never make a flush.
+const SUIT_ALIASES = { s: '♠', h: '♥', d: '♦', c: '♣', S: '♠', H: '♥', D: '♦', C: '♣' };
+const suitOf = card => SUIT_ALIASES[card.suit] || card.suit;
 
 const HAND_RANKINGS = {
     ROYAL_FLUSH: 10,
@@ -135,7 +142,7 @@ function hasRoyalFlush(cards) {
     if (!flush) return false;
 
     const suitedRanks = new Set(
-        cards.filter(card => card.suit === flush[0].suit).map(card => card.rank)
+        cards.filter(card => suitOf(card) === suitOf(flush[0])).map(card => card.rank)
     );
     return ['T', 'J', 'Q', 'K', 'A'].every(rank => suitedRanks.has(rank));
 }
@@ -144,7 +151,7 @@ function hasStraightFlush(cards) {
     const flush = hasFlush(cards);
     if (!flush) return false;
 
-    const suited = cards.filter(card => card.suit === flush[0].suit);
+    const suited = cards.filter(card => suitOf(card) === suitOf(flush[0]));
     const straight = hasStraight(suited);
     return straight;
 }
@@ -174,7 +181,7 @@ function hasFullHouse(cards) {
 
 function hasFlush(cards) {
     for (let suit of SUITS) {
-        const flushCards = cards.filter(card => card.suit === suit);
+        const flushCards = cards.filter(card => suitOf(card) === suit);
         if (flushCards.length >= 5) {
             return flushCards.slice(0, 5);
         }

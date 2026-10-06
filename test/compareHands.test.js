@@ -53,6 +53,26 @@ for (const [h1, h2, board, want, label] of cases) {
   assert.strictEqual(cmp(h2, h1, board), 0 - want || 0, `${label} (reversed)`);
 }
 
+// ── suit format: letter suits (s/h/d/c) evaluate exactly like ♠♥♦♣ ─────────
+const LETTER = { '♠': 's', '♥': 'h', '♦': 'd', '♣': 'c' };
+const toLetters = (codes) => codes.replace(/[♠♥♦♣]/g, (x) => LETTER[x]);
+const name = (codes) => evaluateHand(parse(codes)).name;
+for (const [codes, want] of [
+  ['A♥ K♥ 9♥ 6♥ 4♥ 2♣ 3♦', 'Flush'],
+  ['9♥ 8♥ 7♥ 6♥ 5♥ 2♣ 3♦', 'Straight Flush'],
+  ['A♠ K♠ Q♠ J♠ T♠ 2♣ 3♦', 'Royal Flush'],
+  ['K♦ T♦ 9♦ 8♦ 7♦ 6♦ 2♣', 'Straight Flush'],
+]) {
+  assert.strictEqual(name(codes), want, `${codes} (symbols)`);
+  assert.strictEqual(name(toLetters(codes)), want, `${toLetters(codes)} (letters)`);
+  assert.strictEqual(name(toLetters(codes).toUpperCase()), want, `${codes} (upper-case letters)`);
+}
+assert.strictEqual(name('A♥ Kh 9♥ 6h 4♥ 2c 3d'), 'Flush', 'mixed symbols and letters still make one suit');
+for (const [h1, h2, board, want, label] of cases) {
+  const [l1, l2, lb] = [h1, h2, board].map(toLetters);
+  assert.strictEqual(cmp(l1, l2, lb), want, `${label} (letter suits)`);
+}
+
 // ── differential: random 7-card hands vs a brute-force best-of-21 ───────────
 function score5(cards) {
   const ranks = cards.map((c) => RANKS.indexOf(c.rank)).sort((a, b) => b - a);
