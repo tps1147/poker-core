@@ -6,9 +6,10 @@ hand insights, ratings, and game-state normalization — consumed by both the
 **mobile app** (Metro / React Native) and the **Next.js web app** (turbopack),
 and runnable under **plain node** for tests.
 
-Every module is CommonJS (`require` / `module.exports`). There is no `type`
-field in `package.json`, no transpile step, and no dependencies — Metro,
-turbopack, and node all consume the `.js` files directly.
+Every module is CommonJS (`require` / `module.exports`), except the film-first
+lessons under `src/learn`, which are `.mjs` ES modules (see "Learn" below).
+There is no `type` field in `package.json`, no transpile step, and no
+dependencies — Metro, turbopack, and node all consume the files directly.
 
 ## Install / consume
 
@@ -22,6 +23,7 @@ const { normalizeGameState, normalizePuzzleState } = require('poker-core/state')
 const { evaluateHand, compareHands } = require('poker-core/eval');
 const AIPlayer = require('poker-core/ai');
 const { getArchetypeScout, BOT_ROSTER, getBotById } = require('poker-core/data');
+const { nextPuzzleRequest, resolveAnswer, generatedAttemptPayload } = require('poker-core/puzzles');
 
 // …or everything from the top-level barrel:
 const core = require('poker-core');
@@ -67,13 +69,116 @@ poker-core/
       botRoster.js            BOT_ROSTER / getBotById          (NEW, canonical 16-bot ladder,
                                                                ratings derived via ratingBands)
       index.js                barrel
+    puzzles/                  the puzzle engine (NEW, see "Puzzles" below)
+      copy.js                 PUZZLE_COPY: every player-visible string it returns
+      seed.js                 seed range + the server's fnv1a32 / makeSeed / mulberry32
+      bands.js                band table, adaptive band, rating change, standing
+      topics.js               the five generator topics, labels, topicForSeed
+      daily.js                local day, daily puzzle, preview seed, daily goal
+      run.js                  run marks, runAfter, the saved-run record
+      request.js              nextPuzzleRequest (solve / topic / daily / rush)
+      answer.js               buttons, grade, maths, runout, identity, advance
+      attempt.js              the attempt bodies the server reads
+      index.js                barrel
+    learn/                    ES modules (.mjs): see "Learn" below
+      index.mjs               the poker-core/learn entry point (re-exports all of it)
+      scriptedHand.mjs        the scripted-hand driver
+      filmWatch.mjs           the film watch rule (WATCH_SHARE)
+      lessonRunController.mjs the lesson-run save controller
+      motion.mjs              table timings the driver schedules against
+      lessonModel.mjs         the pure lesson model (rail, ladder, score, recap, labels)
+      lessons/index.mjs       COURSE_ORDER, FILM_FIRST_LESSONS, lookups
+      lessons/<id>.v<n>.mjs   the 20 film-first definitions
+      media/<id>.v<n>.json    their film media (poker-core/learn/media/*)
+  scripts/
+    check-learn-media.mjs     HEAD-checks every learn film url on the CDN (network)
   test/
     handInsightsMath.test.js  plain-node
     review.test.js            plain-node (engine + review pipeline, real AIPlayer)
     frameToHeroState.test.js  plain-node
     botRoster.test.js         plain-node (roster shape, derived ratings, lookups)
+    puzzles.test.js           plain-node (engine + parity with pokerServer 252d87e)
+    puzzles.esm.test.mjs      ESM named imports of poker-core/puzzles (as the web imports it)
+    fixtures/puzzleServerParity.json  golden values captured from the server's generator
     loads.test.js             smoke: index + every subpath export is callable
+    learn.test.mjs            learn entry point smoke
+    learnLessons.test.mjs     the 20 lessons, their media json and the lesson model
 ```
+
+## Learn (film-first lessons)
+
+`poker-core/learn` is the one source of the film-first lessons for the web
+player, the phone player and the server's parity test. Unlike the rest of the
+package it is ES modules (`.mjs`), relative imports with extensions only, so
+plain node, Metro and the web bundler all load it unchanged:
+
+```js
+import {
+  FILM_FIRST_LESSONS, COURSE_ORDER, filmFirstLesson, nextInCourse, lessonHands,
+  mountState, runUntilBlocked, tableProps,        // the driver
+  railSegments, releasedAnswers, spotLadder, chipScore, recapRows, // the lesson model
+} from 'poker-core/learn';
+import outsMedia from 'poker-core/learn/media/outs-workspace-v1.v2.json';
+```
+
+- **Definitions.** The 20 lessons in course order (`FILM_FIRST_LESSONS`,
+  `COURSE_ORDER`). `filmFirstLesson(id)` accepts the definition id or the
+  catalog ids it was built from (`sourceLessonId`, `videoLessonId`), so pot odds
+  resolves as `pilot-pot-odds` and as `lesson-pot-odds-001`. No answer keys
+  ship here: the server registry grades.
+- **Media.** One json per lesson, named by the definition's `media` field.
+  Clients import it by path; there is no media index and no JSON import
+  attribute. A json carries `portraitByArea` and `portraitFrame` only when
+  every area's portrait film and poster is live on the CDN (HEAD 200); until
+  then the lesson plays its landscape film.
+- **One namespace.** `index.mjs` re-exports every module with `export *`, and
+  two `export *` of one name silently drop it, so a new export must not reuse
+  a name another learn module exports (`learnLessons.test.mjs` checks).
+
+Check the films before every commit that touches `src/learn/media` (a running
+portrait render writes portrait entries into these files before it uploads):
+
+```
+node scripts/check-learn-media.mjs         # read-only table, exit 1 on any failure
+node scripts/check-learn-media.mjs --fix   # also strips an incomplete portrait set
+```
+
+## Puzzles
+
+`poker-core/puzzles` is the one puzzle engine for the phone, the web and the
+server: pure CommonJS, no I/O, no clock, no randomness of its own (callers pass
+a `seedSource`), so the same inputs give the same puzzle, grade and attempt
+everywhere.
+
+- **Bands.** `PUZZLE_BAND_TABLE`: beginner 1000 / K16, intermediate 1300 / K24
+  from 1250, advanced 1600 / K32 from 1550, with a seeded +/-75 nudge.
+  `adaptiveBand({ rating, rated, seed })` and the server's positional
+  `adaptiveDifficulty(rating, seed)` pick the band exactly as pokerServer
+  252d87e does; `normaliseDifficulty` grades unknowns ('expert') as beginner.
+- **Requests.** `nextPuzzleRequest({ mode, topic, difficulty, dayKey, seedSource, streak })`
+  gives the `{ topic, difficulty, seed }` for GET /puzzles/generate.
+- **Daily.** `todayKey(date, tzOffsetMinutes)` is the player's local day (the
+  same offset /puzzles/me/stats?tzOffset= takes). The daily puzzle is the same
+  spot for everyone: topic rotating by day, a fixed band (`DAILY_DIFFICULTY`,
+  never 'adaptive', which would serve each player a different spot), a seed
+  hashed from the day. `DAILY_PUZZLE_GOAL` is 10.
+- **Run.** Marks at 3, 5, 10, 15, 20. `runAfter`: correct +1, a hinted correct
+  keeps the run, wrong resets it.
+- **Answer.** `resolveAnswer(puzzle, action)`: the grade and best play, the
+  equity-vs-price maths from meta, the rest of the board from any starting
+  street (`dealPlan`), and the advance rule (correct moves on after 1.1s,
+  wrong waits for Next).
+- **Attempts.** `puzzleAttempt(...)` returns `{ endpoint, body }` with exactly
+  the body the server reads, including the served band so grading is honest.
+- **Copy.** `PUZZLE_COPY` holds every string the engine returns.
+- **Tiers.** There is no puzzle tier ladder here. `RATING_TIERS` in ./rating is
+  the AI-rating ladder (600 to 1200) and does not fit the puzzle rating (which
+  starts at 1200), so it is not reused and there is no `pointsToNextTier`. The
+  only puzzle ladder is the server's (User.updatePuzzleRanking); moving it here
+  is an owner decision.
+
+`normaliseDifficulty` (puzzle bands, lower case) and ./rating's
+`normalizeDifficulty` (bot room bands, upper case) are different functions.
 
 ## The insight engine
 
@@ -99,8 +204,14 @@ which runs each file under plain node:
 node test/handInsightsMath.test.js
 node test/review.test.js
 node test/frameToHeroState.test.js
+node test/puzzles.test.js
+node test/puzzles.esm.test.mjs
 node test/loads.test.js
+node test/learn.test.mjs
+node test/learnLessons.test.mjs
 ```
+
+(`scripts/check-learn-media.mjs` needs the network and is not part of `npm test`.)
 
 ## Purity notes (impurities intentionally left in)
 

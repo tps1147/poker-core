@@ -6,7 +6,7 @@
 //   require('poker-core/review')   require('poker-core/insights')
 //   require('poker-core/rating')   require('poker-core/state')
 //   require('poker-core/eval')     require('poker-core/ai')
-//   require('poker-core/data')
+//   require('poker-core/data')     require('poker-core/puzzles')
 
 const pokerEvaluator = require('./eval/pokerEvaluator');
 
@@ -21,6 +21,8 @@ module.exports = {
   ...require('./state'),
   // Archetype scouting metadata + the canonical bot roster.
   ...require('./data'),
+  // The puzzle engine: bands, adaptive choice, daily puzzle, run, requests, grading, attempts.
+  ...require('./puzzles'),
   // The shared insight engine (AIPlayer class) and the hand evaluator.
   AIPlayer: require('./ai/aiPlayer'),
   pokerEvaluator,
