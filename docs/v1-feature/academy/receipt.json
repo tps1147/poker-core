@@ -1,0 +1,313 @@
+{
+  "milestone": "Academy structure draft 0 (feeds M3)",
+  "recordedAt": "2026-10-06T23:31:41.752Z",
+  "decision": {
+    "file": "decisions/DECISION-RECEIPT-2026-10-06-b.json",
+    "sha256": "e1002f449f05fef7ee480bc9879b3d0e67c284610d550327941d77d37b9000e6"
+  },
+  "contract": {
+    "id": "F52-V1-CONTRACT-1",
+    "sha256": "475556803d1daf196edddf42631a5cb6c617182d218c81d631b993c09db776a9"
+  },
+  "checkout": {
+    "path": "C:/Code/Programming/flop52/.dev-servers/claude-v1-core-2026-10-06",
+    "head": "6382201ae2d0ea965cd8c1d2cda72225d08466c8",
+    "boundary": "verify-claude-boundary.py passed (114 protected tracked files unchanged); git diff --check exit 0; git status shows only docs/v1-feature/, src/learn/v1/, test/v1/ untracked"
+  },
+  "tree": {
+    "module": "src/learn/v1/academyTree.mjs",
+    "version": "academy-tree-draft-0",
+    "nodes": 59,
+    "tracks": 11,
+    "test": "node test/v1/learn/academyTree.test.mjs: 10 checks passed",
+    "coverage": "All 20 existing shared lessons and all 28 existing concept ids are mapped; prerequisites are acyclic and point only to the same or earlier tracks"
+  },
+  "reviewPage": {
+    "artifact": "https://claude.ai/artifact/RqKjBJhgFateZQ4DW7NoYY",
+    "source": "docs/v1-feature/academy/academy-tree.html, built by build-tree-page.mjs from the module"
+  },
+  "sampleLesson": {
+    "plan": "docs/v1-feature/academy/SAMPLE-LESSON-w-what-is-poker.md",
+    "format": "docs/v1-feature/academy/LESSON-PLAN-FORMAT.md",
+    "composition": "academy-w-what-is-poker-v0",
+    "design": "1080x1920",
+    "output": "360x640",
+    "fps": 30,
+    "frames": 1800,
+    "seconds": 60,
+    "audio": "none",
+    "ffprobe": "h264 video 360x640 30/1, 1800 frames, 60.000 s, no audio stream",
+    "visualSources": "Values transcribed from flop52web table-base.css, board.css, ShowcaseCard.js, surface-palette.css and table-theme.css. Fonts: Poker.com Archivo-Variable.ttf and a Geist variable woff2 from flop52web's .next dev media (a regenerated build file). Icon: flop52web public/icons-3d/chip.png. All copied into scratch public/academy-w1; nothing downloaded.",
+    "handCheck": "K-high straight beats a pair of jacks, verified with src/eval/pokerEvaluator.js. Pots 15/20/60/140 follow captions.json potNotes.",
+    "rejected": [
+      "A module-level font hold stalled the full render twice (timeouts at frames 375 and 413). Replaced with CSS @font-face, which the renderer waits on after every seek.",
+      "Hook: the lifted K and Q overlapped the title; the fan was moved down.",
+      "Predict button text overflowed, and the hero cards covered the nameplate; both fixed."
+    ]
+  },
+  "renderWindow": "Codex paused per the transfer; no other render or build process was seen. Markers in logs/render-academy-w1-*.",
+  "observation": "During probe renders, Edge's own updater left two 24 KB BITS temp folders in scratch tmp/ (msedgeedge_BITS_*). Remotion never downloaded a browser (onBrowserDownload throws). The folders were deleted.",
+  "model": "claude-opus-5-5[1m] (this session)",
+  "runtime": "Node v24.19.0, Remotion 4.0.484 (read only), Edge 154.0.4258.53 headless-shell",
+  "notValidated": [
+    "Tree content not reviewed by a poker educator",
+    "History facts for w-history not yet sourced",
+    "No device playback or full-resolution render",
+    "No learning-effect claim",
+    "One sample lesson; no batch produced"
+  ],
+  "worktreeFiles": [
+    {
+      "path": "docs/v1-feature/academy/academy-tree.html",
+      "bytes": 35396,
+      "sha256": "30d537708e9fea9125b83600b5effeeaa7179781412a6e3084a9a7230f86c08c"
+    },
+    {
+      "path": "docs/v1-feature/academy/build-tree-page.mjs",
+      "bytes": 11690,
+      "sha256": "5c2315edc0d1b974fc3d389afb08a08443a9434aa0caecd925ff968225315531"
+    },
+    {
+      "path": "docs/v1-feature/academy/LESSON-PLAN-FORMAT.md",
+      "bytes": 2192,
+      "sha256": "60cc859cb5fb444f9a9f349d74088bfce860fe43c63c2c674c2d000961a63529"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/board.md",
+      "bytes": 20639,
+      "sha256": "a9019b9a6255813188881c72ccfa904fd66b610deb197b6c78a4e45e692485ed"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/check-math-preflop.mjs",
+      "bytes": 43974,
+      "sha256": "09fdadc1998cdd5cb04975e605b7824e12a15555f97469e897ebb8c5a7a83bc4"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/check-postflop-to-formats.mjs",
+      "bytes": 47953,
+      "sha256": "5dab3ae43532893b965fd5a30e0ee0af4435c05db2f98e0478e1275928d5268f"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/check-welcome-rules-board.mjs",
+      "bytes": 41274,
+      "sha256": "71dc012d50fc67133889ea723a32df0551740e33389a10cdc027bf4327a15d2b"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/formats.md",
+      "bytes": 5539,
+      "sha256": "4495a16ee8aa132148a3c6e60005e1238ee03e375b97555b9e98220c325409e8"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/HISTORY-SOURCES.md",
+      "bytes": 10329,
+      "sha256": "096081f047ab6197d192f94e894b6b23854d83cc58b612885092e341c8317415"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/math.md",
+      "bytes": 38126,
+      "sha256": "c956c87feeaf78e2fc1f2496a14c287acd174625bbc4ea5d3191088d171d0901"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/people.md",
+      "bytes": 8326,
+      "sha256": "24865c0c18ca2a2e42952b549d8d34cc2117b86bcf16209092c8af663a48d9e0"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/player.md",
+      "bytes": 7713,
+      "sha256": "45d293dd618f0b1b46cd1e521673c69866fdf3fb5f510e8293dbd9e4bf444ae4"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/postflop.md",
+      "bytes": 17916,
+      "sha256": "4b528133f005bf4da16dce1abc7a7950cd648a9ba3e92f7e921273da85d7f638"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/preflop.md",
+      "bytes": 23774,
+      "sha256": "957bbeb0451bf270d0c96e4ab0829cfcee5435b4709840704f5f64e6a5d7fc82"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/pressure.md",
+      "bytes": 15022,
+      "sha256": "8bb62974a5d37b89f2d1df35f4ce86e38ee91abb915ab7e5ebabd2a314e6fd41"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/rules.md",
+      "bytes": 38076,
+      "sha256": "1055bc0d86527a312aaf691448426850921a16ecd970a420e71c7ffd04fc2405"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/theory.md",
+      "bytes": 8782,
+      "sha256": "3c5d7c0f74007a0b8c27b3d87086a2d5083ddc6fe33ec9ff8552f4bbd6867539"
+    },
+    {
+      "path": "docs/v1-feature/academy/plans/welcome.md",
+      "bytes": 26355,
+      "sha256": "9b56e3b24e607efed8ccafd472fb7862fe3e22e5164d407f345ac307f73dd25e"
+    },
+    {
+      "path": "docs/v1-feature/academy/SAMPLE-LESSON-w-what-is-poker.md",
+      "bytes": 3734,
+      "sha256": "68cb96c65d05423c77bc88669401da62a85f55d9cde881415f8c0516f9b38238"
+    },
+    {
+      "path": "docs/v1-feature/academy/TREE-PROPOSALS.md",
+      "bytes": 2025,
+      "sha256": "112c8ae0bcd4f408383145ce6ad257b181daf3876745c8b928cc516fecf640d2"
+    },
+    {
+      "path": "docs/v1-feature/academy/write-receipt.mjs",
+      "bytes": 4711,
+      "sha256": "9738587b13c057e345518c7c30539a2d40b49dc9e19d6f8e3fce4d5676a1b5db"
+    },
+    {
+      "path": "src/learn/v1/academyTree.mjs",
+      "bytes": 21863,
+      "sha256": "8e4b149d7333f48fc364264f7d11a0c7b2f4c9e266fb6cd9c883d42fc6cadbf0"
+    },
+    {
+      "path": "src/learn/v1/common.cjs",
+      "bytes": 4326,
+      "sha256": "7306c8364bd174e6e3cea2d25101c9122fe119b89c423d2ccc1fdce9809498e7"
+    },
+    {
+      "path": "src/learn/v1/evidence.cjs",
+      "bytes": 11573,
+      "sha256": "d31a56f4e26cdf5e986077e516907f656bfd2278df5066b3790efb819847e21a"
+    },
+    {
+      "path": "src/learn/v1/index.cjs",
+      "bytes": 622,
+      "sha256": "d32c141fa0540b46b5f54bef6d81da579f86864f8814eb73b1583f7adeb2d6b2"
+    },
+    {
+      "path": "src/learn/v1/plan.cjs",
+      "bytes": 6809,
+      "sha256": "6e5d76b7a9e7f878c0308c2c0a6ce35649310fe0de3497d1706bb9ef62bb9fd6"
+    },
+    {
+      "path": "test/v1/learn/academyTree.test.mjs",
+      "bytes": 5082,
+      "sha256": "17bba1c133644690f1cbbf6d3d52a87520edaaa3225f41a155b25694abbd4014"
+    },
+    {
+      "path": "test/v1/learn/learningEvidence.test.cjs",
+      "bytes": 14330,
+      "sha256": "c79ece5a5a267e77b1d12b8016fbaae2cf498819804bc2e1821104fec67e7787"
+    }
+  ],
+  "scratchFiles": [
+    {
+      "path": "src-academy-w1/captions.json",
+      "bytes": 1521,
+      "sha256": "58d5cf3c5f9e251f22bf4b029d1636931ae311dea2392f01e0b0fe2c2f804ee1"
+    },
+    {
+      "path": "src-academy-w1/entry.ts",
+      "bytes": 93,
+      "sha256": "32185b5fe29233ed658013191cf02a1ba3181fe15dd4c43848136a344887ff0f"
+    },
+    {
+      "path": "src-academy-w1/Root.tsx",
+      "bytes": 462,
+      "sha256": "158260a1bf9fe50d08dce7155cb5ae3dab5112daeb54d147058a2024ba23db93"
+    },
+    {
+      "path": "src-academy-w1/WhatIsPoker.tsx",
+      "bytes": 23570,
+      "sha256": "90dd5998e64fb33755418e1333eb78c8dadbf1784d39b10c5d8b2cc00fadb539"
+    },
+    {
+      "path": "out-academy-w1/academy-w-what-is-poker-v0-360x640.mp4",
+      "bytes": 1189618,
+      "sha256": "2296b87d7474c75b6b3b641a0318555bb9c8accaef24fab7c130273129e580df"
+    },
+    {
+      "path": "out-academy-w1/stills/01-hook.png",
+      "bytes": 137235,
+      "sha256": "187e59a5dfa515e15e5c60a035b5b8bdc3b7670a03621542f280f8ef5041e559"
+    },
+    {
+      "path": "out-academy-w1/stills/02-predict.png",
+      "bytes": 95386,
+      "sha256": "670e71e3242579aa34dcdb600eb3f9ad683a0da6d2a98d02372ef84e76966fa4"
+    },
+    {
+      "path": "out-academy-w1/stills/03-deal.png",
+      "bytes": 141022,
+      "sha256": "217f5b6a1336dba7e25707b8a2814d404b9054a6b7cc478648eed6ed01b41bdf"
+    },
+    {
+      "path": "out-academy-w1/stills/04-board.png",
+      "bytes": 148491,
+      "sha256": "1b9a2d987df6cdb6af2aad20508c569438a357deb31ba99d4e5b66d376002652"
+    },
+    {
+      "path": "out-academy-w1/stills/05-actions.png",
+      "bytes": 152183,
+      "sha256": "baa078a1169a29db1ffde33b9e025f9371c591b654df4d0d6a0ae9f53d8b9acb"
+    },
+    {
+      "path": "out-academy-w1/stills/06-showdown.png",
+      "bytes": 171587,
+      "sha256": "fbb2fe23f1814937bfde634554c3f790f2782265ab97c6ee9d6c0a82daa9972e"
+    },
+    {
+      "path": "out-academy-w1/stills/07-fold.png",
+      "bytes": 149258,
+      "sha256": "a1157abda79f877b4cdcfa48471c097c4913609c5d9a62bd183e8a1f77c9d592"
+    },
+    {
+      "path": "out-academy-w1/stills/08-many.png",
+      "bytes": 116258,
+      "sha256": "39e2f7646c9e6a8657b77296b67f15de8489b17b62ab1e4a91e19019c62d603d"
+    },
+    {
+      "path": "out-academy-w1/stills/09-path.png",
+      "bytes": 106525,
+      "sha256": "24344f10e24697974f7dbcc6814c80eb92ed23dd4fa05c88489c0db583904c5a"
+    },
+    {
+      "path": "out-academy-w1/stills/10-rule.png",
+      "bytes": 78430,
+      "sha256": "da04496e6f1d8673ac3cdf02421cf77d0f00768604382521f854ebd69981d3e3"
+    },
+    {
+      "path": "public/academy-w1/Archivo-Variable.ttf",
+      "bytes": 658596,
+      "sha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053"
+    },
+    {
+      "path": "public/academy-w1/chip.png",
+      "bytes": 278845,
+      "sha256": "b5b82b95a6300a4c20a698d13a41f2aba6e329829a90b13541cdc8e4ec84f3e4"
+    },
+    {
+      "path": "public/academy-w1/dealer.png",
+      "bytes": 282761,
+      "sha256": "9f8675a7ef2b85b51228e2ca572fd2f9ab2bc14cecf6f0d66e563b29fb52a813"
+    },
+    {
+      "path": "public/academy-w1/flop52-chip-512.png",
+      "bytes": 37410,
+      "sha256": "24c4f1065af64e32ac9c38e5cfd4675dafa8c956c6021371a224bbc572a205be"
+    },
+    {
+      "path": "public/academy-w1/Geist-Variable.woff2",
+      "bytes": 29288,
+      "sha256": "9b6f5ff45b278c744b5f379a2c4ecbaf858a842b8eaf82ac8d21b699ca16c608"
+    },
+    {
+      "path": "tools/render-academy-w1.mjs",
+      "bytes": 4238,
+      "sha256": "107b93a0cbf8ee22fa089ae755dbd47a8a9a7d0479e562ff676b948bce81a0af"
+    },
+    {
+      "path": "decisions/DECISION-RECEIPT-2026-10-06-b.json",
+      "bytes": 1530,
+      "sha256": "e1002f449f05fef7ee480bc9879b3d0e67c284610d550327941d77d37b9000e6"
+    }
+  ]
+}

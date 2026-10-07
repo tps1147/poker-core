@@ -1,0 +1,277 @@
+{
+ "harness": "v1-rating-kuhn-machinery",
+ "recordedAt": "2026-10-06T00:00:00Z",
+ "sources": {
+  "candidatesSha256": "9a2c9c76cdcf77ddf9efe8737bd8c7c8149aa28cd2ab960ecccbddafa79c60c6",
+  "harnessSha256": "08be15479d38d04b140f2ec1c201d42f113317ddaef1f5e50f6040b84abeb7f8",
+  "exactSha256": "939fec146c37be965a539f032ff862c020fccf1c7d76d80ce241d07211228d49",
+  "kuhnSha256": "6015d717664c9ff8894ec6e7a54757482c7c016745d746b47d21a025b1bba3ad"
+ },
+ "configHash": "6149308ca486be33b373b4b2c9947c45bbd7dde1dd329bbee38cc46891f3d197",
+ "controls": {
+  "seed": 20261006,
+  "matches": 24,
+  "dealPairsPerMatch": 8,
+  "seatControl": "duplicate deal, seats swapped",
+  "dealScheduleHash": "3fb71ffde161e005cfdba51ed0f43ff333b03b3e7a224ab8051607ff868898cc",
+  "seatScheduleHash": "ac3d9090b9bf461f624190c8356512a073dc547693ba26b8f17f1ab1af669ea9"
+ },
+ "splits": {
+  "policyFamily": {
+   "train": [
+    "eq-alpha-0@1",
+    "eq-alpha-1/3@1",
+    "station@1",
+    "maniac@1"
+   ],
+   "holdout": [
+    "eq-alpha-1/6@1",
+    "nit@1"
+   ],
+   "trainMatches": [
+    "km-1",
+    "km-2",
+    "km-3",
+    "km-5",
+    "km-8",
+    "km-10",
+    "km-11",
+    "km-19"
+   ],
+   "holdoutMatches": [
+    "km-0",
+    "km-4",
+    "km-6",
+    "km-7",
+    "km-9",
+    "km-12",
+    "km-13",
+    "km-14",
+    "km-15",
+    "km-16",
+    "km-17",
+    "km-18",
+    "km-20",
+    "km-21",
+    "km-22",
+    "km-23"
+   ]
+  },
+  "chronological": {
+   "cutoffOrdinal": 16,
+   "train": [
+    "km-0",
+    "km-1",
+    "km-2",
+    "km-3",
+    "km-4",
+    "km-5",
+    "km-6",
+    "km-7",
+    "km-8",
+    "km-9",
+    "km-10",
+    "km-11",
+    "km-12",
+    "km-13",
+    "km-14",
+    "km-15"
+   ],
+   "holdout": [
+    "km-16",
+    "km-17",
+    "km-18",
+    "km-19",
+    "km-20",
+    "km-21",
+    "km-22",
+    "km-23"
+   ]
+  }
+ },
+ "metrics": "UNSELECTED",
+ "rejectionRules": "UNSELECTED",
+ "fitted": false,
+ "candidates": [
+  {
+   "candidate": "outcome_only_baseline",
+   "label": "comparison-baseline",
+   "modelRef": {
+    "id": "kuhn-machinery-outcome_only_baseline",
+    "version": "machinery-1",
+    "sha256": null
+   },
+   "configHash": "a7c69b048d189018c810d0d71789f83ec37b03c07c6e5209babde66b439b39cd",
+   "finalRatingsHash": "9f9d7a77b6e2a00e5b831679856d127967b94edfb6abfeed9ecdaaecda06d958",
+   "trajectoryHash": "52e058a67b9aed1de97ab97c7d58e45d88f29f110919b5d2016aa6e343d3d6b0",
+   "causalQualityCheck": {
+    "qualityChangesSubjectDelta": false,
+    "opponentUnchanged": true,
+    "direction": 0
+   }
+  },
+  {
+   "candidate": "joint_latent_outcome_quality",
+   "label": "research-candidate",
+   "modelRef": {
+    "id": "kuhn-machinery-joint_latent_outcome_quality",
+    "version": "machinery-1",
+    "sha256": null
+   },
+   "configHash": "80739f6c10d42dd00d7ece13c8e0f58096a844f47f401f67662ded11ada65189",
+   "finalRatingsHash": "936fb1204190a042193be5cb7a5a57bcc128d2867320e790236c027bbbf3d48c",
+   "trajectoryHash": "c949e4896efde1f03f26c6c9483bcb09bc3064b57bb77077901138f9f8e79a74",
+   "causalQualityCheck": {
+    "qualityChangesSubjectDelta": true,
+    "opponentUnchanged": true,
+    "direction": 1
+   }
+  },
+  {
+   "candidate": "bounded_uncertainty_shrunk_quality",
+   "label": "research-candidate",
+   "modelRef": {
+    "id": "kuhn-machinery-bounded_uncertainty_shrunk_quality",
+    "version": "machinery-1",
+    "sha256": null
+   },
+   "configHash": "3ffbde0c4040f21b10ea87e97c8a6ce02d6bf982a96590670e7f1826027d744a",
+   "finalRatingsHash": "a98142ead169a147694ab70712954b581532404280a69195f838f0d3830a39b1",
+   "trajectoryHash": "bd9f2d949b19d54a60301930998f752b1491204ae4748c94c7354f67c2f26e33",
+   "causalQualityCheck": {
+    "qualityChangesSubjectDelta": true,
+    "opponentUnchanged": true,
+    "direction": 1
+   }
+  }
+ ],
+ "machineryChecks": {
+  "equilibriumVsEquilibriumMaxRegret": 0,
+  "equilibriumVsEquilibriumMatches": 4,
+  "anyNegativeQualityOverall": true
+ },
+ "abuseCases": [
+  {
+   "id": "quality-farming/split-hand",
+   "category": "quality_farming",
+   "expect": "invariant",
+   "pass": true,
+   "observed": {
+    "oneDecision": 0.27367904462044096,
+    "twoDecisions": 0.27367904462044096
+   }
+  },
+  {
+   "id": "quality-farming/unbounded-value",
+   "category": "quality_farming",
+   "expect": "invariant",
+   "pass": true,
+   "observed": {
+    "qualityTerm": 0.1
+   }
+  },
+  {
+   "id": "duplicate-evidence/replayed-assessment",
+   "category": "duplicate_evidence",
+   "expect": "DUPLICATE_ASSESSMENT",
+   "pass": true,
+   "observed": [
+    "DUPLICATE_ASSESSMENT"
+   ]
+  },
+  {
+   "id": "duplicate-evidence/reissued-decision",
+   "category": "duplicate_evidence",
+   "expect": "DEPENDENCE_DUPLICATE_DECISION",
+   "pass": true,
+   "observed": [
+    "DEPENDENCE_DUPLICATE_DECISION"
+   ]
+  },
+  {
+   "id": "reordered-evidence/same-proposal",
+   "category": "reordered_evidence",
+   "expect": "invariant",
+   "pass": true,
+   "observed": {
+    "a": "bdcaa70df570eca2737940e81dd50f22244536b2be701c732294dd37e985e20b",
+    "b": "bdcaa70df570eca2737940e81dd50f22244536b2be701c732294dd37e985e20b"
+   }
+  },
+  {
+   "id": "policy-drift/opponent-policy-version",
+   "category": "policy_drift",
+   "expect": "POLICY_DRIFT",
+   "pass": true,
+   "observed": [
+    "POLICY_DRIFT",
+    "POLICY_DRIFT"
+   ]
+  },
+  {
+   "id": "policy-drift/evaluator-version",
+   "category": "policy_drift",
+   "expect": "unknown-version",
+   "pass": true,
+   "observed": [
+    "unknown-version",
+    "unknown-version"
+   ]
+  },
+  {
+   "id": "policy-drift/model-not-from-policy",
+   "category": "policy_drift",
+   "expect": "POLICY_MISMATCH",
+   "pass": true,
+   "observed": [
+    "POLICY_MISMATCH"
+   ]
+  },
+  {
+   "id": "provisional/no-policy-never-placed",
+   "category": "provisional",
+   "expect": "invariant",
+   "pass": true,
+   "observed": "unassessed"
+  },
+  {
+   "id": "smurf/legacy-history-recast",
+   "category": "smurf",
+   "expect": "INADMISSIBLE_PLACEMENT_SOURCE",
+   "pass": true,
+   "observed": [
+    "INADMISSIBLE_PLACEMENT_SOURCE"
+   ]
+  },
+  {
+   "id": "opponent-selection/ai-only-farming",
+   "category": "opponent_selection",
+   "expect": "invariant",
+   "pass": true,
+   "observed": [
+    "OPPONENT_CLASS_MINIMUM_UNMET:human"
+   ]
+  },
+  {
+   "id": "opponent-selection/unpaired-update",
+   "category": "opponent_selection",
+   "expect": "PAIRED_PARTICIPANT_MISMATCH",
+   "pass": true,
+   "observed": [
+    "PAIRED_PARTICIPANT_MISMATCH"
+   ]
+  }
+ ],
+ "determinism": {
+  "sameSeedSameRecord": true
+ },
+ "refusalWithoutParameters": [
+  "POLICY_INCOMPLETE",
+  "POLICY_INCOMPLETE",
+  "POLICY_INCOMPLETE",
+  "POLICY_INCOMPLETE",
+  "POLICY_INCOMPLETE",
+  "POLICY_INCOMPLETE"
+ ],
+ "overlappingSplitRejected": true
+}
