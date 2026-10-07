@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "milestone": "M2",
+  "kind": "read-mostly audit plus contract acknowledgement",
+  "writtenAtUtc": "2026-10-06T21:10:00Z",
+  "assignment": {
+    "assignmentId": "F52-CLAUDE-V1-20261006",
+    "assignmentFile": ".handoff/assignment.json",
+    "authorizationNote": "Executed on the coordinating session's instruction. docs/CLAUDE-RUN-TRANSFER-2026-10-06.md holds M2 pending Tyler's answer to startup question 7; that answer was not visible to this agent."
+  },
+  "contract": {
+    "id": "F52-V1-CONTRACT-1",
+    "schemaVersion": 1,
+    "path": "C:/Code/Programming/flop52/docs/V1-SHARED-INTERFACES-2026-10-06.md",
+    "bytes": 43464,
+    "sha256Computed": "475556803d1daf196edddf42631a5cb6c617182d218c81d631b993c09db776a9",
+    "sha256Expected": "475556803d1daf196edddf42631a5cb6c617182d218c81d631b993c09db776a9",
+    "match": true,
+    "acknowledgement": "acknowledged with 11 numbered discrepancies/ambiguities (INTERFACE-ACK.md); none blocks M2"
+  },
+  "checkout": {
+    "repository": "poker-core",
+    "path": "C:/Code/Programming/flop52/.dev-servers/claude-v1-core-2026-10-06",
+    "detached": true,
+    "head": "6382201ae2d0ea965cd8c1d2cda72225d08466c8",
+    "baselineCommit": "6382201ae2d0ea965cd8c1d2cda72225d08466c8"
+  },
+  "baselineGuard": {
+    "result": "PASS",
+    "baselineManifest": "C:/Code/Programming/flop52/.dev-servers/v1-two-session-2026-10-06/source-baseline.json",
+    "baselineManifestSha256": "b71396f42032c76ae91df3b460b361003304b5ab5e22c5a0ce826a548db94c20",
+    "headMatchesRecorded": true,
+    "trackedFilesListed": 114,
+    "trackedHashMatches": 114,
+    "trackedHashMismatches": 0,
+    "trackedMissing": 0,
+    "trackedExtra": 0,
+    "trackedDigestRecomputed": "b9793865e26f80a560dcd8b19fcf3c3df0b1574e91fccddcb890ee10f01b3ea8",
+    "trackedDigestRecorded": "b9793865e26f80a560dcd8b19fcf3c3df0b1574e91fccddcb890ee10f01b3ea8",
+    "verifyClaudeBoundaryPy": {
+      "readOnlyConfirmedByReading": true,
+      "beforeWrites": {"exitCode": 0, "passed": true, "protectedTrackedFiles": 114, "ownedNewFiles": 0},
+      "afterThreeDocs": {"exitCode": 0, "passed": true, "protectedTrackedFiles": 114, "ownedNewFiles": 3}
+    },
+    "gitStatusPorcelainLineCount": {"before": 79, "afterDocs": 80, "explanation": "78 protected newline-related ' M' entries + '?? .handoff/' + '?? docs/' (new)"}
+  },
+  "filesWritten": [
+    {"path": "docs/v1-feature/LESSON-AUDIT.md", "bytes": 32904, "sha256": "8168ae72ca502f5144910f52a6a8fec8878181ef9d9826bd6522abf83a27dca8"},
+    {"path": "docs/v1-feature/INTERFACE-ACK.md", "bytes": 12726, "sha256": "be0a476bb19c47d3d431ef72b83a12ed9fc2d0bc67b574d32eaa861d01cfed48"},
+    {"path": "docs/v1-feature/PROPOSALS.md", "bytes": 7576, "sha256": "fffd67d9c544fa2994394dc915c5278a259700a6b80e547f118c44483165722a"},
+    {"path": "docs/v1-feature/receipt.json", "bytes": null, "sha256": null, "note": "this file; its own hash is reported to the caller out of band"}
+  ],
+  "untrackedSourceManifest": {
+    "newFiles": ["docs/v1-feature/LESSON-AUDIT.md", "docs/v1-feature/INTERFACE-ACK.md", "docs/v1-feature/PROPOSALS.md", "docs/v1-feature/receipt.json"],
+    "newDirectories": ["docs/", "docs/v1-feature/"],
+    "trackedFilesModified": 0,
+    "filesOutsideAssignedPath": 0
+  },
+  "gitDiffCheck": {"command": "git -C <worktree> diff --check", "exitCode": 0, "stdout": "", "note": "stderr carried only Git LF->CRLF working-copy warnings for the 78 protected paths; no whitespace errors"},
+  "gitStatusDocsV1Feature": {
+    "command": "git -C <worktree> status --porcelain --untracked-files=all -- docs/v1-feature",
+    "exitCode": 0,
+    "stdoutBeforeReceipt": ["?? docs/v1-feature/INTERFACE-ACK.md", "?? docs/v1-feature/LESSON-AUDIT.md", "?? docs/v1-feature/PROPOSALS.md"],
+    "expectedAfterReceipt": "same plus '?? docs/v1-feature/receipt.json'"
+  },
+  "commandsRun": [
+    {"cmd": "ls/head/python summary of v1-two-session-2026-10-06 baseline and cat verify-claude-boundary.py", "exitCode": 0},
+    {"cmd": "python verify-claude-boundary.py (before writes)", "exitCode": 0},
+    {"cmd": "cat .handoff/assignment.json", "exitCode": 0},
+    {"cmd": "git -C <wt> rev-parse HEAD; git -C <wt> ls-files -z + python SHA256 recompute and digest; sha256 of contract", "exitCode": 0},
+    {"cmd": "git -C <wt> status --porcelain | wc -l; git -C <wt> diff --check; git status --untracked-files=all", "exitCode": 0},
+    {"cmd": "cat handoff, run-transfer, acceptance, motion roadmap, V1 direction; grep two-session handoff", "exitCode": 0},
+    {"cmd": "node --input-type=module - (stdin): dump 20 lesson structures/spots/hands; validateDefinitionHands; card validity/uniqueness; price recompute", "exitCode": 0},
+    {"cmd": "node -e: summarize 20 media JSON (format, size, duration, cues, callouts, workedExample)", "exitCode": 0},
+    {"cmd": "node (stdin): server lessonRuns registry structural parity vs core definitions; key field NAMES only, no values printed", "exitCode": 0},
+    {"cmd": "cat/sed/grep: lessonRunController.js, lessonRunState.js (evidence fields), registry index.js", "exitCode": 0},
+    {"cmd": "cat/sed/grep: native film/lessons.js, mastery.js, conceptMap.js, courseVideoPlan.js, lessonPacks.js, academyLessonProductionPackage.js, dailySession.js; core curriculum.mjs", "exitCode": 0},
+    {"cmd": "node (stdin): courseVideoPlan spot vs shared guided spot and media workedExample comparison", "exitCode": 0},
+    {"cmd": "grep/sed: web and native PriceWorkbench (no persistence calls); web data/academy/lessons LESSON_VERSIONS", "exitCode": 0},
+    {"cmd": "node (stdin): cross-lesson hero-hand reuse; workedExample == guided check", "exitCode": 0},
+    {"cmd": "date -u", "exitCode": 0},
+    {"cmd": "git -C <wt> diff --check; git status --porcelain -- docs/v1-feature; python sha256 of written docs", "exitCode": 0},
+    {"cmd": "python verify-claude-boundary.py (after docs)", "exitCode": 0}
+  ],
+  "findingsSummary": {
+    "lessonsAudited": 20,
+    "keep": 15,
+    "revise": 5,
+    "rewrite": 0,
+    "reviseLessons": ["hand-rankings-workspace-v1", "equity-workspace-v1", "cbetting-workspace-v1", "semibluff-workspace-v1", "bluffing-workspace-v1"],
+    "fixtureMathErrors": 0,
+    "wordingInconsistencies": 7,
+    "serverRegistryEntries": 27,
+    "serverStructuralParityFilmFirst": "20/20 match on stage kinds, spotIds, decision kinds, choices, bands, ranges; registry carries no stage role",
+    "delayedRolePresent": false,
+    "priceWorkbenchAwardsProgress": false
+  },
+  "privateDataHandling": "Server answer-key files were loaded only for structural comparison. No key value, correct-action marker or tolerance was printed into or recorded in any output file.",
+  "resourceWindow": "none used; no render, simulation, build, full suite, server start, install, download, network or provider call",
+  "notValidated": [
+    "No client, server or test suite was run; runtime playback, film-pause tolerance and preview grading were not observed",
+    "Server key values were not compared with public explanations (deliberately)",
+    "Native lessonHandModel.js and web LessonPlayer were not read",
+    "Given equity values are stated exercise values; not checked against any range",
+    "No learning-efficacy, accessibility or device claim",
+    "Tyler's question-7 answer authorizing M2 was not visible to this agent",
+    "M1 visual acceptance has not occurred; M3-M5 remain held"
+  ]
+}
