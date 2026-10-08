@@ -12,11 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # Some parity tests read the server's sources from ../pokerServer, the
-      # same side-by-side layout used locally.
+      # same side-by-side layout used locally. The sibling repos are private, so
+      # this needs a FLOP52_REPOS_TOKEN secret with read access to them.
       - uses: actions/checkout@v4
         with:
           repository: tps1147/pokerServer
           path: pokerServer
+          token: ${{ secrets.FLOP52_REPOS_TOKEN }}
       - run: mv pokerServer ../pokerServer
       - uses: actions/setup-node@v4
         with:
