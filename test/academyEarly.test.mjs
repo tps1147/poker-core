@@ -196,6 +196,309 @@ for (const def of shipped) {
   checks += 1;
 }
 
+// ── the 22 node-id definitions (lessons/academy, ACADEMY_V2_EARLY_LESSONS) ──────────────────────
+const { ACADEMY_V2_EARLY_LESSONS, academyLesson, validateDefinitionHands, expandScript, initialState, stateAfter, runUntilBlocked, lessonOfNode, lessonSlot, learnPath } = learn;
+const pct2 = (n, d) => (Math.round((1000 * n) / d) / 10).toFixed(1);
+const WHO_IDS = ["you", "andy", "split"];
+const winnerOf = (spot) => { const x = compareHands(ev([...spot.hero, ...spot.board]), ev([...spot.versus, ...spot.board])); return x > 0 ? "you" : x < 0 ? "andy" : "split"; };
+const RANK = Object.fromEntries(["High Card", "Pair", "Two Pair", "Three of a Kind", "Straight", "Flush", "Full House", "Four of a Kind", "Straight Flush"].map((n) => [n, ev(n === "High Card" ? ["2c", "5d", "9h", "Js", "Kc"] : n === "Pair" ? ["2c", "2d", "9h", "Js", "Kc"] : n === "Two Pair" ? ["2c", "2d", "9h", "9s", "Kc"] : n === "Three of a Kind" ? ["2c", "2d", "2h", "9s", "Kc"] : n === "Straight" ? ["5c", "6d", "7h", "8s", "9c"] : n === "Flush" ? ["2c", "5c", "9c", "Jc", "Kc"] : n === "Full House" ? ["2c", "2d", "2h", "9s", "9c"] : n === "Four of a Kind" ? ["2c", "2d", "2h", "2s", "9c"] : ["5c", "6c", "7c", "8c", "9c"]).rank]));
+const combos = (pool) => { const out = []; for (let i = 0; i < pool.length; i += 1) for (let j = i + 1; j < pool.length; j += 1) out.push([pool[i], pool[j]]); return out; };
+const bestFive = (seven) => {
+  let best = null; let bestSet = [];
+  for (let a = 0; a < 7; a += 1) for (let b = a + 1; b < 7; b += 1) {
+    const five = seven.filter((_, i) => i !== a && i !== b);
+    const h = ev(five); const c = best ? compareHands(h, best) : 1;
+    if (c > 0) { best = h; bestSet = [five]; } else if (c === 0) bestSet.push(five);
+  }
+  return bestSet;
+};
+// The nuts on a board: the two-card hands (any unseen-to-the-board cards) that make the best hand.
+const nutsOf = (board) => {
+  let best = null; let hands = [];
+  for (const h of combos(unseen(board))) { const x = ev([...h, ...board]); const c = best ? compareHands(x, best) : 1; if (c > 0) { best = x; hands = [h]; } else if (c === 0) hands.push(h); }
+  return { best, hands };
+};
+const possible = (board) => new Set(combos(unseen(board)).map((h) => ev([...h, ...board]).name));
+const earlyKeys = async (id) => (await import(`../answerKeys/${id}.mjs`)).default;
+const neutral = (spot) => spot.decision === "action" ? { action: spot.choices.includes("call") ? "call" : spot.choices[0], correct: null } : { response: {}, correct: null };
+const walkHand = (def, handId) => {
+  const h = def.hands[handId]; let state = initialState(h); let next = 0; const answers = {}; const performed = []; const reached = [];
+  for (let g = 0; g < 50; g += 1) {
+    const r = runUntilBlocked(h, state, next, { answers, performed }, { reduce: true }); state = r.state; next = r.next;
+    if (!r.blocked) break;
+    if (r.blocked.kind === "decide") { reached.push(r.blocked.spotId); answers[r.blocked.spotId] = neutral(def.spots[r.blocked.spotId]); }
+    else if (r.blocked.kind === "action") performed.push(r.blocked.index);
+    else return { finished: false, reached };
+  }
+  return { finished: next === expandScript(h).length, reached };
+};
+const walkKeys = (value, visit, trail = "") => {
+  if (Array.isArray(value)) value.forEach((x, i) => walkKeys(x, visit, `${trail}[${i}]`));
+  else if (value && typeof value === "object") for (const [k, x] of Object.entries(value)) { visit(k, `${trail}.${k}`); walkKeys(x, visit, `${trail}.${k}`); }
+};
+
+check("every early-track node with no shipped lesson has a node-id definition, registered", () => {
+  const missing = NODES.filter((n) => EARLY.includes(n.track) && lessonOfNode(n.id) === n.id).map((n) => n.id);
+  assert.deepEqual(ACADEMY_V2_EARLY_LESSONS.map((d) => d.id).sort(), missing.sort());
+  assert.equal(missing.length, 22);
+  for (const d of ACADEMY_V2_EARLY_LESSONS) assert.equal(academyLesson(d.id), d);
+  assert.equal(academyLesson("pot-odds-workspace-v2"), FILM_FIRST_LESSONS.find((d) => d.id === "pot-odds-workspace-v2"));
+  assert.equal(learnPath(academyLesson).total, 20 + 22);
+});
+
+for (const def of ACADEMY_V2_EARLY_LESSONS) {
+  const node = def.id;
+  const keys = await earlyKeys(node);
+  const anchors = FILMS[node];
+  check(`${node}: shape, film, why and takeaway`, () => {
+    assert.deepEqual(def.stages.map((s) => s.kind), ["welcome", "film", "why", "decision", "decision", "decision", "takeaway"]);
+    assert.deepEqual(def.stages.slice(3, 6).map((s) => s.role), ["guided", "practice", "fresh"]);
+    assert.deepEqual([def.node, def.version, def.flow, def.format, def.filmVersion], [node, 1, "film-first", "academy-v2", 2]);
+    assert.equal(def.access, lessonSlot(node).access, "the curriculum's tier");
+    assert.deepEqual(validateDefinitionHands(def), []);
+    for (const hand of lessonHands(def)) { const w = walkHand(def, hand.hand); assert.ok(w.finished, `${hand.hand} finishes`); assert.deepEqual(w.reached, [hand.hand]); }
+    const film = def.stages[1];
+    assert.equal(film.media, filmIdOfNode(node));
+    assert.equal(def.media, filmIdOfNode(node));
+    assert.equal(film.pause.film, anchors.film);
+    assert.equal(film.pause.at, anchors.yourTurn, "canon.yourTurn, or null");
+    assert.equal(film.pause.anchor, anchors.yourTurn == null ? "end" : "yourTurn");
+    const guided = def.stages[3].spotId;
+    assert.deepEqual(film.pause.spot, def.spots[guided], "the Your turn spot is the guided spot, same numbers");
+    assert.equal(film.pause.spotId, guided.replace(/-guided$/, "-turn"));
+    const why = def.stages[2];
+    assert.equal(why.options.length, 3);
+    assert.ok(why.prompt && why.options.every((o) => o.id && o.text && o.fix && !("correct" in o)));
+    const take = def.stages.at(-1);
+    if (anchors.ruleCard) assert.deepEqual(take.ruleCard, anchors.ruleCard, "the film's RuleCard");
+    else assert.deepEqual(take.ruleCard, { lines: anchors.ruleCaptions, sub: null }, "the film's rule captions");
+    assert.ok(take.rule && take.recapLabels.length === 3);
+    walkKeys(def, (k, trail) => assert.ok(!["key", "correct", "correctAction", "answer", "misconception"].includes(k), `${node}${trail} ships a key`));
+    for (const hand of Object.values(def.hands)) assert.deepEqual(hand.opponent || {}, {}, "no opponent cards ship on a hand");
+    const [g, , f] = def.stages.slice(3, 6).map((s) => def.spots[s.spotId]);
+    assert.notEqual(JSON.stringify([f.hero, f.board, f.potBefore, f.bet, f.prompt]), JSON.stringify([g.hero, g.board, g.potBefore, g.bet, g.prompt]), "the fresh spot is changed");
+  });
+  check(`${node}: the key file matches the definition`, () => {
+    assert.deepEqual([keys.lessonId, keys.node, keys.contentVersion, keys.access], [node, node, 1, def.access]);
+    assert.deepEqual(keys.stages.map((s) => s.spotId || s.kind), def.stages.map((s) => s.spotId || s.kind));
+    assert.deepEqual([keys.film.stage, keys.film.at, keys.film.spotId], [1, def.stages[1].pause.at, def.stages[1].pause.spotId]);
+    const ids = def.stages[2].options.map((o) => o.id);
+    assert.deepEqual(keys.why.options, ids);
+    assert.ok(ids.includes(keys.why.key.option) && ids.includes(keys.why.misconception) && keys.why.misconception !== keys.why.key.option);
+    for (const [id, k] of Object.entries(keys.spots)) {
+      assert.equal(def.stages[k.stage].spotId, id);
+      assert.ok(keyFits(def.spots[id], k.key), `${id} key is one of its answers`);
+    }
+    assert.deepEqual(keys.film.key, keys.spots[def.stages[3].spotId].key, "the film spot's key is the guided key");
+  });
+}
+
+// Every key, recomputed.
+const K = {};
+for (const def of ACADEMY_V2_EARLY_LESSONS) K[def.id] = { def, keys: await earlyKeys(def.id) };
+const keyOf = (node, spotId) => K[node].keys.spots[spotId].key;
+const spotOf = (node, spotId) => K[node].def.spots[spotId];
+
+check("who wins: every showdown key is the evaluator's", () => {
+  let n = 0;
+  for (const { def, keys } of Object.values(K)) for (const [id, spot] of Object.entries(def.spots)) {
+    if (!spot.versus || spot.decision !== "estimate" || !spot.bands.every((b) => WHO_IDS.includes(b.id))) continue;
+    assert.equal(keys.spots[id].key.band, winnerOf(spot), id);
+    n += 1;
+  }
+  assert.equal(n, 10);
+});
+
+check("best five: the unique best five of the seven", () => {
+  for (const [node, id] of [["r-best-five", "b5-guided"], ["r-best-five", "b5-fresh"]]) {
+    const spot = spotOf(node, id);
+    const best = bestFive([...spot.hero, ...spot.board]);
+    assert.equal(best.length, 1, `${id}: one best five`);
+    assert.deepEqual([...best[0]].sort(), [...keyOf(node, id).cards].sort());
+  }
+  // the fresh five uses exactly one hole card
+  assert.equal(keyOf("r-best-five", "b5-fresh").cards.filter((c) => spotOf("r-best-five", "b5-fresh").hero.includes(c)).length, 1);
+  assert.equal(keyOf("r-best-five", "b5-guided").cards.filter((c) => ["Ac", "Ad"].includes(c)).length, 0);
+});
+
+check("welcome: counts and the plan's comprehension answers", () => {
+  // w-luck-and-skill: 26 of 44 rivers win for A♣ J♦ against Q♥ 9♥ on J♥ T♥ 4♣ 2♠, no ties.
+  const s = spotOf("w-luck-and-skill", "wl-guided");
+  const rivers = unseen([...s.hero, ...s.versus, ...s.board]);
+  const res = rivers.map((r) => compareHands(ev([...s.hero, ...s.board, r]), ev([...s.versus, ...s.board, r])));
+  assert.deepEqual([rivers.length, res.filter((x) => x > 0).length, res.filter((x) => x === 0).length], [44, 26, 0]);
+  assert.equal(keyOf("w-luck-and-skill", "wl-guided").value, 26);
+  assert.ok(near((1000 * 26) / 44 - 500, 90.9090909090909) && keyOf("w-luck-and-skill", "wl-practice").band === "avg");
+  assert.ok(compareHands(ev([...s.hero, ...s.board, "Kd"]), ev([...s.versus, ...s.board, "Kd"])) < 0, "the K♦ is one of his rivers");
+  assert.ok((600 * 26) / 44 - 300 > 0 && keyOf("w-luck-and-skill", "wl-fresh").band === "no");
+  assert.equal(Math.round((600 * 26) / 44 - 300), 55);
+  assert.ok(compareHands(ev(["Kh", "Qh", "Jh", "Tc", "4h", "2s", "9d"]), ev(["Ac", "Jd", "Jh", "Tc", "4h", "2s", "9d"])) > 0);
+  // w-how-deep
+  assert.equal((52 * 51) / 2, 1326); assert.equal(13 + 78 + 78, 169); assert.equal((13 * 12) / 2, 78);
+  assert.deepEqual([keyOf("w-how-deep", "wd-guided").band, keyOf("w-how-deep", "wd-practice").band], ["1326", "169"]);
+  assert.equal(NODES.find((n) => n.id === "f-bet-sizing").track, "postflop");
+  assert.equal(keyOf("w-how-deep", "wd-fresh").band, "postflop");
+  // comprehension answers stated in the plan
+  const welcome = readFileSync(join(PLANS, "welcome.md"), "utf8");
+  assert.ok(welcome.includes("Who takes the chips you lose? (the other players)") && keyOf("w-history", "wh-guided").band === "players");
+  assert.ok(welcome.includes("(decide better over many hands)") && keyOf("w-history", "wh-practice").band === "better");
+  assert.ok(welcome.includes("the buy-ins, minus a fee") && keyOf("w-history", "wh-fresh").band === "buyins");
+  assert.ok(welcome.includes("DECIDE 10 AND CHECK") && keyOf("w-the-academy", "wa-guided").band === "decide");
+  const LOOP = ["Learn the idea", "Decide with it", "See why", "Try a new spot", "Prove it later"];
+  assert.ok(LOOP.every((step) => welcome.includes(step)));
+  assert.equal(LOOP[LOOP.indexOf("Decide with it") + 1], "See why"); assert.equal(keyOf("w-the-academy", "wa-practice").band, "why");
+  assert.equal(LOOP[LOOP.indexOf("Prove it later") - 1], "Try a new spot"); assert.equal(keyOf("w-the-academy", "wa-fresh").band, "new");
+  // w-what-is-poker: the fold wins without a showdown (the last player in takes the pot)
+  const h = K["w-what-is-poker"].def.hands["wip-fresh"];
+  const folded = { ...h, script: [...h.script.slice(0, -1), { do: "act", seat: "hero", action: "fold" }] };
+  const st = stateAfter(folded, expandScript(folded).length);
+  assert.equal(st.seats.filter((x) => !x.folded).length, 1);
+  assert.equal(keyOf("w-what-is-poker", "wip-fresh").band, "andy");
+});
+
+check("rules: seats, order, pots and legal actions", () => {
+  assert.equal("9c"[0], "9d"[0]); assert.equal(ev(["9c", "2d", "4h", "7s", "Kc"]).rank, ev(["9d", "2c", "4h", "7s", "Kc"]).rank);
+  assert.equal(keyOf("r-the-deck", "dk-practice").band, "equal");
+  // blinds: posted by two players; heads-up the button posts the small blind and acts first preflop
+  const blindsOf = (hand) => stateAfter(hand, expandScript(hand).findIndex((x) => x.do === "decide"));
+  const six = blindsOf(K["r-seats-blinds"].def.hands["sb-practice"]);
+  assert.equal(six.pot, 15);
+  const ids = six.seats.map((x) => x.id); const btn = ids.indexOf(six.dealerId);
+  assert.equal(six.seats.find((x) => x.currentBet === 5).id, ids[(btn + 1) % ids.length], "the seat right after the button");
+  assert.equal(six.seats.find((x) => x.currentBet === 10).id, ids[(btn + 2) % ids.length]);
+  assert.equal(keyOf("r-seats-blinds", "sb-practice").band, "next");
+  assert.ok(six.seats.filter((x) => x.currentBet > 0).every((x) => x.id !== six.dealerId) && keyOf("r-seats-blinds", "sb-guided").band === "players");
+  const hu = blindsOf(K["r-seats-blinds"].def.hands["sb-fresh"]);
+  assert.equal(hu.seats.find((x) => x.id === "hero").currentBet, 5); assert.equal(keyOf("r-seats-blinds", "sb-fresh").band, "you");
+  const fh = blindsOf(K["r-first-hand"].def.hands["fh-guided"]);
+  assert.equal(fh.currentTurnId, "hero"); assert.equal(keyOf("r-first-hand", "fh-guided").band, "you");
+  // order after the flop: the first seat left of the button still in
+  const POSTFLOP = ["SB", "BB", "UTG", "MP", "CO", "BTN"];
+  const first = (seats) => POSTFLOP.find((s) => seats.includes(s));
+  assert.equal(first(["BB", "BTN"]), "BB"); assert.equal(keyOf("r-streets", "st-guided").band, "andy");
+  assert.equal(first(["SB", "BB", "CO"]), "SB"); assert.equal(keyOf("r-streets", "st-practice").band, "sb");
+  assert.equal(first(["UTG", "CO", "BTN"]), "UTG"); assert.equal(keyOf("r-streets", "st-fresh").band, "utg");
+  // nothing owed on the flop: check or bet are the legal choices
+  const fp = stateAfter(K["r-first-hand"].def.hands["fh-practice"], expandScript(K["r-first-hand"].def.hands["fh-practice"]).length);
+  assert.equal(fp.currentBet, 0); assert.equal(keyOf("r-first-hand", "fh-practice").band, "checkbet");
+  assert.equal(40 + 40 + 30 + 30, keyOf("r-first-hand", "fh-fresh").value);
+  // side pots
+  const put = { A: 50, B: 150, C: 400, D: 400 };
+  assert.equal(Object.values(put).reduce((t, v) => t + Math.min(v, put.A), 0), keyOf("r-all-in-side-pots", "ap-guided").value);
+  assert.equal(Object.values(put).reduce((t, v) => t + v, 0), 1000);
+  const three = { A: 100, B: 300, C: 300 };
+  assert.equal([three.B, three.C].reduce((t, v) => t + (v - three.A), 0), keyOf("r-all-in-side-pots", "ap-practice").value);
+  assert.equal(800 - Math.min(800, 300), keyOf("r-all-in-side-pots", "ap-fresh").value);
+  assert.equal(keyOf("r-showdown", "sd-guided").band, "yes");
+});
+
+check("board: draws, nuts, what beats you, shapes", () => {
+  const mv = spotOf("b-made-vs-draw", "mv-guided");
+  assert.equal(ev([...mv.hero, ...mv.board]).name, "High Card");
+  assert.equal([...mv.hero, ...mv.board].filter((c) => c[1] === "h").length, 4);
+  assert.equal(unseen([...mv.hero, ...mv.board]).filter((c) => c[1] === "h").length, 9);
+  assert.equal(keyOf("b-made-vs-draw", "mv-guided").band, "draw");
+  for (const id of ["mv-practice", "mv-fresh"]) { const s = spotOf("b-made-vs-draw", id); assert.equal(completingCards(s.hero, s.board, s.target).length, keyOf("b-made-vs-draw", id).value, id); }
+  // the nuts
+  const nutsKey = { kk: "KK", 99: "99", 33: "33" };
+  for (const id of ["nu-guided", "nu-practice", "nu-fresh"]) {
+    const { hands } = nutsOf(spotOf("b-the-nuts", id).board);
+    const want = nutsKey[keyOf("b-the-nuts", id).band];
+    assert.ok(hands.length > 0 && hands.every((h) => h[0][0] + h[1][0] === want), `${id}: ${want}`);
+  }
+  const fb = spotOf("b-the-nuts", "nu-fresh").board;
+  const notQuads = combos(unseen(fb)).filter((h) => ev([...h, ...fb]).name !== "Four of a Kind");
+  let second = null; let secondHands = [];
+  for (const h of notQuads) { const x = ev([...h, ...fb]); const c = second ? compareHands(x, second) : 1; if (c > 0) { second = x; secondHands = [h]; } else if (c === 0) secondHands.push(h); }
+  assert.ok(secondHands.every((h) => h[0][0] === "K" && h[1][0] === "K"), "kings full is second best");
+  // what beats you
+  const wb = spotOf("b-what-beats-you", "wb-guided");
+  const mine = ev([...wb.hero, ...wb.board]);
+  const theirs = combos(unseen([...wb.hero, ...wb.board])).map((h) => compareHands(ev([...h, ...wb.board]), mine));
+  assert.deepEqual([theirs.length, theirs.filter((x) => x > 0).length, theirs.filter((x) => x === 0).length], [1035, 63, 6]);
+  assert.equal(keyOf("b-what-beats-you", "wb-guided").band, "60");
+  const wr = spotOf("b-what-beats-you", "wb-practice");
+  const mineR = ev([...wr.hero, ...wr.board]);
+  const beatR = new Set(combos(unseen([...wr.hero, ...wr.board])).filter((h) => compareHands(ev([...h, ...wr.board]), mineR) > 0).map((h) => ev([...h, ...wr.board]).name));
+  assert.ok(beatR.has("Flush") && beatR.has("Straight") && !beatR.has("Full House")); assert.equal(keyOf("b-what-beats-you", "wb-practice").band, "fs");
+  const wf = spotOf("b-what-beats-you", "wb-fresh");
+  const mineF = ev([...wf.hero, ...wf.board]);
+  const beats = (h) => compareHands(ev([...h, ...wf.board]), mineF) > 0;
+  assert.deepEqual([beats(["As", "Kd"]), beats(["Qs", "Qd"]), beats(["Js", "Ts"])], [false, true, false]); assert.equal(keyOf("b-what-beats-you", "wb-fresh").band, "qq");
+  // shapes
+  const flop = { k72: ["Kd", "7c", "2s"], kk4: ["Kh", "Kc", "4d"], a83: ["Ah", "8h", "3h"], 987: ["9c", "8d", "7s"], jt4: ["Jh", "Th", "4c"] };
+  const withFlush = Object.entries(flop).filter(([, b]) => possible(b).has("Flush")).map(([id]) => id);
+  assert.deepEqual(withFlush, ["a83"]); assert.equal(keyOf("b-texture-read", "tx-guided").band, "a83");
+  assert.equal(combos(unseen(flop.a83)).filter((h) => ev([...h, ...flop.a83]).name === "Flush").length, 45);
+  const p987 = possible(flop[987]);
+  assert.ok(p987.has("Straight") && !p987.has("Flush") && !p987.has("Full House")); assert.equal(keyOf("b-texture-read", "tx-practice").band, "straight");
+  assert.equal(combos(unseen(flop[987])).filter((h) => ev([...h, ...flop[987]]).name === "Straight").length, 48);
+  const p66 = possible(spotOf("b-texture-read", "tx-fresh").board);
+  assert.ok(p66.has("Four of a Kind") && !p66.has("Flush") && !p66.has("Straight")); assert.equal(keyOf("b-texture-read", "tx-fresh").band, "quads");
+  // the counterfeit: on the turn both best fives are aces and nines, and the king plays
+  const kc = spotOf("b-kickers-counterfeit", "kc-guided");
+  assert.equal(ev([...kc.hero, ...kc.board]).name, "Two Pair");
+  assert.ok(compareHands(ev([...kc.hero, ...kc.board.slice(0, 3)]), ev([...kc.versus, ...kc.board.slice(0, 3)])) > 0, "ahead on the flop");
+});
+
+check("math: shares and expected totals", () => {
+  const pct = (n, d) => Math.round((1000 * n) / d) / 10;
+  assert.equal(pct(4, 52), 7.7); assert.equal(keyOf("m-chance-as-share", "cs-guided").band, "7.7");
+  assert.equal(pct(26, 52), 50); assert.equal(keyOf("m-chance-as-share", "cs-practice").band, "50");
+  assert.equal(pct(12, 52), 23.1); assert.equal(keyOf("m-chance-as-share", "cs-fresh").band, "23");
+  assert.equal(10 * 100, Number(keyOf("m-variance", "va-guided").band));
+  assert.ok(-10 < 0 && keyOf("m-variance", "va-practice").band === "no");
+  assert.equal(25 * 200, Number(keyOf("m-variance", "va-fresh").band));
+  asserts(MP, 'check(n, "A SD after 100 ≈ 917", Math.round(sd1 * 10), 917);');
+  asserts(MP, 'check(n, "A one swing below", 1000 - 917, 83);');
+  asserts(MP, 'check(n, "A one swing above", 1000 + 917, 1917);');
+  asserts(MP, 'check(n, "B ahead after 1000 (k ≥ 334)", pct(aheadB(1000), 1), "1.1%");');
+});
+
+check("postflop: value bets, pot control and draws", () => {
+  // value betting: every hand that calls with two pair or better beats top pair
+  const vb = spotOf("f-value-betting", "vb-guided");
+  const mine = ev([...vb.hero, ...vb.board]);
+  const callers = combos(unseen([...vb.hero, ...vb.board])).filter((h) => ev([...h, ...vb.board]).rank >= RANK["Two Pair"]);
+  assert.ok(callers.length > 0 && callers.every((h) => compareHands(ev([...h, ...vb.board]), mine) > 0));
+  assert.equal(keyOf("f-value-betting", "vb-guided").action, "check");
+  asserts(PF, 'check("value: 128 live, 54 call", vr.length === 128 && calls.length === 54');
+  asserts(PF, 'check("value: 38 worse, 1 tie, 15 better", w === 38 && t === 1 && l === 15');
+  assert.ok(38 / 54 > 1 / 2 && near(38 * 100 - 15 * 100, 2300) && Math.round(10 * 2300 / 54) / 10 === 42.6 && pct2(38, 54) === "70.4");
+  assert.equal(keyOf("f-value-betting", "vb-practice").action, "bet");
+  assert.ok(18 / 40 < 1 / 2); assert.equal(keyOf("f-value-betting", "vb-fresh").action, "check");
+  // pot control
+  asserts(PF, 'eqQ("three half-pot bets", 100 * 2 * 2 * 2, 800)');
+  asserts(PF, 'eqQ("two half-pot bets", 100 * 2 * 2, 400)');
+  assert.equal(pct2(2, 46), "4.3");
+  assert.equal(keyOf("f-pot-control", "pc-guided").band, "him");
+  assert.equal(keyOf("f-pot-control", "pc-practice").action, "check");
+  assert.equal(60 * 2 * 2, keyOf("f-pot-control", "pc-fresh").value);
+  // playing draws: price, needed later, and the all-in runouts
+  const pd = spotOf("f-playing-draws", "pd-guided");
+  const outs = completingCards(pd.hero, pd.board, "flush").length;
+  assert.equal(outs, 9); assert.equal(pct2(9, 47), "19.1");
+  const needed = (pot, bet) => bet / (outs / 47) - (pot + bet + bet);
+  assert.ok(near(price(120, 60), 0.25) && Math.ceil(needed(120, 60)) === 74 && 74 <= 300); assert.equal(keyOf("f-playing-draws", "pd-guided").action, "call");
+  assert.ok(Math.round(10 * needed(100, 50)) / 10 === 61.1 && Math.ceil(needed(100, 50)) === 62 && 62 > 40); assert.equal(keyOf("f-playing-draws", "pd-practice").action, "fold");
+  const left = unseen([...pd.hero, ...pd.board]);
+  const flushRuns = combos(left).filter((two) => [...pd.hero, ...pd.board, ...two].filter((c) => c[1] === "c").length >= 5).length;
+  assert.deepEqual([left.length, combos(left).length, flushRuns], [47, 1081, 378]);
+  assert.ok(flushRuns / 1081 > price(100, 100) && pct2(378, 1081) === "35.0"); assert.equal(keyOf("f-playing-draws", "pd-fresh").action, "call");
+});
+
+check("recall: the four postflop cards, answered as the lessons answer them", () => {
+  const { recallEntry } = learn;
+  const answer = (id) => { const q = recallEntry(id).question; return q.choices[q.answer]; };
+  assert.ok(FILM_FIRST_LESSONS.find((d) => d.id === "cbetting-workspace-v1").spots["cb1-practice-cbet"].explanation.includes("checking is the play"));
+  assert.equal(answer("f-cbet"), "Check");
+  assert.ok(18 / 40 < 1 / 2 && answer("f-value-betting") === "Check" && keyOf("f-value-betting", "vb-fresh").action === "check");
+  assert.ok(60 * 2 * 2 === Number(answer("f-pot-control")) && keyOf("f-pot-control", "pc-fresh").value === 240);
+  assert.ok(378 / 1081 > price(100, 100) && answer("f-playing-draws") === "Call" && keyOf("f-playing-draws", "pd-fresh").action === "call");
+  for (const id of ["f-cbet", "f-value-betting", "f-pot-control", "f-playing-draws"]) assert.ok(!/guided|transfer|film/i.test(recallEntry(id).source));
+  assert.deepEqual(learn.recallTodo().filter((t) => EARLY.includes(NODES.find((n) => n.id === t.lessonId).track)), [], "no early-track todo left");
+});
+
 check("the plan check scripts behind these keys pass", () => {
   for (const name of [MP, PF]) {
     const r = spawnSync(process.execPath, [join(PLANS, name)], { encoding: "utf8" });
