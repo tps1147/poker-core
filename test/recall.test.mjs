@@ -51,9 +51,8 @@ check("one entry per node, in tree order, each with a rule; questions are one-ta
 check("the todo list", () => {
   const list = recallTodo();
   assert.equal(list.length, RECALL_BANK.filter((e) => e.status === "todo").length);
-  assert.deepEqual(list.map((x) => x.lessonId), ["f-cbet", "f-value-betting", "f-pot-control", "f-playing-draws", "x-mdf", "x-check-raise",
-    "x-barrels-blockers", "h-range-narrowing", "h-player-types", "h-exploits", "g-toy-games", "g-balance", "g-gto-to-exploit", "y-tilt", "y-study",
-    "o-multiway", "o-heads-up", "o-tournaments-icm", "o-six-max", "o-live"]);
+  // The later tracks' cards (pressure to Other Tables) are authored; test/academyLessonsB.test.mjs checks them.
+  assert.deepEqual(list.map((x) => x.lessonId), ["f-cbet", "f-value-betting", "f-pot-control", "f-playing-draws"]);
 });
 
 check("rules and board cards: the answers the evaluator gives", () => {
