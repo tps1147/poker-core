@@ -4,11 +4,12 @@
 // src/components/learn/player/filmV2Model.test.js), and the merged 59-lesson path.
 //   node test/academyLoop.test.mjs
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import {
   filmFirstLesson, decisionStages, academyLesson, learnPath, NODES, TRACKS,
   ACADEMY_V2_EARLY_LESSONS, ACADEMY_V2_LATER_LESSONS, FILM_FIRST_LESSONS,
   freshEvidence, recapTally, whyOf, isWhyStage, trackPlace, nextAfter,
+  nodeOfLesson, filmIdOfNode, whyStages, whyResult,
   parseVtt, filmPauseAt, filmOwnPause, filmTurnPlan, PAUSE_WINDOW,
 } from "../src/learn/index.mjs";
 
@@ -34,6 +35,46 @@ check("learnPath(academyLesson) lists all 59: the shipped 20, the early 22 and t
   assert.equal(academyLesson("o-live"), ACADEMY_V2_LATER_LESSONS.at(-1), "then later");
   assert.equal(academyLesson("pot-odds-workspace-v2"), filmFirstLesson("pot-odds-workspace-v2"), "then the shipped 20");
   assert.equal(academyLesson("nope"), null);
+});
+
+const film_ = (def) => def.stages.find((stage) => stage.kind === "film");
+const ALL = [...FILM_FIRST_LESSONS, ...ACADEMY_V2_EARLY_LESSONS, ...ACADEMY_V2_LATER_LESSONS];
+const mediaFile = (id) => new URL(`../src/learn/media/${id}.v3.json`, import.meta.url);
+
+check("every one of the 59 definitions' film media id resolves to a v3 json in src/learn/media", () => {
+  assert.equal(ALL.length, 59);
+  for (const def of ALL) {
+    const node = nodeOfLesson(def.id).id;
+    const id = filmIdOfNode(node);
+    assert.equal(id, node, `${def.id}: the media id is the node id`);
+    assert.ok(existsSync(mediaFile(id)), `${def.id}: src/learn/media/${id}.v3.json`);
+    assert.equal(media(id).id, id, `${id}.v3.json names itself`);
+    const film = def.stages.find((stage) => stage.kind === "film");
+    if (film.pause?.film) assert.equal(film.pause.film, id, `${def.id}: pause.film`);
+    if (def.filmVersion === 2) assert.deepEqual([def.media, film.media], [id, id], `${def.id}: media`);
+  }
+});
+
+// Every why stage has a spotId, "<prefix>-why" with the prefix of the lesson's other spots, and the
+// answer key grades it under that spotId.
+const keys = Object.fromEntries(await Promise.all(ALL.map(async (def) => {
+  const node = nodeOfLesson(def.id).id;
+  return [def.id, (await import(new URL(`../answerKeys/${node}.mjs`, import.meta.url))).default];
+})));
+check("every why stage has a spotId with a key", () => {
+  for (const def of ALL) {
+    const whys = whyStages(def);
+    assert.equal(whys.length, 1, def.id);
+    const [why] = whys;
+    const prefix = decisionStages(def).find((stage) => stage.role === "guided").spotId.replace(/-guided.*$/, "");
+    assert.equal(why.spotId, `${prefix}-why`, def.id);
+    assert.ok(decisionStages(def).every((stage) => stage.spotId.startsWith(`${prefix}-`)), `${def.id}: one prefix`);
+    const key = keys[def.id].why;
+    assert.deepEqual([key.stage, key.spotId], [why.index, why.spotId], `${def.id}: the key names the stage and spot`);
+    assert.deepEqual(key.options, why.options.map((o) => o.id));
+    assert.equal(whyResult(why, key.key.option, key.key).correct, true, `${def.id}: the key grades`);
+    assert.ok(!decisionStages(def).some((stage) => stage.spotId === why.spotId) && film_(def)?.pause?.spotId !== why.spotId, `${def.id}: its own spot in the lesson`);
+  }
 });
 
 // ---- freshEvidence and the tally (mobile's cases) -------------------------------------------------

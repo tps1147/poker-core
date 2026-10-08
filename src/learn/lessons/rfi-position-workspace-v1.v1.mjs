@@ -58,7 +58,7 @@ const definition = {
       pause: { at: 79.05, anchor: "yourTurn", film: "p-open-raise", spotId: "rfi1-turn",
         spot: { decision: "action", choices: ["fold", "raise"], prompt: "Seven-six suited, in middle position, folded to you. Open or fold?", sizes: { raise: 25 }, title: "Your turn: open or fold?", explanation: "It is not in the middle-position chart: fold. The same hand in the cutoff is in: raise." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-open-raise.mjs).
-    { kind: "why", label: "Why", prompt: "Why open ace-five suited with a raise?",
+    { kind: "why", label: "Why", spotId: "rfi1-why", prompt: "Why open ace-five suited with a raise?",
       options: [
         { id: "a", text: "Any ace is strong enough to raise from any seat.", fix: "Seat first: under the gun, five players behind tighten the range." },
         { id: "b", text: "Limp in for 10: it is a cheaper way to see the flop.", fix: "A limp lets the blinds in cheaply and wins nothing now. Come in with a raise." },

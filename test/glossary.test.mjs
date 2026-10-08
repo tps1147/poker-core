@@ -11,7 +11,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { GLOSSARY, glossaryTerm, termsIn, lintableCaptions, prereqHits, synonymHits } from "../src/learn/glossary.mjs";
-import { NODES, filmIdOfNode } from "../src/learn/index.mjs";
+import { NODES, filmFolderOfNode } from "../src/learn/index.mjs";
 
 let checks = 0;
 const check = (name, fn) => { fn(); checks += 1; };
@@ -85,7 +85,7 @@ if (!existsSync(FILMS)) {
     const synonyms = [];
     const missing = [];
     for (const node of NODES) {
-      const file = join(FILMS, `src-academy-${filmIdOfNode(node.id)}-v2`, "timing.json");
+      const file = join(FILMS, `src-academy-${filmFolderOfNode(node.id)}-v2`, "timing.json");
       if (!existsSync(file)) { missing.push(node.id); continue; }
       const captions = JSON.parse(readFileSync(file, "utf8")).captions || [];
       for (const h of prereqHits(node.id, captions)) {

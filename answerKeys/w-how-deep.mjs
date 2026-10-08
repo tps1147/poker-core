@@ -7,8 +7,8 @@
 export default {
   lessonId: "w-how-deep", node: "w-how-deep", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "wd-guided" }, { kind: "decision", spotId: "wd-practice" }, { kind: "decision", spotId: "wd-fresh" }, { kind: "takeaway" }],
-  film: { stage: 1, at: null, anchor: "end", filmId: "w-deep", spotId: "wd-turn", decision: "estimate", bands: ["169", "1326", "2652"], key: { band: "1326" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
+  film: { stage: 1, at: null, anchor: "end", filmId: "w-how-deep", spotId: "wd-turn", decision: "estimate", bands: ["169", "1326", "2652"], key: { band: "1326" } },
+  why: { stage: 2, spotId: "wd-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
   spots: {
     "wd-guided": { stage: 3, decision: "estimate", bands: ["169", "1326", "2652"], key: { band: "1326" } },
     "wd-practice": { stage: 4, decision: "estimate", bands: ["13", "169", "1326"], key: { band: "169" } },

@@ -11,5 +11,5 @@ export default {
   lessonId: "pot-odds-workspace-v2", node: "m-pot-odds", contentVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 65.56, filmId: "m-pot-odds", spotId: "pot2-turn", decision: "action", choices: ["fold", "call"], key: { action: "fold" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
+  why: { stage: 2, spotId: "pot2-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
 };

@@ -63,7 +63,7 @@ const definition = {
       pause: { at: 65.51, anchor: "yourTurn", film: "f-cbet", spotId: "cb1-turn",
         spot: { decision: "action", choices: ["check", "bet"], prompt: "Ace-ten, on eight, eight, three. 90 in the pot, and he checks. Check, or bet 30?", sizes: { bet: 30 }, title: "Your turn: check or bet?", explanation: "Top pair or better is 19.6% for you and 12.9% for him, and the flop is dry. Bet 30, a third again." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-cbet.mjs).
-    { kind: "why", label: "Why", prompt: "Why is the c-bet earned here?",
+    { kind: "why", label: "Why", spotId: "cb1-why", prompt: "Why is the c-bet earned here?",
       options: [
         { id: "a", text: "The dry flop favors your range, and the board lets a small bet work.", fix: "Right. Your range, and a dry board: the small bet is earned." },
         { id: "b", text: "You raised before the flop, so you always c-bet.", fix: "Raising first is not the reason. On nine-seven-six with two diamonds, the same raise checks." },

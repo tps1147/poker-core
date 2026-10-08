@@ -14,5 +14,5 @@ export default {
   lessonId: "bluffing-workspace-v1", node: "x-bluffing", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: null,
-  why: { stage: 2, options: ["story-target", "called-bad", "missed"], key: { option: "story-target" } },
+  why: { stage: 2, spotId: "bl1-why", options: ["story-target", "called-bad", "missed"], key: { option: "story-target" } },
 };

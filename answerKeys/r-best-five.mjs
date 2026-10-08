@@ -8,7 +8,7 @@ export default {
   lessonId: "r-best-five", node: "r-best-five", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "b5-guided" }, { kind: "decision", spotId: "b5-practice" }, { kind: "decision", spotId: "b5-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-best-five", spotId: "b5-turn", decision: "best-five", cards: ["Ac", "Ad", "9s", "8h", "7d", "6c", "5s"], key: { cards: ["9s", "8h", "7d", "6c", "5s"] } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "b5-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
   spots: {
     "b5-guided": { stage: 3, decision: "best-five", cards: ["Ac", "Ad", "9s", "8h", "7d", "6c", "5s"], key: { cards: ["9s", "8h", "7d", "6c", "5s"] } },
     "b5-practice": { stage: 4, decision: "estimate", bands: ["you", "andy", "split"], key: { band: "you" } },

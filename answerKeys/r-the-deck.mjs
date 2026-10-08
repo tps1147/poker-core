@@ -8,7 +8,7 @@ export default {
   lessonId: "r-the-deck", node: "r-the-deck", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "dk-guided" }, { kind: "decision", spotId: "dk-practice" }, { kind: "decision", spotId: "dk-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-the-deck", spotId: "dk-turn", decision: "estimate", bands: ["you", "andy", "split"], key: { band: "split" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },
+  why: { stage: 2, spotId: "dk-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },
   spots: {
     "dk-guided": { stage: 3, decision: "estimate", bands: ["you", "andy", "split"], key: { band: "split" } },
     "dk-practice": { stage: 4, decision: "estimate", bands: ["clubs", "diamonds", "equal"], key: { band: "equal" } },

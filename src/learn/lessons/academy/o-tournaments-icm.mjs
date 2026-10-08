@@ -60,7 +60,7 @@ const definition = {
     welcome("Chips aren’t money.", "Survival has a price.",
       "Is every tournament chip worth the same money? Watch Reina work out the prize shares, then decide three all-ins.", "Reina"),
     filmStage({ film: "o-tournaments-icm", at: 67.51, spotId: "ic-turn", spot: turnSpot, upNext: "Play Reina’s all-in" }),
-    whyStage("Why does the big stack lose money on a fair flip?", [
+    whyStage("ic-why", "Why does the big stack lose money on a fair flip?", [
       { id: "places", text: "Prize money pays for places: the chips he can win are worth less to him than the chips he risks.", fix: "Right. 38.4% before, 38.1% on average after; the player who sat out gains." },
       { id: "chips", text: "He doesn’t: a fair flip in chips is fair in money too.", fix: "Chip value and prize money aren’t the same in tournaments. The flip is fair in chips and costs both players money." },
       { id: "lead", text: "Because he might lose his chip lead.", fix: "Not just that: averaged over winning and losing the flip, his share still drops, from 38.4% to 38.1%." },

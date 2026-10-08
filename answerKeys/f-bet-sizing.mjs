@@ -10,5 +10,5 @@ export default {
   lessonId: "bet-sizing-workspace-v1", node: "f-bet-sizing", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 73.95, filmId: "f-bet-sizing", spotId: "bs1-turn", decision: "estimate", bands: ["third", "three-quarters"], key: { band: "third" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "bs1-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
 };

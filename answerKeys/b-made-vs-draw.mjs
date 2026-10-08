@@ -8,7 +8,7 @@ export default {
   lessonId: "b-made-vs-draw", node: "b-made-vs-draw", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "mv-guided" }, { kind: "decision", spotId: "mv-practice" }, { kind: "decision", spotId: "mv-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "b-made-vs-draw", spotId: "mv-turn", decision: "estimate", bands: ["flush", "draw", "pair"], key: { band: "draw" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
+  why: { stage: 2, spotId: "mv-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
   spots: {
     "mv-guided": { stage: 3, decision: "estimate", bands: ["flush", "draw", "pair"], key: { band: "draw" } },
     "mv-practice": { stage: 4, decision: "count", range: [0, 47], key: { value: 8, tolerance: 0 } },

@@ -8,7 +8,7 @@ export default {
   lessonId: "b-what-beats-you", node: "b-what-beats-you", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "wb-guided" }, { kind: "decision", spotId: "wb-practice" }, { kind: "decision", spotId: "wb-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "b-what-beats-you", spotId: "wb-turn", decision: "estimate", bands: ["0", "10", "60", "300"], key: { band: "60" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
+  why: { stage: 2, spotId: "wb-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
   spots: {
     "wb-guided": { stage: 3, decision: "estimate", bands: ["0", "10", "60", "300"], key: { band: "60" } },
     "wb-practice": { stage: 4, decision: "estimate", bands: ["fs", "fh", "none"], key: { band: "fs" } },

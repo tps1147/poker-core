@@ -41,7 +41,7 @@ const definition = {
     welcome("Grade the decision.", "Not the last three results.",
       "Three good calls, three losses. Watch Mina keep the math in charge, then decide three rivers after losing streaks.", "Mina"),
     filmStage({ film: "y-tilt", at: null, spotId: "tl-turn", spot: turnSpot, upNext: "Play Mina’s river" }),
-    whyStage("Why call the fourth time?", [
+    whyStage("tl-why", "Why call the fourth time?", [
       { id: "math", text: "30% beats the 25% price: the call is still +10 on average, whatever the last three did.", fix: "Right. Losing three in a row at 30% happens 34.3% of the time. The math didn’t change." },
       { id: "calm", text: "Because I feel calm, so I can’t be tilting.", fix: "Tilt isn’t only anger. It is results steering your decisions, often quietly. The reason to call is the math, not your mood." },
       { id: "due", text: "Because after three losses I’m due a win.", fix: "Cards don’t remember. It is 30% every time; the call is right because of the price, not the streak." },

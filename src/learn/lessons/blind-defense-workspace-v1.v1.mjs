@@ -70,7 +70,7 @@ const definition = {
       pause: { at: 73.99, anchor: "yourTurn", film: "p-blind-defense", spotId: "bd1-turn",
         spot: { decision: "count", range: [0, 100], unit: "chips", prompt: "You are the big blind. The button raises to 40. What do you owe?", title: "Your turn: what do you owe?", explanation: "40 minus your 10 is 30. The final pot is 85, so your price is about 35%: a bigger raise, a worse price." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-blind-defense.mjs).
-    { kind: "why", label: "Why", prompt: "Why defend jack-ten suited here?",
+    { kind: "why", label: "Why", spotId: "bd1-why", prompt: "Why defend jack-ten suited here?",
       options: [
         { id: "a", text: "The 10 you posted is yours, so you protect it.", fix: "The posted 10 is already in the pot. It improves your price, but the hand still has to earn the call." },
         { id: "b", text: "Your 15 buys a share of 55, about 27%, and the hand plays well against a wide range.", fix: "Right. The blind helps the price; the hand earns the call." },

@@ -50,7 +50,7 @@ const definition = {
       pause: { at: 71.25, anchor: "yourTurn", film: "m-implied-odds", spotId: "imp1-turn",
         spot: { decision: "action", choices: ["fold", "call"], prompt: "Jack-ten, four outs. Pot 60, bet 20, 90 behind. Call or fold?", title: "Your turn: call or fold?", explanation: "Final pot 100, price 20%, about 8.7% to hit. You would need 130 more later, and only 90 is there: fold." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-implied-odds.mjs).
-    { kind: "why", label: "Why", prompt: "Why does Mina call at a 30% price?",
+    { kind: "why", label: "Why", spotId: "imp1-why", prompt: "Why does Mina call at a 30% price?",
       options: [
         { id: "a", text: "Roughly 18% beats the 30% price on its own.", fix: "18% is below 30%. The call needs the river chips to pay." },
         { id: "b", text: "The given 250 on the river makes it 75 for a shot at 500: 15%, under roughly 18%.", fix: "Right. The river chips make it 15%, under roughly 18%." },

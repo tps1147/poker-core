@@ -24,7 +24,7 @@ export default {
            {kind:"decision", spotId:"md-guided"}, {kind:"decision", spotId:"md-practice"},
            {kind:"decision", spotId:"md-fresh"}, {kind:"takeaway"}],
   film: { stage: 1, at: 66.97, spotId: "md-turn", decision: "estimate", bands: [...], key: { band: "keep-21" } },
-  why:  { stage: 2, options: ["mdf", "beaten", "breakeven"], key: { option: "mdf" } },
+  why:  { stage: 2, spotId: "md-why", options: ["mdf", "beaten", "breakeven"], key: { option: "mdf" } },
   spots: { "md-guided": { stage: 3, decision: "estimate", bands: [...], key: { band: "keep-24" } }, ... },
 };
 ```
@@ -42,7 +42,7 @@ export default {
   lessonId: "pot-odds-workspace-v2", node: "m-pot-odds", contentVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 65.56, filmId: "m-pot-odds", spotId: "pot2-turn", decision: "action", choices: [...], key: { action: "fold" } },
-  why:  { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
+  why:  { stage: 2, spotId: "pot2-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
 };
 ```
 
@@ -76,27 +76,24 @@ after:   0 welcome  1 film  2 why     3 guided    4 practice  5 fresh  6 takeawa
 
 ## 3. The why answer: the command web sends
 
+Every why stage has a `spotId`: `<prefix>-why`, where the prefix is the one the lesson's other spots
+use (`md-guided` gives `md-why`, `pot2-guided` gives `pot2-why`, and `outs2-guided-call` gives
+`outs2-why`). The definition and the key carry the same id: the stage's `spotId` and the key's
+`why.spotId`. Spot ids are unique within a lesson, not across lessons (r-showdown and y-study both
+use `sd-`), so look them up per `lessonId` as the decision spots already are.
+
 Web (`flop52web` `LessonPlayer.js`, `WhyStep`) sends the pick over the live lesson-run socket as an
 ordinary answer:
 
 ```js
-{ type: "answer", spotId, option }   // option: the picked option id, e.g. "mdf" or "c"
+{ type: "answer", spotId, option }   // spotId: the why stage's, e.g. "md-why"; option: the picked id, e.g. "mdf"
 ```
 
-The expected verdict, as poker-core grades it (`lessonModel.whyResult(stage, optionId, key)`):
-`{ option, correct, fix }`. `correct` is `key.option === option`. `fix` is the picked option's
-`fix` line, from the definition. The definition ships no `correct` flags, so the server's key is
-the only grader.
-
-**Open point: the why stage has no `spotId` yet.** Neither the definitions nor the answer keys give
-the why stage a `spotId`. Web sends only when `stage.spotId` is set, so right now it sends nothing.
-Pick one of these and tell the definitions owner:
-
-- (a) give each why stage a `spotId` (for example `<prefix>-why`, matching `-turn` and `-guided`),
-  added to both the definition and the key; or
-- (b) accept `{ type: "answer", stage: 2, option }` and look up `why.stage`.
-
-(a) needs no new command shape.
+Grade it against `why.key`. The expected verdict, as poker-core grades it
+(`lessonModel.whyResult(stage, optionId, key)`), is `{ option, correct, fix }`: `correct` is
+`key.option === option`, and `fix` is the picked option's `fix` line, from the definition. The
+definition ships no `correct` flags, so the server's key is the only grader.
+`test/academyLoop.test.mjs` checks that every why stage has a spotId and that its key grades it.
 
 ## 4. The film watch check is measured to `filmStop`
 
@@ -116,10 +113,11 @@ The "Your turn" pause comes from the definition's `pause` (`filmTurnPlan` / `fil
 film has none, `filmPauseAt` places it after the film asks its question. The film spot's key is in
 `film` (section 1), with `spotId` `<prefix>-turn`.
 
-Watch out for the three Welcome films with aliased ids. `filmIdOfNode` maps them to `w-luck`,
-`w-deep` and `w-academy`, but they were published (and copied) under their node ids:
-`w-luck-and-skill`, `w-how-deep` and `w-the-academy`. Resolve these through the node id until the
-alias table and the publish agree.
+**The media id is the tree node id, everywhere.** `filmIdOfNode(node)` returns the node id, and
+the v3 file is `src/learn/media/<node>.v3.json` with `id` set to the node id. A definition's
+`media` and `pause.film`, and a key's `film.filmId`, all name that id. The three Welcome films were
+rendered under short folder names (`w-luck`, `w-deep`, `w-academy`); only tooling still uses those,
+through `filmFolderOfNode` / `FILM_FOLDER_ALIASES`.
 
 ## 5. `conceptId` is null on 30 lessons
 

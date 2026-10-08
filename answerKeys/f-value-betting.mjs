@@ -8,7 +8,7 @@ export default {
   lessonId: "f-value-betting", node: "f-value-betting", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "vb-guided" }, { kind: "decision", spotId: "vb-practice" }, { kind: "decision", spotId: "vb-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: 70.02, anchor: "yourTurn", filmId: "f-value-betting", spotId: "vb-turn", decision: "action", choices: ["check", "bet"], key: { action: "check" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },
+  why: { stage: 2, spotId: "vb-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },
   spots: {
     "vb-guided": { stage: 3, decision: "action", choices: ["check", "bet"], key: { action: "check" } },
     "vb-practice": { stage: 4, decision: "action", choices: ["check", "bet"], key: { action: "bet" } },

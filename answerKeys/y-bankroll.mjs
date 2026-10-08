@@ -8,7 +8,7 @@ export default {
   lessonId: "y-bankroll", node: "y-bankroll", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t6-bankroll",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "br-guided"}, {kind: "decision", spotId: "br-practice"}, {kind: "decision", spotId: "br-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "br-turn", decision: "estimate", bands: ["no", "yes"], key: {band: "yes"} },
-  why: { stage: 2, options: ["cushion", "not-winner", "plays-badly"], key: { option: "cushion" } },
+  why: { stage: 2, spotId: "br-why", options: ["cushion", "not-winner", "plays-badly"], key: { option: "cushion" } },
   spots: {
     "br-guided": { stage: 3, decision: "estimate", bands: ["bi-10", "bi-20", "bi-40"], key: {band: "bi-20"} },
     "br-practice": { stage: 4, decision: "estimate", bands: ["game-100", "game-50"], key: {band: "game-50"} },

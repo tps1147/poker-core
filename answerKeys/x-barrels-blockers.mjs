@@ -8,7 +8,7 @@ export default {
   lessonId: "x-barrels-blockers", node: "x-barrels-blockers", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t4-barreling-blockers",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "bk-guided"}, {kind: "decision", spotId: "bk-practice"}, {kind: "decision", spotId: "bk-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 64.66, spotId: "bk-turn", decision: "estimate", bands: ["ace-spades", "nine-diamonds"], key: {band: "ace-spades"} },
-  why: { stage: 2, options: ["blocks-calls", "any-ace", "showdown"], key: { option: "blocks-calls" } },
+  why: { stage: 2, spotId: "bk-why", options: ["blocks-calls", "any-ace", "showdown"], key: { option: "blocks-calls" } },
   spots: {
     "bk-guided": { stage: 3, decision: "estimate", bands: ["bet-25", "bet-50", "bet-100"], key: {band: "bet-50"} },
     "bk-practice": { stage: 4, decision: "estimate", bands: ["bet-25", "bet-50", "bet-100"], key: {band: "bet-50"} },

@@ -40,7 +40,7 @@ const definition = {
       pause: { at: 64.92, anchor: "yourTurn", film: "m-outs", spotId: "outs2-turn",
         spot: { decision: "count", range: [0, 47], unit: "outs", prompt: "Queen-jack of diamonds on ten, nine, three, and only a straight wins. How many outs?", title: "Your turn: count the outs.", explanation: "Any king or any eight makes the straight: 8 outs. The queens and jacks only pair you." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-outs.mjs).
-    { kind: "why", label: "Why", prompt: "Why do Mina’s 9 outs make this a call?",
+    { kind: "why", label: "Why", spotId: "outs2-why", prompt: "Why do Mina’s 9 outs make this a call?",
       options: [
         { id: "a", text: "Every card that improves the hand counts, so the draw is bigger than 9 outs.", fix: "A card that also gives him a better hand is not an out. Count only the cards that make you the winner." },
         { id: "b", text: "9 outs × 4 is 36%, far above the price.", fix: "One card is to come, so it is ×2: roughly 18%. That still beats the 10% price." },

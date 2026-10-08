@@ -8,7 +8,7 @@ export default {
   lessonId: "o-heads-up", node: "o-heads-up", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "hu-guided"}, {kind: "decision", spotId: "hu-practice"}, {kind: "decision", spotId: "hu-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "hu-turn", decision: "estimate", bands: ["same", "wider"], key: {band: "wider"} },
-  why: { stage: 2, options: ["cost", "same", "acts-first"], key: { option: "cost" } },
+  why: { stage: 2, spotId: "hu-why", options: ["cost", "same", "acts-first"], key: { option: "cost" } },
   spots: {
     "hu-guided": { stage: 3, decision: "estimate", bands: ["button", "big-blind"], key: {band: "button"} },
     "hu-practice": { stage: 4, decision: "estimate", bands: ["bb-017", "bb-075", "bb-150"], key: {band: "bb-075"} },

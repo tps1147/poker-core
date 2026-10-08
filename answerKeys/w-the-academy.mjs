@@ -7,8 +7,8 @@
 export default {
   lessonId: "w-the-academy", node: "w-the-academy", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "wa-guided" }, { kind: "decision", spotId: "wa-practice" }, { kind: "decision", spotId: "wa-fresh" }, { kind: "takeaway" }],
-  film: { stage: 1, at: null, anchor: "end", filmId: "w-academy", spotId: "wa-turn", decision: "estimate", bands: ["watch", "decide"], key: { band: "decide" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
+  film: { stage: 1, at: null, anchor: "end", filmId: "w-the-academy", spotId: "wa-turn", decision: "estimate", bands: ["watch", "decide"], key: { band: "decide" } },
+  why: { stage: 2, spotId: "wa-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {
     "wa-guided": { stage: 3, decision: "estimate", bands: ["watch", "decide"], key: { band: "decide" } },
     "wa-practice": { stage: 4, decision: "estimate", bands: ["why", "new", "later"], key: { band: "why" } },

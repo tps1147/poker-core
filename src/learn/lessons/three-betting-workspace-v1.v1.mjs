@@ -78,7 +78,7 @@ const definition = {
       pause: { at: 73.1, anchor: "yourTurn", film: "p-three-bet", spotId: "tb1-turn",
         spot: { decision: "action", choices: ["fold", "call", "raise"], prompt: "Queens, in the big blind. The button opens to 25. Fold, call or 3-bet to 100?", sizes: { raise: 100 }, title: "Your turn: fold, call or 3-bet?", explanation: "Queens are value and you are out of position: 3-bet to 100, four times the open. You posted 10, so you owe 90 more." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-three-bet.mjs).
-    { kind: "why", label: "Why", prompt: "Why is ace-five suited a pressure 3-bet?",
+    { kind: "why", label: "Why", spotId: "tb1-why", prompt: "Why is ace-five suited a pressure 3-bet?",
       options: [
         { id: "a", text: "Only aces and kings are worth a 3-bet, so it should fold.", fix: "The value 3-bets are the top hands. A few blocker hands like ace-five suited join them as pressure." },
         { id: "b", text: "It is for value: an ace is ahead of a late open.", fix: "Ace-five is behind most hands that continue. It 3-bets to make him fold, not to get called by worse." },

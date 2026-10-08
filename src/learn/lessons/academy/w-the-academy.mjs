@@ -1,4 +1,4 @@
-// Welcome 5, How Flop52 Makes You Better (w-the-academy, film w-academy), v2 lesson. The film has no
+// Welcome 5, How Flop52 Makes You Better (w-the-academy, film w-the-academy, rendered as w-academy), v2 lesson. The film has no
 // yourTurn anchor; the guided hand asks its predict question (watch 100, or decide 10 and check).
 // Practice is the plan's comprehension check (what comes right after you decide); the fresh hand
 // is the plan's Transfer, the loop in order, asked at a changed place in the ring.
@@ -36,12 +36,12 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-the-academy", film: "w-academy", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 3,
+  node: "w-the-academy", film: "w-the-academy", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 3,
   title: "How Flop52 makes you better.", kicker: "Watching alone isn't enough.",
   assumptions: "The loop: learn an idea, decide with it, see why, try it in a new spot, prove it later. The film's forgetting curve is an illustration with no rates. The table here is only a frame for the questions.",
   stages: v2Stages({
     welcome: { heading: "How do you get better?", em: "Pick one, and hold onto it.", lead: "Watch how a Flop52 lesson works, then answer three quick questions about it.", cta: "Watch with Ada" },
-    film: { upNext: "Answer Ada’s question", film: "w-academy", at: null, spot: spots["wa-guided"] },
+    film: { upNext: "Answer Ada’s question", film: "w-the-academy", at: null, spot: spots["wa-guided"] },
     hands: [
       { id: "wa-guided", label: "Ada’s question", coachLine: "The film’s question. Your pick." },
       { id: "wa-practice", label: "Practice", coachLine: "One step of the loop." },

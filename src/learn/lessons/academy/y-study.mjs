@@ -39,7 +39,7 @@ const definition = {
     welcome("Study the unsure decisions.", "Then come back to them later.",
       "Which hand should you review: the one you lost, or the one you weren’t sure about? Watch Mina sort a session, then sort three logs.", "Mina"),
     filmStage({ film: "y-study", at: null, spotId: "sd-turn", spot: turnSpot, upNext: "Sort Mina’s session" }),
-    whyStage("Why review the unsure one?", [
+    whyStage("sd-why", "Why review the unsure one?", [
       { id: "unsure", text: "Good calls lose often, so losses mostly show good decisions. Being unsure marks one that might be wrong.", fix: "Right. Tag how sure you were, not whether you won." },
       { id: "more-hands", text: "Neither: playing more hands improves you faster than reviewing.", fix: "More hands won’t fix a decision you never look at. Review the unsure ones." },
       { id: "biggest", text: "The loss, because the biggest pot matters most.", fix: "Pot size isn’t the filter. A +10 call loses 70 times in 100; review where you weren’t sure." },

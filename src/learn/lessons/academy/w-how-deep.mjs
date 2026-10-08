@@ -1,4 +1,4 @@
-// Welcome 4, How Deep the Game Goes (w-how-deep, film w-deep), v2 lesson. The film has no yourTurn
+// Welcome 4, How Deep the Game Goes (w-how-deep, film w-how-deep, rendered as w-deep), v2 lesson. The film has no yourTurn
 // anchor; the guided hand asks its opening count (how many two-card starts: 1,326). Practice is the
 // fold into 169 kinds; the fresh hand is the plan's Transfer (which track answers a question),
 // changed to a question the film does not show: how big a bet should be. The rule card is the film's
@@ -37,12 +37,12 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-how-deep", film: "w-deep", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 3,
+  node: "w-how-deep", film: "w-how-deep", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 3,
   title: "Simple to learn.", kicker: "Deep to master.",
   assumptions: "Counts are exact: 1,326 = 52 × 51 ÷ 2 starts, which fold into 13 pairs, 78 suited and 78 offsuit kinds. The table here is only a frame for the questions.",
   stages: v2Stages({
     welcome: { heading: "How deep does it go?", em: "One idea at a time.", lead: "You know the rules. Watch how many ways a hand can go, then answer three quick questions.", cta: "Watch with Ada" },
-    film: { upNext: "Answer Ada’s question", film: "w-deep", at: null, spot: spots["wd-guided"] },
+    film: { upNext: "Answer Ada’s question", film: "w-how-deep", at: null, spot: spots["wd-guided"] },
     hands: [
       { id: "wd-guided", label: "Ada’s question", coachLine: "The film’s count. Your answer." },
       { id: "wd-practice", label: "Practice", coachLine: "Fold them into kinds." },

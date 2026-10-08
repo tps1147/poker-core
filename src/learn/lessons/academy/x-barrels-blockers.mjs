@@ -39,7 +39,7 @@ const definition = {
     welcome("Plan three streets.", "Bluff with the card that blocks his calls.",
       "Size the flop bet so three bets fit your stack, then pick the bluff that removes his calls. Watch Knox, then plan three hands.", "Knox"),
     filmStage({ film: "x-barrels-blockers", at: 64.66, spotId: "bk-turn", spot: turnSpot, upNext: "Plan Knox’s three streets" }),
-    whyStage("Why is the A♠ the better bluff?", [
+    whyStage("bk-why", "Why is the A♠ the better bluff?", [
       { id: "blocks-calls", text: "It removes his flushes, the hands that call, while his folding pairs stay in his range.", fix: "Right. The 9♦ does the opposite: it removes hands that would fold." },
       { id: "any-ace", text: "Any ace is a strong blocker, whatever the board and the line.", fix: "Blockers don’t matter more than the board. The board and his line decide what folds; the card only nudges the count." },
       { id: "showdown", text: "The 9♦ is worse because a pair of nines can win at showdown.", fix: "That’s not the problem. The 9♦ removes pairs of nines, the very hands a bluff wants to fold." },

@@ -8,7 +8,7 @@ export default {
   lessonId: "y-tilt", node: "y-tilt", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t6-tilt",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "tl-guided"}, {kind: "decision", spotId: "tl-practice"}, {kind: "decision", spotId: "tl-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "tl-turn", decision: "action", choices: ["fold", "call"], key: {action: "call"} },
-  why: { stage: 2, options: ["math", "calm", "due"], key: { option: "math" } },
+  why: { stage: 2, spotId: "tl-why", options: ["math", "calm", "due"], key: { option: "math" } },
   spots: {
     "tl-guided": { stage: 3, decision: "action", choices: ["fold", "call"], key: {action: "call"} },
     "tl-practice": { stage: 4, decision: "action", choices: ["fold", "call"], key: {action: "fold"} },

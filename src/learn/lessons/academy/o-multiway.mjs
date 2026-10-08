@@ -53,7 +53,7 @@ const definition = {
     welcome("Every player is another range.", "Bluff less, value bet stronger.",
       "Top pair against one player is strong. Against three? Watch Reina count the seats, then play three pots with more than one opponent.", "Reina"),
     filmStage({ film: "o-multiway", at: 69.34, spotId: "mw-turn", spot: turnSpot, upNext: "Play Reina’s flop" }),
-    whyStage("Why can you bluff these two?", [
+    whyStage("mw-why", "Why can you bluff these two?", [
       { id: "both", text: "Both must fold: 0.7 × 0.7 = 49%, above the 40% a 2/3-pot bluff needs.", fix: "Right. Against three players at 70%, it would be 34.3%: not enough." },
       { id: "more-value", text: "More players put more chips in the pot, so any bet is worth more.", fix: "More callers don’t mean more value for any hand. Each extra player is one more range that has to fold." },
       { id: "each", text: "Each one folds 70%, which is above 40%.", fix: "One player alone isn’t the test. Both must fold together: 49%." },

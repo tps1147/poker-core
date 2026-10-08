@@ -69,7 +69,7 @@ const definition = {
       pause: { at: 81.05, anchor: "yourTurn", film: "f-ranges", spotId: "rng1-turn",
         spot: { decision: "estimate", bands: [{ id: "about-25", label: "About 25%" }, { id: "about-64", label: "About 64%" }, { id: "about-90", label: "About 90%" }], prompt: "Same range, new flop: J♣ 9♦ 2♥. What share is pair or better?", title: "Your turn: the share?", explanation: "146 combos are live; pair or better is 93 of them, about 64%. A share, not a hand." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-ranges.mjs).
-    { kind: "why", label: "Why", prompt: "Why put him on a wide range?",
+    { kind: "why", label: "Why", spotId: "rng1-why", prompt: "Why put him on a wide range?",
       options: [
         { id: "a", text: "His call keeps many hands, and a flop bet comes from strong hands, pairs, ace-high and bluffs.", fix: "Right. Many hands fit one call and one bet." },
         { id: "b", text: "Only strong hands bet, so his range is just value.", fix: "Weaker kings, pairs and bluffs bet too. Cutting them out is fear reading." },

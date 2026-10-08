@@ -42,7 +42,7 @@ const definition = {
       pause: { at: 68.06, anchor: "yourTurn", film: "m-equity", spotId: "eq2-turn",
         spot: { decision: "estimate", bands: [{ id: "about-0", label: "Nothing yet" }, { id: "about-60", label: "About 60 chips" }, { id: "about-150", label: "About 150 chips" }], prompt: "A pot of 150, and you win about 40% (given). Your share?", title: "Your turn: your share?", explanation: "40% of 150 is 60 chips. That is your equity." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-equity.mjs).
-    { kind: "why", label: "Why", prompt: "Why is about 42 chips your share?",
+    { kind: "why", label: "Why", spotId: "eq2-why", prompt: "Why is about 42 chips your share?",
       options: [
         { id: "a", text: "With no pair yet, you own nothing until you hit.", fix: "A draw already owns a share. It wins 35% of the time by the end." },
         { id: "b", text: "Equity is your chance times the pot: 35% of 120 is 42.", fix: "Right. A draw with no pair still owns its share: 42 chips." },

@@ -8,7 +8,7 @@ export default {
   lessonId: "r-streets", node: "r-streets", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "st-guided" }, { kind: "decision", spotId: "st-practice" }, { kind: "decision", spotId: "st-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-streets", spotId: "st-turn", decision: "estimate", bands: ["you", "andy"], key: { band: "andy" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "st-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
   spots: {
     "st-guided": { stage: 3, decision: "estimate", bands: ["you", "andy"], key: { band: "andy" } },
     "st-practice": { stage: 4, decision: "estimate", bands: ["sb", "bb", "co"], key: { band: "sb" } },

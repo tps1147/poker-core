@@ -72,7 +72,7 @@ const definition = {
       pause: { at: 74.88, anchor: "yourTurn", film: "f-board-texture", spotId: "bt1-turn",
         spot: { decision: "estimate", bands: [{ id: "raiser", label: "The raiser" }, { id: "caller", label: "The caller" }], prompt: "Queen, queen, five. Whose range does this flop hit?", title: "Your turn: whose flop?", explanation: "Top pair or better is 19.5% of the raiser’s range and 7.6% of the caller’s: the raiser’s flop." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-board-texture.mjs).
-    { kind: "why", label: "Why", prompt: "Why is jack-ten-nine wet?",
+    { kind: "why", label: "Why", spotId: "bt1-why", prompt: "Why is jack-ten-nine wet?",
       options: [
         { id: "a", text: "It is wet because the cards are high.", fix: "High cards alone can be dry, like king-seven-two. Connected and suited cards make a board wet." },
         { id: "b", text: "It is only wet for whoever holds the best hand right now.", fix: "Wet describes the board for every range: what is possible now and what is still coming." },

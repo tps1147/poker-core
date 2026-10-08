@@ -8,7 +8,7 @@ export default {
   lessonId: "f-pot-control", node: "f-pot-control", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "pc-guided" }, { kind: "decision", spotId: "pc-practice" }, { kind: "decision", spotId: "pc-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: 60.81, anchor: "yourTurn", filmId: "f-pot-control", spotId: "pc-turn", decision: "estimate", bands: ["you", "him"], key: { band: "him" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
+  why: { stage: 2, spotId: "pc-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {
     "pc-guided": { stage: 3, decision: "estimate", bands: ["you", "him"], key: { band: "him" } },
     "pc-practice": { stage: 4, decision: "action", choices: ["check", "bet"], key: { action: "check" } },

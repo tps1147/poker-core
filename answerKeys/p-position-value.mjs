@@ -10,5 +10,5 @@ export default {
   lessonId: "positions-workspace-v1", node: "p-position-value", contentVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 76.55, filmId: "p-position-value", spotId: "pos2-turn", decision: "estimate", bands: ["co", "bb"], key: { band: "co" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "a" }, misconception: "c" },
+  why: { stage: 2, spotId: "pos2-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "c" },
 };

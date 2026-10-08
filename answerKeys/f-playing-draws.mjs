@@ -8,7 +8,7 @@ export default {
   lessonId: "f-playing-draws", node: "f-playing-draws", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "pd-guided" }, { kind: "decision", spotId: "pd-practice" }, { kind: "decision", spotId: "pd-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: 67.72, anchor: "yourTurn", filmId: "f-playing-draws", spotId: "pd-turn", decision: "action", choices: ["fold", "call"], key: { action: "call" } },
-  why: { stage: 2, options: ["room", "passive", "times4"], key: { option: "room" }, misconception: "passive" },
+  why: { stage: 2, spotId: "pd-why", options: ["room", "passive", "times4"], key: { option: "room" }, misconception: "passive" },
   spots: {
     "pd-guided": { stage: 3, decision: "action", choices: ["fold", "call"], key: { action: "call" } },
     "pd-practice": { stage: 4, decision: "action", choices: ["fold", "call"], key: { action: "fold" } },

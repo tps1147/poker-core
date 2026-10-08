@@ -8,7 +8,7 @@ export default {
   lessonId: "x-mdf", node: "x-mdf", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t4-mdf-bluffcatch",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "md-guided"}, {kind: "decision", spotId: "md-practice"}, {kind: "decision", spotId: "md-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 66.97, spotId: "md-turn", decision: "estimate", bands: ["keep-14", "keep-21", "keep-35"], key: {band: "keep-21"} },
-  why: { stage: 2, options: ["mdf", "beaten", "breakeven"], key: { option: "mdf" } },
+  why: { stage: 2, spotId: "md-why", options: ["mdf", "beaten", "breakeven"], key: { option: "mdf" } },
   spots: {
     "md-guided": { stage: 3, decision: "estimate", bands: ["keep-18", "keep-24", "keep-42"], key: {band: "keep-24"} },
     "md-practice": { stage: 4, decision: "estimate", bands: ["keep-10", "keep-20", "keep-30"], key: {band: "keep-20"} },

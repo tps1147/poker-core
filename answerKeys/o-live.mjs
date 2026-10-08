@@ -8,7 +8,7 @@ export default {
   lessonId: "o-live", node: "o-live", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "lv-guided"}, {kind: "decision", spotId: "lv-practice"}, {kind: "decision", spotId: "lv-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 50.5, spotId: "lv-turn", decision: "estimate", bands: ["call", "raise"], key: {band: "call"} },
-  why: { stage: 2, options: ["no-word", "online", "double"], key: { option: "no-word" } },
+  why: { stage: 2, spotId: "lv-why", options: ["no-word", "online", "double"], key: { option: "no-word" } },
   spots: {
     "lv-guided": { stage: 3, decision: "estimate", bands: ["call", "raise"], key: {band: "call"} },
     "lv-practice": { stage: 4, decision: "estimate", bands: ["first", "all"], key: {band: "first"} },

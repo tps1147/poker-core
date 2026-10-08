@@ -8,7 +8,7 @@ export default {
   lessonId: "r-first-hand", node: "r-first-hand", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "fh-guided" }, { kind: "decision", spotId: "fh-practice" }, { kind: "decision", spotId: "fh-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-first-hand", spotId: "fh-turn", decision: "estimate", bands: ["you", "ada"], key: { band: "you" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
+  why: { stage: 2, spotId: "fh-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
   spots: {
     "fh-guided": { stage: 3, decision: "estimate", bands: ["you", "ada"], key: { band: "you" } },
     "fh-practice": { stage: 4, decision: "estimate", bands: ["checkbet", "callraise", "checkcall"], key: { band: "checkbet" } },

@@ -7,8 +7,8 @@
 export default {
   lessonId: "w-luck-and-skill", node: "w-luck-and-skill", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "wl-guided" }, { kind: "decision", spotId: "wl-practice" }, { kind: "decision", spotId: "wl-fresh" }, { kind: "takeaway" }],
-  film: { stage: 1, at: null, anchor: "end", filmId: "w-luck", spotId: "wl-turn", decision: "count", range: [0, 44], key: { value: 26, tolerance: 0 } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
+  film: { stage: 1, at: null, anchor: "end", filmId: "w-luck-and-skill", spotId: "wl-turn", decision: "count", range: [0, 44], key: { value: 26, tolerance: 0 } },
+  why: { stage: 2, spotId: "wl-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {
     "wl-guided": { stage: 3, decision: "count", range: [0, 44], key: { value: 26, tolerance: 0 } },
     "wl-practice": { stage: 4, decision: "estimate", bands: ["loss", "avg", "win"], key: { band: "avg" } },

@@ -2,9 +2,9 @@
 // src/learn/media/<id>.v3.json, byte for byte, as f99fe0e did for the first three. Clients import
 // them by path (poker-core/learn/media/<id>.v3.json); nothing else registers them.
 //
-// The expected set is every node's film (filmIdOfNode) plus every track's opener (openerIdOfTrack):
+// The expected set is every node's film (filmIdOfNode: the node id) plus every track's opener (openerIdOfTrack):
 // 59 + 11 = 70. The script lists what it copied, what was already current, what is still missing
-// from the publish folder, the aliased films published under their node id, and any published id
+// from the publish folder, and any published id
 // that is not in the expected set (copied too).
 //
 //   node scripts/sync-v3-media.mjs [publishDir]
@@ -50,16 +50,13 @@ for (const id of published) {
 }
 
 const have = new Set(published);
-// A node whose film id is an alias (FILM_ID_ALIASES) may be published under its node id instead.
-const underNodeId = NODES.filter((n) => filmIdOfNode(n.id) !== n.id && !have.has(filmIdOfNode(n.id)) && have.has(n.id));
-const missing = expected.filter((id) => !have.has(id) && !underNodeId.some((n) => filmIdOfNode(n.id) === id));
-const extra = published.filter((id) => !expected.includes(id) && !underNodeId.some((n) => n.id === id));
+const missing = expected.filter((id) => !have.has(id));
+const extra = published.filter((id) => !expected.includes(id));
 
 console.log(`sync-v3-media: ${from}`);
 console.log(`  copied ${copied.length}${copied.length ? `: ${copied.join(", ")}` : ""}`);
 console.log(`  already current ${current.length}`);
 if (bad.length) console.log(`  skipped (not a v3 film file) ${bad.length}: ${bad.join("; ")}`);
-if (underNodeId.length) console.log(`  published under the node id, not the film id (filmIdOfNode) ${underNodeId.length}: ${underNodeId.map((n) => `${n.id} (film id ${filmIdOfNode(n.id)})`).join(", ")}`);
 if (extra.length) console.log(`  published but not a node film or opener ${extra.length}: ${extra.join(", ")}`);
 console.log(`  missing ${missing.length} of ${expected.length}${missing.length ? `: ${missing.join(", ")}` : ""}`);
 process.exit(missing.length || bad.length ? 1 : 0);

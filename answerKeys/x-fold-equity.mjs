@@ -14,5 +14,5 @@ export default {
   lessonId: "semibluff-workspace-v1", node: "x-fold-equity", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 59.9, filmId: "x-fold-equity", spotId: "sb1-turn", decision: "action", choices: ["check", "bet"], key: { action: "check" } },
-  why: { stage: 2, options: ["both-branches", "folds-only", "called-loses"], key: { option: "both-branches" } },
+  why: { stage: 2, spotId: "sb1-why", options: ["both-branches", "folds-only", "called-loses"], key: { option: "both-branches" } },
 };

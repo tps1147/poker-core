@@ -12,5 +12,5 @@ export default {
   lessonId: "rule-2-4-workspace-v1", node: "m-rule-2-4", contentVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 62.81, filmId: "m-rule-2-4", spotId: "rule2-turn", decision: "estimate", bands: ["x2", "x4"], key: { band: "x4" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },
+  why: { stage: 2, spotId: "rule2-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },
 };

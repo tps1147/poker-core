@@ -8,7 +8,7 @@ export default {
   lessonId: "b-kickers-counterfeit", node: "b-kickers-counterfeit", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "kc-guided" }, { kind: "decision", spotId: "kc-practice" }, { kind: "decision", spotId: "kc-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "b-kickers-counterfeit", spotId: "kc-turn", decision: "estimate", bands: ["you", "andy", "split"], key: { band: "andy" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
+  why: { stage: 2, spotId: "kc-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {
     "kc-guided": { stage: 3, decision: "estimate", bands: ["you", "andy", "split"], key: { band: "andy" } },
     "kc-practice": { stage: 4, decision: "estimate", bands: ["you", "andy", "split"], key: { band: "split" } },

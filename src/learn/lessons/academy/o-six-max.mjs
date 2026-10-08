@@ -34,7 +34,7 @@ const definition = {
     welcome("Count who’s behind you.", "Fewer seats, wider opens.",
       "Should you open the same hands first to act at a full table and at six-handed? Watch Reina count the danger, then count three seats.", "Reina"),
     filmStage({ film: "o-six-max", at: 48.69, spotId: "sm-turn", spot: turnSpot, upNext: "Count Reina’s first seat" }),
-    whyStage("Why open more from the cutoff?", [
+    whyStage("sm-why", "Why open more from the cutoff?", [
       { id: "behind", text: "Only three players can still wake up with a better hand behind you.", fix: "Right. Each player behind you is one more chance that someone holds a better hand." },
       { id: "same", text: "A hand is as strong from any seat, so open the same hands from every seat.", fix: "Not at every seat or table size. A hand only has to beat the players still to act, and fewer behind means wider opens." },
       { id: "blinds", text: "Because the blinds cost less from the cutoff.", fix: "The blinds cost the same. The reason is fewer players left to get through." },

@@ -8,7 +8,7 @@ export default {
   lessonId: "r-all-in-side-pots", node: "r-all-in-side-pots", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "ap-guided" }, { kind: "decision", spotId: "ap-practice" }, { kind: "decision", spotId: "ap-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-all-in-side-pots", spotId: "ap-turn", decision: "count", range: [0, 1000], key: { value: 200, tolerance: 0 } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "ap-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
   spots: {
     "ap-guided": { stage: 3, decision: "count", range: [0, 1000], key: { value: 200, tolerance: 0 } },
     "ap-practice": { stage: 4, decision: "count", range: [0, 1000], key: { value: 400, tolerance: 0 } },

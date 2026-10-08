@@ -8,7 +8,7 @@ export default {
   lessonId: "h-range-narrowing", node: "h-range-narrowing", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t5-range-narrowing",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "rn-guided"}, {kind: "decision", spotId: "rn-practice"}, {kind: "decision", spotId: "rn-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 64.31, spotId: "rn-turn", decision: "estimate", bands: ["about-40", "about-80", "about-160"], key: {band: "about-80"} },
-  why: { stage: 2, options: ["removes", "same", "cards"], key: { option: "removes" } },
+  why: { stage: 2, spotId: "rn-why", options: ["removes", "same", "cards"], key: { option: "removes" } },
   spots: {
     "rn-guided": { stage: 3, decision: "estimate", bands: ["strong", "one-pair", "missed"], key: {band: "one-pair"} },
     "rn-practice": { stage: 4, decision: "estimate", bands: ["t9", "kt", "77"], key: {band: "t9"} },

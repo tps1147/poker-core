@@ -8,7 +8,7 @@ export default {
   lessonId: "g-toy-games", node: "g-toy-games", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "tg-guided"}, {kind: "decision", spotId: "tg-practice"}, {kind: "decision", spotId: "tg-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "tg-turn", decision: "estimate", bands: ["never", "sometimes", "always"], key: {band: "sometimes"} },
-  why: { stage: 2, options: ["mix", "computers", "king-folds"], key: { option: "mix" } },
+  why: { stage: 2, spotId: "tg-why", options: ["mix", "computers", "king-folds"], key: { option: "mix" } },
   spots: {
     "tg-guided": { stage: 3, decision: "estimate", bands: ["quarter", "third", "half"], key: {band: "quarter"} },
     "tg-practice": { stage: 4, decision: "estimate", bands: ["third", "half", "two-thirds"], key: {band: "two-thirds"} },

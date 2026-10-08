@@ -38,7 +38,7 @@ const definition = {
     welcome("Every action takes hands out.", "Keep the list, not one guess.",
       "He called three times. Watch Sera narrow his range one street at a time, then count three ranges yourself.", "Sera"),
     filmStage({ film: "h-range-narrowing", at: 64.31, spotId: "rn-turn", spot: turnSpot, upNext: "Sort Sera’s river" }),
-    whyStage("Why do only about 80 of 171 call?", [
+    whyStage("rn-why", "Why do only about 80 of 171 call?", [
       { id: "removes", text: "His call takes out every hand with no pair and no draw on this flop.", fix: "Right. Those 92 hands are gone: his range is now a history of what he did." },
       { id: "same", text: "It doesn’t really: he can still hold any hand he called with before the flop.", fix: "Ranges don’t stay the same after the flop. His call removed every hand that hit nothing." },
       { id: "cards", text: "The three flop cards removed most of his combos.", fix: "The flop cards only took 186 to 171. His call took out the next 92." },

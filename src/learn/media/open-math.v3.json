@@ -7,7 +7,7 @@
   "ruleCard": null,
   "captions": "/academy/films-v2/open-math/open-math.vtt",
   "transcript": "/academy/films-v2/open-math/open-math.transcript.txt",
-  "durationSeconds": 19,
+  "durationSeconds": 22,
   "captionsBurnedIn": true,
   "frame": {
     "w": 1080,
@@ -22,6 +22,6 @@
     "yourTurn": null,
     "rule": null,
     "upNext": null,
-    "first": 15.66
+    "first": 16.33
   }
 }

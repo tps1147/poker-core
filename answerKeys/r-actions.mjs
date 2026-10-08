@@ -8,5 +8,5 @@
 export default {
   lessonId: "betting-actions-workspace-v1", node: "r-actions", contentVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "act2-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
 };

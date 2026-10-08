@@ -11,5 +11,5 @@ export default {
   lessonId: "implied-odds-workspace-v1", node: "m-implied-odds", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 71.25, filmId: "m-implied-odds", spotId: "imp1-turn", decision: "action", choices: ["fold", "call"], key: { action: "fold" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "imp1-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
 };

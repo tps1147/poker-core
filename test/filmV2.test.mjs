@@ -3,7 +3,7 @@
 import assert from "node:assert/strict";
 import {
   canon, anchorProblems, filmStop, filmWatched, canSkip, openerDue, openerStop, voiceGroup, nextVoiceLine,
-  VOICE_GROUPS, VOICE_LINES, VOICE_SILENT, voiceLineFile, FILM_ID_ALIASES, filmIdOfNode, nodeIdOfFilm, openerIdOfTrack,
+  VOICE_GROUPS, VOICE_LINES, VOICE_SILENT, voiceLineFile, FILM_FOLDER_ALIASES, filmIdOfNode, filmFolderOfNode, nodeIdOfFilm, openerIdOfTrack,
   LESSON_ANCHORS,
 } from "../src/learn/filmV2.mjs";
 import { NODES, TRACKS, DAY_MS } from "../src/learn/index.mjs";
@@ -94,7 +94,10 @@ check("openerDue: plays once per track, cuts at first when you are past lesson 1
 });
 
 check("film ids: three Welcome aliases, opener ids, round trips", () => {
-  assert.deepEqual(FILM_ID_ALIASES, { "w-luck-and-skill": "w-luck", "w-how-deep": "w-deep", "w-the-academy": "w-academy" });
+  assert.deepEqual(FILM_FOLDER_ALIASES, { "w-luck-and-skill": "w-luck", "w-how-deep": "w-deep", "w-the-academy": "w-academy" });
+  for (const n of NODES) assert.equal(filmIdOfNode(n.id), n.id, "the media id is the node id");
+  assert.equal(filmFolderOfNode("w-luck-and-skill"), "w-luck", "the render folder (tooling)");
+  for (const n of NODES) assert.equal(nodeIdOfFilm(filmFolderOfNode(n.id)), n.id, n.id);
   for (const n of NODES) assert.equal(nodeIdOfFilm(filmIdOfNode(n.id)), n.id, n.id);
   assert.equal(nodeIdOfFilm("academy-w-luck-v2"), "w-luck-and-skill");
   assert.equal(nodeIdOfFilm("m-outs-v2"), "m-outs");

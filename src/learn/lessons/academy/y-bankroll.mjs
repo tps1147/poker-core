@@ -41,7 +41,7 @@ const definition = {
     welcome("Count it in buy-ins.", "A bad run should be a dip, not the end.",
       "This is about chips in a toy model, not money advice. Watch Mina count a bankroll in buy-ins, then size three games.", "Mina"),
     filmStage({ film: "y-bankroll", at: null, spotId: "br-turn", spot: turnSpot, upNext: "Count Mina’s bankroll" }),
-    whyStage("Why can a winning player still go broke?", [
+    whyStage("br-why", "Why can a winning player still go broke?", [
       { id: "cushion", text: "His edge is an average. A normal bad run can take a short bankroll before the average shows.", fix: "Right. From 5 buy-ins, 36.7%; from 40, 0.033%. Same player, a bigger cushion." },
       { id: "not-winner", text: "He can’t: if he goes broke, he wasn’t really a winning player.", fix: "He wins 55% of sessions in the model and still goes broke 36.7% of the time from 5 buy-ins. Winning and going broke can both happen." },
       { id: "plays-badly", text: "Only if he starts playing badly when he’s losing.", fix: "Playing the same way every session, he can still run out. The cushion, not his play, is what changed." },

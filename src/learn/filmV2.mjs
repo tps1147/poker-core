@@ -24,17 +24,23 @@ export const LESSON_ANCHORS = Object.freeze(["hook", "yourTurn", "rule", "upNext
 export const OPENER_ANCHORS = Object.freeze(["first"]);
 const ANCHOR_LABELS = Object.freeze({ hook: "The question", yourTurn: "Your turn", rule: "The rule", upNext: "Up next", first: "First up" });
 
-// Film ids that differ from their node ids (the three Welcome films were cut under short names).
-export const FILM_ID_ALIASES = Object.freeze({
+// THE MEDIA ID of a node's film is the node id, everywhere: the v3 media file is
+// src/learn/media/<node id>.v3.json, its `id` is the node id, and a definition's `media` and
+// `pause.film` name it. Only the render tooling still knows the three Welcome films by the short
+// folder names they were cut under (src-academy-<folder>-v2): FILM_FOLDER_ALIASES / filmFolderOfNode,
+// for tooling only, never for a media lookup.
+export const FILM_FOLDER_ALIASES = Object.freeze({
   "w-luck-and-skill": "w-luck",
   "w-how-deep": "w-deep",
   "w-the-academy": "w-academy",
 });
-// A node's film id, and a film id's node (or null).
-export const filmIdOfNode = (nodeId) => FILM_ID_ALIASES[nodeId] || nodeId;
+// A node's film media id (the node id itself), its render folder name (tooling), and a film id's
+// node (or null): a media id, a folder name or a render id ("academy-w-luck-v2") all resolve.
+export const filmIdOfNode = (nodeId) => nodeId;
+export const filmFolderOfNode = (nodeId) => FILM_FOLDER_ALIASES[nodeId] || nodeId;
 export function nodeIdOfFilm(filmId) {
   const bare = String(filmId || "").replace(/^academy-/, "").replace(/-v\d+$/, "");
-  const aliased = Object.keys(FILM_ID_ALIASES).find((nodeId) => FILM_ID_ALIASES[nodeId] === bare);
+  const aliased = Object.keys(FILM_FOLDER_ALIASES).find((nodeId) => FILM_FOLDER_ALIASES[nodeId] === bare);
   const id = aliased || bare;
   return NODES.some((n) => n.id === id) ? id : null;
 }

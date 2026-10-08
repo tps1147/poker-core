@@ -60,11 +60,12 @@ export function v2Stages({ welcome, film, hands, why, takeaway }) {
   const [guided, practice, fresh] = hands;
   const decision = (hand, role, next) => ({ kind: "decision", label: hand.label, spotId: hand.id, hand: hand.id, role, coachLine: hand.coachLine, next });
   const turnId = guided.id.replace(/-guided$/, "-turn");
+  const whyId = guided.id.replace(/-guided$/, "-why");
   return [
     { kind: "welcome", label: "Welcome", ...welcome },
     { kind: "film", label: "Film", upNext: film.upNext, media: film.film,
       pause: { at: film.at ?? null, anchor: film.at == null ? "end" : "yourTurn", film: film.film, spotId: turnId, spot: film.spot } },
-    { kind: "why", label: "Why", prompt: why.prompt, options: why.options },
+    { kind: "why", label: "Why", spotId: whyId, prompt: why.prompt, options: why.options },
     decision(guided, "guided", "Try a practice hand"),
     decision(practice, "practice", "Try a fresh hand"),
     decision(fresh, "fresh", "See your recap"),

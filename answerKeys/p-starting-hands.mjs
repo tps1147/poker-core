@@ -11,5 +11,5 @@ export default {
   lessonId: "starting-hands-workspace-v1", node: "p-starting-hands", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 77.18, filmId: "p-starting-hands", spotId: "sh1-turn", decision: "action", choices: ["fold", "raise"], key: { action: "raise" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "a" }, misconception: "c" },
+  why: { stage: 2, spotId: "sh1-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "c" },
 };

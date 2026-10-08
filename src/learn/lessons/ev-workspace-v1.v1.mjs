@@ -58,7 +58,7 @@ const definition = {
       pause: { at: 60.08, anchor: "yourTurn", film: "m-ev", spotId: "ev1-turn",
         spot: { decision: "action", choices: ["fold", "call"], prompt: "Ace-ten of hearts, 9 hearts of 46 win, one card to come. They go all-in for 40 into 150. Call or fold?", title: "Your turn: call or fold?", explanation: "Nine hearts win out of 46. Your share of the 230 pot is 45, against a 40 call: +5 a call. Call." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-ev.mjs).
-    { kind: "why", label: "Why", prompt: "Why is this call right even when the river misses?",
+    { kind: "why", label: "Why", spotId: "ev1-why", prompt: "Why is this call right even when the river misses?",
       options: [
         { id: "a", text: "If the river misses and you lose, the call was wrong.", fix: "One river is one sample. The call earns about +40 on average, win or lose." },
         { id: "b", text: "You win more often than you lose.", fix: "You lose 70% of the time. The call pays because the pot is big enough, not because you win most." },

@@ -52,7 +52,7 @@ const definition = {
       pause: { at: 76.55, anchor: "yourTurn", film: "p-position-value", spotId: "pos2-turn",
         spot: { decision: "estimate", bands: [{ id: "co", label: "The cutoff" }, { id: "bb", label: "The big blind" }], prompt: "Cutoff against big blind, after the flop. Who acts last?", title: "Your turn: who acts last?", explanation: "The cutoff. After the flop the big blind has to go first, and the cutoff acts after it." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-position-value.mjs).
-    { kind: "why", label: "Why", prompt: "Why is king-nine a raise on the button?",
+    { kind: "why", label: "Why", spotId: "pos2-why", prompt: "Why is king-nine a raise on the button?",
       options: [
         { id: "a", text: "Only the blinds act after you, and you act last on every street after the flop.", fix: "Right. Acting last, you see what the blinds do before you decide, on every street." },
         { id: "b", text: "King-nine is strong enough to raise from any seat.", fix: "Under the gun the same hand folds: five players still act after you." },

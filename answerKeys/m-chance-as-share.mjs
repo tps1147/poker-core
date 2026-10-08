@@ -8,7 +8,7 @@ export default {
   lessonId: "m-chance-as-share", node: "m-chance-as-share", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "cs-guided" }, { kind: "decision", spotId: "cs-practice" }, { kind: "decision", spotId: "cs-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: 61.51, anchor: "yourTurn", filmId: "m-chance-as-share", spotId: "cs-turn", decision: "estimate", bands: ["4", "7.7", "25"], key: { band: "7.7" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "cs-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
   spots: {
     "cs-guided": { stage: 3, decision: "estimate", bands: ["4", "7.7", "25"], key: { band: "7.7" } },
     "cs-practice": { stage: 4, decision: "estimate", bands: ["25", "50", "75"], key: { band: "50" } },

@@ -51,7 +51,7 @@ const definition = {
       pause: { at: 65.56, anchor: "yourTurn", film: "m-pot-odds", spotId: "pot2-turn",
         spot: { decision: "action", choices: ["fold", "call"], prompt: "Now they go all-in for 100 into 100. Still 30%. Call or fold?", title: "Your turn: call or fold?", explanation: "The final pot is 300, so the price is 100 ÷ 300, about 33%. 30% falls short: fold." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-pot-odds.mjs).
-    { kind: "why", label: "Why", prompt: "Why is the price 20%?",
+    { kind: "why", label: "Why", spotId: "pot2-why", prompt: "Why is the price 20%?",
       options: [
         { id: "a", text: "The price is 50 ÷ 200: leave your own call out of the pot.", fix: "Your call goes in the pot too. The final pot is 250, so the price is 20%." },
         { id: "b", text: "The price is 50 ÷ 150, the call against the pot before the bet.", fix: "Count all three amounts: 150, his 50 and your 50. That makes 250." },

@@ -42,7 +42,7 @@ const definition = {
     welcome("Read what he does.", "Over enough hands to trust it.",
       "Online you can’t see his face. Watch Sera type players by two habits, then read three players at the table.", "Sera"),
     filmStage({ film: "h-player-types", at: null, spotId: "pt-turn", spot: turnSpot, upNext: "Read Sera’s first player" }),
-    whyStage("Why is fold, fold, raise the nit?", [
+    whyStage("pt-why", "Why is fold, fold, raise the nit?", [
       { id: "habits", text: "He plays few hands and raises most of the ones he plays.", fix: "Right. Two habits, played and raised, give him away." },
       { id: "face", text: "You could tell from how calm he looked before he raised.", fix: "Online there is no face to read. What he plays and raises is what you can see." },
       { id: "three", text: "Three hands are enough to name his type for good.", fix: "Three hands are a hint. A read needs enough hands: even 100 leaves a band about 17 points wide." },

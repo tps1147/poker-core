@@ -37,7 +37,7 @@ const definition = {
     welcome("Check, then raise.", "Strong hands and best draws, together.",
       "Out of position, you can let him bet first and then raise. Watch Knox raise a set and a draw the same way, then play three flops.", "Knox"),
     filmStage({ film: "x-check-raise", at: 60.83, spotId: "cr-turn", spot: turnSpot, upNext: "Play Knox’s set" }),
-    whyStage("Why just call with sevens?", [
+    whyStage("cr-why", "Why just call with sevens?", [
       { id: "folds-worse", text: "A raise folds the hands sevens beat and keeps the hands that beat sevens.", fix: "Right. The raise has no job here, so calling keeps his weaker hands in." },
       { id: "monster", text: "A check-raise always means a monster, and sevens aren’t one.", fix: "A check-raise isn’t always a monster: good draws raise too. Sevens call because a raise has no job." },
       { id: "price", text: "Because his price to call a raise would only be 25%.", fix: "25% is his price against a raise. It doesn’t decide your hand: what the raise folds and keeps does." },

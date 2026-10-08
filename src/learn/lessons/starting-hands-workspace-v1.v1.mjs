@@ -65,7 +65,7 @@ const definition = {
       pause: { at: 77.18, anchor: "yourTurn", film: "p-starting-hands", spotId: "sh1-turn",
         spot: { decision: "action", choices: ["fold", "raise"], prompt: "Nine-eight of hearts, on the button, folded to you. Open, or fold?", sizes: { raise: 25 }, title: "Your turn: open or fold?", explanation: "Open. Connected, suited, and in position: nine-eight suited is in the button chart." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-starting-hands.mjs).
-    { kind: "why", label: "Why", prompt: "Why fold queen-seven under the gun?",
+    { kind: "why", label: "Why", spotId: "sh1-why", prompt: "Why fold queen-seven under the gun?",
       options: [
         { id: "a", text: "It mostly makes second-best hands, and five players still act after you.", fix: "Right. Second-best hands with five players behind: fold." },
         { id: "b", text: "A queen is too weak to raise from any seat.", fix: "Queens with good kickers open. The seven is the problem, with five players behind." },

@@ -41,7 +41,7 @@ const definition = {
     welcome("Keep the rules yourself.", "Say it, move once, read the betting.",
       "Online the software keeps the rules for you. At a real table, you keep them. Watch Reina’s three habits, then rule on three live spots.", "Reina"),
     filmStage({ film: "o-live", at: 50.5, spotId: "lv-turn", spot: turnSpot, upNext: "Rule on Reina’s first spot" }),
-    whyStage("Why is the big chip only a call?", [
+    whyStage("lv-why", "Why is the big chip only a call?", [
       { id: "no-word", text: "Facing a bet, a single oversized chip with no declaration is a call under common house rules.", fix: "Right. Say “raise” first, then put the chip out." },
       { id: "online", text: "The chip is worth more than the bet, so it raises, like typing a bigger amount online.", fix: "Online and live rules aren’t the same. Live, the chip alone doesn’t say raise." },
       { id: "double", text: "It raises if the chip is worth at least twice the bet.", fix: "Size doesn’t make it a raise without a word. Announce the raise first." },

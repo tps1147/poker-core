@@ -8,7 +8,7 @@ export default {
   lessonId: "g-balance", node: "g-balance", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "ba-guided"}, {kind: "decision", spotId: "ba-practice"}, {kind: "decision", spotId: "ba-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 66.15, spotId: "ba-turn", decision: "estimate", bands: ["bluffs-5", "bluffs-10", "bluffs-25"], key: {band: "bluffs-10"} },
-  why: { stage: 2, options: ["ratio", "random", "breakeven"], key: { option: "ratio" } },
+  why: { stage: 2, spotId: "ba-why", options: ["ratio", "random", "breakeven"], key: { option: "ratio" } },
   spots: {
     "ba-guided": { stage: 3, decision: "estimate", bands: ["bluffs-5", "bluffs-10", "bluffs-20"], key: {band: "bluffs-10"} },
     "ba-practice": { stage: 4, decision: "estimate", bands: ["bluffs-6", "bluffs-8", "bluffs-12"], key: {band: "bluffs-8"} },

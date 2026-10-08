@@ -54,7 +54,7 @@ const definition = {
       pause: { at: 70.54, anchor: "yourTurn", film: "m-spr", spotId: "spr1-turn",
         spot: { decision: "count", range: [0, 20], unit: "", prompt: "You have 1,000, they have 240, the pot is 120. What is the SPR?", title: "Your turn: the SPR?", explanation: "Only the smaller stack counts: 240 ÷ 120 is an SPR of 2. Two bets and you are all-in." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-spr.mjs).
-    { kind: "why", label: "Why", prompt: "What does an SPR of 1 tell you?",
+    { kind: "why", label: "Why", spotId: "spr1-why", prompt: "What does an SPR of 1 tell you?",
       options: [
         { id: "a", text: "Ace Andy’s 900 makes it deep, so play carefully.", fix: "His extra 600 can never be matched. The effective stack is your 300." },
         { id: "b", text: "One pot-sized bet puts the effective stack in: you are close to committed.", fix: "Right. One bet left: top pair can commit here." },

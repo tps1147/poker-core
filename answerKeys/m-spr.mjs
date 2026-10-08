@@ -11,5 +11,5 @@ export default {
   lessonId: "spr-workspace-v1", node: "m-spr", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 70.54, filmId: "m-spr", spotId: "spr1-turn", decision: "count", range: [0, 20], key: { value: 2, tolerance: 0 } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
+  why: { stage: 2, spotId: "spr1-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
 };

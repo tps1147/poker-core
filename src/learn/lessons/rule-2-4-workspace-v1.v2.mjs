@@ -51,7 +51,7 @@ const definition = {
       pause: { at: 62.81, anchor: "yourTurn", film: "m-rule-2-4", spotId: "rule2-turn",
         spot: { decision: "estimate", bands: [{ id: "x2", label: "About 16%" }, { id: "x4", label: "About 32%" }], prompt: "Ten-nine of hearts on eight, seven, two, and they go all-in. 8 outs: which estimate?", title: "Your turn: which rule?", explanation: "All-in, you see both cards for this price: 8 outs × 4 is 32%. Exactly, it is 31.5%." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-rule-2-4.mjs).
-    { kind: "why", label: "Why", prompt: "Why fold Mina’s 8-out draw on this turn?",
+    { kind: "why", label: "Why", spotId: "rule2-why", prompt: "Why fold Mina’s 8-out draw on this turn?",
       options: [
         { id: "a", text: "One card is to come, so 8 × 2 is about 16%, below the 20% price.", fix: "Right. One card to come is ×2, and 16% is short of 20%." },
         { id: "b", text: "Use ×4, since more betting can still come.", fix: "×4 is for two cards seen for this one price. On the turn one card is left: ×2, about 16%." },

@@ -8,7 +8,7 @@ export default {
   lessonId: "x-check-raise", node: "x-check-raise", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "cr-guided"}, {kind: "decision", spotId: "cr-practice"}, {kind: "decision", spotId: "cr-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 60.83, spotId: "cr-turn", decision: "action", choices: ["call", "raise"], key: {action: "call"} },
-  why: { stage: 2, options: ["folds-worse", "monster", "price"], key: { option: "folds-worse" } },
+  why: { stage: 2, spotId: "cr-why", options: ["folds-worse", "monster", "price"], key: { option: "folds-worse" } },
   spots: {
     "cr-guided": { stage: 3, decision: "action", choices: ["call", "raise"], key: {action: "raise"} },
     "cr-practice": { stage: 4, decision: "action", choices: ["call", "raise"], key: {action: "raise"} },

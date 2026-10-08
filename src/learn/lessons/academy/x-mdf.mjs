@@ -37,7 +37,7 @@ const definition = {
     welcome("Defend enough.", "Fold too much and any bluff wins.",
       "He bets and you might be beaten. Watch Knox find how much of your range to keep, then defend three rivers at the table.", "Knox"),
     filmStage({ film: "x-mdf", at: 66.97, spotId: "md-turn", spot: turnSpot, upNext: "Play Knox’s river" }),
-    whyStage("Why keep 21 of the 35?", [
+    whyStage("md-why", "Why keep 21 of the 35?", [
       { id: "mdf", text: "21 is 3/5 of 35: keep pot ÷ (pot + bet), or his bluffs win with any two cards.", fix: "Right. Fold more than 2/5 and every bluff he fires makes chips." },
       { id: "beaten", text: "Because only 21 of my combos beat the hands he bets for value.", fix: "Defending isn’t about beating his value bets. It’s how much you keep so his bluffs earn nothing." },
       { id: "breakeven", text: "His bluff needs 60 ÷ 150 = 40% folds, so I keep 40% of my range.", fix: "40% is the share you can fold. You keep the other 60%: 21 of 35." },

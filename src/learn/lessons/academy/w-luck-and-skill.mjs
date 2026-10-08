@@ -1,4 +1,4 @@
-// Welcome 3, Luck Decides a Hand, Skill Decides a Thousand (w-luck-and-skill, film w-luck), v2
+// Welcome 3, Luck Decides a Hand, Skill Decides a Thousand (w-luck-and-skill, film w-luck-and-skill, rendered as w-luck), v2
 // lesson. The film has no yourTurn anchor; the guided hand asks the film's own count: A♣ J♦
 // against Ace Andy's Q♥ 9♥ on J♥ T♥ 4♣ 2♠, both all-in for 500, and of the 44 rivers 26 win for
 // you. Practice is the film's average; the fresh hand is the plan's Transfer with a changed size
@@ -38,12 +38,12 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-luck-and-skill", film: "w-luck", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 4,
+  node: "w-luck-and-skill", film: "w-luck-and-skill", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 4,
   title: "Luck decides a hand.", kicker: "Skill decides a thousand.",
   assumptions: "Heads-up, both players all-in on the turn, so no more betting follows and both hands are shown. The river counts are exact: all 44 unseen cards, each once, with no ties. Averages are over many repeats of this same spot.",
   stages: v2Stages({
     welcome: { heading: "Did you play it wrong?", em: "Not necessarily.", lead: "You got your chips in ahead and lost. Watch every river, then count it yourself.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "w-luck", at: null, spot: spots["wl-guided"] },
+    film: { upNext: "Play Ada’s hand", film: "w-luck-and-skill", at: null, spot: spots["wl-guided"] },
     hands: [
       { id: "wl-guided", label: "Ada’s hand", coachLine: "The film’s all-in. Count the rivers." },
       { id: "wl-practice", label: "Practice", coachLine: "One hand lost. Now the average." },

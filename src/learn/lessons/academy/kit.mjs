@@ -22,9 +22,10 @@ export function filmStage({ film, at, anchor = at == null ? "end" : "yourTurn", 
   return { kind: "film", label: "Film", upNext, media: film, pause: { at, anchor, film, spotId, spot } };
 }
 
-// The why stage: one tap from three reasons.
-export function whyStage(prompt, options) {
-  return { kind: "why", label: "Why", prompt, options };
+// The why stage: one tap from three reasons. `spotId` is "<lesson prefix>-why" (the prefix of the
+// lesson's other spots); the server grades the pick by it (answerKeys/<node>.mjs why.spotId).
+export function whyStage(spotId, prompt, options) {
+  return { kind: "why", label: "Why", spotId, prompt, options };
 }
 
 // A decision stage.

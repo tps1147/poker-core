@@ -40,7 +40,7 @@ const definition = {
     welcome("Heads-up, play wider.", "But every chip still needs a reason.",
       "With one opponent left, the rules change shape and waiting gets expensive. Watch Reina, then read three heads-up hands.", "Reina"),
     filmStage({ film: "o-heads-up", at: null, spotId: "hu-turn", spot: turnSpot, upNext: "Play Reina’s heads-up hand" }),
-    whyStage("Why play wider heads-up?", [
+    whyStage("hu-why", "Why play wider heads-up?", [
       { id: "cost", text: "Waiting costs 0.75 big blind a hand, 4.5 times a full table, and only one player can hold a better hand.", fix: "Right. The nit bleeds away; the player who never stops raising gets picked off." },
       { id: "same", text: "Strong hands are strong anywhere, so the hands you play don’t change.", fix: "Not heads-up. With one opponent, fewer hands beat you, and waiting costs 4.5 times as much." },
       { id: "acts-first", text: "Because heads-up the button acts first on every street.", fix: "The button acts first only before the flop, then last on every street after." },

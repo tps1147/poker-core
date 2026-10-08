@@ -8,7 +8,7 @@ export default {
   lessonId: "m-variance", node: "m-variance", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "va-guided" }, { kind: "decision", spotId: "va-practice" }, { kind: "decision", spotId: "va-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: 54.24, anchor: "yourTurn", filmId: "m-variance", spotId: "va-turn", decision: "estimate", bands: ["10", "100", "1000"], key: { band: "1000" } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
+  why: { stage: 2, spotId: "va-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
   spots: {
     "va-guided": { stage: 3, decision: "estimate", bands: ["10", "100", "1000"], key: { band: "1000" } },
     "va-practice": { stage: 4, decision: "estimate", bands: ["yes", "no"], key: { band: "no" } },

@@ -15,7 +15,7 @@ const { evaluateHand, compareHands } = require("../src/eval/pokerEvaluator.js");
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILMS = JSON.parse(readFileSync(join(ROOT, "test/fixtures/academyFilmsEarly.json"), "utf8")).films;
 const PLANS = join(ROOT, "docs/v1-feature/academy/plans");
-const { FILM_FIRST_LESSONS, NODES, lessonHands, decisionStages, nodeOfLesson, filmIdOfNode, completingCards, whyStages, whyResult } = learn;
+const { FILM_FIRST_LESSONS, NODES, lessonHands, decisionStages, nodeOfLesson, filmIdOfNode, filmFolderOfNode, completingCards, whyStages, whyResult } = learn;
 const EARLY = ["welcome", "rules", "board", "math", "preflop", "postflop"];
 
 let checks = 0;
@@ -72,7 +72,7 @@ for (const def of shipped) {
   check(`${def.id}: the v2 film's yourTurn pause, where that film has one`, () => {
     const film = def.stages[1];
     const anchors = FILMS[node];
-    assert.equal(anchors.film, filmIdOfNode(node));
+    assert.equal(anchors.film, filmFolderOfNode(node), "the fixture names the render folder");
     if (anchors.yourTurn == null) {
       assert.ok(!film.pause?.film, "no v2 pause");
       assert.equal(keys.film, undefined);

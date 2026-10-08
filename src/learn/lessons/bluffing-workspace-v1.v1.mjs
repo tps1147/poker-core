@@ -68,7 +68,7 @@ const definition = {
     // so no pause is added; the why asks about the v2 film's own verdict: J♣ 9♣ on Q♠ T♦ 5♣ 4♥ 2♠,
     // pot 150, bet 100 (break-even 40%); his 102 combos (an illustration) fold 77 (75.5%), 74 of
     // them better than jack high; about 88.7 a bluff. Key: answerKeys/x-bluffing.mjs.
-    { kind: "why", label: "Why", film: "x-bluffing", prompt: "In the film, jack-nine bets 100 into 150 on a missed river. Why is the bet right?",
+    { kind: "why", label: "Why", spotId: "bl1-why", film: "x-bluffing", prompt: "In the film, jack-nine bets 100 into 150 on a missed river. Why is the bet right?",
       options: [
         { id: "story-target", text: "The line says queens or better, and 77 of his 102 hands fold, 74 of them better than jack high.", fix: "Right. 75.5% folds clear the 40% break-even: about 88.7 a bluff." },
         { id: "called-bad", text: "It isn’t: he called with queen-jack, so the bluff was a mistake.", fix: "A call is one sample, not the grade. The bet earns about 88.7 across his whole range, calls included." },

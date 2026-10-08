@@ -43,7 +43,7 @@ const definition = {
     welcome("Bluff at the right rate.", "Poker, in three cards.",
       "A game with three cards shows why bluffing at the right rate is required, not optional. Watch Sera play it, then take the same rates to the table.", "Sera"),
     filmStage({ film: "g-toy-games", at: null, spotId: "tg-turn", spot: turnSpot, upNext: "Play Sera’s river" }),
-    whyStage("Why does the jack bet sometimes?", [
+    whyStage("tg-why", "Why does the jack bet sometimes?", [
       { id: "mix", text: "Never bluff and he folds to every bet; always bluff and he calls. The mix leaves him nothing to gain.", fix: "Right. One bet in 4 is a bluff, and his queen calls 1 time in 3." },
       { id: "computers", text: "Because a computer says so; the reason doesn’t matter at a real table.", fix: "Game theory isn’t only for computers. Three cards and one bet: you can check every line by hand, as the film did." },
       { id: "king-folds", text: "Because the jack’s bet makes his king fold sometimes.", fix: "His king never folds to a bet. The bluff wins when his queen folds." },

@@ -8,5 +8,5 @@
 export default {
   lessonId: "hand-rankings-workspace-v1", node: "r-hand-rankings", contentVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
+  why: { stage: 2, spotId: "hr2-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
 };

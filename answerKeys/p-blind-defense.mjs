@@ -11,5 +11,5 @@ export default {
   lessonId: "blind-defense-workspace-v1", node: "p-blind-defense", contentVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 73.99, filmId: "p-blind-defense", spotId: "bd1-turn", decision: "count", range: [0, 100], key: { value: 30, tolerance: 0 } },
-  why: { stage: 2, options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
+  why: { stage: 2, spotId: "bd1-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
 };

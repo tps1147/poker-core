@@ -57,7 +57,7 @@ const definition = {
       pause: { at: 73.95, anchor: "yourTurn", film: "f-bet-sizing", spotId: "bs1-turn",
         spot: { decision: "estimate", bands: [{ id: "third", label: "A third of the pot" }, { id: "three-quarters", label: "Three-quarters of the pot" }], prompt: "A river where you want his weaker pairs to call. Which size?", title: "Your turn: which size?", explanation: "A third offers him a price of 1/5; three-quarters, 3/10. To keep those pairs calling, bet the third." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-bet-sizing.mjs).
-    { kind: "why", label: "Why", prompt: "Why is the small bet right here?",
+    { kind: "why", label: "Why", spotId: "bs1-why", prompt: "Why is the small bet right here?",
       options: [
         { id: "a", text: "Bet small to make his bluffs fold cheaply.", fix: "The job here is value from worse hands, not folds." },
         { id: "b", text: "His weaker kings and pairs call 40 more often than 90, so the small bet keeps worse hands paying.", fix: "Right. Size for the hands you want to call." },

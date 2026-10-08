@@ -65,7 +65,7 @@ const definition = {
           prompt: "Pot 160, and he checks. He folds to a bet of 100 a quarter of the time, and you hit a quarter of the time when he calls (both given). Check, or bet 100?",
           hint: "Add the fold branch and the called branch, then compare with checking.",
           explanation: "Check. Break-even is 100 ÷ 260 = 38.5%. Called, the bet loses 0.25 × 360 − 100 = −10, so the bet is worth 0.25 × 160 + 0.75 × (−10) = 32.5. Checking wins 0.25 × 160 = 40." } } },
-    { kind: "why", label: "Why", prompt: "Why check here?",
+    { kind: "why", label: "Why", spotId: "sb1-why", prompt: "Why check here?",
       options: [
         { id: "both-branches", text: "Both branches together earn 32.5, and checking keeps 40.", fix: "Right. The folds and the outs both count, and here they still fall short of checking." },
         { id: "folds-only", text: "His 25% folds are below the 38.5% break-even, so the bet can’t work.", fix: "A semi-bluff doesn’t only work if he folds. The outs add a second way to win; here both together still come up short." },
