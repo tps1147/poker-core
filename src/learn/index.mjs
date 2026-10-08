@@ -21,5 +21,6 @@ export * from "./nodeState.mjs";
 export * from "./filmV2.mjs";
 export * from "./recallBank.mjs";
 export * from "./recall.mjs";
+export * from "./glossary.mjs";
 export { createLessonRunController } from "./lessonRunController.mjs";
 export { default as handRankingsV2 } from "./lessons/hand-rankings-workspace-v1.v2.mjs";
