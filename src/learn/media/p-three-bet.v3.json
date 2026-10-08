@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "p-three-bet",
+  "video": "/academy/films-v2/p-three-bet/p-three-bet-1080.mp4",
+  "video720": "/academy/films-v2/p-three-bet/p-three-bet-720.mp4",
+  "poster": "/academy/films-v2/p-three-bet/p-three-bet-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-three-bet/p-three-bet-rule.jpg",
+  "captions": "/academy/films-v2/p-three-bet/p-three-bet.vtt",
+  "transcript": "/academy/films-v2/p-three-bet/p-three-bet.transcript.txt",
+  "durationSeconds": 100,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 5.39,
+    "yourTurn": 73.1,
+    "rule": 87.95,
+    "upNext": 96.16,
+    "first": null
+  }
+}
