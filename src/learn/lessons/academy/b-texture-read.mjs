@@ -7,6 +7,7 @@ import { bands, huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const spots = {
   "tx-guided": {
+    scene: "deck",
     decision: "estimate", street: "preflop", hero: ["Qs", "Td"],
     bands: bands(["k72", "K♦ 7♣ 2♠"], ["kk4", "K♥ K♣ 4♦"], ["a83", "A♥ 8♥ 3♥"], ["987", "9♣ 8♦ 7♠"], ["jt4", "J♥ T♥ 4♣"]), dockPrompt: "A flush is already possible on…",
     title: "Five flops.",

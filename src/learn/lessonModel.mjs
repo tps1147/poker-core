@@ -36,6 +36,30 @@ export const ANSWER_WORDS = Object.freeze({
   estimate: ["Your estimate", "The estimate"], "best-five": ["Your five", "The best five"],
 });
 
+// ---- the spot's scene (2026-10-08) -------------------------------------------------------------
+// A spot may carry `scene`, the one presentation field a definition sets for the hand step:
+//   (absent)    the table: seats, stacks, hero cards, board and pot, the hand's script played out.
+//   "deck"      a question moment about cards drawn from a full 52-card deck ("How often is it
+//               red?", "How many two-card starts?"): a deck is drawn with the question and its
+//               choices, and no seats, stacks or pot.
+//   "question"  a question moment the table plays no part in at all (history, the loop, a
+//               bankroll's buy-ins, a tilt or study call): a plain question card with its choices.
+// The rule for setting it: the spot's question and choices do not depend on any seat, stack, bet,
+// board or hand the table would show. A spot whose question reads the cards or seats in front of
+// the learner keeps the table. The hand still exists and still drives the step (its decide step
+// opens the choices), but a client with a scene does not draw it. `scene` is presentation only: no
+// answer key reads it, and the server registry ignores it (keys are on spotId and stage).
+export const SPOT_SCENES = Object.freeze(["deck", "question"]);
+
+export function spotScene(spot) {
+  return SPOT_SCENES.includes(spot?.scene) ? spot.scene : null;
+}
+
+// The words a scene sets large over its choices: the dock's own prompt, else the spot's title.
+export function scenePrompt(spot) {
+  return spot?.dockPrompt || spot?.title || null;
+}
+
 export function visibleCards(spot) {
   return [...(spot.hero || []), ...(spot.board || [])].filter(Boolean);
 }

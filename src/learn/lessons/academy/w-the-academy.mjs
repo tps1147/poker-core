@@ -10,6 +10,7 @@ const SPOT = { street: "preflop", hero: ["Jc", "Tc"] };
 
 const spots = {
   "wa-guided": {
+    scene: "question",
     decision: "estimate", ...SPOT,
     bands: bands(["watch", "Watch 100 lessons"], ["decide", "Decide 10 hands and check each one"]), dockPrompt: "Which makes you better?",
     title: "Watch, or decide?",
@@ -18,6 +19,7 @@ const spots = {
     explanation: "Deciding, then checking why, is what makes you better. Watching alone fades; a decision you made and checked holds on.",
   },
   "wa-practice": {
+    scene: "question",
     decision: "estimate", ...SPOT,
     bands: bands(["why", "See why"], ["new", "Try it in a new spot"], ["later", "Prove it later"]), dockPrompt: "Right after you decide…",
     title: "The loop, step three.",
@@ -26,6 +28,7 @@ const spots = {
     explanation: "You see why: not whether you won the hand, but why the decision holds up. Then you try it in a new spot, and prove it later.",
   },
   "wa-fresh": {
+    scene: "question",
     decision: "estimate", ...SPOT,
     bands: bands(["learn", "Learn the idea"], ["why", "See why"], ["new", "Try it in a new spot"]), dockPrompt: "Just before “Prove it later”…",
     title: "Put the loop in order.",

@@ -66,6 +66,7 @@ const definition = {
       explanation: "You do: the button posts the small blind and acts first before the flop. After the flop you act last on every street, so the button has position for the whole hand after the flop, every other hand.",
     },
     "hu-practice": {
+      scene: "question",
       decision: "estimate", ...practice,
       bands: bands(["bb-017", "About 0.17 big blind"], ["bb-075", "0.75 big blind"], ["bb-150", "1.5 big blinds"]),
       dockPrompt: "What do the blinds cost a hand?",
@@ -75,6 +76,7 @@ const definition = {
       explanation: "0.75 big blind: 1.5 ÷ 2. That is 4.5 times the full table’s 1.5 ÷ 9, so waiting for the same strong hands costs 4.5 times as much.",
     },
     "hu-fresh": {
+      scene: "question",
       decision: "estimate", ...fresh,
       bands: bands(["x2", "2 times as much"], ["x3", "3 times as much"], ["x45", "4.5 times as much"]),
       dockPrompt: "How many times as much?",

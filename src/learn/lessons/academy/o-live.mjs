@@ -58,6 +58,7 @@ const definition = {
   ],
   spots: {
     "lv-guided": {
+      scene: "question",
       decision: "estimate", ...guided, potBefore: 100, bet: 50, call: 50,
       bands: bands(["call", "The call stands"], ["raise", "The raise stands"]),
       dockPrompt: "What stands?",
@@ -67,6 +68,7 @@ const definition = {
       explanation: "The call stands. Words said in turn are binding: you put in 50 and the raise is off. Say what you mean before you move.",
     },
     "lv-practice": {
+      scene: "question",
       decision: "estimate", ...practice,
       bands: bands(["first", "Only the first 100"], ["all", "All 300"]),
       dockPrompt: "How much is your bet?",
@@ -76,6 +78,7 @@ const definition = {
       explanation: "Only the first 100. Going back to your stack for more is a string bet, so the second motion doesn’t count. To bet 300, say “300” first, or push it out in one motion.",
     },
     "lv-fresh": {
+      scene: "question",
       decision: "estimate", ...fresh,
       bands: bands(["shaking", "His shaking hands"], ["betting", "His betting, this hand and before"]),
       dockPrompt: "What drives your decision?",

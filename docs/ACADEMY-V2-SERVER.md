@@ -137,3 +137,11 @@ w-luck-and-skill, w-the-academy, w-what-is-poker, x-check-raise, y-study.
 The server must accept `conceptId: null`. Skip the concept-progress write for these lessons and
 don't reject the registry entry. Web's `academyLessonHref` already drops a concept param that
 doesn't match `t[0-6]-...`. Node progress goes by `node` (nodeState), not by concept.
+
+## 6. `spot.scene` is presentation only (2026-10-08)
+
+33 spots carry `scene: "deck"` or `scene: "question"` (lessonModel.mjs `SPOT_SCENES`): the hand
+step draws a deck or a plain question card with the choices instead of the table. Nothing in an
+answer key changes, keys stay on `spotId` and stage, and the registry ignores the field. Every
+tagged spot keeps its hand, so the decide step and the commands a client sends are the same.
+`test/spotScenes.test.mjs` pins each tagged spot's key.

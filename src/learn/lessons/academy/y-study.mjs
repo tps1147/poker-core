@@ -56,6 +56,7 @@ const definition = {
   ],
   spots: {
     "sd-guided": {
+      scene: "question",
       decision: "estimate", ...guided,
       bands: bands(["sure-fold", "A sure fold that saved chips"], ["sure-call-lost", "A sure call that lost"], ["unsure-call-won", "An unsure call that won"]),
       dockPrompt: "Which hand goes to review?",
@@ -65,6 +66,7 @@ const definition = {
       explanation: "The unsure call that won. Winning doesn’t make it right. A sure call that lost may still be a good call, like the +10 call that loses 70 times in 100.",
     },
     "sd-practice": {
+      scene: "question",
       decision: "estimate", ...practice,
       bands: bands(["cram", "Again now, ten times in a row"], ["later", "Fresh, then again days later"]),
       dockPrompt: "When do you come back to it?",
@@ -74,6 +76,7 @@ const definition = {
       explanation: "Decide it fresh now, then check it again days later. Spaced practice beats cramming, which is why the Academy brings each rule back on a schedule.",
     },
     "sd-fresh": {
+      scene: "question",
       decision: "estimate", ...fresh,
       bands: bands(["sure-bet-won", "A sure value bet that won"], ["unsure-fold", "An unsure fold to a river bet"], ["sure-call-lost-big", "A sure call that lost a big pot"]),
       dockPrompt: "Which hand goes to review?",

@@ -58,6 +58,7 @@ const definition = {
   ],
   spots: {
     "tl-guided": {
+      scene: "question",
       decision: "action", choices: ["fold", "call"], ...guided,
       given: { equity: 30 },
       title: "All-in for 50 into 100. Fold or call?",
@@ -66,6 +67,7 @@ const definition = {
       explanation: "Call. 50 ÷ 200 = 25%, and 30% is more: 0.3 × 200 − 50 = +10 a call on average. You still lose this spot 70 times in 100.",
     },
     "tl-practice": {
+      scene: "question",
       decision: "action", choices: ["fold", "call"], ...practice,
       given: { equity: 20, lossesInRow: 3 },
       title: "After three losses. Fold or call?",
@@ -74,6 +76,7 @@ const definition = {
       explanation: "Fold. 60 ÷ 240 = 25%, and 20% is less: 0.2 × 240 − 60 = −12 a call. The fold is right because of the price, not because of the losses. Calling to win it back is the quiet tilt.",
     },
     "tl-fresh": {
+      scene: "question",
       decision: "action", choices: ["fold", "call"], ...fresh,
       given: { equity: 25, lossesInRow: 5 },
       title: "After five losses. Fold or call?",
