@@ -140,7 +140,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     assert.equal(kinds[1], "film", `${id} then the film`);
     assert.equal(kinds.filter((kind) => kind === "film").length, 1, `${id} one film`);
     assert.equal(kinds.at(-1), "takeaway", `${id} ends on the recap`);
-    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision"), `${id} decisions between film and recap`);
+    // Academy v2: a why step may follow the film (lessonModel WHY_KIND); everything else is a decision.
+    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision" || kind === "why"), `${id} decisions between film and recap`);
     const decisions = decisionStages(definition);
     for (const stage of decisions) {
       assert.ok(definition.hands[stage.hand], `${stage.spotId} plays on a registered hand`);
@@ -208,7 +209,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     const film = definition.stages.find((stage) => stage.kind === "film");
     // A beat is a time, or a list of timed marks (rfi "seats"); either way it must exist.
     for (const chapter of film.chapters || []) if (chapter.beat != null) assert.ok(media.beats[chapter.beat] != null, `${id} chapter beat ${chapter.beat}`);
-    if (film.pause) assert.ok(film.pause.at > 0 && film.pause.at < media.durationSeconds, `${id} pause inside the film`);
+    // A pause that names a v2 film (`pause.film`) is timed on that film, not on this media json.
+    if (film.pause && !film.pause.film) assert.ok(film.pause.at > 0 && film.pause.at < media.durationSeconds, `${id} pause inside the film`);
     for (const [spotId, spot] of Object.entries(definition.spots)) {
       if (spot.hear != null) assert.ok(Number.isInteger(spot.hear) && spot.hear >= 0 && spot.hear < media.cues.length, `${spotId} hear cue`);
     }

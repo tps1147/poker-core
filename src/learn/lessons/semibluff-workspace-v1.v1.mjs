@@ -54,7 +54,23 @@ const definition = {
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/semibluff-workspace-v1/v1/timeline.json rail).
       // No in-film guess: the film is 8.75 s and every pause would ask for the next sentence, not a read.
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Two ways to win" }, { beat: "texture", label: "Fold now" }, { beat: "improve", label: "Improve later" }, { beat: "backup", label: "No backup" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Two ways to win" }, { beat: "texture", label: "Fold now" }, { beat: "improve", label: "Improve later" }, { beat: "backup", label: "No backup" }],
+      // ACADEMY V2 (2026-10-08): the "Your turn" pause of the node's v2 film (x-fold-equity,
+      // canon.yourTurn at 59.9 s: "Your turn. Pot 160, bet 100. He folds a quarter, you hit a
+      // quarter... both given."). `film` names the film the time belongs to; the film reveals 38.5%,
+      // −10, 32.5 against 40: check. Key: answerKeys/x-fold-equity.mjs.
+      pause: { at: 59.9, anchor: "yourTurn", film: "x-fold-equity", spotId: "sb1-turn",
+        spot: { decision: "action", choices: ["check", "bet"], sizes: { bet: 100 }, potBefore: 160, given: { foldRate: 25, winWhenCalled: 25 },
+          title: "Your turn: check, or bet 100?",
+          prompt: "Pot 160, and he checks. He folds to a bet of 100 a quarter of the time, and you hit a quarter of the time when he calls (both given). Check, or bet 100?",
+          hint: "Add the fold branch and the called branch, then compare with checking.",
+          explanation: "Check. Break-even is 100 ÷ 260 = 38.5%. Called, the bet loses 0.25 × 360 − 100 = −10, so the bet is worth 0.25 × 160 + 0.75 × (−10) = 32.5. Checking wins 0.25 × 160 = 40." } } },
+    { kind: "why", label: "Why", prompt: "Why check here?",
+      options: [
+        { id: "both-branches", text: "Both branches together earn 32.5, and checking keeps 40.", fix: "Right. The folds and the outs both count, and here they still fall short of checking." },
+        { id: "folds-only", text: "His 25% folds are below the 38.5% break-even, so the bet can’t work.", fix: "A semi-bluff doesn’t only work if he folds. The outs add a second way to win; here both together still come up short." },
+        { id: "called-loses", text: "Because the bet loses 10 when he calls.", fix: "Called, it loses 10, but his folds win 40. Add both branches: 32.5, still below checking’s 40." },
+      ] },
     { kind: "decision", label: "Knox’s hand", spotId: "sb1-guided-price", hand: "sb1-guided", role: "guided",
       coachLine: "Knox’s hand. Price the bet before you make it.", next: "Now check or bet" },
     { kind: "decision", label: "Knox’s hand", spotId: "sb1-guided-bet", hand: "sb1-guided", role: "guided",
