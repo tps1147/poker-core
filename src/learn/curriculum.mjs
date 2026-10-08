@@ -1,22 +1,51 @@
-// THE CURRICULUM: how the course is laid out and how it grows. Levels hold courses, courses hold
-// chapters, chapters hold lesson slots. A live slot names a film-first definition (lessons/index.mjs);
-// a planned slot is on the roadmap only (docs: Poker.com/docs/LEARNING-ROADMAP.md) and no app shows
-// it. Adding a lesson is flipping a slot to live (or adding one) plus its definition, media and
-// answer key: both apps draw the Learn tab from here, so no app change is needed.
+// THE CURRICULUM: how the course is laid out. Since 2026-10-07 it is built from the academy tree
+// (academyTree.mjs): each of its 11 TRACKS is one chapter, and each chapter holds that track's NODES
+// in tree order, one lesson slot per node, 59 in all. Nothing is hidden by `scope`: the four "later"
+// Other Tables lessons ship too.
 //
-// Every lesson is tied to three systems, which is what turns a film into training (THE LOOP):
+// A slot is { lesson, node, name, topic, opponent, access, legacy, scope }:
+//   lesson    the lesson definition id the apps open. A node that maps to one of the 20 shipped
+//             lessons (`legacy.lesson`) keeps that id, so saved runs, server keys and links still
+//             line up; every other node's definition id is the node id itself (the convention new
+//             definitions follow).
+//   node      the tree node id.
+//   legacy    true when `lesson` is one of the 20 shipped lessons.
+//   access    'free' or 'pro' (see THE GATE below).
+// learnPath(resolve) drops a slot whose definition does not resolve, exactly as before, so an app
+// only ever shows a lesson it can open: today that is the 20 shipped lessons, now in tree order and
+// in their tracks, and each new definition appears the moment it is registered.
+//
+// THE LOOP and THE CHAPTER HAND are unchanged. Every lesson is tied to three systems:
 //   watch  the film            (the lesson run passes the film)
 //   prove  the decision hands  (the lesson run reaches its takeaway)
 //   drill  a puzzle topic      (DRILL_TARGET correct generated puzzles in the topic)
 //   beat   an opponent         (the Gauntlet opponent of that archetype beaten)
-// A lesson with no topic or no opponent has no drill or beat step: its loop is shorter, never a
-// step shown and impossible. `topic` values are poker-core/puzzles topics; `opponent` values are the
-// Gauntlet archetypes (calling-station, nit, tag, lag, trapper, shark, drawer, balanced).
+// A lesson with no topic or no opponent has no drill or beat step. `topic` values are
+// poker-core/puzzles topics; `opponent` values are the Gauntlet archetypes. Every chapter ends in a
+// CHAPTER HAND: HAND_SPOTS spots on its topic with no hints, HAND_PASS right seals it. A chapter with
+// no topic is sealed by proving all its lessons. (The node states open / filled / sealed are
+// nodeState.mjs; it explains how they relate to chapterStanding.)
 //
-// Every chapter ends in a CHAPTER HAND: HAND_SPOTS spots on its topic with no hints; HAND_PASS right
-// seals it. A chapter with no topic is sealed by proving all its lessons.
+// THE GATE. LEVELS keep today's semantics: 'free' (all of it), 'preview' (the first lesson of every
+// chapter free, the rest Pro), 'pro'. Each track sits in a level (TRACK_LEVELS), chosen so every
+// shipped lesson keeps the access it has today. A slot's access is its shipped definition's own
+// `access` when it has one (that field is what the server enforces today, so no shipped lesson
+// changes tier), else its track level's rule. In the beta Pro is free anyway (the server's
+// LESSON_PRO_GATE switch); this is the gate the switch turns back on.
 //
-// Pure data and functions, no imports: the web, the app and the server test all load it.
+// COMPATIBILITY (until web, mobile and the server move to track ids):
+//   CHAPTERS   the 11 track chapters, then the retired chapters of the old 20-lesson path
+//              (LEGACY_CHAPTERS, flagged `legacy: true`; the old "pressure" is left out because the
+//              Pressure track owns that id). The retired ones stay findable by id, so
+//              old chapter-hand links, old seals and the server's `CHAPTERS.find(id && topic)` keep
+//              working; learnPath, lessonSlot and chapterOfLesson never return them.
+//              TRACK_CHAPTERS is the clean list of the 11.
+//   lessonSlot / chapterOfLesson accept an old definition id or a node id.
+//   COURSE_ORDER, coursePosition and nextInCourse (lessons/index.mjs) still describe the old 20.
+//
+// Pure data and functions; it imports only the tree and the shipped definitions (both pure data).
+import { TRACKS, NODES } from "./academyTree.mjs";
+import { filmFirstLesson } from "./lessons/index.mjs";
 
 export const DRILL_TARGET = 5;
 export const HAND_SPOTS = 5;
@@ -40,16 +69,71 @@ export const LEVELS = Object.freeze([
   Object.freeze({ id: "mastery", number: 5, title: "Mastery", band: Object.freeze([1750, null]), access: "pro" }),
 ]);
 
-const live = (lesson, name, fields = {}) => Object.freeze({ lesson, name, topic: null, opponent: null, ...fields });
-const planned = (name, fields = {}) => Object.freeze({ lesson: null, name, topic: null, opponent: null, ...fields });
-const chapter = (fields) => Object.freeze({ topic: null, blurb: "", ...fields, lessons: Object.freeze(fields.lessons || []) });
+// The level each track sits in. Welcome, rules and the board are free, as Table Literacy is today.
+// The Math Spine, Preflop, Postflop and Pressure are Fundamentals ('preview'): their shipped lessons
+// keep their own tier (outs to pot odds and the first two preflop lessons free, the rest Pro), and a
+// new lesson is free only as its track's first. People and the Player are Intermediate, Game Theory
+// Advanced and Other Tables Mastery, as the old roadmap placed hand reading, the mental game, game
+// theory, tournaments, heads-up and live play.
+export const TRACK_LEVELS = Object.freeze({
+  welcome: "foundations", rules: "foundations", board: "foundations",
+  math: "fundamentals", preflop: "fundamentals", postflop: "fundamentals", pressure: "fundamentals",
+  people: "intermediate", player: "intermediate", theory: "advanced", formats: "mastery",
+});
 
-// Chapters, in course order within each course. `coach` is a coach id (ada, mina, reina, vale, knox,
-// sera). `topic` is the chapter hand's puzzle topic.
-export const CHAPTERS = Object.freeze([
-  // ---- The Core Course, part 1 (Foundations): live ----
-  chapter({
-    id: "table-literacy", course: "core-1", title: "Table Literacy", coach: "ada",
+// Each track's coach (ada, mina, reina, vale, knox, sera) and its chapter-hand puzzle topic (null:
+// sealed by proving every lesson). The topics are the old chapters' own.
+const TRACK_COACH = Object.freeze({
+  welcome: "ada", rules: "ada", board: "ada", math: "mina", preflop: "reina", postflop: "vale",
+  pressure: "knox", people: "sera", theory: "sera", player: "mina", formats: "reina",
+});
+const TRACK_TOPIC = Object.freeze({
+  math: "pot-odds", preflop: "starting-hands", postflop: "postflop-cbet", pressure: "bluffing", people: "hand-reading",
+});
+
+const levelById = (id) => LEVELS.find((level) => level.id === id) || null;
+
+// A slot's access: the shipped definition's own tier, else the track level's rule.
+function accessFor(levelAccess, indexInTrack, definition) {
+  if (definition?.access === "free" || definition?.access === "pro") return definition.access;
+  if (levelAccess === "free") return "free";
+  if (levelAccess === "preview") return indexInTrack === 0 ? "free" : "pro";
+  return "pro";
+}
+
+const nodeSlot = (node, indexInTrack, levelAccess) => {
+  const legacyId = node.legacy?.lesson || null;
+  const definition = legacyId ? filmFirstLesson(legacyId) : null;
+  return Object.freeze({
+    lesson: legacyId || node.id,
+    node: node.id,
+    name: node.title,
+    topic: node.practice?.topic || null,
+    opponent: node.practice?.opponent || null,
+    access: accessFor(levelAccess, indexInTrack, definition),
+    legacy: !!legacyId,
+    scope: node.scope,
+  });
+};
+
+// The 11 track chapters, in track order, each with its node slots in tree order.
+export const TRACK_CHAPTERS = Object.freeze(TRACKS.map((track) => {
+  const level = TRACK_LEVELS[track.id];
+  const levelAccess = levelById(level)?.access || "pro";
+  const lessons = NODES.filter((node) => node.track === track.id).map((node, i) => nodeSlot(node, i, levelAccess));
+  return Object.freeze({
+    id: track.id, course: track.id, track: track.id, n: track.n, title: track.title, coach: TRACK_COACH[track.id],
+    topic: TRACK_TOPIC[track.id] || null, blurb: track.promise, level, legacy: false, lessons: Object.freeze(lessons),
+  });
+}));
+
+// THE RETIRED PATH: the six chapters of the old 20-lesson path, kept verbatim (ids, coaches, hand
+// topics, slot names) so old ids still resolve. `track` names the track most of its lessons moved to.
+const live = (lesson, name, fields = {}) => Object.freeze({ lesson, name, topic: null, opponent: null, ...fields });
+const retired = (fields) => Object.freeze({ topic: null, blurb: "", ...fields, legacy: true, lessons: Object.freeze(fields.lessons || []) });
+export const LEGACY_CHAPTERS = Object.freeze([
+  retired({
+    id: "table-literacy", course: "core-1", track: "rules", title: "Table Literacy", coach: "ada",
     blurb: "Read the hand, the seat and the action before anything else.",
     lessons: [
       live("hand-rankings-workspace-v1", "Hand Rankings: Know What Beats What"),
@@ -57,8 +141,8 @@ export const CHAPTERS = Object.freeze([
       live("betting-actions-workspace-v1", "Betting Actions: Fold, Call, Raise"),
     ],
   }),
-  chapter({
-    id: "math-spine-1", course: "core-1", title: "Math Spine I", coach: "mina", topic: "pot-odds",
+  retired({
+    id: "math-spine-1", course: "core-1", track: "math", title: "Math Spine I", coach: "mina", topic: "pot-odds",
     blurb: "Count your outs, turn them into equity, and price every call before you make it.",
     lessons: [
       live("outs-workspace-v1", "Outs: Count The Cards That Save You", { topic: "pot-odds", opponent: "drawer" }),
@@ -67,9 +151,8 @@ export const CHAPTERS = Object.freeze([
       live("pot-odds-workspace-v2", "Pot Odds in 60 Seconds", { topic: "pot-odds", opponent: "drawer" }),
     ],
   }),
-  // ---- The Core Course, part 2 (Fundamentals): live ----
-  chapter({
-    id: "math-spine-2", course: "core-2", title: "Math Spine II", coach: "mina", topic: "pot-odds",
+  retired({
+    id: "math-spine-2", course: "core-2", track: "math", title: "Math Spine II", coach: "mina", topic: "pot-odds",
     blurb: "Money you can still win, decisions over results, and how deep the stacks are.",
     lessons: [
       live("implied-odds-workspace-v1", "Implied Odds: Future Winnings Matter", { topic: "pot-odds", opponent: "calling-station" }),
@@ -77,8 +160,8 @@ export const CHAPTERS = Object.freeze([
       live("spr-workspace-v1", "Stack-to-Pot Ratio: Commitment Changes", { opponent: "trapper" }),
     ],
   }),
-  chapter({
-    id: "preflop-discipline", course: "core-2", title: "Preflop Discipline", coach: "reina", topic: "starting-hands",
+  retired({
+    id: "preflop-discipline", course: "core-2", track: "preflop", title: "Preflop Discipline", coach: "reina", topic: "starting-hands",
     blurb: "Which hands to play, from which seat, and when to raise again.",
     lessons: [
       live("starting-hands-workspace-v1", "Starting Hands: Stop Playing Dominated Trash", { topic: "starting-hands", opponent: "calling-station" }),
@@ -87,8 +170,8 @@ export const CHAPTERS = Object.freeze([
       live("three-betting-workspace-v1", "3-Betting: Value, Pressure, Blockers", { topic: "starting-hands", opponent: "lag" }),
     ],
   }),
-  chapter({
-    id: "postflop-fundamentals", course: "core-2", title: "Postflop Fundamentals", coach: "vale", topic: "postflop-cbet",
+  retired({
+    id: "postflop-fundamentals", course: "core-2", track: "postflop", title: "Postflop Fundamentals", coach: "vale", topic: "postflop-cbet",
     blurb: "Think in ranges, read the flop, and bet with a reason and a size.",
     lessons: [
       live("ranges-workspace-v1", "Ranges: Stop Guessing One Hand", { topic: "hand-reading", opponent: "balanced" }),
@@ -97,98 +180,78 @@ export const CHAPTERS = Object.freeze([
       live("bet-sizing-workspace-v1", "Bet Sizing: Price The Story Correctly", { topic: "postflop-cbet", opponent: "calling-station" }),
     ],
   }),
-  chapter({
-    id: "pressure", course: "core-2", title: "Pressure", coach: "knox", topic: "bluffing",
+  retired({
+    id: "pressure", course: "core-2", track: "pressure", title: "Pressure", coach: "knox", topic: "bluffing",
     blurb: "Aggression with a backup plan, and bluffs that tell a story.",
     lessons: [
       live("semibluff-workspace-v1", "Semi-Bluffing: Equity Plus Fold Equity", { topic: "bluffing", opponent: "drawer" }),
       live("bluffing-workspace-v1", "Bluffing: Tell A Story They Can Fold To", { topic: "bluffing", opponent: "lag" }),
     ],
   }),
-
-  // ---- Planned (the roadmap): no app shows these until a slot goes live ----
-  chapter({ id: "how-a-hand-plays", course: "hand-plays", title: "How a Hand Plays", coach: "ada", lessons: [
-    planned("Blinds and the Button"), planned("The Betting Rounds"), planned("All-Ins and Side Pots"),
-    planned("Showdown and Chopped Pots"), planned("Reading the Action"), planned("Table Manners"),
-  ] }),
-  chapter({ id: "reading-the-board", course: "reading-board", title: "Reading the Board", coach: "ada", lessons: [
-    planned("The Nuts"), planned("Kickers and Counterfeits"), planned("Paired Boards"), planned("Flush Boards"), planned("What Beats You"),
-  ] }),
-  chapter({ id: "position-play", course: "position-play", title: "Position Play", coach: "reina", lessons: [
-    planned("In Position vs Out"), planned("Pot Control"), planned("Free Cards"), planned("Checking Back"), planned("Stealing"),
-  ] }),
-  chapter({ id: "value-betting", course: "value-betting", title: "Value Betting", coach: "vale", lessons: [
-    planned("Thin Value"), planned("Sizing for Value"), planned("Check-Raising for Value"), planned("River Value"), planned("Who Pays You"),
-  ] }),
-  chapter({ id: "playing-draws", course: "playing-draws", title: "Playing Draws", coach: "mina", lessons: [
-    planned("Draw Strength"), planned("Semi-Bluff Lines"), planned("When to Just Call"), planned("Bricked Rivers"),
-  ] }),
-  chapter({ id: "beating-player-types", course: "player-types", title: "Beating Player Types", coach: "sera", lessons: [
-    planned("The Calling Station", { opponent: "calling-station" }), planned("The Nit", { opponent: "nit" }),
-    planned("The TAG", { opponent: "tag" }), planned("The LAG", { opponent: "lag" }), planned("The Trapper", { opponent: "trapper" }),
-    planned("The Shark", { opponent: "shark" }), planned("The Drawer", { opponent: "drawer" }), planned("The Balanced Player", { opponent: "balanced" }),
-  ] }),
 ]);
 
-// Courses: one theme inside a level. `lessons` on a planned course with no chapters yet is its
-// roadmap size. `order` sorts courses within a level.
-export const COURSES = Object.freeze([
-  Object.freeze({ id: "core-1", level: "foundations", order: 1, title: "The Core Course", part: 1 }),
-  Object.freeze({ id: "hand-plays", level: "foundations", order: 2, title: "How a Hand Plays" }),
-  Object.freeze({ id: "reading-board", level: "foundations", order: 3, title: "Reading the Board" }),
-  Object.freeze({ id: "core-2", level: "fundamentals", order: 1, title: "The Core Course", part: 2 }),
-  Object.freeze({ id: "position-play", level: "fundamentals", order: 2, title: "Position Play" }),
-  Object.freeze({ id: "value-betting", level: "fundamentals", order: 3, title: "Value Betting" }),
-  Object.freeze({ id: "playing-draws", level: "fundamentals", order: 4, title: "Playing Draws" }),
-  Object.freeze({ id: "ranges-in-practice", level: "intermediate", order: 1, title: "Ranges in Practice", lessons: 6 }),
-  Object.freeze({ id: "defending", level: "intermediate", order: 2, title: "Defending", lessons: 6 }),
-  Object.freeze({ id: "multi-street", level: "intermediate", order: 3, title: "Multi-Street Plans", lessons: 6 }),
-  Object.freeze({ id: "hand-reading", level: "intermediate", order: 4, title: "Hand Reading", lessons: 5 }),
-  Object.freeze({ id: "mental-game", level: "intermediate", order: 5, title: "The Mental Game", lessons: 4 }),
-  Object.freeze({ id: "game-theory", level: "advanced", order: 1, title: "Game Theory Basics", lessons: 6 }),
-  Object.freeze({ id: "player-types", level: "advanced", order: 2, title: "Beating Player Types" }),
-  Object.freeze({ id: "sizing-theory", level: "advanced", order: 3, title: "Sizing Theory", lessons: 5 }),
-  Object.freeze({ id: "multiway", level: "advanced", order: 4, title: "Multiway Pots", lessons: 4 }),
-  Object.freeze({ id: "tournaments", level: "mastery", order: 1, title: "Tournament Poker", lessons: 8 }),
-  Object.freeze({ id: "heads-up", level: "mastery", order: 2, title: "Heads-Up", lessons: 5 }),
-  Object.freeze({ id: "solver-spots", level: "mastery", order: 3, title: "Solver Spots", lessons: 5 }),
-  Object.freeze({ id: "live-poker", level: "mastery", order: 4, title: "Live Poker", lessons: 5 }),
-]);
+// Every chapter id the apps or the server may hold: the tracks first, then the retired chapters.
+// The old "pressure" chapter shares its id with the Pressure track, so the track owns "pressure"
+// (an old "pressure" seal now reads as the Pressure track's) and the retired copy stays only in
+// LEGACY_CHAPTERS.
+const TRACK_IDS = new Set(TRACK_CHAPTERS.map((ch) => ch.id));
+export const CHAPTERS = Object.freeze([...TRACK_CHAPTERS, ...LEGACY_CHAPTERS.filter((ch) => !TRACK_IDS.has(ch.id))]);
 
-const levelIndex = (id) => LEVELS.findIndex((level) => level.id === id);
+// Retired chapter id -> the track most of its lessons moved to.
+export const LEGACY_CHAPTER_TRACKS = Object.freeze(Object.fromEntries(LEGACY_CHAPTERS.map((ch) => [ch.id, ch.track])));
+
+// Courses: one per track, ordered within its level (the path order is the track order).
+export const COURSES = Object.freeze(TRACKS.map((track) => Object.freeze({
+  id: track.id, level: TRACK_LEVELS[track.id], order: track.n, title: track.title,
+})));
+
 const courseById = (id) => COURSES.find((course) => course.id === id) || null;
+const trackChapter = (id) => TRACK_CHAPTERS.find((ch) => ch.id === id) || null;
 
-// The lessons a course holds on the roadmap: its chapters' slots, else its planned size.
+// A chapter by id: a track id, or a retired chapter id (which resolves to the retired chapter).
+export function chapterById(id) {
+  if (typeof id !== "string" || !id) return null;
+  return trackChapter(id) || LEGACY_CHAPTERS.find((ch) => ch.id === id) || null;
+}
+
+// The tree node for a lesson: by node id, or by an old definition id through `legacy.lesson`
+// (also accepting the catalog ids a shipped definition was built from).
+export function nodeOfLesson(id) {
+  if (typeof id !== "string" || !id) return null;
+  const direct = NODES.find((node) => node.id === id) || NODES.find((node) => node.legacy?.lesson === id);
+  if (direct) return direct;
+  const definition = filmFirstLesson(id);
+  return definition ? NODES.find((node) => node.legacy?.lesson === definition.id) || null : null;
+}
+
+// The definition id a node opens: its shipped lesson's id, else the node id.
+export function lessonOfNode(nodeId) {
+  const node = NODES.find((n) => n.id === nodeId);
+  return node ? node.legacy?.lesson || node.id : null;
+}
+
+// The lessons a course holds (one course per track).
 export function courseSize(courseId) {
-  const chapters = CHAPTERS.filter((ch) => ch.course === courseId);
-  if (chapters.length) return chapters.reduce((sum, ch) => sum + ch.lessons.length, 0);
-  return courseById(courseId)?.lessons || 0;
+  return trackChapter(courseId)?.lessons.length || 0;
 }
 
-// The whole roadmap's size: { lessons, live, planned } across every course.
-export function roadmapSize() {
-  const lessons = COURSES.reduce((sum, course) => sum + courseSize(course.id), 0);
-  const liveCount = CHAPTERS.reduce((sum, ch) => sum + ch.lessons.filter((slot) => slot.lesson).length, 0);
-  return { lessons, live: liveCount, planned: lessons - liveCount };
+// The whole curriculum's size: { lessons, live, planned }. `live` counts slots whose definition
+// resolves (`resolve`, default the shipped definitions), `planned` the rest.
+export function roadmapSize(resolve = filmFirstLesson) {
+  const slots = TRACK_CHAPTERS.flatMap((ch) => ch.lessons);
+  const liveCount = slots.filter((slot) => resolve(slot.lesson)).length;
+  return { lessons: slots.length, live: liveCount, planned: slots.length - liveCount };
 }
 
-// Chapters in path order: by level, then course order, then their order in CHAPTERS.
-function orderedChapters() {
-  return CHAPTERS
-    .map((ch, index) => ({ ch, index, course: courseById(ch.course) }))
-    .filter((row) => row.course)
-    .sort((a, b) => (levelIndex(a.course.level) - levelIndex(b.course.level)) || (a.course.order - b.course.order) || (a.index - b.index))
-    .map((row) => row.ch);
-}
-
-// THE PATH the Learn tab draws: the chapters with at least one live lesson, in order, each with its
-// course, level, number (1..n along the path) and its live slots (planned slots dropped), each slot
-// numbered along the whole path. `resolve(definitionId)` (optional) returns the definition; a slot
-// whose definition does not resolve is dropped, so an app never shows a lesson it cannot open.
+// THE PATH the Learn tab draws: the track chapters with at least one lesson, in order, each with its
+// course, level, number (1..n along the path) and its slots, each slot numbered along the whole path.
+// `resolve(definitionId)` (optional) returns the definition; a slot whose definition does not
+// resolve is dropped, so an app never shows a lesson it cannot open. Without `resolve` every slot of
+// the 59 is listed. Retired chapters never reach the path.
 export function learnPath(resolve = null) {
   const chapters = [];
   let lessonNumber = 0;
-  for (const ch of orderedChapters()) {
+  for (const ch of TRACK_CHAPTERS) {
     const slots = ch.lessons
       .filter((slot) => slot.lesson && (!resolve || resolve(slot.lesson)))
       .map((slot) => {
@@ -202,18 +265,17 @@ export function learnPath(resolve = null) {
   return { chapters, total: lessonNumber };
 }
 
-// The chapter a lesson sits in, by its definition id.
-export function chapterOfLesson(definitionId) {
-  return CHAPTERS.find((ch) => ch.lessons.some((slot) => slot.lesson === definitionId)) || null;
+// The track chapter a lesson sits in, by its definition id or node id.
+export function chapterOfLesson(id) {
+  const node = nodeOfLesson(id);
+  return node ? trackChapter(node.track) : null;
 }
 
-// The slot of a lesson, by its definition id.
-export function lessonSlot(definitionId) {
-  for (const ch of CHAPTERS) {
-    const slot = ch.lessons.find((s) => s.lesson === definitionId);
-    if (slot) return slot;
-  }
-  return null;
+// The slot of a lesson, by its definition id or node id.
+export function lessonSlot(id) {
+  const node = nodeOfLesson(id);
+  if (!node) return null;
+  return trackChapter(node.track)?.lessons.find((slot) => slot.node === node.id) || null;
 }
 
 // THE LOOP for one lesson. `signals`:
@@ -251,8 +313,9 @@ export function chapterHandResult(correct, spots = HAND_SPOTS) {
 
 // Where a chapter stands: how many of its lessons are proved, whether it is sealed (its hand passed,
 // or for a chapter with no topic every lesson proved) and whether its hand is open (every lesson
-// proved and a topic to play). `provedIds` is a Set of proved definition ids; `seals` maps chapter
-// ids to a truthy seal record.
+// proved and a topic to play). `provedIds` is a Set of proved definition ids (nodeState.mjs
+// provedLessonIds builds it from node states: filled or sealed counts as proved); `seals` maps
+// chapter ids to a truthy seal record.
 export function chapterStanding(pathChapter, { provedIds = new Set(), seals = {} } = {}) {
   const lessons = pathChapter?.lessons || [];
   const proved = lessons.filter((slot) => provedIds.has(slot.lesson)).length;
@@ -262,9 +325,9 @@ export function chapterStanding(pathChapter, { provedIds = new Set(), seals = {}
   return { proved, total: lessons.length, complete: all, sealed, handOpen: hasHand && all && !sealed, hasHand };
 }
 
-// A detected leak's FIX, the Stats page's "Fix this next": the lesson that teaches it (a live
+// A detected leak's FIX, the Stats page's "Fix this next": the lesson that teaches it (a shipped
 // definition id), and through its curriculum slot the puzzle topic to drill and the Gauntlet
-// archetype that punishes it. Leak keys are the apps' stats leak keys.
+// archetype that punishes it. Leak keys are the apps' stats leak keys. `chapter` is now the track.
 export const LEAK_LESSONS = Object.freeze({
   "leak-vpip": "starting-hands-workspace-v1",
   "leak-passive": "cbetting-workspace-v1",
