@@ -45,7 +45,7 @@ const definition = {
       { id: "same", text: "Strong hands are strong anywhere, so the hands you play don’t change.", fix: "Not heads-up. With one opponent, fewer hands beat you, and waiting costs 4.5 times as much." },
       { id: "acts-first", text: "Because heads-up the button acts first on every street.", fix: "The button acts first only before the flop, then last on every street after." },
     ]),
-    decision("hu-guided", "hu-guided", "guided", "Knox’s hand", "Knox’s heads-up hand. Who acts first?", "Try a practice hand", { feedback }),
+    decision("hu-guided", "hu-guided", "guided", "Knox’s hand", "Knox’s heads-up hand. Who acts first?", "Try a practice hand", { feedback: { ...feedback, missed: "Heads-up, the button is the small blind." } }),
     decision("hu-practice", "hu-practice", "practice", "Practice", "What does waiting cost?", "Try a fresh hand", { feedback }),
     decision("hu-fresh", "hu-fresh", "fresh", "Fresh hand", "Compare with six-handed.", "See your recap", { feedback }),
     takeaway({

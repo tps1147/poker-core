@@ -36,7 +36,7 @@ const definition = {
   feedback: priceFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Find your price.", em: "Then decide.",
-      lead: "A draw is not a reason to call. Watch Knox build the final pot and find the price, then weigh three calls at the table.",
+      lead: "A draw is not a reason to call. Watch the film, then weigh three calls at the table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
@@ -58,7 +58,7 @@ const definition = {
         { id: "c", text: "Your 50 joins the pot: 50 ÷ 250 is 20%, below the 30% chance.", fix: "Right. Count all three amounts, your own call included." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "pot2-guided", hand: "pot2-guided", role: "guided",
-      coachLine: "Knox’s hand. You make the call.", next: "Try a practice hand" },
+      coachLine: "The hand. You make the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "pot2-practice", hand: "pot2-practice", role: "practice",
       coachLine: "Same idea, new numbers. Count your own call.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pot2-fresh", hand: "pot2-fresh", role: "fresh",

@@ -22,7 +22,7 @@ const spots = {
   "mv-practice": {
     decision: "count", ...practice, target: "straight", range: [0, 47], unit: "cards",
     title: "Four in a row.",
-    prompt: "You hold 8♣ 7♦ on 6♠ 5♥ K♦: eight, seven, six, five, four in a row, open at both ends. How many of the 47 unseen cards finish your straight on the next card?",
+    prompt: "You hold 8♣ 7♦ on 6♠ 5♥ K♦: eight, seven, six, five: four in a row, open at both ends. How many of the 47 unseen cards finish your straight on the next card?",
     hint: "Two ranks finish it: one at each end. How many of each rank are left?",
     explanation: "A four or a nine finishes it, and four of each are unseen: 8 cards of 47. The other 39 miss, and the hand stays a draw.",
   },

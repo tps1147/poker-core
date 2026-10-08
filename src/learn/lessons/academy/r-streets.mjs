@@ -3,7 +3,16 @@
 // speaks first on the flop? Practice is the plan's Transfer (small blind, big blind and cutoff see
 // a flop); the fresh hand changes the seats (under the gun, the cutoff and the button).
 // Keys: answerKeys/r-streets.mjs (package root, not shipped).
-import { bands, huHand, options, ringHand, v2Lesson, v2Stages } from "./kitEarly.mjs";
+import { bands, huHand, options, ringHand, seatsHU, v2Lesson, v2Stages } from "./kitEarly.mjs";
+
+// A six-handed hand played from the deal: the blinds, the preflop action that leaves exactly the
+// seats the question names, then the flop. The table shows who folded and the pot they built.
+const flopRing = (id, { position, hero, flop, preflop }) => {
+  const hand = ringHand(id, { position, hero, blinds: [5, 10], acts: preflop });
+  const decide = hand.script.pop();
+  hand.script.push({ do: "street", cards: flop }, decide);
+  return hand;
+};
 
 const spots = {
   "st-guided": {
@@ -55,9 +64,17 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "st-guided": huHand("st-guided", { hero: ["Ah", "Jc"], board: ["Ks", "7d", "2c"], pot: 60 }),
-    "st-practice": ringHand("st-practice", { position: "CO", hero: ["9h", "9d"], board: ["Qc", "8s", "4h"], pot: 90 }),
-    "st-fresh": ringHand("st-fresh", { position: "BTN", hero: ["Ac", "Td"], board: ["Jh", "6c", "3s"], pot: 105 }),
+    "st-guided": huHand("st-guided", { hero: ["Ah", "Jc"], board: ["Ks", "7d", "2c"], pot: 60, seats: seatsHU("Ace Andy", 970, 970) }),
+    // Under the gun and middle position fold, you raise to 30 in the cutoff, the button folds and both
+    // blinds call: 90 in the pot, three seats see the flop.
+    "st-practice": flopRing("st-practice", { position: "CO", hero: ["9h", "9d"], flop: ["Qc", "8s", "4h"], preflop: [
+      { seat: "UTG", action: "fold" }, { seat: "MP", action: "fold" }, { seat: "hero", action: "raise", to: 30 },
+      { seat: "BTN", action: "fold" }, { seat: "SB", action: "call" }, { seat: "BB", action: "call" }] }),
+    // Under the gun raises to 30, middle position folds, the cutoff and you on the button call, and both
+    // blinds fold: 105 in the pot, three seats see the flop.
+    "st-fresh": flopRing("st-fresh", { position: "BTN", hero: ["Ac", "Td"], flop: ["Jh", "6c", "3s"], preflop: [
+      { seat: "UTG", action: "raise", to: 30 }, { seat: "MP", action: "fold" }, { seat: "CO", action: "call" },
+      { seat: "hero", action: "call" }, { seat: "SB", action: "fold" }, { seat: "BB", action: "fold" }] }),
   },
 });
 

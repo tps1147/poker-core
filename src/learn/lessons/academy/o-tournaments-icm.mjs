@@ -89,7 +89,7 @@ const definition = {
       bands: bands(["gains", "You gain prize money"], ["loses", "You lose prize money"]),
       dockPrompt: "What happens to your prize money?",
       title: "You sit out the flip.",
-      prompt: "You are the middle stack with 3,000 and you fold. The short stack and the big stack play a pure coin flip for 2,000. Your share is 32.8% now. On average, after the flip?",
+      prompt: "You are the middle stack with 3,000. If you fold, the short stack and the big stack play a pure coin flip for 2,000. Your share is 32.8% now. On average, after the flip?",
       hint: "If the short stack wins, the stacks are 3,000 / 3,000 / 4,000. If he loses, he is out and you are sure of at least second.",
       explanation: "You gain: 32.8% now, 34.1% on average after. When either player busts, you move up a place for free. That is the price of their survival, paid to you.",
     },

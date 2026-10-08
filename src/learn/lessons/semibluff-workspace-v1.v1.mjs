@@ -49,7 +49,7 @@ const definition = {
   feedback: { found: "You priced it.", missed: "Let’s price it together.", open: "Here’s the price." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Bet with a backup.", em: "Two ways to win.",
-      lead: "A semi-bluff wins when Ace Andy folds now, or when your draw comes in later. Watch Knox, then price three bets at the table.",
+      lead: "A semi-bluff wins when Ace Andy folds now, or when your draw comes in later. Watch the film, then price three bets at the table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/semibluff-workspace-v1/v1/timeline.json rail).
@@ -72,7 +72,7 @@ const definition = {
         { id: "called-loses", text: "Because the bet loses 10 when he calls.", fix: "Called, it loses 10, but his folds win 40. Add both branches: 32.5, still below checking’s 40." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "sb1-guided-price", hand: "sb1-guided", role: "guided",
-      coachLine: "Knox’s hand. Price the bet before you make it.", next: "Now check or bet" },
+      coachLine: "The hand. Price the bet before you make it.", next: "Now check or bet" },
     { kind: "decision", label: "Knox’s hand", spotId: "sb1-guided-bet", hand: "sb1-guided", role: "guided",
       coachLine: "Now add the second way to win.", next: "Try a practice hand", feedback: actionFeedback },
     { kind: "decision", label: "Practice", spotId: "sb1-practice-price", hand: "sb1-practice", role: "practice",
@@ -94,7 +94,7 @@ const definition = {
       bands: [{ id: "about-25", label: "About 25%" }, { id: "about-33", label: "About 33%" }, { id: "about-50", label: "About 50%" }],
       dockPrompt: PRICE_DOCK,
       title: PRICE_TITLE,
-      prompt: "Knox’s hand. You hold eight-seven of hearts on the turn, the pot is 100 and Ace Andy checks to you. Suppose you bet 50 with nothing to fall back on. How often must he fold for that bet to break even?",
+      prompt: "The hand. You hold eight-seven of hearts on the turn, the pot is 100 and Ace Andy checks to you. Suppose you bet 50 with nothing to fall back on. How often must he fold for that bet to break even?",
       hint: "A bet with no backup risks the bet to win the pot. Divide what you risk by the pot plus your bet.",
       explanation: "You risk 50 to win the 100 already in the pot. 50 ÷ (100 + 50) = 50 ÷ 150, about 33%. A bet with no backup needs Ace Andy to fold at least that often.",
       hear: 2,

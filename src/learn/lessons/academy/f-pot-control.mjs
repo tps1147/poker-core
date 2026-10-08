@@ -57,8 +57,8 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "pc-guided": huHand("pc-guided", { hero: NINES, board: TURN, pot: 200, button: "opponent", seats: seatsHU("Ace Andy", 950, 950) }),
-    "pc-practice": huHand("pc-practice", { hero: NINES, board: TURN, pot: 200, seats: seatsHU("Ace Andy", 950, 950), acts: [{ seat: "opponent", action: "check" }], answer: { sizes: { bet: 100 } } }),
+    "pc-guided": huHand("pc-guided", { hero: NINES, board: TURN, pot: 200, button: "opponent", seats: seatsHU("Ace Andy", 900, 900) }),
+    "pc-practice": huHand("pc-practice", { hero: NINES, board: TURN, pot: 200, seats: seatsHU("Ace Andy", 900, 900), acts: [{ seat: "opponent", action: "check" }], answer: { sizes: { bet: 100 } } }),
     "pc-fresh": huHand("pc-fresh", { hero: ["8c", "8d"], board: ["Qh", "7s", "2c"], pot: 60, acts: [{ seat: "opponent", action: "check" }] }),
   },
 });

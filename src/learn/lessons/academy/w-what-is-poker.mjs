@@ -3,7 +3,7 @@
 // A♣ J♦ on J♥ T♣ 4♥ 2♠ 9♦, your straight against their pair of jacks. Practice is a second
 // showdown; the fresh hand is the plan's Transfer, the other way to win: everyone else folds.
 // Keys: answerKeys/w-what-is-poker.mjs (package root, not shipped). No imports beyond the shared kit.
-import { bands, huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
+import { bands, huHand, options, seatsHU, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const WHO = bands(["you", "You"], ["andy", "Ace Andy"], ["split", "Split pot"]);
 const guided = { hero: ["Kh", "Qh"], board: ["Jh", "Tc", "4h", "2s", "9d"], versus: ["Ac", "Jd"] };
@@ -59,9 +59,9 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "wip-guided": huHand("wip-guided", { hero: guided.hero, board: guided.board, versus: guided.versus, pot: 200 }),
-    "wip-practice": huHand("wip-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 160 }),
-    "wip-fresh": huHand("wip-fresh", { hero: fresh.hero, board: fresh.board, pot: 120, acts: [{ seat: "opponent", action: "bet", amount: 60 }] }),
+    "wip-guided": huHand("wip-guided", { hero: guided.hero, board: guided.board, versus: guided.versus, pot: 200, seats: seatsHU("Ace Andy", 900, 900) }),
+    "wip-practice": huHand("wip-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 160, seats: seatsHU("Ace Andy", 920, 920) }),
+    "wip-fresh": huHand("wip-fresh", { hero: fresh.hero, board: fresh.board, pot: 120, seats: seatsHU("Ace Andy", 940, 940), acts: [{ seat: "opponent", action: "bet", amount: 60 }] }),
   },
 });
 

@@ -32,7 +32,7 @@ const definition = {
   feedback: { found: "You found your share.", missed: "Let’s find the share together.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Judge your share first.", em: "Then decide.",
-      lead: "A hand is not just what it is right now. Watch Knox define future share, then find your share of the pot in three hands at the table.",
+      lead: "A hand is not just what it is right now. Watch the film, then find your share of the pot in three hands at the table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own two beats, with the opening as "Intro".
@@ -49,7 +49,7 @@ const definition = {
         { id: "c", text: "Equity is the chips you have already put in.", fix: "Chips you put in belong to the pot. Your share is your chance of winning it: 35% of 120." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "eq2-guided", hand: "eq2-guided", role: "guided",
-      coachLine: "Knox’s hand. You name the share.", next: "Try a practice hand" },
+      coachLine: "The hand. You name the share.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "eq2-practice", hand: "eq2-practice", role: "practice",
       coachLine: "Same idea, a different hand.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "eq2-fresh", hand: "eq2-fresh", role: "fresh",
@@ -70,7 +70,7 @@ const definition = {
       dockPrompt: "Your share of the pot, on average",
       given: { equity: 35, source: "Given for this exercise" },
       title: "What share of this pot is yours?",
-      prompt: "Knox’s hand: ace-king on a queen-ten-three flop, with no pair yet. Ace Andy checks and the pot is 120. For this exercise, your chance of winning by the end is given as 35%. On average, what share of the pot is yours?",
+      prompt: "The hand: ace-king on a queen-ten-three flop, with no pair yet. Ace Andy checks and the pot is 120. For this exercise, your chance of winning by the end is given as 35%. On average, what share of the pot is yours?",
       hint: HINT,
       explanation: "Take the given chance of the pot: 35% of 120 is 42 chips. That is this hand’s equity. It has no pair right now, and it still owns about 42 chips on average, not nothing and not the whole 120.",
       note: "The turn and river are not dealt in this lesson. The share is about how often the hand wins by the end.",

@@ -86,7 +86,7 @@ const definition = {
     },
   },
   hands: {
-    "br-guided": huHand("br-guided", { ...guided, pot: 0, blinds: [50, 100], stack: 2000, decisions: ["br-guided"] }),
+    "br-guided": huHand("br-guided", { ...guided, pot: 0, blinds: [1, 2], stack: 100, decisions: ["br-guided"] }),
     "br-practice": huHand("br-practice", { ...practice, pot: 0, blinds: [25, 50], stack: 2000, decisions: ["br-practice"] }),
     "br-fresh": huHand("br-fresh", { ...fresh, pot: 0, blinds: [25, 50], stack: 1500, decisions: ["br-fresh"] }),
   },

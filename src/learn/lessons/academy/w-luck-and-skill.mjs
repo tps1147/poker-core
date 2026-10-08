@@ -60,9 +60,9 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "wl-guided": huHand("wl-guided", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 1000, seats: seatsHU("Ace Andy", 500, 500) }),
-    "wl-practice": huHand("wl-practice", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 1000, seats: seatsHU("Ace Andy", 500, 500) }),
-    "wl-fresh": huHand("wl-fresh", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 600, seats: seatsHU("Ace Andy", 700, 700) }),
+    "wl-guided": huHand("wl-guided", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 1000, seats: seatsHU("Ace Andy", 0, 0) }),
+    "wl-practice": huHand("wl-practice", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 1000, seats: seatsHU("Ace Andy", 0, 0) }),
+    "wl-fresh": huHand("wl-fresh", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 600, seats: seatsHU("Ace Andy", 0, 0) }),
   },
 });
 

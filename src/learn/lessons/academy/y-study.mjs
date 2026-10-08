@@ -45,7 +45,7 @@ const definition = {
       { id: "biggest", text: "The loss, because the biggest pot matters most.", fix: "Pot size isn’t the filter. A +10 call loses 70 times in 100; review where you weren’t sure." },
     ]),
     decision("sd-guided", "sd-guided", "guided", "Mina’s session", "Mina’s session log.", "Try a practice hand", { feedback }),
-    decision("sd-practice", "sd-practice", "practice", "Practice", "You reviewed a spot. Now what?", "Try a fresh hand", { feedback }),
+    decision("sd-practice", "sd-practice", "practice", "Practice", "You reviewed a spot. Now what?", "Try a fresh hand", { feedback: { found: "That’s how it sticks.", missed: "Space it out.", open: "Here’s the plan." } }),
     decision("sd-fresh", "sd-fresh", "fresh", "Fresh hand", "A new log. Pick the review.", "See your recap", { feedback }),
     takeaway({
       heading: "Decisions, not results.",

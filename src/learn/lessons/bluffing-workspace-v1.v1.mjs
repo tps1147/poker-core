@@ -42,7 +42,7 @@ const guided = { street: "river", hero: ["As", "Js"], board: ["Kd", "Qs", "4c", 
 const practice = { street: "river", hero: ["Ah", "Qh"], board: ["Kh", "9c", "4h", "7s", "2d"] };
 const fresh = { street: "river", hero: ["Jc", "Tc"], board: ["Ad", "8c", "3c", "4s", "Kd"] };
 
-const actionFeedback = { found: "You asked both questions.", missed: "Let’s ask Knox’s two questions again.", open: "Here’s the thinking." };
+const actionFeedback = { found: "You asked both questions.", missed: "Let’s ask the two questions again.", open: "Here’s the thinking." };
 const ONE_HAND = "One hand proves nothing. The decision is right or wrong because of the story and the target, not because of what Ace Andy does this time.";
 
 const definition = {
@@ -54,12 +54,12 @@ const definition = {
   trail: ["Learn", "Pressure", "Bluffing"],
   course: { chapter: "Pressure" },
   meta: { minutes: 5 },
-  assumptions: "Heads-up, no rake. Each player started the hand with 1,000. In every hand you raised before the flop and bet the flop and the turn, and Ace Andy called both bets, so the pot is 300 with 850 behind each, and he checks the river to you. The pot, the stacks, that line and the 200 bet size are given for the exercise; Knox does not speak them. What Ace Andy holds is described only as a read, labelled given in each hand, never taken from his hidden cards. Poor showdown value is Knox’s description, not an equity figure. His cards are shown only at a showdown the hand reaches after your answer.",
+  assumptions: "Heads-up, no rake. Each player started the hand with 1,000. In every hand you raised before the flop and bet the flop and the turn, and Ace Andy called both bets, so the pot is 300 with 850 behind each, and he checks the river to you. The pot, the stacks, that line and the 200 bet size are given for the exercise; Knox does not speak them. What Ace Andy holds is described only as a read, labelled given in each hand, never taken from his hidden cards. Poor showdown value is the description, not an equity figure. His cards are shown only at a showdown the hand reaches after your answer.",
   media: "media/bluffing-workspace-v1.v1.json",
   feedback: { found: "You found it.", missed: "Let’s ask it together.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Bluff with a story they can fold to.", em: "Not because you missed.",
-      lead: "A bluff needs a line that looks like value and better hands that can fold. Watch Knox ask his two questions on a missed river, then play three hands at the table.",
+      lead: "A bluff needs a line that looks like value and better hands that can fold. Watch the film, then play three hands at the table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/bluffing-workspace-v1/v1/timeline.json rail).
@@ -75,7 +75,7 @@ const definition = {
         { id: "missed", text: "Because the draw missed, so betting is the only way to win.", fix: "Missing isn’t the reason. Against a station who calls with any pair, the same miss is a check." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "bl1-guided", hand: "bl1-guided", role: "guided",
-      coachLine: "Knox’s river. You ask his two questions.", next: "Try a practice hand", feedback: actionFeedback },
+      coachLine: "The river. You ask his two questions.", next: "Try a practice hand", feedback: actionFeedback },
     { kind: "decision", label: "Practice", spotId: "bl1-practice-target", hand: "bl1-practice", role: "practice",
       coachLine: "A different miss. Find the target first.", next: "Now decide the bet" },
     { kind: "decision", label: "Practice", spotId: "bl1-practice-action", hand: "bl1-practice", role: "practice",
@@ -93,10 +93,10 @@ const definition = {
     "bl1-guided": {
       decision: "action", choices: ["check", "bet"], sizes: SIZES, ...guided,
       title: "Checked to you. Check or bet?",
-      prompt: "Knox’s hand: ace-jack of spades, and nothing made on this river. The pot is 300. You raised before the flop and bet the flop and the turn; Ace Andy called both and checks. Given read: his range is capped, with many one-pair hands. Check, or bet 200?",
-      hint: "Ask Knox’s two questions in order. What strong hands does your line represent? Which of his hands that beat ace-jack could fold?",
+      prompt: "The hand: ace-jack of spades, and nothing made on this river. The pot is 300. You raised before the flop and bet the flop and the turn; Ace Andy called both and checks. Given read: his range is capped, with many one-pair hands. Check, or bet 200?",
+      hint: "Ask the two questions in order. What strong hands does your line represent? Which of his hands that beat ace-jack could fold?",
       explanation: "Ace-jack has poor showdown value: checked down, it loses to every pair he holds. Your line represents strong king-x, ace-king, ace-queen and overpairs, and your ace makes ace-king and aces less likely in his hand. Against the given capped range with many one-pair hands, a bet of 200 asks better hands, such as a queen or an eight, to fold. Both questions have an answer, so under this lesson’s assumptions the bet has a story and a target.",
-      note: `${ONE_HAND} His cards stay hidden in Knox’s hand.`,
+      note: `${ONE_HAND} His cards stay hidden in the hand.`,
       focus: ["As", "Kd", "Qs"], hear: 3,
     },
     "bl1-practice-target": {
@@ -106,15 +106,15 @@ const definition = {
       title: "Which hands must a bet fold?",
       prompt: "A new hand: ace-queen of hearts, and your flush draw missed. Same line: you raised before the flop and bet the flop and the turn, and Ace Andy called both, then checks. The pot is 300. Given read: a capped range with many one-pair hands and some missed draws. If you bet, which of his hands does the bet need to fold?",
       hint: "Picture a showdown against each group. Which group’s fold changes who wins the pot?",
-      explanation: "Missed draws such as jack-ten already lose to ace high, so making them fold wins nothing extra. A bluff earns its chips when a hand that would beat you gives up: one-pair hands such as a nine, a seven or a small pocket pair. That is Knox’s second question, what better hands can they release.",
+      explanation: "Missed draws such as jack-ten already lose to ace high, so making them fold wins nothing extra. A bluff earns its chips when a hand that would beat you gives up: one-pair hands such as a nine, a seven or a small pocket pair. That is the second question, what better hands can they release.",
       focus: ["Ah", "Qh", "Kh", "4h"], hear: 3,
     },
     "bl1-practice-action": {
       decision: "action", choices: ["check", "bet"], sizes: SIZES, ...practice,
       title: "Now, check or bet?",
       prompt: "You found the target: his one-pair hands. Your line represents strong king-x, ace-king and overpairs, and your ace makes ace-king and aces less likely in his hand. The pot is 300. Check, or bet 200?",
-      hint: "Put Knox’s two questions side by side. Is there a story, and is there a target?",
-      explanation: "Checked down, your ace high loses to every pair he holds. A bet of 200 tells the same story as Knox’s line, strong king-x, ace-king and overpairs, and the given range holds many one-pair hands that can fold. Story and target are both there, so the bet is the play under this lesson’s assumptions.",
+      hint: "Put the two questions side by side. Is there a story, and is there a target?",
+      explanation: "Checked down, your ace high loses to every pair he holds. A bet of 200 tells the same story as the line, strong king-x, ace-king and overpairs, and the given range holds many one-pair hands that can fold. Story and target are both there, so the bet is the play under this lesson’s assumptions.",
       note: ONE_HAND,
       focus: ["Ah", "Kh"], hear: 6,
     },
@@ -125,14 +125,14 @@ const definition = {
       title: "What would a bet represent?",
       prompt: "Jack-ten of clubs, and your flush draw missed. You raised before the flop and bet the flop and the turn, and Ace Andy called both, then checks. The pot is 300. If you bet now, what does your line say you hold?",
       hint: "Think about the hands that would play this way for value, not the two cards you actually hold.",
-      explanation: "A player who raises before the flop, then bets an ace-high flop and the turn, looks like strong aces, ace-king or better. That story is credible even though you hold jack-ten. It answers Knox’s first question. The second question is still open.",
+      explanation: "A player who raises before the flop, then bets an ace-high flop and the turn, looks like strong aces, ace-king or better. That story is credible even though you hold jack-ten. It answers the first question. The second question is still open.",
       focus: ["Ad", "Kd"],
     },
     "bl1-fresh-action": {
       decision: "action", choices: ["check", "bet"], sizes: SIZES, ...fresh,
       title: "Check or bet?",
       prompt: "Your line tells a credible story. Given read for this hand: Ace Andy does not fold one pair on the river; he has called every river bet at this table. His checked range holds many one-pair hands. The pot is 300. Check, or bet 200?",
-      hint: "A story is only half of Knox’s check. Which better hands will this player actually let go?",
+      hint: "A story is only half of the check. Which better hands will this player actually let go?",
       explanation: "Your best five is only ace high, from the ace and king on the board, and it loses to every pair, so a bluff needs those pairs to fold. Under the given read Ace Andy calls with one pair, so no better hand releases: the bet has a story but no target. Checking gives up the 300 in the pot; a bluff into a player who calls loses 200 more. Missing your draw is not a reason to bet on its own.",
       note: "Checking still loses this pot. It is the right decision because the bet has no target, not because of the cards he shows.",
     },

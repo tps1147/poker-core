@@ -34,7 +34,7 @@ const definition = {
   feedback: { found: "You picked the job.", missed: "Let’s look at the jobs.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Every action has a job.", em: "Pick the job, then the button.",
-      lead: "Folding, calling and raising each do a different job. Watch Knox name the three jobs, then play three hands at the table and choose the job each one needs.",
+      lead: "Folding, calling and raising each do a different job. Watch the film, then play three hands at the table and choose the job each one needs.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats. `hand` is a stepped beat (the queen, then
@@ -48,7 +48,7 @@ const definition = {
         { id: "c", text: "Checking and calling are the same thing: both stay in without raising.", fix: "A check costs nothing and only works when nothing is owed. A call puts in the 30." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "act2-guided", hand: "act2-guided", role: "guided",
-      coachLine: "Knox’s flop. You pick the job.", next: "Try a practice hand" },
+      coachLine: "The flop. You pick the job.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "act2-practice", hand: "act2-practice", role: "practice",
       coachLine: "Same three buttons. This draw missed.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "act2-fresh", hand: "act2-fresh", role: "fresh",
@@ -62,7 +62,7 @@ const definition = {
     "act2-guided": {
       decision: "action", choices: ["fold", "call", "raise"], sizes: { raise: 90 }, ...guided,
       title: "Which job does this hand need?",
-      prompt: "Knox’s flop. You hold queen-jack and the board is queen, eight, three. Ace Andy bets 30 into 120. For this exercise, treat your top pair with a medium kicker as a hand that is often best right now but loses to stronger queens and overpairs. Fold, call 30 or raise to 90?",
+      prompt: "The flop. You hold queen-jack and the board is queen, eight, three. Ace Andy bets 30 into 120. For this exercise, treat your top pair with a medium kicker as a hand that is often best right now but loses to stronger queens and overpairs. Fold, call 30 or raise to 90?",
       hint: "Ask what each button would do here. What would folding save? What would calling keep alive, and how big would the pot get? What would a raise build, and which hands would keep playing against one?",
       explanation: "Under this read your top pair is often the best hand, so folding gives up a hand that wins too often. A raise to 90 builds a bigger pot, but the hands most willing to keep playing against it are the stronger queens and overpairs that beat you. Calling 30 keeps your hand alive and keeps the pot under control while worse hands stay in. That is the job this hand needs.",
       note: "No more cards are dealt in this lesson. The job is chosen before the turn comes.",

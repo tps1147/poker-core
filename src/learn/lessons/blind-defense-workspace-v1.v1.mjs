@@ -60,7 +60,7 @@ const definition = {
   feedback: { found: "You weighed all three.", missed: "Let’s weigh the three things.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Defend with a reason.", em: "Price, position, playability.",
-      lead: "Your blind is already in, so calling a raise often looks cheap. Watch Knox weigh the three things that decide a defense, then play three hands from the big blind.",
+      lead: "Your blind is already in, so calling a raise often looks cheap. Watch the film, then play three hands from the big blind.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/blind-defense-workspace-v1/v1/timeline.json rail).
@@ -77,7 +77,7 @@ const definition = {
         { id: "c", text: "15 ÷ 40 is a cheap price.", fix: "Count your own call: 15 ÷ 55, about 27%." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "bd1-guided", hand: "bd1-guided", role: "guided",
-      coachLine: "Knox’s jack-ten suited. You decide the defense.", next: "Try a practice hand" },
+      coachLine: "The jack-ten suited. You decide the defense.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-price", hand: "bd1-practice", role: "practice",
       coachLine: "A new raise from an earlier seat. Price it first.", next: "Now decide the defense", feedback: priceFeedback },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-call", hand: "bd1-practice", role: "practice",
@@ -95,7 +95,7 @@ const definition = {
     "bd1-guided": {
       decision: "action", choices: ["fold", "call"], ...guided,
       title: "Sol raises to 25 from the button. Fold or call?",
-      prompt: "Knox’s jack-ten suited in the big blind. Rae, Ned and Ivy fold, Sol raises to 25 from the button, and Kit folds from the small blind. The pot is 40 and you owe 15 more, so calling makes a 55-chip pot, a price of about 27%. Assume Sol opens a wide range from the button. After the flop you act first on every street. Call 15, or fold?",
+      prompt: "The jack-ten suited in the big blind. Rae, Ned and Ivy fold, Sol raises to 25 from the button, and Kit folds from the small blind. The pot is 40 and you owe 15 more, so calling makes a 55-chip pot, a price of about 27%. Assume Sol opens a wide range from the button. After the flop you act first on every street. Call 15, or fold?",
       hint: "Weigh all three: how much of the final pot your call pays, who acts first after the flop, and what your two cards can become.",
       explanation: "Your blind is already in, so 15 more buys a share of a 55-chip pot: about 27%. Jack-ten suited can make straights, flushes and strong pair-plus-draw hands, and a wide button range holds plenty of hands it does not fear. You will act first after the flop, but the price and the playability give the hand a reason to continue, so calling is the defense under this lesson’s assumptions.",
       note: NOTE,
@@ -116,7 +116,7 @@ const definition = {
       title: "Now, fold or call?",
       prompt: "Your call pays about 31% of the final pot. Assume Rae opens a tight range from under the gun: pairs, strong aces, and strong kings such as king-queen and king-jack. After the flop you act first on every street. Call 20, or fold?",
       hint: "The price is only one of the three. Ask what your hand makes when it connects, what it runs into, and who acts first after the flop.",
-      explanation: "The price is fair, but king-four offsuit is the dominated offsuit hand Knox warns about. When a king comes, the kings in Rae’s range carry a better kicker, so a pair often loses a big pot, and you play every later street first. A posted blind is not a reason on its own, so folding is the defense under this lesson’s assumptions.",
+      explanation: "The price is fair, but king-four offsuit is a dominated offsuit hand. When a king comes, the kings in Rae’s range carry a better kicker, so a pair often loses a big pot, and you play every later street first. A posted blind is not a reason on its own, so folding is the defense under this lesson’s assumptions.",
       note: NOTE,
       focus: ["Kd", "4c"], focusPositions: ["UTG"], hear: 4,
     },

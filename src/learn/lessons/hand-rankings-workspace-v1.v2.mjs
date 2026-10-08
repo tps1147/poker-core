@@ -24,7 +24,7 @@ const definition = {
   feedback: { found: "You named it.", missed: "Let’s build it together.", open: "Here’s the hand." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Name the hand first.", em: "Then choose the action.",
-      lead: "Two cards in your hand, five on the board, and only five of the seven count. Watch Knox read a river, then play three hands at the table.",
+      lead: "Two cards in your hand, five on the board, and only five of the seven count. Watch the film, then play three hands at the table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (media beats; FILMS keeps them unchanged).
@@ -37,14 +37,14 @@ const definition = {
         { id: "c", text: "It is rarer: 3,744 five-card hands are full houses, 5,108 are flushes.", fix: "Right. Every rung up the ladder is rarer than the one below it." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "hr2-guided", hand: "hr2-guided", role: "guided",
-      coachLine: "Knox’s river. You build the hand.", next: "Try a practice hand" },
+      coachLine: "The river. You build the hand.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "hr2-practice", hand: "hr2-practice", role: "practice",
       coachLine: "Same idea, new cards. The pair on the board is busy.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "hr2-fresh", hand: "hr2-fresh", role: "fresh",
       coachLine: "Take your time. Rank the whole board.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A hand you can name.",
       lead: "Read all seven cards, keep the five that rank highest, and say the hand to yourself before you touch a chip.",
-      recapLabels: ["Knox’s river", "Practice", "Fresh hand"],
+      recapLabels: ["The river", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {

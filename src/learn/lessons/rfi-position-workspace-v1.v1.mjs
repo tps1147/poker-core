@@ -29,8 +29,9 @@ const ring = (position, hero, rest) => ({
 });
 const OPEN = { raise: 25 };
 const blinds = { do: "blinds", sb: 5, bb: 10 };
-// The table facts every spot shows: blinds in (5 and 10), 15 in the pot, 10 owed, no board.
-const preflop = (hero) => ({ street: "preflop", board: [], hero, potBefore: 5, bet: 10, call: 10 });
+// The table facts every spot shows: blinds in (5 and 10), 15 in the pot, 10 owed, no board. The
+// raise key reads "Raise to 25", the size the hand's answer step plays (OPEN).
+const preflop = (hero) => ({ street: "preflop", board: [], hero, potBefore: 5, bet: 10, call: 10, sizes: OPEN });
 const behindBands = [{ id: "behind-2", label: "2 players" }, { id: "behind-3", label: "3 players" }, { id: "behind-5", label: "5 players" }];
 const openFeedback = { found: "You read the seat.", missed: "Let’s look at the seat.", open: "Here’s the thinking." };
 
@@ -48,7 +49,7 @@ const definition = {
   feedback: openFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Your seat sets your opening range.", em: "Tight early, wider late.",
-      lead: "When everyone folds to you, the seat decides how wide you can open. Watch Knox read his suited ace on the button, then play three hands at a six-handed table.",
+      lead: "When everyone folds to you, the seat decides how wide you can open. Watch the film, then play three hands at a six-handed table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats, with the opening as "Intro".
@@ -65,7 +66,7 @@ const definition = {
         { id: "c", text: "Only the blinds act after you, and a suited ace is well inside a button opening range.", fix: "Right. Two players behind and a hand that plays well: raise." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "rfi1-guided", hand: "rfi1-guided", role: "guided",
-      coachLine: "Knox’s suited ace. It folds to you on the button.", next: "Try a practice hand",
+      coachLine: "The suited ace. It folds to you on the button.", next: "Try a practice hand",
       feedback: openFeedback },
     { kind: "decision", label: "Practice", spotId: "rfi1-practice-behind", hand: "rfi1-practice", role: "practice",
       coachLine: "New cards, a new seat. Count who is behind you first.", next: "Now make your play",
@@ -88,9 +89,9 @@ const definition = {
     "rfi1-guided": {
       decision: "action", choices: ["fold", "raise"], ...preflop(["As", "5s"]),
       title: "It folds to you on the button. Fold or raise?",
-      prompt: "Knox’s ace-five of spades on the button. Under the gun, middle position and the cutoff have all folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
-      hint: "Count the players who still act after you. Then think about what Knox said this hand does beyond its looks.",
-      explanation: "Only the small blind and the big blind act after you, and you act last on every street after the flop. A suited ace also blocks strong aces and can make the nut flush. It is well inside common six-handed button opening ranges, so raising to 25 is the play under this lesson’s assumptions. Folding it because it is not premium is the leak Knox names.",
+      prompt: "The ace-five of spades on the button. Under the gun, middle position and the cutoff have all folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
+      hint: "Count the players who still act after you. Then think about what a suited ace does beyond its looks.",
+      explanation: "Only the small blind and the big blind act after you, and you act last on every street after the flop. A suited ace also blocks strong aces and can make the nut flush. It is well inside common six-handed button opening ranges, so raising to 25 is the play under this lesson’s assumptions. Folding it because it is not premium is the leak.",
       note: "The hand stops once you act. No flop is dealt in this lesson.",
       focusPositions: ["SB", "BB"], hear: 5,
     },

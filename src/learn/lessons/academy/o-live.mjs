@@ -48,7 +48,7 @@ const definition = {
     ]),
     decision("lv-guided", "lv-guided", "guided", "Knox’s spot", "Knox’s spot: words count.", "Try a practice hand", { feedback }),
     decision("lv-practice", "lv-practice", "practice", "Practice", "One motion.", "Try a fresh hand", { feedback }),
-    decision("lv-fresh", "lv-fresh", "fresh", "Fresh hand", "A tell across the table.", "See your recap", { feedback }),
+    decision("lv-fresh", "lv-fresh", "fresh", "Fresh hand", "A tell across the table.", "See your recap", { feedback: { found: "You read the betting first.", missed: "Weigh the betting, not the tell.", open: "Here’s the read." } }),
     takeaway({
       heading: "Say it, move once.",
       rule: "At a live table, say what you do, move once, and let the betting do the talking.",

@@ -430,7 +430,7 @@ check("fitsActionBar, priceLine, ledgerLines, feedbackCopy", () => {
   const guided = outs.spots["outs2-guided-call"];
   assert.equal(priceLine(guided), "25 ÷ 250 = 10%");
   assert.deepEqual(ledgerLines(guided, null, null), [
-    { key: "chance", label: "Knox’s estimate", value: "9 outs · roughly 18%" },
+    { key: "chance", label: "The estimate", value: "9 outs · roughly 18%" },
     { key: "price", label: "The price", value: "25 ÷ 250 = 10%" },
   ]);
   const hidden = outs.spots["outs2-fresh-call"];

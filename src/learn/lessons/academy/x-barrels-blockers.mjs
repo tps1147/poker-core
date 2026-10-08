@@ -46,7 +46,7 @@ const definition = {
     ]),
     decision("bk-guided", "bk-guided", "guided", "Knox’s plan", "Knox’s flop. Plan all three bets.", "Try a practice hand", { feedback }),
     decision("bk-practice", "bk-practice", "practice", "Practice", "Deeper stacks. Plan again.", "Try a fresh hand", { feedback }),
-    decision("bk-fresh", "bk-fresh", "fresh", "Fresh hand", "Your river. Count what your jack removes.", "See your recap", { feedback }),
+    decision("bk-fresh", "bk-fresh", "fresh", "Fresh hand", "Your river. Count what your jack removes.", "See your recap", { feedback: { found: "You counted the blocker.", missed: "Count what your card removes.", open: "Here’s the count." } }),
     takeaway({
       heading: "Plan, then block.",
       rule: "Plan the size for all three streets; pick the bluff that blocks his calls, after the board says he can fold.",

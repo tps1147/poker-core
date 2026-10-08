@@ -42,7 +42,7 @@ const definition = {
   feedback: { found: "You read the seat.", missed: "Let’s look at the seat.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Position is information.", em: "Read the seat first.",
-      lead: "The same two cards play differently from different seats. Watch Knox carry king-nine from the first seat to the button, then play three hands at a six-handed table.",
+      lead: "The same two cards play differently from different seats. Watch the film, then play three hands at a six-handed table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (the v1 beats, unchanged), with the opening as "Intro".
@@ -59,7 +59,7 @@ const definition = {
         { id: "c", text: "Position only matters before the flop, when fewer players are left to act.", fix: "Fewer players behind is half of it. You also act last on the flop, the turn and the river." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "pos2-guided", hand: "pos2-guided", role: "guided",
-      coachLine: "Knox’s king-nine, now on the button.", next: "Try a practice hand" },
+      coachLine: "The king-nine, now on the button.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "pos2-practice", hand: "pos2-practice", role: "practice",
       coachLine: "New cards. You are first to act.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pos2-fresh", hand: "pos2-fresh", role: "fresh",
@@ -73,7 +73,7 @@ const definition = {
     "pos2-guided": {
       decision: "action", choices: ["fold", "raise"], ...preflop(["Kd", "9c"]),
       title: "It folds to you on the button. Fold or raise?",
-      prompt: "Knox’s king-nine offsuit, now on the button. Under the gun, middle position and the cutoff have all folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
+      prompt: "The king-nine offsuit, now on the button. Under the gun, middle position and the cutoff have all folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
       hint: "Count the players who still act after you, and remember who acts last on every street after the flop.",
       explanation: "Only the small blind and the big blind act after you, and you act last on every street after the flop. With just two players left to wake up with a better king or a strong pair, king-nine offsuit is one of the right hands for this seat, so raising to 25 is the play under this lesson’s assumptions.",
       note: "The hand stops once you act. No flop is dealt in this lesson.",

@@ -58,7 +58,7 @@ const definition = {
       bands: keepBands(18, 24, 42),
       dockPrompt: "How many combos do you keep?",
       title: "He bets 75 into 100. How many do you keep?",
-      prompt: "Knox’s river. The pot is 100 and he bets 75. Your range is 42 combos (an illustration). How many must you keep?",
+      prompt: "Knox’s river. The pot is 100 and Ace Andy bets 75. Your range is 42 combos (an illustration). How many must you keep?",
       hint: "Pot over the pot plus the bet, then take that share of 42.",
       explanation: "100 ÷ (100 + 75) = 100 ÷ 175 = 4/7. 4/7 of 42 is 24: keep 24, fold the weakest 18. Fold 60% instead and his bluffs make 30 each.",
       focus: ["Jd", "Jc"],

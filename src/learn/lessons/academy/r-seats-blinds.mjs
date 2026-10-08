@@ -56,8 +56,8 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "sb-guided": ringHand("sb-guided", { position: "BTN", hero: ["Qd", "8s"], blinds: [5, 10] }),
-    "sb-practice": ringHand("sb-practice", { position: "BTN", hero: ["7c", "7h"], blinds: [5, 10] }),
+    "sb-guided": ringHand("sb-guided", { position: "BTN", hero: ["Qd", "8s"], blinds: [5, 10], acts: [{ seat: "UTG", action: "fold" }, { seat: "MP", action: "fold" }, { seat: "CO", action: "fold" }] }),
+    "sb-practice": ringHand("sb-practice", { position: "BTN", hero: ["7c", "7h"], blinds: [5, 10], acts: [{ seat: "UTG", action: "fold" }, { seat: "MP", action: "fold" }, { seat: "CO", action: "fold" }] }),
     "sb-fresh": huHand("sb-fresh", { hero: ["Ks", "Td"], pot: 0, blinds: [5, 10] }),
   },
 });

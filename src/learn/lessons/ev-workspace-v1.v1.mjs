@@ -43,7 +43,7 @@ const definition = {
   feedback: priceFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Judge the decision, not the result.", em: "Good decisions can lose.",
-      lead: "One hand is one result. Watch Knox price a combo draw, then weigh three calls at the table by what they earn over many repeats.",
+      lead: "One hand is one result. Watch the film, then weigh three calls at the table by what they earn over many repeats.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
@@ -65,7 +65,7 @@ const definition = {
         { id: "c", text: "Made many times, 30% of a 300 pot returns 90 for every 50: about +40 a call.", fix: "Right. Judge it by the average: about +40 a call." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "ev1-guided", hand: "ev1-guided", role: "guided",
-      coachLine: "Knox’s hand. You judge the call.", next: "Try a practice hand" },
+      coachLine: "The hand. You judge the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "ev1-practice-ev", hand: "ev1-practice", role: "practice",
       coachLine: "Same idea, a different draw. Average it out first.", next: "Now decide the call", feedback: evFeedback },
     { kind: "decision", label: "Practice", spotId: "ev1-practice-call", hand: "ev1-practice", role: "practice",
@@ -84,7 +84,7 @@ const definition = {
       decision: "action", choices: ["fold", "call"], previewRule: "price-vs-equity", ...guided,
       given: { equity: 30, outs: 15, source: "Given estimate" },
       title: "Is this call a good decision?",
-      prompt: "Ace Andy is all-in for 50 into a pot of 200. Knox found the price: about 17%. For this exercise your chance of winning is given: roughly 30% with one card to come. Call or fold?",
+      prompt: "Ace Andy is all-in for 50 into a pot of 200. The price is about 17%. For this exercise your chance of winning is given: roughly 30% with one card to come. Call or fold?",
       hint: "Build the final pot first: 200, then Ace Andy’s 50, then your own 50. Compare the share of that pot you pay with the given chance.",
       explanation: "Calling 50 makes a final pot of 300, so the price is 50 ÷ 300, about 17%. The given roughly 30% is above that. Made many times, the call wins about 30% of 300, which is 90 chips back for every 50 paid: about 40 chips earned per call.",
       note: "The river is not dealt in this lesson. This call still loses about 7 times in 10, and it is a good decision.",

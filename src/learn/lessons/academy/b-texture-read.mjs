@@ -20,7 +20,7 @@ const spots = {
     title: "A connected flop.",
     prompt: "The flop is 9♣ 8♦ 7♠. Which of these can someone already have right now?",
     hint: "Look at the three ranks. Can two cards fill in five in a row?",
-    explanation: "A straight: jack-ten, ten-six or six-five already make one, 48 combos. Three suits mean no flush, and an unpaired flop allows no full house.",
+    explanation: "A straight: jack-ten, ten-six or six-five already make one: 40 combos, with your ten taking some of them. Three suits mean no flush, and an unpaired flop allows no full house.",
   },
   "tx-fresh": {
     decision: "estimate", street: "flop", hero: ["Qs", "Td"], board: ["6s", "6d", "Jc"],

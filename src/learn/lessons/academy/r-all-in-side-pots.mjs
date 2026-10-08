@@ -62,7 +62,7 @@ const definition = v2Lesson({
     // Three seats: A and B all-in, you (C) with 700 behind after calling 300.
     "ap-practice": ringHand("ap-practice", { position: "BTN", hero: RIVER.hero, board: RIVER.board, pot: 700, stack: 700,
       players: [{ name: "A", stack: 0 }, { name: "B", stack: 0 }] }),
-    "ap-fresh": huHand("ap-fresh", { hero: ["Ah", "Kh"], board: ["Kc", "9d", "4s", "2h"], pot: 100, seats: seatsHU("Ace Andy", 1000, 300) }),
+    "ap-fresh": huHand("ap-fresh", { hero: ["Ah", "Kh"], board: ["Kc", "9d", "4s", "2h"], pot: 100, seats: seatsHU("Ace Andy", 800, 300) }),
   },
 });
 
