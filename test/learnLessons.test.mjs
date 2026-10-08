@@ -85,7 +85,7 @@ check("COURSE_ORDER and FILM_FIRST_LESSONS: 20 unique lessons, same order", () =
 
 check("lookups: definition id, sourceLessonId and videoLessonId", () => {
   assert.equal(filmFirstLesson("pilot-pot-odds")?.id, "pot-odds-workspace-v2");
-  assert.equal(filmFirstLesson("pilot-pot-odds")?.version, 2);
+  assert.equal(filmFirstLesson("pilot-pot-odds")?.version, 3);
   assert.equal(filmFirstLesson("lesson-pot-odds-001"), filmFirstLesson("pilot-pot-odds"));
   assert.equal(filmFirstLesson("pot-odds-workspace-v2"), filmFirstLesson("pilot-pot-odds"));
   assert.equal(filmFirstLesson("lesson-3betting-001")?.id, "three-betting-workspace-v1");
@@ -192,7 +192,10 @@ for (const definition of FILM_FIRST_LESSONS) {
     assert.ok(existsSync(file), `${definition.media} exists`);
     const media = readMedia(definition);
     assert.equal(media.contentId, id, `${id} media contentId`);
-    assert.equal(media.contentVersion, definition.version, `${id} media contentVersion`);
+    // The film keeps the content version it was cut for (its file name); academy v2 bumped the
+    // shipped lessons' versions for the why stage without touching their films.
+    assert.equal(media.contentVersion, Number(/\.v(\d+)\.json$/.exec(definition.media)?.[1]), `${id} media contentVersion`);
+    assert.ok(media.contentVersion <= definition.version, `${id} media is not newer than the lesson`);
     assert.ok(media.durationSeconds > 0, `${id} durationSeconds`);
     assert.ok(Array.isArray(media.cues) && media.cues.length > 0, `${id} cues`);
     assert.ok(media.beats && typeof media.beats === "object" && Object.keys(media.beats).length > 0, `${id} beats`);

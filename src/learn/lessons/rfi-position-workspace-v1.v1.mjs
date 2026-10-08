@@ -35,7 +35,7 @@ const behindBands = [{ id: "behind-2", label: "2 players" }, { id: "behind-3", l
 const openFeedback = { found: "You read the seat.", missed: "Let’s look at the seat.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "rfi-position-workspace-v1", version: 1, flow: "film-first",
+  id: "rfi-position-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-rfi-by-position",
   sourceLessonId: "lesson-rfi-position-001", videoLessonId: "lesson-rfi-position-001",
   coach: "reina", access: "free", template: "preflop",

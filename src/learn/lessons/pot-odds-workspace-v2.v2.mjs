@@ -23,7 +23,7 @@ const fresh = { hero: ["6s", "5s"], board: ["Ks", "8d", "4c", "2h"], street: "tu
 const priceFeedback = { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "pot-odds-workspace-v2", version: 2, flow: "film-first",
+  id: "pot-odds-workspace-v2", version: 3, flow: "film-first",
   conceptId: "t1-pot-odds",
   sourceLessonId: "lesson-pot-odds-001", videoLessonId: "pilot-pot-odds",
   coach: "mina", access: "free", template: "core-math",

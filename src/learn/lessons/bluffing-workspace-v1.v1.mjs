@@ -46,7 +46,7 @@ const actionFeedback = { found: "You asked both questions.", missed: "Let’s as
 const ONE_HAND = "One hand proves nothing. The decision is right or wrong because of the story and the target, not because of what Ace Andy does this time.";
 
 const definition = {
-  id: "bluffing-workspace-v1", version: 1, flow: "film-first",
+  id: "bluffing-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t4-bluffing",
   sourceLessonId: "lesson-bluffing-001", videoLessonId: "lesson-bluffing-001",
   coach: "knox", access: "pro", template: "postflop",

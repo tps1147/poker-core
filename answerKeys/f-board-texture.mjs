@@ -8,7 +8,7 @@
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "board-texture-workspace-v1", node: "f-board-texture", contentVersion: 1, additions: true,
+  lessonId: "board-texture-workspace-v1", node: "f-board-texture", contentVersion: 2, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 74.88, filmId: "f-board-texture", spotId: "bt1-turn", decision: "estimate", bands: ["raiser", "caller"], key: { band: "raiser" } },
   why: { stage: 2, spotId: "bt1-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },

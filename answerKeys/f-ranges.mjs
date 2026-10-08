@@ -8,7 +8,7 @@
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "ranges-workspace-v1", node: "f-ranges", contentVersion: 1, additions: true,
+  lessonId: "ranges-workspace-v1", node: "f-ranges", contentVersion: 2, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 81.05, filmId: "f-ranges", spotId: "rng1-turn", decision: "estimate", bands: ["about-25", "about-64", "about-90"], key: { band: "about-64" } },
   why: { stage: 2, spotId: "rng1-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "c" },

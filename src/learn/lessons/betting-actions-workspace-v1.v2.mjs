@@ -21,7 +21,7 @@ const practice = { street: "river", hero: ["7h", "6h"], board: ["Ks", "9h", "5h"
 const fresh = { street: "flop", hero: ["8s", "8h"], board: ["Kc", "8d", "3h"], potBefore: 120, bet: 40, call: 40 };
 
 const definition = {
-  id: "betting-actions-workspace-v1", version: 2, flow: "film-first",
+  id: "betting-actions-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t0-betting-actions",
   sourceLessonId: "lesson-betting-actions-001", videoLessonId: "lesson-betting-actions-001",
   coach: "ada", access: "free", template: "table-literacy",

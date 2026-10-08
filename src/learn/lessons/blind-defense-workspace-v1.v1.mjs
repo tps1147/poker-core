@@ -47,7 +47,7 @@ const PRICE_HINT = "Add your call to the pot first. Then divide your call by tha
 const priceFeedback = { found: "You priced it.", missed: "Let’s build the price.", open: "Here’s the price." };
 
 const definition = {
-  id: "blind-defense-workspace-v1", version: 1, flow: "film-first",
+  id: "blind-defense-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-blind-defense",
   sourceLessonId: "lesson-blind-defense-001", videoLessonId: "lesson-blind-defense-001",
   coach: "reina", access: "pro", template: "preflop",

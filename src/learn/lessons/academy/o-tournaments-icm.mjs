@@ -23,7 +23,7 @@ const STACKS = { big: 5000, mid: 3000, short: 2000 };
 // Three players. `heroSeat` is which stack the hero holds; the big stack puts the short stack all-in.
 function icmHand(id, { hero, heroSeat, decisions, answer = null }) {
   const others = Object.keys(STACKS).filter((k) => k !== heroSeat);
-  const names = { big: "Big stack", mid: "Middle stack", short: "Short stack" };
+  const names = { big: "Ned", mid: "Rae", short: "Ivy" };
   const seats = [{ id: "hero", name: "You", stack: STACKS[heroSeat] }, ...others.map((k) => ({ id: k, name: names[k], stack: STACKS[k] }))];
   const script = [{ do: "pause", ms: 400 }];
   if (heroSeat === "short") script.push({ do: "act", seat: "big", action: "bet", amount: 2000 }, { do: "act", seat: "mid", action: "fold" });

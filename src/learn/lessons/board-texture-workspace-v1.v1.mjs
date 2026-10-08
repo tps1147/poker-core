@@ -48,7 +48,7 @@ const NOTE = "The hand stops before you act. This lesson reads the flop; choosin
 const textureFeedback = { found: "You named the texture.", missed: "Let’s name it together.", open: "Here’s the read." };
 
 const definition = {
-  id: "board-texture-workspace-v1", version: 1, flow: "film-first",
+  id: "board-texture-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-board-texture",
   sourceLessonId: "lesson-board-texture-001", videoLessonId: "lesson-board-texture-001",
   coach: "vale", access: "pro", template: "postflop",

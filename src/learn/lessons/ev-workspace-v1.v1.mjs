@@ -30,7 +30,7 @@ const CALL_HINT = "Folding earns and loses nothing from here. Compare that with 
 const EV_DOCK ="On average, each time you make this call";
 
 const definition = {
-  id: "ev-workspace-v1", version: 1, flow: "film-first",
+  id: "ev-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t1-ev",
   sourceLessonId: "lesson-ev-001", videoLessonId: "lesson-ev-001",
   coach: "mina", access: "pro", template: "deeper-math",

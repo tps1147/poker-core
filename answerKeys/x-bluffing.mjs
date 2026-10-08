@@ -11,7 +11,7 @@
 // 40%, his 102 combos (an illustration) fold 77 (75.5%), 74 of them better than jack high, about
 // 88.7 a bluff. Recomputed in test/academyLessonsB.test.mjs and asserted by the plan script.
 export default {
-  lessonId: "bluffing-workspace-v1", node: "x-bluffing", contentVersion: 1, additions: true,
+  lessonId: "bluffing-workspace-v1", node: "x-bluffing", contentVersion: 2, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: null,
   why: { stage: 2, spotId: "bl1-why", options: ["story-target", "called-bad", "missed"], key: { option: "story-target" } },

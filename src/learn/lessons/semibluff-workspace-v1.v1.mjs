@@ -36,7 +36,7 @@ const NOTE_TURN = "The river is not dealt in this lesson. The decision is made b
 const actionFeedback = { found: "You priced both branches.", missed: "Let’s add the branches together.", open: "Here’s the math." };
 
 const definition = {
-  id: "semibluff-workspace-v1", version: 1, flow: "film-first",
+  id: "semibluff-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t4-fold-equity-semibluff",
   sourceLessonId: "lesson-fold-equity-semibluff-001", videoLessonId: "lesson-fold-equity-semibluff-001",
   coach: "knox", access: "pro", template: "pressure",

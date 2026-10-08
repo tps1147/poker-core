@@ -34,7 +34,7 @@ const labels = ({ sizes }) => ({ bet: `Small bet ${sizes.bet}`, "large-bet": `La
 const NOTE = "The hand stops once you bet. What Ace Andy does next, and the next card, are not part of this lesson.";
 
 const definition = {
-  id: "bet-sizing-workspace-v1", version: 1, flow: "film-first",
+  id: "bet-sizing-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-bet-sizing",
   sourceLessonId: "lesson-bet-sizing-001", videoLessonId: "lesson-bet-sizing-001",
   coach: "vale", access: "pro", template: "postflop",

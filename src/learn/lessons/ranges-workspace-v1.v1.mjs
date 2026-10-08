@@ -46,7 +46,7 @@ const readFeedback = { found: "You read the range.", missed: "Let’s filter it 
 const heroBet = { do: "act", seat: "hero", action: "bet", amount: 45, prompt: "Bet 45 and see what Ace Andy does" };
 
 const definition = {
-  id: "ranges-workspace-v1", version: 1, flow: "film-first",
+  id: "ranges-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-ranges",
   sourceLessonId: "lesson-ranges-001", videoLessonId: "lesson-ranges-001",
   coach: "vale", access: "pro", template: "postflop",

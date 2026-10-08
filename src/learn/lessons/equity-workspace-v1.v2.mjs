@@ -19,7 +19,7 @@ const practice = { hero: ["7s", "6s"], board: ["8d", "5c", "Kh"], street: "flop"
 const fresh = { hero: ["9c", "9d"], board: ["Jh", "Th", "4c", "2s"], street: "turn", potBefore: 250, bet: 0, call: 0 };
 
 const definition = {
-  id: "equity-workspace-v1", version: 2, flow: "film-first",
+  id: "equity-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-equity",
   sourceLessonId: "lesson-equity-001", videoLessonId: "lesson-equity-001",
   coach: "mina", access: "free", template: "core-math",

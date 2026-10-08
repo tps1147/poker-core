@@ -8,7 +8,7 @@
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "rfi-position-workspace-v1", node: "p-open-raise", contentVersion: 1, additions: true,
+  lessonId: "rfi-position-workspace-v1", node: "p-open-raise", contentVersion: 2, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 79.05, filmId: "p-open-raise", spotId: "rfi1-turn", decision: "action", choices: ["fold", "raise"], key: { action: "fold" } },
   why: { stage: 2, spotId: "rfi1-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },

@@ -6,7 +6,7 @@
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "hand-rankings-workspace-v1", node: "r-hand-rankings", contentVersion: 2, additions: true,
+  lessonId: "hand-rankings-workspace-v1", node: "r-hand-rankings", contentVersion: 3, fromVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
   why: { stage: 2, spotId: "hr2-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
 };

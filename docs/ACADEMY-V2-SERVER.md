@@ -68,9 +68,12 @@ after:   0 welcome  1 film  2 why     3 guided    4 practice  5 fresh  6 takeawa
   stage (run cursor, `furthest`, stage-kind validation) must shift indices `>= 2` by one.
 - The registry validator currently allows only decisions between the film and the takeaway. It has
   to admit `kind: "why"` at index 2.
-- **Saved runs.** A run saved before the shift has `stage` and `furthest` in the old numbering.
-  Either bump `contentVersion`, which starts a fresh run, or map old index `i >= 2` to `i + 1` when
-  the run is loaded. Answers are keyed by `spotId`, so they are not affected.
+- **Content versions (decided 2026-10-08).** Each of the 20 shipped definitions moved up one
+  `version` (for example pot odds 2 to 3, implied odds 1 to 2), and each additions key says
+  `contentVersion: <new>, fromVersion: <old>`. The server keeps the old version registered,
+  unshifted, for clients that still ship the old definitions (TestFlight 12, current web), and
+  registers the new one with the why stage. Runs are per version, so nothing is migrated. The
+  films are unchanged: their media json keeps the old `contentVersion` (its file name).
 - On the shipped films, the old in-film guess moved, unchanged, from `pause` to `legacyPause`. The
   new `pause` belongs to the v2 film (section 4).
 

@@ -14,7 +14,7 @@ const practice = { hero: ["Js", "Ts"], board: ["9d", "8c", "2h", "Ks"], street: 
 const fresh = { hero: ["9s", "8s"], board: ["Jd", "7c", "2h", "Ks"], street: "turn", potBefore: 100, bet: 50, call: 50 };
 
 const definition = {
-  id: "outs-workspace-v1", version: 2, flow: "film-first",
+  id: "outs-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-outs-rule-24",
   sourceLessonId: "lesson-outs-001", videoLessonId: "lesson-outs-001",
   coach: "mina", access: "free", template: "core-math",

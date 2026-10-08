@@ -31,7 +31,7 @@ const practice = { hero: ["Qh", "Jh"], board: ["Qc", "7d", "2s"], street: "flop"
 const fresh = { hero: ["As", "Ts"], board: ["Ah", "9c", "5d"], street: "flop", potBefore: 100, bet: 0, call: 0 };
 
 const definition = {
-  id: "spr-workspace-v1", version: 1, flow: "film-first",
+  id: "spr-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t1-spr",
   sourceLessonId: "lesson-spr-001", videoLessonId: "lesson-spr-001",
   coach: "mina", access: "pro", template: "deeper-math",

@@ -7,7 +7,7 @@
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "equity-workspace-v1", node: "m-equity", contentVersion: 2, additions: true,
+  lessonId: "equity-workspace-v1", node: "m-equity", contentVersion: 3, fromVersion: 2, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 68.06, filmId: "m-equity", spotId: "eq2-turn", decision: "estimate", bands: ["about-0", "about-60", "about-150"], key: { band: "about-60" } },
   why: { stage: 2, spotId: "eq2-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },

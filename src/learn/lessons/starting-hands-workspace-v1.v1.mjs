@@ -42,7 +42,7 @@ const readFeedback = { found: "You read what it makes.", missed: "Let’s pictur
 const STOPS = "The hand stops once you act. No flop is dealt in this lesson.";
 
 const definition = {
-  id: "starting-hands-workspace-v1", version: 1, flow: "film-first",
+  id: "starting-hands-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-starting-hands",
   sourceLessonId: "lesson-starting-hands-001", videoLessonId: "lesson-starting-hands-001",
   coach: "reina", access: "free", template: "preflop",

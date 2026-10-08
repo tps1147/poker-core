@@ -24,7 +24,7 @@ const fresh = { hero: ["Jh", "Th"], board: ["Kh", "6s", "2h", "4d"], street: "tu
 const band = (percent) => ({ id: `about-${percent}`, label: `About ${percent}%` });
 
 const definition = {
-  id: "rule-2-4-workspace-v1", version: 2, flow: "film-first",
+  id: "rule-2-4-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-outs-rule-24",
   sourceLessonId: "lesson-rule-2-4-001", videoLessonId: "lesson-rule-2-4-001",
   coach: "mina", access: "free", template: "core-math",

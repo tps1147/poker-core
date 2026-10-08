@@ -12,7 +12,7 @@
 const seats = (stack) => ({ hero: { name: "You", stack }, opponent: { name: "Ace Andy", stack, botId: null } });
 
 const definition = {
-  id: "hand-rankings-workspace-v1", version: 2, flow: "film-first",
+  id: "hand-rankings-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t0-hand-rankings",
   sourceLessonId: "lesson-hand-rankings-001", videoLessonId: "lesson-hand-rankings-001",
   coach: "ada", access: "free", template: "table-literacy",

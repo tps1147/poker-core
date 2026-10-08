@@ -11,7 +11,7 @@
 // break-even 100 ÷ 260 = 38.5%; called 0.25 × 360 − 100 = −10; bet 0.25 × 160 + 0.75 × (−10) = 32.5;
 // check 0.25 × 160 = 40 -> check.
 export default {
-  lessonId: "semibluff-workspace-v1", node: "x-fold-equity", contentVersion: 1, additions: true,
+  lessonId: "semibluff-workspace-v1", node: "x-fold-equity", contentVersion: 2, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 59.9, filmId: "x-fold-equity", spotId: "sb1-turn", decision: "action", choices: ["check", "bet"], key: { action: "check" } },
   why: { stage: 2, spotId: "sb1-why", options: ["both-branches", "folds-only", "called-loses"], key: { option: "both-branches" } },

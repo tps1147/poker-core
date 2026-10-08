@@ -28,7 +28,7 @@ const fresh = { hero: ["8d", "7d"], board: ["9c", "6s", "2h", "Kc"], street: "tu
 const callFeedback = { found: "You priced the whole hand.", missed: "Let’s price the whole hand.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "implied-odds-workspace-v1", version: 1, flow: "film-first",
+  id: "implied-odds-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t1-implied-odds",
   sourceLessonId: "lesson-implied-odds-001", videoLessonId: "lesson-implied-odds-001",
   coach: "mina", access: "pro", template: "deeper-math",

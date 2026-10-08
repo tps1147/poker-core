@@ -29,7 +29,7 @@ const blinds = { do: "blinds", sb: 5, bb: 10 };
 const preflop = (hero) => ({ street: "preflop", board: [], hero, potBefore: 5, bet: 10, call: 10, sizes: OPEN });
 
 const definition = {
-  id: "positions-workspace-v1", version: 2, flow: "film-first",
+  id: "positions-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t0-positions",
   sourceLessonId: "lesson-positions-001", videoLessonId: "lesson-positions-001",
   coach: "reina", access: "free", template: "preflop",

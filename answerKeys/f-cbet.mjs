@@ -8,7 +8,7 @@
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "cbetting-workspace-v1", node: "f-cbet", contentVersion: 1, additions: true,
+  lessonId: "cbetting-workspace-v1", node: "f-cbet", contentVersion: 2, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 65.51, filmId: "f-cbet", spotId: "cb1-turn", decision: "action", choices: ["check", "bet"], key: { action: "bet" } },
   why: { stage: 2, spotId: "cb1-why", options: ["a", "b", "c"], key: { option: "a" }, misconception: "b" },

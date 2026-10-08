@@ -40,7 +40,7 @@ const practice = { street: "flop", hero: ["Kc", "Qs"], board: ["8h", "7h", "6d"]
 const fresh = { street: "flop", hero: ["Kh", "Qh"], board: ["Ad", "8c", "3s"], potBefore: 45, bet: 0, call: 0 };
 
 const definition = {
-  id: "cbetting-workspace-v1", version: 1, flow: "film-first",
+  id: "cbetting-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-cbetting",
   sourceLessonId: "lesson-cbetting-001", videoLessonId: "lesson-cbetting-001",
   coach: "vale", access: "pro", template: "postflop",

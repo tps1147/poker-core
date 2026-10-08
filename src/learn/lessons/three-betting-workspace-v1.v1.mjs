@@ -55,7 +55,7 @@ const NOTE = "The hand stops once you act. What the opener does next, and the fl
 const actionFeedback = { found: "You made the 3-bet.", missed: "Let’s look at the job again.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "three-betting-workspace-v1", version: 1, flow: "film-first",
+  id: "three-betting-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-3betting",
   sourceLessonId: "lesson-3betting-001", videoLessonId: "lesson-3betting-001",
   coach: "knox", access: "pro", template: "preflop",
