@@ -1,57 +1,45 @@
-// The why stage type (ACADEMY-LEARNING-LOOP 2026-10-07, "Why"): one tap from three reasons after a
-// hand's last decision. The stage ships its reasons only; the key and corrections sit apart.
+// The why stage type (ACADEMY-LEARNING-LOOP 2026-10-07, "Why"), as defs-b defined it (082285d):
+// { kind: "why", label, prompt, options: [{ id, text, fix }] } right after the film, the key apart.
 //   node test/learnWhy.test.mjs
 import assert from "node:assert/strict";
 import * as learn from "../src/learn/index.mjs";
 
-const { filmFirstLesson, lessonHands, railSegments, segmentForStep, tablePlan, whyStages, whyDecision, whyVerdict, WHY_KIND, chipScore, entryState } = learn;
+const { filmFirstLesson, lessonHands, railSegments, tablePlan, whyStages, whyResult, WHY_KIND, chipScore } = learn;
 let checks = 0;
 const check = (name, fn) => { fn(); checks += 1; };
 
-// A copy of pot odds (guided, practice, fresh: one decision each) with a why step after the guided hand.
+// A copy of pot odds with a why step after the film (index 2).
 const base = filmFirstLesson("pot-odds-workspace-v2");
 const plain = base.stages.filter((stage) => stage.kind !== WHY_KIND);
-const at = plain.findIndex((stage) => stage.spotId === "pot2-guided") + 1;
-const why = { kind: "why", id: "t-why", label: "Why", after: "pot2-guided", prompt: "Why call?", next: "Try a practice hand",
-  reasons: [{ id: "a", text: "Price" }, { id: "b", text: "Misconception" }, { id: "c", text: "Near miss" }] };
-const def = { ...base, stages: [...plain.slice(0, at), why, ...plain.slice(at)] };
-const KEY = { key: "a", corrections: { b: "Not that.", c: "Close, but no." } };
+const why = { kind: "why", label: "Why", prompt: "Why call?",
+  options: [{ id: "a", text: "Price", fix: "Right." }, { id: "b", text: "Misconception", fix: "Not that." }, { id: "c", text: "Near miss", fix: "Close, but no." }] };
+const def = { ...base, stages: [...plain.slice(0, 2), why, ...plain.slice(2)] };
 
-check("whyStages and whyDecision", () => {
+check("whyStages finds the step", () => {
   assert.equal(WHY_KIND, "why");
-  assert.deepEqual(whyStages(def).map((stage) => stage.index), [at]);
-  assert.equal(whyDecision(def, at).spotId, "pot2-guided");
-  assert.equal(whyDecision(def, 1), null, "a film is not a decision");
-  assert.deepEqual(whyStages(plain.length ? { stages: plain } : {}), []);
+  assert.deepEqual(whyStages(def).map((stage) => stage.index), [2]);
 });
 
-check("lessonHands and the rail: the why step rides on the hand it follows", () => {
+check("hands and the rail are unchanged by the why step", () => {
   assert.deepEqual(lessonHands(def).map((hand) => hand.role), ["guided", "practice", "fresh"]);
-  const segments = railSegments(def, null);
-  assert.deepEqual(segments.map((segment) => segment.key), ["film", "pot2-guided", "pot2-practice", "pot2-fresh", "recap"]);
-  assert.deepEqual(segments[1].stages, [at - 1, at]);
-  assert.equal(segmentForStep(segments, at).key, "pot2-guided");
-  const answered = railSegments(def, { furthest: at, answers: { "pot2-guided": { action: "call" } } });
-  assert.equal(answered[1].complete, true, "the hand fills on its decisions; the why never holds it back");
+  assert.deepEqual(railSegments(def, null).map((segment) => segment.key), ["film", "pot2-guided", "pot2-practice", "pot2-fresh", "recap"]);
 });
 
-check("tablePlan: the finished hand stays on the table during the why", () => {
-  assert.deepEqual(tablePlan(def, at, { furthest: at, answers: { "pot2-guided": { action: "call" } } }), { handId: "pot2-guided", mode: "settled" });
-  assert.deepEqual(tablePlan(def, at + 1, { furthest: at + 1 }), { handId: "pot2-practice", mode: "live" });
+check("tablePlan holds the guided hand behind the why, as behind the film", () => {
+  assert.deepEqual(tablePlan(def, 2, { furthest: 2 }), { handId: "pot2-guided", mode: "held" });
+  assert.deepEqual(tablePlan(def, 3, { furthest: 3 }), { handId: "pot2-guided", mode: "live" });
 });
 
-check("whyVerdict: right, wrong with its correction, ungraded without a key", () => {
-  assert.deepEqual(whyVerdict(KEY, "a"), { correct: true, correction: null });
-  assert.deepEqual(whyVerdict(KEY, "b"), { correct: false, correction: "Not that." });
-  assert.deepEqual(whyVerdict(KEY, "c"), { correct: false, correction: "Close, but no." });
-  assert.deepEqual(whyVerdict(null, "a"), { correct: null, correction: null });
+check("whyResult: graded by the server key, ungraded without one", () => {
+  assert.deepEqual(whyResult(why, "a", { option: "a" }), { option: "a", correct: true, fix: "Right." });
+  assert.deepEqual(whyResult(why, "b", { option: "a" }), { option: "b", correct: false, fix: "Not that." });
+  assert.deepEqual(whyResult(why, "c"), { option: "c", correct: null, fix: "Close, but no." });
+  assert.equal(whyResult(why, "z", { option: "a" }), null);
 });
 
-check("the why stage ships no key, and never moves the chip score", () => {
-  assert.ok(!("key" in why) && !why.reasons.some((reason) => "correct" in reason));
+check("the why never moves the chip score", () => {
   const history = [{ spotId: "pot2-fresh", correct: true }];
   assert.deepEqual(chipScore(def, { history }), chipScore(base, { history }));
-  assert.equal(entryState(def, { furthest: at, stage: at, watched: { 1: true } }).resumeStep, at);
 });
 
 console.log(`why checks passed (${checks})`);

@@ -71,22 +71,21 @@ const definition = {
       lead: "A 3-bet changes the hand, so it needs a job. Watch Knox split value from pressure, then play three hands at a six-handed table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
-      // The v2 film (p-three-bet) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "p-three-bet", pause: { at: 73.1, anchor: "yourTurn", spot: { kind: "action", choices: ["fold", "call", "raise"], prompt: "Queens, in the big blind. The button opens to 25. Fold, call or 3-bet to 100?" } } },
       // Chapters on the film's own beats (lessons/three-betting-workspace-v1/v1/timeline.json rail).
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A new hand" }, { beat: "value", label: "Value" }, { beat: "pressure", label: "Pressure" }, { beat: "hand", label: "Ace-five suited" }, { beat: "leak", label: "The leak" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A new hand" }, { beat: "value", label: "Value" }, { beat: "pressure", label: "Pressure" }, { beat: "hand", label: "Ace-five suited" }, { beat: "leak", label: "The leak" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-three-bet, canon.yourTurn at 73.1 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-three-bet.mjs.
+      pause: { at: 73.1, anchor: "yourTurn", film: "p-three-bet", spotId: "tb1-turn",
+        spot: { decision: "action", choices: ["fold", "call", "raise"], prompt: "Queens, in the big blind. The button opens to 25. Fold, call or 3-bet to 100?", sizes: { raise: 100 }, title: "Your turn: fold, call or 3-bet?", explanation: "Queens are value and you are out of position: 3-bet to 100, four times the open. You posted 10, so you owe 90 more." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-three-bet.mjs).
+    { kind: "why", label: "Why", prompt: "Why is ace-five suited a pressure 3-bet?",
+      options: [
+        { id: "a", text: "Only aces and kings are worth a 3-bet, so it should fold.", fix: "The value 3-bets are the top hands. A few blocker hands like ace-five suited join them as pressure." },
+        { id: "b", text: "It is for value: an ace is ahead of a late open.", fix: "Ace-five is behind most hands that continue. It 3-bets to make him fold, not to get called by worse." },
+        { id: "c", text: "Your ace blocks his best aces, and suited cards still play when called.", fix: "Right. A blocker hand that still plays: pressure." },
+      ] },
     { kind: "decision", label: "Knox’s hand", spotId: "tb1-guided", hand: "tb1-guided", role: "guided",
       coachLine: "Knox’s ace-five suited. You name the job.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/three-betting-workspace-v1.mjs, never here.
-    { kind: "why", id: "tb1-why", label: "Why", after: "tb1-guided", next: "Try a practice hand",
-      prompt: "Why is ace-five suited a pressure 3-bet?",
-      reasons: [
-        { id: "a", text: "Only aces and kings are worth a 3-bet, so it should fold." },
-        { id: "b", text: "It is for value: an ace is ahead of a late open." },
-        { id: "c", text: "Your ace blocks his best aces, and suited cards still play when called." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "tb1-practice-job", hand: "tb1-practice", role: "practice",
       coachLine: "A stronger hand this time. Name the job first.", next: "Now decide the action" },
     { kind: "decision", label: "Practice", spotId: "tb1-practice-action", hand: "tb1-practice", role: "practice",

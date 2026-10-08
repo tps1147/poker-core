@@ -15,12 +15,12 @@ const { evaluateHand, compareHands } = require("../src/eval/pokerEvaluator.js");
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FILMS = JSON.parse(readFileSync(join(ROOT, "test/fixtures/academyFilmsEarly.json"), "utf8")).films;
 const PLANS = join(ROOT, "docs/v1-feature/academy/plans");
-const { FILM_FIRST_LESSONS, NODES, lessonHands, decisionStages, nodeOfLesson, filmIdOfNode, completingCards, whyStages, whyVerdict } = learn;
+const { FILM_FIRST_LESSONS, NODES, lessonHands, decisionStages, nodeOfLesson, filmIdOfNode, completingCards, whyStages, whyResult } = learn;
 const EARLY = ["welcome", "rules", "board", "math", "preflop", "postflop"];
 
 let checks = 0;
 const check = (name, fn) => { fn(); checks += 1; };
-const keysOf = async (id) => (await import(`../src/learn/answerKeys/${id}.mjs`)).default;
+const keysOf = async (node) => (await import(`../answerKeys/${node}.mjs`)).default;
 
 // ── cards and arithmetic ────────────────────────────────────────────────────────────────────────
 const SYMBOL = { s: "♠", h: "♥", d: "♦", c: "♣" };
@@ -51,51 +51,43 @@ check("18 shipped definitions sit in the early tracks", () => {
 
 for (const def of shipped) {
   const node = nodeOfLesson(def.id).id;
-  const keys = await keysOf(def.id);
-  check(`${def.id}: one why step, right after the guided hand, with its key kept apart`, () => {
+  const keys = await keysOf(node);
+  check(`${def.id}: one why step, right after the film, with its key kept apart`, () => {
     const whys = whyStages(def);
     assert.equal(whys.length, 1);
     const [why] = whys;
-    const guided = lessonHands(def)[0];
-    assert.equal(why.index, guided.stages.at(-1).index + 1, "after the guided hand's last decision");
-    assert.equal(why.after, guided.stages.at(-1).spotId);
-    assert.equal(why.reasons.length, 3);
-    assert.deepEqual(why.reasons.map((r) => r.id).sort(), ["a", "b", "c"]);
-    assert.ok(why.prompt && why.next && why.reasons.every((r) => r.text));
-    assert.ok(!JSON.stringify(def).includes('"misconception"') && !("key" in why) && !("corrections" in why));
-    const key = keys.why[why.id];
-    assert.ok(key, "a key for the why");
-    assert.equal(keys.lessonId, def.id);
-    assert.equal(keys.node, node);
-    assert.equal(keys.contentVersion, def.version);
-    assert.ok(why.reasons.some((r) => r.id === key.key));
-    assert.notEqual(key.misconception, key.key);
-    const wrong = why.reasons.map((r) => r.id).filter((id) => id !== key.key).sort();
-    assert.deepEqual(Object.keys(key.corrections).sort(), wrong, "a correction for each wrong pick");
-    assert.ok(wrong.every((id) => whyVerdict(key, id).correction));
-    assert.deepEqual(keys.stages.map((s) => s.spotId || s.id || s.kind), def.stages.map((s) => s.spotId || s.id || s.kind), "the key file's stage order is the definition's");
+    assert.equal(why.index, 2, "right after the film");
+    assert.equal(why.options.length, 3);
+    assert.ok(why.prompt && why.options.every((o) => o.id && o.text && o.fix));
+    assert.ok(why.options.every((o) => !("correct" in o)), "correct never ships");
+    assert.deepEqual([keys.lessonId, keys.node, keys.contentVersion, keys.additions], [def.id, node, def.version, true]);
+    assert.deepEqual(keys.stageShift, { from: 2, by: 1 });
+    assert.equal(keys.why.stage, 2);
+    assert.deepEqual(keys.why.options, why.options.map((o) => o.id));
+    assert.ok(keys.why.options.includes(keys.why.key.option));
+    assert.ok(keys.why.options.includes(keys.why.misconception) && keys.why.misconception !== keys.why.key.option);
+    assert.equal(whyResult(why, keys.why.key.option, keys.why.key).correct, true);
+    assert.ok(why.options.filter((o) => o.id !== keys.why.key.option).every((o) => whyResult(why, o.id, keys.why.key).correct === false));
   });
   check(`${def.id}: the v2 film's yourTurn pause, where that film has one`, () => {
-    const film = def.stages.find((s) => s.kind === "film");
+    const film = def.stages[1];
     const anchors = FILMS[node];
     assert.equal(anchors.film, filmIdOfNode(node));
     if (anchors.yourTurn == null) {
-      assert.equal(film.v2, undefined);
-      assert.equal(keys.pause, null);
+      assert.ok(!film.pause?.film, "no v2 pause");
+      assert.equal(keys.film, undefined);
       return;
     }
-    assert.equal(film.v2.film, anchors.film);
-    assert.equal(film.v2.pause.at, anchors.yourTurn);
-    assert.equal(film.v2.pause.anchor, "yourTurn");
-    assert.ok(film.v2.pause.at < anchors.duration);
-    assert.ok(film.v2.pause.spot.prompt);
-    assert.deepEqual([keys.pause.film, keys.pause.at], [anchors.film, anchors.yourTurn]);
-    assert.ok(keyFits(film.v2.pause.spot, keys.pause.key), "the pause key is one of its own answers");
+    const p = film.pause;
+    assert.deepEqual([p.at, p.anchor, p.film], [anchors.yourTurn, "yourTurn", anchors.film]);
+    assert.ok(p.at < anchors.duration && p.spotId && p.spot.prompt && p.spot.explanation);
+    assert.deepEqual([keys.film.stage, keys.film.at, keys.film.filmId, keys.film.spotId, keys.film.decision], [1, p.at, p.film, p.spotId, p.spot.decision]);
+    assert.ok(keyFits(p.spot, keys.film.key), "the pause key is one of its own answers");
   });
 }
 
 // ── the why keys and the pause answers, recomputed ──────────────────────────────────────────────
-const key = async (id) => (await keysOf(id)).pause.key;
+const key = async (id) => (await keysOf(nodeOfLesson(id).id)).film.key;
 check("why: the numbers the reasons quote", () => {
   // a full house is rarer than a flush (exact counts of five-card hands)
   const C = (n, k) => { let r = 1; for (let i = 0; i < k; i += 1) r = (r * (n - i)) / (i + 1); return r; };
@@ -197,8 +189,8 @@ const pauses = {
   },
 };
 for (const def of shipped) {
-  const keys = await keysOf(def.id);
-  if (!keys.pause) continue;
+  const keys = await keysOf(nodeOfLesson(def.id).id);
+  if (!keys.film) continue;
   assert.ok(pauses[def.id], `${def.id} has a pause check`);
   await pauses[def.id]();
   checks += 1;

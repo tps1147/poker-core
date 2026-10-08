@@ -45,22 +45,21 @@ const definition = {
       lead: "The same two cards play differently from different seats. Watch Reina carry king-nine from the first seat to the button, then play three hands at a six-handed table.",
       cta: "Watch with Reina" },
     { kind: "film", label: "Film", upNext: "Play Reina’s hand",
-      // The v2 film (p-position-value) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "p-position-value", pause: { at: 76.55, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "co", label: "The cutoff" }, { id: "bb", label: "The big blind" }], prompt: "Cutoff against big blind, after the flop. Who acts last?" } } },
       // Chapters on the film's own beats (the v1 beats, unchanged), with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the seat" }, { beat: "hand", label: "Read the hand" }, { beat: "move", label: "Move to the button" }, { beat: "range", label: "Choose the range" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the seat" }, { beat: "hand", label: "Read the hand" }, { beat: "move", label: "Move to the button" }, { beat: "range", label: "Choose the range" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-position-value, canon.yourTurn at 76.55 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-position-value.mjs.
+      pause: { at: 76.55, anchor: "yourTurn", film: "p-position-value", spotId: "pos2-turn",
+        spot: { decision: "estimate", bands: [{ id: "co", label: "The cutoff" }, { id: "bb", label: "The big blind" }], prompt: "Cutoff against big blind, after the flop. Who acts last?", title: "Your turn: who acts last?", explanation: "The cutoff. After the flop the big blind has to go first, and the cutoff acts after it." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-position-value.mjs).
+    { kind: "why", label: "Why", prompt: "Why is king-nine a raise on the button?",
+      options: [
+        { id: "a", text: "Only the blinds act after you, and you act last on every street after the flop.", fix: "Right. Acting last, you see what the blinds do before you decide, on every street." },
+        { id: "b", text: "King-nine is strong enough to raise from any seat.", fix: "Under the gun the same hand folds: five players still act after you." },
+        { id: "c", text: "Position only matters before the flop, when fewer players are left to act.", fix: "Fewer players behind is half of it. You also act last on the flop, the turn and the river." },
+      ] },
     { kind: "decision", label: "Reina’s hand", spotId: "pos2-guided", hand: "pos2-guided", role: "guided",
       coachLine: "Reina’s king-nine, now on the button.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/positions-workspace-v1.mjs, never here.
-    { kind: "why", id: "pos2-why", label: "Why", after: "pos2-guided", next: "Try a practice hand",
-      prompt: "Why is king-nine a raise on the button?",
-      reasons: [
-        { id: "a", text: "Only the blinds act after you, and you act last on every street after the flop." },
-        { id: "b", text: "King-nine is strong enough to raise from any seat." },
-        { id: "c", text: "Position only matters before the flop, when fewer players are left to act." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "pos2-practice", hand: "pos2-practice", role: "practice",
       coachLine: "New cards. You are first to act.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pos2-fresh", hand: "pos2-fresh", role: "fresh",

@@ -47,24 +47,23 @@ const definition = {
       lead: "Stack-to-pot ratio tells you how much room is left in a hand. Watch Mina define it, then measure three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
-      // The v2 film (m-spr) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "m-spr", pause: { at: 70.54, anchor: "yourTurn", spot: { kind: "count", range: [0, 20], unit: "", prompt: "You have 1,000, they have 240, the pot is 120. What is the SPR?" } } },
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Find the effective stack" }, { beat: "range", label: "Divide by the pot" }, { beat: "low", label: "Low SPR" }, { beat: "high", label: "High SPR" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Find the effective stack" }, { beat: "range", label: "Divide by the pot" }, { beat: "low", label: "Low SPR" }, { beat: "high", label: "High SPR" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-spr, canon.yourTurn at 70.54 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-spr.mjs.
+      pause: { at: 70.54, anchor: "yourTurn", film: "m-spr", spotId: "spr1-turn",
+        spot: { decision: "count", range: [0, 20], unit: "", prompt: "You have 1,000, they have 240, the pot is 120. What is the SPR?", title: "Your turn: the SPR?", explanation: "Only the smaller stack counts: 240 ÷ 120 is an SPR of 2. Two bets and you are all-in." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-spr.mjs).
+    { kind: "why", label: "Why", prompt: "What does an SPR of 1 tell you?",
+      options: [
+        { id: "a", text: "Ace Andy’s 900 makes it deep, so play carefully.", fix: "His extra 600 can never be matched. The effective stack is your 300." },
+        { id: "b", text: "One pot-sized bet puts the effective stack in: you are close to committed.", fix: "Right. One bet left: top pair can commit here." },
+        { id: "c", text: "Nothing: only the cards decide how a hand plays.", fix: "The stacks decide too. With one bet left, top pair can commit; deep, big pots need big hands." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "spr1-guided-ratio", hand: "spr1-guided", role: "guided",
       coachLine: "Mina’s hand. You measure the room.", next: "Now count the bets" },
     { kind: "decision", label: "Mina’s hand", spotId: "spr1-guided-bets", hand: "spr1-guided", role: "guided",
       coachLine: "You have the ratio. Now the bets it leaves.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/spr-workspace-v1.mjs, never here.
-    { kind: "why", id: "spr1-why", label: "Why", after: "spr1-guided-bets", next: "Try a practice hand",
-      prompt: "What does an SPR of 1 tell you?",
-      reasons: [
-        { id: "a", text: "Ace Andy’s 900 makes it deep, so play carefully." },
-        { id: "b", text: "One pot-sized bet puts the effective stack in: you are close to committed." },
-        { id: "c", text: "Nothing: only the cards decide how a hand plays." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "spr1-practice-ratio", hand: "spr1-practice", role: "practice",
       coachLine: "Same idea. Check both stacks first.", next: "Now count the bets" },
     { kind: "decision", label: "Practice", spotId: "spr1-practice-bets", hand: "spr1-practice", role: "practice",

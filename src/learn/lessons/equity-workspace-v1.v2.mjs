@@ -35,22 +35,21 @@ const definition = {
       lead: "A hand is not just what it is right now. Watch Mina define future share, then find your share of the pot in three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
-      // The v2 film (m-equity) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "m-equity", pause: { at: 68.06, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "about-0", label: "Nothing yet" }, { id: "about-60", label: "About 60 chips" }, { id: "about-150", label: "About 150 chips" }], prompt: "A pot of 150, and you win about 40% (given). Your share?" } } },
       // The media rail's chapters on the film's own two beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the hand" }, { beat: "share", label: "Judge your share" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the hand" }, { beat: "share", label: "Judge your share" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-equity, canon.yourTurn at 68.06 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-equity.mjs.
+      pause: { at: 68.06, anchor: "yourTurn", film: "m-equity", spotId: "eq2-turn",
+        spot: { decision: "estimate", bands: [{ id: "about-0", label: "Nothing yet" }, { id: "about-60", label: "About 60 chips" }, { id: "about-150", label: "About 150 chips" }], prompt: "A pot of 150, and you win about 40% (given). Your share?", title: "Your turn: your share?", explanation: "40% of 150 is 60 chips. That is your equity." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-equity.mjs).
+    { kind: "why", label: "Why", prompt: "Why is about 42 chips your share?",
+      options: [
+        { id: "a", text: "With no pair yet, you own nothing until you hit.", fix: "A draw already owns a share. It wins 35% of the time by the end." },
+        { id: "b", text: "Equity is your chance times the pot: 35% of 120 is 42.", fix: "Right. A draw with no pair still owns its share: 42 chips." },
+        { id: "c", text: "Equity is the chips you have already put in.", fix: "Chips you put in belong to the pot. Your share is your chance of winning it: 35% of 120." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "eq2-guided", hand: "eq2-guided", role: "guided",
       coachLine: "Mina’s hand. You name the share.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/equity-workspace-v1.mjs, never here.
-    { kind: "why", id: "eq2-why", label: "Why", after: "eq2-guided", next: "Try a practice hand",
-      prompt: "Why is about 42 chips your share?",
-      reasons: [
-        { id: "a", text: "With no pair yet, you own nothing until you hit." },
-        { id: "b", text: "Equity is your chance times the pot: 35% of 120 is 42." },
-        { id: "c", text: "Equity is the chips you have already put in." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "eq2-practice", hand: "eq2-practice", role: "practice",
       coachLine: "Same idea, a different hand.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "eq2-fresh", hand: "eq2-fresh", role: "fresh",

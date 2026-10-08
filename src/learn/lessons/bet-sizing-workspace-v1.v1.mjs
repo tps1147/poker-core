@@ -50,22 +50,21 @@ const definition = {
       lead: "A bet size says something about your hand. Watch Vale split small bets from large ones, then choose a size in three hands at the table.",
       cta: "Watch with Vale" },
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
-      // The v2 film (f-bet-sizing) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "f-bet-sizing", pause: { at: 73.95, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "third", label: "A third of the pot" }, { id: "three-quarters", label: "Three-quarters of the pot" }], prompt: "A river where you want his weaker pairs to call. Which size?" } } },
       // Chapters on the film's own beats (lessons/bet-sizing-workspace-v1/v1/timeline.json rail).
-      chapters: [{ at: 0, label: "Size is a story" }, { beat: "small", label: "A small bet" }, { beat: "large", label: "A large bet" }, { beat: "leak", label: "The leak" }] },
+      chapters: [{ at: 0, label: "Size is a story" }, { beat: "small", label: "A small bet" }, { beat: "large", label: "A large bet" }, { beat: "leak", label: "The leak" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (f-bet-sizing, canon.yourTurn at 73.95 s).
+      // `film` names the film the time belongs to. Key: answerKeys/f-bet-sizing.mjs.
+      pause: { at: 73.95, anchor: "yourTurn", film: "f-bet-sizing", spotId: "bs1-turn",
+        spot: { decision: "estimate", bands: [{ id: "third", label: "A third of the pot" }, { id: "three-quarters", label: "Three-quarters of the pot" }], prompt: "A river where you want his weaker pairs to call. Which size?", title: "Your turn: which size?", explanation: "A third offers him a price of 1/5; three-quarters, 3/10. To keep those pairs calling, bet the third." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-bet-sizing.mjs).
+    { kind: "why", label: "Why", prompt: "Why is the small bet right here?",
+      options: [
+        { id: "a", text: "Bet small to make his bluffs fold cheaply.", fix: "The job here is value from worse hands, not folds." },
+        { id: "b", text: "His weaker kings and pairs call 40 more often than 90, so the small bet keeps worse hands paying.", fix: "Right. Size for the hands you want to call." },
+        { id: "c", text: "Bigger bets always win more.", fix: "A big bet folds the worse hands you want calling. Size for the job." },
+      ] },
     { kind: "decision", label: "Vale’s hand", spotId: "bs1-guided", hand: "bs1-guided", role: "guided",
       coachLine: "Vale’s flop. You pick the size.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/bet-sizing-workspace-v1.mjs, never here.
-    { kind: "why", id: "bs1-why", label: "Why", after: "bs1-guided", next: "Try a practice hand",
-      prompt: "Why is the small bet right here?",
-      reasons: [
-        { id: "a", text: "Bet small to make his bluffs fold cheaply." },
-        { id: "b", text: "His weaker kings and pairs call 40 more often than 90, so the small bet keeps worse hands paying." },
-        { id: "c", text: "Bigger bets always win more." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "bs1-practice", hand: "bs1-practice", role: "practice",
       coachLine: "A draw this time. Pick the size.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "bs1-fresh", hand: "bs1-fresh", role: "fresh",

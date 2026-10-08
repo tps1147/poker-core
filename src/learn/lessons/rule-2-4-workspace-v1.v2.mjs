@@ -40,28 +40,28 @@ const definition = {
       lead: "You do not need perfect math at the table. Watch Mina turn a count of outs into a quick chance, then estimate three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
-      // The v2 film (m-rule-2-4) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "m-rule-2-4", pause: { at: 62.81, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "x2", label: "About 16%" }, { id: "x4", label: "About 32%" }], prompt: "Ten-nine of hearts on eight, seven, two, and they go all-in. 8 outs: which estimate?" } } },
       // The film's own beats, with the opening as "Intro". `outs` (15.25) is not a chapter: it is
       // .06 s after `draw` and would draw a sliver.
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "draw", label: "Count the outs" }, { beat: "rule", label: "Outs × 2" }, { beat: "estimate", label: "The estimate" }, { beat: "price", label: "The price" }],
-      pause: { at: 15, spot: { kind: "count", range: [0, 47], unit: "outs",
-        prompt: "Before Mina says it: how many clean outs does jack-ten have?" } } },
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 15, spot: { kind: "count", range: [0, 47], unit: "outs",
+        prompt: "Before Mina says it: how many clean outs does jack-ten have?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-rule-2-4, canon.yourTurn at 62.81 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-rule-2-4.mjs.
+      pause: { at: 62.81, anchor: "yourTurn", film: "m-rule-2-4", spotId: "rule2-turn",
+        spot: { decision: "estimate", bands: [{ id: "x2", label: "About 16%" }, { id: "x4", label: "About 32%" }], prompt: "Ten-nine of hearts on eight, seven, two, and they go all-in. 8 outs: which estimate?", title: "Your turn: which rule?", explanation: "All-in, you see both cards for this price: 8 outs × 4 is 32%. Exactly, it is 31.5%." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-rule-2-4.mjs).
+    { kind: "why", label: "Why", prompt: "Why fold Mina’s 8-out draw on this turn?",
+      options: [
+        { id: "a", text: "One card is to come, so 8 × 2 is about 16%, below the 20% price.", fix: "Right. One card to come is ×2, and 16% is short of 20%." },
+        { id: "b", text: "Use ×4, since more betting can still come.", fix: "×4 is for two cards seen for this one price. On the turn one card is left: ×2, about 16%." },
+        { id: "c", text: "16% is close to 20%, so the call is about even.", fix: "Close is still short. 16% against a 20% price loses chips over time." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "rule2-guided-estimate", hand: "rule2-guided", role: "guided",
       coachLine: "Mina’s hand. You make the estimate.", next: "Now decide the call" },
     { kind: "decision", label: "Mina’s hand", spotId: "rule2-guided-call", hand: "rule2-guided", role: "guided",
       coachLine: "You have the estimate. Now the price.", next: "Try a practice hand",
       feedback: { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." } },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/rule-2-4-workspace-v1.mjs, never here.
-    { kind: "why", id: "rule2-why", label: "Why", after: "rule2-guided-call", next: "Try a practice hand",
-      prompt: "Why fold Mina’s 8-out draw on this turn?",
-      reasons: [
-        { id: "a", text: "One card is to come, so 8 × 2 is about 16%, below the 20% price." },
-        { id: "b", text: "Use ×4, since more betting can still come." },
-        { id: "c", text: "16% is close to 20%, so the call is about even." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "rule2-practice-count", hand: "rule2-practice", role: "practice",
       coachLine: "A new draw, one street earlier. Count it first.", next: "Now estimate the chance",
       feedback: { found: "You counted it.", missed: "Let’s count it together.", open: "Here’s the count." } },

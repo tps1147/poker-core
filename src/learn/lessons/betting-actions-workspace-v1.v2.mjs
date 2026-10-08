@@ -40,17 +40,15 @@ const definition = {
       // The media rail's chapters on the film's own beats. `hand` is a stepped beat (the queen, then
       // the board's queen), so its chapter names that beat's first step, 7.1 s, as a time.
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Three jobs" }, { beat: "deal", label: "See the price" }, { at: 7.1, label: "Read the hand" }, { beat: "decision", label: "Choose the job" }] },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/r-actions.mjs).
+    { kind: "why", label: "Why", prompt: "Why is calling, not checking, your passive choice here?",
+      options: [
+        { id: "a", text: "Raising is never allowed once someone has bet.", fix: "Raising is allowed after a bet. Here it is the wrong job: the hands that continue mostly beat you." },
+        { id: "b", text: "Ace Andy bet 30, so something is owed: a call matches it, and a check needs nothing owed.", fix: "Right. A bet is owed, so check is gone: a call matches it." },
+        { id: "c", text: "Checking and calling are the same thing: both stay in without raising.", fix: "A check costs nothing and only works when nothing is owed. A call puts in the 30." },
+      ] },
     { kind: "decision", label: "Ada’s hand", spotId: "act2-guided", hand: "act2-guided", role: "guided",
       coachLine: "Ada’s flop. You pick the job.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/betting-actions-workspace-v1.mjs, never here.
-    { kind: "why", id: "act2-why", label: "Why", after: "act2-guided", next: "Try a practice hand",
-      prompt: "Why is calling, not checking, your passive choice here?",
-      reasons: [
-        { id: "a", text: "Raising is never allowed once someone has bet." },
-        { id: "b", text: "Ace Andy bet 30, so something is owed: a call matches it, and a check needs nothing owed." },
-        { id: "c", text: "Checking and calling are the same thing: both stay in without raising." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "act2-practice", hand: "act2-practice", role: "practice",
       coachLine: "Same three buttons. This draw missed.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "act2-fresh", hand: "act2-fresh", role: "fresh",

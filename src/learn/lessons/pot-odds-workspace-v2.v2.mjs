@@ -39,26 +39,26 @@ const definition = {
       lead: "A draw is not a reason to call. Watch Mina build the final pot and find the price, then weigh three calls at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
-      // The v2 film (m-pot-odds) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "m-pot-odds", pause: { at: 65.56, anchor: "yourTurn", spot: { kind: "action", choices: ["fold", "call"], prompt: "Now they go all-in for 100 into 100. Still 30%. Call or fold?" } } },
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "startingPot", label: "Build the pot" }, { beat: "possibleCall", label: "Add your call" }, { beat: "formula", label: "Cost over pot" }, { beat: "result", label: "Your price" }],
       // The cue boundary before "The call costs 50": "250" ends at 14.02 s and "call" starts at
       // 14.595 s (legacy-voice-audit/mina-absolute-timing.json), so the pause sits in 0.575 s of silence.
-      pause: { at: 14.416666666666666, spot: { kind: "count", range: [0, 99], unit: "%",
-        prompt: "Before Mina says it: your call is 50 and the final pot is 250. What price is that, in percent?" } } },
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 14.416666666666666, spot: { kind: "count", range: [0, 99], unit: "%",
+        prompt: "Before Mina says it: your call is 50 and the final pot is 250. What price is that, in percent?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-pot-odds, canon.yourTurn at 65.56 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-pot-odds.mjs.
+      pause: { at: 65.56, anchor: "yourTurn", film: "m-pot-odds", spotId: "pot2-turn",
+        spot: { decision: "action", choices: ["fold", "call"], prompt: "Now they go all-in for 100 into 100. Still 30%. Call or fold?", title: "Your turn: call or fold?", explanation: "The final pot is 300, so the price is 100 ÷ 300, about 33%. 30% falls short: fold." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-pot-odds.mjs).
+    { kind: "why", label: "Why", prompt: "Why is the price 20%?",
+      options: [
+        { id: "a", text: "The price is 50 ÷ 200: leave your own call out of the pot.", fix: "Your call goes in the pot too. The final pot is 250, so the price is 20%." },
+        { id: "b", text: "The price is 50 ÷ 150, the call against the pot before the bet.", fix: "Count all three amounts: 150, his 50 and your 50. That makes 250." },
+        { id: "c", text: "Your 50 joins the pot: 50 ÷ 250 is 20%, below the 30% chance.", fix: "Right. Count all three amounts, your own call included." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "pot2-guided", hand: "pot2-guided", role: "guided",
       coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand" },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/pot-odds-workspace-v2.mjs, never here.
-    { kind: "why", id: "pot2-why", label: "Why", after: "pot2-guided", next: "Try a practice hand",
-      prompt: "Why is the price 20%?",
-      reasons: [
-        { id: "a", text: "The price is 50 ÷ 200: leave your own call out of the pot." },
-        { id: "b", text: "The price is 50 ÷ 150, the call against the pot before the bet." },
-        { id: "c", text: "Your 50 joins the pot: 50 ÷ 250 is 20%, below the 30% chance." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "pot2-practice", hand: "pot2-practice", role: "practice",
       coachLine: "Same idea, new numbers. Count your own call.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pot2-fresh", hand: "pot2-fresh", role: "fresh",

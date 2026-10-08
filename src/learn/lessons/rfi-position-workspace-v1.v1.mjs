@@ -51,23 +51,22 @@ const definition = {
       lead: "When everyone folds to you, the seat decides how wide you can open. Watch Reina read her suited ace on the button, then play three hands at a six-handed table.",
       cta: "Watch with Reina" },
     { kind: "film", label: "Film", upNext: "Play Reina’s hand",
-      // The v2 film (p-open-raise) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
-      // The fields below are the current film's, unchanged until the apps switch films.
-      v2: { film: "p-open-raise", pause: { at: 79.05, anchor: "yourTurn", spot: { kind: "action", choices: ["fold", "raise"], prompt: "Seven-six suited, in middle position, folded to you. Open or fold?" } } },
       // Chapters on the film's own beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Raise first in" }, { beat: "early", label: "Early position" }, { beat: "seats", label: "Late position" }, { beat: "hand", label: "The suited ace" }, { beat: "mistake", label: "The leak" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Raise first in" }, { beat: "early", label: "Early position" }, { beat: "seats", label: "Late position" }, { beat: "hand", label: "The suited ace" }, { beat: "mistake", label: "The leak" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-open-raise, canon.yourTurn at 79.05 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-open-raise.mjs.
+      pause: { at: 79.05, anchor: "yourTurn", film: "p-open-raise", spotId: "rfi1-turn",
+        spot: { decision: "action", choices: ["fold", "raise"], prompt: "Seven-six suited, in middle position, folded to you. Open or fold?", sizes: { raise: 25 }, title: "Your turn: open or fold?", explanation: "It is not in the middle-position chart: fold. The same hand in the cutoff is in: raise." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-open-raise.mjs).
+    { kind: "why", label: "Why", prompt: "Why open ace-five suited with a raise?",
+      options: [
+        { id: "a", text: "Any ace is strong enough to raise from any seat.", fix: "Seat first: under the gun, five players behind tighten the range." },
+        { id: "b", text: "Limp in for 10: it is a cheaper way to see the flop.", fix: "A limp lets the blinds in cheaply and wins nothing now. Come in with a raise." },
+        { id: "c", text: "Only the blinds act after you, and a suited ace is well inside a button opening range.", fix: "Right. Two players behind and a hand that plays well: raise." },
+      ] },
     { kind: "decision", label: "Reina’s hand", spotId: "rfi1-guided", hand: "rfi1-guided", role: "guided",
       coachLine: "Reina’s suited ace. It folds to you on the button.", next: "Try a practice hand",
       feedback: openFeedback },
-    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
-    // corrections are in answerKeys/rfi-position-workspace-v1.mjs, never here.
-    { kind: "why", id: "rfi1-why", label: "Why", after: "rfi1-guided", next: "Try a practice hand",
-      prompt: "Why open ace-five suited with a raise?",
-      reasons: [
-        { id: "a", text: "Any ace is strong enough to raise from any seat." },
-        { id: "b", text: "Limp in for 10: it is a cheaper way to see the flop." },
-        { id: "c", text: "Only the blinds act after you, and a suited ace is well inside a button opening range." },
-      ] },
     { kind: "decision", label: "Practice", spotId: "rfi1-practice-behind", hand: "rfi1-practice", role: "practice",
       coachLine: "New cards, a new seat. Count who is behind you first.", next: "Now make your play",
       feedback: { found: "You counted the seats.", missed: "Let’s count the seats together.", open: "Here’s the count." } },
