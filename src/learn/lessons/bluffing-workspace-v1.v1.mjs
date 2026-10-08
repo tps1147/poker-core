@@ -64,6 +64,16 @@ const definition = {
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/bluffing-workspace-v1/v1/timeline.json rail).
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A credible line" }, { beat: "questions", label: "Two questions" }, { beat: "texture", label: "Knox’s hand" }, { beat: "range", label: "The story" }, { beat: "blocker", label: "Your ace" }, { beat: "target", label: "His range" }] },
+    // ACADEMY V2 (2026-10-08): the why step. The node's v2 film (x-bluffing) has no yourTurn anchor,
+    // so no pause is added; the why asks about the v2 film's own verdict: J♣ 9♣ on Q♠ T♦ 5♣ 4♥ 2♠,
+    // pot 150, bet 100 (break-even 40%); his 102 combos (an illustration) fold 77 (75.5%), 74 of
+    // them better than jack high; about 88.7 a bluff. Key: answerKeys/x-bluffing.mjs.
+    { kind: "why", label: "Why", film: "x-bluffing", prompt: "In the film, jack-nine bets 100 into 150 on a missed river. Why is the bet right?",
+      options: [
+        { id: "story-target", text: "The line says queens or better, and 77 of his 102 hands fold, 74 of them better than jack high.", fix: "Right. 75.5% folds clear the 40% break-even: about 88.7 a bluff." },
+        { id: "called-bad", text: "It isn’t: he called with queen-jack, so the bluff was a mistake.", fix: "A call is one sample, not the grade. The bet earns about 88.7 across his whole range, calls included." },
+        { id: "missed", text: "Because the draw missed, so betting is the only way to win.", fix: "Missing isn’t the reason. Against a station who calls with any pair, the same miss is a check." },
+      ] },
     { kind: "decision", label: "Knox’s hand", spotId: "bl1-guided", hand: "bl1-guided", role: "guided",
       coachLine: "Knox’s river. You ask his two questions.", next: "Try a practice hand", feedback: actionFeedback },
     { kind: "decision", label: "Practice", spotId: "bl1-practice-target", hand: "bl1-practice", role: "practice",

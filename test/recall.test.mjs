@@ -51,10 +51,8 @@ check("one entry per node, in tree order, each with a rule; questions are one-ta
 check("the todo list", () => {
   const list = recallTodo();
   assert.equal(list.length, RECALL_BANK.filter((e) => e.status === "todo").length);
-  // The early tracks (welcome to postflop) are all filled; test/academyEarly.test.mjs checks the postflop four.
-  assert.deepEqual(list.map((x) => x.lessonId), ["x-mdf", "x-check-raise",
-    "x-barrels-blockers", "h-range-narrowing", "h-player-types", "h-exploits", "g-toy-games", "g-balance", "g-gto-to-exploit", "y-tilt", "y-study",
-    "o-multiway", "o-heads-up", "o-tournaments-icm", "o-six-max", "o-live"]);
+  // Every track has its recall cards after the defs-a and defs-b merge: nothing is left to author.
+  assert.deepEqual(list.map((x) => x.lessonId), []);
 });
 
 check("rules and board cards: the answers the evaluator gives", () => {

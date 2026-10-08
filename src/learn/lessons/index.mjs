@@ -98,8 +98,6 @@ export function lessonHands(definition) {
 // FILM_FIRST_LESSONS or COURSE_ORDER, which still describe the shipped 20. `academyLesson(id)`
 // resolves a node-id definition first, then any shipped one; pass it to learnPath to list them.
 // Built from lessons/academy/kitEarly.mjs; answer keys in answerKeys/<node>.mjs (not shipped).
-// MERGE NOTE: defs-b adds ACADEMY_V2_LATER_LESSONS and its own academyLesson in a block like this
-// one; the merged academyLesson searches both lists, then the shipped 20.
 import wWhatIsPoker from "./academy/w-what-is-poker.mjs";
 import wHistory from "./academy/w-history.mjs";
 import wLuckAndSkill from "./academy/w-luck-and-skill.mjs";
@@ -131,7 +129,40 @@ export const ACADEMY_V2_EARLY_LESSONS = Object.freeze([
   fValueBetting, fPotControl, fPlayingDraws,
 ]);
 
+// ── ACADEMY V2: the node-id definitions of the later tracks (pressure, people, theory, player and
+// Other Tables), 17 lessons whose definition id is their tree node id (curriculum.mjs). They are not
+// in FILM_FIRST_LESSONS or COURSE_ORDER, which still describe the shipped 20. `academyLesson(id)`
+// resolves a node-id definition first, then any shipped one; pass it to learnPath to list them.
+// Built from lessons/academy/kit.mjs; answer keys in answerKeys/<node>.mjs (not shipped).
+import xMdf from "./academy/x-mdf.mjs";
+import xCheckRaise from "./academy/x-check-raise.mjs";
+import xBarrelsBlockers from "./academy/x-barrels-blockers.mjs";
+import hRangeNarrowing from "./academy/h-range-narrowing.mjs";
+import hPlayerTypes from "./academy/h-player-types.mjs";
+import hExploits from "./academy/h-exploits.mjs";
+import gToyGames from "./academy/g-toy-games.mjs";
+import gBalance from "./academy/g-balance.mjs";
+import gGtoToExploit from "./academy/g-gto-to-exploit.mjs";
+import yBankroll from "./academy/y-bankroll.mjs";
+import yTilt from "./academy/y-tilt.mjs";
+import yStudy from "./academy/y-study.mjs";
+import oMultiway from "./academy/o-multiway.mjs";
+import oHeadsUp from "./academy/o-heads-up.mjs";
+import oTournamentsIcm from "./academy/o-tournaments-icm.mjs";
+import oSixMax from "./academy/o-six-max.mjs";
+import oLive from "./academy/o-live.mjs";
+
+export const ACADEMY_V2_LATER_LESSONS = Object.freeze([
+  xMdf, xCheckRaise, xBarrelsBlockers,
+  hRangeNarrowing, hPlayerTypes, hExploits,
+  gToyGames, gBalance, gGtoToExploit,
+  yBankroll, yTilt, yStudy,
+  oMultiway, oHeadsUp, oTournamentsIcm, oSixMax, oLive,
+]);
+
 export function academyLesson(id) {
   if (typeof id !== "string" || !id) return null;
-  return ACADEMY_V2_EARLY_LESSONS.find((definition) => definition.id === id) || filmFirstLesson(id);
+  return ACADEMY_V2_EARLY_LESSONS.find((definition) => definition.id === id)
+    || ACADEMY_V2_LATER_LESSONS.find((definition) => definition.id === id)
+    || filmFirstLesson(id);
 }

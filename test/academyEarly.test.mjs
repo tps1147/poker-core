@@ -243,7 +243,7 @@ check("every early-track node with no shipped lesson has a node-id definition, r
   assert.equal(missing.length, 22);
   for (const d of ACADEMY_V2_EARLY_LESSONS) assert.equal(academyLesson(d.id), d);
   assert.equal(academyLesson("pot-odds-workspace-v2"), FILM_FIRST_LESSONS.find((d) => d.id === "pot-odds-workspace-v2"));
-  assert.equal(learnPath(academyLesson).total, 20 + 22);
+  assert.equal(learnPath(academyLesson).total, 20 + 22 + 17, "the shipped 20, the early 22 and the later 17");
 });
 
 for (const def of ACADEMY_V2_EARLY_LESSONS) {
