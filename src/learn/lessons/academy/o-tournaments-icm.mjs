@@ -52,27 +52,27 @@ const fresh = { street: "preflop", board: [], hero: ["Ah", "Qs"], call: 2000 };
 
 const definition = {
   ...definitionBase({
-    node: "o-tournaments-icm", conceptId: "t6-icm", coach: "reina", title: "Chips aren’t money.", kicker: "Survival has a price.",
+    node: "o-tournaments-icm", conceptId: "t6-icm", coach: "knox", title: "Chips aren’t money.", kicker: "Survival has a price.",
     track: "formats", chapter: "Other Tables", minutes: 5, feedback,
     assumptions: "Three players left in a tournament: 5,000, 3,000 and 2,000 chips. First place takes 50% of the prize pool, second 30%, third 20%. Each player’s share of the prize money comes from his chance of each place, worked out from the chips (ICM, the Malmuth–Harville model): each place goes to a remaining player in proportion to his chips. The blinds are left out, and your chance to win an all-in is given.",
   }),
   stages: [
     welcome("Chips aren’t money.", "Survival has a price.",
-      "Is every tournament chip worth the same money? Watch Reina work out the prize shares, then decide three all-ins.", "Reina"),
-    filmStage({ film: "o-tournaments-icm", at: 67.51, spotId: "ic-turn", spot: turnSpot, upNext: "Play Reina’s all-in" }),
+      "Is every tournament chip worth the same money? Watch Knox work out the prize shares, then decide three all-ins.", "Knox"),
+    filmStage({ film: "o-tournaments-icm", at: 67.51, spotId: "ic-turn", spot: turnSpot, upNext: "Play Knox’s all-in" }),
     whyStage("ic-why", "Why does the big stack lose money on a fair flip?", [
       { id: "places", text: "Prize money pays for places: the chips he can win are worth less to him than the chips he risks.", fix: "Right. 38.4% before, 38.1% on average after; the player who sat out gains." },
       { id: "chips", text: "He doesn’t: a fair flip in chips is fair in money too.", fix: "Chip value and prize money aren’t the same in tournaments. The flip is fair in chips and costs both players money." },
       { id: "lead", text: "Because he might lose his chip lead.", fix: "Not just that: averaged over winning and losing the flip, his share still drops, from 38.4% to 38.1%." },
     ]),
-    decision("ic-guided", "ic-guided", "guided", "Reina’s all-in", "You are the short stack. The big stack puts you all-in.", "Try a practice hand", { feedback }),
+    decision("ic-guided", "ic-guided", "guided", "Knox’s all-in", "You are the short stack. The big stack puts you all-in.", "Try a practice hand", { feedback }),
     decision("ic-practice", "ic-practice", "practice", "Practice", "You sit out the flip.", "Try a fresh hand", { feedback }),
     decision("ic-fresh", "ic-fresh", "fresh", "Fresh hand", "The same all-in, a better chance.", "See your recap", { feedback }),
     takeaway({
       heading: "Survival has a price.",
       rule: "In tournaments, chips aren't money. Survival has a price, so call tighter near the payouts.",
       lead: "5,000 / 3,000 / 2,000 chips are worth 38.4% / 32.8% / 28.9% of the prize pool: flatter than the chips. A fair flip in chips loses money for both players in it.",
-      labels: ["Reina’s all-in", "Practice", "Fresh hand"],
+      labels: ["Knox’s all-in", "Practice", "Fresh hand"],
     }),
   ],
   spots: {

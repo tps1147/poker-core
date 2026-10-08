@@ -33,14 +33,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-streets", film: "r-streets", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 3,
+  node: "r-streets", film: "r-streets", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 3,
   title: "Four rounds, one order.", kicker: "Seats decide, not the last bet.",
   assumptions: "Hold’em has four betting rounds: preflop, flop, turn and river. Heads-up the button acts first before the flop; after the flop, on every street, the first seat left of the button still in the hand acts first.",
   stages: v2Stages({
-    welcome: { heading: "Who speaks first?", em: "You, or them?", lead: "Watch Ada walk the four rounds, then name who acts first at three tables.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "r-streets", at: null, spot: spots["st-guided"] },
+    welcome: { heading: "Who speaks first?", em: "You, or them?", lead: "Watch Knox walk the four rounds, then name who acts first at three tables.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "r-streets", at: null, spot: spots["st-guided"] },
     hands: [
-      { id: "st-guided", label: "Ada’s flop", coachLine: "The film’s flop. Who acts?" },
+      { id: "st-guided", label: "Knox’s flop", coachLine: "The film’s flop. Who acts?" },
       { id: "st-practice", label: "Practice", coachLine: "More players, same rule." },
       { id: "st-fresh", label: "Fresh hand", coachLine: "New seats in the hand." },
     ],

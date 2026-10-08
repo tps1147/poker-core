@@ -34,14 +34,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "m-variance", film: "m-variance", coach: "mina", access: "pro", track: "The Math Spine", minutes: 3,
+  node: "m-variance", film: "m-variance", coach: "knox", access: "pro", track: "The Math Spine", minutes: 3,
   title: "A few hands show luck.", kicker: "Thousands show the decision.",
   assumptions: "Each call’s average value is given. Expected totals are the average times the number of calls; the film’s probabilities are exact binomial figures, never simulated, and no result grades a decision.",
   stages: v2Stages({
-    welcome: { heading: "How often are you behind?", em: "Guess first.", lead: "Watch Blue and Coral make the same calls a thousand times, then work out three totals.", cta: "Watch with Mina" },
-    film: { upNext: "Play Mina’s spot", film: "m-variance", at: 54.24, spot: spots["va-guided"] },
+    welcome: { heading: "How often are you behind?", em: "Guess first.", lead: "Watch Blue and Coral make the same calls a thousand times, then work out three totals.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s spot", film: "m-variance", at: 54.24, spot: spots["va-guided"] },
     hands: [
-      { id: "va-guided", label: "Mina’s spot", coachLine: "The film’s hundred calls." },
+      { id: "va-guided", label: "Knox’s spot", coachLine: "The film’s hundred calls." },
       { id: "va-practice", label: "Practice", coachLine: "A lucky run. Judge the play." },
       { id: "va-fresh", label: "Fresh spot", coachLine: "A new size and count." },
     ],

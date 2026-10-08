@@ -274,7 +274,15 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     else assert.deepEqual(take.ruleCard, { lines: anchors.ruleCaptions, sub: null }, "the film's rule captions");
     assert.ok(take.rule && take.recapLabels.length === 3);
     walkKeys(def, (k, trail) => assert.ok(!["key", "correct", "correctAction", "answer", "misconception"].includes(k), `${node}${trail} ships a key`));
-    for (const hand of Object.values(def.hands)) assert.deepEqual(hand.opponent || {}, {}, "no opponent cards ship on a hand");
+    // Opponent cards ship only where the question already names them (a showdown read), and then
+    // a showdown step turns them up right before the decision.
+    for (const [id, hand] of Object.entries(def.hands)) {
+      const versus = def.spots[id]?.versus;
+      if (!versus) { assert.deepEqual(hand.opponent || {}, {}, `${id}: no opponent cards ship on a hand`); continue; }
+      assert.deepEqual(hand.opponent, { reveal: versus }, `${id}: the reveal is the cards the question names`);
+      const at = hand.script.findIndex((step) => step.do === "decide");
+      assert.equal(hand.script[at - 1]?.do, "showdown", `${id}: the cards turn up right before the decision`);
+    }
     const [g, , f] = def.stages.slice(3, 6).map((s) => def.spots[s.spotId]);
     assert.notEqual(JSON.stringify([f.hero, f.board, f.potBefore, f.bet, f.prompt]), JSON.stringify([g.hero, g.board, g.potBefore, g.bet, g.prompt]), "the fresh spot is changed");
   });

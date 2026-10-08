@@ -37,14 +37,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-history", film: "w-history", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 3,
+  node: "w-history", film: "w-history", coach: "knox", access: "free", track: "Welcome to Poker", minutes: 3,
   title: "Played against people.", kicker: "Two hundred years, one thread.",
   assumptions: "A history film. Every claim on screen is sourced in the plan's truth sheet (HISTORY-SOURCES.md); no real person is named or shown. The table here is only a frame for the questions.",
   stages: v2Stages({
-    welcome: { heading: "Played against people.", em: "Won by thinking.", lead: "Riverboats, Texas and a computer. Watch what they share, then answer three quick questions.", cta: "Watch with Ada" },
-    film: { upNext: "Answer Ada’s question", film: "w-history", at: null, spot: spots["wh-guided"] },
+    welcome: { heading: "Played against people.", em: "Won by thinking.", lead: "Riverboats, Texas and a computer. Watch what they share, then answer three quick questions.", cta: "Watch with Knox" },
+    film: { upNext: "Answer Knox’s question", film: "w-history", at: null, spot: spots["wh-guided"] },
     hands: [
-      { id: "wh-guided", label: "Ada’s question", coachLine: "The film’s question. Your answer." },
+      { id: "wh-guided", label: "Knox’s question", coachLine: "The film’s question. Your answer." },
       { id: "wh-practice", label: "Practice", coachLine: "The machines, this time." },
       { id: "wh-fresh", label: "Fresh question", coachLine: "A new spot: a tournament." },
     ],

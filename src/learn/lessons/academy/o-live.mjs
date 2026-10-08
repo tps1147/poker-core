@@ -33,27 +33,27 @@ const fresh = { street: "river", hero: ["Tc", "Td"], board: ["8h", "6s", "4d", "
 
 const definition = {
   ...definitionBase({
-    node: "o-live", coach: "reina", title: "Keep the rules yourself.", kicker: "Say it, move once, read the betting.",
+    node: "o-live", coach: "knox", title: "Keep the rules yourself.", kicker: "Say it, move once, read the betting.",
     track: "formats", chapter: "Other Tables", minutes: 4, feedback,
     assumptions: "A live table under common house rules, the way the Poker TDA rules put them. Rooms can differ, so check the house rules where you play. Words said in turn count. A bet goes out in one motion, or you announce the amount first. Facing a bet, a single oversized chip with nothing said is a call. Tells, like a shaking hand, are weak evidence beside what a player bets. Each hand stops once the rule is applied.",
   }),
   stages: [
     welcome("Keep the rules yourself.", "Say it, move once, read the betting.",
-      "Online the software keeps the rules for you. At a real table, you keep them. Watch Reina’s three habits, then rule on three live spots.", "Reina"),
-    filmStage({ film: "o-live", at: 50.5, spotId: "lv-turn", spot: turnSpot, upNext: "Rule on Reina’s first spot" }),
+      "Online the software keeps the rules for you. At a real table, you keep them. Watch Knox’s three habits, then rule on three live spots.", "Knox"),
+    filmStage({ film: "o-live", at: 50.5, spotId: "lv-turn", spot: turnSpot, upNext: "Rule on Knox’s first spot" }),
     whyStage("lv-why", "Why is the big chip only a call?", [
       { id: "no-word", text: "Facing a bet, a single oversized chip with no declaration is a call under common house rules.", fix: "Right. Say “raise” first, then put the chip out." },
       { id: "online", text: "The chip is worth more than the bet, so it raises, like typing a bigger amount online.", fix: "Online and live rules aren’t the same. Live, the chip alone doesn’t say raise." },
       { id: "double", text: "It raises if the chip is worth at least twice the bet.", fix: "Size doesn’t make it a raise without a word. Announce the raise first." },
     ]),
-    decision("lv-guided", "lv-guided", "guided", "Reina’s spot", "Reina’s spot: words count.", "Try a practice hand", { feedback }),
+    decision("lv-guided", "lv-guided", "guided", "Knox’s spot", "Knox’s spot: words count.", "Try a practice hand", { feedback }),
     decision("lv-practice", "lv-practice", "practice", "Practice", "One motion.", "Try a fresh hand", { feedback }),
     decision("lv-fresh", "lv-fresh", "fresh", "Fresh hand", "A tell across the table.", "See your recap", { feedback }),
     takeaway({
       heading: "Say it, move once.",
       rule: "At a live table, say what you do, move once, and let the betting do the talking.",
       lead: "Your words count. Bet in one motion or announce it. Facing a bet, one big chip with nothing said is a call. Tells are weak evidence; read the betting first.",
-      labels: ["Reina’s spot", "Practice", "Fresh hand"],
+      labels: ["Knox’s spot", "Practice", "Fresh hand"],
     }),
   ],
   spots: {

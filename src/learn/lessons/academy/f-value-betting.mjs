@@ -35,15 +35,15 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "f-value-betting", film: "f-value-betting", coach: "vale", access: "pro", track: "Postflop", minutes: 4,
+  node: "f-value-betting", film: "f-value-betting", coach: "knox", access: "pro", track: "Postflop", minutes: 4,
   title: "Bet when worse hands call.", kicker: "Not to trap. Not to hope.",
   assumptions: "Heads-up on the river; he checks to you. Which hands call is given for each exercise as an illustration, never a read of his cards, and raises are ignored. A value bet earns when more than half of the hands that call are worse than yours.",
   feedback: { found: "That’s the value read.", missed: "Let’s sort the callers.", open: "Here’s the thinking." },
   stages: v2Stages({
-    welcome: { heading: "Top pair on the river.", em: "Check and hope, or bet?", lead: "Watch Vale sort the hands that call, then decide three rivers at the table.", cta: "Watch with Vale" },
-    film: { upNext: "Play Vale’s river", film: "f-value-betting", at: 70.02, spot: spots["vb-guided"] },
+    welcome: { heading: "Top pair on the river.", em: "Check and hope, or bet?", lead: "Watch Knox sort the hands that call, then decide three rivers at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s river", film: "f-value-betting", at: 70.02, spot: spots["vb-guided"] },
     hands: [
-      { id: "vb-guided", label: "Vale’s river", coachLine: "The film’s one change. Your call." },
+      { id: "vb-guided", label: "Knox’s river", coachLine: "The film’s one change. Your call." },
       { id: "vb-practice", label: "Practice", coachLine: "The film’s first river." },
       { id: "vb-fresh", label: "Fresh hand", coachLine: "A thinner river." },
     ],

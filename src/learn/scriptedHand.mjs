@@ -249,7 +249,10 @@ export function validateHand(hand) {
         decided = true;
       }
       if (step.do === "showdown") {
-        if (!decided) errors.push(`${at}: showdown must follow a decision whose answer is saved.`);
+        // A showdown read: a hand that is already over (no decision yet) turns its cards up just
+        // before the one decision that asks about them. Any other showdown follows a decision.
+        const read = !decided && steps[i + 1]?.do === "decide" && !step.if && step.when == null;
+        if (!decided && !read) errors.push(`${at}: showdown must follow a decision whose answer is saved.`);
         const named = step.seats == null ? Object.keys(reveals) : [].concat(step.seats);
         if (!Object.keys(reveals).length) errors.push(plainSeats || seats.length === 2 ? `${at}: showdown requires opponent.reveal.` : `${at}: showdown requires a seat with reveal.`);
         named.forEach((id) => { if (!reveals[id]) errors.push(`${at}: seat "${id}" has no reveal.`); else shown.add(id); });
@@ -447,7 +450,8 @@ export function blockedBy(state, step, ctx = {}) {
   const lastDecided = state.decided[state.decided.length - 1];
   if (step.when === "answered" && lastDecided && !answers[lastDecided]) return { kind: "answer", spotId: lastDecided };
   if (step.if && branchTaken(state, step, ctx) === null) return { kind: "answer", spotId: step.if.spotId || lastDecided || null };
-  if (step.do === "showdown" && (!lastDecided || !answers[lastDecided])) return { kind: "answer", spotId: lastDecided || null };
+  // A showdown read (before any decision; validateHand allows it only right before a decide) runs.
+  if (step.do === "showdown" && lastDecided && !answers[lastDecided]) return { kind: "answer", spotId: lastDecided };
   if (step.do === "act" && step.action === "answer" && !answers[step.spotId]) return { kind: "answer", spotId: step.spotId };
   return null;
 }

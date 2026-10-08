@@ -33,14 +33,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "b-texture-read", film: "b-texture-read", coach: "ada", access: "free", track: "Reading the Board", minutes: 4,
+  node: "b-texture-read", film: "b-texture-read", coach: "knox", access: "free", track: "Reading the Board", minutes: 4,
   title: "Read the shape first.", kicker: "What’s possible now, and what’s coming.",
   assumptions: "A board’s shape is what the cards allow: paired, suited, connected or dry. Every “possible now” answer is found by trying every two-card hand from the unseen cards.",
   stages: v2Stages({
-    welcome: { heading: "Which flops are dangerous?", em: "Pick one, or more.", lead: "Watch Ada read five flops, then read the shape of three at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Answer Ada’s question", film: "b-texture-read", at: null, spot: spots["tx-guided"] },
+    welcome: { heading: "Which flops are dangerous?", em: "Pick one, or more.", lead: "Watch Knox read five flops, then read the shape of three at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Answer Knox’s question", film: "b-texture-read", at: null, spot: spots["tx-guided"] },
     hands: [
-      { id: "tx-guided", label: "Ada’s flops", coachLine: "The film’s five flops. Find the flush." },
+      { id: "tx-guided", label: "Knox’s flops", coachLine: "The film’s five flops. Find the flush." },
       { id: "tx-practice", label: "Practice", coachLine: "A connected flop." },
       { id: "tx-fresh", label: "Fresh flop", coachLine: "A paired flop." },
     ],

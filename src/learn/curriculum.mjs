@@ -46,6 +46,7 @@
 // Pure data and functions; it imports only the tree and the shipped definitions (both pure data).
 import { TRACKS, NODES } from "./academyTree.mjs";
 import { filmFirstLesson } from "./lessons/index.mjs";
+import { OPENER_NARRATOR, OPENER_PRESENTER, TRACK_NARRATOR, TRACK_PRESENTER } from "./narrators.mjs";
 
 export const DRILL_TARGET = 5;
 export const HAND_SPOTS = 5;
@@ -81,12 +82,10 @@ export const TRACK_LEVELS = Object.freeze({
   people: "intermediate", player: "intermediate", theory: "advanced", formats: "mastery",
 });
 
-// Each track's coach (ada, mina, reina, vale, knox, sera) and its chapter-hand puzzle topic (null:
-// sealed by proving every lesson). The topics are the old chapters' own.
-const TRACK_COACH = Object.freeze({
-  welcome: "ada", rules: "ada", board: "ada", math: "mina", preflop: "reina", postflop: "vale",
-  pressure: "knox", people: "sera", theory: "sera", player: "mina", formats: "reina",
-});
+// Each track's coach, its presenter (narrators.mjs TRACK_PRESENTER: the same gender as the track's
+// narrator), and its chapter-hand puzzle topic (null: sealed by proving every lesson). The topics are
+// the old chapters' own.
+const TRACK_COACH = TRACK_PRESENTER;
 const TRACK_TOPIC = Object.freeze({
   math: "pot-odds", preflop: "starting-hands", postflop: "postflop-cbet", pressure: "bluffing", people: "hand-reading",
 });
@@ -123,6 +122,8 @@ export const TRACK_CHAPTERS = Object.freeze(TRACKS.map((track) => {
   const lessons = NODES.filter((node) => node.track === track.id).map((node, i) => nodeSlot(node, i, levelAccess));
   return Object.freeze({
     id: track.id, course: track.id, track: track.id, n: track.n, title: track.title, coach: TRACK_COACH[track.id],
+    narrator: TRACK_NARRATOR[track.id],
+    opener: Object.freeze({ id: `open-${track.id}`, narrator: OPENER_NARRATOR, coach: OPENER_PRESENTER }),
     topic: TRACK_TOPIC[track.id] || null, blurb: track.promise, level, legacy: false, lessons: Object.freeze(lessons),
   });
 }));

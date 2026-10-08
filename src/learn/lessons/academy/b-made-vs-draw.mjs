@@ -36,14 +36,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "b-made-vs-draw", film: "b-made-vs-draw", coach: "ada", access: "free", track: "Reading the Board", minutes: 3,
+  node: "b-made-vs-draw", film: "b-made-vs-draw", coach: "knox", access: "free", track: "Reading the Board", minutes: 3,
   title: "Read what you have now.", kicker: "A draw is a promise, not a hand.",
   assumptions: "A made hand already ranks; a draw needs another card. Counts are exact: every unseen card counted once, with no opponent cards known. The next card is never dealt in this lesson.",
   stages: v2Stages({
-    welcome: { heading: "Do you have a flush?", em: "Yes, or not yet?", lead: "Watch Ada tell made hands from draws, then read three hands at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "b-made-vs-draw", at: null, spot: spots["mv-guided"] },
+    welcome: { heading: "Do you have a flush?", em: "Yes, or not yet?", lead: "Watch Knox tell made hands from draws, then read three hands at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "b-made-vs-draw", at: null, spot: spots["mv-guided"] },
     hands: [
-      { id: "mv-guided", label: "Ada’s hand", coachLine: "The film’s four hearts. Read it." },
+      { id: "mv-guided", label: "Knox’s hand", coachLine: "The film’s four hearts. Read it." },
       { id: "mv-practice", label: "Practice", coachLine: "A straight draw this time." },
       { id: "mv-fresh", label: "Fresh hand", coachLine: "A new draw, with a gap." },
     ],

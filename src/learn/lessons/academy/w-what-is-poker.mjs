@@ -37,14 +37,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-what-is-poker", film: "w-what-is-poker", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 3,
+  node: "w-what-is-poker", film: "w-what-is-poker", coach: "knox", access: "free", track: "Welcome to Poker", minutes: 3,
   title: "What decides who wins?", kicker: "The cards, or the decisions.",
   assumptions: "Heads-up. At showdown the best five cards of the seven each player can use win the pot; a pot can also be won when everyone else folds. The opponent’s cards are shown in the question when the hand reaches showdown.",
   stages: v2Stages({
-    welcome: { heading: "What decides who wins?", em: "Hold that thought.", lead: "Watch Ada deal one hand all the way, then read three hands at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "w-what-is-poker", at: null, spot: spots["wip-guided"] },
+    welcome: { heading: "What decides who wins?", em: "Hold that thought.", lead: "Watch Knox deal one hand all the way, then read three hands at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "w-what-is-poker", at: null, spot: spots["wip-guided"] },
     hands: [
-      { id: "wip-guided", label: "Ada’s hand", coachLine: "Ada’s showdown. You read it." },
+      { id: "wip-guided", label: "Knox’s hand", coachLine: "Knox’s showdown. You read it." },
       { id: "wip-practice", label: "Practice", coachLine: "Same idea, new cards." },
       { id: "wip-fresh", label: "Fresh hand", coachLine: "No showdown this time." },
     ],
@@ -59,8 +59,8 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "wip-guided": huHand("wip-guided", { hero: guided.hero, board: guided.board, pot: 200 }),
-    "wip-practice": huHand("wip-practice", { hero: practice.hero, board: practice.board, pot: 160 }),
+    "wip-guided": huHand("wip-guided", { hero: guided.hero, board: guided.board, versus: guided.versus, pot: 200 }),
+    "wip-practice": huHand("wip-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 160 }),
     "wip-fresh": huHand("wip-fresh", { hero: fresh.hero, board: fresh.board, pot: 120, acts: [{ seat: "opponent", action: "bet", amount: 60 }] }),
   },
 });

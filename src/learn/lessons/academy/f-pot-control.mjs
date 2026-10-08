@@ -35,14 +35,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "f-pot-control", film: "f-pot-control", coach: "vale", access: "pro", track: "Postflop", minutes: 4,
+  node: "f-pot-control", film: "f-pot-control", coach: "knox", access: "pro", track: "Postflop", minutes: 4,
   title: "Medium hand, small pot.", kicker: "Take the free card when you’re last.",
   assumptions: "Heads-up, half-pot bets, and every bet called. Which hands keep calling is the film’s illustration, never a read. A free card means the next card comes without anyone betting.",
   stages: v2Stages({
-    welcome: { heading: "How big a pot do you want?", em: "Three streets, or two?", lead: "Watch Vale size a pot for a pair of nines, then play three spots at the table.", cta: "Watch with Vale" },
-    film: { upNext: "Play Vale’s nines", film: "f-pot-control", at: 60.81, spot: spots["pc-guided"] },
+    welcome: { heading: "How big a pot do you want?", em: "Three streets, or two?", lead: "Watch Knox size a pot for a pair of nines, then play three spots at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s nines", film: "f-pot-control", at: 60.81, spot: spots["pc-guided"] },
     hands: [
-      { id: "pc-guided", label: "Vale’s nines", coachLine: "The film’s turn, out of position." },
+      { id: "pc-guided", label: "Knox’s nines", coachLine: "The film’s turn, out of position." },
       { id: "pc-practice", label: "Practice", coachLine: "Last to act this time." },
       { id: "pc-fresh", label: "Fresh hand", coachLine: "A new pot to size." },
     ],

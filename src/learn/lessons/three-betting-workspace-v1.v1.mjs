@@ -58,7 +58,7 @@ const definition = {
   id: "three-betting-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-3betting",
   sourceLessonId: "lesson-3betting-001", videoLessonId: "lesson-3betting-001",
-  coach: "knox", access: "pro", template: "preflop",
+  coach: "knox", narrator: "nathan", access: "pro", template: "preflop",
   title: "Know why you 3-bet.", kicker: "A 3-bet is not a bigger call.",
   trail: ["Learn", "Preflop discipline", "3-betting"],
   course: { chapter: "Preflop discipline" },

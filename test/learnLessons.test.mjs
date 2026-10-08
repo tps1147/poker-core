@@ -277,9 +277,9 @@ const outs = lesson("outs-workspace-v1");
 const stageOf = (definition, spotId) => definition.stages.findIndex((stage) => stage.spotId === spotId);
 const attempt = (spotId, correct, extra = {}) => ({ spotId, correct, ...extra });
 
-check("railSegments: one segment per hand (outs: Film, Mina’s hand, Practice, Fresh hand, Recap)", () => {
+check("railSegments: one segment per hand (outs: Film, Knox’s hand, Practice, Fresh hand, Recap)", () => {
   const segments = railSegments(outs, null);
-  assert.deepEqual(segments.map((segment) => segment.label), ["Film", "Mina’s hand", "Practice", "Fresh hand", "Recap"]);
+  assert.deepEqual(segments.map((segment) => segment.label), ["Film", "Knox’s hand", "Practice", "Fresh hand", "Recap"]);
   assert.deepEqual(segments.map((segment) => segment.key), ["film", "outs2-guided", "outs2-practice", "outs2-fresh", "recap"]);
   assert.deepEqual(segments.map((segment) => segment.number), [1, 2, 3, 4, 5]);
   assert.deepEqual(segments[2].stages, [4, 5], "the practice hand holds two decisions (after the film's why step)");
@@ -378,7 +378,7 @@ check("recapRows: one row per hand, labelled per hand", () => {
   };
   const rows = recapRows(outs, { history, answers });
   assert.equal(rows.length, 3);
-  assert.deepEqual(rows.map((row) => row.label), ["Mina’s hand", "Practice", "Fresh hand"]);
+  assert.deepEqual(rows.map((row) => row.label), ["Knox’s hand", "Practice", "Fresh hand"]);
   assert.deepEqual(rows.map((row) => row.words), ["first try", "after a retry", "missed"]);
   assert.deepEqual(rows[1].facts, ["8 outs", "call"]);
   assert.deepEqual([rows[2].missed, rows[2].missedStage, rows[2].firstStage], [true, stageOf(outs, "outs2-fresh-count"), stageOf(outs, "outs2-fresh-count")]);
@@ -430,7 +430,7 @@ check("fitsActionBar, priceLine, ledgerLines, feedbackCopy", () => {
   const guided = outs.spots["outs2-guided-call"];
   assert.equal(priceLine(guided), "25 ÷ 250 = 10%");
   assert.deepEqual(ledgerLines(guided, null, null), [
-    { key: "chance", label: "Mina’s estimate", value: "9 outs · roughly 18%" },
+    { key: "chance", label: "Knox’s estimate", value: "9 outs · roughly 18%" },
     { key: "price", label: "The price", value: "25 ÷ 250 = 10%" },
   ]);
   const hidden = outs.spots["outs2-fresh-call"];

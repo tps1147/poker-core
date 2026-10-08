@@ -32,27 +32,27 @@ const fresh = preflop(["Js", "7s"]);
 
 const definition = {
   ...definitionBase({
-    node: "o-heads-up", coach: "reina", title: "Heads-up, play wider.", kicker: "But every chip still needs a reason.",
+    node: "o-heads-up", coach: "knox", title: "Heads-up, play wider.", kicker: "But every chip still needs a reason.",
     track: "formats", chapter: "Other Tables", minutes: 4, feedback,
     assumptions: "Blinds of one small blind and one big blind, worth 1.5 big blinds a round, no antes and no rake. A round is one hand per player at the table, so the blinds cost 1.5 ÷ (number of players) big blinds a hand on average. Heads-up the button posts the small blind. Each hand stops before the flop.",
   }),
   stages: [
     welcome("Heads-up, play wider.", "But every chip still needs a reason.",
-      "With one opponent left, the rules change shape and waiting gets expensive. Watch Reina, then read three heads-up hands.", "Reina"),
-    filmStage({ film: "o-heads-up", at: null, spotId: "hu-turn", spot: turnSpot, upNext: "Play Reina’s heads-up hand" }),
+      "With one opponent left, the rules change shape and waiting gets expensive. Watch Knox, then read three heads-up hands.", "Knox"),
+    filmStage({ film: "o-heads-up", at: null, spotId: "hu-turn", spot: turnSpot, upNext: "Play Knox’s heads-up hand" }),
     whyStage("hu-why", "Why play wider heads-up?", [
       { id: "cost", text: "Waiting costs 0.75 big blind a hand, 4.5 times a full table, and only one player can hold a better hand.", fix: "Right. The nit bleeds away; the player who never stops raising gets picked off." },
       { id: "same", text: "Strong hands are strong anywhere, so the hands you play don’t change.", fix: "Not heads-up. With one opponent, fewer hands beat you, and waiting costs 4.5 times as much." },
       { id: "acts-first", text: "Because heads-up the button acts first on every street.", fix: "The button acts first only before the flop, then last on every street after." },
     ]),
-    decision("hu-guided", "hu-guided", "guided", "Reina’s hand", "Reina’s heads-up hand. Who acts first?", "Try a practice hand", { feedback }),
+    decision("hu-guided", "hu-guided", "guided", "Knox’s hand", "Knox’s heads-up hand. Who acts first?", "Try a practice hand", { feedback }),
     decision("hu-practice", "hu-practice", "practice", "Practice", "What does waiting cost?", "Try a fresh hand", { feedback }),
     decision("hu-fresh", "hu-fresh", "fresh", "Fresh hand", "Compare with six-handed.", "See your recap", { feedback }),
     takeaway({
       heading: "Wider, with a reason.",
       rule: "Heads-up, play wider and keep the pressure on, but every chip still needs a reason.",
       lead: "The button posts the small blind, acts first before the flop and last after it. Waiting costs 0.75 big blind a hand, and one opponent holds a pocket pair only 5.9% of the time.",
-      labels: ["Reina’s hand", "Practice", "Fresh hand"],
+      labels: ["Knox’s hand", "Practice", "Fresh hand"],
     }),
   ],
   spots: {
@@ -61,7 +61,7 @@ const definition = {
       bands: bands(["button", "You, the button and small blind"], ["big-blind", "The big blind"]),
       dockPrompt: "Who acts first before the flop?",
       title: "Heads-up. Who acts first?",
-      prompt: "Reina’s heads-up hand. You have the button, so you post the small blind. Before the flop, who acts first?",
+      prompt: "Knox’s heads-up hand. You have the button, so you post the small blind. Before the flop, who acts first?",
       hint: "Heads-up the button is the small blind. Who acts first before the flop, and who after?",
       explanation: "You do: the button posts the small blind and acts first before the flop. After the flop you act last on every street, so the button has position for the whole hand after the flop, every other hand.",
     },

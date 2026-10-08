@@ -37,14 +37,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "b-what-beats-you", film: "b-what-beats-you", coach: "ada", access: "free", track: "Reading the Board", minutes: 4,
+  node: "b-what-beats-you", film: "b-what-beats-you", coach: "knox", access: "free", track: "Reading the Board", minutes: 4,
   title: "Name what beats you.", kicker: "Before another chip.",
   assumptions: "Counts are exact: every two-card hand from the unseen cards, each counted once, as many-hands honest totals. They say how many hands beat you, never whether this opponent holds one.",
   stages: v2Stages({
-    welcome: { heading: "How many hands beat you?", em: "None? Ten? Sixty?", lead: "Watch Ada count the families that beat top pair, then name them at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "b-what-beats-you", at: null, spot: spots["wb-guided"] },
+    welcome: { heading: "How many hands beat you?", em: "None? Ten? Sixty?", lead: "Watch Knox count the families that beat top pair, then name them at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "b-what-beats-you", at: null, spot: spots["wb-guided"] },
     hands: [
-      { id: "wb-guided", label: "Ada’s hand", coachLine: "The film’s top pair. Count it." },
+      { id: "wb-guided", label: "Knox’s hand", coachLine: "The film’s top pair. Count it." },
       { id: "wb-practice", label: "Practice", coachLine: "One more card, new families." },
       { id: "wb-fresh", label: "Fresh hand", coachLine: "An overpair. What beats it?" },
     ],

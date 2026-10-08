@@ -37,11 +37,11 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-first-hand", film: "r-first-hand", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 4,
+  node: "r-first-hand", film: "r-first-hand", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 4,
   title: "Your first full hand.", kicker: "Every rule in action.",
   assumptions: "Heads-up against Ada, blinds of 5 and 10, 1,000 each. The hand pauses for rules checks: who acts, which buttons are legal, what is in the pot. Those have right answers; your poker choices are never graded, not even by the result.",
   stages: v2Stages({
-    welcome: { heading: "Ready for a full hand?", em: "Every rule is already yours.", lead: "Watch how the hand pauses for a rules check, then sit down with Ada.", cta: "Watch with Ada" },
+    welcome: { heading: "Ready for a full hand?", em: "Every rule is already yours.", lead: "Watch how the hand pauses for a rules check, then sit down with Ada.", cta: "Watch with Knox" },
     film: { upNext: "Sit down with Ada", film: "r-first-hand", at: null, spot: spots["fh-guided"] },
     hands: [
       { id: "fh-guided", label: "Before the flop", coachLine: "The first rules check." },

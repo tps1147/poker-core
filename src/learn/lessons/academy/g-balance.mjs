@@ -30,27 +30,27 @@ const fresh = river(["As", "9s"], ["9h", "7c", "5s", "3d", "2h"]);
 
 const definition = {
   ...definitionBase({
-    node: "g-balance", coach: "sera", title: "Balance is a ratio.", kicker: "Leave his call worth nothing.",
+    node: "g-balance", coach: "knox", title: "Balance is a ratio.", kicker: "Leave his call worth nothing.",
     track: "theory", chapter: "Game Theory", minutes: 5, feedback,
     assumptions: "Heads-up rivers, no rake. You bet with a range of value hands, which beat any call, and bluffs, which lose to any call. His hand beats only a bluff. You choose how many bluffs go with the value hands you are given. Each hand stops before you bet.",
   }),
   stages: [
     welcome("Balance is a ratio.", "Leave his call worth nothing.",
-      "How many bluffs go with your value bets? Watch Sera find the ratio, then balance three rivers.", "Sera"),
-    filmStage({ film: "g-balance", at: 66.15, spotId: "ba-turn", spot: turnSpot, upNext: "Balance Sera’s river" }),
+      "How many bluffs go with your value bets? Watch Knox find the ratio, then balance three rivers.", "Knox"),
+    filmStage({ film: "g-balance", at: 66.15, spotId: "ba-turn", spot: turnSpot, upNext: "Balance Knox’s river" }),
     whyStage("ba-why", "Why 10 bluffs with 25 value hands?", [
       { id: "ratio", text: "Bluffs ÷ all bets = 80 ÷ (120 + 160) = 2/7, so 10 of 35. His call then gains nothing.", fix: "Right. One more bluff and calling wins; one fewer and folding wins." },
       { id: "random", text: "Balanced means bluffing at random, about half the time.", fix: "Balanced means a ratio, not a coin flip. The bet size sets it: here 10 bluffs to 25 value." },
       { id: "breakeven", text: "Bluffs should be bet ÷ (pot + bet) = 80 ÷ 200 of my bets.", fix: "That is a bluff’s break-even fold rate. A balanced range uses bet ÷ (pot + 2 bets): 2/7, not 2/5." },
     ]),
-    decision("ba-guided", "ba-guided", "guided", "Sera’s river", "Sera’s pot-size bet.", "Try a practice hand", { feedback }),
+    decision("ba-guided", "ba-guided", "guided", "Knox’s river", "Knox’s pot-size bet.", "Try a practice hand", { feedback }),
     decision("ba-practice", "ba-practice", "practice", "Practice", "Half the pot.", "Try a fresh hand", { feedback }),
     decision("ba-fresh", "ba-fresh", "fresh", "Fresh hand", "Your bet size, your ratio.", "See your recap", { feedback }),
     takeaway({
       heading: "Nothing to gain.",
       rule: "Bluffs ÷ all bets = bet ÷ (pot + 2·bet).",
       lead: "Half pot: 1 bet in 4 is a bluff. Pot size: 1 in 3. Twice the pot: 2 in 5. Bigger bets carry more bluffs.",
-      labels: ["Sera’s river", "Practice", "Fresh hand"],
+      labels: ["Knox’s river", "Practice", "Fresh hand"],
     }),
   ],
   spots: {
@@ -59,7 +59,7 @@ const definition = {
       bands: bluffBands(5, 10, 20),
       dockPrompt: "How many bluffs go with 20 value hands?",
       title: "Pot-size bet. How many bluffs?",
-      prompt: "Sera’s river: pot 100, checked to you. You bet 100 with 20 value hands. How many bluffs balance them?",
+      prompt: "Knox’s river: pot 100, checked to you. You bet 100 with 20 value hands. How many bluffs balance them?",
       hint: "At a pot-size bet, the bet over the pot plus two bets is 1/3.",
       explanation: "10 bluffs: 10 of 30 bets is 1/3. His call wins 200 against a bluff and loses 100 against value: 10/30 × 200 − 20/30 × 100 = 66.7 − 66.7 = 0.",
     },

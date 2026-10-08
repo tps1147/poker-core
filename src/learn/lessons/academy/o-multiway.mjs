@@ -45,27 +45,27 @@ const fresh = { street: "turn", hero: ["Kd", "Qd"], board: ["Th", "8c", "5s", "3
 
 const definition = {
   ...definitionBase({
-    node: "o-multiway", conceptId: "t6-multiway", coach: "reina", title: "Every player is another range.", kicker: "Bluff less, value bet stronger.",
+    node: "o-multiway", conceptId: "t6-multiway", coach: "knox", title: "Every player is another range.", kicker: "Bluff less, value bet stronger.",
     track: "formats", chapter: "Other Tables", minutes: 5, feedback,
     assumptions: "No rake. Hands ahead of yours are counted against random hands, an illustration, with only the cards you can see removed, and nothing about future cards. Each opponent’s fold rate is given, and each decides on his own, so a bluff wins only when all of them fold. A bet of 2/3 of the pot breaks even at 40% folds, half the pot at 1/3. Each hand stops once you act.",
   }),
   stages: [
     welcome("Every player is another range.", "Bluff less, value bet stronger.",
-      "Top pair against one player is strong. Against three? Watch Reina count the seats, then play three pots with more than one opponent.", "Reina"),
-    filmStage({ film: "o-multiway", at: 69.34, spotId: "mw-turn", spot: turnSpot, upNext: "Play Reina’s flop" }),
+      "Top pair against one player is strong. Against three? Watch Knox count the seats, then play three pots with more than one opponent.", "Knox"),
+    filmStage({ film: "o-multiway", at: 69.34, spotId: "mw-turn", spot: turnSpot, upNext: "Play Knox’s flop" }),
     whyStage("mw-why", "Why can you bluff these two?", [
       { id: "both", text: "Both must fold: 0.7 × 0.7 = 49%, above the 40% a 2/3-pot bluff needs.", fix: "Right. Against three players at 70%, it would be 34.3%: not enough." },
       { id: "more-value", text: "More players put more chips in the pot, so any bet is worth more.", fix: "More callers don’t mean more value for any hand. Each extra player is one more range that has to fold." },
       { id: "each", text: "Each one folds 70%, which is above 40%.", fix: "One player alone isn’t the test. Both must fold together: 49%." },
     ]),
-    decision("mw-guided", "mw-guided", "guided", "Reina’s flop", "Reina’s top pair, three opponents.", "Try a practice hand", { feedback }),
+    decision("mw-guided", "mw-guided", "guided", "Knox’s flop", "Knox’s top pair, three opponents.", "Try a practice hand", { feedback }),
     decision("mw-practice", "mw-practice", "practice", "Practice", "Three opponents. Bluff?", "Try a fresh hand", { feedback }),
     decision("mw-fresh", "mw-fresh", "fresh", "Fresh hand", "Two opponents, a smaller bet.", "See your recap", { feedback }),
     takeaway({
       heading: "Count every range.",
       rule: "Every extra player is another range to beat. Bluff less and value bet stronger hands.",
       lead: "Against random hands top pair is behind 4.0% of the time against one, 7.8% against two and 11.5% against three. A bluff needs all of them to fold.",
-      labels: ["Reina’s flop", "Practice", "Fresh hand"],
+      labels: ["Knox’s flop", "Practice", "Fresh hand"],
     }),
   ],
   spots: {
@@ -74,7 +74,7 @@ const definition = {
       bands: bands(["p4", "About 4%"], ["p11", "About 11.5%"], ["p30", "About 30%"]),
       dockPrompt: "How often is someone already ahead?",
       title: "Top pair, three opponents.",
-      prompt: "Reina’s hand: A♦ J♣ on J♥ 7♠ 3♦. Against three random hands (an illustration), how often does at least one of them already beat you?",
+      prompt: "Knox’s hand: A♦ J♣ on J♥ 7♠ 3♦. Against three random hands (an illustration), how often does at least one of them already beat you?",
       hint: "Against one hand it is 43 of 1,081, about 4%. Each seat adds its own hands.",
       explanation: "About 11.5%. Against one random hand 4.0%, against two 7.8%, against three 11.5%. Each seat just adds hands that already beat you.",
     },

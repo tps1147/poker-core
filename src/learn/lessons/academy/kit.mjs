@@ -12,6 +12,8 @@
 // `at` is the film's canon.yourTurn time in seconds; a film whose canon.yourTurn is null plays to
 // its stop and then asks (`at: null, anchor: "end"`).
 
+import { TRACK_NARRATOR } from "../../narrators.mjs";
+
 export const STREETS = Object.freeze({ 0: "preflop", 3: "flop", 4: "turn", 5: "river" });
 export const streetOf = (board) => STREETS[board.length];
 
@@ -85,7 +87,7 @@ export function definitionBase({ node, conceptId = null, coach, access = "pro", 
   return {
     id: node, node, version: 1, flow: "film-first", format: "academy-v2",
     conceptId, sourceLessonId: node, videoLessonId: node,
-    coach, access, template: track, title, kicker,
+    coach, narrator: TRACK_NARRATOR[track] || null, access, template: track, title, kicker,
     trail: ["Learn", chapter, title], course: { chapter },
     meta: { minutes }, assumptions, media: node, filmVersion: 2,
     feedback: feedback || { found: "You found it.", missed: "Let’s look again.", open: "Here’s the thinking." },

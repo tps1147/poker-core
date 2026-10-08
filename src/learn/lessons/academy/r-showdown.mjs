@@ -36,14 +36,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-showdown", film: "r-showdown", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 3,
+  node: "r-showdown", film: "r-showdown", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 3,
   title: "Fold, or the best five.", kicker: "Exact ties split.",
   assumptions: "A pot is won when everyone else folds, with no cards shown, or at showdown by the best five. Exact ties split the pot evenly. Showdown hands are shown in the question.",
   stages: v2Stages({
-    welcome: { heading: "Can you win without showing?", em: "Yes, or no?", lead: "Watch three showdowns, then call the winner, or the split, at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "r-showdown", at: null, spot: spots["sd-guided"] },
+    welcome: { heading: "Can you win without showing?", em: "Yes, or no?", lead: "Watch three showdowns, then call the winner, or the split, at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "r-showdown", at: null, spot: spots["sd-guided"] },
     hands: [
-      { id: "sd-guided", label: "Ada’s hand", coachLine: "The film’s fold. Who wins?" },
+      { id: "sd-guided", label: "Knox’s hand", coachLine: "The film’s fold. Who wins?" },
       { id: "sd-practice", label: "Practice", coachLine: "A showdown this time." },
       { id: "sd-fresh", label: "Fresh hand", coachLine: "New board. Winner or split?" },
     ],
@@ -59,8 +59,8 @@ const definition = v2Lesson({
   spots,
   hands: {
     "sd-guided": huHand("sd-guided", { hero: guided.hero, board: guided.board, pot: 120, acts: [{ seat: "opponent", action: "bet", amount: 60 }] }),
-    "sd-practice": huHand("sd-practice", { hero: practice.hero, board: practice.board, pot: 300 }),
-    "sd-fresh": huHand("sd-fresh", { hero: fresh.hero, board: fresh.board, pot: 200 }),
+    "sd-practice": huHand("sd-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 300 }),
+    "sd-fresh": huHand("sd-fresh", { hero: fresh.hero, board: fresh.board, versus: fresh.versus, pot: 200 }),
   },
 });
 

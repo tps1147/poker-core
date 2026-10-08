@@ -35,27 +35,27 @@ const fresh = { street: "river", hero: ["Kc", "Jh"], board: ["Ks", "8d", "6c", "
 
 const definition = {
   ...definitionBase({
-    node: "g-toy-games", coach: "sera", title: "Bluff at the right rate.", kicker: "Poker, in three cards.",
+    node: "g-toy-games", coach: "knox", title: "Bluff at the right rate.", kicker: "Poker, in three cards.",
     track: "theory", chapter: "Game Theory", minutes: 5, feedback,
     assumptions: "The film plays Kuhn poker: three cards, one chip each, one bet of 1, and the higher card wins. At the table, the same idea on a Hold'em river: a range made only of best hands and bluffs bets half the pot, and his hand can beat only a bluff. What he bluffs is given in each hand, never read from his cards. Each hand stops once you act.",
   }),
   stages: [
     welcome("Bluff at the right rate.", "Poker, in three cards.",
-      "A game with three cards shows why bluffing at the right rate is required, not optional. Watch Sera play it, then take the same rates to the table.", "Sera"),
-    filmStage({ film: "g-toy-games", at: null, spotId: "tg-turn", spot: turnSpot, upNext: "Play Sera’s river" }),
+      "A game with three cards shows why bluffing at the right rate is required, not optional. Watch Knox play it, then take the same rates to the table.", "Knox"),
+    filmStage({ film: "g-toy-games", at: null, spotId: "tg-turn", spot: turnSpot, upNext: "Play Knox’s river" }),
     whyStage("tg-why", "Why does the jack bet sometimes?", [
       { id: "mix", text: "Never bluff and he folds to every bet; always bluff and he calls. The mix leaves him nothing to gain.", fix: "Right. One bet in 4 is a bluff, and his queen calls 1 time in 3." },
       { id: "computers", text: "Because a computer says so; the reason doesn’t matter at a real table.", fix: "Game theory isn’t only for computers. Three cards and one bet: you can check every line by hand, as the film did." },
       { id: "king-folds", text: "Because the jack’s bet makes his king fold sometimes.", fix: "His king never folds to a bet. The bluff wins when his queen folds." },
     ]),
-    decision("tg-guided", "tg-guided", "guided", "Sera’s river", "Sera’s river. Mix your bets.", "Try a practice hand", { feedback }),
+    decision("tg-guided", "tg-guided", "guided", "Knox’s river", "Knox’s river. Mix your bets.", "Try a practice hand", { feedback }),
     decision("tg-practice", "tg-practice", "practice", "Practice", "Now from his seat.", "Try a fresh hand", { feedback }),
     decision("tg-fresh", "tg-fresh", "fresh", "Fresh hand", "He never bluffs.", "See your recap", { feedback }),
     takeaway({
       heading: "Nothing to gain.",
       rule: "If you never bluff, your bets fold everyone. Bluff at the rate that leaves the caller nothing to gain.",
       lead: "In three-card poker, 1 bet in 4 is a bluff and the queen calls 1 time in 3. Played that way, acting first costs 1/18 of a chip a hand.",
-      labels: ["Sera’s river", "Practice", "Fresh hand"],
+      labels: ["Knox’s river", "Practice", "Fresh hand"],
     }),
   ],
   spots: {

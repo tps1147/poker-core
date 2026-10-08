@@ -36,14 +36,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-the-deck", film: "r-the-deck", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 3,
+  node: "r-the-deck", film: "r-the-deck", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 3,
   title: "Ranks decide.", kicker: "Thirteen ranks, four suits.",
   assumptions: "Hold’em with one 52-card deck: four suits of thirteen ranks, no jokers. Suits never break a tie; they only matter for a flush. Showdown hands are shown in the question.",
   stages: v2Stages({
-    welcome: { heading: "Whose ace is better?", em: "Spades, hearts, or neither?", lead: "Watch Ada sort the deck, then read three cards and showdowns at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "r-the-deck", at: null, spot: spots["dk-guided"] },
+    welcome: { heading: "Whose ace is better?", em: "Spades, hearts, or neither?", lead: "Watch Knox sort the deck, then read three cards and showdowns at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "r-the-deck", at: null, spot: spots["dk-guided"] },
     hands: [
-      { id: "dk-guided", label: "Ada’s showdown", coachLine: "The film’s showdown. You read it." },
+      { id: "dk-guided", label: "Knox’s showdown", coachLine: "The film’s showdown. You read it." },
       { id: "dk-practice", label: "Practice", coachLine: "Two cards, one rank." },
       { id: "dk-fresh", label: "Fresh hand", coachLine: "A new straight, a new pair of suits." },
     ],
@@ -58,9 +58,9 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "dk-guided": huHand("dk-guided", { hero: guided.hero, board: guided.board, pot: 200 }),
+    "dk-guided": huHand("dk-guided", { hero: guided.hero, board: guided.board, versus: guided.versus, pot: 200 }),
     "dk-practice": huHand("dk-practice", { hero: practice.hero, pot: 0, blinds: [5, 10] }),
-    "dk-fresh": huHand("dk-fresh", { hero: fresh.hero, board: fresh.board, pot: 160 }),
+    "dk-fresh": huHand("dk-fresh", { hero: fresh.hero, board: fresh.board, versus: fresh.versus, pot: 160 }),
   },
 });
 

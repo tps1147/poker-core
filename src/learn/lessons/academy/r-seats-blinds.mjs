@@ -34,14 +34,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-seats-blinds", film: "r-seats-blinds", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 3,
+  node: "r-seats-blinds", film: "r-seats-blinds", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 3,
   title: "Blinds are players’ chips.", kicker: "The button moves every hand.",
   assumptions: "Blinds of 5 and 10. At six-handed the two seats after the button post the blinds; heads-up the button posts the small blind. The pot always goes to a player; the house takes nothing from it here.",
   stages: v2Stages({
-    welcome: { heading: "Whose chips are they?", em: "The house’s, or two players’?", lead: "Watch the button move round the table, then name the seats at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "r-seats-blinds", at: null, spot: spots["sb-guided"] },
+    welcome: { heading: "Whose chips are they?", em: "The house’s, or two players’?", lead: "Watch the button move round the table, then name the seats at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "r-seats-blinds", at: null, spot: spots["sb-guided"] },
     hands: [
-      { id: "sb-guided", label: "Ada’s table", coachLine: "The film’s 15 chips. Whose?" },
+      { id: "sb-guided", label: "Knox’s table", coachLine: "The film’s 15 chips. Whose?" },
       { id: "sb-practice", label: "Practice", coachLine: "Find the small blind." },
       { id: "sb-fresh", label: "Fresh hand", coachLine: "Two players now." },
     ],

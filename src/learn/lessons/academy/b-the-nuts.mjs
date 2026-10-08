@@ -37,14 +37,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "b-the-nuts", film: "b-the-nuts", coach: "ada", access: "free", track: "Reading the Board", minutes: 3,
+  node: "b-the-nuts", film: "b-the-nuts", coach: "knox", access: "free", track: "Reading the Board", minutes: 3,
   title: "The best this board allows.", kicker: "Recheck it every street.",
   assumptions: "The nuts is the best hand any two unseen cards can make with the board. Every answer is found by trying every two-card hand, with the cards in your own hand counted as possible too.",
   stages: v2Stages({
-    welcome: { heading: "Is anything better?", em: "Nothing, or something?", lead: "Watch Ada drop every pair of cards into the slots, then find the nuts at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "b-the-nuts", at: null, spot: spots["nu-guided"] },
+    welcome: { heading: "Is anything better?", em: "Nothing, or something?", lead: "Watch Knox drop every pair of cards into the slots, then find the nuts at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "b-the-nuts", at: null, spot: spots["nu-guided"] },
     hands: [
-      { id: "nu-guided", label: "Ada’s hand", coachLine: "The film’s top pair. Find the crown." },
+      { id: "nu-guided", label: "Knox’s hand", coachLine: "The film’s top pair. Find the crown." },
       { id: "nu-practice", label: "Practice", coachLine: "A new flop, a new crown." },
       { id: "nu-fresh", label: "Fresh hand", coachLine: "A paired board." },
     ],

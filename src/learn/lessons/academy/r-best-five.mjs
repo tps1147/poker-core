@@ -36,15 +36,15 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-best-five", film: "r-best-five", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 4,
+  node: "r-best-five", film: "r-best-five", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 4,
   title: "Best five of seven.", kicker: "Two, one or none of yours.",
   assumptions: "Hold’em: your hand is the best five of the seven cards you can use, your two plus the five on the board. You may use two, one or none of your own cards. Showdown hands are shown in the question.",
   feedback: { found: "You found it.", missed: "Let’s build it together.", open: "Here’s the hand." },
   stages: v2Stages({
-    welcome: { heading: "Your aces don’t play?", em: "Here’s how.", lead: "Watch Ada build the best five, then pick your own five at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "r-best-five", at: null, spot: spots["b5-guided"] },
+    welcome: { heading: "Your aces don’t play?", em: "Here’s how.", lead: "Watch Knox build the best five, then pick your own five at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "r-best-five", at: null, spot: spots["b5-guided"] },
     hands: [
-      { id: "b5-guided", label: "Ada’s hand", coachLine: "The film’s aces. Pick the five." },
+      { id: "b5-guided", label: "Knox’s hand", coachLine: "The film’s aces. Pick the five." },
       { id: "b5-practice", label: "Practice", coachLine: "Same pair. The kicker decides." },
       { id: "b5-fresh", label: "Fresh hand", coachLine: "A new seven. Your pick." },
     ],
@@ -60,7 +60,7 @@ const definition = v2Lesson({
   spots,
   hands: {
     "b5-guided": huHand("b5-guided", { hero: guided.hero, board: guided.board, pot: 200 }),
-    "b5-practice": huHand("b5-practice", { hero: practice.hero, board: practice.board, pot: 160 }),
+    "b5-practice": huHand("b5-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 160 }),
     "b5-fresh": huHand("b5-fresh", { hero: fresh.hero, board: fresh.board, pot: 120 }),
   },
 });

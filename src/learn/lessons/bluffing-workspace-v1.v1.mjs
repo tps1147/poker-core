@@ -49,7 +49,7 @@ const definition = {
   id: "bluffing-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t4-bluffing",
   sourceLessonId: "lesson-bluffing-001", videoLessonId: "lesson-bluffing-001",
-  coach: "knox", access: "pro", template: "postflop",
+  coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Bluff with a story they can fold to.", kicker: "Not because you missed.",
   trail: ["Learn", "Pressure", "Bluffing"],
   course: { chapter: "Pressure" },

@@ -1,5 +1,5 @@
 // The builders the early-track academy definitions share (welcome, rules, board, math, preflop and
-// postflop nodes that had no lesson before the 2026-10-07 rework). Pure data builders, no imports,
+// postflop nodes that had no lesson before the 2026-10-07 rework). Pure data builders importing only pure data,
 // so the definitions still run under plain Node, Metro and the web bundler.
 //
 // THE V2 LESSON (ACADEMY-LEARNING-LOOP 2026-10-07, section 2), in the shape defs-b set:
@@ -7,6 +7,9 @@
 //   practice → fresh (a changed spot, from the plan's Transfer row) → takeaway (the rule card).
 // Each hand holds one decision, whose spot id is the hand id. No key ships here: answerKeys/<node>.mjs
 // at the package root (not shipped) holds every key: the film spot, the why and the hands.
+// Its only imports are pure data (the tree and the narrators), so the definitions still run anywhere.
+import { NODES } from "../../academyTree.mjs";
+import { TRACK_NARRATOR } from "../../narrators.mjs";
 
 // Heads-up seats: You and one named opponent (a rookie stand-in, never a bot id).
 export const seatsHU = (opponent = "Ace Andy", hero = 1000, opp = hero) => ({
@@ -22,14 +25,18 @@ export const bands = (...pairs) => pairs.map(([id, label]) => ({ id, label }));
 
 // A heads-up table hand with one decision. `acts` are the opponent's (or the hero's) actions before
 // the decision; `answer` adds the hero's answer step (with `sizes` for a bet or raise choice).
-export function huHand(id, { hero, board = [], pot = 0, seats = seatsHU(), button = "hero", acts = [], blinds = null, answer = null, pause = 400 }) {
+// `versus` is the opponent's two cards when the question names them (a showdown read): they ship as
+// opponent.reveal and a showdown step turns them face up just before the decision, so the table
+// shows the very cards the question asks about.
+export function huHand(id, { hero, board = [], pot = 0, seats = seatsHU(), button = "hero", acts = [], blinds = null, answer = null, pause = 400, versus = null }) {
   return {
-    id, layout: "heads-up", seats, button, hero, opponent: {},
+    id, layout: "heads-up", seats, button, hero, opponent: versus ? { reveal: versus.slice() } : {},
     start: { street: streetOf(board), board, pot, dealt: "deal" },
     script: [
       { do: "pause", ms: pause },
       ...(blinds ? [{ do: "blinds", sb: blinds[0], bb: blinds[1] }] : []),
       ...acts.map((act) => ({ do: "act", ...act })),
+      ...(versus ? [{ do: "showdown" }] : []),
       { do: "decide", spotId: id },
       ...(answer ? [{ do: "act", seat: "hero", action: "answer", spotId: id, ...(answer.sizes ? { sizes: answer.sizes } : {}) }] : []),
     ],
@@ -37,10 +44,13 @@ export function huHand(id, { hero, board = [], pot = 0, seats = seatsHU(), butto
 }
 
 // A six-handed ring hand (the positions lesson's shape): the hero in `position`, five other chairs.
+// `players` seats a smaller table instead (two to four other chairs, each { name, stack }, clockwise
+// from the hero), with the hero's own `stack`; the default is five chairs of 1,000.
 const PLAYERS = ["Rae", "Ned", "Ivy", "Sol", "Kit"];
-export function ringHand(id, { position, hero, board = [], pot = 0, acts = [], blinds = null, pause = 400 }) {
+export function ringHand(id, { position, hero, board = [], pot = 0, acts = [], blinds = null, pause = 400, players = null, stack = 1000 }) {
   return {
-    id, layout: "six-max", seats: { hero: { name: "You", stack: 1000 } }, players: PLAYERS.map((name) => ({ name, stack: 1000 })),
+    id, layout: "six-max", seats: { hero: { name: "You", stack } },
+    players: players ? players.map(({ name, stack: chips }) => ({ name, stack: chips })) : PLAYERS.map((name) => ({ name, stack: 1000 })),
     position, hero,
     start: { street: streetOf(board), board, pot, dealt: "deal" },
     script: [
@@ -83,7 +93,7 @@ export function v2Lesson({ node, film, coach, access, title, kicker, track, minu
   return {
     id: node, node, version: 1, flow: "film-first", format: "academy-v2",
     conceptId, sourceLessonId: node, videoLessonId: node,
-    coach, access, template: track, title, kicker,
+    coach, narrator: TRACK_NARRATOR[NODES.find((item) => item.id === node)?.track] || null, access, template: track, title, kicker,
     trail: ["Learn", track, title], course: { chapter: track },
     meta: { minutes }, assumptions, media: film, filmVersion: 2,
     feedback: feedback || { found: "You found it.", missed: "Let’s look again.", open: "Here’s the thinking." },

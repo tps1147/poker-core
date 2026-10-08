@@ -35,14 +35,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "f-playing-draws", film: "f-playing-draws", coach: "vale", access: "pro", track: "Postflop", minutes: 4,
+  node: "f-playing-draws", film: "f-playing-draws", coach: "knox", access: "pro", track: "Postflop", minutes: 4,
   title: "Price first.", kicker: "Then the stacks, then the raise.",
   assumptions: "Heads-up on the flop with a nine-out flush draw; ties and other draws are ignored. The chance to hit is exact: 9 of 47 unseen cards on the next card, 378 of 1,081 pairs with both cards to come. Whether he pays you later is a read this lesson does not grade: only the arithmetic and the stack cap.",
   stages: v2Stages({
-    welcome: { heading: "A flush draw faces a bet.", em: "Call, raise or fold?", lead: "Watch Vale price a draw and let the stacks decide, then play three draws at the table.", cta: "Watch with Vale" },
-    film: { upNext: "Play Vale’s draw", film: "f-playing-draws", at: 67.72, spot: spots["pd-guided"] },
+    welcome: { heading: "A flush draw faces a bet.", em: "Call, raise or fold?", lead: "Watch Knox price a draw and let the stacks decide, then play three draws at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s draw", film: "f-playing-draws", at: 67.72, spot: spots["pd-guided"] },
     hands: [
-      { id: "pd-guided", label: "Vale’s draw", coachLine: "The film’s nine outs. Your call." },
+      { id: "pd-guided", label: "Knox’s draw", coachLine: "The film’s nine outs. Your call." },
       { id: "pd-practice", label: "Practice", coachLine: "A short stack behind." },
       { id: "pd-fresh", label: "Fresh hand", coachLine: "He’s all-in." },
     ],

@@ -34,15 +34,15 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "m-chance-as-share", film: "m-chance-as-share", coach: "mina", access: "free", track: "The Math Spine", minutes: 3,
+  node: "m-chance-as-share", film: "m-chance-as-share", coach: "knox", access: "free", track: "The Math Spine", minutes: 3,
   title: "A chance is a share.", kicker: "Repeat it, and the share shows up.",
   assumptions: "One card from a full, shuffled 52-card deck, with nothing else known; the cards in front of you play no part. A chance is the outcomes you want out of all of them, and it shows over many repeats, never in one draw.",
   feedback: { found: "You found the share.", missed: "Let’s count it together.", open: "Here’s the thinking." },
   stages: v2Stages({
-    welcome: { heading: "How often is it a heart?", em: "Rarely, one in four, or half?", lead: "Watch Mina turn a deck into chances, then find three shares yourself.", cta: "Watch with Mina" },
-    film: { upNext: "Play Mina’s spot", film: "m-chance-as-share", at: 61.51, spot: spots["cs-guided"] },
+    welcome: { heading: "How often is it a heart?", em: "Rarely, one in four, or half?", lead: "Watch Knox turn a deck into chances, then find three shares yourself.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s spot", film: "m-chance-as-share", at: 61.51, spot: spots["cs-guided"] },
     hands: [
-      { id: "cs-guided", label: "Mina’s spot", coachLine: "The film’s ace. Your answer." },
+      { id: "cs-guided", label: "Knox’s spot", coachLine: "The film’s ace. Your answer." },
       { id: "cs-practice", label: "Practice", coachLine: "A red card this time." },
       { id: "cs-fresh", label: "Fresh spot", coachLine: "Three ranks at once." },
     ],

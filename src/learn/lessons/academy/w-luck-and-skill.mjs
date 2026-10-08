@@ -38,14 +38,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-luck-and-skill", film: "w-luck-and-skill", coach: "ada", access: "free", track: "Welcome to Poker", minutes: 4,
+  node: "w-luck-and-skill", film: "w-luck-and-skill", coach: "knox", access: "free", track: "Welcome to Poker", minutes: 4,
   title: "Luck decides a hand.", kicker: "Skill decides a thousand.",
   assumptions: "Heads-up, both players all-in on the turn, so no more betting follows and both hands are shown. The river counts are exact: all 44 unseen cards, each once, with no ties. Averages are over many repeats of this same spot.",
   stages: v2Stages({
-    welcome: { heading: "Did you play it wrong?", em: "Not necessarily.", lead: "You got your chips in ahead and lost. Watch every river, then count it yourself.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "w-luck-and-skill", at: null, spot: spots["wl-guided"] },
+    welcome: { heading: "Did you play it wrong?", em: "Not necessarily.", lead: "You got your chips in ahead and lost. Watch every river, then count it yourself.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "w-luck-and-skill", at: null, spot: spots["wl-guided"] },
     hands: [
-      { id: "wl-guided", label: "Ada’s hand", coachLine: "The film’s all-in. Count the rivers." },
+      { id: "wl-guided", label: "Knox’s hand", coachLine: "The film’s all-in. Count the rivers." },
       { id: "wl-practice", label: "Practice", coachLine: "One hand lost. Now the average." },
       { id: "wl-fresh", label: "Fresh hand", coachLine: "New stakes, a new river." },
     ],
@@ -60,9 +60,9 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "wl-guided": huHand("wl-guided", { hero: SPOT.hero, board: SPOT.board, pot: 1000, seats: seatsHU("Ace Andy", 500, 500) }),
-    "wl-practice": huHand("wl-practice", { hero: SPOT.hero, board: SPOT.board, pot: 1000, seats: seatsHU("Ace Andy", 500, 500) }),
-    "wl-fresh": huHand("wl-fresh", { hero: SPOT.hero, board: SPOT.board, pot: 600, seats: seatsHU("Ace Andy", 700, 700) }),
+    "wl-guided": huHand("wl-guided", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 1000, seats: seatsHU("Ace Andy", 500, 500) }),
+    "wl-practice": huHand("wl-practice", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 1000, seats: seatsHU("Ace Andy", 500, 500) }),
+    "wl-fresh": huHand("wl-fresh", { hero: SPOT.hero, board: SPOT.board, versus: SPOT.versus, pot: 600, seats: seatsHU("Ace Andy", 700, 700) }),
   },
 });
 

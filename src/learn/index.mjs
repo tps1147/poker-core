@@ -16,6 +16,7 @@ export * from "./lessons/index.mjs";
 export * from "./lessonModel.mjs";
 export * from "./academyTree.mjs";
 export * from "./curriculum.mjs";
+export * from "./narrators.mjs";
 export * from "./covers.mjs";
 export * from "./nodeState.mjs";
 export * from "./filmV2.mjs";

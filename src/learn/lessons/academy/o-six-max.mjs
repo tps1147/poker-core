@@ -26,27 +26,27 @@ const turnSpot = {
 
 const definition = {
   ...definitionBase({
-    node: "o-six-max", coach: "reina", title: "Count who’s behind you.", kicker: "Fewer seats, wider opens.",
+    node: "o-six-max", coach: "knox", title: "Count who’s behind you.", kicker: "Fewer seats, wider opens.",
     track: "formats", chapter: "Other Tables", minutes: 4, feedback,
     assumptions: "Blinds of 5 and 10, no antes. A full table seats 9 players, a six-handed table 6. Opening is about the players still to act behind you: each of them could hold a better hand. Each hand stops before you open.",
   }),
   stages: [
     welcome("Count who’s behind you.", "Fewer seats, wider opens.",
-      "Should you open the same hands first to act at a full table and at six-handed? Watch Reina count the danger, then count three seats.", "Reina"),
-    filmStage({ film: "o-six-max", at: 48.69, spotId: "sm-turn", spot: turnSpot, upNext: "Count Reina’s first seat" }),
+      "Should you open the same hands first to act at a full table and at six-handed? Watch Knox count the danger, then count three seats.", "Knox"),
+    filmStage({ film: "o-six-max", at: 48.69, spotId: "sm-turn", spot: turnSpot, upNext: "Count Knox’s first seat" }),
     whyStage("sm-why", "Why open more from the cutoff?", [
       { id: "behind", text: "Only three players can still wake up with a better hand behind you.", fix: "Right. Each player behind you is one more chance that someone holds a better hand." },
       { id: "same", text: "A hand is as strong from any seat, so open the same hands from every seat.", fix: "Not at every seat or table size. A hand only has to beat the players still to act, and fewer behind means wider opens." },
       { id: "blinds", text: "Because the blinds cost less from the cutoff.", fix: "The blinds cost the same. The reason is fewer players left to get through." },
     ]),
-    decision("sm-guided", "sm-guided", "guided", "Reina’s seat", "First to act, six-handed.", "Try a practice hand", { feedback }),
+    decision("sm-guided", "sm-guided", "guided", "Knox’s seat", "First to act, six-handed.", "Try a practice hand", { feedback }),
     decision("sm-practice", "sm-practice", "practice", "Practice", "Match it to a full table.", "Try a fresh hand", { feedback }),
     decision("sm-fresh", "sm-fresh", "fresh", "Fresh hand", "One fold, then you.", "See your recap", { feedback }),
     takeaway({
       heading: "Fewer seats, wider opens.",
       rule: "Fewer seats means fewer players to beat. Count who's behind you, then open wider.",
       lead: "First to act at a full table has 8 behind; six-handed only 5, the same job as the fourth seat at a full table.",
-      labels: ["Reina’s seat", "Practice", "Fresh hand"],
+      labels: ["Knox’s seat", "Practice", "Fresh hand"],
     }),
   ],
   spots: {

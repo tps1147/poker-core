@@ -39,7 +39,7 @@ const definition = {
   id: "semibluff-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t4-fold-equity-semibluff",
   sourceLessonId: "lesson-fold-equity-semibluff-001", videoLessonId: "lesson-fold-equity-semibluff-001",
-  coach: "knox", access: "pro", template: "pressure",
+  coach: "knox", narrator: "nathan", access: "pro", template: "pressure",
   title: "Bet with a backup.", kicker: "Two ways to win.",
   trail: ["Learn", "Pressure", "Semi-bluffing"],
   course: { chapter: "Pressure" },

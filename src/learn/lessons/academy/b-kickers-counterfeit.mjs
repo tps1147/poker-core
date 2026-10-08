@@ -35,14 +35,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "b-kickers-counterfeit", film: "b-kickers-counterfeit", coach: "ada", access: "free", track: "Reading the Board", minutes: 4,
+  node: "b-kickers-counterfeit", film: "b-kickers-counterfeit", coach: "knox", access: "free", track: "Reading the Board", minutes: 4,
   title: "Do your cards still play?", kicker: "When the board pairs.",
   assumptions: "Each player’s hand is the best five of their seven cards. When the board pairs, a pair in your hand can stop counting, and the fifth card, the kicker, decides. Showdown hands are shown in the question.",
   stages: v2Stages({
-    welcome: { heading: "You flop two pair, and lose.", em: "How?", lead: "Watch Ada’s two pair get counterfeited, then call three showdowns at the table.", cta: "Watch with Ada" },
-    film: { upNext: "Play Ada’s hand", film: "b-kickers-counterfeit", at: null, spot: spots["kc-guided"] },
+    welcome: { heading: "You flop two pair, and lose.", em: "How?", lead: "Watch Knox’s two pair get counterfeited, then call three showdowns at the table.", cta: "Watch with Knox" },
+    film: { upNext: "Play Knox’s hand", film: "b-kickers-counterfeit", at: null, spot: spots["kc-guided"] },
     hands: [
-      { id: "kc-guided", label: "Ada’s hand", coachLine: "The film’s turn. Who’s ahead?" },
+      { id: "kc-guided", label: "Knox’s hand", coachLine: "The film’s turn. Who’s ahead?" },
       { id: "kc-practice", label: "Practice", coachLine: "The board plays for both." },
       { id: "kc-fresh", label: "Fresh hand", coachLine: "A new paired board." },
     ],
@@ -57,9 +57,9 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "kc-guided": huHand("kc-guided", { hero: guided.hero, board: guided.board, pot: 160 }),
-    "kc-practice": huHand("kc-practice", { hero: practice.hero, board: practice.board, pot: 200 }),
-    "kc-fresh": huHand("kc-fresh", { hero: fresh.hero, board: fresh.board, pot: 200 }),
+    "kc-guided": huHand("kc-guided", { hero: guided.hero, board: guided.board, versus: guided.versus, pot: 160 }),
+    "kc-practice": huHand("kc-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 200 }),
+    "kc-fresh": huHand("kc-fresh", { hero: fresh.hero, board: fresh.board, versus: fresh.versus, pot: 200 }),
   },
 });
 

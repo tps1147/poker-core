@@ -1,9 +1,11 @@
 // Rules 8, All-Ins and Side Pots (r-all-in-side-pots), v2 lesson. The film has no yourTurn anchor;
-// the guided hand is its hook: Ada all-in for 50 in a four-way 1,000 pot (Bo 150, Cy and Di 400
-// each): how much can she win? Practice is the plan's worked three-way side pot; the fresh hand is
-// the plan's uncalled bet with a changed size (all-in 800, called all-in for 300).
+// the guided hand is its hook: Ada all-in for 50 in a four-way 1,000 pot (Bo 150, the film's Cy and
+// Di 400 each; at the table you hold Cy's seat): how much can she win? It is dealt on a four-seat
+// table. Practice is the plan's worked three-way side pot (you are C), on a three-seat table; the
+// fresh hand is the plan's uncalled bet with a changed size (all-in 800, called all-in for 300),
+// heads-up.
 // Keys: answerKeys/r-all-in-side-pots.mjs (package root, not shipped).
-import { huHand, options, seatsHU, v2Lesson, v2Stages } from "./kitEarly.mjs";
+import { huHand, options, ringHand, seatsHU, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const RIVER = { street: "river", hero: ["Jh", "Jd"], board: ["Qs", "Jc", "7c", "7h", "2s"] };
 
@@ -11,16 +13,16 @@ const spots = {
   "ap-guided": {
     decision: "count", ...RIVER, range: [0, 1000], unit: "chips",
     title: "How much can Ada win?",
-    prompt: "Four players. Ada is all-in for 50, Bo for 150, and Cy and Di put in 400 each: 1,000 in all. If Ada has the best hand, how much can she win?",
+    prompt: "Four players. Ada is all-in for 50, Bo for 150, and you and Di put in 400 each: 1,000 in all. If Ada has the best hand, how much can she win?",
     hint: "Cut a line at Ada’s 50. Each player can put at most 50 into the pot she can win.",
     explanation: "Ada matched 50 from each of the four players: a main pot of 50 × 4 = 200. The other 800 sits in side pots she never paid into, so 200 is all she can win.",
   },
   "ap-practice": {
     decision: "count", ...RIVER, range: [0, 1000], unit: "chips",
     title: "Build the side pot.",
-    prompt: "Three players. A is all-in for 100, B for 300, and C covers both and calls 300. The main pot holds 300. How big is the side pot that only B and C can win?",
-    hint: "Take 100 from each player for the main pot. What is left of B’s and C’s 300?",
-    explanation: "Each player puts 100 in the main pot: 300 for A, B and C. B and C each have 200 more in, so the side pot is 2 × 200 = 400. 300 + 400 is all 700.",
+    prompt: "Three players. A is all-in for 100, B for 300, and you cover both and call 300. The main pot holds 300. How big is the side pot that only B and you can win?",
+    hint: "Take 100 from each player for the main pot. What is left of B’s 300 and yours?",
+    explanation: "Each player puts 100 in the main pot: 300 for A, B and you. B and you each have 200 more in, so the side pot is 2 × 200 = 400. 300 + 400 is all 700.",
   },
   "ap-fresh": {
     decision: "count", street: "turn", hero: ["Ah", "Kh"], board: ["Kc", "9d", "4s", "2h"], range: [0, 1000], unit: "chips",
@@ -32,14 +34,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-all-in-side-pots", film: "r-all-in-side-pots", coach: "ada", access: "free", track: "How a Hand Plays", minutes: 4,
+  node: "r-all-in-side-pots", film: "r-all-in-side-pots", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 4,
   title: "Win only what you matched.", kicker: "The rest is a side pot.",
   assumptions: "No rake. An all-in player can win only the chips each other player matched; the chips above form side pots for the players who paid them, and a bet nobody can match is returned.",
   stages: v2Stages({
-    welcome: { heading: "How much can she win?", em: "Pick your number first.", lead: "Watch Ada cut the pot at every all-in, then count three pots yourself.", cta: "Watch with Ada" },
-    film: { upNext: "Count Ada’s pot", film: "r-all-in-side-pots", at: null, spot: spots["ap-guided"] },
+    welcome: { heading: "How much can she win?", em: "Pick your number first.", lead: "Watch the pot get cut at every all-in, then count three pots yourself.", cta: "Watch with Knox" },
+    film: { upNext: "Count the film’s pot", film: "r-all-in-side-pots", at: null, spot: spots["ap-guided"] },
     hands: [
-      { id: "ap-guided", label: "Ada’s pot", coachLine: "The film’s four-way pot. Count it." },
+      { id: "ap-guided", label: "The film’s pot", coachLine: "The film’s four-way pot. Count it." },
       { id: "ap-practice", label: "Practice", coachLine: "Three players, two pots." },
       { id: "ap-fresh", label: "Fresh hand", coachLine: "Your all-in this time." },
     ],
@@ -54,8 +56,12 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "ap-guided": huHand("ap-guided", { hero: RIVER.hero, board: RIVER.board, pot: 1000, seats: seatsHU("Ada", 600, 0) }),
-    "ap-practice": huHand("ap-practice", { hero: RIVER.hero, board: RIVER.board, pot: 700, seats: seatsHU("Ada", 700, 0) }),
+    // Four seats: Ada and Bo all-in, you and Di with 600 behind after 400 each.
+    "ap-guided": ringHand("ap-guided", { position: "BTN", hero: RIVER.hero, board: RIVER.board, pot: 1000, stack: 600,
+      players: [{ name: "Ada", stack: 0 }, { name: "Bo", stack: 0 }, { name: "Di", stack: 600 }] }),
+    // Three seats: A and B all-in, you (C) with 700 behind after calling 300.
+    "ap-practice": ringHand("ap-practice", { position: "BTN", hero: RIVER.hero, board: RIVER.board, pot: 700, stack: 700,
+      players: [{ name: "A", stack: 0 }, { name: "B", stack: 0 }] }),
     "ap-fresh": huHand("ap-fresh", { hero: ["Ah", "Kh"], board: ["Kc", "9d", "4s", "2h"], pot: 100, seats: seatsHU("Ace Andy", 1000, 300) }),
   },
 });

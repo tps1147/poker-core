@@ -26,7 +26,7 @@ const definition = {
   id: "pot-odds-workspace-v2", version: 3, flow: "film-first",
   conceptId: "t1-pot-odds",
   sourceLessonId: "lesson-pot-odds-001", videoLessonId: "pilot-pot-odds",
-  coach: "mina", access: "free", template: "core-math",
+  coach: "knox", narrator: "nathan", access: "free", template: "core-math",
   title: "Find your price.", kicker: "A small idea. A better decision.",
   trail: ["Learn", "The math behind the move", "Pot odds"],
   course: { chapter: "The math behind the move" },
@@ -36,16 +36,16 @@ const definition = {
   feedback: priceFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Find your price.", em: "Then decide.",
-      lead: "A draw is not a reason to call. Watch Mina build the final pot and find the price, then weigh three calls at the table.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      lead: "A draw is not a reason to call. Watch Knox build the final pot and find the price, then weigh three calls at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "startingPot", label: "Build the pot" }, { beat: "possibleCall", label: "Add your call" }, { beat: "formula", label: "Cost over pot" }, { beat: "result", label: "Your price" }],
       // The cue boundary before "The call costs 50": "250" ends at 14.02 s and "call" starts at
       // 14.595 s (legacy-voice-audit/mina-absolute-timing.json), so the pause sits in 0.575 s of silence.
       // The current film's own in-film guess, kept while the apps still play that film.
       legacyPause: { at: 14.416666666666666, spot: { kind: "count", range: [0, 99], unit: "%",
-        prompt: "Before Mina says it: your call is 50 and the final pot is 250. What price is that, in percent?" } },
+        prompt: "Before Knox says it: your call is 50 and the final pot is 250. What price is that, in percent?" } },
       // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-pot-odds, canon.yourTurn at 65.56 s).
       // `film` names the film the time belongs to. Key: answerKeys/m-pot-odds.mjs.
       pause: { at: 65.56, anchor: "yourTurn", film: "m-pot-odds", spotId: "pot2-turn",
@@ -57,15 +57,15 @@ const definition = {
         { id: "b", text: "The price is 50 ÷ 150, the call against the pot before the bet.", fix: "Count all three amounts: 150, his 50 and your 50. That makes 250." },
         { id: "c", text: "Your 50 joins the pot: 50 ÷ 250 is 20%, below the 30% chance.", fix: "Right. Count all three amounts, your own call included." },
       ] },
-    { kind: "decision", label: "Mina’s hand", spotId: "pot2-guided", hand: "pot2-guided", role: "guided",
-      coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand" },
+    { kind: "decision", label: "Knox’s hand", spotId: "pot2-guided", hand: "pot2-guided", role: "guided",
+      coachLine: "Knox’s hand. You make the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "pot2-practice", hand: "pot2-practice", role: "practice",
       coachLine: "Same idea, new numbers. Count your own call.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pot2-fresh", hand: "pot2-fresh", role: "fresh",
       coachLine: "Your pot, your price, your call.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A price you can explain.",
       lead: "Your call ÷ the final pot, with your own call counted in it. Call when your chance of winning is at least that price.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
