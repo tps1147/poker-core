@@ -140,7 +140,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     assert.equal(kinds[1], "film", `${id} then the film`);
     assert.equal(kinds.filter((kind) => kind === "film").length, 1, `${id} one film`);
     assert.equal(kinds.at(-1), "takeaway", `${id} ends on the recap`);
-    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision"), `${id} decisions between film and recap`);
+    // Academy v2: a why step may follow the film (lessonModel WHY_KIND); everything else is a decision.
+    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision" || kind === "why"), `${id} decisions between film and recap`);
     const decisions = decisionStages(definition);
     for (const stage of decisions) {
       assert.ok(definition.hands[stage.hand], `${stage.spotId} plays on a registered hand`);
@@ -208,7 +209,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     const film = definition.stages.find((stage) => stage.kind === "film");
     // A beat is a time, or a list of timed marks (rfi "seats"); either way it must exist.
     for (const chapter of film.chapters || []) if (chapter.beat != null) assert.ok(media.beats[chapter.beat] != null, `${id} chapter beat ${chapter.beat}`);
-    if (film.pause) assert.ok(film.pause.at > 0 && film.pause.at < media.durationSeconds, `${id} pause inside the film`);
+    // A pause that names a v2 film (`pause.film`) is timed on that film, not on this media json.
+    if (film.pause && !film.pause.film) assert.ok(film.pause.at > 0 && film.pause.at < media.durationSeconds, `${id} pause inside the film`);
     for (const [spotId, spot] of Object.entries(definition.spots)) {
       if (spot.hear != null) assert.ok(Number.isInteger(spot.hear) && spot.hear >= 0 && spot.hear < media.cues.length, `${spotId} hear cue`);
     }
@@ -276,14 +278,14 @@ check("railSegments: one segment per hand (outs: Film, Mina’s hand, Practice, 
   assert.deepEqual(segments.map((segment) => segment.label), ["Film", "Mina’s hand", "Practice", "Fresh hand", "Recap"]);
   assert.deepEqual(segments.map((segment) => segment.key), ["film", "outs2-guided", "outs2-practice", "outs2-fresh", "recap"]);
   assert.deepEqual(segments.map((segment) => segment.number), [1, 2, 3, 4, 5]);
-  assert.deepEqual(segments[2].stages, [3, 4], "the practice hand holds two decisions");
+  assert.deepEqual(segments[2].stages, [4, 5], "the practice hand holds two decisions (after the film's why step)");
   assert.ok(segments.every((segment) => !segment.complete));
   assert.deepEqual(segments.map((segment) => segment.reachable), [false, false, false, false, false]);
-  const run = { furthest: 4, watched: { 1: true }, answers: { "outs2-guided-call": { action: "call" }, "outs2-practice-count": { response: { value: 8 } } } };
+  const run = { furthest: 5, watched: { 1: true }, answers: { "outs2-guided-call": { action: "call" }, "outs2-practice-count": { response: { value: 8 } } } };
   const later = railSegments(outs, run);
   assert.deepEqual(later.map((segment) => segment.complete), [true, true, false, false, false], "a hand fills only when all its decisions are answered");
   assert.deepEqual(later.map((segment) => segment.reachable), [true, true, true, false, false]);
-  assert.equal(segmentForStep(later, 4).key, "outs2-practice");
+  assert.equal(segmentForStep(later, 5).key, "outs2-practice");
   assert.equal(segmentForStep(later, 0), null, "the entry card is not on the rail");
   const lesson1 = railSegments(lesson("hand-rankings-workspace-v1"), null);
   assert.equal(new Set(lesson1.map((segment) => segment.key)).size, lesson1.length, "unique keys");
@@ -292,10 +294,11 @@ check("railSegments: one segment per hand (outs: Film, Mina’s hand, Practice, 
 check("tablePlan and planHand: held behind the film, live on a decision, settled when revisited", () => {
   assert.deepEqual(tablePlan(outs, 0, null), { handId: "outs2-guided", mode: "held" });
   assert.deepEqual(tablePlan(outs, 1, null), { handId: "outs2-guided", mode: "held" });
-  assert.deepEqual(tablePlan(outs, 3, { furthest: 3 }), { handId: "outs2-practice", mode: "live" });
-  const answered = { furthest: 6, answers: { "outs2-practice-count": { response: { value: 8 } }, "outs2-practice-call": { action: "call" } } };
-  assert.deepEqual(tablePlan(outs, 3, answered), { handId: "outs2-practice", mode: "settled" });
-  assert.deepEqual(tablePlan(outs, 7, answered), { handId: "outs2-fresh", mode: "settled" });
+  assert.deepEqual(tablePlan(outs, 4, { furthest: 4 }), { handId: "outs2-practice", mode: "live" });
+  assert.deepEqual(tablePlan(outs, 2, { furthest: 2 }), { handId: "outs2-guided", mode: "held" }, "held behind the why, as behind the film");
+  const answered = { furthest: 7, answers: { "outs2-practice-count": { response: { value: 8 } }, "outs2-practice-call": { action: "call" } } };
+  assert.deepEqual(tablePlan(outs, 4, answered), { handId: "outs2-practice", mode: "settled" });
+  assert.deepEqual(tablePlan(outs, 8, answered), { handId: "outs2-fresh", mode: "settled" });
   const guided = outs.hands["outs2-guided"];
   const held = planHand(outs, { handId: "outs2-guided", mode: "held" });
   assert.equal(held.startAt, 1);
@@ -303,7 +306,7 @@ check("tablePlan and planHand: held behind the film, live on a decision, settled
   assert.equal(planHand(outs, { handId: "outs2-guided", mode: "live" }), guided);
   assert.equal(planHand(outs, { handId: "outs2-fresh", mode: "settled" }).startAt, expandScript(outs.hands["outs2-fresh"]).length);
   assert.equal(planHand(outs, { handId: null, mode: "held" }), null);
-  assert.equal(stageHand(outs, 3), outs.hands["outs2-practice"]);
+  assert.equal(stageHand(outs, 4), outs.hands["outs2-practice"]);
   assert.equal(stageHand(outs, 1), null);
 });
 
@@ -386,7 +389,7 @@ check("recapRows: one row per hand, labelled per hand", () => {
 
 check("entryState and filmMeta", () => {
   assert.deepEqual(entryState(outs, null), { status: "new", resumeStep: 1, watched: false });
-  const progress = entryState(outs, { furthest: 4, stage: 4, watched: { 1: true } });
+  const progress = entryState(outs, { furthest: 5, stage: 4, watched: { 1: true } });
   assert.deepEqual([progress.status, progress.resumeStep, progress.resumeLabel], ["progress", 4, "Practice"]);
   assert.equal(entryState(outs, { furthest: 2, stage: 1, watched: { 1: true } }).resumeStep, 2, "a watched film resumes on the hands");
   assert.equal(entryState(outs, { furthest: outs.stages.length - 1 }).status, "complete");

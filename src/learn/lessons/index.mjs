@@ -92,3 +92,46 @@ export function lessonHands(definition) {
   }
   return hands;
 }
+
+// ── ACADEMY V2: the node-id definitions of the early tracks (welcome, rules, board, math, preflop and
+// postflop), 22 lessons whose definition id is their tree node id (curriculum.mjs). They are not in
+// FILM_FIRST_LESSONS or COURSE_ORDER, which still describe the shipped 20. `academyLesson(id)`
+// resolves a node-id definition first, then any shipped one; pass it to learnPath to list them.
+// Built from lessons/academy/kitEarly.mjs; answer keys in answerKeys/<node>.mjs (not shipped).
+// MERGE NOTE: defs-b adds ACADEMY_V2_LATER_LESSONS and its own academyLesson in a block like this
+// one; the merged academyLesson searches both lists, then the shipped 20.
+import wWhatIsPoker from "./academy/w-what-is-poker.mjs";
+import wHistory from "./academy/w-history.mjs";
+import wLuckAndSkill from "./academy/w-luck-and-skill.mjs";
+import wHowDeep from "./academy/w-how-deep.mjs";
+import wTheAcademy from "./academy/w-the-academy.mjs";
+import rTheDeck from "./academy/r-the-deck.mjs";
+import rBestFive from "./academy/r-best-five.mjs";
+import rSeatsBlinds from "./academy/r-seats-blinds.mjs";
+import rStreets from "./academy/r-streets.mjs";
+import rShowdown from "./academy/r-showdown.mjs";
+import rAllInSidePots from "./academy/r-all-in-side-pots.mjs";
+import rFirstHand from "./academy/r-first-hand.mjs";
+import bMadeVsDraw from "./academy/b-made-vs-draw.mjs";
+import bTheNuts from "./academy/b-the-nuts.mjs";
+import bWhatBeatsYou from "./academy/b-what-beats-you.mjs";
+import bKickersCounterfeit from "./academy/b-kickers-counterfeit.mjs";
+import bTextureRead from "./academy/b-texture-read.mjs";
+import mChanceAsShare from "./academy/m-chance-as-share.mjs";
+import mVariance from "./academy/m-variance.mjs";
+import fValueBetting from "./academy/f-value-betting.mjs";
+import fPotControl from "./academy/f-pot-control.mjs";
+import fPlayingDraws from "./academy/f-playing-draws.mjs";
+
+export const ACADEMY_V2_EARLY_LESSONS = Object.freeze([
+  wWhatIsPoker, wHistory, wLuckAndSkill, wHowDeep, wTheAcademy,
+  rTheDeck, rBestFive, rSeatsBlinds, rStreets, rShowdown, rAllInSidePots, rFirstHand,
+  bMadeVsDraw, bTheNuts, bWhatBeatsYou, bKickersCounterfeit, bTextureRead,
+  mChanceAsShare, mVariance,
+  fValueBetting, fPotControl, fPlayingDraws,
+]);
+
+export function academyLesson(id) {
+  if (typeof id !== "string" || !id) return null;
+  return ACADEMY_V2_EARLY_LESSONS.find((definition) => definition.id === id) || filmFirstLesson(id);
+}

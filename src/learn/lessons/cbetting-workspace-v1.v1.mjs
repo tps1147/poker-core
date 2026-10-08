@@ -57,7 +57,18 @@ const definition = {
       cta: "Watch with Vale" },
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The range that raised" }, { beat: "texture", label: "King-seven-two rainbow" }, { beat: "caller", label: "The caller misses" }, { beat: "small", label: "A small c-bet" }, { beat: "earn", label: "Earn it" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The range that raised" }, { beat: "texture", label: "King-seven-two rainbow" }, { beat: "caller", label: "The caller misses" }, { beat: "small", label: "A small c-bet" }, { beat: "earn", label: "Earn it" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (f-cbet, canon.yourTurn at 65.51 s).
+      // `film` names the film the time belongs to. Key: answerKeys/f-cbet.mjs.
+      pause: { at: 65.51, anchor: "yourTurn", film: "f-cbet", spotId: "cb1-turn",
+        spot: { decision: "action", choices: ["check", "bet"], prompt: "Ace-ten, on eight, eight, three. 90 in the pot, and he checks. Check, or bet 30?", sizes: { bet: 30 }, title: "Your turn: check or bet?", explanation: "Top pair or better is 19.6% for you and 12.9% for him, and the flop is dry. Bet 30, a third again." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-cbet.mjs).
+    { kind: "why", label: "Why", prompt: "Why is the c-bet earned here?",
+      options: [
+        { id: "a", text: "The dry flop favors your range, and the board lets a small bet work.", fix: "Right. Your range, and a dry board: the small bet is earned." },
+        { id: "b", text: "You raised before the flop, so you always c-bet.", fix: "Raising first is not the reason. On nine-seven-six with two diamonds, the same raise checks." },
+        { id: "c", text: "Ace-queen has the best kicker.", fix: "Ace-queen has no pair yet. The range advantage earns the bet, not the hand." },
+      ] },
     { kind: "decision", label: "Vale’s hand", spotId: "cb1-guided", hand: "cb1-guided", role: "guided",
       coachLine: "Vale’s hand. Ace Andy checks to you.", next: "Try a practice hand",
       feedback: actFeedback },

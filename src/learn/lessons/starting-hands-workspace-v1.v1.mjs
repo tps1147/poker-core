@@ -59,7 +59,18 @@ const definition = {
       cta: "Watch with Reina" },
     { kind: "film", label: "Film", upNext: "Play Reina’s hand",
       // Chapters on the film's own beats (the media rail), with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Before the flop" }, { beat: "trouble", label: "Dominated trouble" }, { beat: "range", label: "What good hands make" }, { beat: "bad", label: "Second-best hands" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Before the flop" }, { beat: "trouble", label: "Dominated trouble" }, { beat: "range", label: "What good hands make" }, { beat: "bad", label: "Second-best hands" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-starting-hands, canon.yourTurn at 77.18 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-starting-hands.mjs.
+      pause: { at: 77.18, anchor: "yourTurn", film: "p-starting-hands", spotId: "sh1-turn",
+        spot: { decision: "action", choices: ["fold", "raise"], prompt: "Nine-eight of hearts, on the button, folded to you. Open, or fold?", sizes: { raise: 25 }, title: "Your turn: open or fold?", explanation: "Open. Connected, suited, and in position: nine-eight suited is in the button chart." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-starting-hands.mjs).
+    { kind: "why", label: "Why", prompt: "Why fold queen-seven under the gun?",
+      options: [
+        { id: "a", text: "It mostly makes second-best hands, and five players still act after you.", fix: "Right. Second-best hands with five players behind: fold." },
+        { id: "b", text: "A queen is too weak to raise from any seat.", fix: "Queens with good kickers open. The seven is the problem, with five players behind." },
+        { id: "c", text: "It would be worth playing if it were suited.", fix: "Suited is a bonus, not a ticket. The seat and the second card still decide." },
+      ] },
     { kind: "decision", label: "Reina’s hand", spotId: "sh1-guided", hand: "sh1-guided", role: "guided",
       coachLine: "Reina’s queen-seven. You are first to act.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "sh1-practice-read", hand: "sh1-practice", role: "practice",

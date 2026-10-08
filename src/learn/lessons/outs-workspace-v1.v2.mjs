@@ -32,8 +32,20 @@ const definition = {
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "draw", label: "See the draw" }, { beat: "outs", label: "Count the outs" }, { beat: "rule", label: "Build the estimate" }, { beat: "price", label: "Compare the price" }],
-      pause: { at: 16.25, spot: { kind: "count", range: [0, 47], unit: "outs",
-        prompt: "Before Mina says it: how many clean outs does king-queen of hearts have?" } } },
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 16.25, spot: { kind: "count", range: [0, 47], unit: "outs",
+        prompt: "Before Mina says it: how many clean outs does king-queen of hearts have?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-outs, canon.yourTurn at 64.92 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-outs.mjs.
+      pause: { at: 64.92, anchor: "yourTurn", film: "m-outs", spotId: "outs2-turn",
+        spot: { decision: "count", range: [0, 47], unit: "outs", prompt: "Queen-jack of diamonds on ten, nine, three, and only a straight wins. How many outs?", title: "Your turn: count the outs.", explanation: "Any king or any eight makes the straight: 8 outs. The queens and jacks only pair you." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-outs.mjs).
+    { kind: "why", label: "Why", prompt: "Why do Mina’s 9 outs make this a call?",
+      options: [
+        { id: "a", text: "Every card that improves the hand counts, so the draw is bigger than 9 outs.", fix: "A card that also gives him a better hand is not an out. Count only the cards that make you the winner." },
+        { id: "b", text: "9 outs × 4 is 36%, far above the price.", fix: "One card is to come, so it is ×2: roughly 18%. That still beats the 10% price." },
+        { id: "c", text: "9 clean outs is roughly 18%, and the price is 25 ÷ 250 = 10%.", fix: "Right. Roughly 18% against a 10% price: the call pays for itself." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "outs2-guided-call", hand: "outs2-guided", role: "guided",
       coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand",
       feedback: { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." } },

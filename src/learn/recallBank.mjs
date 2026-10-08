@@ -116,13 +116,18 @@ export const RECALL_BANK = Object.freeze([
     "Given: before the flop he re-raises aces, kings, queens and ace-king, and calls with every other hand he plays. He called your raise. Which of these still fits his range?", ["Aces", "Ace-king", "Ace-eight"], 2),
   ready("f-board-texture", "Checks: fresh (bt1-fresh, kept)", "Before your hand, ask whose range the flop hits.",
     "The flop is 6♥ 5♥ 2♣. Dry or wet?", ["Dry", "Wet"], 1),
-  todo("f-cbet", "C-bet when the flop favors your range and the board lets you; raising first is not the reason.",
-    "The plan replaces the old fresh hand with the A♥ T♦ on 8♠ 8♦ 3♣ spot, which is the film's own transfer; no other check is named."),
+  // The four postflop cards (defs-a, 2026-10-08) come from the lessons' own practice or fresh hands,
+  // never the film's spot; test/academyEarly.test.mjs recomputes each answer.
+  ready("f-cbet", "Checks: practice (cb1-practice, kept)", "C-bet when the flop favors your range and the board lets you; raising first is not the reason.",
+    "K♣ Q♠ on 8♥ 7♥ 6♦, pot 60, checked to you. Given: his call holds more small pairs and suited connectors than your raise. Check, or c-bet 20?", ["Check", "C-bet 20"], 0),
   ready("f-bet-sizing", "Checks: fresh (bs1-fresh, kept)", "Pick the size from the job: charge draws, invite worse hands, or make folds cheap to win.",
     "K♥ Q♥ on A♠ 8♦ 3♣, pot 180, checked to you. His aces call either size and his misses fold to either size. Small bet 60 or large bet 135?", ["Small bet 60", "Large bet 135"], 0),
-  todo("f-value-betting", "Bet when more than half of the hands that call are worse than yours.", "Checks are new spots whose server keys main writes; none is spelled out."),
-  todo("f-pot-control", "Medium hand, small pot: two streets of value, and take the free card when you are last.", "Checks are new spots whose server keys main writes; none is spelled out."),
-  todo("f-playing-draws", "Price first; then ask what the stacks let you win later, and whether a raise wins it now.", "Checks are new spots whose server keys main writes; none is spelled out."),
+  ready("f-value-betting", "Checks: fresh (vb-fresh)", "Bet when more than half of the hands that call are worse than yours.",
+    "K♠ Q♦ on K♥ 8♣ 6♦ 4♠ 2♥, pot 150, checked to you. Given: 40 hands would call a 75 bet, and 18 of them are worse than yours. Check, or bet 75?", ["Check", "Bet 75"], 0),
+  ready("f-pot-control", "Checks: fresh (pc-fresh)", "Medium hand, small pot: two streets of value, and take the free card when you are last.",
+    "Flop pot 60. You bet half the pot on the flop, check the turn behind and bet half the pot on the river, and both bets are called. How big is the final pot?", ["120", "240", "480"], 1),
+  ready("f-playing-draws", "Checks: fresh (pd-fresh)", "Price first; then ask what the stacks let you win later, and whether a raise wins it now.",
+    "6♣ 5♣ on K♣ 9♣ 2♦. He moves all-in for 100 into 100, so you see the turn and the river, and 378 of the 1,081 runouts make your flush. Call or fold?", ["Call", "Fold"], 0),
 
   // ── 6 Pressure
   ready("x-fold-equity", "Checks: fresh (sb1-fresh, kept)", "Break-even = bet ÷ (pot + bet). A semi-bluff adds the chance you hit when called.",

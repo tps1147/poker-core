@@ -63,7 +63,18 @@ const definition = {
       cta: "Watch with Vale" },
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A range, not a hand" }, { beat: "preflop", label: "Preflop action" }, { beat: "texture", label: "King-eight-three" }, { beat: "range", label: "What still fits" }, { beat: "fear", label: "Fear reading" }, { beat: "narrow", label: "Street by street" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A range, not a hand" }, { beat: "preflop", label: "Preflop action" }, { beat: "texture", label: "King-eight-three" }, { beat: "range", label: "What still fits" }, { beat: "fear", label: "Fear reading" }, { beat: "narrow", label: "Street by street" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (f-ranges, canon.yourTurn at 81.05 s).
+      // `film` names the film the time belongs to. Key: answerKeys/f-ranges.mjs.
+      pause: { at: 81.05, anchor: "yourTurn", film: "f-ranges", spotId: "rng1-turn",
+        spot: { decision: "estimate", bands: [{ id: "about-25", label: "About 25%" }, { id: "about-64", label: "About 64%" }, { id: "about-90", label: "About 90%" }], prompt: "Same range, new flop: J♣ 9♦ 2♥. What share is pair or better?", title: "Your turn: the share?", explanation: "146 combos are live; pair or better is 93 of them, about 64%. A share, not a hand." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-ranges.mjs).
+    { kind: "why", label: "Why", prompt: "Why put him on a wide range?",
+      options: [
+        { id: "a", text: "His call keeps many hands, and a flop bet comes from strong hands, pairs, ace-high and bluffs.", fix: "Right. Many hands fit one call and one bet." },
+        { id: "b", text: "Only strong hands bet, so his range is just value.", fix: "Weaker kings, pairs and bluffs bet too. Cutting them out is fear reading." },
+        { id: "c", text: "His bet tells you his exact hand.", fix: "One bet fits many combos. Put him on all of them, weighted." },
+      ] },
     { kind: "decision", label: "Vale’s hand", spotId: "rng1-guided", hand: "rng1-guided", role: "guided",
       coachLine: "Vale’s hand. Put Ace Andy on a range.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "rng1-practice-preflop", hand: "rng1-practice", role: "practice",

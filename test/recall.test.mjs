@@ -44,14 +44,15 @@ check("one entry per node, in tree order, each with a rule; questions are one-ta
     assert.ok(e.source && !/guided|transfer|film/i.test(e.source), `${e.lessonId}: never the guided spot or the film's own`);
     assert.deepEqual(recallCard(e.lessonId), { lessonId: e.lessonId, rule: e.rule, question: q });
   }
-  assert.equal(recallCard("f-cbet"), null, "a todo has no card");
+  for (const { lessonId } of recallTodo()) assert.equal(recallCard(lessonId), null, "a todo has no card");
   assert.equal(recallCard("nope"), null);
 });
 
 check("the todo list", () => {
   const list = recallTodo();
   assert.equal(list.length, RECALL_BANK.filter((e) => e.status === "todo").length);
-  assert.deepEqual(list.map((x) => x.lessonId), ["f-cbet", "f-value-betting", "f-pot-control", "f-playing-draws", "x-mdf", "x-check-raise",
+  // The early tracks (welcome to postflop) are all filled; test/academyEarly.test.mjs checks the postflop four.
+  assert.deepEqual(list.map((x) => x.lessonId), ["x-mdf", "x-check-raise",
     "x-barrels-blockers", "h-range-narrowing", "h-player-types", "h-exploits", "g-toy-games", "g-balance", "g-gto-to-exploit", "y-tilt", "y-study",
     "o-multiway", "o-heads-up", "o-tournaments-icm", "o-six-max", "o-live"]);
 });
@@ -195,7 +196,7 @@ check("dueCards: at most two, most overdue first, across tracks, never two from 
   const card = (due) => ({ step: 0, due, log: [] });
   const p = { recall: {
     "m-outs": card(T0 - 5 * DAY_MS), "m-ev": card(T0 - 4 * DAY_MS), "p-open-raise": card(T0 - 3 * DAY_MS),
-    "r-the-deck": card(T0 + DAY_MS), "f-cbet": card(T0 - 9 * DAY_MS), "nope": card(T0 - 9 * DAY_MS),
+    "r-the-deck": card(T0 + DAY_MS), "nope": card(T0 - 9 * DAY_MS),
   } };
   const due = dueCards(p, T0);
   assert.equal(RECALL_MAX, 2);
@@ -207,7 +208,7 @@ check("dueCards: at most two, most overdue first, across tracks, never two from 
   assert.deepEqual(dueCards(p, T0 - 10 * DAY_MS), []);
   const ids = dueCards(p, T0, { max: 10 }).map((c) => c.lessonId);
   assert.equal(new Set(ids).size, ids.length, "never two from the same lesson");
-  assert.ok(!ids.includes("f-cbet") && !ids.includes("r-the-deck") && !ids.includes("nope"), "todo, not due and unknown cards stay out");
+  assert.ok(!ids.includes("r-the-deck") && !ids.includes("nope"), "not due and unknown cards stay out");
 });
 
 console.log(`recall checks passed (${checks}): ${RECALL_BANK.filter((e) => e.status === "ready").length} ready, ${RECALL_BANK.filter((e) => e.status === "authored").length} authored, ${recallTodo().length} todo`);

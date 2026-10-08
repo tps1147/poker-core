@@ -44,7 +44,18 @@ const definition = {
       lead: "A price that is too high now can still be a good call when you can win more later. Watch Mina name the three things that make it real, then price three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The direct price" }, { beat: "extra", label: "What you can win later" }, { beat: "realistic", label: "Only realistic money" }, { beat: "conditions", label: "Three things" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The direct price" }, { beat: "extra", label: "What you can win later" }, { beat: "realistic", label: "Only realistic money" }, { beat: "conditions", label: "Three things" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-implied-odds, canon.yourTurn at 71.25 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-implied-odds.mjs.
+      pause: { at: 71.25, anchor: "yourTurn", film: "m-implied-odds", spotId: "imp1-turn",
+        spot: { decision: "action", choices: ["fold", "call"], prompt: "Jack-ten, four outs. Pot 60, bet 20, 90 behind. Call or fold?", title: "Your turn: call or fold?", explanation: "Final pot 100, price 20%, about 8.7% to hit. You would need 130 more later, and only 90 is there: fold." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-implied-odds.mjs).
+    { kind: "why", label: "Why", prompt: "Why does Mina call at a 30% price?",
+      options: [
+        { id: "a", text: "Roughly 18% beats the 30% price on its own.", fix: "18% is below 30%. The call needs the river chips to pay." },
+        { id: "b", text: "The given 250 on the river makes it 75 for a shot at 500: 15%, under roughly 18%.", fix: "Right. The river chips make it 15%, under roughly 18%." },
+        { id: "c", text: "Any draw is a call once you count the chips you can win later.", fix: "Only chips you can really win count. With nothing behind, the same draw folds." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "imp1-guided", hand: "imp1-guided", role: "guided",
       coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "imp1-practice-most", hand: "imp1-practice", role: "practice",

@@ -66,7 +66,18 @@ const definition = {
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
       // Chapters on the film's own beats (lessons/board-texture-workspace-v1/v1/timeline.json rail).
       // No in-film guess: every pause point would ask what she is about to say as an example, not a read.
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A dry board" }, { beat: "wet", label: "A wet board" }, { beat: "texture", label: "What it creates" }, { beat: "leak", label: "Autopilot bets" }, { beat: "range", label: "Read before you bet" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A dry board" }, { beat: "wet", label: "A wet board" }, { beat: "texture", label: "What it creates" }, { beat: "leak", label: "Autopilot bets" }, { beat: "range", label: "Read before you bet" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (f-board-texture, canon.yourTurn at 74.88 s).
+      // `film` names the film the time belongs to. Key: answerKeys/f-board-texture.mjs.
+      pause: { at: 74.88, anchor: "yourTurn", film: "f-board-texture", spotId: "bt1-turn",
+        spot: { decision: "estimate", bands: [{ id: "raiser", label: "The raiser" }, { id: "caller", label: "The caller" }], prompt: "Queen, queen, five. Whose range does this flop hit?", title: "Your turn: whose flop?", explanation: "Top pair or better is 19.5% of the raiser’s range and 7.6% of the caller’s: the raiser’s flop." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-board-texture.mjs).
+    { kind: "why", label: "Why", prompt: "Why is jack-ten-nine wet?",
+      options: [
+        { id: "a", text: "It is wet because the cards are high.", fix: "High cards alone can be dry, like king-seven-two. Connected and suited cards make a board wet." },
+        { id: "b", text: "It is only wet for whoever holds the best hand right now.", fix: "Wet describes the board for every range: what is possible now and what is still coming." },
+        { id: "c", text: "Straights are possible, and flush and straight draws are live: a lot can change on the turn.", fix: "Right. Made straights, flush draws and straight draws are all live." },
+      ] },
     { kind: "decision", label: "Vale’s hand", spotId: "bt1-guided-draws", hand: "bt1-guided", role: "guided",
       coachLine: "Vale’s wet board. Read it before you bet.", next: "Now name the texture" },
     { kind: "decision", label: "Vale’s hand", spotId: "bt1-guided-texture", hand: "bt1-guided", role: "guided",

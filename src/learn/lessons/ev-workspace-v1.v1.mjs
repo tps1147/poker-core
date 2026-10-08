@@ -50,8 +50,20 @@ const definition = {
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The long run" }, { beat: "startingPot", label: "Read the spot" }, { beat: "possibleCall", label: "Build the final pot" }, { beat: "result", label: "What you need" }],
       // The cue boundary before "If you call": "call" ends at 12.63 s and "if" starts at 13.00 s
       // (ev-workspace-v1/audit/absolute-timing.json), so the pause sits in 0.37 s of silence.
-      pause: { at: 12.958333333333334, spot: { kind: "count", range: [0, 99], unit: "%",
-        prompt: "Before Mina says it: the pot is 200 and you face a 50-chip call. What price is that, in percent?" } } },
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 12.958333333333334, spot: { kind: "count", range: [0, 99], unit: "%",
+        prompt: "Before Mina says it: the pot is 200 and you face a 50-chip call. What price is that, in percent?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-ev, canon.yourTurn at 60.08 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-ev.mjs.
+      pause: { at: 60.08, anchor: "yourTurn", film: "m-ev", spotId: "ev1-turn",
+        spot: { decision: "action", choices: ["fold", "call"], prompt: "Ace-ten of hearts, 9 hearts of 46 win, one card to come. They go all-in for 40 into 150. Call or fold?", title: "Your turn: call or fold?", explanation: "Nine hearts win out of 46. Your share of the 230 pot is 45, against a 40 call: +5 a call. Call." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-ev.mjs).
+    { kind: "why", label: "Why", prompt: "Why is this call right even when the river misses?",
+      options: [
+        { id: "a", text: "If the river misses and you lose, the call was wrong.", fix: "One river is one sample. The call earns about +40 on average, win or lose." },
+        { id: "b", text: "You win more often than you lose.", fix: "You lose 70% of the time. The call pays because the pot is big enough, not because you win most." },
+        { id: "c", text: "Made many times, 30% of a 300 pot returns 90 for every 50: about +40 a call.", fix: "Right. Judge it by the average: about +40 a call." },
+      ] },
     { kind: "decision", label: "Mina’s hand", spotId: "ev1-guided", hand: "ev1-guided", role: "guided",
       coachLine: "Mina’s hand. You judge the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "ev1-practice-ev", hand: "ev1-practice", role: "practice",

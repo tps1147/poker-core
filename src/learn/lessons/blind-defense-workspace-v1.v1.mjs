@@ -64,7 +64,18 @@ const definition = {
       cta: "Watch with Reina" },
     { kind: "film", label: "Film", upNext: "Play Reina’s hand",
       // Chapters on the film's own beats (lessons/blind-defense-workspace-v1/v1/timeline.json rail).
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The blind price" }, { beat: "range", label: "Three things" }, { beat: "hand", label: "Playability" }, { beat: "contrast", label: "Dominated hands" }, { beat: "seat", label: "Out of position" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The blind price" }, { beat: "range", label: "Three things" }, { beat: "hand", label: "Playability" }, { beat: "contrast", label: "Dominated hands" }, { beat: "seat", label: "Out of position" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-blind-defense, canon.yourTurn at 73.99 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-blind-defense.mjs.
+      pause: { at: 73.99, anchor: "yourTurn", film: "p-blind-defense", spotId: "bd1-turn",
+        spot: { decision: "count", range: [0, 100], unit: "chips", prompt: "You are the big blind. The button raises to 40. What do you owe?", title: "Your turn: what do you owe?", explanation: "40 minus your 10 is 30. The final pot is 85, so your price is about 35%: a bigger raise, a worse price." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-blind-defense.mjs).
+    { kind: "why", label: "Why", prompt: "Why defend jack-ten suited here?",
+      options: [
+        { id: "a", text: "The 10 you posted is yours, so you protect it.", fix: "The posted 10 is already in the pot. It improves your price, but the hand still has to earn the call." },
+        { id: "b", text: "Your 15 buys a share of 55, about 27%, and the hand plays well against a wide range.", fix: "Right. The blind helps the price; the hand earns the call." },
+        { id: "c", text: "15 ÷ 40 is a cheap price.", fix: "Count your own call: 15 ÷ 55, about 27%." },
+      ] },
     { kind: "decision", label: "Reina’s hand", spotId: "bd1-guided", hand: "bd1-guided", role: "guided",
       coachLine: "Reina’s jack-ten suited. You decide the defense.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-price", hand: "bd1-practice", role: "practice",
