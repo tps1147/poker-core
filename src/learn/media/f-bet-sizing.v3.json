@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "f-bet-sizing",
+  "video": "/academy/films-v2/f-bet-sizing/f-bet-sizing-1080.mp4",
+  "video720": "/academy/films-v2/f-bet-sizing/f-bet-sizing-720.mp4",
+  "poster": "/academy/films-v2/f-bet-sizing/f-bet-sizing-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-bet-sizing/f-bet-sizing-rule.jpg",
+  "captions": "/academy/films-v2/f-bet-sizing/f-bet-sizing.vtt",
+  "transcript": "/academy/films-v2/f-bet-sizing/f-bet-sizing.transcript.txt",
+  "durationSeconds": 105,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 16.29,
+    "yourTurn": 73.95,
+    "rule": 91.91,
+    "upNext": 100.41,
+    "first": null
+  }
+}

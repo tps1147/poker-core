@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "x-mdf",
+  "video": "/academy/films-v2/x-mdf/x-mdf-1080.mp4",
+  "video720": "/academy/films-v2/x-mdf/x-mdf-720.mp4",
+  "poster": "/academy/films-v2/x-mdf/x-mdf-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-mdf/x-mdf-rule.jpg",
+  "captions": "/academy/films-v2/x-mdf/x-mdf.vtt",
+  "transcript": "/academy/films-v2/x-mdf/x-mdf.transcript.txt",
+  "durationSeconds": 91,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 3.91,
+    "yourTurn": 66.97,
+    "rule": 80.63,
+    "upNext": 86.17,
+    "first": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-variance",
+  "video": "/academy/films-v2/m-variance/m-variance-1080.mp4",
+  "video720": "/academy/films-v2/m-variance/m-variance-720.mp4",
+  "poster": "/academy/films-v2/m-variance/m-variance-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-variance/m-variance-rule.jpg",
+  "captions": "/academy/films-v2/m-variance/m-variance.vtt",
+  "transcript": "/academy/films-v2/m-variance/m-variance.transcript.txt",
+  "durationSeconds": 84,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.31,
+    "yourTurn": 54.24,
+    "rule": 74.54,
+    "upNext": 84,
+    "first": null
+  }
+}

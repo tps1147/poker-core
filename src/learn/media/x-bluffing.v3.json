@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "x-bluffing",
+  "video": "/academy/films-v2/x-bluffing/x-bluffing-1080.mp4",
+  "video720": "/academy/films-v2/x-bluffing/x-bluffing-720.mp4",
+  "poster": "/academy/films-v2/x-bluffing/x-bluffing-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-bluffing/x-bluffing-rule.jpg",
+  "captions": "/academy/films-v2/x-bluffing/x-bluffing.vtt",
+  "transcript": "/academy/films-v2/x-bluffing/x-bluffing.transcript.txt",
+  "durationSeconds": 85,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 12.14,
+    "yourTurn": null,
+    "rule": 73.88,
+    "upNext": 81.22,
+    "first": null
+  }
+}

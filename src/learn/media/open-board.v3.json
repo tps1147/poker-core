@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "open-board",
+  "video": "/academy/films-v2/open-board/open-board-1080.mp4",
+  "video720": "/academy/films-v2/open-board/open-board-720.mp4",
+  "poster": "/academy/films-v2/open-board/open-board-poster.jpg",
+  "ruleCard": null,
+  "captions": "/academy/films-v2/open-board/open-board.vtt",
+  "transcript": "/academy/films-v2/open-board/open-board.transcript.txt",
+  "durationSeconds": 22,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": null,
+    "yourTurn": null,
+    "rule": null,
+    "upNext": null,
+    "first": 15.19
+  }
+}

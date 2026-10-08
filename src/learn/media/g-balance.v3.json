@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "g-balance",
+  "video": "/academy/films-v2/g-balance/g-balance-1080.mp4",
+  "video720": "/academy/films-v2/g-balance/g-balance-720.mp4",
+  "poster": "/academy/films-v2/g-balance/g-balance-poster.jpg",
+  "ruleCard": "/academy/films-v2/g-balance/g-balance-rule.jpg",
+  "captions": "/academy/films-v2/g-balance/g-balance.vtt",
+  "transcript": "/academy/films-v2/g-balance/g-balance.transcript.txt",
+  "durationSeconds": 97,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 3.66,
+    "yourTurn": 66.15,
+    "rule": 85.9,
+    "upNext": 91.29,
+    "first": null
+  }
+}

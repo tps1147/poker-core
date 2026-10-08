@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "r-best-five",
+  "video": "/academy/films-v2/r-best-five/r-best-five-1080.mp4",
+  "video720": "/academy/films-v2/r-best-five/r-best-five-720.mp4",
+  "poster": "/academy/films-v2/r-best-five/r-best-five-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-best-five/r-best-five-rule.jpg",
+  "captions": "/academy/films-v2/r-best-five/r-best-five.vtt",
+  "transcript": "/academy/films-v2/r-best-five/r-best-five.transcript.txt",
+  "durationSeconds": 98,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 16.69,
+    "yourTurn": null,
+    "rule": 88.56,
+    "upNext": 94.31,
+    "first": null
+  }
+}

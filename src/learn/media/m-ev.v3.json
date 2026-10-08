@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-ev",
+  "video": "/academy/films-v2/m-ev/m-ev-1080.mp4",
+  "video720": "/academy/films-v2/m-ev/m-ev-720.mp4",
+  "poster": "/academy/films-v2/m-ev/m-ev-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-ev/m-ev-rule.jpg",
+  "captions": "/academy/films-v2/m-ev/m-ev.vtt",
+  "transcript": "/academy/films-v2/m-ev/m-ev.transcript.txt",
+  "durationSeconds": 98,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.96,
+    "yourTurn": 60.08,
+    "rule": 87.27,
+    "upNext": 98,
+    "first": null
+  }
+}

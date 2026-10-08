@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "w-how-deep",
+  "sourceId": "w-deep",
+  "video": "/academy/films-v2/w-how-deep/w-how-deep-1080.mp4",
+  "video720": "/academy/films-v2/w-how-deep/w-how-deep-720.mp4",
+  "poster": "/academy/films-v2/w-how-deep/w-how-deep-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-how-deep/w-how-deep-rule.jpg",
+  "captions": "/academy/films-v2/w-how-deep/w-how-deep.vtt",
+  "transcript": "/academy/films-v2/w-how-deep/w-how-deep.transcript.txt",
+  "durationSeconds": 91,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 2.07,
+    "yourTurn": null,
+    "rule": 86.093,
+    "upNext": 87.09,
+    "first": null
+  }
+}

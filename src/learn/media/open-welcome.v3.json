@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "open-welcome",
+  "video": "/academy/films-v2/open-welcome/open-welcome-1080.mp4",
+  "video720": "/academy/films-v2/open-welcome/open-welcome-720.mp4",
+  "poster": "/academy/films-v2/open-welcome/open-welcome-poster.jpg",
+  "ruleCard": null,
+  "captions": "/academy/films-v2/open-welcome/open-welcome.vtt",
+  "transcript": "/academy/films-v2/open-welcome/open-welcome.transcript.txt",
+  "durationSeconds": 20,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": null,
+    "yourTurn": null,
+    "rule": null,
+    "upNext": null,
+    "first": 14.07
+  }
+}

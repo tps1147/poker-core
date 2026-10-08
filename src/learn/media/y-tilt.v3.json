@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "y-tilt",
+  "video": "/academy/films-v2/y-tilt/y-tilt-1080.mp4",
+  "video720": "/academy/films-v2/y-tilt/y-tilt-720.mp4",
+  "poster": "/academy/films-v2/y-tilt/y-tilt-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-tilt/y-tilt-rule.jpg",
+  "captions": "/academy/films-v2/y-tilt/y-tilt.vtt",
+  "transcript": "/academy/films-v2/y-tilt/y-tilt.transcript.txt",
+  "durationSeconds": 87,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.31,
+    "yourTurn": null,
+    "rule": 80.61,
+    "upNext": 87,
+    "first": null
+  }
+}

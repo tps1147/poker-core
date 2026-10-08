@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "r-hand-rankings",
+  "video": "/academy/films-v2/r-hand-rankings/r-hand-rankings-1080.mp4",
+  "video720": "/academy/films-v2/r-hand-rankings/r-hand-rankings-720.mp4",
+  "poster": "/academy/films-v2/r-hand-rankings/r-hand-rankings-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-hand-rankings/r-hand-rankings-rule.jpg",
+  "captions": "/academy/films-v2/r-hand-rankings/r-hand-rankings.vtt",
+  "transcript": "/academy/films-v2/r-hand-rankings/r-hand-rankings.transcript.txt",
+  "durationSeconds": 97,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 11.04,
+    "yourTurn": null,
+    "rule": 90.28,
+    "upNext": 93.01,
+    "first": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "y-bankroll",
+  "video": "/academy/films-v2/y-bankroll/y-bankroll-1080.mp4",
+  "video720": "/academy/films-v2/y-bankroll/y-bankroll-720.mp4",
+  "poster": "/academy/films-v2/y-bankroll/y-bankroll-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-bankroll/y-bankroll-rule.jpg",
+  "captions": "/academy/films-v2/y-bankroll/y-bankroll.vtt",
+  "transcript": "/academy/films-v2/y-bankroll/y-bankroll.transcript.txt",
+  "durationSeconds": 89,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 10.88,
+    "yourTurn": null,
+    "rule": 78.52,
+    "upNext": 84.9,
+    "first": null
+  }
+}

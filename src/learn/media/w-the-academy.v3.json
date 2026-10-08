@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "w-the-academy",
+  "sourceId": "w-academy",
+  "video": "/academy/films-v2/w-the-academy/w-the-academy-1080.mp4",
+  "video720": "/academy/films-v2/w-the-academy/w-the-academy-720.mp4",
+  "poster": "/academy/films-v2/w-the-academy/w-the-academy-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-the-academy/w-the-academy-rule.jpg",
+  "captions": "/academy/films-v2/w-the-academy/w-the-academy.vtt",
+  "transcript": "/academy/films-v2/w-the-academy/w-the-academy.transcript.txt",
+  "durationSeconds": 86,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.206,
+    "yourTurn": null,
+    "rule": 76.813,
+    "upNext": 82.32,
+    "first": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "r-the-deck",
+  "video": "/academy/films-v2/r-the-deck/r-the-deck-1080.mp4",
+  "video720": "/academy/films-v2/r-the-deck/r-the-deck-720.mp4",
+  "poster": "/academy/films-v2/r-the-deck/r-the-deck-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-the-deck/r-the-deck-rule.jpg",
+  "captions": "/academy/films-v2/r-the-deck/r-the-deck.vtt",
+  "transcript": "/academy/films-v2/r-the-deck/r-the-deck.transcript.txt",
+  "durationSeconds": 98,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 14.477,
+    "yourTurn": null,
+    "rule": 89.934,
+    "upNext": 94.308,
+    "first": null
+  }
+}

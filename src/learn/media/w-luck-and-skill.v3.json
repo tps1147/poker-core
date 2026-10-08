@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "w-luck-and-skill",
+  "sourceId": "w-luck",
+  "video": "/academy/films-v2/w-luck-and-skill/w-luck-and-skill-1080.mp4",
+  "video720": "/academy/films-v2/w-luck-and-skill/w-luck-and-skill-720.mp4",
+  "poster": "/academy/films-v2/w-luck-and-skill/w-luck-and-skill-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-luck-and-skill/w-luck-and-skill-rule.jpg",
+  "captions": "/academy/films-v2/w-luck-and-skill/w-luck-and-skill.vtt",
+  "transcript": "/academy/films-v2/w-luck-and-skill/w-luck-and-skill.transcript.txt",
+  "durationSeconds": 87,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.18,
+    "yourTurn": null,
+    "rule": 81.89,
+    "upNext": 87,
+    "first": null
+  }
+}

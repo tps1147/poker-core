@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "b-the-nuts",
+  "video": "/academy/films-v2/b-the-nuts/b-the-nuts-1080.mp4",
+  "video720": "/academy/films-v2/b-the-nuts/b-the-nuts-720.mp4",
+  "poster": "/academy/films-v2/b-the-nuts/b-the-nuts-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-the-nuts/b-the-nuts-rule.jpg",
+  "captions": "/academy/films-v2/b-the-nuts/b-the-nuts.vtt",
+  "transcript": "/academy/films-v2/b-the-nuts/b-the-nuts.transcript.txt",
+  "durationSeconds": 95,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 11.9,
+    "yourTurn": null,
+    "rule": 87.95,
+    "upNext": 91.46,
+    "first": null
+  }
+}

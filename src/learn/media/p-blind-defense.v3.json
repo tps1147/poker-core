@@ -1,0 +1,27 @@
+{
+  "format": "academy-film-v2",
+  "id": "p-blind-defense",
+  "video": "/academy/films-v2/p-blind-defense/p-blind-defense-1080.mp4",
+  "video720": "/academy/films-v2/p-blind-defense/p-blind-defense-720.mp4",
+  "poster": "/academy/films-v2/p-blind-defense/p-blind-defense-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-blind-defense/p-blind-defense-rule.jpg",
+  "captions": "/academy/films-v2/p-blind-defense/p-blind-defense.vtt",
+  "transcript": "/academy/films-v2/p-blind-defense/p-blind-defense.transcript.txt",
+  "durationSeconds": 98,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 5.96,
+    "yourTurn": 73.99,
+    "rule": 91.03,
+    "upNext": 94.45,
+    "first": null
+  }
+}
