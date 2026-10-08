@@ -1,7 +1,7 @@
 // The academy tree draft: structure, coverage of everything already built, and the facts it states.
 //   node test/v1/learn/academyTree.test.mjs
 import assert from "node:assert/strict";
-import { NODES, TRACKS, PATHS, validateTree, depthOf } from "../../../src/learn/v1/academyTree.mjs";
+import { NODES, TRACKS, PATHS, validateTree, depthOf } from "../../../src/learn/academyTree.mjs";
 import { COURSE_ORDER } from "../../../src/learn/lessons/index.mjs";
 import { PUZZLE_TOPICS } from "../../../src/puzzles/index.js";
 

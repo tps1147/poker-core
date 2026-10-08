@@ -14,6 +14,7 @@ export * from "./filmWatch.mjs";
 export * from "./motion.mjs";
 export * from "./lessons/index.mjs";
 export * from "./lessonModel.mjs";
+export * from "./academyTree.mjs";
 export * from "./curriculum.mjs";
 export * from "./covers.mjs";
 export { createLessonRunController } from "./lessonRunController.mjs";
