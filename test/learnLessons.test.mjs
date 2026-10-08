@@ -12,6 +12,8 @@ import * as motionModule from "../src/learn/motion.mjs";
 import * as lessonsModule from "../src/learn/lessons/index.mjs";
 import * as lessonModelModule from "../src/learn/lessonModel.mjs";
 import * as curriculumModule from "../src/learn/curriculum.mjs";
+import * as academyTreeModule from "../src/learn/academyTree.mjs";
+import * as nodeStateModule from "../src/learn/nodeState.mjs";
 import { mediaUrls, portraitGaps } from "../scripts/check-learn-media.mjs";
 
 const LEARN_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "learn");
@@ -33,7 +35,8 @@ const readMedia = (definition) => JSON.parse(readFileSync(join(LEARN_DIR, defini
 
 // ---- the namespace ------------------------------------------------------------------------------
 check("every module's exports reach poker-core/learn (no silent export * clash)", () => {
-  const modules = { scriptedHand: scriptedHandModule, filmWatch: filmWatchModule, motion: motionModule, lessons: lessonsModule, lessonModel: lessonModelModule, curriculum: curriculumModule };
+  const modules = { scriptedHand: scriptedHandModule, filmWatch: filmWatchModule, motion: motionModule, lessons: lessonsModule, lessonModel: lessonModelModule, curriculum: curriculumModule,
+    academyTree: academyTreeModule, nodeState: nodeStateModule };
   const owners = {};
   for (const [name, mod] of Object.entries(modules)) {
     for (const key of Object.keys(mod)) {
