@@ -133,6 +133,81 @@ export function openerStop(media, { cutAtFirst = false } = {}) {
   return cutAtFirst ? c.anchors.first ?? c.duration : c.duration;
 }
 
+// THE YOUR-TURN PAUSE (moved from web's filmV2Model.js, 2026-10-08; same rule, so web and mobile
+// pause on the same frame). The `yourTurn` anchor marks where the beat STARTS ("Your turn. Now they
+// go all-in for 100."); the spot is still being described for a few seconds after it, and the film
+// asks its question last ("Still 30%. Call or fold?"). So the pause lands at the end of the first cue,
+// from the anchor on, that asks (ends in "?" or a trailing "..."), within PAUSE_WINDOW seconds;
+// failing that, at the end of the cue the anchor starts; with no cue there, on the anchor itself.
+// CUES are [{ start, end, text }]: parseVtt of the film's WebVTT, or the timing.json captions.
+export const PAUSE_WINDOW = 15;
+
+const vttStamp = (text) => {
+  const match = /^(?:(\d+):)?(\d{1,2}):(\d{2})(?:[.,](\d{1,3}))?$/.exec(String(text).trim());
+  if (!match) return null;
+  const [, h, m, s, ms] = match;
+  return Number(h || 0) * 3600 + Number(m) * 60 + Number(s) + Number((ms || "0").padEnd(3, "0")) / 1000;
+};
+
+// WebVTT text -> [{ start, end, text }] in file order. Cue settings and identifiers are dropped;
+// voice and styling tags are stripped from the text.
+export function parseVtt(text) {
+  if (typeof text !== "string" || !text.trim()) return [];
+  const blocks = text.replace(/\r\n?/g, "\n").split(/\n{2,}/);
+  const cues = [];
+  for (const block of blocks) {
+    const lines = block.split("\n").filter((line) => line.trim() !== "");
+    const at = lines.findIndex((line) => line.includes("-->"));
+    if (at < 0) continue;
+    const [from, rest] = lines[at].split("-->");
+    const start = vttStamp(from);
+    const end = vttStamp(String(rest).trim().split(/\s+/)[0]);
+    if (start == null || end == null) continue;
+    const body = lines.slice(at + 1).join(" ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    cues.push({ start, end, text: body });
+  }
+  return cues;
+}
+
+const asks = (text) => /\?\s*$/.test(text) || /(\.\.\.|…)\s*$/.test(text);
+const cuesOf = (media) => (Array.isArray(media?.captions)
+  ? media.captions.filter((c) => c && num(c.start) != null && num(c.end) != null).map((c) => ({ start: c.start, end: c.end, text: String(c.text || "") }))
+  : []);
+
+// The pause point for a film's "Your turn" beat, in seconds, or null when it has no yourTurn anchor.
+// `cues` default to the media's own timing captions (a v3 media file names its VTT by URL, so pass
+// parseVtt of it). `explicit` (a number) wins outright.
+export function filmPauseAt(media, { cues = null, explicit = null } = {}) {
+  if (typeof explicit === "number" && Number.isFinite(explicit)) return explicit;
+  const yourTurn = canon(media).anchors.yourTurn;
+  if (typeof yourTurn !== "number" || !Number.isFinite(yourTurn)) return null;
+  const list = Array.isArray(cues) ? cues : cuesOf(media);
+  const after = list.filter((cue) => cue.start >= yourTurn - 0.05 && cue.start <= yourTurn + PAUSE_WINDOW);
+  const question = after.find((cue) => asks(cue.text));
+  if (question) return question.end;
+  const opening = list.find((cue) => cue.start <= yourTurn + 0.05 && cue.end > yourTurn) || after[0];
+  return opening ? opening.end : yourTurn;
+}
+
+// The definition's own pause for this film (the film stage's `pause: { at, anchor, film, spotId, spot }`),
+// or null. `film` names the film it was written for: a v1 film's pause never applies to its v2 film.
+export function filmOwnPause(stage, filmId) {
+  const pause = stage?.pause;
+  return pause && filmId && pause.film === filmId ? pause : null;
+}
+
+// Where the film asks: { at, atEnd }. The definition's own pause wins whenever it is written for this
+// film: its `at`, or with `at` null and `anchor` "end", the film plays out to its stop, then asks.
+// Otherwise filmPauseAt.
+export function filmTurnPlan(stage, media, { cues = null } = {}) {
+  const own = filmOwnPause(stage, media?.id);
+  if (own) {
+    const at = typeof own.at === "number" && Number.isFinite(own.at) ? own.at : null;
+    return { at, atEnd: at == null && own.anchor === "end" };
+  }
+  return { at: filmPauseAt(media, { cues }), atEnd: false };
+}
+
 // THE FEEDBACK VOICE (silent until the sound-library pass): the moments that speak, and the lines
 // each rotates through. Ids mirror NARRATION-drills-nichalia.md (Nichalia, take 1); the file for an
 // id is academy/voice/drills/nichalia/<id>.mp3.
