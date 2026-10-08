@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-pot-odds",
+  "video": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-1080.mp4",
+  "video720": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-720.mp4",
+  "poster": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-rule.jpg",
+  "captions": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds.vtt",
+  "transcript": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds.transcript.txt",
+  "durationSeconds": 89,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.33,
+    "yourTurn": 65.56,
+    "rule": 83.64,
+    "upNext": 89,
+    "first": null
+  },
+  "version": "b7fcf529"
+}

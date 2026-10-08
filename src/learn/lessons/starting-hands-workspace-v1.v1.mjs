@@ -33,8 +33,9 @@ const ring = (position, hero, rest) => ({
 });
 const OPEN = { raise: 25 };
 const blinds = { do: "blinds", sb: 5, bb: 10 };
-// Unopened: the blinds are in (5 and 10), 15 in the pot, 10 owed, no board.
-const unopened = (hero) => ({ street: "preflop", board: [], hero, potBefore: 5, bet: 10, call: 10 });
+// Unopened: the blinds are in (5 and 10), 15 in the pot, 10 owed, no board. The raise key reads
+// "Raise to 25", the size the hand's answer step plays (OPEN).
+const unopened = (hero) => ({ street: "preflop", board: [], hero, potBefore: 5, bet: 10, call: 10, sizes: OPEN });
 // Facing an under-the-gun raise to 25: 5 + 10 + 25 = 40 in the pot, 25 owed.
 const facingRaise = (hero) => ({ street: "preflop", board: [], hero, potBefore: 15, bet: 25, call: 25 });
 const READ_BANDS = [{ id: "strong-hands", label: "Strong hands" }, { id: "second-best", label: "Second-best hands" }];
@@ -42,10 +43,10 @@ const readFeedback = { found: "You read what it makes.", missed: "Let’s pictur
 const STOPS = "The hand stops once you act. No flop is dealt in this lesson.";
 
 const definition = {
-  id: "starting-hands-workspace-v1", version: 1, flow: "film-first",
+  id: "starting-hands-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-starting-hands",
   sourceLessonId: "lesson-starting-hands-001", videoLessonId: "lesson-starting-hands-001",
-  coach: "reina", access: "free", template: "preflop",
+  coach: "knox", narrator: "nathan", access: "free", template: "preflop",
   title: "Discipline before the flop.", kicker: "Play the hands that make strong hands.",
   trail: ["Learn", "Preflop discipline", "Starting hands"],
   course: { chapter: "Preflop discipline" },
@@ -55,13 +56,24 @@ const definition = {
   feedback: { found: "You read the hand.", missed: "Let’s look at what it makes.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Discipline before the flop.", em: "A face card is not a reason.",
-      lead: "Some hands look playable and still lose chips later. Watch Reina read queen-seven offsuit, then play three hands at a six-handed table.",
-      cta: "Watch with Reina" },
-    { kind: "film", label: "Film", upNext: "Play Reina’s hand",
+      lead: "Some hands look playable and still lose chips later. Watch the film, then play three hands at a six-handed table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (the media rail), with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Before the flop" }, { beat: "trouble", label: "Dominated trouble" }, { beat: "range", label: "What good hands make" }, { beat: "bad", label: "Second-best hands" }] },
-    { kind: "decision", label: "Reina’s hand", spotId: "sh1-guided", hand: "sh1-guided", role: "guided",
-      coachLine: "Reina’s queen-seven. You are first to act.", next: "Try a practice hand" },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Before the flop" }, { beat: "trouble", label: "Dominated trouble" }, { beat: "range", label: "What good hands make" }, { beat: "bad", label: "Second-best hands" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-starting-hands, canon.yourTurn at 77.18 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-starting-hands.mjs.
+      pause: { at: 77.18, anchor: "yourTurn", film: "p-starting-hands", spotId: "sh1-turn",
+        spot: { decision: "action", choices: ["fold", "raise"], prompt: "Nine-eight of hearts, on the button, folded to you. Open, or fold?", sizes: { raise: 25 }, title: "Your turn: open or fold?", explanation: "Open. Connected, suited, and in position: nine-eight suited is in the button chart." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-starting-hands.mjs).
+    { kind: "why", label: "Why", spotId: "sh1-why", prompt: "Why fold queen-seven under the gun?",
+      options: [
+        { id: "a", text: "It mostly makes second-best hands, and five players still act after you.", fix: "Right. Second-best hands with five players behind: fold." },
+        { id: "b", text: "A queen is too weak to raise from any seat.", fix: "Queens with good kickers open. The seven is the problem, with five players behind." },
+        { id: "c", text: "It would be worth playing if it were suited.", fix: "Suited is a bonus, not a ticket. The seat and the second card still decide." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "sh1-guided", hand: "sh1-guided", role: "guided",
+      coachLine: "The queen-seven. You are first to act.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "sh1-practice-read", hand: "sh1-practice", role: "practice",
       coachLine: "New cards. Read what they make before you act.", next: "Now decide the hand",
       feedback: readFeedback },
@@ -74,14 +86,14 @@ const definition = {
       coachLine: "Your read, your action.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Hands that make strong hands.",
       lead: "Before you put chips in, ask what your two cards make from this seat and against this action. Play the hands that make strong pairs, strong draws and nutted hands, and let the second-best ones go before they cost you chips later.",
-      recapLabels: ["Reina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
     "sh1-guided": {
       decision: "action", choices: ["fold", "raise"], ...unopened(["Qd", "7c"]),
       title: "Queen-seven offsuit, first to act. Fold or raise?",
-      prompt: "Reina’s queen-seven offsuit, under the gun: you are the first to act, and five players act after you. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
+      prompt: "The queen-seven offsuit, under the gun: you are the first to act, and five players act after you. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
       hint: "Ask what this hand makes when it hits a flop, and who can still wake up with a better hand behind you.",
       explanation: "Queen-seven offsuit mostly makes second-best hands: a pair of queens with a weak kicker, or a pair of sevens under higher cards. With five players still to act, any of them can hold a better queen or a bigger pair. Folding is the play under this lesson’s assumptions, and it costs you nothing: under the gun you have put no chips in.",
       note: STOPS,
@@ -91,9 +103,9 @@ const definition = {
       decision: "estimate", bands: READ_BANDS, ...unopened(["Ah", "Jh"]),
       dockPrompt: "When it connects, this hand mostly makes:",
       title: "What does ace-jack suited mostly make?",
-      prompt: "A new hand. You are in middle position with ace-jack of hearts, and under the gun has folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Before you act, use Reina’s rule: when this hand connects with a flop, does it mostly make strong hands (strong pairs, strong draws, nutted hands) or second-best hands?",
+      prompt: "A new hand. You are in middle position with ace-jack of hearts, and under the gun has folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Before you act, use the rule: when this hand connects with a flop, does it mostly make strong hands (strong pairs, strong draws, nutted hands) or second-best hands?",
       hint: "Picture the flops it hits. When it pairs, how good is the other card? What can two suited cards with an ace draw to?",
-      explanation: "Strong hands. A pair of aces or jacks comes with a good kicker, two more hearts give it a draw to the best possible flush, and ace-king-queen-jack-ten is the highest straight. Those are the strong pairs, strong draws and nutted hands Reina describes.",
+      explanation: "Strong hands. A pair of aces or jacks comes with a good kicker, two more hearts give it a draw to the best possible flush, and ace-king-queen-jack-ten is the highest straight. Those are the strong pairs, strong draws and nutted hands this range holds.",
       focus: ["Ah", "Jh"], hear: 3,
     },
     "sh1-practice-act": {

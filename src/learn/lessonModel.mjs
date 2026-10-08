@@ -83,6 +83,28 @@ export function segmentForStep(segments, step) {
   return segments.find((segment) => segment.stages.includes(step)) || null;
 }
 
+// ---- the why step (ACADEMY-LEARNING-LOOP 2026-10-07, "Why") ------------------------------------
+// One tap from three reasons after the film's "Your turn": the right one, the lesson's common
+// misconception and a plausible near-miss. The stage shape:
+//   { kind: "why", label, prompt, options: [{ id, text, correct, fix }] }
+// `fix` is the one-line correction a wrong pick shows (on the right option, the line that confirms
+// it). `correct` ships only where a definition may carry its own key; otherwise the server key
+// ({ option }) grades the pick. The table stays held behind the step, as it does behind the film.
+export const WHY_KIND = "why";
+
+export function whyStages(definition) {
+  return (definition?.stages || []).map((stage, index) => ({ ...stage, index })).filter((stage) => stage.kind === WHY_KIND);
+}
+
+// The verdict for a pick: { option, correct, fix }. `key` is the grading key ({ option }) when the
+// stage ships no `correct` flags; with neither, `correct` is null (ungraded, "open").
+export function whyResult(stage, optionId, key = null) {
+  const option = (stage?.options || []).find((item) => item.id === optionId) || null;
+  if (!option) return null;
+  const correct = key?.option != null ? key.option === option.id : typeof option.correct === "boolean" ? option.correct : null;
+  return { option: option.id, correct, fix: option.fix ?? null };
+}
+
 // ---- hands ------------------------------------------------------------------------------------
 export function stageHand(definition, step) {
   const stage = definition.stages[step];
@@ -97,7 +119,7 @@ export function tablePlan(definition, step, run) {
   const stages = definition.stages;
   const stage = stages[step];
   const decisions = decisionStages(definition);
-  if (!stage || stage.kind === "welcome" || stage.kind === "film") return { handId: decisions[0]?.hand ?? null, mode: "held" };
+  if (!stage || stage.kind === "welcome" || stage.kind === "film" || stage.kind === WHY_KIND) return { handId: decisions[0]?.hand ?? null, mode: "held" };
   if (stage.kind === "decision") {
     const handStages = decisions.filter((item) => item.hand === stage.hand);
     const answeredAll = handStages.every((item) => run?.answers?.[item.spotId]);

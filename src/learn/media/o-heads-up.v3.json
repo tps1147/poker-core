@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "o-heads-up",
+  "video": "/academy/films-v2/o-heads-up/956ff057/o-heads-up-1080.mp4",
+  "video720": "/academy/films-v2/o-heads-up/956ff057/o-heads-up-720.mp4",
+  "poster": "/academy/films-v2/o-heads-up/956ff057/o-heads-up-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-heads-up/956ff057/o-heads-up-rule.jpg",
+  "captions": "/academy/films-v2/o-heads-up/956ff057/o-heads-up.vtt",
+  "transcript": "/academy/films-v2/o-heads-up/956ff057/o-heads-up.transcript.txt",
+  "durationSeconds": 70,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 8.72,
+    "yourTurn": null,
+    "rule": 60.74,
+    "upNext": 67,
+    "first": null
+  },
+  "version": "956ff057"
+}

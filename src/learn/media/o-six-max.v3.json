@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "o-six-max",
+  "video": "/academy/films-v2/o-six-max/3bc9e82b/o-six-max-1080.mp4",
+  "video720": "/academy/films-v2/o-six-max/3bc9e82b/o-six-max-720.mp4",
+  "poster": "/academy/films-v2/o-six-max/3bc9e82b/o-six-max-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-six-max/3bc9e82b/o-six-max-rule.jpg",
+  "captions": "/academy/films-v2/o-six-max/3bc9e82b/o-six-max.vtt",
+  "transcript": "/academy/films-v2/o-six-max/3bc9e82b/o-six-max.transcript.txt",
+  "durationSeconds": 63,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 7.34,
+    "yourTurn": 48.69,
+    "rule": 56.27,
+    "upNext": 63,
+    "first": null
+  },
+  "version": "3bc9e82b"
+}

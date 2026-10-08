@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-rule-2-4",
+  "video": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-1080.mp4",
+  "video720": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-720.mp4",
+  "poster": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-rule.jpg",
+  "captions": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4.vtt",
+  "transcript": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4.transcript.txt",
+  "durationSeconds": 97,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 15.42,
+    "yourTurn": 62.81,
+    "rule": 87.12,
+    "upNext": 93.58,
+    "first": null
+  },
+  "version": "30da67e0"
+}

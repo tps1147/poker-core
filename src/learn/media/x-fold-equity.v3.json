@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "x-fold-equity",
+  "video": "/academy/films-v2/x-fold-equity/4958f7f9/x-fold-equity-1080.mp4",
+  "video720": "/academy/films-v2/x-fold-equity/4958f7f9/x-fold-equity-720.mp4",
+  "poster": "/academy/films-v2/x-fold-equity/4958f7f9/x-fold-equity-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-fold-equity/4958f7f9/x-fold-equity-rule.jpg",
+  "captions": "/academy/films-v2/x-fold-equity/4958f7f9/x-fold-equity.vtt",
+  "transcript": "/academy/films-v2/x-fold-equity/4958f7f9/x-fold-equity.transcript.txt",
+  "durationSeconds": 93,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 14.62,
+    "yourTurn": 59.9,
+    "rule": 79.31,
+    "upNext": 89,
+    "first": null
+  },
+  "version": "4958f7f9"
+}

@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "o-tournaments-icm",
+  "video": "/academy/films-v2/o-tournaments-icm/8c64a7d2/o-tournaments-icm-1080.mp4",
+  "video720": "/academy/films-v2/o-tournaments-icm/8c64a7d2/o-tournaments-icm-720.mp4",
+  "poster": "/academy/films-v2/o-tournaments-icm/8c64a7d2/o-tournaments-icm-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-tournaments-icm/8c64a7d2/o-tournaments-icm-rule.jpg",
+  "captions": "/academy/films-v2/o-tournaments-icm/8c64a7d2/o-tournaments-icm.vtt",
+  "transcript": "/academy/films-v2/o-tournaments-icm/8c64a7d2/o-tournaments-icm.transcript.txt",
+  "durationSeconds": 92.5,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 13.05,
+    "yourTurn": 67.51,
+    "rule": 82.48,
+    "upNext": 89.5,
+    "first": 7.12
+  },
+  "version": "8c64a7d2"
+}

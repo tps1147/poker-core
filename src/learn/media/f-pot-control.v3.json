@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "f-pot-control",
+  "video": "/academy/films-v2/f-pot-control/d9daa6fa/f-pot-control-1080.mp4",
+  "video720": "/academy/films-v2/f-pot-control/d9daa6fa/f-pot-control-720.mp4",
+  "poster": "/academy/films-v2/f-pot-control/d9daa6fa/f-pot-control-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-pot-control/d9daa6fa/f-pot-control-rule.jpg",
+  "captions": "/academy/films-v2/f-pot-control/d9daa6fa/f-pot-control.vtt",
+  "transcript": "/academy/films-v2/f-pot-control/d9daa6fa/f-pot-control.transcript.txt",
+  "durationSeconds": 86,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 11.54,
+    "yourTurn": 60.81,
+    "rule": 74.68,
+    "upNext": 81.6,
+    "first": 62.53
+  },
+  "version": "d9daa6fa"
+}

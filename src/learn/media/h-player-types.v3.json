@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "h-player-types",
+  "video": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-1080.mp4",
+  "video720": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-720.mp4",
+  "poster": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-poster.jpg",
+  "ruleCard": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-rule.jpg",
+  "captions": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types.vtt",
+  "transcript": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types.transcript.txt",
+  "durationSeconds": 91,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.4,
+    "yourTurn": null,
+    "rule": 82.9,
+    "upNext": 87.1,
+    "first": null
+  },
+  "version": "dc6c86d1"
+}

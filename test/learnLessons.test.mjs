@@ -12,6 +12,13 @@ import * as motionModule from "../src/learn/motion.mjs";
 import * as lessonsModule from "../src/learn/lessons/index.mjs";
 import * as lessonModelModule from "../src/learn/lessonModel.mjs";
 import * as curriculumModule from "../src/learn/curriculum.mjs";
+import * as academyTreeModule from "../src/learn/academyTree.mjs";
+import * as nodeStateModule from "../src/learn/nodeState.mjs";
+import * as filmV2Module from "../src/learn/filmV2.mjs";
+import * as recallBankModule from "../src/learn/recallBank.mjs";
+import * as recallModule from "../src/learn/recall.mjs";
+import * as glossaryModule from "../src/learn/glossary.mjs";
+import * as academyLoopModule from "../src/learn/academyLoop.mjs";
 import { mediaUrls, portraitGaps } from "../scripts/check-learn-media.mjs";
 
 const LEARN_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "learn");
@@ -33,7 +40,9 @@ const readMedia = (definition) => JSON.parse(readFileSync(join(LEARN_DIR, defini
 
 // ---- the namespace ------------------------------------------------------------------------------
 check("every module's exports reach poker-core/learn (no silent export * clash)", () => {
-  const modules = { scriptedHand: scriptedHandModule, filmWatch: filmWatchModule, motion: motionModule, lessons: lessonsModule, lessonModel: lessonModelModule, curriculum: curriculumModule };
+  const modules = { scriptedHand: scriptedHandModule, filmWatch: filmWatchModule, motion: motionModule, lessons: lessonsModule, lessonModel: lessonModelModule, curriculum: curriculumModule,
+    academyTree: academyTreeModule, nodeState: nodeStateModule, filmV2: filmV2Module,
+    recallBank: recallBankModule, recall: recallModule, glossary: glossaryModule, academyLoop: academyLoopModule };
   const owners = {};
   for (const [name, mod] of Object.entries(modules)) {
     for (const key of Object.keys(mod)) {
@@ -76,7 +85,7 @@ check("COURSE_ORDER and FILM_FIRST_LESSONS: 20 unique lessons, same order", () =
 
 check("lookups: definition id, sourceLessonId and videoLessonId", () => {
   assert.equal(filmFirstLesson("pilot-pot-odds")?.id, "pot-odds-workspace-v2");
-  assert.equal(filmFirstLesson("pilot-pot-odds")?.version, 2);
+  assert.equal(filmFirstLesson("pilot-pot-odds")?.version, 3);
   assert.equal(filmFirstLesson("lesson-pot-odds-001"), filmFirstLesson("pilot-pot-odds"));
   assert.equal(filmFirstLesson("pot-odds-workspace-v2"), filmFirstLesson("pilot-pot-odds"));
   assert.equal(filmFirstLesson("lesson-3betting-001")?.id, "three-betting-workspace-v1");
@@ -132,7 +141,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     assert.equal(kinds[1], "film", `${id} then the film`);
     assert.equal(kinds.filter((kind) => kind === "film").length, 1, `${id} one film`);
     assert.equal(kinds.at(-1), "takeaway", `${id} ends on the recap`);
-    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision"), `${id} decisions between film and recap`);
+    // Academy v2: a why step may follow the film (lessonModel WHY_KIND); everything else is a decision.
+    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision" || kind === "why"), `${id} decisions between film and recap`);
     const decisions = decisionStages(definition);
     for (const stage of decisions) {
       assert.ok(definition.hands[stage.hand], `${stage.spotId} plays on a registered hand`);
@@ -182,7 +192,10 @@ for (const definition of FILM_FIRST_LESSONS) {
     assert.ok(existsSync(file), `${definition.media} exists`);
     const media = readMedia(definition);
     assert.equal(media.contentId, id, `${id} media contentId`);
-    assert.equal(media.contentVersion, definition.version, `${id} media contentVersion`);
+    // The film keeps the content version it was cut for (its file name); academy v2 bumped the
+    // shipped lessons' versions for the why stage without touching their films.
+    assert.equal(media.contentVersion, Number(/\.v(\d+)\.json$/.exec(definition.media)?.[1]), `${id} media contentVersion`);
+    assert.ok(media.contentVersion <= definition.version, `${id} media is not newer than the lesson`);
     assert.ok(media.durationSeconds > 0, `${id} durationSeconds`);
     assert.ok(Array.isArray(media.cues) && media.cues.length > 0, `${id} cues`);
     assert.ok(media.beats && typeof media.beats === "object" && Object.keys(media.beats).length > 0, `${id} beats`);
@@ -200,7 +213,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     const film = definition.stages.find((stage) => stage.kind === "film");
     // A beat is a time, or a list of timed marks (rfi "seats"); either way it must exist.
     for (const chapter of film.chapters || []) if (chapter.beat != null) assert.ok(media.beats[chapter.beat] != null, `${id} chapter beat ${chapter.beat}`);
-    if (film.pause) assert.ok(film.pause.at > 0 && film.pause.at < media.durationSeconds, `${id} pause inside the film`);
+    // A pause that names a v2 film (`pause.film`) is timed on that film, not on this media json.
+    if (film.pause && !film.pause.film) assert.ok(film.pause.at > 0 && film.pause.at < media.durationSeconds, `${id} pause inside the film`);
     for (const [spotId, spot] of Object.entries(definition.spots)) {
       if (spot.hear != null) assert.ok(Number.isInteger(spot.hear) && spot.hear >= 0 && spot.hear < media.cues.length, `${spotId} hear cue`);
     }
@@ -263,19 +277,19 @@ const outs = lesson("outs-workspace-v1");
 const stageOf = (definition, spotId) => definition.stages.findIndex((stage) => stage.spotId === spotId);
 const attempt = (spotId, correct, extra = {}) => ({ spotId, correct, ...extra });
 
-check("railSegments: one segment per hand (outs: Film, Mina’s hand, Practice, Fresh hand, Recap)", () => {
+check("railSegments: one segment per hand (outs: Film, Knox’s hand, Practice, Fresh hand, Recap)", () => {
   const segments = railSegments(outs, null);
-  assert.deepEqual(segments.map((segment) => segment.label), ["Film", "Mina’s hand", "Practice", "Fresh hand", "Recap"]);
+  assert.deepEqual(segments.map((segment) => segment.label), ["Film", "Knox’s hand", "Practice", "Fresh hand", "Recap"]);
   assert.deepEqual(segments.map((segment) => segment.key), ["film", "outs2-guided", "outs2-practice", "outs2-fresh", "recap"]);
   assert.deepEqual(segments.map((segment) => segment.number), [1, 2, 3, 4, 5]);
-  assert.deepEqual(segments[2].stages, [3, 4], "the practice hand holds two decisions");
+  assert.deepEqual(segments[2].stages, [4, 5], "the practice hand holds two decisions (after the film's why step)");
   assert.ok(segments.every((segment) => !segment.complete));
   assert.deepEqual(segments.map((segment) => segment.reachable), [false, false, false, false, false]);
-  const run = { furthest: 4, watched: { 1: true }, answers: { "outs2-guided-call": { action: "call" }, "outs2-practice-count": { response: { value: 8 } } } };
+  const run = { furthest: 5, watched: { 1: true }, answers: { "outs2-guided-call": { action: "call" }, "outs2-practice-count": { response: { value: 8 } } } };
   const later = railSegments(outs, run);
   assert.deepEqual(later.map((segment) => segment.complete), [true, true, false, false, false], "a hand fills only when all its decisions are answered");
   assert.deepEqual(later.map((segment) => segment.reachable), [true, true, true, false, false]);
-  assert.equal(segmentForStep(later, 4).key, "outs2-practice");
+  assert.equal(segmentForStep(later, 5).key, "outs2-practice");
   assert.equal(segmentForStep(later, 0), null, "the entry card is not on the rail");
   const lesson1 = railSegments(lesson("hand-rankings-workspace-v1"), null);
   assert.equal(new Set(lesson1.map((segment) => segment.key)).size, lesson1.length, "unique keys");
@@ -284,10 +298,11 @@ check("railSegments: one segment per hand (outs: Film, Mina’s hand, Practice, 
 check("tablePlan and planHand: held behind the film, live on a decision, settled when revisited", () => {
   assert.deepEqual(tablePlan(outs, 0, null), { handId: "outs2-guided", mode: "held" });
   assert.deepEqual(tablePlan(outs, 1, null), { handId: "outs2-guided", mode: "held" });
-  assert.deepEqual(tablePlan(outs, 3, { furthest: 3 }), { handId: "outs2-practice", mode: "live" });
-  const answered = { furthest: 6, answers: { "outs2-practice-count": { response: { value: 8 } }, "outs2-practice-call": { action: "call" } } };
-  assert.deepEqual(tablePlan(outs, 3, answered), { handId: "outs2-practice", mode: "settled" });
-  assert.deepEqual(tablePlan(outs, 7, answered), { handId: "outs2-fresh", mode: "settled" });
+  assert.deepEqual(tablePlan(outs, 4, { furthest: 4 }), { handId: "outs2-practice", mode: "live" });
+  assert.deepEqual(tablePlan(outs, 2, { furthest: 2 }), { handId: "outs2-guided", mode: "held" }, "held behind the why, as behind the film");
+  const answered = { furthest: 7, answers: { "outs2-practice-count": { response: { value: 8 } }, "outs2-practice-call": { action: "call" } } };
+  assert.deepEqual(tablePlan(outs, 4, answered), { handId: "outs2-practice", mode: "settled" });
+  assert.deepEqual(tablePlan(outs, 8, answered), { handId: "outs2-fresh", mode: "settled" });
   const guided = outs.hands["outs2-guided"];
   const held = planHand(outs, { handId: "outs2-guided", mode: "held" });
   assert.equal(held.startAt, 1);
@@ -295,7 +310,7 @@ check("tablePlan and planHand: held behind the film, live on a decision, settled
   assert.equal(planHand(outs, { handId: "outs2-guided", mode: "live" }), guided);
   assert.equal(planHand(outs, { handId: "outs2-fresh", mode: "settled" }).startAt, expandScript(outs.hands["outs2-fresh"]).length);
   assert.equal(planHand(outs, { handId: null, mode: "held" }), null);
-  assert.equal(stageHand(outs, 3), outs.hands["outs2-practice"]);
+  assert.equal(stageHand(outs, 4), outs.hands["outs2-practice"]);
   assert.equal(stageHand(outs, 1), null);
 });
 
@@ -363,7 +378,7 @@ check("recapRows: one row per hand, labelled per hand", () => {
   };
   const rows = recapRows(outs, { history, answers });
   assert.equal(rows.length, 3);
-  assert.deepEqual(rows.map((row) => row.label), ["Mina’s hand", "Practice", "Fresh hand"]);
+  assert.deepEqual(rows.map((row) => row.label), ["Knox’s hand", "Practice", "Fresh hand"]);
   assert.deepEqual(rows.map((row) => row.words), ["first try", "after a retry", "missed"]);
   assert.deepEqual(rows[1].facts, ["8 outs", "call"]);
   assert.deepEqual([rows[2].missed, rows[2].missedStage, rows[2].firstStage], [true, stageOf(outs, "outs2-fresh-count"), stageOf(outs, "outs2-fresh-count")]);
@@ -378,7 +393,7 @@ check("recapRows: one row per hand, labelled per hand", () => {
 
 check("entryState and filmMeta", () => {
   assert.deepEqual(entryState(outs, null), { status: "new", resumeStep: 1, watched: false });
-  const progress = entryState(outs, { furthest: 4, stage: 4, watched: { 1: true } });
+  const progress = entryState(outs, { furthest: 5, stage: 4, watched: { 1: true } });
   assert.deepEqual([progress.status, progress.resumeStep, progress.resumeLabel], ["progress", 4, "Practice"]);
   assert.equal(entryState(outs, { furthest: 2, stage: 1, watched: { 1: true } }).resumeStep, 2, "a watched film resumes on the hands");
   assert.equal(entryState(outs, { furthest: outs.stages.length - 1 }).status, "complete");
@@ -415,7 +430,7 @@ check("fitsActionBar, priceLine, ledgerLines, feedbackCopy", () => {
   const guided = outs.spots["outs2-guided-call"];
   assert.equal(priceLine(guided), "25 ÷ 250 = 10%");
   assert.deepEqual(ledgerLines(guided, null, null), [
-    { key: "chance", label: "Mina’s estimate", value: "9 outs · roughly 18%" },
+    { key: "chance", label: "The estimate", value: "9 outs · roughly 18%" },
     { key: "price", label: "The price", value: "25 ÷ 250 = 10%" },
   ]);
   const hidden = outs.spots["outs2-fresh-call"];

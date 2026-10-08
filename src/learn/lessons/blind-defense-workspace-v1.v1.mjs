@@ -47,10 +47,10 @@ const PRICE_HINT = "Add your call to the pot first. Then divide your call by tha
 const priceFeedback = { found: "You priced it.", missed: "Let’s build the price.", open: "Here’s the price." };
 
 const definition = {
-  id: "blind-defense-workspace-v1", version: 1, flow: "film-first",
+  id: "blind-defense-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-blind-defense",
   sourceLessonId: "lesson-blind-defense-001", videoLessonId: "lesson-blind-defense-001",
-  coach: "reina", access: "pro", template: "preflop",
+  coach: "knox", narrator: "nathan", access: "pro", template: "preflop",
   title: "Defend with a reason.", kicker: "Price, position and playability.",
   trail: ["Learn", "Preflop discipline", "Blind defense"],
   course: { chapter: "Preflop discipline" },
@@ -60,13 +60,24 @@ const definition = {
   feedback: { found: "You weighed all three.", missed: "Let’s weigh the three things.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Defend with a reason.", em: "Price, position, playability.",
-      lead: "Your blind is already in, so calling a raise often looks cheap. Watch Reina weigh the three things that decide a defense, then play three hands from the big blind.",
-      cta: "Watch with Reina" },
-    { kind: "film", label: "Film", upNext: "Play Reina’s hand",
+      lead: "Your blind is already in, so calling a raise often looks cheap. Watch the film, then play three hands from the big blind.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/blind-defense-workspace-v1/v1/timeline.json rail).
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The blind price" }, { beat: "range", label: "Three things" }, { beat: "hand", label: "Playability" }, { beat: "contrast", label: "Dominated hands" }, { beat: "seat", label: "Out of position" }] },
-    { kind: "decision", label: "Reina’s hand", spotId: "bd1-guided", hand: "bd1-guided", role: "guided",
-      coachLine: "Reina’s jack-ten suited. You decide the defense.", next: "Try a practice hand" },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The blind price" }, { beat: "range", label: "Three things" }, { beat: "hand", label: "Playability" }, { beat: "contrast", label: "Dominated hands" }, { beat: "seat", label: "Out of position" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-blind-defense, canon.yourTurn at 73.99 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-blind-defense.mjs.
+      pause: { at: 73.99, anchor: "yourTurn", film: "p-blind-defense", spotId: "bd1-turn",
+        spot: { decision: "count", range: [0, 100], unit: "chips", prompt: "You are the big blind. The button raises to 40. What do you owe?", title: "Your turn: what do you owe?", explanation: "40 minus your 10 is 30. The final pot is 85, so your price is about 35%: a bigger raise, a worse price." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-blind-defense.mjs).
+    { kind: "why", label: "Why", spotId: "bd1-why", prompt: "Why defend jack-ten suited here?",
+      options: [
+        { id: "a", text: "The 10 you posted is yours, so you protect it.", fix: "The posted 10 is already in the pot. It improves your price, but the hand still has to earn the call." },
+        { id: "b", text: "Your 15 buys a share of 55, about 27%, and the hand plays well against a wide range.", fix: "Right. The blind helps the price; the hand earns the call." },
+        { id: "c", text: "15 ÷ 40 is a cheap price.", fix: "Count your own call: 15 ÷ 55, about 27%." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "bd1-guided", hand: "bd1-guided", role: "guided",
+      coachLine: "The jack-ten suited. You decide the defense.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-price", hand: "bd1-practice", role: "practice",
       coachLine: "A new raise from an earlier seat. Price it first.", next: "Now decide the defense", feedback: priceFeedback },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-call", hand: "bd1-practice", role: "practice",
@@ -77,14 +88,14 @@ const definition = {
       coachLine: "Your price, your defense.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A defense with a reason.",
       lead: "Your posted blind improves the price, but it is not a reason on its own. Call when the price, your position and your hand’s playability add up, and fold dominated hands that will play out of position.",
-      recapLabels: ["Reina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
     "bd1-guided": {
       decision: "action", choices: ["fold", "call"], ...guided,
       title: "Sol raises to 25 from the button. Fold or call?",
-      prompt: "Reina’s jack-ten suited in the big blind. Rae, Ned and Ivy fold, Sol raises to 25 from the button, and Kit folds from the small blind. The pot is 40 and you owe 15 more, so calling makes a 55-chip pot, a price of about 27%. Assume Sol opens a wide range from the button. After the flop you act first on every street. Call 15, or fold?",
+      prompt: "The jack-ten suited in the big blind. Rae, Ned and Ivy fold, Sol raises to 25 from the button, and Kit folds from the small blind. The pot is 40 and you owe 15 more, so calling makes a 55-chip pot, a price of about 27%. Assume Sol opens a wide range from the button. After the flop you act first on every street. Call 15, or fold?",
       hint: "Weigh all three: how much of the final pot your call pays, who acts first after the flop, and what your two cards can become.",
       explanation: "Your blind is already in, so 15 more buys a share of a 55-chip pot: about 27%. Jack-ten suited can make straights, flushes and strong pair-plus-draw hands, and a wide button range holds plenty of hands it does not fear. You will act first after the flop, but the price and the playability give the hand a reason to continue, so calling is the defense under this lesson’s assumptions.",
       note: NOTE,
@@ -105,7 +116,7 @@ const definition = {
       title: "Now, fold or call?",
       prompt: "Your call pays about 31% of the final pot. Assume Rae opens a tight range from under the gun: pairs, strong aces, and strong kings such as king-queen and king-jack. After the flop you act first on every street. Call 20, or fold?",
       hint: "The price is only one of the three. Ask what your hand makes when it connects, what it runs into, and who acts first after the flop.",
-      explanation: "The price is fair, but king-four offsuit is the dominated offsuit hand Reina warns about. When a king comes, the kings in Rae’s range carry a better kicker, so a pair often loses a big pot, and you play every later street first. A posted blind is not a reason on its own, so folding is the defense under this lesson’s assumptions.",
+      explanation: "The price is fair, but king-four offsuit is a dominated offsuit hand. When a king comes, the kings in Rae’s range carry a better kicker, so a pair often loses a big pot, and you play every later street first. A posted blind is not a reason on its own, so folding is the defense under this lesson’s assumptions.",
       note: NOTE,
       focus: ["Kd", "4c"], focusPositions: ["UTG"], hear: 4,
     },

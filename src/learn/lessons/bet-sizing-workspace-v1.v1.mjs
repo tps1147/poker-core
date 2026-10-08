@@ -34,10 +34,10 @@ const labels = ({ sizes }) => ({ bet: `Small bet ${sizes.bet}`, "large-bet": `La
 const NOTE = "The hand stops once you bet. What Ace Andy does next, and the next card, are not part of this lesson.";
 
 const definition = {
-  id: "bet-sizing-workspace-v1", version: 1, flow: "film-first",
+  id: "bet-sizing-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-bet-sizing",
   sourceLessonId: "lesson-bet-sizing-001", videoLessonId: "lesson-bet-sizing-001",
-  coach: "vale", access: "pro", template: "postflop",
+  coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Size tells the story.", kicker: "One size for every board is a leak.",
   trail: ["Learn", "Postflop fundamentals", "Bet sizing"],
   course: { chapter: "Postflop fundamentals" },
@@ -47,27 +47,38 @@ const definition = {
   feedback: { found: "You told the story.", missed: "Let’s read the story again.", open: "Here’s the story." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Size tells the story.", em: "Not one size for every board.",
-      lead: "A bet size says something about your hand. Watch Vale split small bets from large ones, then choose a size in three hands at the table.",
-      cta: "Watch with Vale" },
-    { kind: "film", label: "Film", upNext: "Play Vale’s hand",
+      lead: "A bet size says something about your hand. Watch the film, then choose a size in three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/bet-sizing-workspace-v1/v1/timeline.json rail).
-      chapters: [{ at: 0, label: "Size is a story" }, { beat: "small", label: "A small bet" }, { beat: "large", label: "A large bet" }, { beat: "leak", label: "The leak" }] },
-    { kind: "decision", label: "Vale’s hand", spotId: "bs1-guided", hand: "bs1-guided", role: "guided",
-      coachLine: "Vale’s flop. You pick the size.", next: "Try a practice hand" },
+      chapters: [{ at: 0, label: "Size is a story" }, { beat: "small", label: "A small bet" }, { beat: "large", label: "A large bet" }, { beat: "leak", label: "The leak" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (f-bet-sizing, canon.yourTurn at 73.95 s).
+      // `film` names the film the time belongs to. Key: answerKeys/f-bet-sizing.mjs.
+      pause: { at: 73.95, anchor: "yourTurn", film: "f-bet-sizing", spotId: "bs1-turn",
+        spot: { decision: "estimate", bands: [{ id: "third", label: "A third of the pot" }, { id: "three-quarters", label: "Three-quarters of the pot" }], prompt: "A river where you want his weaker pairs to call. Which size?", title: "Your turn: which size?", explanation: "A third offers him a price of 1/5; three-quarters, 3/10. To keep those pairs calling, bet the third." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-bet-sizing.mjs).
+    { kind: "why", label: "Why", spotId: "bs1-why", prompt: "On ace-king, king-seven-two, why is the small bet right?",
+      options: [
+        { id: "a", text: "Bet small to make his bluffs fold cheaply.", fix: "The job here is value from worse hands, not folds." },
+        { id: "b", text: "His weaker kings and pairs call 40 more often than 90, so the small bet keeps worse hands paying.", fix: "Right. Size for the hands you want to call." },
+        { id: "c", text: "Bigger bets always win more.", fix: "A big bet folds the worse hands you want calling. Size for the job." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "bs1-guided", hand: "bs1-guided", role: "guided",
+      coachLine: "The flop. You pick the size.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "bs1-practice", hand: "bs1-practice", role: "practice",
       coachLine: "A draw this time. Pick the size.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "bs1-fresh", hand: "bs1-fresh", role: "fresh",
       coachLine: "Your read, your size.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A size with a story.",
       lead: "Before you bet, name the story. A small bet pressures a capped range and denies cheap equity for little risk. A large bet says strong value, or a bluff with enough backup. The same half-pot size on every board is the leak.",
-      recapLabels: ["Vale’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
     "bs1-guided": {
       decision: "action", choices: ["bet", "large-bet"], choiceLabels: labels(guided), ...guided,
       title: "Ace Andy checks. Which size tells your story?",
-      prompt: "Vale’s hand: ace-king on a king, seven, two flop, pot 120, and Ace Andy checks. For this exercise his range is capped: he would have re-raised aces, kings and ace-king, so he holds weaker kings, sevens, small pairs and hands that missed. His weaker kings and pairs call a small bet more often than a large one. Small bet 40, or large bet 90?",
+      prompt: "The hand: ace-king on a king, seven, two flop, pot 120, and Ace Andy checks. For this exercise his range is capped: he would have re-raised aces, kings and ace-king, so he holds weaker kings, sevens, small pairs and hands that missed. His weaker kings and pairs call a small bet more often than a large one. Small bet 40, or large bet 90?",
       hint: "Ask who pays you. Which hands in his range are worse than yours, and which size keeps them putting chips in?",
       explanation: "Top pair with the best kicker is ahead of almost all of a capped range. His weaker kings and pairs call 40 more often than 90, so the small bet keeps the hands you beat paying, and his missed hands still pay to see the turn. A large bet folds the worse hands you want in. That is the small-bet story: pressure a capped range and deny cheap equity without risking much.",
       note: NOTE,
@@ -78,7 +89,7 @@ const definition = {
       title: "Ace Andy checks the turn. Which size tells your story?",
       prompt: "Queen-jack of hearts on king, ten, four, two, with two hearts on the board. Pot 240. You bet the flop, Ace Andy called, and now he checks. You have no pair, but a flush draw and an open-ended straight draw. For this exercise his range is mostly one pair, a king or a ten, plus some draws, and his one-pair hands fold to a large bet more often than to a small one. Small bet 80, or large bet 180?",
       hint: "You are not ahead now. Ask what you want his one-pair hands to do, and what your cards give you when he calls.",
-      explanation: "Queen-jack of hearts is a bluff with backup: any heart makes a flush, and any ace or nine makes a straight. You want his one-pair hands to fold, and 180 folds them more often than 80. When he calls, the draw still gives you many river cards that win. That is the large-bet story Vale names: a bluff with enough backup to apply real pressure.",
+      explanation: "Queen-jack of hearts is a bluff with backup: any heart makes a flush, and any ace or nine makes a straight. You want his one-pair hands to fold, and 180 folds them more often than 80. When he calls, the draw still gives you many river cards that win. That is the large-bet story: a bluff with enough backup to apply real pressure.",
       note: NOTE,
       focus: ["Qh", "Jh", "Kh", "Th"], hear: 3,
     },
@@ -87,7 +98,7 @@ const definition = {
       title: "Ace Andy checks. Which size tells your story?",
       prompt: "King-queen of hearts on an ace, eight, three flop with no hearts. Pot 180, and Ace Andy checks. For this exercise his range is capped: he would have re-raised ace-king and ace-queen, so he holds weaker aces and hands that missed. His aces call either size, and his missed hands fold to either size. Small bet 60, or large bet 135?",
       hint: "Compare what each size wins and what it risks. Which of his hands act differently against the two sizes?",
-      explanation: "King-queen has no pair and almost no backup: no flush draw, and only a runner-runner straight. In this range his missed hands fold to either size and his aces call either size, so 135 wins nothing that 60 does not, and risks 75 more. A bluff without backup is not the large-bet story. The small bet pressures his capped range without risking much.",
+      explanation: "King-queen has no pair and almost no backup: no flush draw, and only runner-runner draws. In this range his missed hands fold to either size and his aces call either size, so 135 wins nothing that 60 does not, and risks 75 more. A bluff without backup is not the large-bet story. The small bet pressures his capped range without risking much.",
       note: NOTE,
     },
   },

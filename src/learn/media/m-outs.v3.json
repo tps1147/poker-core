@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-outs",
+  "video": "/academy/films-v2/m-outs/ef7ef501/m-outs-1080.mp4",
+  "video720": "/academy/films-v2/m-outs/ef7ef501/m-outs-720.mp4",
+  "poster": "/academy/films-v2/m-outs/ef7ef501/m-outs-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-outs/ef7ef501/m-outs-rule.jpg",
+  "captions": "/academy/films-v2/m-outs/ef7ef501/m-outs.vtt",
+  "transcript": "/academy/films-v2/m-outs/ef7ef501/m-outs.transcript.txt",
+  "durationSeconds": 93,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.15,
+    "yourTurn": 64.92,
+    "rule": 85.04,
+    "upNext": 88.93,
+    "first": null
+  },
+  "version": "ef7ef501"
+}

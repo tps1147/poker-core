@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "h-range-narrowing",
+  "video": "/academy/films-v2/h-range-narrowing/ecaa502b/h-range-narrowing-1080.mp4",
+  "video720": "/academy/films-v2/h-range-narrowing/ecaa502b/h-range-narrowing-720.mp4",
+  "poster": "/academy/films-v2/h-range-narrowing/ecaa502b/h-range-narrowing-poster.jpg",
+  "ruleCard": "/academy/films-v2/h-range-narrowing/ecaa502b/h-range-narrowing-rule.jpg",
+  "captions": "/academy/films-v2/h-range-narrowing/ecaa502b/h-range-narrowing.vtt",
+  "transcript": "/academy/films-v2/h-range-narrowing/ecaa502b/h-range-narrowing.transcript.txt",
+  "durationSeconds": 95,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.94,
+    "yourTurn": 64.31,
+    "rule": 83.32,
+    "upNext": 90.35,
+    "first": null
+  },
+  "version": "ecaa502b"
+}

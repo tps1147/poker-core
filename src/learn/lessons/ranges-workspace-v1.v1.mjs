@@ -46,26 +46,37 @@ const readFeedback = { found: "You read the range.", missed: "Let’s filter it 
 const heroBet = { do: "act", seat: "hero", action: "bet", amount: 45, prompt: "Bet 45 and see what Ace Andy does" };
 
 const definition = {
-  id: "ranges-workspace-v1", version: 1, flow: "film-first",
+  id: "ranges-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-ranges",
   sourceLessonId: "lesson-ranges-001", videoLessonId: "lesson-ranges-001",
-  coach: "vale", access: "pro", template: "postflop",
+  coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Think in ranges.", kicker: "Start broad, then narrow.",
   trail: ["Learn", "Postflop fundamentals", "Ranges"],
   course: { chapter: "Postflop fundamentals" },
   meta: { minutes: 5 },
-  assumptions: "Heads-up, 1,000 stacks at blinds of 10 and 20, no antes or rake. On every hand you raised to 70 on the button and Ace Andy called from the big blind, so the flop pot is 140 with 930 behind each. That preflop line is given; Vale does not say it. On the practice and fresh hands Ace Andy’s plan is also given: before the flop he re-raises with aces, kings, queens and ace-king and calls with every other hand he plays, including every ace; on the flop he calls a bet with any pair or any draw and folds everything else. A range is named in words, never read from his cards, which stay hidden. No turn or river is dealt, and no read here says who is ahead.",
+  assumptions: "Heads-up, 1,000 stacks at blinds of 10 and 20, no antes or rake. On every hand you raised to 70 on the button and Ace Andy called from the big blind, so the flop pot is 140 with 930 behind each. That preflop line is given; Knox does not say it. On the practice and fresh hands Ace Andy’s plan is also given: before the flop he re-raises with aces, kings, queens and ace-king and calls with every other hand he plays, including every ace; on the flop he calls a bet with any pair or any draw and folds everything else. A range is named in words, never read from his cards, which stay hidden. No turn or river is dealt, and no read here says who is ahead.",
   media: "media/ranges-workspace-v1.v1.json",
   feedback: readFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Think in ranges.", em: "Not in fears.",
-      lead: "One scary hand is not a read. Watch Vale put villain on a range, then read three hands at the table.",
-      cta: "Watch with Vale" },
-    { kind: "film", label: "Film", upNext: "Play Vale’s hand",
+      lead: "One scary hand is not a read. Watch the film, then read three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A range, not a hand" }, { beat: "preflop", label: "Preflop action" }, { beat: "texture", label: "King-eight-three" }, { beat: "range", label: "What still fits" }, { beat: "fear", label: "Fear reading" }, { beat: "narrow", label: "Street by street" }] },
-    { kind: "decision", label: "Vale’s hand", spotId: "rng1-guided", hand: "rng1-guided", role: "guided",
-      coachLine: "Vale’s hand. Put Ace Andy on a range.", next: "Try a practice hand" },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A range, not a hand" }, { beat: "preflop", label: "Preflop action" }, { beat: "texture", label: "King-eight-three" }, { beat: "range", label: "What still fits" }, { beat: "fear", label: "Fear reading" }, { beat: "narrow", label: "Street by street" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (f-ranges, canon.yourTurn at 81.05 s).
+      // `film` names the film the time belongs to. Key: answerKeys/f-ranges.mjs.
+      pause: { at: 81.05, anchor: "yourTurn", film: "f-ranges", spotId: "rng1-turn",
+        spot: { decision: "estimate", bands: [{ id: "about-25", label: "About 25%" }, { id: "about-64", label: "About 64%" }, { id: "about-90", label: "About 90%" }], prompt: "Same range, new flop: J♣ 9♦ 2♥. What share is pair or better?", title: "Your turn: the share?", explanation: "146 combos are live; pair or better is 93 of them, about 64%. A share, not a hand." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-ranges.mjs).
+    { kind: "why", label: "Why", spotId: "rng1-why", prompt: "Why put him on a wide range?",
+      options: [
+        { id: "a", text: "His call keeps many hands, and a flop bet comes from strong hands, pairs, ace-high and bluffs.", fix: "Right. Many hands fit one call and one bet." },
+        { id: "b", text: "Only strong hands bet, so his range is just value.", fix: "Weaker kings, pairs and bluffs bet too. Cutting them out is fear reading." },
+        { id: "c", text: "His bet tells you his exact hand.", fix: "One bet fits many combos. Put him on all of them, weighted." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "rng1-guided", hand: "rng1-guided", role: "guided",
+      coachLine: "The hand. Put Ace Andy on a range.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "rng1-practice-preflop", hand: "rng1-practice", role: "practice",
       coachLine: "Start with his action before the flop.", next: "Now the flop" },
     { kind: "decision", label: "Practice", spotId: "rng1-practice-flop", hand: "rng1-practice", role: "practice",
@@ -76,7 +87,7 @@ const definition = {
       coachLine: "Your read. Narrow it once more.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Ranges, not fears.",
       lead: "Start with every hand that fits the action before the flop, then remove the hands each street rules out.",
-      recapLabels: ["Vale’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
@@ -85,9 +96,9 @@ const definition = {
       bands: [{ id: "aces", label: "Just aces" }, { id: "strong", label: "Only strong hands" }, { id: "range", label: "A wide range" }],
       dockPrompt: "What do you put Ace Andy on?",
       title: "What do you put him on?",
-      prompt: `Vale’s hand. ${LINE} The flop is king-eight-three and Ace Andy bets 45 into 140. What do you put him on?`,
+      prompt: `the hand. ${LINE} The flop is king-eight-three and Ace Andy bets 45 into 140. What do you put him on?`,
       hint: "Start with every hand that calls a raise before the flop. Then ask which of those could still bet this flop.",
-      explanation: "A call before the flop keeps a lot of hands, and a bet on king-eight-three can come from many of them: strong value, but also ace-high, smaller pairs, worse kings and bluffs, as Vale lists. Just aces is one hand, and only strong hands throws away most of what still fits. That is fear reading, not hand reading.",
+      explanation: "A call before the flop keeps a lot of hands, and a bet on king-eight-three can come from many of them: strong value, but also ace-high, smaller pairs, worse kings and bluffs. Just aces is one hand, and only strong hands throws away most of what still fits. That is fear reading, not hand reading.",
       note: "The hand stops at the read. What you do with king-queen is not part of this lesson.",
       focus: ["Ks", "8d", "3h"], hear: 2,
     },

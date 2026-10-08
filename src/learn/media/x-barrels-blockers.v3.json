@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "x-barrels-blockers",
+  "video": "/academy/films-v2/x-barrels-blockers/b7a7d8aa/x-barrels-blockers-1080.mp4",
+  "video720": "/academy/films-v2/x-barrels-blockers/b7a7d8aa/x-barrels-blockers-720.mp4",
+  "poster": "/academy/films-v2/x-barrels-blockers/b7a7d8aa/x-barrels-blockers-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-barrels-blockers/b7a7d8aa/x-barrels-blockers-rule.jpg",
+  "captions": "/academy/films-v2/x-barrels-blockers/b7a7d8aa/x-barrels-blockers.vtt",
+  "transcript": "/academy/films-v2/x-barrels-blockers/b7a7d8aa/x-barrels-blockers.transcript.txt",
+  "durationSeconds": 84,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 3.87,
+    "yourTurn": 64.66,
+    "rule": 75.47,
+    "upNext": 80.62,
+    "first": null
+  },
+  "version": "b7a7d8aa"
+}

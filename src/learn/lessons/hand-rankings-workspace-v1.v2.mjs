@@ -12,10 +12,10 @@
 const seats = (stack) => ({ hero: { name: "You", stack }, opponent: { name: "Ace Andy", stack, botId: null } });
 
 const definition = {
-  id: "hand-rankings-workspace-v1", version: 2, flow: "film-first",
+  id: "hand-rankings-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t0-hand-rankings",
   sourceLessonId: "lesson-hand-rankings-001", videoLessonId: "lesson-hand-rankings-001",
-  coach: "ada", access: "free", template: "table-literacy",
+  coach: "knox", narrator: "nathan", access: "free", template: "table-literacy",
   title: "Name the hand first.", kicker: "Cards before chips.",
   trail: ["Learn", "Table literacy", "Hand rankings"],
   course: { chapter: "Table literacy" },
@@ -24,20 +24,27 @@ const definition = {
   feedback: { found: "You named it.", missed: "Let’s build it together.", open: "Here’s the hand." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Name the hand first.", em: "Then choose the action.",
-      lead: "Two cards in your hand, five on the board, and only five of the seven count. Watch Ada read a river, then play three hands at the table.",
-      cta: "Watch with Ada" },
-    { kind: "film", label: "Film", upNext: "Play Ada’s hand",
+      lead: "Two cards in your hand, five on the board, and only five of the seven count. Watch the film, then play three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (media beats; FILMS keeps them unchanged).
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Name the hand" }, { beat: "deal", label: "Read the board" }, { beat: "hand", label: "Build the hand" }, { beat: "rank", label: "Best five cards" }] },
-    { kind: "decision", label: "Ada’s hand", spotId: "hr2-guided", hand: "hr2-guided", role: "guided",
-      coachLine: "Ada’s river. You build the hand.", next: "Try a practice hand" },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/r-hand-rankings.mjs).
+    { kind: "why", label: "Why", spotId: "hr2-why", prompt: "Why does a full house outrank a flush?",
+      options: [
+        { id: "a", text: "A flush looks stronger, so it should rank higher.", fix: "Rank follows rarity, not looks: there are fewer full houses (3,744) than flushes (5,108)." },
+        { id: "b", text: "Because it uses more of your own cards.", fix: "Your own cards never change a rank. The full house wins because it is rarer." },
+        { id: "c", text: "It is rarer: 3,744 five-card hands are full houses, 5,108 are flushes.", fix: "Right. Every rung up the ladder is rarer than the one below it." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "hr2-guided", hand: "hr2-guided", role: "guided",
+      coachLine: "The river. You build the hand.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "hr2-practice", hand: "hr2-practice", role: "practice",
       coachLine: "Same idea, new cards. The pair on the board is busy.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "hr2-fresh", hand: "hr2-fresh", role: "fresh",
       coachLine: "Take your time. Rank the whole board.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A hand you can name.",
       lead: "Read all seven cards, keep the five that rank highest, and say the hand to yourself before you touch a chip.",
-      recapLabels: ["Ada’s river", "Practice", "Fresh hand"],
+      recapLabels: ["The river", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {

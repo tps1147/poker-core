@@ -30,10 +30,10 @@ const CALL_HINT = "Folding earns and loses nothing from here. Compare that with 
 const EV_DOCK ="On average, each time you make this call";
 
 const definition = {
-  id: "ev-workspace-v1", version: 1, flow: "film-first",
+  id: "ev-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t1-ev",
   sourceLessonId: "lesson-ev-001", videoLessonId: "lesson-ev-001",
-  coach: "mina", access: "pro", template: "deeper-math",
+  coach: "knox", narrator: "nathan", access: "pro", template: "deeper-math",
   title: "Judge the decision, not the result.", kicker: "Good decisions can lose.",
   trail: ["Learn", "Deeper math", "Expected value"],
   course: { chapter: "Deeper math" },
@@ -43,17 +43,29 @@ const definition = {
   feedback: priceFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Judge the decision, not the result.", em: "Good decisions can lose.",
-      lead: "One hand is one result. Watch Mina price a combo draw, then weigh three calls at the table by what they earn over many repeats.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      lead: "One hand is one result. Watch the film, then weigh three calls at the table by what they earn over many repeats.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The long run" }, { beat: "startingPot", label: "Read the spot" }, { beat: "possibleCall", label: "Build the final pot" }, { beat: "result", label: "What you need" }],
       // The cue boundary before "If you call": "call" ends at 12.63 s and "if" starts at 13.00 s
       // (ev-workspace-v1/audit/absolute-timing.json), so the pause sits in 0.37 s of silence.
-      pause: { at: 12.958333333333334, spot: { kind: "count", range: [0, 99], unit: "%",
-        prompt: "Before Mina says it: the pot is 200 and you face a 50-chip call. What price is that, in percent?" } } },
-    { kind: "decision", label: "Mina’s hand", spotId: "ev1-guided", hand: "ev1-guided", role: "guided",
-      coachLine: "Mina’s hand. You judge the call.", next: "Try a practice hand" },
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 12.958333333333334, spot: { kind: "count", range: [0, 99], unit: "%",
+        prompt: "Before Knox says it: the pot is 200 and you face a 50-chip call. What price is that, in percent?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-ev, canon.yourTurn at 60.08 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-ev.mjs.
+      pause: { at: 60.08, anchor: "yourTurn", film: "m-ev", spotId: "ev1-turn",
+        spot: { decision: "action", choices: ["fold", "call"], prompt: "Ace-ten of hearts, 9 hearts of 46 win, one card to come. They go all-in for 40 into 150. Call or fold?", title: "Your turn: call or fold?", explanation: "Nine hearts win out of 46. Your share of the 230 pot is 45, against a 40 call: +5 a call. Call." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-ev.mjs).
+    { kind: "why", label: "Why", spotId: "ev1-why", prompt: "Why is this call right even when the river misses?",
+      options: [
+        { id: "a", text: "If the river misses and you lose, the call was wrong.", fix: "One river is one sample. The call earns about +40 on average, win or lose." },
+        { id: "b", text: "You win more often than you lose.", fix: "You lose 70% of the time. The call pays because the pot is big enough, not because you win most." },
+        { id: "c", text: "Made many times, 30% of a 300 pot returns 90 for every 50: about +40 a call.", fix: "Right. Judge it by the average: about +40 a call." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "ev1-guided", hand: "ev1-guided", role: "guided",
+      coachLine: "The hand. You judge the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "ev1-practice-ev", hand: "ev1-practice", role: "practice",
       coachLine: "Same idea, a different draw. Average it out first.", next: "Now decide the call", feedback: evFeedback },
     { kind: "decision", label: "Practice", spotId: "ev1-practice-call", hand: "ev1-practice", role: "practice",
@@ -64,7 +76,7 @@ const definition = {
       coachLine: "Your average, your call.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Decisions you can average.",
       lead: "Judge a call by what it earns over many repeats: the chance times the final pot, minus the call. A call that earns can still lose the hand in front of you.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
@@ -72,7 +84,7 @@ const definition = {
       decision: "action", choices: ["fold", "call"], previewRule: "price-vs-equity", ...guided,
       given: { equity: 30, outs: 15, source: "Given estimate" },
       title: "Is this call a good decision?",
-      prompt: "Ace Andy is all-in for 50 into a pot of 200. Mina found the price: about 17%. For this exercise your chance of winning is given: roughly 30% with one card to come. Call or fold?",
+      prompt: "Ace Andy is all-in for 50 into a pot of 200. The price is about 17%. For this exercise your chance of winning is given: roughly 30% with one card to come. Call or fold?",
       hint: "Build the final pot first: 200, then Ace Andy’s 50, then your own 50. Compare the share of that pot you pay with the given chance.",
       explanation: "Calling 50 makes a final pot of 300, so the price is 50 ÷ 300, about 17%. The given roughly 30% is above that. Made many times, the call wins about 30% of 300, which is 90 chips back for every 50 paid: about 40 chips earned per call.",
       note: "The river is not dealt in this lesson. This call still loses about 7 times in 10, and it is a good decision.",

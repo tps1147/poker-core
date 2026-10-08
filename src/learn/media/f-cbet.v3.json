@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "f-cbet",
+  "video": "/academy/films-v2/f-cbet/66348276/f-cbet-1080.mp4",
+  "video720": "/academy/films-v2/f-cbet/66348276/f-cbet-720.mp4",
+  "poster": "/academy/films-v2/f-cbet/66348276/f-cbet-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-cbet/66348276/f-cbet-rule.jpg",
+  "captions": "/academy/films-v2/f-cbet/66348276/f-cbet.vtt",
+  "transcript": "/academy/films-v2/f-cbet/66348276/f-cbet.transcript.txt",
+  "durationSeconds": 98,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 4.24,
+    "yourTurn": 65.51,
+    "rule": 87.1,
+    "upNext": 93.53,
+    "first": null
+  },
+  "version": "66348276"
+}

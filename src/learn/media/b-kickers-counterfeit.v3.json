@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "b-kickers-counterfeit",
+  "video": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-1080.mp4",
+  "video720": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-720.mp4",
+  "poster": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-rule.jpg",
+  "captions": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit.vtt",
+  "transcript": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit.transcript.txt",
+  "durationSeconds": 101,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 5,
+    "yourTurn": null,
+    "rule": 90.76,
+    "upNext": 95.68,
+    "first": null
+  },
+  "version": "54674133"
+}

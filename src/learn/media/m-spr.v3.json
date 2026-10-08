@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-spr",
+  "video": "/academy/films-v2/m-spr/847091cc/m-spr-1080.mp4",
+  "video720": "/academy/films-v2/m-spr/847091cc/m-spr-720.mp4",
+  "poster": "/academy/films-v2/m-spr/847091cc/m-spr-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-spr/847091cc/m-spr-rule.jpg",
+  "captions": "/academy/films-v2/m-spr/847091cc/m-spr.vtt",
+  "transcript": "/academy/films-v2/m-spr/847091cc/m-spr.transcript.txt",
+  "durationSeconds": 94,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 4.9,
+    "yourTurn": 70.54,
+    "rule": 86.61,
+    "upNext": 89.83,
+    "first": null
+  },
+  "version": "847091cc"
+}

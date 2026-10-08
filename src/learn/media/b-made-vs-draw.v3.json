@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "b-made-vs-draw",
+  "video": "/academy/films-v2/b-made-vs-draw/4f9a2de0/b-made-vs-draw-1080.mp4",
+  "video720": "/academy/films-v2/b-made-vs-draw/4f9a2de0/b-made-vs-draw-720.mp4",
+  "poster": "/academy/films-v2/b-made-vs-draw/4f9a2de0/b-made-vs-draw-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-made-vs-draw/4f9a2de0/b-made-vs-draw-rule.jpg",
+  "captions": "/academy/films-v2/b-made-vs-draw/4f9a2de0/b-made-vs-draw.vtt",
+  "transcript": "/academy/films-v2/b-made-vs-draw/4f9a2de0/b-made-vs-draw.transcript.txt",
+  "durationSeconds": 80,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 14.32,
+    "yourTurn": null,
+    "rule": 68.9,
+    "upNext": 76.12,
+    "first": null
+  },
+  "version": "4f9a2de0"
+}

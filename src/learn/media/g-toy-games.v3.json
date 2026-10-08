@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "g-toy-games",
+  "video": "/academy/films-v2/g-toy-games/df03129d/g-toy-games-1080.mp4",
+  "video720": "/academy/films-v2/g-toy-games/df03129d/g-toy-games-720.mp4",
+  "poster": "/academy/films-v2/g-toy-games/df03129d/g-toy-games-poster.jpg",
+  "ruleCard": "/academy/films-v2/g-toy-games/df03129d/g-toy-games-rule.jpg",
+  "captions": "/academy/films-v2/g-toy-games/df03129d/g-toy-games.vtt",
+  "transcript": "/academy/films-v2/g-toy-games/df03129d/g-toy-games.transcript.txt",
+  "durationSeconds": 88,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 19.72,
+    "yourTurn": null,
+    "rule": 77.16,
+    "upNext": 83.93,
+    "first": null
+  },
+  "version": "df03129d"
+}

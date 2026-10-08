@@ -28,10 +28,10 @@ const fresh = { hero: ["8d", "7d"], board: ["9c", "6s", "2h", "Kc"], street: "tu
 const callFeedback = { found: "You priced the whole hand.", missed: "Let’s price the whole hand.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "implied-odds-workspace-v1", version: 1, flow: "film-first",
+  id: "implied-odds-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t1-implied-odds",
   sourceLessonId: "lesson-implied-odds-001", videoLessonId: "lesson-implied-odds-001",
-  coach: "mina", access: "pro", template: "deeper-math",
+  coach: "knox", narrator: "nathan", access: "pro", template: "deeper-math",
   title: "Look past the direct price.", kicker: "When the story is not over.",
   trail: ["Learn", "Deeper math", "Implied odds"],
   course: { chapter: "Deeper math" },
@@ -41,12 +41,23 @@ const definition = {
   feedback: callFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Look past the direct price.", em: "Only as far as it is real.",
-      lead: "A price that is too high now can still be a good call when you can win more later. Watch Mina name the three things that make it real, then price three hands at the table.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The direct price" }, { beat: "extra", label: "What you can win later" }, { beat: "realistic", label: "Only realistic money" }, { beat: "conditions", label: "Three things" }] },
-    { kind: "decision", label: "Mina’s hand", spotId: "imp1-guided", hand: "imp1-guided", role: "guided",
-      coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand" },
+      lead: "A price that is too high now can still be a good call when you can win more later. Watch the film, then price three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The direct price" }, { beat: "extra", label: "What you can win later" }, { beat: "realistic", label: "Only realistic money" }, { beat: "conditions", label: "Three things" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-implied-odds, canon.yourTurn at 71.25 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-implied-odds.mjs.
+      pause: { at: 71.25, anchor: "yourTurn", film: "m-implied-odds", spotId: "imp1-turn",
+        spot: { decision: "action", choices: ["fold", "call"], prompt: "Jack-ten, four outs. Pot 60, bet 20, 90 behind. Call or fold?", title: "Your turn: call or fold?", explanation: "Final pot 100, price 20%, about 8.7% to hit. You would need 130 more later, and only 90 is there: fold." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-implied-odds.mjs).
+    { kind: "why", label: "Why", spotId: "imp1-why", prompt: "Why is calling at a 30% price right here?",
+      options: [
+        { id: "a", text: "Roughly 18% beats the 30% price on its own.", fix: "18% is below 30%. The call needs the river chips to pay." },
+        { id: "b", text: "The given 250 on the river makes it 75 for a shot at 500: 15%, under roughly 18%.", fix: "Right. The river chips make it 15%, under roughly 18%." },
+        { id: "c", text: "Any draw is a call once you count the chips you can win later.", fix: "Only chips you can really win count. With nothing behind, the same draw folds." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "imp1-guided", hand: "imp1-guided", role: "guided",
+      coachLine: "The hand. You make the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "imp1-practice-most", hand: "imp1-practice", role: "practice",
       coachLine: "The same price and a strong draw. Check what can really come later.", next: "Now decide the call",
       feedback: { found: "You found the limit.", missed: "Let’s look at the chips behind.", open: "Here’s the limit." } },
@@ -59,7 +70,7 @@ const definition = {
       coachLine: "Your price, your call.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Future chips, only when they are real.",
       lead: "When the direct price is too high, add only what you can realistically win later. That needs a strong draw, stacks behind and an opponent who can pay you.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
@@ -67,7 +78,7 @@ const definition = {
       decision: "action", choices: ["fold", "call"], ...guided,
       given: { futureWin: 250, source: "Given for this hand" },
       title: "Is the call worth it?",
-      prompt: "Mina’s hand: ace-jack of hearts, a draw to the best flush, with one card to come. Your estimate is roughly 18%. Ace Andy bets 75 into 100, and after a call you both have 1,125 behind. Given for this hand: if a heart comes, he calls a 250 bet on the river. Call or fold?",
+      prompt: "The hand: ace-jack of hearts, a draw to the best flush, with one card to come. Your estimate is roughly 18%. Ace Andy bets 75 into 100, and after a call you both have 1,125 behind. Given for this hand: if a heart comes, he calls a 250 bet on the river. Call or fold?",
       hint: "Build the final pot and its price first. Then add only the chips that can realistically come later, and compare your call with everything you could win.",
       explanation: "Calling 75 makes a final pot of 250, a 30% direct price, and roughly 18% is below it. But the story is not over: the draw is strong, 1,125 sits behind each of you, and the given river call adds 250. Your 75 buys a shot at 500, which is 15%, below your roughly 18%. The call pays for itself over time under this hand’s assumptions.",
       note: "The river is not dealt in this lesson. The 250 is an assumption, not a promise.",

@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "p-starting-hands",
+  "video": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-1080.mp4",
+  "video720": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-720.mp4",
+  "poster": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-rule.jpg",
+  "captions": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands.vtt",
+  "transcript": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands.transcript.txt",
+  "durationSeconds": 97,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 6.83,
+    "yourTurn": 77.18,
+    "rule": 87.54,
+    "upNext": 93.88,
+    "first": null
+  },
+  "version": "d8106f80"
+}

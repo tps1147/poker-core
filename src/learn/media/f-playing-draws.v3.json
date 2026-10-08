@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "f-playing-draws",
+  "video": "/academy/films-v2/f-playing-draws/dc8e5c57/f-playing-draws-1080.mp4",
+  "video720": "/academy/films-v2/f-playing-draws/dc8e5c57/f-playing-draws-720.mp4",
+  "poster": "/academy/films-v2/f-playing-draws/dc8e5c57/f-playing-draws-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-playing-draws/dc8e5c57/f-playing-draws-rule.jpg",
+  "captions": "/academy/films-v2/f-playing-draws/dc8e5c57/f-playing-draws.vtt",
+  "transcript": "/academy/films-v2/f-playing-draws/dc8e5c57/f-playing-draws.transcript.txt",
+  "durationSeconds": 99,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.15,
+    "yourTurn": 67.72,
+    "rule": 87.08,
+    "upNext": 93.92,
+    "first": null
+  },
+  "version": "dc8e5c57"
+}

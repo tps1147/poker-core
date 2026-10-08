@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "f-board-texture",
+  "video": "/academy/films-v2/f-board-texture/40688d59/f-board-texture-1080.mp4",
+  "video720": "/academy/films-v2/f-board-texture/40688d59/f-board-texture-720.mp4",
+  "poster": "/academy/films-v2/f-board-texture/40688d59/f-board-texture-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-board-texture/40688d59/f-board-texture-rule.jpg",
+  "captions": "/academy/films-v2/f-board-texture/40688d59/f-board-texture.vtt",
+  "transcript": "/academy/films-v2/f-board-texture/40688d59/f-board-texture.transcript.txt",
+  "durationSeconds": 98,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 3.9,
+    "yourTurn": 74.88,
+    "rule": 91.13,
+    "upNext": 94.87,
+    "first": null
+  },
+  "version": "40688d59"
+}

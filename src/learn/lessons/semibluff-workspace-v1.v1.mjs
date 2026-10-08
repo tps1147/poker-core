@@ -36,10 +36,10 @@ const NOTE_TURN = "The river is not dealt in this lesson. The decision is made b
 const actionFeedback = { found: "You priced both branches.", missed: "Let’s add the branches together.", open: "Here’s the math." };
 
 const definition = {
-  id: "semibluff-workspace-v1", version: 1, flow: "film-first",
+  id: "semibluff-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t4-fold-equity-semibluff",
   sourceLessonId: "lesson-fold-equity-semibluff-001", videoLessonId: "lesson-fold-equity-semibluff-001",
-  coach: "knox", access: "pro", template: "pressure",
+  coach: "knox", narrator: "nathan", access: "pro", template: "pressure",
   title: "Bet with a backup.", kicker: "Two ways to win.",
   trail: ["Learn", "Pressure", "Semi-bluffing"],
   course: { chapter: "Pressure" },
@@ -49,14 +49,30 @@ const definition = {
   feedback: { found: "You priced it.", missed: "Let’s price it together.", open: "Here’s the price." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Bet with a backup.", em: "Two ways to win.",
-      lead: "A semi-bluff wins when Ace Andy folds now, or when your draw comes in later. Watch Knox, then price three bets at the table.",
+      lead: "A semi-bluff wins when Ace Andy folds now, or when your draw comes in later. Watch the film, then price three bets at the table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/semibluff-workspace-v1/v1/timeline.json rail).
       // No in-film guess: the film is 8.75 s and every pause would ask for the next sentence, not a read.
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Two ways to win" }, { beat: "texture", label: "Fold now" }, { beat: "improve", label: "Improve later" }, { beat: "backup", label: "No backup" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Two ways to win" }, { beat: "texture", label: "Fold now" }, { beat: "improve", label: "Improve later" }, { beat: "backup", label: "No backup" }],
+      // ACADEMY V2 (2026-10-08): the "Your turn" pause of the node's v2 film (x-fold-equity,
+      // canon.yourTurn at 59.9 s: "Your turn. Pot 160, bet 100. He folds a quarter, you hit a
+      // quarter... both given."). `film` names the film the time belongs to; the film reveals 38.5%,
+      // −10, 32.5 against 40: check. Key: answerKeys/x-fold-equity.mjs.
+      pause: { at: 59.9, anchor: "yourTurn", film: "x-fold-equity", spotId: "sb1-turn",
+        spot: { decision: "action", choices: ["check", "bet"], sizes: { bet: 100 }, potBefore: 160, given: { foldRate: 25, winWhenCalled: 25 },
+          title: "Your turn: check, or bet 100?",
+          prompt: "Pot 160, and he checks. He folds to a bet of 100 a quarter of the time, and you hit a quarter of the time when he calls (both given). Check, or bet 100?",
+          hint: "Add the fold branch and the called branch, then compare with checking.",
+          explanation: "Check. Break-even is 100 ÷ 260 = 38.5%. Called, the bet loses 0.25 × 360 − 100 = −10, so the bet is worth 0.25 × 160 + 0.75 × (−10) = 32.5. Checking wins 0.25 × 160 = 40." } } },
+    { kind: "why", label: "Why", spotId: "sb1-why", prompt: "Why check here?",
+      options: [
+        { id: "both-branches", text: "Both branches together earn 32.5, and checking keeps 40.", fix: "Right. The folds and the outs both count, and here they still fall short of checking." },
+        { id: "folds-only", text: "His 25% folds are below the 38.5% break-even, so the bet can’t work.", fix: "A semi-bluff doesn’t only work if he folds. The outs add a second way to win; here both together still come up short." },
+        { id: "called-loses", text: "Because the bet loses 10 when he calls.", fix: "Called, it loses 10, but his folds win 40. Add both branches: 32.5, still below checking’s 40." },
+      ] },
     { kind: "decision", label: "Knox’s hand", spotId: "sb1-guided-price", hand: "sb1-guided", role: "guided",
-      coachLine: "Knox’s hand. Price the bet before you make it.", next: "Now check or bet" },
+      coachLine: "The hand. Price the bet before you make it.", next: "Now check or bet" },
     { kind: "decision", label: "Knox’s hand", spotId: "sb1-guided-bet", hand: "sb1-guided", role: "guided",
       coachLine: "Now add the second way to win.", next: "Try a practice hand", feedback: actionFeedback },
     { kind: "decision", label: "Practice", spotId: "sb1-practice-price", hand: "sb1-practice", role: "practice",
@@ -78,7 +94,7 @@ const definition = {
       bands: [{ id: "about-25", label: "About 25%" }, { id: "about-33", label: "About 33%" }, { id: "about-50", label: "About 50%" }],
       dockPrompt: PRICE_DOCK,
       title: PRICE_TITLE,
-      prompt: "Knox’s hand. You hold eight-seven of hearts on the turn, the pot is 100 and Ace Andy checks to you. Suppose you bet 50 with nothing to fall back on. How often must he fold for that bet to break even?",
+      prompt: "The hand. You hold eight-seven of hearts on the turn, the pot is 100 and Ace Andy checks to you. Suppose you bet 50 with nothing to fall back on. How often must he fold for that bet to break even?",
       hint: "A bet with no backup risks the bet to win the pot. Divide what you risk by the pot plus your bet.",
       explanation: "You risk 50 to win the 100 already in the pot. 50 ÷ (100 + 50) = 50 ÷ 150, about 33%. A bet with no backup needs Ace Andy to fold at least that often.",
       hear: 2,

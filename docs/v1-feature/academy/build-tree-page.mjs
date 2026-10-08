@@ -1,7 +1,7 @@
-// Builds the reviewable academy-tree page from src/learn/v1/academyTree.mjs (single source of data).
+// Builds the reviewable academy-tree page from src/learn/academyTree.mjs (single source of data).
 //   node docs/v1-feature/academy/build-tree-page.mjs <out.html>
 import { writeFileSync } from "node:fs";
-import { NODES, TRACKS, PATHS, depthOf, ACADEMY_TREE_VERSION } from "../../../src/learn/v1/academyTree.mjs";
+import { NODES, TRACKS, PATHS, depthOf, ACADEMY_TREE_VERSION } from "../../../src/learn/academyTree.mjs";
 
 const out = process.argv[2];
 const data = { version: ACADEMY_TREE_VERSION, tracks: TRACKS, paths: PATHS,

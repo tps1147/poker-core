@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "p-open-raise",
+  "video": "/academy/films-v2/p-open-raise/ad7ebf54/p-open-raise-1080.mp4",
+  "video720": "/academy/films-v2/p-open-raise/ad7ebf54/p-open-raise-720.mp4",
+  "poster": "/academy/films-v2/p-open-raise/ad7ebf54/p-open-raise-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-open-raise/ad7ebf54/p-open-raise-rule.jpg",
+  "captions": "/academy/films-v2/p-open-raise/ad7ebf54/p-open-raise.vtt",
+  "transcript": "/academy/films-v2/p-open-raise/ad7ebf54/p-open-raise.transcript.txt",
+  "durationSeconds": 103,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 3.07,
+    "yourTurn": 79.05,
+    "rule": 94.42,
+    "upNext": 99.06,
+    "first": null
+  },
+  "version": "ad7ebf54"
+}

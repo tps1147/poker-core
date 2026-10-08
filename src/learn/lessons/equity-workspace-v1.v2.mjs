@@ -19,10 +19,10 @@ const practice = { hero: ["7s", "6s"], board: ["8d", "5c", "Kh"], street: "flop"
 const fresh = { hero: ["9c", "9d"], board: ["Jh", "Th", "4c", "2s"], street: "turn", potBefore: 250, bet: 0, call: 0 };
 
 const definition = {
-  id: "equity-workspace-v1", version: 2, flow: "film-first",
+  id: "equity-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-equity",
   sourceLessonId: "lesson-equity-001", videoLessonId: "lesson-equity-001",
-  coach: "mina", access: "free", template: "core-math",
+  coach: "knox", narrator: "nathan", access: "free", template: "core-math",
   title: "Judge your share first.", kicker: "A hand is more than it looks.",
   trail: ["Learn", "The math behind the move", "Equity"],
   course: { chapter: "The math behind the move" },
@@ -32,20 +32,31 @@ const definition = {
   feedback: { found: "You found your share.", missed: "Let’s find the share together.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Judge your share first.", em: "Then decide.",
-      lead: "A hand is not just what it is right now. Watch Mina define future share, then find your share of the pot in three hands at the table.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      lead: "A hand is not just what it is right now. Watch the film, then find your share of the pot in three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own two beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the hand" }, { beat: "share", label: "Judge your share" }] },
-    { kind: "decision", label: "Mina’s hand", spotId: "eq2-guided", hand: "eq2-guided", role: "guided",
-      coachLine: "Mina’s hand. You name the share.", next: "Try a practice hand" },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the hand" }, { beat: "share", label: "Judge your share" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-equity, canon.yourTurn at 68.06 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-equity.mjs.
+      pause: { at: 68.06, anchor: "yourTurn", film: "m-equity", spotId: "eq2-turn",
+        spot: { decision: "estimate", bands: [{ id: "about-0", label: "Nothing yet" }, { id: "about-60", label: "About 60 chips" }, { id: "about-150", label: "About 150 chips" }], prompt: "A pot of 150, and you win about 40% (given). Your share?", title: "Your turn: your share?", explanation: "40% of 150 is 60 chips. That is your equity." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-equity.mjs).
+    { kind: "why", label: "Why", spotId: "eq2-why", prompt: "Why is about 42 chips your share?",
+      options: [
+        { id: "a", text: "With no pair yet, you own nothing until you hit.", fix: "A draw already owns a share. It wins 35% of the time by the end." },
+        { id: "b", text: "Equity is your chance times the pot: 35% of 120 is 42.", fix: "Right. A draw with no pair still owns its share: 42 chips." },
+        { id: "c", text: "Equity is the chips you have already put in.", fix: "Chips you put in belong to the pot. Your share is your chance of winning it: 35% of 120." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "eq2-guided", hand: "eq2-guided", role: "guided",
+      coachLine: "The hand. You name the share.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "eq2-practice", hand: "eq2-practice", role: "practice",
       coachLine: "Same idea, a different hand.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "eq2-fresh", hand: "eq2-fresh", role: "fresh",
       coachLine: "A pair this time. Take your time.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A share you can name.",
       lead: "Ask how often your hand wins by the end, then take that share of the pot. That share is your equity.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
@@ -59,7 +70,7 @@ const definition = {
       dockPrompt: "Your share of the pot, on average",
       given: { equity: 35, source: "Given for this exercise" },
       title: "What share of this pot is yours?",
-      prompt: "Mina’s hand: ace-king on a queen-ten-three flop, with no pair yet. Ace Andy checks and the pot is 120. For this exercise, your chance of winning by the end is given as 35%. On average, what share of the pot is yours?",
+      prompt: "The hand: ace-king on a queen-ten-three flop, with no pair yet. Ace Andy checks and the pot is 120. For this exercise, your chance of winning by the end is given as 35%. On average, what share of the pot is yours?",
       hint: HINT,
       explanation: "Take the given chance of the pot: 35% of 120 is 42 chips. That is this hand’s equity. It has no pair right now, and it still owns about 42 chips on average, not nothing and not the whole 120.",
       note: "The turn and river are not dealt in this lesson. The share is about how often the hand wins by the end.",

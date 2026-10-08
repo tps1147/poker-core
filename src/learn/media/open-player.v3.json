@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "open-player",
+  "video": "/academy/films-v2/open-player/f35ad2be/open-player-1080.mp4",
+  "video720": "/academy/films-v2/open-player/f35ad2be/open-player-720.mp4",
+  "poster": "/academy/films-v2/open-player/f35ad2be/open-player-poster.jpg",
+  "ruleCard": null,
+  "captions": "/academy/films-v2/open-player/f35ad2be/open-player.vtt",
+  "transcript": "/academy/films-v2/open-player/f35ad2be/open-player.transcript.txt",
+  "durationSeconds": 21,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": null,
+    "yourTurn": null,
+    "rule": null,
+    "upNext": null,
+    "first": 16.17
+  },
+  "version": "f35ad2be"
+}

@@ -20,7 +20,7 @@ import { createRequire } from "node:module";
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { NODES, TRACKS, validateTree } from "../../../../src/learn/v1/academyTree.mjs";
+import { NODES, TRACKS, validateTree } from "../../../../src/learn/academyTree.mjs";
 
 const require = createRequire(import.meta.url);
 const { evaluateHand } = require("../../../../src/eval/pokerEvaluator.js");

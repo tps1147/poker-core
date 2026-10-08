@@ -1,0 +1,825 @@
+{
+ "source": "claude-motion-draft-2026-10-06/src-academy-<film>-v2/timing.json and the film's RuleCard, extracted 2026-10-08",
+ "films": {
+  "w-what-is-poker": {
+   "film": "w-what-is-poker",
+   "duration": 74,
+   "canon": {
+    "hook": "whatDecides",
+    "yourTurn": null,
+    "rule": "betterDecisions",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 61.98,
+   "upNext": 69.52,
+   "ruleCaptions": [
+    "better decisions take the chips.",
+    "That's what Flop52 teaches you,",
+    "one idea at a time."
+   ],
+   "ruleCard": null
+  },
+  "w-history": {
+   "film": "w-history",
+   "duration": 93,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 82.73,
+   "upNext": 87.26,
+   "ruleCaptions": [
+    "Poker's played against people,",
+    "and it's won by thinking."
+   ],
+   "ruleCard": null
+  },
+  "w-luck-and-skill": {
+   "film": "w-luck",
+   "duration": 87,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": null,
+    "rule": "luckRule",
+    "upNext": "end"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 81.89,
+   "upNext": null,
+   "ruleCaptions": [
+    "Luck decides a hand. Skill decides a thousand."
+   ],
+   "ruleCard": null
+  },
+  "w-how-deep": {
+   "film": "w-deep",
+   "duration": 91,
+   "canon": {
+    "hook": "question",
+    "yourTurn": null,
+    "rule": "upNext",
+    "upNext": "nextTitle"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 86.093,
+   "upNext": 87.09,
+   "ruleCaptions": [
+    "Up next: how Flop52 makes you better."
+   ],
+   "ruleCard": {
+    "lines": [
+     "SIMPLE TO LEARN,",
+     "DEEP TO MASTER."
+    ],
+    "sub": "One idea at a time."
+   }
+  },
+  "w-the-academy": {
+   "film": "w-academy",
+   "duration": 86,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": null,
+    "rule": "ruleLearn",
+    "upNext": "deck"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 76.813,
+   "upNext": 82.32,
+   "ruleCaptions": [
+    "Learn it, decide it, see why,",
+    "try it new, prove it later."
+   ],
+   "ruleCard": null
+  },
+  "r-the-deck": {
+   "film": "r-the-deck",
+   "duration": 98,
+   "canon": {
+    "hook": "whose",
+    "yourTurn": null,
+    "rule": "ruleRanks",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 89.934,
+   "upNext": 94.308,
+   "ruleCaptions": [
+    "Thirteen ranks, four suits. Ranks decide."
+   ],
+   "ruleCard": {
+    "lines": [
+     "13 RANKS × 4 SUITS.",
+     "RANKS DECIDE."
+    ],
+    "sub": "Suits only matter for flushes."
+   }
+  },
+  "r-hand-rankings": {
+   "film": "r-hand-rankings",
+   "duration": 97,
+   "canon": {
+    "hook": "which",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 90.28,
+   "upNext": 93.01,
+   "ruleCaptions": [
+    "Rarer beats more common."
+   ],
+   "ruleCard": {
+    "lines": [
+     "RARER BEATS",
+     "MORE COMMON."
+    ],
+    "sub": "Name your hand before you bet."
+   }
+  },
+  "r-best-five": {
+   "film": "r-best-five",
+   "duration": 98,
+   "canon": {
+    "hook": "howMany",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 88.56,
+   "upNext": 94.31,
+   "ruleCaptions": [
+    "Best five of seven. Use two, one, or none."
+   ],
+   "ruleCard": {
+    "lines": [
+     "BEST FIVE OF SEVEN.",
+     "TWO, ONE OR NONE."
+    ],
+    "sub": "Whatever of yours makes the best five."
+   }
+  },
+  "r-seats-blinds": {
+   "film": "r-seats-blinds",
+   "duration": 89,
+   "canon": {
+    "hook": "whose",
+    "yourTurn": null,
+    "rule": "upNext",
+    "upNext": "yourTurn"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 84.12,
+   "upNext": 85.43,
+   "ruleCaptions": [
+    "Up next: what you can do on your turn."
+   ],
+   "ruleCard": {
+    "lines": [
+     "BLINDS ARE",
+     "PLAYERS' CHIPS."
+    ],
+    "sub": "The button moves every hand."
+   }
+  },
+  "r-actions": {
+   "film": "r-actions",
+   "duration": 93,
+   "canon": {
+    "hook": "canCheck",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 80.22,
+   "upNext": 89.02,
+   "ruleCaptions": [
+    "Here's the rule.",
+    "Check is free, but only when nothing's owed.",
+    "Call matches.",
+    "Bet starts... and raise grows."
+   ],
+   "ruleCard": null
+  },
+  "r-streets": {
+   "film": "r-streets",
+   "duration": 95,
+   "canon": {
+    "hook": "soFlop",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 85.69,
+   "upNext": 91.35,
+   "ruleCaptions": [
+    "After the flop, the first seat left of the button",
+    "acts first, every street."
+   ],
+   "ruleCard": {
+    "lines": [
+     "AFTER THE FLOP, LEFT OF",
+     "THE BUTTON ACTS FIRST."
+    ],
+    "sub": "Every street, whoever bet last."
+   }
+  },
+  "r-showdown": {
+   "film": "r-showdown",
+   "duration": 104,
+   "canon": {
+    "hook": "canYou",
+    "yourTurn": null,
+    "rule": "soRule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 89.86,
+   "upNext": 97.7,
+   "ruleCaptions": [
+    "So... you win when everyone folds,",
+    "or with the best five at showdown.",
+    "Exact ties split."
+   ],
+   "ruleCard": {
+    "lines": [
+     "WIN WHEN THEY FOLD,",
+     "OR WITH THE BEST FIVE."
+    ],
+    "sub": "Exact ties split the pot evenly."
+   }
+  },
+  "r-all-in-side-pots": {
+   "film": "r-all-in-side-pots",
+   "duration": 90,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 80.34,
+   "upNext": 84.79,
+   "ruleCaptions": [
+    "Win only what you matched. The rest is a side pot."
+   ],
+   "ruleCard": {
+    "lines": [
+     "WIN ONLY WHAT",
+     "YOU MATCHED."
+    ],
+    "sub": "The rest is a side pot for those who paid it."
+   }
+  },
+  "r-first-hand": {
+   "film": "r-first-hand",
+   "duration": 68,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": null,
+    "rule": "noGrade",
+    "upNext": "firstHand"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 53.93,
+   "upNext": 63.7,
+   "ruleCaptions": [
+    "Nobody grades them... not even the result."
+   ],
+   "ruleCard": null
+  },
+  "b-made-vs-draw": {
+   "film": "b-made-vs-draw",
+   "duration": 80,
+   "canon": {
+    "hook": "doYou",
+    "yourTurn": null,
+    "rule": "readNow",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 68.9,
+   "upNext": 76.12,
+   "ruleCaptions": [
+    "So before you bet, read what you have right now.",
+    "A draw is a promise... not a hand."
+   ],
+   "ruleCard": null
+  },
+  "b-the-nuts": {
+   "film": "b-the-nuts",
+   "duration": 95,
+   "canon": {
+    "hook": "anything",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 87.95,
+   "upNext": 91.46,
+   "ruleCaptions": [
+    "The nuts is the best this board allows."
+   ],
+   "ruleCard": null
+  },
+  "b-what-beats-you": {
+   "film": "b-what-beats-you",
+   "duration": 101,
+   "canon": {
+    "hook": "howMany",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 89.79,
+   "upNext": 96.15,
+   "ruleCaptions": [
+    "So before you put in another chip,",
+    "name what beats you.",
+    "Count the families, not the faces."
+   ],
+   "ruleCard": {
+    "lines": [
+     "BEFORE ANOTHER CHIP,",
+     "NAME WHAT BEATS YOU."
+    ],
+    "sub": "Count the families, not the faces."
+   }
+  },
+  "b-kickers-counterfeit": {
+   "film": "b-kickers-counterfeit",
+   "duration": 101,
+   "canon": {
+    "hook": "lose",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 90.76,
+   "upNext": 95.68,
+   "ruleCaptions": [
+    "So when the board pairs, ask...",
+    "does my hand still use my cards?"
+   ],
+   "ruleCard": {
+    "lines": [
+     "WHEN THE BOARD PAIRS,",
+     "DO YOUR CARDS STILL PLAY?"
+    ],
+    "sub": "Ask it before you put more chips in."
+   }
+  },
+  "b-texture-read": {
+   "film": "b-texture-read",
+   "duration": 103,
+   "canon": {
+    "hook": "flushQ",
+    "yourTurn": null,
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": null,
+   "yourTurnCaption": null,
+   "rule": 92.59,
+   "upNext": 97.38,
+   "ruleCaptions": [
+    "So read the shape first.",
+    "What's possible now... and what's still coming."
+   ],
+   "ruleCard": null
+  },
+  "m-chance-as-share": {
+   "film": "m-chance-as-share",
+   "duration": 92,
+   "canon": {
+    "hook": "howOften",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 61.51,
+   "yourTurnCaption": "Your turn. How often is it an ace?",
+   "rule": 78.64,
+   "upNext": 87.73,
+   "ruleCaptions": [
+    "A chance is a share.",
+    "The outcomes you want, out of all of them.",
+    "Repeat it... and that share is what you get."
+   ],
+   "ruleCard": null
+  },
+  "m-outs": {
+   "film": "m-outs",
+   "duration": 93,
+   "canon": {
+    "hook": "needHelp",
+    "yourTurn": "yourTurn",
+    "rule": "ruleOut",
+    "upNext": "upNext"
+   },
+   "yourTurn": 64.92,
+   "yourTurnCaption": "Your turn. Queen-jack of diamonds, on ten, nine, three.",
+   "rule": 85.04,
+   "upNext": 88.93,
+   "ruleCaptions": [
+    "An out makes you the winner.",
+    "Count each card once."
+   ],
+   "ruleCard": null
+  },
+  "m-rule-2-4": {
+   "film": "m-rule-2-4",
+   "duration": 97,
+   "canon": {
+    "hook": "whichRule",
+    "yourTurn": "yourTurn",
+    "rule": "ruleX2",
+    "upNext": "upNext"
+   },
+   "yourTurn": 62.81,
+   "yourTurnCaption": "Your turn. Ten-nine of hearts, on eight, seven, two...",
+   "rule": 87.12,
+   "upNext": 93.58,
+   "ruleCaptions": [
+    "So, × 2 for one card.",
+    "× 4 only when you see both for this price."
+   ],
+   "ruleCard": null
+  },
+  "m-equity": {
+   "film": "m-equity",
+   "duration": 85,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": "turn",
+    "rule": "upNext",
+    "upNext": "end"
+   },
+   "yourTurn": 68.06,
+   "yourTurnCaption": "Your turn. A pot of 150,",
+   "rule": 79.91,
+   "upNext": null,
+   "ruleCaptions": [
+    "Up next... what it costs to chase it."
+   ],
+   "ruleCard": null
+  },
+  "m-pot-odds": {
+   "film": "m-pot-odds",
+   "duration": 89,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": "turn",
+    "rule": "ruleCall",
+    "upNext": "end"
+   },
+   "yourTurn": 65.56,
+   "yourTurnCaption": "Your turn. Now they go all-in for 100.",
+   "rule": 83.64,
+   "upNext": null,
+   "ruleCaptions": [
+    "Call when your chance is at least the price."
+   ],
+   "ruleCard": null
+  },
+  "m-ev": {
+   "film": "m-ev",
+   "duration": 98,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": "yourTurn",
+    "rule": "formula",
+    "upNext": "end"
+   },
+   "yourTurn": 60.08,
+   "yourTurnCaption": "Your turn.",
+   "rule": 87.27,
+   "upNext": null,
+   "ruleCaptions": [
+    "Expected value is your chance times the final pot,",
+    "minus your call.",
+    "Judge the decision by its average... not one river."
+   ],
+   "ruleCard": null
+  },
+  "m-variance": {
+   "film": "m-variance",
+   "duration": 84,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": "expect",
+    "rule": "tenGood",
+    "upNext": "end"
+   },
+   "yourTurn": 54.24,
+   "yourTurnCaption": "So what should Blue expect after a hundred calls?",
+   "rule": 74.54,
+   "upNext": null,
+   "ruleCaptions": [
+    "So ten good results don't prove a good player.",
+    "A few hands show luck.",
+    "Thousands show the decision."
+   ],
+   "ruleCard": null
+  },
+  "m-implied-odds": {
+   "film": "m-implied-odds",
+   "duration": 94,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": "yourTurn",
+    "rule": "count",
+    "upNext": "upNext"
+   },
+   "yourTurn": 71.25,
+   "yourTurnCaption": "Your turn. Jack-ten, four outs.",
+   "rule": 85.2,
+   "upNext": 89.14,
+   "ruleCaptions": [
+    "Count what you can still win, and stop at their stack."
+   ],
+   "ruleCard": null
+  },
+  "m-spr": {
+   "film": "m-spr",
+   "duration": 94,
+   "canon": {
+    "hook": "pick",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 70.54,
+   "yourTurnCaption": "Your turn. You've got 1,000, they've got 240, pot 120.",
+   "rule": 86.61,
+   "upNext": 89.83,
+   "ruleCaptions": [
+    "SPR counts the bets you have left."
+   ],
+   "ruleCard": null
+  },
+  "p-position-value": {
+   "film": "p-position-value",
+   "duration": 98,
+   "canon": {
+    "hook": "predict",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 76.55,
+   "yourTurnCaption": "Your turn. Cutoff against big blind, after the flop.",
+   "rule": 85.91,
+   "upNext": 94.41,
+   "ruleCaptions": [
+    "So position matters on every street.",
+    "Acting last is information.",
+    "And middle position? It's also called the hijack."
+   ],
+   "ruleCard": null
+  },
+  "p-starting-hands": {
+   "film": "p-starting-hands",
+   "duration": 97,
+   "canon": {
+    "hook": "howOften",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 77.18,
+   "yourTurnCaption": "Your turn. Nine-eight of hearts, on the button, folded to you.",
+   "rule": 87.54,
+   "upNext": 93.88,
+   "ruleCaptions": [
+    "Play hands that make big hands, from seats that let you.",
+    "Suited is a bonus, not a ticket."
+   ],
+   "ruleCard": null
+  },
+  "p-open-raise": {
+   "film": "p-open-raise",
+   "duration": 103,
+   "canon": {
+    "hook": "openIt",
+    "yourTurn": "yourTurn",
+    "rule": "rule2",
+    "upNext": "upNext"
+   },
+   "yourTurn": 79.05,
+   "yourTurnCaption": "Your turn. Seven-six suited, in middle position.",
+   "rule": 94.42,
+   "upNext": 99.06,
+   "ruleCaptions": [
+    "Fewer behind, wider range.",
+    "And come in raising."
+   ],
+   "ruleCard": null
+  },
+  "p-blind-defense": {
+   "film": "p-blind-defense",
+   "duration": 98,
+   "canon": {
+    "hook": "protect",
+    "yourTurn": "yourTurn",
+    "rule": "rule1",
+    "upNext": "upNext"
+   },
+   "yourTurn": 73.99,
+   "yourTurnCaption": "Your turn. The button raises to 40.",
+   "rule": 91.03,
+   "upNext": 94.45,
+   "ruleCaptions": [
+    "The blind helps your price.",
+    "It doesn't make the call."
+   ],
+   "ruleCard": null
+  },
+  "p-three-bet": {
+   "film": "p-three-bet",
+   "duration": 100,
+   "canon": {
+    "hook": "when",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 73.1,
+   "yourTurnCaption": "Your turn. Queens, in the big blind.",
+   "rule": 87.95,
+   "upNext": 96.16,
+   "ruleCaptions": [
+    "3-bet the hands that beat their calls...",
+    "and a few that block their best.",
+    "3× in position. 4× out."
+   ],
+   "ruleCard": null
+  },
+  "f-ranges": {
+   "film": "f-ranges",
+   "duration": 106,
+   "canon": {
+    "hook": "which",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 81.05,
+   "yourTurnCaption": "Your turn. Same range, new flop.",
+   "rule": 97.22,
+   "upNext": 101.47,
+   "ruleCaptions": [
+    "So put him on a range.",
+    "Then ask what share of it beats you."
+   ],
+   "ruleCard": null
+  },
+  "f-board-texture": {
+   "film": "f-board-texture",
+   "duration": 98,
+   "canon": {
+    "hook": "whose",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 74.88,
+   "yourTurnCaption": "Your turn. Queen, queen, five.",
+   "rule": 91.13,
+   "upNext": 94.87,
+   "ruleCaptions": [
+    "So before your hand, ask whose range the flop hits."
+   ],
+   "ruleCard": null
+  },
+  "f-cbet": {
+   "film": "f-cbet",
+   "duration": 98,
+   "canon": {
+    "hook": "haveTo",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 65.51,
+   "yourTurnCaption": "Your turn. Ace-ten, on eight, eight, three.",
+   "rule": 87.1,
+   "upNext": 93.53,
+   "ruleCaptions": [
+    "So c-bet when the flop favors your range",
+    "and the board lets you.",
+    "Raising first isn't the reason."
+   ],
+   "ruleCard": null
+  },
+  "f-bet-sizing": {
+   "film": "f-bet-sizing",
+   "duration": 105,
+   "canon": {
+    "hook": "forty",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 73.95,
+   "yourTurnCaption": "Your turn.",
+   "rule": 91.91,
+   "upNext": 100.41,
+   "ruleCaptions": [
+    "So pick the size from the job.",
+    "Charge draws, invite worse hands,",
+    "or make folds cheap to win."
+   ],
+   "ruleCard": null
+  },
+  "f-value-betting": {
+   "film": "f-value-betting",
+   "duration": 92,
+   "canon": {
+    "hook": "chk",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 70.02,
+   "yourTurnCaption": "Your turn. Same river, one change:",
+   "rule": 82.96,
+   "upNext": 87.5,
+   "ruleCaptions": [
+    "So bet when more than half the hands that call",
+    "are worse than yours."
+   ],
+   "ruleCard": null
+  },
+  "f-pot-control": {
+   "film": "f-pot-control",
+   "duration": 86,
+   "canon": {
+    "hook": "so",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 60.81,
+   "yourTurnCaption": "Your turn. Same nines, but now you act first.",
+   "rule": 74.68,
+   "upNext": 81.6,
+   "ruleCaptions": [
+    "Medium hand, small pot.",
+    "Two streets of value...",
+    "and take the free card when you're last."
+   ],
+   "ruleCard": null
+  },
+  "f-playing-draws": {
+   "film": "f-playing-draws",
+   "duration": 99,
+   "canon": {
+    "hook": "hook",
+    "yourTurn": "yourTurn",
+    "rule": "rule",
+    "upNext": "upNext"
+   },
+   "yourTurn": 67.72,
+   "yourTurnCaption": "Your turn. Nine outs again.",
+   "rule": 87.08,
+   "upNext": 93.92,
+   "ruleCaptions": [
+    "Price first.",
+    "Then ask what the stacks let you win later...",
+    "and whether a raise wins it now."
+   ],
+   "ruleCard": null
+  }
+ }
+}

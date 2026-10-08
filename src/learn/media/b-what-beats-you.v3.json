@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "b-what-beats-you",
+  "video": "/academy/films-v2/b-what-beats-you/3e72a4d4/b-what-beats-you-1080.mp4",
+  "video720": "/academy/films-v2/b-what-beats-you/3e72a4d4/b-what-beats-you-720.mp4",
+  "poster": "/academy/films-v2/b-what-beats-you/3e72a4d4/b-what-beats-you-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-what-beats-you/3e72a4d4/b-what-beats-you-rule.jpg",
+  "captions": "/academy/films-v2/b-what-beats-you/3e72a4d4/b-what-beats-you.vtt",
+  "transcript": "/academy/films-v2/b-what-beats-you/3e72a4d4/b-what-beats-you.transcript.txt",
+  "durationSeconds": 101,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 10.35,
+    "yourTurn": null,
+    "rule": 89.79,
+    "upNext": 96.15,
+    "first": null
+  },
+  "version": "3e72a4d4"
+}

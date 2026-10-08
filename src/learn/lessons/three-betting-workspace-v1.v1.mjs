@@ -55,26 +55,37 @@ const NOTE = "The hand stops once you act. What the opener does next, and the fl
 const actionFeedback = { found: "You made the 3-bet.", missed: "Let’s look at the job again.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "three-betting-workspace-v1", version: 1, flow: "film-first",
+  id: "three-betting-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t2-3betting",
   sourceLessonId: "lesson-3betting-001", videoLessonId: "lesson-3betting-001",
-  coach: "knox", access: "pro", template: "preflop",
+  coach: "knox", narrator: "nathan", access: "pro", template: "preflop",
   title: "Know why you 3-bet.", kicker: "A 3-bet is not a bigger call.",
   trail: ["Learn", "Preflop discipline", "3-betting"],
   course: { chapter: "Preflop discipline" },
   meta: { minutes: 4 },
-  assumptions: "Six-handed, blinds of 5 and 10, everyone starts with 1,000 (100 big blinds), no antes and no rake. One player opens with a raise to 25 and everyone before you folds. Opening ranges are not stated; each hand names who opened and from where. The 3-bet sizes are given for the exercise: 75 (three times the open) on the button, 100 (four times) from the blinds. In the small blind the plan for this exercise is 3-bet or fold. The job of each 3-bet follows Knox’s two jobs, value and pressure, not a solver, and nothing is read from anyone’s hidden cards. Each hand stops once you act, so no flop is dealt.",
+  assumptions: "Six-handed, blinds of 5 and 10, everyone starts with 1,000 (100 big blinds), no antes and no rake. One player opens with a raise to 25 and everyone before you folds. Opening ranges are not stated; each hand names who opened and from where. The 3-bet sizes are given for the exercise: 75 (three times the open) on the button, 100 (four times) from the blinds. In the small blind the plan for this exercise is 3-bet or fold. The job of each 3-bet follows the two jobs, value and pressure, not a solver, and nothing is read from anyone’s hidden cards. Each hand stops once you act, so no flop is dealt.",
   media: "media/three-betting-workspace-v1.v1.json",
   feedback: { found: "You named the job.", missed: "Let’s name the job together.", open: "Here’s the job." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Know why you 3-bet.", em: "Value or pressure.",
-      lead: "A 3-bet changes the hand, so it needs a job. Watch Knox split value from pressure, then play three hands at a six-handed table.",
+      lead: "A 3-bet changes the hand, so it needs a job. Watch the film, then play three hands at a six-handed table.",
       cta: "Watch with Knox" },
     { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (lessons/three-betting-workspace-v1/v1/timeline.json rail).
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A new hand" }, { beat: "value", label: "Value" }, { beat: "pressure", label: "Pressure" }, { beat: "hand", label: "Ace-five suited" }, { beat: "leak", label: "The leak" }] },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A new hand" }, { beat: "value", label: "Value" }, { beat: "pressure", label: "Pressure" }, { beat: "hand", label: "Ace-five suited" }, { beat: "leak", label: "The leak" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-three-bet, canon.yourTurn at 73.1 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-three-bet.mjs.
+      pause: { at: 73.1, anchor: "yourTurn", film: "p-three-bet", spotId: "tb1-turn",
+        spot: { decision: "action", choices: ["fold", "call", "raise"], prompt: "Queens, in the big blind. The button opens to 25. Fold, call or 3-bet to 100?", sizes: { raise: 100 }, title: "Your turn: fold, call or 3-bet?", explanation: "Queens are value and you are out of position: 3-bet to 100, four times the open. You posted 10, so you owe 90 more." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-three-bet.mjs).
+    { kind: "why", label: "Why", spotId: "tb1-why", prompt: "Why is ace-five suited a pressure 3-bet?",
+      options: [
+        { id: "a", text: "Only aces and kings are worth a 3-bet, so it should fold.", fix: "The value 3-bets are the top hands. A few blocker hands like ace-five suited join them as pressure." },
+        { id: "b", text: "It is for value: an ace is ahead of a late open.", fix: "Ace-five is behind most hands that continue. It 3-bets to make him fold, not to get called by worse." },
+        { id: "c", text: "Your ace blocks his best aces, and suited cards still play when called.", fix: "Right. A blocker hand that still plays: pressure." },
+      ] },
     { kind: "decision", label: "Knox’s hand", spotId: "tb1-guided", hand: "tb1-guided", role: "guided",
-      coachLine: "Knox’s ace-five suited. You name the job.", next: "Try a practice hand" },
+      coachLine: "The ace-five suited. You name the job.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "tb1-practice-job", hand: "tb1-practice", role: "practice",
       coachLine: "A stronger hand this time. Name the job first.", next: "Now decide the action" },
     { kind: "decision", label: "Practice", spotId: "tb1-practice-action", hand: "tb1-practice", role: "practice",
@@ -93,10 +104,10 @@ const definition = {
       decision: "estimate", ...guided,
       bands: JOBS, dockPrompt: JOB_DOCK,
       title: "Ivy opens from the button. What is a 3-bet for?",
-      prompt: "Knox’s ace-five suited, in the big blind. Rae, Ned and Kit fold, Ivy raises to 25 from the button, a late open, and Sol folds from the small blind. The pot is 40 and you owe 15 more. If you 3-bet to 100, what job does that 3-bet do?",
+      prompt: "The ace-five suited, in the big blind. Rae, Ned and Kit fold, Ivy raises to 25 from the button, a late open, and Sol folds from the small blind. The pot is 40 and you owe 15 more. If you 3-bet to 100, what job does that 3-bet do?",
       hint: "Ask what happens after the 3-bet. Do you want worse hands to continue, or do your cards make the strongest hands less likely and still play well when called?",
-      explanation: "Ace-five suited is Knox’s own example of a pressure 3-bet against a late open. Your ace makes ace-king and ace-queen less likely in Ivy’s hand, and two suited cards can make the nut flush, so the hand still plays well when called. It is not a strong hand that wants worse hands to continue, so the job is pressure.",
-      note: "Knox’s hand plays the 3-bet he describes. It stops before Ivy answers it.",
+      explanation: "Ace-five suited is a textbook pressure 3-bet against a late open. Your ace makes ace-king and ace-queen less likely in Ivy’s hand, and two suited cards can make the nut flush, so the hand still plays well when called. It is not a strong hand that wants worse hands to continue, so the job is pressure.",
+      note: "The hand plays the 3-bet he describes. It stops before Ivy answers it.",
       focus: ["As", "5s"], focusPositions: ["BTN"], hear: 2,
     },
     "tb1-practice-job": {
@@ -123,7 +134,7 @@ const definition = {
       title: "Kit opens from the cutoff. What is a 3-bet for?",
       prompt: "You are in the small blind with ace-four of hearts. Ned and Ivy fold, Kit raises to 25 from the cutoff, and Sol folds on the button. The pot is 40 and you owe 20 more. If you 3-bet to 100, what job does that 3-bet do?",
       hint: "Look at the ace and the suit. What does each one do if Kit opened a strong hand, and what does each one do if Kit calls?",
-      explanation: "Ace-four suited is not a strong hand, so the 3-bet does not want worse hands to continue. Its ace makes ace-king and ace-queen less likely in Kit’s hand, and two hearts can make the nut flush, so it still plays well when called. The job is pressure, the same reasons Knox gives for ace-five.",
+      explanation: "Ace-four suited is not a strong hand, so the 3-bet does not want worse hands to continue. Its ace makes ace-king and ace-queen less likely in Kit’s hand, and two hearts can make the nut flush, so it still plays well when called. The job is pressure, the same reasons as ace-five.",
       focus: ["Ah", "4h"], focusPositions: ["CO"],
     },
     "tb1-fresh-action": {
@@ -131,7 +142,7 @@ const definition = {
       title: "Fold or 3-bet?",
       prompt: "You named the job. Kit opened to 25 from the cutoff and you owe 20 more. The plan in the small blind is 3-bet or fold. Fold, or 3-bet to 100?",
       hint: "Think about the player who only 3-bets premium hands, and what this hand’s ace and suit give you.",
-      explanation: "Ace-four suited has the blocker and the nut flush that make a pressure 3-bet against a late open. Folding it because it is not premium is the leak Knox names: a player who only 3-bets premiums is easy to read. So the 3-bet to 100 is the play under this lesson’s assumptions.",
+      explanation: "Ace-four suited has the blocker and the nut flush that make a pressure 3-bet against a late open. Folding it because it is not premium is the leak: a player who only 3-bets premiums is easy to read. So the 3-bet to 100 is the play under this lesson’s assumptions.",
       note: NOTE,
     },
   },

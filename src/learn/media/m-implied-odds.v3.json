@@ -1,0 +1,28 @@
+{
+  "format": "academy-film-v2",
+  "id": "m-implied-odds",
+  "video": "/academy/films-v2/m-implied-odds/f161571d/m-implied-odds-1080.mp4",
+  "video720": "/academy/films-v2/m-implied-odds/f161571d/m-implied-odds-720.mp4",
+  "poster": "/academy/films-v2/m-implied-odds/f161571d/m-implied-odds-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-implied-odds/f161571d/m-implied-odds-rule.jpg",
+  "captions": "/academy/films-v2/m-implied-odds/f161571d/m-implied-odds.vtt",
+  "transcript": "/academy/films-v2/m-implied-odds/f161571d/m-implied-odds.transcript.txt",
+  "durationSeconds": 94,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": 1.09,
+    "yourTurn": 71.25,
+    "rule": 85.2,
+    "upNext": 89.14,
+    "first": null
+  },
+  "version": "f161571d"
+}
