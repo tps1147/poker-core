@@ -50,10 +50,22 @@ const definition = {
       lead: "A bet size says something about your hand. Watch Vale split small bets from large ones, then choose a size in three hands at the table.",
       cta: "Watch with Vale" },
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
+      // The v2 film (f-bet-sizing) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "f-bet-sizing", pause: { at: 73.95, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "third", label: "A third of the pot" }, { id: "three-quarters", label: "Three-quarters of the pot" }], prompt: "A river where you want his weaker pairs to call. Which size?" } } },
       // Chapters on the film's own beats (lessons/bet-sizing-workspace-v1/v1/timeline.json rail).
       chapters: [{ at: 0, label: "Size is a story" }, { beat: "small", label: "A small bet" }, { beat: "large", label: "A large bet" }, { beat: "leak", label: "The leak" }] },
     { kind: "decision", label: "Vale’s hand", spotId: "bs1-guided", hand: "bs1-guided", role: "guided",
       coachLine: "Vale’s flop. You pick the size.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/bet-sizing-workspace-v1.mjs, never here.
+    { kind: "why", id: "bs1-why", label: "Why", after: "bs1-guided", next: "Try a practice hand",
+      prompt: "Why is the small bet right here?",
+      reasons: [
+        { id: "a", text: "Bet small to make his bluffs fold cheaply." },
+        { id: "b", text: "His weaker kings and pairs call 40 more often than 90, so the small bet keeps worse hands paying." },
+        { id: "c", text: "Bigger bets always win more." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "bs1-practice", hand: "bs1-practice", role: "practice",
       coachLine: "A draw this time. Pick the size.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "bs1-fresh", hand: "bs1-fresh", role: "fresh",

@@ -62,10 +62,22 @@ const definition = {
       lead: "One scary hand is not a read. Watch Vale put villain on a range, then read three hands at the table.",
       cta: "Watch with Vale" },
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
+      // The v2 film (f-ranges) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "f-ranges", pause: { at: 81.05, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "about-25", label: "About 25%" }, { id: "about-64", label: "About 64%" }, { id: "about-90", label: "About 90%" }], prompt: "Same range, new flop: J♣ 9♦ 2♥. What share is pair or better?" } } },
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "A range, not a hand" }, { beat: "preflop", label: "Preflop action" }, { beat: "texture", label: "King-eight-three" }, { beat: "range", label: "What still fits" }, { beat: "fear", label: "Fear reading" }, { beat: "narrow", label: "Street by street" }] },
     { kind: "decision", label: "Vale’s hand", spotId: "rng1-guided", hand: "rng1-guided", role: "guided",
       coachLine: "Vale’s hand. Put Ace Andy on a range.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/ranges-workspace-v1.mjs, never here.
+    { kind: "why", id: "rng1-why", label: "Why", after: "rng1-guided", next: "Try a practice hand",
+      prompt: "Why put him on a wide range?",
+      reasons: [
+        { id: "a", text: "His call keeps many hands, and a flop bet comes from strong hands, pairs, ace-high and bluffs." },
+        { id: "b", text: "Only strong hands bet, so his range is just value." },
+        { id: "c", text: "His bet tells you his exact hand." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "rng1-practice-preflop", hand: "rng1-practice", role: "practice",
       coachLine: "Start with his action before the flop.", next: "Now the flop" },
     { kind: "decision", label: "Practice", spotId: "rng1-practice-flop", hand: "rng1-practice", role: "practice",

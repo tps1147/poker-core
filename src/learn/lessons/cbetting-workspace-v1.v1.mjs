@@ -56,11 +56,23 @@ const definition = {
       lead: "A continuation bet works best when the flop favors the range that raised. Watch Vale read a king-high flop, then play three hands at the table.",
       cta: "Watch with Vale" },
     { kind: "film", label: "Film", upNext: "Play Vale’s hand",
+      // The v2 film (f-cbet) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "f-cbet", pause: { at: 65.51, anchor: "yourTurn", spot: { kind: "action", choices: ["check", "bet"], prompt: "Ace-ten, on eight, eight, three. 90 in the pot, and he checks. Check, or bet 30?" } } },
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The range that raised" }, { beat: "texture", label: "King-seven-two rainbow" }, { beat: "caller", label: "The caller misses" }, { beat: "small", label: "A small c-bet" }, { beat: "earn", label: "Earn it" }] },
     { kind: "decision", label: "Vale’s hand", spotId: "cb1-guided", hand: "cb1-guided", role: "guided",
       coachLine: "Vale’s hand. Ace Andy checks to you.", next: "Try a practice hand",
       feedback: actFeedback },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/cbetting-workspace-v1.mjs, never here.
+    { kind: "why", id: "cb1-why", label: "Why", after: "cb1-guided", next: "Try a practice hand",
+      prompt: "Why is the c-bet earned here?",
+      reasons: [
+        { id: "a", text: "The dry flop favors your range, and the board lets a small bet work." },
+        { id: "b", text: "You raised before the flop, so you always c-bet." },
+        { id: "c", text: "Ace-queen has the best kicker." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "cb1-practice-read", hand: "cb1-practice", role: "practice",
       coachLine: "A different flop. Read it before you bet.", next: "Now decide the c-bet",
       feedback: readFeedback },

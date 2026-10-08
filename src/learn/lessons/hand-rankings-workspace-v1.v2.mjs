@@ -31,6 +31,15 @@ const definition = {
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Name the hand" }, { beat: "deal", label: "Read the board" }, { beat: "hand", label: "Build the hand" }, { beat: "rank", label: "Best five cards" }] },
     { kind: "decision", label: "Ada’s hand", spotId: "hr2-guided", hand: "hr2-guided", role: "guided",
       coachLine: "Ada’s river. You build the hand.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/hand-rankings-workspace-v1.mjs, never here.
+    { kind: "why", id: "hr2-why", label: "Why", after: "hr2-guided", next: "Try a practice hand",
+      prompt: "Why does a full house outrank a flush?",
+      reasons: [
+        { id: "a", text: "A flush looks stronger, so it should rank higher." },
+        { id: "b", text: "Because it uses more of your own cards." },
+        { id: "c", text: "It is rarer: 3,744 five-card hands are full houses, 5,108 are flushes." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "hr2-practice", hand: "hr2-practice", role: "practice",
       coachLine: "Same idea, new cards. The pair on the board is busy.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "hr2-fresh", hand: "hr2-fresh", role: "fresh",

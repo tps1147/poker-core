@@ -40,6 +40,9 @@ const definition = {
       lead: "You do not need perfect math at the table. Watch Mina turn a count of outs into a quick chance, then estimate three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      // The v2 film (m-rule-2-4) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "m-rule-2-4", pause: { at: 62.81, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "x2", label: "About 16%" }, { id: "x4", label: "About 32%" }], prompt: "Ten-nine of hearts on eight, seven, two, and they go all-in. 8 outs: which estimate?" } } },
       // The film's own beats, with the opening as "Intro". `outs` (15.25) is not a chapter: it is
       // .06 s after `draw` and would draw a sliver.
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "draw", label: "Count the outs" }, { beat: "rule", label: "Outs × 2" }, { beat: "estimate", label: "The estimate" }, { beat: "price", label: "The price" }],
@@ -50,6 +53,15 @@ const definition = {
     { kind: "decision", label: "Mina’s hand", spotId: "rule2-guided-call", hand: "rule2-guided", role: "guided",
       coachLine: "You have the estimate. Now the price.", next: "Try a practice hand",
       feedback: { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." } },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/rule-2-4-workspace-v1.mjs, never here.
+    { kind: "why", id: "rule2-why", label: "Why", after: "rule2-guided-call", next: "Try a practice hand",
+      prompt: "Why fold Mina’s 8-out draw on this turn?",
+      reasons: [
+        { id: "a", text: "One card is to come, so 8 × 2 is about 16%, below the 20% price." },
+        { id: "b", text: "Use ×4, since more betting can still come." },
+        { id: "c", text: "16% is close to 20%, so the call is about even." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "rule2-practice-count", hand: "rule2-practice", role: "practice",
       coachLine: "A new draw, one street earlier. Count it first.", next: "Now estimate the chance",
       feedback: { found: "You counted it.", missed: "Let’s count it together.", open: "Here’s the count." } },

@@ -30,6 +30,9 @@ const definition = {
       lead: "A draw is only worth what it can become. Watch Mina count a flush draw, then count and price three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      // The v2 film (m-outs) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "m-outs", pause: { at: 64.92, anchor: "yourTurn", spot: { kind: "count", range: [0, 47], unit: "outs", prompt: "Queen-jack of diamonds on ten, nine, three, and only a straight wins. How many outs?" } } },
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "draw", label: "See the draw" }, { beat: "outs", label: "Count the outs" }, { beat: "rule", label: "Build the estimate" }, { beat: "price", label: "Compare the price" }],
       pause: { at: 16.25, spot: { kind: "count", range: [0, 47], unit: "outs",
@@ -37,6 +40,15 @@ const definition = {
     { kind: "decision", label: "Mina’s hand", spotId: "outs2-guided-call", hand: "outs2-guided", role: "guided",
       coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand",
       feedback: { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." } },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/outs-workspace-v1.mjs, never here.
+    { kind: "why", id: "outs2-why", label: "Why", after: "outs2-guided-call", next: "Try a practice hand",
+      prompt: "Why do Mina’s 9 outs make this a call?",
+      reasons: [
+        { id: "a", text: "Every card that improves the hand counts, so the draw is bigger than 9 outs." },
+        { id: "b", text: "9 outs × 4 is 36%, far above the price." },
+        { id: "c", text: "9 clean outs is roughly 18%, and the price is 25 ÷ 250 = 10%." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "outs2-practice-count", hand: "outs2-practice", role: "practice",
       coachLine: "Same idea, a different draw.", next: "Now decide the call" },
     { kind: "decision", label: "Practice", spotId: "outs2-practice-call", hand: "outs2-practice", role: "practice",

@@ -58,10 +58,22 @@ const definition = {
       lead: "Some hands look playable and still lose chips later. Watch Reina read queen-seven offsuit, then play three hands at a six-handed table.",
       cta: "Watch with Reina" },
     { kind: "film", label: "Film", upNext: "Play Reina’s hand",
+      // The v2 film (p-starting-hands) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "p-starting-hands", pause: { at: 77.18, anchor: "yourTurn", spot: { kind: "action", choices: ["fold", "raise"], prompt: "Nine-eight of hearts, on the button, folded to you. Open, or fold?" } } },
       // Chapters on the film's own beats (the media rail), with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Before the flop" }, { beat: "trouble", label: "Dominated trouble" }, { beat: "range", label: "What good hands make" }, { beat: "bad", label: "Second-best hands" }] },
     { kind: "decision", label: "Reina’s hand", spotId: "sh1-guided", hand: "sh1-guided", role: "guided",
       coachLine: "Reina’s queen-seven. You are first to act.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/starting-hands-workspace-v1.mjs, never here.
+    { kind: "why", id: "sh1-why", label: "Why", after: "sh1-guided", next: "Try a practice hand",
+      prompt: "Why fold queen-seven under the gun?",
+      reasons: [
+        { id: "a", text: "It mostly makes second-best hands, and five players still act after you." },
+        { id: "b", text: "A queen is too weak to raise from any seat." },
+        { id: "c", text: "It would be worth playing if it were suited." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "sh1-practice-read", hand: "sh1-practice", role: "practice",
       coachLine: "New cards. Read what they make before you act.", next: "Now decide the hand",
       feedback: readFeedback },

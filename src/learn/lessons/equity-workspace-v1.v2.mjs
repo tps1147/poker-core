@@ -35,10 +35,22 @@ const definition = {
       lead: "A hand is not just what it is right now. Watch Mina define future share, then find your share of the pot in three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      // The v2 film (m-equity) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "m-equity", pause: { at: 68.06, anchor: "yourTurn", spot: { kind: "estimate", bands: [{ id: "about-0", label: "Nothing yet" }, { id: "about-60", label: "About 60 chips" }, { id: "about-150", label: "About 150 chips" }], prompt: "A pot of 150, and you win about 40% (given). Your share?" } } },
       // The media rail's chapters on the film's own two beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the hand" }, { beat: "share", label: "Judge your share" }] },
     { kind: "decision", label: "Mina’s hand", spotId: "eq2-guided", hand: "eq2-guided", role: "guided",
       coachLine: "Mina’s hand. You name the share.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/equity-workspace-v1.mjs, never here.
+    { kind: "why", id: "eq2-why", label: "Why", after: "eq2-guided", next: "Try a practice hand",
+      prompt: "Why is about 42 chips your share?",
+      reasons: [
+        { id: "a", text: "With no pair yet, you own nothing until you hit." },
+        { id: "b", text: "Equity is your chance times the pot: 35% of 120 is 42." },
+        { id: "c", text: "Equity is the chips you have already put in." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "eq2-practice", hand: "eq2-practice", role: "practice",
       coachLine: "Same idea, a different hand.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "eq2-fresh", hand: "eq2-fresh", role: "fresh",

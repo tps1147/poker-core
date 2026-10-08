@@ -63,10 +63,22 @@ const definition = {
       lead: "Your blind is already in, so calling a raise often looks cheap. Watch Reina weigh the three things that decide a defense, then play three hands from the big blind.",
       cta: "Watch with Reina" },
     { kind: "film", label: "Film", upNext: "Play Reina’s hand",
+      // The v2 film (p-blind-defense) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "p-blind-defense", pause: { at: 73.99, anchor: "yourTurn", spot: { kind: "count", range: [0, 100], unit: "chips", prompt: "You are the big blind. The button raises to 40. What do you owe?" } } },
       // Chapters on the film's own beats (lessons/blind-defense-workspace-v1/v1/timeline.json rail).
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The blind price" }, { beat: "range", label: "Three things" }, { beat: "hand", label: "Playability" }, { beat: "contrast", label: "Dominated hands" }, { beat: "seat", label: "Out of position" }] },
     { kind: "decision", label: "Reina’s hand", spotId: "bd1-guided", hand: "bd1-guided", role: "guided",
       coachLine: "Reina’s jack-ten suited. You decide the defense.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/blind-defense-workspace-v1.mjs, never here.
+    { kind: "why", id: "bd1-why", label: "Why", after: "bd1-guided", next: "Try a practice hand",
+      prompt: "Why defend jack-ten suited here?",
+      reasons: [
+        { id: "a", text: "The 10 you posted is yours, so you protect it." },
+        { id: "b", text: "Your 15 buys a share of 55, about 27%, and the hand plays well against a wide range." },
+        { id: "c", text: "15 ÷ 40 is a cheap price." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-price", hand: "bd1-practice", role: "practice",
       coachLine: "A new raise from an earlier seat. Price it first.", next: "Now decide the defense", feedback: priceFeedback },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-call", hand: "bd1-practice", role: "practice",

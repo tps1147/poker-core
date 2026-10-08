@@ -44,9 +44,21 @@ const definition = {
       lead: "A price that is too high now can still be a good call when you can win more later. Watch Mina name the three things that make it real, then price three hands at the table.",
       cta: "Watch with Mina" },
     { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      // The v2 film (m-implied-odds) pauses at its yourTurn anchor for this ungraded guess, then reveals it.
+      // The fields below are the current film's, unchanged until the apps switch films.
+      v2: { film: "m-implied-odds", pause: { at: 71.25, anchor: "yourTurn", spot: { kind: "action", choices: ["fold", "call"], prompt: "Jack-ten, four outs. Pot 60, bet 20, 90 behind. Call or fold?" } } },
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "The direct price" }, { beat: "extra", label: "What you can win later" }, { beat: "realistic", label: "Only realistic money" }, { beat: "conditions", label: "Three things" }] },
     { kind: "decision", label: "Mina’s hand", spotId: "imp1-guided", hand: "imp1-guided", role: "guided",
       coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand" },
+    // The why step (ACADEMY-LEARNING-LOOP "Why"): one tap from three reasons; the key and the
+    // corrections are in answerKeys/implied-odds-workspace-v1.mjs, never here.
+    { kind: "why", id: "imp1-why", label: "Why", after: "imp1-guided", next: "Try a practice hand",
+      prompt: "Why does Mina call at a 30% price?",
+      reasons: [
+        { id: "a", text: "Roughly 18% beats the 30% price on its own." },
+        { id: "b", text: "The given 250 on the river makes it 75 for a shot at 500: 15%, under roughly 18%." },
+        { id: "c", text: "Any draw is a call once you count the chips you can win later." },
+      ] },
     { kind: "decision", label: "Practice", spotId: "imp1-practice-most", hand: "imp1-practice", role: "practice",
       coachLine: "The same price and a strong draw. Check what can really come later.", next: "Now decide the call",
       feedback: { found: "You found the limit.", missed: "Let’s look at the chips behind.", open: "Here’s the limit." } },
