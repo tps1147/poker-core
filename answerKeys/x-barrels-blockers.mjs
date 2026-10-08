@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "x-barrels-blockers", node: "x-barrels-blockers", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t4-barreling-blockers",
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "bk-guided"}, {kind: "decision", spotId: "bk-practice"}, {kind: "decision", spotId: "bk-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "bk-why"}, {kind: "decision", spotId: "bk-guided"}, {kind: "decision", spotId: "bk-practice"}, {kind: "decision", spotId: "bk-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 64.66, spotId: "bk-turn", decision: "estimate", bands: ["ace-spades", "nine-diamonds"], key: {band: "ace-spades"} },
   why: { stage: 2, spotId: "bk-why", options: ["blocks-calls", "any-ace", "showdown"], key: { option: "blocks-calls" } },
   spots: {

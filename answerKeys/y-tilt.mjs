@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "y-tilt", node: "y-tilt", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t6-tilt",
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "tl-guided"}, {kind: "decision", spotId: "tl-practice"}, {kind: "decision", spotId: "tl-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "tl-why"}, {kind: "decision", spotId: "tl-guided"}, {kind: "decision", spotId: "tl-practice"}, {kind: "decision", spotId: "tl-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "tl-turn", decision: "action", choices: ["fold", "call"], key: {action: "call"} },
   why: { stage: 2, spotId: "tl-why", options: ["math", "calm", "due"], key: { option: "math" } },
   spots: {

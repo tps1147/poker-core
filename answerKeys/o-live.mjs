@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "o-live", node: "o-live", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "lv-guided"}, {kind: "decision", spotId: "lv-practice"}, {kind: "decision", spotId: "lv-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "lv-why"}, {kind: "decision", spotId: "lv-guided"}, {kind: "decision", spotId: "lv-practice"}, {kind: "decision", spotId: "lv-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 50.5, spotId: "lv-turn", decision: "estimate", bands: ["call", "raise"], key: {band: "call"} },
   why: { stage: 2, spotId: "lv-why", options: ["no-word", "online", "double"], key: { option: "no-word" } },
   spots: {

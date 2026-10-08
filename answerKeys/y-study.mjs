@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "y-study", node: "y-study", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "sd-guided"}, {kind: "decision", spotId: "sd-practice"}, {kind: "decision", spotId: "sd-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "sd-why"}, {kind: "decision", spotId: "sd-guided"}, {kind: "decision", spotId: "sd-practice"}, {kind: "decision", spotId: "sd-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "sd-turn", decision: "estimate", bands: ["loss", "unsure"], key: {band: "unsure"} },
   why: { stage: 2, spotId: "sd-why", options: ["unsure", "more-hands", "biggest"], key: { option: "unsure" } },
   spots: {

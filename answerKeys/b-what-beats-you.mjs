@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "b-what-beats-you", node: "b-what-beats-you", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "wb-guided" }, { kind: "decision", spotId: "wb-practice" }, { kind: "decision", spotId: "wb-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "wb-why" }, { kind: "decision", spotId: "wb-guided" }, { kind: "decision", spotId: "wb-practice" }, { kind: "decision", spotId: "wb-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "b-what-beats-you", spotId: "wb-turn", decision: "estimate", bands: ["0", "10", "60", "300"], key: { band: "60" } },
   why: { stage: 2, spotId: "wb-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
   spots: {

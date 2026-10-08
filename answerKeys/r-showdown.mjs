@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "r-showdown", node: "r-showdown", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "sd-guided" }, { kind: "decision", spotId: "sd-practice" }, { kind: "decision", spotId: "sd-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "sd-why" }, { kind: "decision", spotId: "sd-guided" }, { kind: "decision", spotId: "sd-practice" }, { kind: "decision", spotId: "sd-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-showdown", spotId: "sd-turn", decision: "estimate", bands: ["yes", "no"], key: { band: "yes" } },
   why: { stage: 2, spotId: "sd-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {

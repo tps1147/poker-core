@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "o-multiway", node: "o-multiway", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t6-multiway",
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "mw-guided"}, {kind: "decision", spotId: "mw-practice"}, {kind: "decision", spotId: "mw-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "mw-why"}, {kind: "decision", spotId: "mw-guided"}, {kind: "decision", spotId: "mw-practice"}, {kind: "decision", spotId: "mw-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 69.34, spotId: "mw-turn", decision: "action", choices: ["check", "bet"], key: {action: "bet"} },
   why: { stage: 2, spotId: "mw-why", options: ["both", "more-value", "each"], key: { option: "both" } },
   spots: {

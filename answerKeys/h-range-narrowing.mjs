@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "h-range-narrowing", node: "h-range-narrowing", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t5-range-narrowing",
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "rn-guided"}, {kind: "decision", spotId: "rn-practice"}, {kind: "decision", spotId: "rn-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "rn-why"}, {kind: "decision", spotId: "rn-guided"}, {kind: "decision", spotId: "rn-practice"}, {kind: "decision", spotId: "rn-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 64.31, spotId: "rn-turn", decision: "estimate", bands: ["about-40", "about-80", "about-160"], key: {band: "about-80"} },
   why: { stage: 2, spotId: "rn-why", options: ["removes", "same", "cards"], key: { option: "removes" } },
   spots: {

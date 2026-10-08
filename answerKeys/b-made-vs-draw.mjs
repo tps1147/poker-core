@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "b-made-vs-draw", node: "b-made-vs-draw", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "mv-guided" }, { kind: "decision", spotId: "mv-practice" }, { kind: "decision", spotId: "mv-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "mv-why" }, { kind: "decision", spotId: "mv-guided" }, { kind: "decision", spotId: "mv-practice" }, { kind: "decision", spotId: "mv-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "b-made-vs-draw", spotId: "mv-turn", decision: "estimate", bands: ["flush", "draw", "pair"], key: { band: "draw" } },
   why: { stage: 2, spotId: "mv-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "a" },
   spots: {

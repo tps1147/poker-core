@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "b-kickers-counterfeit", node: "b-kickers-counterfeit", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "kc-guided" }, { kind: "decision", spotId: "kc-practice" }, { kind: "decision", spotId: "kc-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "kc-why" }, { kind: "decision", spotId: "kc-guided" }, { kind: "decision", spotId: "kc-practice" }, { kind: "decision", spotId: "kc-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "b-kickers-counterfeit", spotId: "kc-turn", decision: "estimate", bands: ["you", "andy", "split"], key: { band: "andy" } },
   why: { stage: 2, spotId: "kc-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {

@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "f-pot-control", node: "f-pot-control", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "pc-guided" }, { kind: "decision", spotId: "pc-practice" }, { kind: "decision", spotId: "pc-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "pc-why" }, { kind: "decision", spotId: "pc-guided" }, { kind: "decision", spotId: "pc-practice" }, { kind: "decision", spotId: "pc-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: 60.81, anchor: "yourTurn", filmId: "f-pot-control", spotId: "pc-turn", decision: "estimate", bands: ["you", "him"], key: { band: "him" } },
   why: { stage: 2, spotId: "pc-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "b" },
   spots: {

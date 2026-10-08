@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "o-six-max", node: "o-six-max", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "sm-guided"}, {kind: "decision", spotId: "sm-practice"}, {kind: "decision", spotId: "sm-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "sm-why"}, {kind: "decision", spotId: "sm-guided"}, {kind: "decision", spotId: "sm-practice"}, {kind: "decision", spotId: "sm-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 48.69, spotId: "sm-turn", decision: "estimate", bands: ["behind-2", "behind-3", "behind-5"], key: {band: "behind-3"} },
   why: { stage: 2, spotId: "sm-why", options: ["behind", "same", "blinds"], key: { option: "behind" } },
   spots: {

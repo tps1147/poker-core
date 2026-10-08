@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "w-history", node: "w-history", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "wh-guided" }, { kind: "decision", spotId: "wh-practice" }, { kind: "decision", spotId: "wh-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "wh-why" }, { kind: "decision", spotId: "wh-guided" }, { kind: "decision", spotId: "wh-practice" }, { kind: "decision", spotId: "wh-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "w-history", spotId: "wh-turn", decision: "estimate", bands: ["house", "players"], key: { band: "players" } },
   why: { stage: 2, spotId: "wh-why", options: ["a", "b", "c"], key: { option: "c" }, misconception: "a" },
   spots: {

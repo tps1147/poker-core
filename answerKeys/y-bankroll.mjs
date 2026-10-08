@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "y-bankroll", node: "y-bankroll", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t6-bankroll",
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "br-guided"}, {kind: "decision", spotId: "br-practice"}, {kind: "decision", spotId: "br-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "br-why"}, {kind: "decision", spotId: "br-guided"}, {kind: "decision", spotId: "br-practice"}, {kind: "decision", spotId: "br-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "br-turn", decision: "estimate", bands: ["no", "yes"], key: {band: "yes"} },
   why: { stage: 2, spotId: "br-why", options: ["cushion", "not-winner", "plays-badly"], key: { option: "cushion" } },
   spots: {

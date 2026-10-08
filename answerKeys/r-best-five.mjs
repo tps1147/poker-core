@@ -6,7 +6,7 @@
 // The film spot is the guided spot (same cards and numbers). Every key is recomputed in test/academyEarly.test.mjs.
 export default {
   lessonId: "r-best-five", node: "r-best-five", contentVersion: 1, flow: "film-first", access: "free", conceptId: null,
-  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why" }, { kind: "decision", spotId: "b5-guided" }, { kind: "decision", spotId: "b5-practice" }, { kind: "decision", spotId: "b5-fresh" }, { kind: "takeaway" }],
+  stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "b5-why" }, { kind: "decision", spotId: "b5-guided" }, { kind: "decision", spotId: "b5-practice" }, { kind: "decision", spotId: "b5-fresh" }, { kind: "takeaway" }],
   film: { stage: 1, at: null, anchor: "end", filmId: "r-best-five", spotId: "b5-turn", decision: "best-five", cards: ["Ac", "Ad", "9s", "8h", "7d", "6c", "5s"], key: { cards: ["9s", "8h", "7d", "6c", "5s"] } },
   why: { stage: 2, spotId: "b5-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
   spots: {

@@ -6,7 +6,7 @@
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
   lessonId: "x-mdf", node: "x-mdf", contentVersion: 1, flow: "film-first", access: "pro", conceptId: "t4-mdf-bluffcatch",
-  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why"}, {kind: "decision", spotId: "md-guided"}, {kind: "decision", spotId: "md-practice"}, {kind: "decision", spotId: "md-fresh"}, {kind: "takeaway"}],
+  stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "md-why"}, {kind: "decision", spotId: "md-guided"}, {kind: "decision", spotId: "md-practice"}, {kind: "decision", spotId: "md-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 66.97, spotId: "md-turn", decision: "estimate", bands: ["keep-14", "keep-21", "keep-35"], key: {band: "keep-21"} },
   why: { stage: 2, spotId: "md-why", options: ["mdf", "beaten", "breakeven"], key: { option: "mdf" } },
   spots: {

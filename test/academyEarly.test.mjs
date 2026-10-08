@@ -260,7 +260,7 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     const film = def.stages[1];
     assert.equal(film.media, filmIdOfNode(node));
     assert.equal(def.media, filmIdOfNode(node));
-    assert.equal(film.pause.film, anchors.film);
+    assert.equal(film.pause.film, filmIdOfNode(node), "the media id, not the render folder");
     assert.equal(film.pause.at, anchors.yourTurn, "canon.yourTurn, or null");
     assert.equal(film.pause.anchor, anchors.yourTurn == null ? "end" : "yourTurn");
     const guided = def.stages[3].spotId;
