@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-chance-as-share",
-  "video": "/academy/films-v2/m-chance-as-share/m-chance-as-share-1080.mp4",
-  "video720": "/academy/films-v2/m-chance-as-share/m-chance-as-share-720.mp4",
-  "poster": "/academy/films-v2/m-chance-as-share/m-chance-as-share-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-chance-as-share/m-chance-as-share-rule.jpg",
-  "captions": "/academy/films-v2/m-chance-as-share/m-chance-as-share.vtt",
-  "transcript": "/academy/films-v2/m-chance-as-share/m-chance-as-share.transcript.txt",
+  "video": "/academy/films-v2/m-chance-as-share/f2d3d27a/m-chance-as-share-1080.mp4",
+  "video720": "/academy/films-v2/m-chance-as-share/f2d3d27a/m-chance-as-share-720.mp4",
+  "poster": "/academy/films-v2/m-chance-as-share/f2d3d27a/m-chance-as-share-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-chance-as-share/f2d3d27a/m-chance-as-share-rule.jpg",
+  "captions": "/academy/films-v2/m-chance-as-share/f2d3d27a/m-chance-as-share.vtt",
+  "transcript": "/academy/films-v2/m-chance-as-share/f2d3d27a/m-chance-as-share.transcript.txt",
   "durationSeconds": 92,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 78.64,
     "upNext": 87.73,
     "first": null
-  }
+  },
+  "version": "f2d3d27a"
 }

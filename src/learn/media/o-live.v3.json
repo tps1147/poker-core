@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-live",
-  "video": "/academy/films-v2/o-live/o-live-1080.mp4",
-  "video720": "/academy/films-v2/o-live/o-live-720.mp4",
-  "poster": "/academy/films-v2/o-live/o-live-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-live/o-live-rule.jpg",
-  "captions": "/academy/films-v2/o-live/o-live.vtt",
-  "transcript": "/academy/films-v2/o-live/o-live.transcript.txt",
+  "video": "/academy/films-v2/o-live/3aa3f34d/o-live-1080.mp4",
+  "video720": "/academy/films-v2/o-live/3aa3f34d/o-live-720.mp4",
+  "poster": "/academy/films-v2/o-live/3aa3f34d/o-live-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-live/3aa3f34d/o-live-rule.jpg",
+  "captions": "/academy/films-v2/o-live/3aa3f34d/o-live.vtt",
+  "transcript": "/academy/films-v2/o-live/3aa3f34d/o-live.transcript.txt",
   "durationSeconds": 66,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 59.38,
     "upNext": 66,
     "first": null
-  }
+  },
+  "version": "3aa3f34d"
 }

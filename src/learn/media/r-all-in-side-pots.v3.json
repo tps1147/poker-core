@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-all-in-side-pots",
-  "video": "/academy/films-v2/r-all-in-side-pots/r-all-in-side-pots-1080.mp4",
-  "video720": "/academy/films-v2/r-all-in-side-pots/r-all-in-side-pots-720.mp4",
-  "poster": "/academy/films-v2/r-all-in-side-pots/r-all-in-side-pots-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-all-in-side-pots/r-all-in-side-pots-rule.jpg",
-  "captions": "/academy/films-v2/r-all-in-side-pots/r-all-in-side-pots.vtt",
-  "transcript": "/academy/films-v2/r-all-in-side-pots/r-all-in-side-pots.transcript.txt",
+  "video": "/academy/films-v2/r-all-in-side-pots/bfedfd31/r-all-in-side-pots-1080.mp4",
+  "video720": "/academy/films-v2/r-all-in-side-pots/bfedfd31/r-all-in-side-pots-720.mp4",
+  "poster": "/academy/films-v2/r-all-in-side-pots/bfedfd31/r-all-in-side-pots-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-all-in-side-pots/bfedfd31/r-all-in-side-pots-rule.jpg",
+  "captions": "/academy/films-v2/r-all-in-side-pots/bfedfd31/r-all-in-side-pots.vtt",
+  "transcript": "/academy/films-v2/r-all-in-side-pots/bfedfd31/r-all-in-side-pots.transcript.txt",
   "durationSeconds": 90,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 80.34,
     "upNext": 84.79,
     "first": null
-  }
+  },
+  "version": "bfedfd31"
 }

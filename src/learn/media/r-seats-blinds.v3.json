@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-seats-blinds",
-  "video": "/academy/films-v2/r-seats-blinds/r-seats-blinds-1080.mp4",
-  "video720": "/academy/films-v2/r-seats-blinds/r-seats-blinds-720.mp4",
-  "poster": "/academy/films-v2/r-seats-blinds/r-seats-blinds-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-seats-blinds/r-seats-blinds-rule.jpg",
-  "captions": "/academy/films-v2/r-seats-blinds/r-seats-blinds.vtt",
-  "transcript": "/academy/films-v2/r-seats-blinds/r-seats-blinds.transcript.txt",
+  "video": "/academy/films-v2/r-seats-blinds/a2e37ba9/r-seats-blinds-1080.mp4",
+  "video720": "/academy/films-v2/r-seats-blinds/a2e37ba9/r-seats-blinds-720.mp4",
+  "poster": "/academy/films-v2/r-seats-blinds/a2e37ba9/r-seats-blinds-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-seats-blinds/a2e37ba9/r-seats-blinds-rule.jpg",
+  "captions": "/academy/films-v2/r-seats-blinds/a2e37ba9/r-seats-blinds.vtt",
+  "transcript": "/academy/films-v2/r-seats-blinds/a2e37ba9/r-seats-blinds.transcript.txt",
   "durationSeconds": 89,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 84.12,
     "upNext": 85.43,
     "first": null
-  }
+  },
+  "version": "a2e37ba9"
 }

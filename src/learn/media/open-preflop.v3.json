@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-preflop",
-  "video": "/academy/films-v2/open-preflop/open-preflop-1080.mp4",
-  "video720": "/academy/films-v2/open-preflop/open-preflop-720.mp4",
-  "poster": "/academy/films-v2/open-preflop/open-preflop-poster.jpg",
+  "video": "/academy/films-v2/open-preflop/76351197/open-preflop-1080.mp4",
+  "video720": "/academy/films-v2/open-preflop/76351197/open-preflop-720.mp4",
+  "poster": "/academy/films-v2/open-preflop/76351197/open-preflop-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-preflop/open-preflop.vtt",
-  "transcript": "/academy/films-v2/open-preflop/open-preflop.transcript.txt",
+  "captions": "/academy/films-v2/open-preflop/76351197/open-preflop.vtt",
+  "transcript": "/academy/films-v2/open-preflop/76351197/open-preflop.transcript.txt",
   "durationSeconds": 20,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": null,
     "upNext": null,
     "first": 14.25
-  }
+  },
+  "version": "76351197"
 }

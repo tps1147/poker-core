@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "x-mdf",
-  "video": "/academy/films-v2/x-mdf/x-mdf-1080.mp4",
-  "video720": "/academy/films-v2/x-mdf/x-mdf-720.mp4",
-  "poster": "/academy/films-v2/x-mdf/x-mdf-poster.jpg",
-  "ruleCard": "/academy/films-v2/x-mdf/x-mdf-rule.jpg",
-  "captions": "/academy/films-v2/x-mdf/x-mdf.vtt",
-  "transcript": "/academy/films-v2/x-mdf/x-mdf.transcript.txt",
+  "video": "/academy/films-v2/x-mdf/642c3511/x-mdf-1080.mp4",
+  "video720": "/academy/films-v2/x-mdf/642c3511/x-mdf-720.mp4",
+  "poster": "/academy/films-v2/x-mdf/642c3511/x-mdf-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-mdf/642c3511/x-mdf-rule.jpg",
+  "captions": "/academy/films-v2/x-mdf/642c3511/x-mdf.vtt",
+  "transcript": "/academy/films-v2/x-mdf/642c3511/x-mdf.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 80.63,
     "upNext": 86.17,
     "first": null
-  }
+  },
+  "version": "642c3511"
 }

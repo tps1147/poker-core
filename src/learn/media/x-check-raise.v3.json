@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "x-check-raise",
-  "video": "/academy/films-v2/x-check-raise/x-check-raise-1080.mp4",
-  "video720": "/academy/films-v2/x-check-raise/x-check-raise-720.mp4",
-  "poster": "/academy/films-v2/x-check-raise/x-check-raise-poster.jpg",
-  "ruleCard": "/academy/films-v2/x-check-raise/x-check-raise-rule.jpg",
-  "captions": "/academy/films-v2/x-check-raise/x-check-raise.vtt",
-  "transcript": "/academy/films-v2/x-check-raise/x-check-raise.transcript.txt",
+  "video": "/academy/films-v2/x-check-raise/4784062f/x-check-raise-1080.mp4",
+  "video720": "/academy/films-v2/x-check-raise/4784062f/x-check-raise-720.mp4",
+  "poster": "/academy/films-v2/x-check-raise/4784062f/x-check-raise-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-check-raise/4784062f/x-check-raise-rule.jpg",
+  "captions": "/academy/films-v2/x-check-raise/4784062f/x-check-raise.vtt",
+  "transcript": "/academy/films-v2/x-check-raise/4784062f/x-check-raise.transcript.txt",
   "durationSeconds": 78,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 70.17,
     "upNext": 73.45,
     "first": null
-  }
+  },
+  "version": "4784062f"
 }

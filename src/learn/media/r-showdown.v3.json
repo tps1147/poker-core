@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-showdown",
-  "video": "/academy/films-v2/r-showdown/r-showdown-1080.mp4",
-  "video720": "/academy/films-v2/r-showdown/r-showdown-720.mp4",
-  "poster": "/academy/films-v2/r-showdown/r-showdown-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-showdown/r-showdown-rule.jpg",
-  "captions": "/academy/films-v2/r-showdown/r-showdown.vtt",
-  "transcript": "/academy/films-v2/r-showdown/r-showdown.transcript.txt",
+  "video": "/academy/films-v2/r-showdown/a25a6e96/r-showdown-1080.mp4",
+  "video720": "/academy/films-v2/r-showdown/a25a6e96/r-showdown-720.mp4",
+  "poster": "/academy/films-v2/r-showdown/a25a6e96/r-showdown-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-showdown/a25a6e96/r-showdown-rule.jpg",
+  "captions": "/academy/films-v2/r-showdown/a25a6e96/r-showdown.vtt",
+  "transcript": "/academy/films-v2/r-showdown/a25a6e96/r-showdown.transcript.txt",
   "durationSeconds": 104,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 89.86,
     "upNext": 97.7,
     "first": null
-  }
+  },
+  "version": "a25a6e96"
 }

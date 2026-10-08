@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-kickers-counterfeit",
-  "video": "/academy/films-v2/b-kickers-counterfeit/b-kickers-counterfeit-1080.mp4",
-  "video720": "/academy/films-v2/b-kickers-counterfeit/b-kickers-counterfeit-720.mp4",
-  "poster": "/academy/films-v2/b-kickers-counterfeit/b-kickers-counterfeit-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-kickers-counterfeit/b-kickers-counterfeit-rule.jpg",
-  "captions": "/academy/films-v2/b-kickers-counterfeit/b-kickers-counterfeit.vtt",
-  "transcript": "/academy/films-v2/b-kickers-counterfeit/b-kickers-counterfeit.transcript.txt",
+  "video": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-1080.mp4",
+  "video720": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-720.mp4",
+  "poster": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit-rule.jpg",
+  "captions": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit.vtt",
+  "transcript": "/academy/films-v2/b-kickers-counterfeit/54674133/b-kickers-counterfeit.transcript.txt",
   "durationSeconds": 101,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 90.76,
     "upNext": 95.68,
     "first": null
-  }
+  },
+  "version": "54674133"
 }

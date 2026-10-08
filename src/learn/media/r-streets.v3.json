@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-streets",
-  "video": "/academy/films-v2/r-streets/r-streets-1080.mp4",
-  "video720": "/academy/films-v2/r-streets/r-streets-720.mp4",
-  "poster": "/academy/films-v2/r-streets/r-streets-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-streets/r-streets-rule.jpg",
-  "captions": "/academy/films-v2/r-streets/r-streets.vtt",
-  "transcript": "/academy/films-v2/r-streets/r-streets.transcript.txt",
+  "video": "/academy/films-v2/r-streets/0388d9af/r-streets-1080.mp4",
+  "video720": "/academy/films-v2/r-streets/0388d9af/r-streets-720.mp4",
+  "poster": "/academy/films-v2/r-streets/0388d9af/r-streets-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-streets/0388d9af/r-streets-rule.jpg",
+  "captions": "/academy/films-v2/r-streets/0388d9af/r-streets.vtt",
+  "transcript": "/academy/films-v2/r-streets/0388d9af/r-streets.transcript.txt",
   "durationSeconds": 95,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 85.69,
     "upNext": 91.35,
     "first": null
-  }
+  },
+  "version": "0388d9af"
 }

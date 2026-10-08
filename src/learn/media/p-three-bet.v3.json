@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-three-bet",
-  "video": "/academy/films-v2/p-three-bet/p-three-bet-1080.mp4",
-  "video720": "/academy/films-v2/p-three-bet/p-three-bet-720.mp4",
-  "poster": "/academy/films-v2/p-three-bet/p-three-bet-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-three-bet/p-three-bet-rule.jpg",
-  "captions": "/academy/films-v2/p-three-bet/p-three-bet.vtt",
-  "transcript": "/academy/films-v2/p-three-bet/p-three-bet.transcript.txt",
+  "video": "/academy/films-v2/p-three-bet/e246d1ad/p-three-bet-1080.mp4",
+  "video720": "/academy/films-v2/p-three-bet/e246d1ad/p-three-bet-720.mp4",
+  "poster": "/academy/films-v2/p-three-bet/e246d1ad/p-three-bet-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-three-bet/e246d1ad/p-three-bet-rule.jpg",
+  "captions": "/academy/films-v2/p-three-bet/e246d1ad/p-three-bet.vtt",
+  "transcript": "/academy/films-v2/p-three-bet/e246d1ad/p-three-bet.transcript.txt",
   "durationSeconds": 100,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 87.95,
     "upNext": 96.16,
     "first": null
-  }
+  },
+  "version": "e246d1ad"
 }

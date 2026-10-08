@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-the-nuts",
-  "video": "/academy/films-v2/b-the-nuts/b-the-nuts-1080.mp4",
-  "video720": "/academy/films-v2/b-the-nuts/b-the-nuts-720.mp4",
-  "poster": "/academy/films-v2/b-the-nuts/b-the-nuts-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-the-nuts/b-the-nuts-rule.jpg",
-  "captions": "/academy/films-v2/b-the-nuts/b-the-nuts.vtt",
-  "transcript": "/academy/films-v2/b-the-nuts/b-the-nuts.transcript.txt",
+  "video": "/academy/films-v2/b-the-nuts/87e12dcf/b-the-nuts-1080.mp4",
+  "video720": "/academy/films-v2/b-the-nuts/87e12dcf/b-the-nuts-720.mp4",
+  "poster": "/academy/films-v2/b-the-nuts/87e12dcf/b-the-nuts-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-the-nuts/87e12dcf/b-the-nuts-rule.jpg",
+  "captions": "/academy/films-v2/b-the-nuts/87e12dcf/b-the-nuts.vtt",
+  "transcript": "/academy/films-v2/b-the-nuts/87e12dcf/b-the-nuts.transcript.txt",
   "durationSeconds": 95,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 87.95,
     "upNext": 91.46,
     "first": null
-  }
+  },
+  "version": "87e12dcf"
 }

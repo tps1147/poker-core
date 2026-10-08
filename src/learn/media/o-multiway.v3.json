@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-multiway",
-  "video": "/academy/films-v2/o-multiway/o-multiway-1080.mp4",
-  "video720": "/academy/films-v2/o-multiway/o-multiway-720.mp4",
-  "poster": "/academy/films-v2/o-multiway/o-multiway-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-multiway/o-multiway-rule.jpg",
-  "captions": "/academy/films-v2/o-multiway/o-multiway.vtt",
-  "transcript": "/academy/films-v2/o-multiway/o-multiway.transcript.txt",
+  "video": "/academy/films-v2/o-multiway/08c52a1f/o-multiway-1080.mp4",
+  "video720": "/academy/films-v2/o-multiway/08c52a1f/o-multiway-720.mp4",
+  "poster": "/academy/films-v2/o-multiway/08c52a1f/o-multiway-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-multiway/08c52a1f/o-multiway-rule.jpg",
+  "captions": "/academy/films-v2/o-multiway/08c52a1f/o-multiway.vtt",
+  "transcript": "/academy/films-v2/o-multiway/08c52a1f/o-multiway.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 82.72,
     "upNext": 91,
     "first": null
-  }
+  },
+  "version": "08c52a1f"
 }

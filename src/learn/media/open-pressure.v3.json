@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-pressure",
-  "video": "/academy/films-v2/open-pressure/open-pressure-1080.mp4",
-  "video720": "/academy/films-v2/open-pressure/open-pressure-720.mp4",
-  "poster": "/academy/films-v2/open-pressure/open-pressure-poster.jpg",
+  "video": "/academy/films-v2/open-pressure/2cdb5c3a/open-pressure-1080.mp4",
+  "video720": "/academy/films-v2/open-pressure/2cdb5c3a/open-pressure-720.mp4",
+  "poster": "/academy/films-v2/open-pressure/2cdb5c3a/open-pressure-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-pressure/open-pressure.vtt",
-  "transcript": "/academy/films-v2/open-pressure/open-pressure.transcript.txt",
+  "captions": "/academy/films-v2/open-pressure/2cdb5c3a/open-pressure.vtt",
+  "transcript": "/academy/films-v2/open-pressure/2cdb5c3a/open-pressure.transcript.txt",
   "durationSeconds": 19,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": null,
     "upNext": null,
     "first": 13.99
-  }
+  },
+  "version": "2cdb5c3a"
 }

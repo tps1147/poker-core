@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-theory",
-  "video": "/academy/films-v2/open-theory/open-theory-1080.mp4",
-  "video720": "/academy/films-v2/open-theory/open-theory-720.mp4",
-  "poster": "/academy/films-v2/open-theory/open-theory-poster.jpg",
+  "video": "/academy/films-v2/open-theory/51831634/open-theory-1080.mp4",
+  "video720": "/academy/films-v2/open-theory/51831634/open-theory-720.mp4",
+  "poster": "/academy/films-v2/open-theory/51831634/open-theory-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-theory/open-theory.vtt",
-  "transcript": "/academy/films-v2/open-theory/open-theory.transcript.txt",
+  "captions": "/academy/films-v2/open-theory/51831634/open-theory.vtt",
+  "transcript": "/academy/films-v2/open-theory/51831634/open-theory.transcript.txt",
   "durationSeconds": 19,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": null,
     "upNext": null,
     "first": 14.27
-  }
+  },
+  "version": "51831634"
 }

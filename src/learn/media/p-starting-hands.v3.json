@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-starting-hands",
-  "video": "/academy/films-v2/p-starting-hands/p-starting-hands-1080.mp4",
-  "video720": "/academy/films-v2/p-starting-hands/p-starting-hands-720.mp4",
-  "poster": "/academy/films-v2/p-starting-hands/p-starting-hands-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-starting-hands/p-starting-hands-rule.jpg",
-  "captions": "/academy/films-v2/p-starting-hands/p-starting-hands.vtt",
-  "transcript": "/academy/films-v2/p-starting-hands/p-starting-hands.transcript.txt",
+  "video": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-1080.mp4",
+  "video720": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-720.mp4",
+  "poster": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands-rule.jpg",
+  "captions": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands.vtt",
+  "transcript": "/academy/films-v2/p-starting-hands/d8106f80/p-starting-hands.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -23,5 +23,6 @@
     "rule": 87.54,
     "upNext": 93.88,
     "first": null
-  }
+  },
+  "version": "d8106f80"
 }
