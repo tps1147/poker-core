@@ -140,7 +140,8 @@ for (const definition of FILM_FIRST_LESSONS) {
     assert.equal(kinds[1], "film", `${id} then the film`);
     assert.equal(kinds.filter((kind) => kind === "film").length, 1, `${id} one film`);
     assert.equal(kinds.at(-1), "takeaway", `${id} ends on the recap`);
-    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision"), `${id} decisions between film and recap`);
+    assert.ok(kinds.slice(2, -1).length > 0 && kinds.slice(2, -1).every((kind) => kind === "decision" || kind === "why"), `${id} decisions (and why steps) between film and recap`);
+    kinds.forEach((kind, i) => { if (kind === "why") assert.equal(kinds[i - 1], "decision", `${id} a why step follows a decision`); });
     const decisions = decisionStages(definition);
     for (const stage of decisions) {
       assert.ok(definition.hands[stage.hand], `${stage.spotId} plays on a registered hand`);

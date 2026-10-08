@@ -74,9 +74,45 @@ export function railSegments(definition, run) {
       complete: hand.stages.every((stage) => !!answers[stage.spotId]),
     });
   }
+  // A why step belongs to the hand it follows: it sits on that hand's segment (never its own).
+  for (const why of whyStages(definition)) {
+    const owner = segments.find((segment) => segment.stages.at(-1) === why.index - 1 && segment.key !== "film");
+    if (owner) owner.stages = [...owner.stages, why.index];
+  }
   const last = stages.length - 1;
   if (stages[last]?.kind === "takeaway") segments.push({ key: "recap", label: stages[last].label, start: last, stages: [last], complete: furthest >= last });
   return segments.map((segment, i) => ({ ...segment, number: i + 1, reachable: segment.start <= furthest }));
+}
+
+// ---- the why step (ACADEMY-LEARNING-LOOP 2026-10-07, "Why") -------------------------------------
+// A `why` stage follows a hand's last decision: one tap from three reasons, the right one, the
+// plan's misconception and a near-miss. It ships only `{ kind: "why", id, label, after, prompt,
+// reasons: [{ id, text }], next }`; which reason is right and the one-line correction for each wrong
+// pick are a key, kept beside the spot keys (answerKeys/<lesson>.mjs `why[stage.id]`), so a client
+// shows the verdict the server returns, and a signed-out preview leaves the why ungraded ("open").
+// The why never changes the chip score: chipScore reads the fresh hand only.
+export const WHY_KIND = "why";
+
+export function whyStages(definition) {
+  return (definition?.stages || []).map((stage, index) => ({ ...stage, index })).filter((stage) => stage.kind === WHY_KIND);
+}
+
+// The decision stage a why step follows (the last decision before it), or null.
+export function whyDecision(definition, step) {
+  for (let i = step - 1; i >= 0; i -= 1) {
+    const stage = definition.stages[i];
+    if (stage?.kind === "decision") return { ...stage, index: i };
+    if (stage?.kind !== WHY_KIND) return null;
+  }
+  return null;
+}
+
+// The verdict for a tapped reason under a why key `{ key, corrections }`: correct true or false
+// with the correction line for a wrong pick, or correct null (ungraded) without a key.
+export function whyVerdict(whyKey, reasonId) {
+  if (!whyKey || typeof whyKey.key !== "string") return { correct: null, correction: null };
+  const correct = reasonId === whyKey.key;
+  return { correct, correction: correct ? null : whyKey.corrections?.[reasonId] ?? null };
 }
 
 export function segmentForStep(segments, step) {
@@ -104,6 +140,8 @@ export function tablePlan(definition, step, run) {
     const revisiting = answeredAll && (run?.furthest ?? 0) > handStages.at(-1).index;
     return { handId: stage.hand, mode: revisiting ? "settled" : "live" };
   }
+  // A why step keeps the hand it follows on the table, finished.
+  if (stage.kind === WHY_KIND) return { handId: whyDecision(definition, step)?.hand ?? decisions[0]?.hand ?? null, mode: "settled" };
   return { handId: decisions.at(-1)?.hand ?? null, mode: "settled" };
 }
 
