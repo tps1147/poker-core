@@ -11,6 +11,13 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      # Some parity tests read the server's sources from ../pokerServer, the
+      # same side-by-side layout used locally.
+      - uses: actions/checkout@v4
+        with:
+          repository: tps1147/pokerServer
+          path: pokerServer
+      - run: mv pokerServer ../pokerServer
       - uses: actions/setup-node@v4
         with:
           node-version: 24
