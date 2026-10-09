@@ -16,12 +16,15 @@
 //   answer    puzzleActions, gradeAnswer, answerMaths, dealPlan, puzzleIdentity, advanceRule,
 //             resolveAnswer
 //   attempt   generatedAttemptPayload, libraryAttemptPayload, puzzleAttempt
+//   tiers     PUZZLE_TIERS, the chip ladder (White, Red 1100, Green 1250, Black 1400, Purple 1550,
+//             Gold 1700), puzzleTier, puzzleTierPromotion
+//   rematch   the missed-hand queue: rematchAfterAnswer, dueRematch, rematchesWaiting
+//   reveal    puzzleDuel (equity against the price) and puzzleCount (the outs, for "Show the count")
+//   dailyShare dailyNumber, dailySplit (how every player answered), dailyShareText
 //
-// TIERS: poker-core has no puzzle tier ladder. poker-core/rating's RATING_TIERS is the AI-rating
-// ladder (600 to 1200 'territory'), on a different scale from the puzzle rating (which starts at
-// 1200), so it is not reused here and there is no pointsToNextTier. The server keeps the only
-// puzzle ladder (pokerServer User.updatePuzzleRanking: Bronze, Silver 1400, Gold 1600, Platinum
-// 1800, Diamond 2000); moving it here is an owner decision.
+// TIERS: the chip ladder (tiers.js) is the display ladder both clients show, approved by the
+// owner on 2026-10-09. poker-core/rating's RATING_TIERS is the AI-rating ladder, a different
+// scale. The server's stored puzzleRanking.tier (Bronze to Diamond) is left as it was.
 
 module.exports = {
   ...require('./copy'),
@@ -33,4 +36,8 @@ module.exports = {
   ...require('./request'),
   ...require('./answer'),
   ...require('./attempt'),
+  ...require('./tiers'),
+  ...require('./rematch'),
+  ...require('./reveal'),
+  ...require('./dailyShare'),
 };

@@ -54,6 +54,27 @@ const PUZZLE_COPY = deepFreeze({
     price: 'price',
   },
   dailyPuzzle: 'Daily puzzle',
+  // The chip tiers (tiers.js), lowest first.
+  tiers: {
+    white: 'White',
+    red: 'Red',
+    green: 'Green',
+    black: 'Black',
+    purple: 'Purple',
+    gold: 'Gold',
+  },
+  // "Show the count" (reveal.js): what each group of outs makes.
+  count: {
+    'straight-flush': 'Straight flush',
+    quads: 'Four of a kind',
+    'full-house': 'Full house',
+    flush: 'Flush',
+    straight: 'Straight',
+    trips: 'Three of a kind',
+    'two-pair': 'Two pair',
+    pairs: 'Pairs (may not be good)',
+  },
+  rematch: 'Rematch',
 });
 
 module.exports = { PUZZLE_COPY };
