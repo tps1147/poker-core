@@ -16,6 +16,6 @@ export default {
   spots: {
     "pc-guided": { stage: 3, decision: "estimate", bands: ["you", "him"], key: { band: "you" } },
     "pc-practice": { stage: 4, decision: "action", choices: ["check", "bet"], key: { action: "check" } },
-    "pc-fresh": { stage: 5, decision: "count", range: [0, 1000], key: { value: 240, tolerance: 0 } },
+    "pc-fresh": { stage: 5, decision: "count", range: [0, 1000], step: 10, key: { value: 240, tolerance: 0 } },
   },
 };

@@ -11,11 +11,11 @@
 export default {
   lessonId: "r-all-in-side-pots", node: "r-all-in-side-pots", contentVersion: 2, flow: "film-first", access: "free", conceptId: null,
   stages: [{ kind: "welcome" }, { kind: "film" }, { kind: "why", spotId: "ap-why" }, { kind: "decision", spotId: "ap-guided" }, { kind: "decision", spotId: "ap-practice" }, { kind: "decision", spotId: "ap-fresh" }, { kind: "takeaway" }],
-  film: { stage: 1, at: null, anchor: "end", filmId: "r-all-in-side-pots", spotId: "ap-turn", decision: "count", range: [0, 1000], key: { value: 200, tolerance: 0 } },
+  film: { stage: 1, at: null, anchor: "end", filmId: "r-all-in-side-pots", spotId: "ap-turn", decision: "count", range: [0, 1000], step: 10, key: { value: 200, tolerance: 0 } },
   why: { stage: 2, spotId: "ap-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },
   spots: {
-    "ap-guided": { stage: 3, decision: "count", range: [0, 1500], key: { value: 660, tolerance: 0 } },
-    "ap-practice": { stage: 4, decision: "count", range: [0, 1000], key: { value: 400, tolerance: 0 } },
-    "ap-fresh": { stage: 5, decision: "count", range: [0, 1000], key: { value: 500, tolerance: 0 } },
+    "ap-guided": { stage: 3, decision: "count", range: [0, 1500], step: 10, key: { value: 660, tolerance: 0 } },
+    "ap-practice": { stage: 4, decision: "count", range: [0, 1000], step: 10, key: { value: 400, tolerance: 0 } },
+    "ap-fresh": { stage: 5, decision: "count", range: [0, 1000], step: 10, key: { value: 500, tolerance: 0 } },
   },
 };

@@ -15,6 +15,6 @@ export default {
   spots: {
     "fh-guided": { stage: 3, decision: "estimate", bands: ["five", "ten", "zero"], key: { band: "five" } },
     "fh-practice": { stage: 4, decision: "estimate", bands: ["checkbet", "callraise", "checkcall"], key: { band: "checkbet" } },
-    "fh-fresh": { stage: 5, decision: "count", range: [0, 400], key: { value: 140, tolerance: 0 } },
+    "fh-fresh": { stage: 5, decision: "count", range: [0, 400], step: 10, key: { value: 140, tolerance: 0 } },
   },
 };
