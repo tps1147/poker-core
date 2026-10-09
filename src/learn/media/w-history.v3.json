@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "w-history",
-  "video": "/academy/films-v2/w-history/f45cc513/w-history-1080.mp4",
-  "video720": "/academy/films-v2/w-history/f45cc513/w-history-720.mp4",
-  "poster": "/academy/films-v2/w-history/f45cc513/w-history-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-history/f45cc513/w-history-rule.jpg",
-  "captions": "/academy/films-v2/w-history/f45cc513/w-history.vtt",
-  "transcript": "/academy/films-v2/w-history/f45cc513/w-history.transcript.txt",
+  "video": "/academy/films-v2/w-history/dfd146e9/w-history-1080.mp4",
+  "video720": "/academy/films-v2/w-history/dfd146e9/w-history-720.mp4",
+  "poster": "/academy/films-v2/w-history/dfd146e9/w-history-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-history/dfd146e9/w-history-rule.jpg",
+  "captions": "/academy/films-v2/w-history/dfd146e9/w-history.vtt",
+  "transcript": "/academy/films-v2/w-history/dfd146e9/w-history.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 87.26,
     "first": null
   },
-  "version": "f45cc513"
+  "version": "dfd146e9"
 }

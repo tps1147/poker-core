@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-bet-sizing",
-  "video": "/academy/films-v2/f-bet-sizing/a6ebea8d/f-bet-sizing-1080.mp4",
-  "video720": "/academy/films-v2/f-bet-sizing/a6ebea8d/f-bet-sizing-720.mp4",
-  "poster": "/academy/films-v2/f-bet-sizing/a6ebea8d/f-bet-sizing-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-bet-sizing/a6ebea8d/f-bet-sizing-rule.jpg",
-  "captions": "/academy/films-v2/f-bet-sizing/a6ebea8d/f-bet-sizing.vtt",
-  "transcript": "/academy/films-v2/f-bet-sizing/a6ebea8d/f-bet-sizing.transcript.txt",
+  "video": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-1080.mp4",
+  "video720": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-720.mp4",
+  "poster": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-rule.jpg",
+  "captions": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing.vtt",
+  "transcript": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing.transcript.txt",
   "durationSeconds": 105,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 100.41,
     "first": null
   },
-  "version": "a6ebea8d"
+  "version": "96b4e5b7"
 }

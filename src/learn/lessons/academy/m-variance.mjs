@@ -11,6 +11,7 @@ const table = (id) => huHand(id, { hero: SPOT.hero, pot: 0, blinds: [5, 10] });
 
 const spots = {
   "va-guided": {
+    scene: "question",
     decision: "estimate", ...SPOT, bands: HUNDRED, dockPrompt: "Expected total after 100 calls",
     title: "Your turn: a hundred calls.",
     prompt: "Blue’s call is worth +10 chips on average. Blue makes it a hundred times. What should Blue expect to be up, in total?",
@@ -18,6 +19,7 @@ const spots = {
     explanation: "+10 a call, a hundred times, is +1,000 expected. Any real run swings around that: a typical swing is about 917 either way, so an ordinary run lands from about +83 to +1,917.",
   },
   "va-practice": {
+    scene: "question",
     decision: "estimate", ...SPOT, bands: bands(["yes", "Yes: they’re ahead"], ["no", "No: it loses 10 a call on average"]), dockPrompt: "Was the play good?",
     title: "Ahead with a bad play.",
     prompt: "Coral makes a call worth −10 on average, ten times, and is ahead after those ten calls. Was the play good?",
@@ -25,6 +27,7 @@ const spots = {
     explanation: "No. The play loses 10 chips a call on average; ten calls are mostly luck. Over a thousand calls Coral is ahead only about 1% of the time.",
   },
   "va-fresh": {
+    scene: "question",
     decision: "estimate", ...SPOT, bands: bands(["25", "+25"], ["200", "+200"], ["5000", "+5,000"]), dockPrompt: "Expected total after 200 calls",
     title: "New size, new count.",
     prompt: "A call is worth +25 chips on average. You make it 200 times. What should you expect to be up, in total?",

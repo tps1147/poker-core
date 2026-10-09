@@ -9,6 +9,7 @@ const table = (id) => huHand(id, { hero: ["As", "Kd"], pot: 0, blinds: [5, 10] }
 
 const spots = {
   "wh-guided": {
+    scene: "question",
     decision: "estimate", street: "preflop", hero: ["As", "Kd"],
     bands: bands(["house", "The house"], ["players", "The other players"]), dockPrompt: "Who takes the chips you lose?",
     title: "Who takes your chips?",
@@ -17,6 +18,7 @@ const spots = {
     explanation: "In poker the chips move between the players. The house does not play against you; it only takes a small fee for running the game.",
   },
   "wh-practice": {
+    scene: "question",
     decision: "estimate", street: "preflop", hero: ["As", "Kd"],
     bands: bands(["luck", "They got luckier cards"], ["better", "They decided better over many hands"], ["peek", "They could see the other players’ cards"]),
     dockPrompt: "How did the poker computers win?",
@@ -26,6 +28,7 @@ const spots = {
     explanation: "The programs won by deciding better over many hands. They held no extra information and no better cards: the same thing that rewarded players in every era rewarded them.",
   },
   "wh-fresh": {
+    scene: "question",
     decision: "estimate", street: "preflop", hero: ["As", "Kd"],
     bands: bands(["casino", "The casino"], ["buyins", "The other players’ buy-ins, minus a fee"], ["sponsor", "Nobody: the prize is printed new"]),
     dockPrompt: "Who paid the prize?",

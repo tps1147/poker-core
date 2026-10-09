@@ -11,6 +11,7 @@ const SPOT = { street: "preflop", hero: ["Kh", "Qh"] };
 
 const spots = {
   "wd-guided": {
+    scene: "deck",
     decision: "estimate", ...SPOT,
     bands: bands(["169", "169"], ["1326", "1,326"], ["2652", "2,652"]), dockPrompt: "Two-card starts from 52 cards",
     title: "How many ways can a hand start?",
@@ -19,6 +20,7 @@ const spots = {
     explanation: "52 × 51 ÷ 2 is 1,326 different two-card starts. 2,652 counts every pair twice, once in each order, and 169 is the number of kinds they fold into.",
   },
   "wd-practice": {
+    scene: "deck",
     decision: "estimate", ...SPOT,
     bands: bands(["13", "13"], ["169", "169"], ["1326", "1,326"]), dockPrompt: "Kinds of starting hand",
     title: "Many starts are the same hand.",
@@ -27,6 +29,7 @@ const spots = {
     explanation: "13 pairs, 78 suited and 78 offsuit: 169 kinds of hand. 78 is the number of ways to pick two different ranks from 13.",
   },
   "wd-fresh": {
+    scene: "question",
     decision: "estimate", ...SPOT,
     bands: bands(["math", "The Math Spine"], ["preflop", "Preflop"], ["postflop", "Postflop"]), dockPrompt: "Which track answers it?",
     title: "Find the right lesson.",

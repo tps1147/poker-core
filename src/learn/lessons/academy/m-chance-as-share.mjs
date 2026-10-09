@@ -11,6 +11,7 @@ const table = (id) => huHand(id, { hero: SPOT.hero, pot: 0, blinds: [5, 10] });
 
 const spots = {
   "cs-guided": {
+    scene: "deck",
     decision: "estimate", ...SPOT, bands: ACE, dockPrompt: "How often is it an ace?",
     title: "Your turn: an ace?",
     prompt: "One card, face down, from a full shuffled 52-card deck. How often is it an ace?",
@@ -18,6 +19,7 @@ const spots = {
     explanation: "Four aces out of 52 cards: 4 ÷ 52 is 1 in 13, about 7.7%. In 100 draws, shuffling back each time, expect about 8 aces.",
   },
   "cs-practice": {
+    scene: "deck",
     decision: "estimate", ...SPOT, bands: bands(["25", "25%"], ["50", "50%"], ["75", "75%"]), dockPrompt: "How often is it red?",
     title: "A red card.",
     prompt: "One card from a full shuffled deck. How often is it red, a heart or a diamond?",
@@ -25,6 +27,7 @@ const spots = {
     explanation: "26 of the 52 cards are red: 26 ÷ 52 is one half, 50%. Half the time, over many draws.",
   },
   "cs-fresh": {
+    scene: "deck",
     decision: "estimate", ...SPOT, bands: bands(["8", "About 8%"], ["23", "About 23%"], ["25", "About 25%"]), dockPrompt: "How often is it a jack, queen or king?",
     title: "A picture card.",
     prompt: "One card from a full shuffled deck. How often is it a jack, a queen or a king?",

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-rule-2-4",
-  "video": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-1080.mp4",
-  "video720": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-720.mp4",
-  "poster": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4-rule.jpg",
-  "captions": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4.vtt",
-  "transcript": "/academy/films-v2/m-rule-2-4/30da67e0/m-rule-2-4.transcript.txt",
+  "video": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-1080.mp4",
+  "video720": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-720.mp4",
+  "poster": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-rule.jpg",
+  "captions": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4.vtt",
+  "transcript": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 93.58,
     "first": null
   },
-  "version": "30da67e0"
+  "version": "901e6fad"
 }

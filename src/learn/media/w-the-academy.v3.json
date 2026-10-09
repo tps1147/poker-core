@@ -2,12 +2,12 @@
   "format": "academy-film-v2",
   "id": "w-the-academy",
   "sourceId": "w-academy",
-  "video": "/academy/films-v2/w-the-academy/0ffb33a8/w-the-academy-1080.mp4",
-  "video720": "/academy/films-v2/w-the-academy/0ffb33a8/w-the-academy-720.mp4",
-  "poster": "/academy/films-v2/w-the-academy/0ffb33a8/w-the-academy-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-the-academy/0ffb33a8/w-the-academy-rule.jpg",
-  "captions": "/academy/films-v2/w-the-academy/0ffb33a8/w-the-academy.vtt",
-  "transcript": "/academy/films-v2/w-the-academy/0ffb33a8/w-the-academy.transcript.txt",
+  "video": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-1080.mp4",
+  "video720": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-720.mp4",
+  "poster": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-rule.jpg",
+  "captions": "/academy/films-v2/w-the-academy/79e16695/w-the-academy.vtt",
+  "transcript": "/academy/films-v2/w-the-academy/79e16695/w-the-academy.transcript.txt",
   "durationSeconds": 86,
   "captionsBurnedIn": true,
   "frame": {
@@ -25,5 +25,5 @@
     "upNext": 82.32,
     "first": null
   },
-  "version": "0ffb33a8"
+  "version": "79e16695"
 }

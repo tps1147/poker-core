@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-pot-odds",
-  "video": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-1080.mp4",
-  "video720": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-720.mp4",
-  "poster": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds-rule.jpg",
-  "captions": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds.vtt",
-  "transcript": "/academy/films-v2/m-pot-odds/b7fcf529/m-pot-odds.transcript.txt",
+  "video": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-1080.mp4",
+  "video720": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-720.mp4",
+  "poster": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-rule.jpg",
+  "captions": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds.vtt",
+  "transcript": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds.transcript.txt",
   "durationSeconds": 89,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 89,
     "first": null
   },
-  "version": "b7fcf529"
+  "version": "8e90a9e1"
 }

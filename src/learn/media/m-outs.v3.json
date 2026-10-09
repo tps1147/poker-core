@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-outs",
-  "video": "/academy/films-v2/m-outs/ef7ef501/m-outs-1080.mp4",
-  "video720": "/academy/films-v2/m-outs/ef7ef501/m-outs-720.mp4",
-  "poster": "/academy/films-v2/m-outs/ef7ef501/m-outs-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-outs/ef7ef501/m-outs-rule.jpg",
-  "captions": "/academy/films-v2/m-outs/ef7ef501/m-outs.vtt",
-  "transcript": "/academy/films-v2/m-outs/ef7ef501/m-outs.transcript.txt",
+  "video": "/academy/films-v2/m-outs/6727fd30/m-outs-1080.mp4",
+  "video720": "/academy/films-v2/m-outs/6727fd30/m-outs-720.mp4",
+  "poster": "/academy/films-v2/m-outs/6727fd30/m-outs-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-outs/6727fd30/m-outs-rule.jpg",
+  "captions": "/academy/films-v2/m-outs/6727fd30/m-outs.vtt",
+  "transcript": "/academy/films-v2/m-outs/6727fd30/m-outs.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 88.93,
     "first": null
   },
-  "version": "ef7ef501"
+  "version": "6727fd30"
 }

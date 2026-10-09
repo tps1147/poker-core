@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-best-five",
-  "video": "/academy/films-v2/r-best-five/f062057b/r-best-five-1080.mp4",
-  "video720": "/academy/films-v2/r-best-five/f062057b/r-best-five-720.mp4",
-  "poster": "/academy/films-v2/r-best-five/f062057b/r-best-five-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-best-five/f062057b/r-best-five-rule.jpg",
-  "captions": "/academy/films-v2/r-best-five/f062057b/r-best-five.vtt",
-  "transcript": "/academy/films-v2/r-best-five/f062057b/r-best-five.transcript.txt",
+  "video": "/academy/films-v2/r-best-five/ca71df41/r-best-five-1080.mp4",
+  "video720": "/academy/films-v2/r-best-five/ca71df41/r-best-five-720.mp4",
+  "poster": "/academy/films-v2/r-best-five/ca71df41/r-best-five-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-best-five/ca71df41/r-best-five-rule.jpg",
+  "captions": "/academy/films-v2/r-best-five/ca71df41/r-best-five.vtt",
+  "transcript": "/academy/films-v2/r-best-five/ca71df41/r-best-five.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 94.31,
     "first": null
   },
-  "version": "f062057b"
+  "version": "ca71df41"
 }

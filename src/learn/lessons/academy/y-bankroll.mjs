@@ -58,6 +58,7 @@ const definition = {
   ],
   spots: {
     "br-guided": {
+      scene: "question",
       decision: "estimate", ...guided, bankroll: 2000, buyIn: 100,
       bands: bands(["bi-10", "10 buy-ins"], ["bi-20", "20 buy-ins"], ["bi-40", "40 buy-ins"]),
       dockPrompt: "How many buy-ins?",
@@ -67,6 +68,7 @@ const definition = {
       explanation: "2,000 ÷ 100 = 20 buy-ins. In the toy model, from 20 buy-ins this player loses it all 1.8% of the time.",
     },
     "br-practice": {
+      scene: "question",
       decision: "estimate", ...practice, bankroll: 2000, games: [100, 50], under: 1,
       bands: bands(["game-100", "The 100-chip game"], ["game-50", "The 50-chip game"]),
       dockPrompt: "Which game keeps it under 1%?",
@@ -76,6 +78,7 @@ const definition = {
       explanation: "The 50-chip game: 2,000 ÷ 50 = 40 buy-ins, 0.033% in the model. At the 100-chip game it is 20 buy-ins and 1.8%.",
     },
     "br-fresh": {
+      scene: "question",
       decision: "estimate", ...fresh, bankroll: 1500, games: [150, 75], under: 5,
       bands: bands(["game-150", "The 150-chip game"], ["game-75", "The 75-chip game"]),
       dockPrompt: "Which game keeps it under 5%?",

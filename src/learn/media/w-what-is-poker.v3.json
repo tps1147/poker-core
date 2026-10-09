@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "w-what-is-poker",
-  "video": "/academy/films-v2/w-what-is-poker/99d90ff0/w-what-is-poker-1080.mp4",
-  "video720": "/academy/films-v2/w-what-is-poker/99d90ff0/w-what-is-poker-720.mp4",
-  "poster": "/academy/films-v2/w-what-is-poker/99d90ff0/w-what-is-poker-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-what-is-poker/99d90ff0/w-what-is-poker-rule.jpg",
-  "captions": "/academy/films-v2/w-what-is-poker/99d90ff0/w-what-is-poker.vtt",
-  "transcript": "/academy/films-v2/w-what-is-poker/99d90ff0/w-what-is-poker.transcript.txt",
+  "video": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-1080.mp4",
+  "video720": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-720.mp4",
+  "poster": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-rule.jpg",
+  "captions": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker.vtt",
+  "transcript": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker.transcript.txt",
   "durationSeconds": 74,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 69.52,
     "first": null
   },
-  "version": "99d90ff0"
+  "version": "90a2acde"
 }

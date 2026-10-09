@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-rules",
-  "video": "/academy/films-v2/open-rules/5fd43bf2/open-rules-1080.mp4",
-  "video720": "/academy/films-v2/open-rules/5fd43bf2/open-rules-720.mp4",
-  "poster": "/academy/films-v2/open-rules/5fd43bf2/open-rules-poster.jpg",
+  "video": "/academy/films-v2/open-rules/12b8ffac/open-rules-1080.mp4",
+  "video720": "/academy/films-v2/open-rules/12b8ffac/open-rules-720.mp4",
+  "poster": "/academy/films-v2/open-rules/12b8ffac/open-rules-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-rules/5fd43bf2/open-rules.vtt",
-  "transcript": "/academy/films-v2/open-rules/5fd43bf2/open-rules.transcript.txt",
+  "captions": "/academy/films-v2/open-rules/12b8ffac/open-rules.vtt",
+  "transcript": "/academy/films-v2/open-rules/12b8ffac/open-rules.transcript.txt",
   "durationSeconds": 19,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": null,
     "first": 13.98
   },
-  "version": "5fd43bf2"
+  "version": "12b8ffac"
 }

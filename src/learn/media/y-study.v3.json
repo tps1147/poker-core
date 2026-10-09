@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "y-study",
-  "video": "/academy/films-v2/y-study/c9cc64f8/y-study-1080.mp4",
-  "video720": "/academy/films-v2/y-study/c9cc64f8/y-study-720.mp4",
-  "poster": "/academy/films-v2/y-study/c9cc64f8/y-study-poster.jpg",
-  "ruleCard": "/academy/films-v2/y-study/c9cc64f8/y-study-rule.jpg",
-  "captions": "/academy/films-v2/y-study/c9cc64f8/y-study.vtt",
-  "transcript": "/academy/films-v2/y-study/c9cc64f8/y-study.transcript.txt",
+  "video": "/academy/films-v2/y-study/6d1df6a2/y-study-1080.mp4",
+  "video720": "/academy/films-v2/y-study/6d1df6a2/y-study-720.mp4",
+  "poster": "/academy/films-v2/y-study/6d1df6a2/y-study-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-study/6d1df6a2/y-study-rule.jpg",
+  "captions": "/academy/films-v2/y-study/6d1df6a2/y-study.vtt",
+  "transcript": "/academy/films-v2/y-study/6d1df6a2/y-study.transcript.txt",
   "durationSeconds": 80,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 80,
     "first": null
   },
-  "version": "c9cc64f8"
+  "version": "6d1df6a2"
 }

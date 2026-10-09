@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-math",
-  "video": "/academy/films-v2/open-math/1eadd88b/open-math-1080.mp4",
-  "video720": "/academy/films-v2/open-math/1eadd88b/open-math-720.mp4",
-  "poster": "/academy/films-v2/open-math/1eadd88b/open-math-poster.jpg",
+  "video": "/academy/films-v2/open-math/b85b4c0f/open-math-1080.mp4",
+  "video720": "/academy/films-v2/open-math/b85b4c0f/open-math-720.mp4",
+  "poster": "/academy/films-v2/open-math/b85b4c0f/open-math-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-math/1eadd88b/open-math.vtt",
-  "transcript": "/academy/films-v2/open-math/1eadd88b/open-math.transcript.txt",
+  "captions": "/academy/films-v2/open-math/b85b4c0f/open-math.vtt",
+  "transcript": "/academy/films-v2/open-math/b85b4c0f/open-math.transcript.txt",
   "durationSeconds": 22,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": null,
     "first": 16.33
   },
-  "version": "1eadd88b"
+  "version": "b85b4c0f"
 }

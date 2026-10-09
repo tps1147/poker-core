@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-actions",
-  "video": "/academy/films-v2/r-actions/6c961aee/r-actions-1080.mp4",
-  "video720": "/academy/films-v2/r-actions/6c961aee/r-actions-720.mp4",
-  "poster": "/academy/films-v2/r-actions/6c961aee/r-actions-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-actions/6c961aee/r-actions-rule.jpg",
-  "captions": "/academy/films-v2/r-actions/6c961aee/r-actions.vtt",
-  "transcript": "/academy/films-v2/r-actions/6c961aee/r-actions.transcript.txt",
+  "video": "/academy/films-v2/r-actions/f7de74e5/r-actions-1080.mp4",
+  "video720": "/academy/films-v2/r-actions/f7de74e5/r-actions-720.mp4",
+  "poster": "/academy/films-v2/r-actions/f7de74e5/r-actions-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-actions/f7de74e5/r-actions-rule.jpg",
+  "captions": "/academy/films-v2/r-actions/f7de74e5/r-actions.vtt",
+  "transcript": "/academy/films-v2/r-actions/f7de74e5/r-actions.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 89.02,
     "first": null
   },
-  "version": "6c961aee"
+  "version": "f7de74e5"
 }

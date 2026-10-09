@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-equity",
-  "video": "/academy/films-v2/m-equity/d1b807d7/m-equity-1080.mp4",
-  "video720": "/academy/films-v2/m-equity/d1b807d7/m-equity-720.mp4",
-  "poster": "/academy/films-v2/m-equity/d1b807d7/m-equity-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-equity/d1b807d7/m-equity-rule.jpg",
-  "captions": "/academy/films-v2/m-equity/d1b807d7/m-equity.vtt",
-  "transcript": "/academy/films-v2/m-equity/d1b807d7/m-equity.transcript.txt",
+  "video": "/academy/films-v2/m-equity/8eda1408/m-equity-1080.mp4",
+  "video720": "/academy/films-v2/m-equity/8eda1408/m-equity-720.mp4",
+  "poster": "/academy/films-v2/m-equity/8eda1408/m-equity-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-equity/8eda1408/m-equity-rule.jpg",
+  "captions": "/academy/films-v2/m-equity/8eda1408/m-equity.vtt",
+  "transcript": "/academy/films-v2/m-equity/8eda1408/m-equity.transcript.txt",
   "durationSeconds": 85,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 85,
     "first": null
   },
-  "version": "d1b807d7"
+  "version": "8eda1408"
 }

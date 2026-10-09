@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-people",
-  "video": "/academy/films-v2/open-people/d322f1a5/open-people-1080.mp4",
-  "video720": "/academy/films-v2/open-people/d322f1a5/open-people-720.mp4",
-  "poster": "/academy/films-v2/open-people/d322f1a5/open-people-poster.jpg",
+  "video": "/academy/films-v2/open-people/2e89d1b0/open-people-1080.mp4",
+  "video720": "/academy/films-v2/open-people/2e89d1b0/open-people-720.mp4",
+  "poster": "/academy/films-v2/open-people/2e89d1b0/open-people-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-people/d322f1a5/open-people.vtt",
-  "transcript": "/academy/films-v2/open-people/d322f1a5/open-people.transcript.txt",
+  "captions": "/academy/films-v2/open-people/2e89d1b0/open-people.vtt",
+  "transcript": "/academy/films-v2/open-people/2e89d1b0/open-people.transcript.txt",
   "durationSeconds": 20,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": null,
     "first": 13.71
   },
-  "version": "d322f1a5"
+  "version": "2e89d1b0"
 }

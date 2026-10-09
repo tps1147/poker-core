@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "y-bankroll",
-  "video": "/academy/films-v2/y-bankroll/1087c159/y-bankroll-1080.mp4",
-  "video720": "/academy/films-v2/y-bankroll/1087c159/y-bankroll-720.mp4",
-  "poster": "/academy/films-v2/y-bankroll/1087c159/y-bankroll-poster.jpg",
-  "ruleCard": "/academy/films-v2/y-bankroll/1087c159/y-bankroll-rule.jpg",
-  "captions": "/academy/films-v2/y-bankroll/1087c159/y-bankroll.vtt",
-  "transcript": "/academy/films-v2/y-bankroll/1087c159/y-bankroll.transcript.txt",
+  "video": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-1080.mp4",
+  "video720": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-720.mp4",
+  "poster": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-rule.jpg",
+  "captions": "/academy/films-v2/y-bankroll/9474684d/y-bankroll.vtt",
+  "transcript": "/academy/films-v2/y-bankroll/9474684d/y-bankroll.transcript.txt",
   "durationSeconds": 89,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 84.9,
     "first": null
   },
-  "version": "1087c159"
+  "version": "9474684d"
 }

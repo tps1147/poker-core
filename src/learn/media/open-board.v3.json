@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-board",
-  "video": "/academy/films-v2/open-board/3c0c838d/open-board-1080.mp4",
-  "video720": "/academy/films-v2/open-board/3c0c838d/open-board-720.mp4",
-  "poster": "/academy/films-v2/open-board/3c0c838d/open-board-poster.jpg",
+  "video": "/academy/films-v2/open-board/ad0344de/open-board-1080.mp4",
+  "video720": "/academy/films-v2/open-board/ad0344de/open-board-720.mp4",
+  "poster": "/academy/films-v2/open-board/ad0344de/open-board-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-board/3c0c838d/open-board.vtt",
-  "transcript": "/academy/films-v2/open-board/3c0c838d/open-board.transcript.txt",
+  "captions": "/academy/films-v2/open-board/ad0344de/open-board.vtt",
+  "transcript": "/academy/films-v2/open-board/ad0344de/open-board.transcript.txt",
   "durationSeconds": 22,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": null,
     "first": 15.19
   },
-  "version": "3c0c838d"
+  "version": "ad0344de"
 }

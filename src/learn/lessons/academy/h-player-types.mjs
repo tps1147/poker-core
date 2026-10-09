@@ -59,6 +59,7 @@ const definition = {
   ],
   spots: {
     "pt-guided": {
+      scene: "question",
       decision: "estimate", ...guided, played: 45, raised: 6, hands: 100,
       bands: typeBands("station", "nit", "lag"),
       dockPrompt: "Which type is he?",
@@ -68,6 +69,7 @@ const definition = {
       explanation: "The calling station: he plays almost half his hands and raises very few of them. Against the baseline’s 24 played and 19 raised, he calls far too often.",
     },
     "pt-practice": {
+      scene: "question",
       decision: "estimate", ...practice, played: 34, raised: 27, hands: 100,
       bands: typeBands("tag", "lag", "station"),
       dockPrompt: "Which type is he?",
@@ -77,6 +79,7 @@ const definition = {
       explanation: "The LAG, loose and aggressive: he plays more hands than the baseline and raises most of them. The TAG plays fewer, about 22, and raises 18.",
     },
     "pt-fresh": {
+      scene: "question",
       decision: "estimate", ...fresh, played: 9, hands: 20,
       bands: bands(["station", "A calling station"], ["not-yet", "Not yet: too few hands"]),
       dockPrompt: "Can you name his type?",
