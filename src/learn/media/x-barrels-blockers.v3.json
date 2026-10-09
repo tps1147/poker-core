@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "x-barrels-blockers",
-  "video": "/academy/films-v2/x-barrels-blockers/2de1cfe8/x-barrels-blockers-1080.mp4",
-  "video720": "/academy/films-v2/x-barrels-blockers/2de1cfe8/x-barrels-blockers-720.mp4",
-  "poster": "/academy/films-v2/x-barrels-blockers/2de1cfe8/x-barrels-blockers-poster.jpg",
-  "ruleCard": "/academy/films-v2/x-barrels-blockers/2de1cfe8/x-barrels-blockers-rule.jpg",
-  "captions": "/academy/films-v2/x-barrels-blockers/2de1cfe8/x-barrels-blockers.vtt",
-  "transcript": "/academy/films-v2/x-barrels-blockers/2de1cfe8/x-barrels-blockers.transcript.txt",
+  "video": "/academy/films-v2/x-barrels-blockers/954531dc/x-barrels-blockers-1080.mp4",
+  "video720": "/academy/films-v2/x-barrels-blockers/954531dc/x-barrels-blockers-720.mp4",
+  "poster": "/academy/films-v2/x-barrels-blockers/954531dc/x-barrels-blockers-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-barrels-blockers/954531dc/x-barrels-blockers-rule.jpg",
+  "captions": "/academy/films-v2/x-barrels-blockers/954531dc/x-barrels-blockers.vtt",
+  "transcript": "/academy/films-v2/x-barrels-blockers/954531dc/x-barrels-blockers.transcript.txt",
   "durationSeconds": 84,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,133 @@
     "upNext": 80.62,
     "first": null
   },
-  "version": "2de1cfe8"
+  "version": "954531dc",
+  "cues": [
+    {
+      "start": 1.2,
+      "end": 3.87,
+      "text": "Three streets, 350 behind."
+    },
+    {
+      "start": 3.87,
+      "end": 6.1,
+      "text": "How do you get it all in?"
+    },
+    {
+      "start": 6.1,
+      "end": 8.11,
+      "text": "Stack to pot: 350 ÷ 100 = 3.5."
+    },
+    {
+      "start": 8.11,
+      "end": 10.18,
+      "text": "Half the pot, each time."
+    },
+    {
+      "start": 10.18,
+      "end": 13.51,
+      "text": "50... 100... 200."
+    },
+    {
+      "start": 13.51,
+      "end": 18.81,
+      "text": "All 350. The pot ends at 800."
+    },
+    {
+      "start": 18.81,
+      "end": 21.17,
+      "text": "Now the river, three spades out."
+    },
+    {
+      "start": 21.17,
+      "end": 26.14,
+      "text": "10 more are unseen... 45 ways to hold two."
+    },
+    {
+      "start": 26.14,
+      "end": 30.03,
+      "text": "9 use the A♠. And you hold it."
+    },
+    {
+      "start": 30.03,
+      "end": 32.61,
+      "text": "His flushes drop to 36,"
+    },
+    {
+      "start": 32.61,
+      "end": 36.04,
+      "text": "and every nut flush is gone."
+    },
+    {
+      "start": 36.04,
+      "end": 39.17,
+      "text": "Say 60 pairs fold. An illustration."
+    },
+    {
+      "start": 39.17,
+      "end": 45.24,
+      "text": "Without your ace, 57.1%. With it, 62.5%."
+    },
+    {
+      "start": 45.24,
+      "end": 48.45,
+      "text": "A nudge, not a new range."
+    },
+    {
+      "start": 48.45,
+      "end": 51.91,
+      "text": "Change the line, so only 30 pairs are left to fold."
+    },
+    {
+      "start": 51.91,
+      "end": 53.51,
+      "text": "40%..."
+    },
+    {
+      "start": 53.51,
+      "end": 57.38,
+      "text": "short of the 42.9% a 3/4-pot bluff needs."
+    },
+    {
+      "start": 57.38,
+      "end": 61.18,
+      "text": "The ace lifts it to 45.5%. Barely."
+    },
+    {
+      "start": 61.18,
+      "end": 64.66,
+      "text": "The line sets the range."
+    },
+    {
+      "start": 64.66,
+      "end": 66.93,
+      "text": "Your turn. Sort two bluff cards."
+    },
+    {
+      "start": 66.93,
+      "end": 70.89,
+      "text": "The A♠ blocks his calls. Better bluff."
+    },
+    {
+      "start": 70.89,
+      "end": 75.47,
+      "text": "The 9♦ blocks his folds. Worse bluff."
+    },
+    {
+      "start": 75.47,
+      "end": 77.1,
+      "text": "Plan all three streets."
+    },
+    {
+      "start": 77.1,
+      "end": 80.62,
+      "text": "Bluff with the card that blocks his calls."
+    },
+    {
+      "start": 80.62,
+      "end": 84,
+      "text": "Up next: narrowing ranges."
+    }
+  ],
+  "transcriptText": "Three streets, 350 behind. How do you get it all in? Stack to pot: 350 ÷ 100 = 3.5. Half the pot, each time. 50... 100... 200. All 350. The pot ends at 800.\n\nNow the river, three spades out. 10 more are unseen... 45 ways to hold two. 9 use the A♠. And you hold it. His flushes drop to 36, and every nut flush is gone.\n\nSay 60 pairs fold. An illustration. Without your ace, 57.1%. With it, 62.5%. A nudge, not a new range. Change the line, so only 30 pairs are left to fold. 40%... short of the 42.9% a 3/4-pot bluff needs. The ace lifts it to 45.5%. Barely. The line sets the range.\n\nYour turn. Sort two bluff cards. The A♠ blocks his calls. Better bluff. The 9♦ blocks his folds. Worse bluff. Plan all three streets. Bluff with the card that blocks his calls. Up next: narrowing ranges."
 }

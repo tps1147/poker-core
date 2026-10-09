@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-pot-control",
-  "video": "/academy/films-v2/f-pot-control/04e41131/f-pot-control-1080.mp4",
-  "video720": "/academy/films-v2/f-pot-control/04e41131/f-pot-control-720.mp4",
-  "poster": "/academy/films-v2/f-pot-control/04e41131/f-pot-control-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-pot-control/04e41131/f-pot-control-rule.jpg",
-  "captions": "/academy/films-v2/f-pot-control/04e41131/f-pot-control.vtt",
-  "transcript": "/academy/films-v2/f-pot-control/04e41131/f-pot-control.transcript.txt",
+  "video": "/academy/films-v2/f-pot-control/56ea4c8a/f-pot-control-1080.mp4",
+  "video720": "/academy/films-v2/f-pot-control/56ea4c8a/f-pot-control-720.mp4",
+  "poster": "/academy/films-v2/f-pot-control/56ea4c8a/f-pot-control-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-pot-control/56ea4c8a/f-pot-control-rule.jpg",
+  "captions": "/academy/films-v2/f-pot-control/56ea4c8a/f-pot-control.vtt",
+  "transcript": "/academy/films-v2/f-pot-control/56ea4c8a/f-pot-control.transcript.txt",
   "durationSeconds": 86,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 81.6,
     "first": 62.53
   },
-  "version": "04e41131"
+  "version": "56ea4c8a",
+  "cues": [
+    {
+      "start": 1.14,
+      "end": 4.9,
+      "text": "A pair of nines. How big a pot do you want?"
+    },
+    {
+      "start": 4.9,
+      "end": 8.52,
+      "text": "You're last to act on king, six, three,"
+    },
+    {
+      "start": 8.52,
+      "end": 10.05,
+      "text": "and the pot is 100."
+    },
+    {
+      "start": 10.05,
+      "end": 11.54,
+      "text": "He checks to you."
+    },
+    {
+      "start": 11.54,
+      "end": 13.99,
+      "text": "Do you bet all three streets, or just two?"
+    },
+    {
+      "start": 13.99,
+      "end": 16.47,
+      "text": "Make your pick."
+    },
+    {
+      "start": 16.47,
+      "end": 19.77,
+      "text": "Watch the pot. Bet half of it every street..."
+    },
+    {
+      "start": 19.77,
+      "end": 22.58,
+      "text": "50, then 100, then 200."
+    },
+    {
+      "start": 22.58,
+      "end": 24.54,
+      "text": "It doubles each time."
+    },
+    {
+      "start": 24.54,
+      "end": 27.66,
+      "text": "100 becomes 800, 8 times bigger,"
+    },
+    {
+      "start": 27.66,
+      "end": 30.48,
+      "text": "and you've put 350 into it."
+    },
+    {
+      "start": 30.48,
+      "end": 33.47,
+      "text": "Now bet, check the turn, and bet the river."
+    },
+    {
+      "start": 33.47,
+      "end": 36.92,
+      "text": "50 + 100... 150 in."
+    },
+    {
+      "start": 36.92,
+      "end": 40.05,
+      "text": "The pot ends at 400."
+    },
+    {
+      "start": 40.05,
+      "end": 42.22,
+      "text": "But who calls three bets?"
+    },
+    {
+      "start": 42.22,
+      "end": 44.43,
+      "text": "Mostly hands that beat your nines."
+    },
+    {
+      "start": 44.43,
+      "end": 46.07,
+      "text": "Bet twice instead,"
+    },
+    {
+      "start": 46.07,
+      "end": 49,
+      "text": "and his weaker pairs still pay you once."
+    },
+    {
+      "start": 49,
+      "end": 51.75,
+      "text": "And that check on the turn? It's a free card."
+    },
+    {
+      "start": 51.75,
+      "end": 53.85,
+      "text": "The river costs you nothing..."
+    },
+    {
+      "start": 53.85,
+      "end": 57.44,
+      "text": "and 2 nines are left, of 46 unseen."
+    },
+    {
+      "start": 57.44,
+      "end": 60.81,
+      "text": "4.3% for a set."
+    },
+    {
+      "start": 60.81,
+      "end": 64.37,
+      "text": "Your turn. Same nines, but now you act first."
+    },
+    {
+      "start": 64.37,
+      "end": 67.33,
+      "text": "You check... and he chooses."
+    },
+    {
+      "start": 67.33,
+      "end": 70.64,
+      "text": "Bet, or take the river free."
+    },
+    {
+      "start": 70.64,
+      "end": 74.68,
+      "text": "So the free card is his, not yours."
+    },
+    {
+      "start": 74.68,
+      "end": 76.91,
+      "text": "Medium hand, small pot."
+    },
+    {
+      "start": 76.91,
+      "end": 78.77,
+      "text": "Two streets of value..."
+    },
+    {
+      "start": 78.77,
+      "end": 81.6,
+      "text": "and take the free card when you're last."
+    },
+    {
+      "start": 81.6,
+      "end": 86,
+      "text": "Up next: playing draws."
+    }
+  ],
+  "transcriptText": "A pair of nines. How big a pot do you want? You're last to act on king, six, three, and the pot is 100. He checks to you. Do you bet all three streets, or just two? Make your pick.\n\nWatch the pot. Bet half of it every street... 50, then 100, then 200. It doubles each time. 100 becomes 800, 8 times bigger, and you've put 350 into it. Now bet, check the turn, and bet the river. 50 + 100... 150 in. The pot ends at 400.\n\nBut who calls three bets? Mostly hands that beat your nines. Bet twice instead, and his weaker pairs still pay you once. And that check on the turn? It's a free card. The river costs you nothing... and 2 nines are left, of 46 unseen. 4.3% for a set.\n\nYour turn. Same nines, but now you act first. You check... and he chooses. Bet, or take the river free. So the free card is his, not yours. Medium hand, small pot. Two streets of value... and take the free card when you're last. Up next: playing draws."
 }

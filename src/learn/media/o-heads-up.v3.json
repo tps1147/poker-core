@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-heads-up",
-  "video": "/academy/films-v2/o-heads-up/09cc3f75/o-heads-up-1080.mp4",
-  "video720": "/academy/films-v2/o-heads-up/09cc3f75/o-heads-up-720.mp4",
-  "poster": "/academy/films-v2/o-heads-up/09cc3f75/o-heads-up-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-heads-up/09cc3f75/o-heads-up-rule.jpg",
-  "captions": "/academy/films-v2/o-heads-up/09cc3f75/o-heads-up.vtt",
-  "transcript": "/academy/films-v2/o-heads-up/09cc3f75/o-heads-up.transcript.txt",
+  "video": "/academy/films-v2/o-heads-up/98d4a41e/o-heads-up-1080.mp4",
+  "video720": "/academy/films-v2/o-heads-up/98d4a41e/o-heads-up-720.mp4",
+  "poster": "/academy/films-v2/o-heads-up/98d4a41e/o-heads-up-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-heads-up/98d4a41e/o-heads-up-rule.jpg",
+  "captions": "/academy/films-v2/o-heads-up/98d4a41e/o-heads-up.vtt",
+  "transcript": "/academy/films-v2/o-heads-up/98d4a41e/o-heads-up.transcript.txt",
   "durationSeconds": 70,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,128 @@
     "upNext": 67,
     "first": null
   },
-  "version": "09cc3f75"
+  "version": "98d4a41e",
+  "cues": [
+    {
+      "start": 2.16,
+      "end": 6.18,
+      "text": "Nine players... then six... then two."
+    },
+    {
+      "start": 6.18,
+      "end": 8.72,
+      "text": "When only one opponent is left,"
+    },
+    {
+      "start": 8.72,
+      "end": 11.73,
+      "text": "should you still wait for the same strong hands?"
+    },
+    {
+      "start": 11.73,
+      "end": 16.39,
+      "text": "Make your guess."
+    },
+    {
+      "start": 16.39,
+      "end": 18.28,
+      "text": "First, the rules change shape."
+    },
+    {
+      "start": 18.28,
+      "end": 21.18,
+      "text": "Heads-up, the button posts the small blind."
+    },
+    {
+      "start": 21.18,
+      "end": 23.59,
+      "text": "It acts first before the flop..."
+    },
+    {
+      "start": 23.59,
+      "end": 26.24,
+      "text": "and last on every street after."
+    },
+    {
+      "start": 26.24,
+      "end": 29.22,
+      "text": "So the button gets position for the whole hand,"
+    },
+    {
+      "start": 29.22,
+      "end": 31.68,
+      "text": "every other hand."
+    },
+    {
+      "start": 31.68,
+      "end": 33.24,
+      "text": "Now the cost of waiting."
+    },
+    {
+      "start": 33.24,
+      "end": 35.65,
+      "text": "At a full table, the blinds cost you"
+    },
+    {
+      "start": 35.65,
+      "end": 38.18,
+      "text": "about a sixth of a big blind a hand."
+    },
+    {
+      "start": 38.18,
+      "end": 40.52,
+      "text": "Heads-up... three-quarters."
+    },
+    {
+      "start": 40.52,
+      "end": 42.57,
+      "text": "Four and a half times as much."
+    },
+    {
+      "start": 42.57,
+      "end": 45.26,
+      "text": "And with one rival, a pocket pair shows up"
+    },
+    {
+      "start": 45.26,
+      "end": 48.73,
+      "text": "about 6% of the time, not 38%."
+    },
+    {
+      "start": 48.73,
+      "end": 50.3,
+      "text": "Fewer hands beat you,"
+    },
+    {
+      "start": 50.3,
+      "end": 53.38,
+      "text": "so more hands are worth playing."
+    },
+    {
+      "start": 53.38,
+      "end": 56.07,
+      "text": "That's why the nit slowly bleeds away,"
+    },
+    {
+      "start": 56.07,
+      "end": 58.79,
+      "text": "and the wild player who never stops raising"
+    },
+    {
+      "start": 58.79,
+      "end": 60.74,
+      "text": "gets picked off."
+    },
+    {
+      "start": 60.74,
+      "end": 63.83,
+      "text": "Heads-up, play wider and keep the pressure on..."
+    },
+    {
+      "start": 63.83,
+      "end": 70,
+      "text": "but every chip still needs a reason."
+    }
+  ],
+  "transcriptText": "Nine players... then six... then two. When only one opponent is left, should you still wait for the same strong hands? Make your guess.\n\nFirst, the rules change shape. Heads-up, the button posts the small blind. It acts first before the flop... and last on every street after. So the button gets position for the whole hand, every other hand.\n\nNow the cost of waiting. At a full table, the blinds cost you about a sixth of a big blind a hand. Heads-up... three-quarters. Four and a half times as much. And with one rival, a pocket pair shows up about 6% of the time, not 38%. Fewer hands beat you, so more hands are worth playing.\n\nThat's why the nit slowly bleeds away, and the wild player who never stops raising gets picked off. Heads-up, play wider and keep the pressure on... but every chip still needs a reason."
 }

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-blind-defense",
-  "video": "/academy/films-v2/p-blind-defense/8996c2dd/p-blind-defense-1080.mp4",
-  "video720": "/academy/films-v2/p-blind-defense/8996c2dd/p-blind-defense-720.mp4",
-  "poster": "/academy/films-v2/p-blind-defense/8996c2dd/p-blind-defense-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-blind-defense/8996c2dd/p-blind-defense-rule.jpg",
-  "captions": "/academy/films-v2/p-blind-defense/8996c2dd/p-blind-defense.vtt",
-  "transcript": "/academy/films-v2/p-blind-defense/8996c2dd/p-blind-defense.transcript.txt",
+  "video": "/academy/films-v2/p-blind-defense/19ab750a/p-blind-defense-1080.mp4",
+  "video720": "/academy/films-v2/p-blind-defense/19ab750a/p-blind-defense-720.mp4",
+  "poster": "/academy/films-v2/p-blind-defense/19ab750a/p-blind-defense-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-blind-defense/19ab750a/p-blind-defense-rule.jpg",
+  "captions": "/academy/films-v2/p-blind-defense/19ab750a/p-blind-defense.vtt",
+  "transcript": "/academy/films-v2/p-blind-defense/19ab750a/p-blind-defense.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,163 @@
     "upNext": 94.45,
     "first": null
   },
-  "version": "8996c2dd"
+  "version": "19ab750a",
+  "cues": [
+    {
+      "start": 1.15,
+      "end": 3.38,
+      "text": "You posted 10 in the big blind."
+    },
+    {
+      "start": 3.38,
+      "end": 5.96,
+      "text": "The button raises to 25."
+    },
+    {
+      "start": 5.96,
+      "end": 8.71,
+      "text": "Do you have to call to protect it..."
+    },
+    {
+      "start": 8.71,
+      "end": 15.18,
+      "text": "or only with the right hands? Pick one."
+    },
+    {
+      "start": 15.18,
+      "end": 16.53,
+      "text": "You hold queen-nine suited."
+    },
+    {
+      "start": 16.53,
+      "end": 20.41,
+      "text": "5, 10, and their 25... 40 in the pot."
+    },
+    {
+      "start": 20.41,
+      "end": 23.11,
+      "text": "But you don't owe 25."
+    },
+    {
+      "start": 23.11,
+      "end": 26.62,
+      "text": "Your 10 is already in, so you owe 15."
+    },
+    {
+      "start": 26.62,
+      "end": 30.08,
+      "text": "Call, and the final pot is 55."
+    },
+    {
+      "start": 30.08,
+      "end": 33.22,
+      "text": "15 into 55... about 27%."
+    },
+    {
+      "start": 33.22,
+      "end": 34.74,
+      "text": "Now take the blind away."
+    },
+    {
+      "start": 34.74,
+      "end": 36.89,
+      "text": "The same call with nothing posted"
+    },
+    {
+      "start": 36.89,
+      "end": 42.06,
+      "text": "is 25 into 65... 38.5%."
+    },
+    {
+      "start": 42.06,
+      "end": 44.33,
+      "text": "That 10 isn't yours anymore."
+    },
+    {
+      "start": 44.33,
+      "end": 46.55,
+      "text": "It just makes calling cheaper."
+    },
+    {
+      "start": 46.55,
+      "end": 48.36,
+      "text": "But cheaper isn't free."
+    },
+    {
+      "start": 48.36,
+      "end": 52.8,
+      "text": "A rule of thumb defends about half... 49%."
+    },
+    {
+      "start": 52.8,
+      "end": 55.65,
+      "text": "Queen-nine suited is in."
+    },
+    {
+      "start": 55.65,
+      "end": 57.6,
+      "text": "So how much is enough?"
+    },
+    {
+      "start": 57.6,
+      "end": 61.53,
+      "text": "The button risks 25 to win the blinds' 15."
+    },
+    {
+      "start": 61.53,
+      "end": 66.25,
+      "text": "Fold more than 62.5%, and any two cards profit."
+    },
+    {
+      "start": 66.25,
+      "end": 70.38,
+      "text": "So the blinds defend at least 37.5%."
+    },
+    {
+      "start": 70.38,
+      "end": 73.99,
+      "text": "A pressure line, not a forecast."
+    },
+    {
+      "start": 73.99,
+      "end": 76.76,
+      "text": "Your turn. The button raises to 40."
+    },
+    {
+      "start": 76.76,
+      "end": 78.37,
+      "text": "What do you owe?"
+    },
+    {
+      "start": 78.37,
+      "end": 81.08,
+      "text": "40 minus your 10... 30."
+    },
+    {
+      "start": 81.08,
+      "end": 86.34,
+      "text": "The final pot's 85, so your price is about 35%."
+    },
+    {
+      "start": 86.34,
+      "end": 91.03,
+      "text": "Bigger raise, worse price... defend fewer hands."
+    },
+    {
+      "start": 91.03,
+      "end": 92.72,
+      "text": "The blind helps your price."
+    },
+    {
+      "start": 92.72,
+      "end": 94.45,
+      "text": "It doesn't make the call."
+    },
+    {
+      "start": 94.45,
+      "end": 98,
+      "text": "Up next: three-betting."
+    }
+  ],
+  "transcriptText": "You posted 10 in the big blind. The button raises to 25. Do you have to call to protect it... or only with the right hands? Pick one.\n\nYou hold queen-nine suited. 5, 10, and their 25... 40 in the pot. But you don't owe 25. Your 10 is already in, so you owe 15. Call, and the final pot is 55. 15 into 55... about 27%.\n\nNow take the blind away. The same call with nothing posted is 25 into 65... 38.5%. That 10 isn't yours anymore. It just makes calling cheaper. But cheaper isn't free. A rule of thumb defends about half... 49%. Queen-nine suited is in.\n\nSo how much is enough? The button risks 25 to win the blinds' 15. Fold more than 62.5%, and any two cards profit. So the blinds defend at least 37.5%. A pressure line, not a forecast.\n\nYour turn. The button raises to 40. What do you owe? 40 minus your 10... 30. The final pot's 85, so your price is about 35%. Bigger raise, worse price... defend fewer hands. The blind helps your price. It doesn't make the call. Up next: three-betting."
 }

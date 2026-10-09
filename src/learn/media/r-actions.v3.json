@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-actions",
-  "video": "/academy/films-v2/r-actions/f7de74e5/r-actions-1080.mp4",
-  "video720": "/academy/films-v2/r-actions/f7de74e5/r-actions-720.mp4",
-  "poster": "/academy/films-v2/r-actions/f7de74e5/r-actions-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-actions/f7de74e5/r-actions-rule.jpg",
-  "captions": "/academy/films-v2/r-actions/f7de74e5/r-actions.vtt",
-  "transcript": "/academy/films-v2/r-actions/f7de74e5/r-actions.transcript.txt",
+  "video": "/academy/films-v2/r-actions/e5f57c10/r-actions-1080.mp4",
+  "video720": "/academy/films-v2/r-actions/e5f57c10/r-actions-720.mp4",
+  "poster": "/academy/films-v2/r-actions/e5f57c10/r-actions-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-actions/e5f57c10/r-actions-rule.jpg",
+  "captions": "/academy/films-v2/r-actions/e5f57c10/r-actions.vtt",
+  "transcript": "/academy/films-v2/r-actions/e5f57c10/r-actions.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,198 @@
     "upNext": 89.02,
     "first": null
   },
-  "version": "f7de74e5"
+  "version": "e5f57c10",
+  "cues": [
+    {
+      "start": 1.19,
+      "end": 4.27,
+      "text": "Two buttons both keep you in the hand."
+    },
+    {
+      "start": 4.27,
+      "end": 6.06,
+      "text": "Check... and call."
+    },
+    {
+      "start": 6.06,
+      "end": 9.7,
+      "text": "One of them costs nothing. Which one?"
+    },
+    {
+      "start": 9.7,
+      "end": 11.39,
+      "text": "Now a harder one."
+    },
+    {
+      "start": 11.39,
+      "end": 13.35,
+      "text": "Someone bets forty."
+    },
+    {
+      "start": 13.35,
+      "end": 18.01,
+      "text": "Can you still check? Pick yes or no."
+    },
+    {
+      "start": 18.01,
+      "end": 20.49,
+      "text": "Here's the flop. Ada checks."
+    },
+    {
+      "start": 20.49,
+      "end": 23.16,
+      "text": "Nothing is owed, so you can check for free..."
+    },
+    {
+      "start": 23.16,
+      "end": 25.94,
+      "text": "or bet, and put in the first chips."
+    },
+    {
+      "start": 25.94,
+      "end": 27.3,
+      "text": "Now rewind."
+    },
+    {
+      "start": 27.3,
+      "end": 30.08,
+      "text": "Same flop, but Ada bets forty."
+    },
+    {
+      "start": 30.08,
+      "end": 33.44,
+      "text": "Now it's fold, call the forty, or raise."
+    },
+    {
+      "start": 33.44,
+      "end": 36.45,
+      "text": "Check is gone."
+    },
+    {
+      "start": 36.45,
+      "end": 36.98,
+      "text": "So, no."
+    },
+    {
+      "start": 36.98,
+      "end": 39.9,
+      "text": "You can only check when nothing is owed."
+    },
+    {
+      "start": 39.9,
+      "end": 41.2,
+      "text": "And how big can you go?"
+    },
+    {
+      "start": 41.2,
+      "end": 44.5,
+      "text": "This is no-limit, so you can bet any amount,"
+    },
+    {
+      "start": 44.5,
+      "end": 46.04,
+      "text": "up to your whole stack."
+    },
+    {
+      "start": 46.04,
+      "end": 48.1,
+      "text": "But a raise has a floor."
+    },
+    {
+      "start": 48.1,
+      "end": 51.72,
+      "text": "At five and ten, the smallest raise is to twenty..."
+    },
+    {
+      "start": 51.72,
+      "end": 53.62,
+      "text": "the ten, plus ten more."
+    },
+    {
+      "start": 53.62,
+      "end": 55.51,
+      "text": "If someone raises to thirty,"
+    },
+    {
+      "start": 55.51,
+      "end": 56.71,
+      "text": "that's twenty more."
+    },
+    {
+      "start": 56.71,
+      "end": 60.64,
+      "text": "So the next raise must reach fifty."
+    },
+    {
+      "start": 60.64,
+      "end": 61.74,
+      "text": "One last spot."
+    },
+    {
+      "start": 61.74,
+      "end": 64.61,
+      "text": "Heads-up, the button just calls."
+    },
+    {
+      "start": 64.61,
+      "end": 66.71,
+      "text": "It already posted five,"
+    },
+    {
+      "start": 66.71,
+      "end": 68.55,
+      "text": "so it owes five more."
+    },
+    {
+      "start": 68.55,
+      "end": 70.54,
+      "text": "That makes the pot twenty,"
+    },
+    {
+      "start": 70.54,
+      "end": 72.1,
+      "text": "and you're the big blind."
+    },
+    {
+      "start": 72.1,
+      "end": 73.62,
+      "text": "You owe nothing."
+    },
+    {
+      "start": 73.62,
+      "end": 75.59,
+      "text": "That's your option..."
+    },
+    {
+      "start": 75.59,
+      "end": 80.22,
+      "text": "check, or raise."
+    },
+    {
+      "start": 80.22,
+      "end": 81.52,
+      "text": "Here's the rule."
+    },
+    {
+      "start": 81.52,
+      "end": 84.55,
+      "text": "Check is free, but only when nothing's owed."
+    },
+    {
+      "start": 84.55,
+      "end": 86.2,
+      "text": "Call matches."
+    },
+    {
+      "start": 86.2,
+      "end": 89.02,
+      "text": "Bet starts... and raise grows."
+    },
+    {
+      "start": 89.02,
+      "end": 93,
+      "text": "Up next: the four betting rounds."
+    }
+  ],
+  "transcriptText": "Two buttons both keep you in the hand. Check... and call. One of them costs nothing. Which one? Now a harder one. Someone bets forty. Can you still check? Pick yes or no.\n\nHere's the flop. Ada checks. Nothing is owed, so you can check for free... or bet, and put in the first chips. Now rewind. Same flop, but Ada bets forty. Now it's fold, call the forty, or raise. Check is gone.\n\nSo, no. You can only check when nothing is owed. And how big can you go? This is no-limit, so you can bet any amount, up to your whole stack. But a raise has a floor. At five and ten, the smallest raise is to twenty... the ten, plus ten more. If someone raises to thirty, that's twenty more. So the next raise must reach fifty.\n\nOne last spot. Heads-up, the button just calls. It already posted five, so it owes five more. That makes the pot twenty, and you're the big blind. You owe nothing. That's your option... check, or raise.\n\nHere's the rule. Check is free, but only when nothing's owed. Call matches. Bet starts... and raise grows. Up next: the four betting rounds."
 }

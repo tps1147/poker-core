@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "w-what-is-poker",
-  "video": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-1080.mp4",
-  "video720": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-720.mp4",
-  "poster": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker-rule.jpg",
-  "captions": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker.vtt",
-  "transcript": "/academy/films-v2/w-what-is-poker/90a2acde/w-what-is-poker.transcript.txt",
+  "video": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-1080.mp4",
+  "video720": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-720.mp4",
+  "poster": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-rule.jpg",
+  "captions": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker.vtt",
+  "transcript": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker.transcript.txt",
   "durationSeconds": 74,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 69.52,
     "first": null
   },
-  "version": "90a2acde"
+  "version": "f365a071",
+  "cues": [
+    {
+      "start": 2.15,
+      "end": 5.33,
+      "text": "Welcome to the table. Let's start with a question."
+    },
+    {
+      "start": 5.33,
+      "end": 7.96,
+      "text": "Fifty-two cards in the deck..."
+    },
+    {
+      "start": 7.96,
+      "end": 10.15,
+      "text": "two of them are yours."
+    },
+    {
+      "start": 10.15,
+      "end": 13.33,
+      "text": "So what actually decides who wins?"
+    },
+    {
+      "start": 13.33,
+      "end": 14.66,
+      "text": "Is it the cards..."
+    },
+    {
+      "start": 14.66,
+      "end": 16.96,
+      "text": "or the decisions you make with them?"
+    },
+    {
+      "start": 16.96,
+      "end": 18.97,
+      "text": "Hold that thought."
+    },
+    {
+      "start": 18.97,
+      "end": 20.36,
+      "text": "You see your two cards."
+    },
+    {
+      "start": 20.36,
+      "end": 22,
+      "text": "Nobody else does."
+    },
+    {
+      "start": 22,
+      "end": 24.71,
+      "text": "Then five shared cards come out in the middle."
+    },
+    {
+      "start": 24.71,
+      "end": 25.77,
+      "text": "Three at once,"
+    },
+    {
+      "start": 25.77,
+      "end": 27.17,
+      "text": "then one..."
+    },
+    {
+      "start": 27.17,
+      "end": 28.39,
+      "text": "then one more."
+    },
+    {
+      "start": 28.39,
+      "end": 30.64,
+      "text": "And everyone gets to use them."
+    },
+    {
+      "start": 30.64,
+      "end": 33.6,
+      "text": "Every time it's your turn, you make a choice."
+    },
+    {
+      "start": 33.6,
+      "end": 37.51,
+      "text": "Fold... call... or raise."
+    },
+    {
+      "start": 37.51,
+      "end": 39.31,
+      "text": "If the hand goes all the way,"
+    },
+    {
+      "start": 39.31,
+      "end": 41.48,
+      "text": "the best five cards win."
+    },
+    {
+      "start": 41.48,
+      "end": 45.07,
+      "text": "Here, your straight beats their pair of jacks."
+    },
+    {
+      "start": 45.07,
+      "end": 47.71,
+      "text": "But you don't always need the best hand."
+    },
+    {
+      "start": 47.71,
+      "end": 49.53,
+      "text": "Get everyone else to fold,"
+    },
+    {
+      "start": 49.53,
+      "end": 53.71,
+      "text": "and the pot is yours, without showing a thing."
+    },
+    {
+      "start": 53.71,
+      "end": 55.52,
+      "text": "So, back to the question."
+    },
+    {
+      "start": 55.52,
+      "end": 58.25,
+      "text": "Any single hand can go either way."
+    },
+    {
+      "start": 58.25,
+      "end": 59.39,
+      "text": "That's the luck."
+    },
+    {
+      "start": 59.39,
+      "end": 61.98,
+      "text": "But over hundreds of hands..."
+    },
+    {
+      "start": 61.98,
+      "end": 64.55,
+      "text": "better decisions take the chips."
+    },
+    {
+      "start": 64.55,
+      "end": 67.37,
+      "text": "That's what Flop52 teaches you,"
+    },
+    {
+      "start": 67.37,
+      "end": 69.52,
+      "text": "one idea at a time."
+    },
+    {
+      "start": 69.52,
+      "end": 74,
+      "text": "Up next: the deck itself."
+    }
+  ],
+  "transcriptText": "Welcome to the table. Let's start with a question. Fifty-two cards in the deck... two of them are yours. So what actually decides who wins? Is it the cards... or the decisions you make with them? Hold that thought. You see your two cards. Nobody else does. Then five shared cards come out in the middle. Three at once, then one... then one more. And everyone gets to use them. Every time it's your turn, you make a choice. Fold... call... or raise. If the hand goes all the way, the best five cards win. Here, your straight beats their pair of jacks. But you don't always need the best hand. Get everyone else to fold, and the pot is yours, without showing a thing. So, back to the question. Any single hand can go either way. That's the luck. But over hundreds of hands... better decisions take the chips. That's what Flop52 teaches you, one idea at a time. Up next: the deck itself."
 }

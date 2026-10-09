@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-three-bet",
-  "video": "/academy/films-v2/p-three-bet/a8f3316f/p-three-bet-1080.mp4",
-  "video720": "/academy/films-v2/p-three-bet/a8f3316f/p-three-bet-720.mp4",
-  "poster": "/academy/films-v2/p-three-bet/a8f3316f/p-three-bet-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-three-bet/a8f3316f/p-three-bet-rule.jpg",
-  "captions": "/academy/films-v2/p-three-bet/a8f3316f/p-three-bet.vtt",
-  "transcript": "/academy/films-v2/p-three-bet/a8f3316f/p-three-bet.transcript.txt",
+  "video": "/academy/films-v2/p-three-bet/815e0cd6/p-three-bet-1080.mp4",
+  "video720": "/academy/films-v2/p-three-bet/815e0cd6/p-three-bet-720.mp4",
+  "poster": "/academy/films-v2/p-three-bet/815e0cd6/p-three-bet-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-three-bet/815e0cd6/p-three-bet-rule.jpg",
+  "captions": "/academy/films-v2/p-three-bet/815e0cd6/p-three-bet.vtt",
+  "transcript": "/academy/films-v2/p-three-bet/815e0cd6/p-three-bet.transcript.txt",
   "durationSeconds": 100,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,183 @@
     "upNext": 96.16,
     "first": null
   },
-  "version": "a8f3316f"
+  "version": "815e0cd6",
+  "cues": [
+    {
+      "start": 1.28,
+      "end": 3.81,
+      "text": "Middle position raises to 25."
+    },
+    {
+      "start": 3.81,
+      "end": 5.39,
+      "text": "You're on the button."
+    },
+    {
+      "start": 5.39,
+      "end": 7.09,
+      "text": "When do you raise again?"
+    },
+    {
+      "start": 7.09,
+      "end": 9.2,
+      "text": "Only with aces or kings?"
+    },
+    {
+      "start": 9.2,
+      "end": 12.7,
+      "text": "Or the best hands... plus a few that block them?"
+    },
+    {
+      "start": 12.7,
+      "end": 16.79,
+      "text": "Make your pick."
+    },
+    {
+      "start": 16.79,
+      "end": 19.23,
+      "text": "Say you only 3-bet aces and kings."
+    },
+    {
+      "start": 19.23,
+      "end": 22.65,
+      "text": "12 combos... under 1% of hands."
+    },
+    {
+      "start": 22.65,
+      "end": 26.04,
+      "text": "Easy to read. They fold everything else."
+    },
+    {
+      "start": 26.04,
+      "end": 27.42,
+      "text": "So start with value."
+    },
+    {
+      "start": 27.42,
+      "end": 30.44,
+      "text": "Queens or better, and ace-king."
+    },
+    {
+      "start": 30.44,
+      "end": 34.11,
+      "text": "34 combos... the hands that beat their calls."
+    },
+    {
+      "start": 34.11,
+      "end": 35.43,
+      "text": "Then add pressure."
+    },
+    {
+      "start": 35.43,
+      "end": 38.11,
+      "text": "Ace-five and ace-four suited."
+    },
+    {
+      "start": 38.11,
+      "end": 42.05,
+      "text": "42 in all... about 3%."
+    },
+    {
+      "start": 42.05,
+      "end": 43.26,
+      "text": "Why those two?"
+    },
+    {
+      "start": 43.26,
+      "end": 46.09,
+      "text": "Say you hold the ace and five of diamonds."
+    },
+    {
+      "start": 46.09,
+      "end": 49.12,
+      "text": "Your ace takes aces away from them."
+    },
+    {
+      "start": 49.12,
+      "end": 52.15,
+      "text": "Pocket aces drop from 6 combos to 3."
+    },
+    {
+      "start": 52.15,
+      "end": 56.19,
+      "text": "Ace-king, 16 to 12. Kings stay at 6."
+    },
+    {
+      "start": 56.19,
+      "end": 60.84,
+      "text": "Their strongest hands go from 22... down to 15."
+    },
+    {
+      "start": 60.84,
+      "end": 63.4,
+      "text": "So you 3-bet to 75."
+    },
+    {
+      "start": 63.4,
+      "end": 66.2,
+      "text": "3× their raise, in position."
+    },
+    {
+      "start": 66.2,
+      "end": 68.29,
+      "text": "They owe 50 more to call."
+    },
+    {
+      "start": 68.29,
+      "end": 73.1,
+      "text": "Out of position, go 4×. A hundred."
+    },
+    {
+      "start": 73.1,
+      "end": 75.78,
+      "text": "Your turn. Queens, in the big blind."
+    },
+    {
+      "start": 75.78,
+      "end": 77.94,
+      "text": "The button opens to 25."
+    },
+    {
+      "start": 77.94,
+      "end": 79.9,
+      "text": "Choose first..."
+    },
+    {
+      "start": 79.9,
+      "end": 82.35,
+      "text": "Queens are value, and you're out of position."
+    },
+    {
+      "start": 82.35,
+      "end": 84.06,
+      "text": "3-bet to a hundred."
+    },
+    {
+      "start": 84.06,
+      "end": 87.95,
+      "text": "You posted 10, so you owe 90 more."
+    },
+    {
+      "start": 87.95,
+      "end": 90.54,
+      "text": "3-bet the hands that beat their calls..."
+    },
+    {
+      "start": 90.54,
+      "end": 92.44,
+      "text": "and a few that block their best."
+    },
+    {
+      "start": 92.44,
+      "end": 96.16,
+      "text": "3× in position. 4× out."
+    },
+    {
+      "start": 96.16,
+      "end": 100,
+      "text": "Up next: ranges."
+    }
+  ],
+  "transcriptText": "Middle position raises to 25. You're on the button. When do you raise again? Only with aces or kings? Or the best hands... plus a few that block them? Make your pick.\n\nSay you only 3-bet aces and kings. 12 combos... under 1% of hands. Easy to read. They fold everything else. So start with value. Queens or better, and ace-king. 34 combos... the hands that beat their calls. Then add pressure. Ace-five and ace-four suited. 42 in all... about 3%.\n\nWhy those two? Say you hold the ace and five of diamonds. Your ace takes aces away from them. Pocket aces drop from 6 combos to 3. Ace-king, 16 to 12. Kings stay at 6. Their strongest hands go from 22... down to 15. So you 3-bet to 75. 3× their raise, in position. They owe 50 more to call. Out of position, go 4×. A hundred.\n\nYour turn. Queens, in the big blind. The button opens to 25. Choose first... Queens are value, and you're out of position. 3-bet to a hundred. You posted 10, so you owe 90 more. 3-bet the hands that beat their calls... and a few that block their best. 3× in position. 4× out. Up next: ranges."
 }

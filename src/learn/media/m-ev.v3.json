@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-ev",
-  "video": "/academy/films-v2/m-ev/ea8f63bf/m-ev-1080.mp4",
-  "video720": "/academy/films-v2/m-ev/ea8f63bf/m-ev-720.mp4",
-  "poster": "/academy/films-v2/m-ev/ea8f63bf/m-ev-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-ev/ea8f63bf/m-ev-rule.jpg",
-  "captions": "/academy/films-v2/m-ev/ea8f63bf/m-ev.vtt",
-  "transcript": "/academy/films-v2/m-ev/ea8f63bf/m-ev.transcript.txt",
+  "video": "/academy/films-v2/m-ev/3d396792/m-ev-1080.mp4",
+  "video720": "/academy/films-v2/m-ev/3d396792/m-ev-720.mp4",
+  "poster": "/academy/films-v2/m-ev/3d396792/m-ev-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-ev/3d396792/m-ev-rule.jpg",
+  "captions": "/academy/films-v2/m-ev/3d396792/m-ev.vtt",
+  "transcript": "/academy/films-v2/m-ev/3d396792/m-ev.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,163 @@
     "upNext": 98,
     "first": null
   },
-  "version": "ea8f63bf"
+  "version": "3d396792",
+  "cues": [
+    {
+      "start": 1.96,
+      "end": 5.27,
+      "text": "You call a hundred chips... and lose them."
+    },
+    {
+      "start": 5.27,
+      "end": 6.95,
+      "text": "Was that a mistake?"
+    },
+    {
+      "start": 6.95,
+      "end": 10.66,
+      "text": "Pick first. Yes, you lost..."
+    },
+    {
+      "start": 10.66,
+      "end": 14.03,
+      "text": "or you can't tell from one hand?"
+    },
+    {
+      "start": 14.03,
+      "end": 15.99,
+      "text": "Here's the spot. River."
+    },
+    {
+      "start": 15.99,
+      "end": 19.26,
+      "text": "The pot's 100, and they shove 100 more."
+    },
+    {
+      "start": 19.26,
+      "end": 23.11,
+      "text": "You win 40% against their range. That's given."
+    },
+    {
+      "start": 23.11,
+      "end": 25.58,
+      "text": "Call, and the pot's 300."
+    },
+    {
+      "start": 25.58,
+      "end": 27.16,
+      "text": "Win, you're up 200."
+    },
+    {
+      "start": 27.16,
+      "end": 29.09,
+      "text": "Lose, you're down 100."
+    },
+    {
+      "start": 29.09,
+      "end": 33.48,
+      "text": "Folding is zero... the line you measure from."
+    },
+    {
+      "start": 33.48,
+      "end": 35.49,
+      "text": "So weigh both sides."
+    },
+    {
+      "start": 35.49,
+      "end": 40.03,
+      "text": "40% of +200... +80."
+    },
+    {
+      "start": 40.03,
+      "end": 44.42,
+      "text": "60% of −100... −60."
+    },
+    {
+      "start": 44.42,
+      "end": 47.36,
+      "text": "Together, +20 a call."
+    },
+    {
+      "start": 47.36,
+      "end": 49.85,
+      "text": "That's expected value."
+    },
+    {
+      "start": 49.85,
+      "end": 52.65,
+      "text": "Ten calls, about +200."
+    },
+    {
+      "start": 52.65,
+      "end": 55.77,
+      "text": "A hundred calls, about +2,000."
+    },
+    {
+      "start": 55.77,
+      "end": 60.08,
+      "text": "And the hand you lost? Just one of them."
+    },
+    {
+      "start": 60.08,
+      "end": 60.68,
+      "text": "Your turn."
+    },
+    {
+      "start": 60.68,
+      "end": 64.08,
+      "text": "Ace-ten of hearts, two hearts on the board,"
+    },
+    {
+      "start": 64.08,
+      "end": 65.4,
+      "text": "one card to come."
+    },
+    {
+      "start": 65.4,
+      "end": 68.4,
+      "text": "They shove 40 into 150."
+    },
+    {
+      "start": 68.4,
+      "end": 71.41,
+      "text": "Nine hearts win, out of 46."
+    },
+    {
+      "start": 71.41,
+      "end": 75.08,
+      "text": "Your share of the 230 pot is 45."
+    },
+    {
+      "start": 75.08,
+      "end": 78.1,
+      "text": "Minus your 40... +5."
+    },
+    {
+      "start": 78.1,
+      "end": 83.7,
+      "text": "Play every river once, and it's still +5."
+    },
+    {
+      "start": 83.7,
+      "end": 87.27,
+      "text": "So, was it a mistake? One hand can't tell you."
+    },
+    {
+      "start": 87.27,
+      "end": 91.22,
+      "text": "Expected value is your chance times the final pot,"
+    },
+    {
+      "start": 91.22,
+      "end": 92.52,
+      "text": "minus your call."
+    },
+    {
+      "start": 92.52,
+      "end": 98,
+      "text": "Judge the decision by its average... not one river."
+    }
+  ],
+  "transcriptText": "You call a hundred chips... and lose them. Was that a mistake? Pick first. Yes, you lost... or you can't tell from one hand?\n\nHere's the spot. River. The pot's 100, and they shove 100 more. You win 40% against their range. That's given. Call, and the pot's 300. Win, you're up 200. Lose, you're down 100. Folding is zero... the line you measure from.\n\nSo weigh both sides. 40% of +200... +80. 60% of −100... −60. Together, +20 a call. That's expected value. Ten calls, about +200. A hundred calls, about +2,000. And the hand you lost? Just one of them.\n\nYour turn. Ace-ten of hearts, two hearts on the board, one card to come. They shove 40 into 150. Nine hearts win, out of 46. Your share of the 230 pot is 45. Minus your 40... +5. Play every river once, and it's still +5.\n\nSo, was it a mistake? One hand can't tell you. Expected value is your chance times the final pot, minus your call. Judge the decision by its average... not one river."
 }

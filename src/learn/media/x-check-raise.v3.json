@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "x-check-raise",
-  "video": "/academy/films-v2/x-check-raise/2c8bdbf1/x-check-raise-1080.mp4",
-  "video720": "/academy/films-v2/x-check-raise/2c8bdbf1/x-check-raise-720.mp4",
-  "poster": "/academy/films-v2/x-check-raise/2c8bdbf1/x-check-raise-poster.jpg",
-  "ruleCard": "/academy/films-v2/x-check-raise/2c8bdbf1/x-check-raise-rule.jpg",
-  "captions": "/academy/films-v2/x-check-raise/2c8bdbf1/x-check-raise.vtt",
-  "transcript": "/academy/films-v2/x-check-raise/2c8bdbf1/x-check-raise.transcript.txt",
+  "video": "/academy/films-v2/x-check-raise/c39ca6a2/x-check-raise-1080.mp4",
+  "video720": "/academy/films-v2/x-check-raise/c39ca6a2/x-check-raise-720.mp4",
+  "poster": "/academy/films-v2/x-check-raise/c39ca6a2/x-check-raise-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-check-raise/c39ca6a2/x-check-raise-rule.jpg",
+  "captions": "/academy/films-v2/x-check-raise/c39ca6a2/x-check-raise.vtt",
+  "transcript": "/academy/films-v2/x-check-raise/c39ca6a2/x-check-raise.transcript.txt",
   "durationSeconds": 78,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,148 @@
     "upNext": 73.45,
     "first": null
   },
-  "version": "2c8bdbf1"
+  "version": "c39ca6a2",
+  "cues": [
+    {
+      "start": 1.18,
+      "end": 2.9,
+      "text": "Big blind, with sixes."
+    },
+    {
+      "start": 2.9,
+      "end": 5.71,
+      "text": "The flop comes 9, 6, 2..."
+    },
+    {
+      "start": 5.71,
+      "end": 6.39,
+      "text": "a set."
+    },
+    {
+      "start": 6.39,
+      "end": 9.14,
+      "text": "60 in the pot, and you act first."
+    },
+    {
+      "start": 9.14,
+      "end": 12.98,
+      "text": "Lead? Or check, planning to raise?"
+    },
+    {
+      "start": 12.98,
+      "end": 14.95,
+      "text": "You check. He bets 20."
+    },
+    {
+      "start": 14.95,
+      "end": 17.07,
+      "text": "You raise to 70."
+    },
+    {
+      "start": 17.07,
+      "end": 19.12,
+      "text": "Now he owes 50 more."
+    },
+    {
+      "start": 19.12,
+      "end": 23.78,
+      "text": "50, over 60 + 70 + 70..."
+    },
+    {
+      "start": 23.78,
+      "end": 27.5,
+      "text": "50 over 200. 25%."
+    },
+    {
+      "start": 27.5,
+      "end": 30.54,
+      "text": "If he calls, the pot is 200."
+    },
+    {
+      "start": 30.54,
+      "end": 34.61,
+      "text": "Just calling his 20 makes it 100."
+    },
+    {
+      "start": 34.61,
+      "end": 37.29,
+      "text": "But a check-raise isn't always a monster."
+    },
+    {
+      "start": 37.29,
+      "end": 40.34,
+      "text": "Same raise, with 8♠ 7♠."
+    },
+    {
+      "start": 40.34,
+      "end": 42.3,
+      "text": "Fives and tens make the straight."
+    },
+    {
+      "start": 42.3,
+      "end": 45.86,
+      "text": "As a bluff, it risks 70 to win 80..."
+    },
+    {
+      "start": 45.86,
+      "end": 48.72,
+      "text": "break-even, 46.7%."
+    },
+    {
+      "start": 48.72,
+      "end": 52.5,
+      "text": "Called, it still has 8 outs of 47:"
+    },
+    {
+      "start": 52.5,
+      "end": 54.73,
+      "text": "17% on the next card..."
+    },
+    {
+      "start": 54.73,
+      "end": 56.86,
+      "text": "31.5% by the river."
+    },
+    {
+      "start": 56.86,
+      "end": 60.83,
+      "text": "From his seat, both raises look the same."
+    },
+    {
+      "start": 60.83,
+      "end": 63.44,
+      "text": "Your turn. Same flop, he bets 20,"
+    },
+    {
+      "start": 63.44,
+      "end": 65.2,
+      "text": "and you hold sevens."
+    },
+    {
+      "start": 65.2,
+      "end": 68.47,
+      "text": "A raise folds out worse hands and keeps better ones."
+    },
+    {
+      "start": 68.47,
+      "end": 70.17,
+      "text": "So just call."
+    },
+    {
+      "start": 70.17,
+      "end": 71.6,
+      "text": "Check-raise your strongest hands"
+    },
+    {
+      "start": 71.6,
+      "end": 73.45,
+      "text": "and your best draws together."
+    },
+    {
+      "start": 73.45,
+      "end": 78,
+      "text": "Up next: barrels and blockers."
+    }
+  ],
+  "transcriptText": "Big blind, with sixes. The flop comes 9, 6, 2... a set. 60 in the pot, and you act first. Lead? Or check, planning to raise?\n\nYou check. He bets 20. You raise to 70. Now he owes 50 more. 50, over 60 + 70 + 70... 50 over 200. 25%. If he calls, the pot is 200. Just calling his 20 makes it 100.\n\nBut a check-raise isn't always a monster. Same raise, with 8♠ 7♠. Fives and tens make the straight. As a bluff, it risks 70 to win 80... break-even, 46.7%. Called, it still has 8 outs of 47: 17% on the next card... 31.5% by the river. From his seat, both raises look the same.\n\nYour turn. Same flop, he bets 20, and you hold sevens. A raise folds out worse hands and keeps better ones. So just call. Check-raise your strongest hands and your best draws together. Up next: barrels and blockers."
 }

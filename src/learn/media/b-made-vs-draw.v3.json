@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-made-vs-draw",
-  "video": "/academy/films-v2/b-made-vs-draw/1b05aa3d/b-made-vs-draw-1080.mp4",
-  "video720": "/academy/films-v2/b-made-vs-draw/1b05aa3d/b-made-vs-draw-720.mp4",
-  "poster": "/academy/films-v2/b-made-vs-draw/1b05aa3d/b-made-vs-draw-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-made-vs-draw/1b05aa3d/b-made-vs-draw-rule.jpg",
-  "captions": "/academy/films-v2/b-made-vs-draw/1b05aa3d/b-made-vs-draw.vtt",
-  "transcript": "/academy/films-v2/b-made-vs-draw/1b05aa3d/b-made-vs-draw.transcript.txt",
+  "video": "/academy/films-v2/b-made-vs-draw/4956114b/b-made-vs-draw-1080.mp4",
+  "video720": "/academy/films-v2/b-made-vs-draw/4956114b/b-made-vs-draw-720.mp4",
+  "poster": "/academy/films-v2/b-made-vs-draw/4956114b/b-made-vs-draw-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-made-vs-draw/4956114b/b-made-vs-draw-rule.jpg",
+  "captions": "/academy/films-v2/b-made-vs-draw/4956114b/b-made-vs-draw.vtt",
+  "transcript": "/academy/films-v2/b-made-vs-draw/4956114b/b-made-vs-draw.transcript.txt",
   "durationSeconds": 80,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 76.12,
     "first": null
   },
-  "version": "1b05aa3d"
+  "version": "4956114b",
+  "cues": [
+    {
+      "start": 2.19,
+      "end": 3.42,
+      "text": "Welcome to the Board."
+    },
+    {
+      "start": 3.42,
+      "end": 7.04,
+      "text": "From here on, you read the cards in the middle."
+    },
+    {
+      "start": 7.04,
+      "end": 7.91,
+      "text": "So look at this."
+    },
+    {
+      "start": 7.91,
+      "end": 10.45,
+      "text": "You hold the ace and five of hearts."
+    },
+    {
+      "start": 10.45,
+      "end": 12.61,
+      "text": "The board shows two more hearts."
+    },
+    {
+      "start": 12.61,
+      "end": 14.32,
+      "text": "That's four hearts..."
+    },
+    {
+      "start": 14.32,
+      "end": 16.01,
+      "text": "so do you have a flush?"
+    },
+    {
+      "start": 16.01,
+      "end": 19.54,
+      "text": "Yes... or not yet?"
+    },
+    {
+      "start": 19.54,
+      "end": 20.55,
+      "text": "Not yet."
+    },
+    {
+      "start": 20.55,
+      "end": 23.83,
+      "text": "A flush needs five cards, and you've got four."
+    },
+    {
+      "start": 23.83,
+      "end": 26.72,
+      "text": "Right now, your hand is just ace high."
+    },
+    {
+      "start": 26.72,
+      "end": 28.17,
+      "text": "So what would finish it?"
+    },
+    {
+      "start": 28.17,
+      "end": 31.17,
+      "text": "There are 46 cards you can't see."
+    },
+    {
+      "start": 31.17,
+      "end": 33.18,
+      "text": "Only 9 of them are hearts."
+    },
+    {
+      "start": 33.18,
+      "end": 35.3,
+      "text": "Nine would make your flush..."
+    },
+    {
+      "start": 35.3,
+      "end": 37.54,
+      "text": "and the other 37 miss."
+    },
+    {
+      "start": 37.54,
+      "end": 41.56,
+      "text": "That's a draw. It needs another card."
+    },
+    {
+      "start": 41.56,
+      "end": 42.4,
+      "text": "Here's another one."
+    },
+    {
+      "start": 42.4,
+      "end": 47.47,
+      "text": "Eight, seven, six, five..."
+    },
+    {
+      "start": 47.47,
+      "end": 50.73,
+      "text": "four in a row, open at both ends."
+    },
+    {
+      "start": 50.73,
+      "end": 53.57,
+      "text": "A four or a nine finishes it."
+    },
+    {
+      "start": 53.57,
+      "end": 56.66,
+      "text": "That's 8 cards out of 47."
+    },
+    {
+      "start": 56.66,
+      "end": 58.64,
+      "text": "Now compare a made hand."
+    },
+    {
+      "start": 58.64,
+      "end": 60.88,
+      "text": "King-jack, on a king-high board."
+    },
+    {
+      "start": 60.88,
+      "end": 62.61,
+      "text": "That's a pair of kings."
+    },
+    {
+      "start": 62.61,
+      "end": 65.12,
+      "text": "A made hand already ranks."
+    },
+    {
+      "start": 65.12,
+      "end": 68.9,
+      "text": "No empty slot... it doesn't need help."
+    },
+    {
+      "start": 68.9,
+      "end": 72.52,
+      "text": "So before you bet, read what you have right now."
+    },
+    {
+      "start": 72.52,
+      "end": 76.12,
+      "text": "A draw is a promise... not a hand."
+    },
+    {
+      "start": 76.12,
+      "end": 80,
+      "text": "Up next: the nuts."
+    }
+  ],
+  "transcriptText": "Welcome to the Board. From here on, you read the cards in the middle. So look at this. You hold the ace and five of hearts. The board shows two more hearts. That's four hearts... so do you have a flush? Yes... or not yet?\n\nNot yet. A flush needs five cards, and you've got four. Right now, your hand is just ace high. So what would finish it? There are 46 cards you can't see. Only 9 of them are hearts. Nine would make your flush... and the other 37 miss. That's a draw. It needs another card.\n\nHere's another one. Eight, seven, six, five... four in a row, open at both ends. A four or a nine finishes it. That's 8 cards out of 47. Now compare a made hand. King-jack, on a king-high board. That's a pair of kings. A made hand already ranks. No empty slot... it doesn't need help.\n\nSo before you bet, read what you have right now. A draw is a promise... not a hand. Up next: the nuts."
 }

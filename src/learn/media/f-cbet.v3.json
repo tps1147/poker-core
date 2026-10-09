@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-cbet",
-  "video": "/academy/films-v2/f-cbet/22406e88/f-cbet-1080.mp4",
-  "video720": "/academy/films-v2/f-cbet/22406e88/f-cbet-720.mp4",
-  "poster": "/academy/films-v2/f-cbet/22406e88/f-cbet-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-cbet/22406e88/f-cbet-rule.jpg",
-  "captions": "/academy/films-v2/f-cbet/22406e88/f-cbet.vtt",
-  "transcript": "/academy/films-v2/f-cbet/22406e88/f-cbet.transcript.txt",
+  "video": "/academy/films-v2/f-cbet/bc6800dd/f-cbet-1080.mp4",
+  "video720": "/academy/films-v2/f-cbet/bc6800dd/f-cbet-720.mp4",
+  "poster": "/academy/films-v2/f-cbet/bc6800dd/f-cbet-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-cbet/bc6800dd/f-cbet-rule.jpg",
+  "captions": "/academy/films-v2/f-cbet/bc6800dd/f-cbet.vtt",
+  "transcript": "/academy/films-v2/f-cbet/bc6800dd/f-cbet.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,183 @@
     "upNext": 93.53,
     "first": null
   },
-  "version": "22406e88"
+  "version": "bc6800dd",
+  "cues": [
+    {
+      "start": 1.24,
+      "end": 4.24,
+      "text": "You raised before the flop. He checked."
+    },
+    {
+      "start": 4.24,
+      "end": 5.63,
+      "text": "Do you have to bet?"
+    },
+    {
+      "start": 5.63,
+      "end": 9.96,
+      "text": "Ace-queen, on king, seven, two..."
+    },
+    {
+      "start": 9.96,
+      "end": 11.33,
+      "text": "sixty in the pot."
+    },
+    {
+      "start": 11.33,
+      "end": 13.78,
+      "text": "Lots of players bet every time,"
+    },
+    {
+      "start": 13.78,
+      "end": 15.54,
+      "text": "just because they raised."
+    },
+    {
+      "start": 15.54,
+      "end": 18.82,
+      "text": "So... bet, or check?"
+    },
+    {
+      "start": 18.82,
+      "end": 20.62,
+      "text": "Look at the ranges first."
+    },
+    {
+      "start": 20.62,
+      "end": 25.03,
+      "text": "Top pair or better: 24.1% of yours..."
+    },
+    {
+      "start": 25.03,
+      "end": 26.92,
+      "text": "12.3% of his."
+    },
+    {
+      "start": 26.92,
+      "end": 27.94,
+      "text": "Your flop."
+    },
+    {
+      "start": 27.94,
+      "end": 30.73,
+      "text": "And no straight draw and no flush draw"
+    },
+    {
+      "start": 30.73,
+      "end": 32.57,
+      "text": "is possible on this flop."
+    },
+    {
+      "start": 32.57,
+      "end": 36.89,
+      "text": "So bet small... 20 into 60."
+    },
+    {
+      "start": 36.89,
+      "end": 39.24,
+      "text": "Same raise, on nine, seven, six."
+    },
+    {
+      "start": 39.24,
+      "end": 43.24,
+      "text": "His strong hands and draws: about 41%."
+    },
+    {
+      "start": 43.24,
+      "end": 45.05,
+      "text": "Yours: 24%."
+    },
+    {
+      "start": 45.05,
+      "end": 47.76,
+      "text": "An automatic bet here isn't earned."
+    },
+    {
+      "start": 47.76,
+      "end": 49.47,
+      "text": "Checking is."
+    },
+    {
+      "start": 49.47,
+      "end": 51.44,
+      "text": "And the price of a third-pot bet?"
+    },
+    {
+      "start": 51.44,
+      "end": 54.7,
+      "text": "A bluff needs a fold one time in four."
+    },
+    {
+      "start": 54.7,
+      "end": 59.53,
+      "text": "20, over 60 + 20... 25%."
+    },
+    {
+      "start": 59.53,
+      "end": 62.72,
+      "text": "He owes 20, and the pot ends at 100..."
+    },
+    {
+      "start": 62.72,
+      "end": 65.51,
+      "text": "a 20% price."
+    },
+    {
+      "start": 65.51,
+      "end": 69.71,
+      "text": "Your turn. Ace-ten, on eight, eight, three."
+    },
+    {
+      "start": 69.71,
+      "end": 72.09,
+      "text": "90 in the pot, and he checks."
+    },
+    {
+      "start": 72.09,
+      "end": 73.55,
+      "text": "Read the bars."
+    },
+    {
+      "start": 73.55,
+      "end": 78.47,
+      "text": "19.6% for you... 12.9% for him."
+    },
+    {
+      "start": 78.47,
+      "end": 81.41,
+      "text": "Your flop, and it's dry."
+    },
+    {
+      "start": 81.41,
+      "end": 83.95,
+      "text": "Bet 30, a third again..."
+    },
+    {
+      "start": 83.95,
+      "end": 87.1,
+      "text": "the same 25% and 20%."
+    },
+    {
+      "start": 87.1,
+      "end": 89.43,
+      "text": "So c-bet when the flop favors your range"
+    },
+    {
+      "start": 89.43,
+      "end": 91.09,
+      "text": "and the board lets you."
+    },
+    {
+      "start": 91.09,
+      "end": 93.53,
+      "text": "Raising first isn't the reason."
+    },
+    {
+      "start": 93.53,
+      "end": 98,
+      "text": "Up next: bet sizing."
+    }
+  ],
+  "transcriptText": "You raised before the flop. He checked. Do you have to bet? Ace-queen, on king, seven, two... sixty in the pot. Lots of players bet every time, just because they raised. So... bet, or check?\n\nLook at the ranges first. Top pair or better: 24.1% of yours... 12.3% of his. Your flop. And no straight draw and no flush draw is possible on this flop. So bet small... 20 into 60.\n\nSame raise, on nine, seven, six. His strong hands and draws: about 41%. Yours: 24%. An automatic bet here isn't earned. Checking is. And the price of a third-pot bet? A bluff needs a fold one time in four. 20, over 60 + 20... 25%. He owes 20, and the pot ends at 100... a 20% price.\n\nYour turn. Ace-ten, on eight, eight, three. 90 in the pot, and he checks. Read the bars. 19.6% for you... 12.9% for him. Your flop, and it's dry. Bet 30, a third again... the same 25% and 20%. So c-bet when the flop favors your range and the board lets you. Raising first isn't the reason. Up next: bet sizing."
 }

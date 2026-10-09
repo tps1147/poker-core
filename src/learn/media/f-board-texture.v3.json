@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-board-texture",
-  "video": "/academy/films-v2/f-board-texture/85ca4bbe/f-board-texture-1080.mp4",
-  "video720": "/academy/films-v2/f-board-texture/85ca4bbe/f-board-texture-720.mp4",
-  "poster": "/academy/films-v2/f-board-texture/85ca4bbe/f-board-texture-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-board-texture/85ca4bbe/f-board-texture-rule.jpg",
-  "captions": "/academy/films-v2/f-board-texture/85ca4bbe/f-board-texture.vtt",
-  "transcript": "/academy/films-v2/f-board-texture/85ca4bbe/f-board-texture.transcript.txt",
+  "video": "/academy/films-v2/f-board-texture/7b1cff94/f-board-texture-1080.mp4",
+  "video720": "/academy/films-v2/f-board-texture/7b1cff94/f-board-texture-720.mp4",
+  "poster": "/academy/films-v2/f-board-texture/7b1cff94/f-board-texture-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-board-texture/7b1cff94/f-board-texture-rule.jpg",
+  "captions": "/academy/films-v2/f-board-texture/7b1cff94/f-board-texture.vtt",
+  "transcript": "/academy/films-v2/f-board-texture/7b1cff94/f-board-texture.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,178 @@
     "upNext": 94.87,
     "first": null
   },
-  "version": "85ca4bbe"
+  "version": "7b1cff94",
+  "cues": [
+    {
+      "start": 1.33,
+      "end": 3.9,
+      "text": "Same two players. Two flops."
+    },
+    {
+      "start": 3.9,
+      "end": 5.24,
+      "text": "Whose flop is it?"
+    },
+    {
+      "start": 5.24,
+      "end": 8.03,
+      "text": "Ace, king, four up top..."
+    },
+    {
+      "start": 8.03,
+      "end": 10.26,
+      "text": "nine, seven, six below."
+    },
+    {
+      "start": 10.26,
+      "end": 12.6,
+      "text": "One player raised before the flop."
+    },
+    {
+      "start": 12.6,
+      "end": 14.39,
+      "text": "The other just called."
+    },
+    {
+      "start": 14.39,
+      "end": 16.49,
+      "text": "Forget who has the better hand."
+    },
+    {
+      "start": 16.49,
+      "end": 21.15,
+      "text": "For each flop... raiser, or caller?"
+    },
+    {
+      "start": 21.15,
+      "end": 22.76,
+      "text": "Ace, king, four."
+    },
+    {
+      "start": 22.76,
+      "end": 25.79,
+      "text": "These bars are everything each player could hold..."
+    },
+    {
+      "start": 25.79,
+      "end": 26.96,
+      "text": "their range."
+    },
+    {
+      "start": 26.96,
+      "end": 32.67,
+      "text": "Top pair or better: the raiser has 77 of 204 combos."
+    },
+    {
+      "start": 32.67,
+      "end": 34.9,
+      "text": "37.7%."
+    },
+    {
+      "start": 34.9,
+      "end": 37.56,
+      "text": "The caller, just 25.2%."
+    },
+    {
+      "start": 37.56,
+      "end": 41.18,
+      "text": "Why? He'd have re-raised aces through jacks,"
+    },
+    {
+      "start": 41.18,
+      "end": 43.25,
+      "text": "ace-king and ace-queen."
+    },
+    {
+      "start": 43.25,
+      "end": 46.21,
+      "text": "So they're not in his range."
+    },
+    {
+      "start": 46.21,
+      "end": 48.99,
+      "text": "Now nine, seven, six."
+    },
+    {
+      "start": 48.99,
+      "end": 52.87,
+      "text": "Two pair or better: 11 combos each."
+    },
+    {
+      "start": 52.87,
+      "end": 54.65,
+      "text": "Even? Not quite."
+    },
+    {
+      "start": 54.65,
+      "end": 58.05,
+      "text": "That's 4.7% of the raiser's range..."
+    },
+    {
+      "start": 58.05,
+      "end": 60.39,
+      "text": "6.5% of the caller's."
+    },
+    {
+      "start": 60.39,
+      "end": 63.88,
+      "text": "Draws? 45 against 58."
+    },
+    {
+      "start": 63.88,
+      "end": 67.72,
+      "text": "Together, about 24% against 41%."
+    },
+    {
+      "start": 67.72,
+      "end": 71.06,
+      "text": "His suited connectors and small pairs live here."
+    },
+    {
+      "start": 71.06,
+      "end": 74.88,
+      "text": "The caller's flop."
+    },
+    {
+      "start": 74.88,
+      "end": 77.76,
+      "text": "Your turn. Queen, queen, five."
+    },
+    {
+      "start": 77.76,
+      "end": 79.98,
+      "text": "Raiser or caller?"
+    },
+    {
+      "start": 79.98,
+      "end": 83.81,
+      "text": "Top pair or better: 19.5% for the raiser."
+    },
+    {
+      "start": 83.81,
+      "end": 86.1,
+      "text": "7.6% for the caller."
+    },
+    {
+      "start": 86.1,
+      "end": 89.42,
+      "text": "The aces and kings all sit with the raiser."
+    },
+    {
+      "start": 89.42,
+      "end": 91.13,
+      "text": "Raiser's flop."
+    },
+    {
+      "start": 91.13,
+      "end": 94.87,
+      "text": "So before your hand, ask whose range the flop hits."
+    },
+    {
+      "start": 94.87,
+      "end": 98,
+      "text": "Up next: continuation betting."
+    }
+  ],
+  "transcriptText": "Same two players. Two flops. Whose flop is it? Ace, king, four up top... nine, seven, six below. One player raised before the flop. The other just called. Forget who has the better hand. For each flop... raiser, or caller?\n\nAce, king, four. These bars are everything each player could hold... their range. Top pair or better: the raiser has 77 of 204 combos. 37.7%. The caller, just 25.2%. Why? He'd have re-raised aces through jacks, ace-king and ace-queen. So they're not in his range.\n\nNow nine, seven, six. Two pair or better: 11 combos each. Even? Not quite. That's 4.7% of the raiser's range... 6.5% of the caller's. Draws? 45 against 58. Together, about 24% against 41%. His suited connectors and small pairs live here. The caller's flop.\n\nYour turn. Queen, queen, five. Raiser or caller? Top pair or better: 19.5% for the raiser. 7.6% for the caller. The aces and kings all sit with the raiser. Raiser's flop. So before your hand, ask whose range the flop hits. Up next: continuation betting."
 }

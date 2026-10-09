@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 16.33
   },
-  "version": "b85b4c0f"
+  "version": "b85b4c0f",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 4.59,
+      "text": "Chapter three. The Math Spine."
+    },
+    {
+      "start": 4.59,
+      "end": 9.16,
+      "text": "Outs, odds, equity and expected value,"
+    },
+    {
+      "start": 9.16,
+      "end": 11.21,
+      "text": "all built from simple counting."
+    },
+    {
+      "start": 11.21,
+      "end": 14.08,
+      "text": "By the end, you'll turn cards into chances,"
+    },
+    {
+      "start": 14.08,
+      "end": 16.33,
+      "text": "and chances into a price."
+    },
+    {
+      "start": 16.33,
+      "end": 22,
+      "text": "First up: Chance as a Share."
+    }
+  ],
+  "transcriptText": "Chapter three. The Math Spine. Outs, odds, equity and expected value, all built from simple counting. By the end, you'll turn cards into chances, and chances into a price. First up: Chance as a Share."
 }

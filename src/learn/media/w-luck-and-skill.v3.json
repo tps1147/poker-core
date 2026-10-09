@@ -2,12 +2,12 @@
   "format": "academy-film-v2",
   "id": "w-luck-and-skill",
   "sourceId": "w-luck",
-  "video": "/academy/films-v2/w-luck-and-skill/e2921fe3/w-luck-and-skill-1080.mp4",
-  "video720": "/academy/films-v2/w-luck-and-skill/e2921fe3/w-luck-and-skill-720.mp4",
-  "poster": "/academy/films-v2/w-luck-and-skill/e2921fe3/w-luck-and-skill-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-luck-and-skill/e2921fe3/w-luck-and-skill-rule.jpg",
-  "captions": "/academy/films-v2/w-luck-and-skill/e2921fe3/w-luck-and-skill.vtt",
-  "transcript": "/academy/films-v2/w-luck-and-skill/e2921fe3/w-luck-and-skill.transcript.txt",
+  "video": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-1080.mp4",
+  "video720": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-720.mp4",
+  "poster": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-rule.jpg",
+  "captions": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill.vtt",
+  "transcript": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill.transcript.txt",
   "durationSeconds": 87,
   "captionsBurnedIn": true,
   "frame": {
@@ -25,5 +25,153 @@
     "upNext": 87,
     "first": null
   },
-  "version": "e2921fe3"
+  "version": "59cc9cb5",
+  "cues": [
+    {
+      "start": 1.18,
+      "end": 4.15,
+      "text": "You got your chips in ahead... and lost."
+    },
+    {
+      "start": 4.15,
+      "end": 5.58,
+      "text": "Did you play it wrong?"
+    },
+    {
+      "start": 5.58,
+      "end": 7.47,
+      "text": "Pick an answer first."
+    },
+    {
+      "start": 7.47,
+      "end": 12.23,
+      "text": "Yes, you lost... or not necessarily?"
+    },
+    {
+      "start": 12.23,
+      "end": 13.33,
+      "text": "Here's the hand."
+    },
+    {
+      "start": 13.33,
+      "end": 17.85,
+      "text": "You've got ace-jack on a jack-high board. Top pair."
+    },
+    {
+      "start": 17.85,
+      "end": 20.88,
+      "text": "Ace Andy moves all-in for five hundred..."
+    },
+    {
+      "start": 20.88,
+      "end": 23.32,
+      "text": "you call, and the pot's a thousand."
+    },
+    {
+      "start": 23.32,
+      "end": 26.37,
+      "text": "Then Andy shows queen-nine of hearts."
+    },
+    {
+      "start": 26.37,
+      "end": 28.1,
+      "text": "He needs a heart..."
+    },
+    {
+      "start": 28.1,
+      "end": 30.87,
+      "text": "a king or an eight for the straight..."
+    },
+    {
+      "start": 30.87,
+      "end": 32.89,
+      "text": "or a queen."
+    },
+    {
+      "start": 32.89,
+      "end": 35.52,
+      "text": "Now look at every card that could come on the river."
+    },
+    {
+      "start": 35.52,
+      "end": 37.28,
+      "text": "There are forty-four."
+    },
+    {
+      "start": 37.28,
+      "end": 41.03,
+      "text": "Twenty-six win for you... eighteen win for him."
+    },
+    {
+      "start": 41.03,
+      "end": 44.19,
+      "text": "But this time, the river's the seven of hearts."
+    },
+    {
+      "start": 44.19,
+      "end": 47.69,
+      "text": "He makes a flush, and wins this hand."
+    },
+    {
+      "start": 47.69,
+      "end": 50.95,
+      "text": "So play this same spot again... and again."
+    },
+    {
+      "start": 50.95,
+      "end": 54.43,
+      "text": "A hundred players, all making this call."
+    },
+    {
+      "start": 54.43,
+      "end": 57.58,
+      "text": "After one hand, forty-one are behind."
+    },
+    {
+      "start": 57.58,
+      "end": 60.06,
+      "text": "After ten, eighteen."
+    },
+    {
+      "start": 60.06,
+      "end": 62.4,
+      "text": "After a hundred, three."
+    },
+    {
+      "start": 62.4,
+      "end": 66.24,
+      "text": "After a thousand? Basically none."
+    },
+    {
+      "start": 66.24,
+      "end": 68.1,
+      "text": "On average, this call earns you"
+    },
+    {
+      "start": 68.1,
+      "end": 70.22,
+      "text": "about ninety-one chips a hand."
+    },
+    {
+      "start": 70.22,
+      "end": 75.69,
+      "text": "Over a thousand hands, that's more than ninety thousand."
+    },
+    {
+      "start": 75.69,
+      "end": 79.05,
+      "text": "So... did you play it wrong? Not necessarily."
+    },
+    {
+      "start": 79.05,
+      "end": 81.89,
+      "text": "Losing this hand didn't make the call wrong."
+    },
+    {
+      "start": 81.89,
+      "end": 87,
+      "text": "Luck decides a hand. Skill decides a thousand."
+    }
+  ],
+  "transcriptText": "You got your chips in ahead... and lost. Did you play it wrong? Pick an answer first. Yes, you lost... or not necessarily?\n\nHere's the hand. You've got ace-jack on a jack-high board. Top pair. Ace Andy moves all-in for five hundred... you call, and the pot's a thousand. Then Andy shows queen-nine of hearts. He needs a heart... a king or an eight for the straight... or a queen.\n\nNow look at every card that could come on the river. There are forty-four. Twenty-six win for you... eighteen win for him. But this time, the river's the seven of hearts. He makes a flush, and wins this hand.\n\nSo play this same spot again... and again. A hundred players, all making this call. After one hand, forty-one are behind. After ten, eighteen. After a hundred, three. After a thousand? Basically none. On average, this call earns you about ninety-one chips a hand. Over a thousand hands, that's more than ninety thousand.\n\nSo... did you play it wrong? Not necessarily. Losing this hand didn't make the call wrong. Luck decides a hand. Skill decides a thousand."
 }

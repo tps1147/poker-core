@@ -10,7 +10,7 @@ import {
   ACADEMY_V2_EARLY_LESSONS, ACADEMY_V2_LATER_LESSONS, FILM_FIRST_LESSONS,
   freshEvidence, recapTally, whyOf, isWhyStage, trackPlace, nextAfter,
   nodeOfLesson, filmIdOfNode, whyStages, whyResult,
-  parseVtt, filmPauseAt, filmOwnPause, filmTurnPlan, PAUSE_WINDOW,
+  parseVtt, filmPauseAt, filmOwnPause, filmTurnPlan, PAUSE_WINDOW, filmCues, filmTranscriptText,
 } from "../src/learn/index.mjs";
 
 let checks = 0;
@@ -172,6 +172,22 @@ check("parseVtt", () => {
   assert.deepEqual(parseVtt(VTT.replace(/\n/g, "\r\n")), cues, "CRLF files too");
 });
 
+check("every v3 media file embeds its cues and transcript (no run-time VTT fetch)", () => {
+  for (const id of [...NODES.map((n) => filmIdOfNode(n.id)), ...TRACKS.map((t) => `open-${t.id}`)]) {
+    const m = media(id);
+    const cues = filmCues(m);
+    assert.ok(cues && cues.length > 3, `${id}: embedded cues`);
+    for (const c of cues) assert.ok(c.start < c.end && c.end <= m.durationSeconds + 0.5 && c.text, `${id}: cue ${JSON.stringify(c)}`);
+    assert.ok(cues.every((c, i) => !i || c.start >= cues[i - 1].start), `${id}: cues in order`);
+    assert.ok(filmTranscriptText(m)?.startsWith(cues[0].text.slice(0, 12)), `${id}: transcript text opens on the first line`);
+  }
+  assert.equal(filmCues({ captions: "/x.vtt" }), null, "no embedded cues: fall back to the URL");
+  assert.equal(filmTranscriptText({ transcript: "/x.txt" }), null);
+  // The embedded cues are the published WebVTT's: the pause reads the same either way.
+  const pot = media("m-pot-odds");
+  assert.equal(filmPauseAt(pot), filmPauseAt(pot, { cues: filmCues(pot) }));
+});
+
 check("filmPauseAt lands after the film asks, not on the anchor", () => {
   const cues = parseVtt(VTT);
   const pot = media("m-pot-odds");
@@ -179,7 +195,8 @@ check("filmPauseAt lands after the film asks, not on the anchor", () => {
   assert.equal(filmPauseAt(pot, { cues }), 72.64);
   assert.equal(filmPauseAt(pot, { cues, explicit: 70 }), 70);
   assert.equal(filmPauseAt(media("w-what-is-poker"), { cues }), null, "no yourTurn anchor: no pause");
-  assert.equal(filmPauseAt(pot), 65.56, "no cues: on the anchor");
+  assert.equal(filmPauseAt({ ...pot, cues: undefined }), 65.56, "no cues: on the anchor");
+  assert.equal(filmPauseAt(pot), 72.64, "the embedded cues stand in for the VTT");
   assert.equal(PAUSE_WINDOW, 15);
   const queens = { anchors: { yourTurn: 73.1 } };
   const qCues = [{ start: 73.1, end: 75.78, text: "Your turn. Queens, in the big blind." }, { start: 75.78, end: 77.94, text: "The button opens to 25." }, { start: 77.94, end: 79.9, text: "Choose first..." }, { start: 79.9, end: 82, text: "Queens are value." }];

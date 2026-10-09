@@ -177,9 +177,19 @@ export function parseVtt(text) {
 }
 
 const asks = (text) => /\?\s*$/.test(text) || /(\.\.\.|…)\s*$/.test(text);
-const cuesOf = (media) => (Array.isArray(media?.captions)
-  ? media.captions.filter((c) => c && num(c.start) != null && num(c.end) != null).map((c) => ({ start: c.start, end: c.end, text: String(c.text || "") }))
-  : []);
+const cueList = (list) => list.filter((c) => c && num(c.start) != null && num(c.end) != null).map((c) => ({ start: c.start, end: c.end, text: String(c.text || "") }));
+const cuesOf = (media) => (Array.isArray(media?.cues) ? cueList(media.cues) : Array.isArray(media?.captions) ? cueList(media.captions) : []);
+
+// The film's caption cues ([{ start, end, text }]) as its v3 media file embeds them (scripts/sync-v3-media.mjs),
+// or null when the file has none, so a client falls back to fetching `captions` (the WebVTT URL).
+export function filmCues(media) {
+  return Array.isArray(media?.cues) && media.cues.length ? cueList(media.cues) : null;
+}
+
+// The film's transcript text as its v3 media file embeds it, or null (fall back to fetching `transcript`).
+export function filmTranscriptText(media) {
+  return typeof media?.transcriptText === "string" && media.transcriptText.trim() ? media.transcriptText : null;
+}
 
 // The pause point for a film's "Your turn" beat, in seconds, or null when it has no yourTurn anchor.
 // `cues` default to the media's own timing captions (a v3 media file names its VTT by URL, so pass

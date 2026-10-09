@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-best-five",
-  "video": "/academy/films-v2/r-best-five/ca71df41/r-best-five-1080.mp4",
-  "video720": "/academy/films-v2/r-best-five/ca71df41/r-best-five-720.mp4",
-  "poster": "/academy/films-v2/r-best-five/ca71df41/r-best-five-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-best-five/ca71df41/r-best-five-rule.jpg",
-  "captions": "/academy/films-v2/r-best-five/ca71df41/r-best-five.vtt",
-  "transcript": "/academy/films-v2/r-best-five/ca71df41/r-best-five.transcript.txt",
+  "video": "/academy/films-v2/r-best-five/295812df/r-best-five-1080.mp4",
+  "video720": "/academy/films-v2/r-best-five/295812df/r-best-five-720.mp4",
+  "poster": "/academy/films-v2/r-best-five/295812df/r-best-five-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-best-five/295812df/r-best-five-rule.jpg",
+  "captions": "/academy/films-v2/r-best-five/295812df/r-best-five.vtt",
+  "transcript": "/academy/films-v2/r-best-five/295812df/r-best-five.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,143 @@
     "upNext": 94.31,
     "first": null
   },
-  "version": "ca71df41"
+  "version": "295812df",
+  "cues": [
+    {
+      "start": 1.17,
+      "end": 3.72,
+      "text": "You look down at pocket aces."
+    },
+    {
+      "start": 3.72,
+      "end": 11.25,
+      "text": "Then the board runs nine... eight... seven... six... five."
+    },
+    {
+      "start": 11.25,
+      "end": 15.13,
+      "text": "And your aces don't even play. How?"
+    },
+    {
+      "start": 15.13,
+      "end": 16.69,
+      "text": "Here's the question."
+    },
+    {
+      "start": 16.69,
+      "end": 20.12,
+      "text": "How many of your own cards do you have to use?"
+    },
+    {
+      "start": 20.12,
+      "end": 25.35,
+      "text": "Both... at least one... or any number, even zero?"
+    },
+    {
+      "start": 25.35,
+      "end": 27.74,
+      "text": "Hold that thought."
+    },
+    {
+      "start": 27.74,
+      "end": 30.59,
+      "text": "Your hand is always the best five of seven."
+    },
+    {
+      "start": 30.59,
+      "end": 33.13,
+      "text": "Your two, plus the five on the board."
+    },
+    {
+      "start": 33.13,
+      "end": 36.33,
+      "text": "With king-queen of hearts, both play..."
+    },
+    {
+      "start": 36.33,
+      "end": 41.27,
+      "text": "king, queen, jack, ten, nine. A straight."
+    },
+    {
+      "start": 41.27,
+      "end": 44.36,
+      "text": "With ace-three, only the ace plays."
+    },
+    {
+      "start": 44.36,
+      "end": 47.19,
+      "text": "It joins four hearts for a flush."
+    },
+    {
+      "start": 47.19,
+      "end": 50.09,
+      "text": "And those pocket aces? Zero."
+    },
+    {
+      "start": 50.09,
+      "end": 54.87,
+      "text": "The board's straight is already your best five."
+    },
+    {
+      "start": 54.87,
+      "end": 56.41,
+      "text": "So, back to the question."
+    },
+    {
+      "start": 56.41,
+      "end": 59.34,
+      "text": "Any number... even zero."
+    },
+    {
+      "start": 59.34,
+      "end": 61.76,
+      "text": "Now, say you both make a pair of aces."
+    },
+    {
+      "start": 61.76,
+      "end": 65.61,
+      "text": "Who's ahead? The next-best card decides."
+    },
+    {
+      "start": 65.61,
+      "end": 70.42,
+      "text": "That's your kicker. Your king beats their queen."
+    },
+    {
+      "start": 70.42,
+      "end": 73.84,
+      "text": "But a kicker only counts if it makes the best five."
+    },
+    {
+      "start": 73.84,
+      "end": 77.9,
+      "text": "Here, you hold ace-two. They hold ace-three."
+    },
+    {
+      "start": 77.9,
+      "end": 84.02,
+      "text": "The board gives you both ace, ace, king, queen, jack."
+    },
+    {
+      "start": 84.02,
+      "end": 87.41,
+      "text": "The two and the three never play..."
+    },
+    {
+      "start": 87.41,
+      "end": 88.56,
+      "text": "so it's a split."
+    },
+    {
+      "start": 88.56,
+      "end": 94.31,
+      "text": "Best five of seven. Use two, one, or none."
+    },
+    {
+      "start": 94.31,
+      "end": 98,
+      "text": "Up next: seats and blinds."
+    }
+  ],
+  "transcriptText": "You look down at pocket aces. Then the board runs nine... eight... seven... six... five. And your aces don't even play. How? Here's the question. How many of your own cards do you have to use? Both... at least one... or any number, even zero? Hold that thought.\n\nYour hand is always the best five of seven. Your two, plus the five on the board. With king-queen of hearts, both play... king, queen, jack, ten, nine. A straight. With ace-three, only the ace plays. It joins four hearts for a flush. And those pocket aces? Zero. The board's straight is already your best five.\n\nSo, back to the question. Any number... even zero. Now, say you both make a pair of aces. Who's ahead? The next-best card decides. That's your kicker. Your king beats their queen.\n\nBut a kicker only counts if it makes the best five. Here, you hold ace-two. They hold ace-three. The board gives you both ace, ace, king, queen, jack. The two and the three never play... so it's a split. Best five of seven. Use two, one, or none. Up next: seats and blinds."
 }

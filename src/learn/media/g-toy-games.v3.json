@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "g-toy-games",
-  "video": "/academy/films-v2/g-toy-games/bebec2c7/g-toy-games-1080.mp4",
-  "video720": "/academy/films-v2/g-toy-games/bebec2c7/g-toy-games-720.mp4",
-  "poster": "/academy/films-v2/g-toy-games/bebec2c7/g-toy-games-poster.jpg",
-  "ruleCard": "/academy/films-v2/g-toy-games/bebec2c7/g-toy-games-rule.jpg",
-  "captions": "/academy/films-v2/g-toy-games/bebec2c7/g-toy-games.vtt",
-  "transcript": "/academy/films-v2/g-toy-games/bebec2c7/g-toy-games.transcript.txt",
+  "video": "/academy/films-v2/g-toy-games/d821fc8f/g-toy-games-1080.mp4",
+  "video720": "/academy/films-v2/g-toy-games/d821fc8f/g-toy-games-720.mp4",
+  "poster": "/academy/films-v2/g-toy-games/d821fc8f/g-toy-games-poster.jpg",
+  "ruleCard": "/academy/films-v2/g-toy-games/d821fc8f/g-toy-games-rule.jpg",
+  "captions": "/academy/films-v2/g-toy-games/d821fc8f/g-toy-games.vtt",
+  "transcript": "/academy/films-v2/g-toy-games/d821fc8f/g-toy-games.transcript.txt",
   "durationSeconds": 88,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,128 @@
     "upNext": 83.93,
     "first": null
   },
-  "version": "bebec2c7"
+  "version": "d821fc8f",
+  "cues": [
+    {
+      "start": 2.26,
+      "end": 5.95,
+      "text": "Welcome to game theory... poker, in three cards."
+    },
+    {
+      "start": 5.95,
+      "end": 8.28,
+      "text": "Jack, queen, king."
+    },
+    {
+      "start": 8.28,
+      "end": 11.28,
+      "text": "One chip each: the pot is 2."
+    },
+    {
+      "start": 11.28,
+      "end": 14.86,
+      "text": "You act first. Check, or bet 1."
+    },
+    {
+      "start": 14.86,
+      "end": 17.39,
+      "text": "High card wins."
+    },
+    {
+      "start": 17.39,
+      "end": 19.72,
+      "text": "You hold the jack. The worst card."
+    },
+    {
+      "start": 19.72,
+      "end": 26.91,
+      "text": "Does it ever bet? Never... sometimes... or always?"
+    },
+    {
+      "start": 26.91,
+      "end": 29.96,
+      "text": "Never bluff, and every bet is a king."
+    },
+    {
+      "start": 29.96,
+      "end": 32.43,
+      "text": "His queen folds."
+    },
+    {
+      "start": 32.43,
+      "end": 36.56,
+      "text": "Always bluff, and half your bets are jacks."
+    },
+    {
+      "start": 36.56,
+      "end": 44.68,
+      "text": "His queen calls... and the bluffs pay him."
+    },
+    {
+      "start": 44.68,
+      "end": 46.52,
+      "text": "So, balance."
+    },
+    {
+      "start": 46.52,
+      "end": 50.38,
+      "text": "Bet the king 3 times as often as you bluff the jack."
+    },
+    {
+      "start": 50.38,
+      "end": 52.96,
+      "text": "One bet in 4 is a bluff."
+    },
+    {
+      "start": 52.96,
+      "end": 55.71,
+      "text": "His queen calls 1 time in 3."
+    },
+    {
+      "start": 55.71,
+      "end": 60.14,
+      "text": "Your jack: −1 chip, bet or check."
+    },
+    {
+      "start": 60.14,
+      "end": 63.33,
+      "text": "He calls more? The bluff loses."
+    },
+    {
+      "start": 63.33,
+      "end": 66.45,
+      "text": "Never calls? It wins."
+    },
+    {
+      "start": 66.45,
+      "end": 69.92,
+      "text": "Neither of you gains by changing."
+    },
+    {
+      "start": 69.92,
+      "end": 74.05,
+      "text": "In balance, acting first costs 1/18 of a chip a hand..."
+    },
+    {
+      "start": 74.05,
+      "end": 77.16,
+      "text": "about 5.6 per 100."
+    },
+    {
+      "start": 77.16,
+      "end": 80.22,
+      "text": "Never bluff, and your bets fold everyone."
+    },
+    {
+      "start": 80.22,
+      "end": 83.93,
+      "text": "Bluff at the rate that leaves him nothing to gain."
+    },
+    {
+      "start": 83.93,
+      "end": 88,
+      "text": "Up next: balance."
+    }
+  ],
+  "transcriptText": "Welcome to game theory... poker, in three cards. Jack, queen, king. One chip each: the pot is 2. You act first. Check, or bet 1. High card wins. You hold the jack. The worst card. Does it ever bet? Never... sometimes... or always?\n\nNever bluff, and every bet is a king. His queen folds. Always bluff, and half your bets are jacks. His queen calls... and the bluffs pay him.\n\nSo, balance. Bet the king 3 times as often as you bluff the jack. One bet in 4 is a bluff. His queen calls 1 time in 3. Your jack: −1 chip, bet or check. He calls more? The bluff loses. Never calls? It wins. Neither of you gains by changing.\n\nIn balance, acting first costs 1/18 of a chip a hand... about 5.6 per 100. Never bluff, and your bets fold everyone. Bluff at the rate that leaves him nothing to gain. Up next: balance."
 }

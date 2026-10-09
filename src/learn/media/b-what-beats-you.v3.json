@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-what-beats-you",
-  "video": "/academy/films-v2/b-what-beats-you/74910a07/b-what-beats-you-1080.mp4",
-  "video720": "/academy/films-v2/b-what-beats-you/74910a07/b-what-beats-you-720.mp4",
-  "poster": "/academy/films-v2/b-what-beats-you/74910a07/b-what-beats-you-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-what-beats-you/74910a07/b-what-beats-you-rule.jpg",
-  "captions": "/academy/films-v2/b-what-beats-you/74910a07/b-what-beats-you.vtt",
-  "transcript": "/academy/films-v2/b-what-beats-you/74910a07/b-what-beats-you.transcript.txt",
+  "video": "/academy/films-v2/b-what-beats-you/12c9babf/b-what-beats-you-1080.mp4",
+  "video720": "/academy/films-v2/b-what-beats-you/12c9babf/b-what-beats-you-720.mp4",
+  "poster": "/academy/films-v2/b-what-beats-you/12c9babf/b-what-beats-you-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-what-beats-you/12c9babf/b-what-beats-you-rule.jpg",
+  "captions": "/academy/films-v2/b-what-beats-you/12c9babf/b-what-beats-you.vtt",
+  "transcript": "/academy/films-v2/b-what-beats-you/12c9babf/b-what-beats-you.transcript.txt",
   "durationSeconds": 101,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,153 @@
     "upNext": 96.15,
     "first": null
   },
-  "version": "74910a07"
+  "version": "12c9babf",
+  "cues": [
+    {
+      "start": 1.94,
+      "end": 3.43,
+      "text": "You've got ace-queen."
+    },
+    {
+      "start": 3.43,
+      "end": 8.31,
+      "text": "The board runs ace... jack... eight... four."
+    },
+    {
+      "start": 8.31,
+      "end": 10.35,
+      "text": "Top pair, good kicker."
+    },
+    {
+      "start": 10.35,
+      "end": 12.96,
+      "text": "So how many hands beat you right now?"
+    },
+    {
+      "start": 12.96,
+      "end": 18.64,
+      "text": "None? About ten? About sixty? About three hundred?"
+    },
+    {
+      "start": 18.64,
+      "end": 22.39,
+      "text": "Pick one... and hold onto it."
+    },
+    {
+      "start": 22.39,
+      "end": 25.36,
+      "text": "Let's count, one family at a time."
+    },
+    {
+      "start": 25.36,
+      "end": 29.4,
+      "text": "Sets first. A pocket pair that matches the board..."
+    },
+    {
+      "start": 29.4,
+      "end": 33.62,
+      "text": "aces, jacks, eights or fours. 10 hands."
+    },
+    {
+      "start": 33.62,
+      "end": 37.42,
+      "text": "Next, two pair. Any two board cards..."
+    },
+    {
+      "start": 37.42,
+      "end": 41.76,
+      "text": "ace-jack, ace-eight, jack-eight... six pairings."
+    },
+    {
+      "start": 41.76,
+      "end": 43.39,
+      "text": "45 hands."
+    },
+    {
+      "start": 43.39,
+      "end": 46.02,
+      "text": "Then the sneaky one. Ace-king."
+    },
+    {
+      "start": 46.02,
+      "end": 50.41,
+      "text": "Same pair as you, better kicker. 8 more."
+    },
+    {
+      "start": 50.41,
+      "end": 54.08,
+      "text": "No straight or flush is possible yet."
+    },
+    {
+      "start": 54.08,
+      "end": 56.57,
+      "text": "So, 63 hands beat you..."
+    },
+    {
+      "start": 56.57,
+      "end": 59.82,
+      "text": "and 6 tie, the other ace-queens."
+    },
+    {
+      "start": 59.82,
+      "end": 62.39,
+      "text": "About sixty was the closest pick."
+    },
+    {
+      "start": 62.39,
+      "end": 67.27,
+      "text": "Now here's every hand they could hold. 1,035."
+    },
+    {
+      "start": 67.27,
+      "end": 70.47,
+      "text": "Most are worse than yours... but not all."
+    },
+    {
+      "start": 70.47,
+      "end": 74.01,
+      "text": "And you never see which one they've got."
+    },
+    {
+      "start": 74.01,
+      "end": 76.56,
+      "text": "Then the river. The five of spades."
+    },
+    {
+      "start": 76.56,
+      "end": 81.34,
+      "text": "Any two spades make a flush... 45 of those."
+    },
+    {
+      "start": 81.34,
+      "end": 85.94,
+      "text": "Seven-six or three-two make a straight... 30 more."
+    },
+    {
+      "start": 85.94,
+      "end": 89.79,
+      "text": "One card, two new families."
+    },
+    {
+      "start": 89.79,
+      "end": 91.91,
+      "text": "So before you put in another chip,"
+    },
+    {
+      "start": 91.91,
+      "end": 93.28,
+      "text": "name what beats you."
+    },
+    {
+      "start": 93.28,
+      "end": 96.15,
+      "text": "Count the families, not the faces."
+    },
+    {
+      "start": 96.15,
+      "end": 101,
+      "text": "Up next: kickers and counterfeits."
+    }
+  ],
+  "transcriptText": "You've got ace-queen. The board runs ace... jack... eight... four. Top pair, good kicker. So how many hands beat you right now? None? About ten? About sixty? About three hundred? Pick one... and hold onto it.\n\nLet's count, one family at a time. Sets first. A pocket pair that matches the board... aces, jacks, eights or fours. 10 hands. Next, two pair. Any two board cards... ace-jack, ace-eight, jack-eight... six pairings. 45 hands. Then the sneaky one. Ace-king. Same pair as you, better kicker. 8 more.\n\nNo straight or flush is possible yet. So, 63 hands beat you... and 6 tie, the other ace-queens. About sixty was the closest pick. Now here's every hand they could hold. 1,035. Most are worse than yours... but not all. And you never see which one they've got.\n\nThen the river. The five of spades. Any two spades make a flush... 45 of those. Seven-six or three-two make a straight... 30 more. One card, two new families.\n\nSo before you put in another chip, name what beats you. Count the families, not the faces. Up next: kickers and counterfeits."
 }

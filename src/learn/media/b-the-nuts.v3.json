@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-the-nuts",
-  "video": "/academy/films-v2/b-the-nuts/b7f7243f/b-the-nuts-1080.mp4",
-  "video720": "/academy/films-v2/b-the-nuts/b7f7243f/b-the-nuts-720.mp4",
-  "poster": "/academy/films-v2/b-the-nuts/b7f7243f/b-the-nuts-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-the-nuts/b7f7243f/b-the-nuts-rule.jpg",
-  "captions": "/academy/films-v2/b-the-nuts/b7f7243f/b-the-nuts.vtt",
-  "transcript": "/academy/films-v2/b-the-nuts/b7f7243f/b-the-nuts.transcript.txt",
+  "video": "/academy/films-v2/b-the-nuts/496dfd89/b-the-nuts-1080.mp4",
+  "video720": "/academy/films-v2/b-the-nuts/496dfd89/b-the-nuts-720.mp4",
+  "poster": "/academy/films-v2/b-the-nuts/496dfd89/b-the-nuts-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-the-nuts/496dfd89/b-the-nuts-rule.jpg",
+  "captions": "/academy/films-v2/b-the-nuts/496dfd89/b-the-nuts.vtt",
+  "transcript": "/academy/films-v2/b-the-nuts/496dfd89/b-the-nuts.transcript.txt",
   "durationSeconds": 95,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,173 @@
     "upNext": 91.46,
     "first": null
   },
-  "version": "b7f7243f"
+  "version": "496dfd89",
+  "cues": [
+    {
+      "start": 1.12,
+      "end": 3.35,
+      "text": "You hold ace-king of clubs."
+    },
+    {
+      "start": 3.35,
+      "end": 8.23,
+      "text": "The board runs king, queen, seven, four, two."
+    },
+    {
+      "start": 8.23,
+      "end": 11.9,
+      "text": "That's top pair, with the best kicker."
+    },
+    {
+      "start": 11.9,
+      "end": 13.75,
+      "text": "So... is anything better possible?"
+    },
+    {
+      "start": 13.75,
+      "end": 17.66,
+      "text": "Nothing beats it... or something could?"
+    },
+    {
+      "start": 17.66,
+      "end": 18.52,
+      "text": "Let's find out."
+    },
+    {
+      "start": 18.52,
+      "end": 21.67,
+      "text": "Drop any two cards into the slots."
+    },
+    {
+      "start": 21.67,
+      "end": 24.95,
+      "text": "Ace-king... a pair of kings."
+    },
+    {
+      "start": 24.95,
+      "end": 28.43,
+      "text": "Two queens... three queens."
+    },
+    {
+      "start": 28.43,
+      "end": 31.8,
+      "text": "Two kings... three kings."
+    },
+    {
+      "start": 31.8,
+      "end": 33.93,
+      "text": "No flush, no straight."
+    },
+    {
+      "start": 33.93,
+      "end": 36.09,
+      "text": "Nothing here beats that."
+    },
+    {
+      "start": 36.09,
+      "end": 37.69,
+      "text": "That's the nuts..."
+    },
+    {
+      "start": 37.69,
+      "end": 39.96,
+      "text": "the best hand this board allows."
+    },
+    {
+      "start": 39.96,
+      "end": 45.31,
+      "text": "Only three pairs make it, and ace-king isn't one."
+    },
+    {
+      "start": 45.31,
+      "end": 47.05,
+      "text": "And the nuts can move."
+    },
+    {
+      "start": 47.05,
+      "end": 49.35,
+      "text": "New flop: nine, eight, two."
+    },
+    {
+      "start": 49.35,
+      "end": 52.3,
+      "text": "Right now the nuts is a set of nines."
+    },
+    {
+      "start": 52.3,
+      "end": 54.76,
+      "text": "Then the seven of spades lands."
+    },
+    {
+      "start": 54.76,
+      "end": 58.04,
+      "text": "Now only jack-ten of spades is the nuts..."
+    },
+    {
+      "start": 58.04,
+      "end": 59.56,
+      "text": "a straight flush."
+    },
+    {
+      "start": 59.56,
+      "end": 63.5,
+      "text": "Ten-six of spades makes one too, but a lower one."
+    },
+    {
+      "start": 63.5,
+      "end": 65.68,
+      "text": "The river pairs the board..."
+    },
+    {
+      "start": 65.68,
+      "end": 69.35,
+      "text": "and the crown doesn't move."
+    },
+    {
+      "start": 69.35,
+      "end": 72.18,
+      "text": "Sometimes one hand is the nuts."
+    },
+    {
+      "start": 72.18,
+      "end": 75.73,
+      "text": "On three hearts, ace, king, seven,"
+    },
+    {
+      "start": 75.73,
+      "end": 77.82,
+      "text": "only queen-jack of hearts."
+    },
+    {
+      "start": 77.82,
+      "end": 79.73,
+      "text": "Sometimes everyone is."
+    },
+    {
+      "start": 79.73,
+      "end": 82.09,
+      "text": "Put a royal flush on the board,"
+    },
+    {
+      "start": 82.09,
+      "end": 85.84,
+      "text": "and all 1,081 hands tie."
+    },
+    {
+      "start": 85.84,
+      "end": 87.95,
+      "text": "So recheck it every street."
+    },
+    {
+      "start": 87.95,
+      "end": 91.46,
+      "text": "The nuts is the best this board allows."
+    },
+    {
+      "start": 91.46,
+      "end": 95,
+      "text": "Up next: what beats you."
+    }
+  ],
+  "transcriptText": "You hold ace-king of clubs. The board runs king, queen, seven, four, two. That's top pair, with the best kicker. So... is anything better possible? Nothing beats it... or something could?\n\nLet's find out. Drop any two cards into the slots. Ace-king... a pair of kings. Two queens... three queens. Two kings... three kings. No flush, no straight. Nothing here beats that. That's the nuts... the best hand this board allows. Only three pairs make it, and ace-king isn't one.\n\nAnd the nuts can move. New flop: nine, eight, two. Right now the nuts is a set of nines. Then the seven of spades lands. Now only jack-ten of spades is the nuts... a straight flush. Ten-six of spades makes one too, but a lower one. The river pairs the board... and the crown doesn't move.\n\nSometimes one hand is the nuts. On three hearts, ace, king, seven, only queen-jack of hearts. Sometimes everyone is. Put a royal flush on the board, and all 1,081 hands tie. So recheck it every street. The nuts is the best this board allows. Up next: what beats you."
 }

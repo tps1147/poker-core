@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "y-study",
-  "video": "/academy/films-v2/y-study/6d1df6a2/y-study-1080.mp4",
-  "video720": "/academy/films-v2/y-study/6d1df6a2/y-study-720.mp4",
-  "poster": "/academy/films-v2/y-study/6d1df6a2/y-study-poster.jpg",
-  "ruleCard": "/academy/films-v2/y-study/6d1df6a2/y-study-rule.jpg",
-  "captions": "/academy/films-v2/y-study/6d1df6a2/y-study.vtt",
-  "transcript": "/academy/films-v2/y-study/6d1df6a2/y-study.transcript.txt",
+  "video": "/academy/films-v2/y-study/58e7aced/y-study-1080.mp4",
+  "video720": "/academy/films-v2/y-study/58e7aced/y-study-720.mp4",
+  "poster": "/academy/films-v2/y-study/58e7aced/y-study-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-study/58e7aced/y-study-rule.jpg",
+  "captions": "/academy/films-v2/y-study/58e7aced/y-study.vtt",
+  "transcript": "/academy/films-v2/y-study/58e7aced/y-study.transcript.txt",
   "durationSeconds": 80,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,133 @@
     "upNext": 80,
     "first": null
   },
-  "version": "6d1df6a2"
+  "version": "58e7aced",
+  "cues": [
+    {
+      "start": 2.05,
+      "end": 5.77,
+      "text": "Two hands. In one, you lost a big pot."
+    },
+    {
+      "start": 5.77,
+      "end": 9.05,
+      "text": "In the other, you won... but weren't sure of the call."
+    },
+    {
+      "start": 9.05,
+      "end": 11.03,
+      "text": "There's time to review one."
+    },
+    {
+      "start": 11.03,
+      "end": 15.02,
+      "text": "Which one: the loss... or the unsure one?"
+    },
+    {
+      "start": 15.02,
+      "end": 17.52,
+      "text": "Pick first."
+    },
+    {
+      "start": 17.52,
+      "end": 19.54,
+      "text": "Here's a better way to keep score."
+    },
+    {
+      "start": 19.54,
+      "end": 23.04,
+      "text": "Tag each decision by how confident you felt."
+    },
+    {
+      "start": 23.04,
+      "end": 26.36,
+      "text": "Sure. Sure. Not sure."
+    },
+    {
+      "start": 26.36,
+      "end": 29.79,
+      "text": "Not whether you won: grey the results out."
+    },
+    {
+      "start": 29.79,
+      "end": 34.26,
+      "text": "Every unsure one goes to your review queue."
+    },
+    {
+      "start": 34.26,
+      "end": 36.13,
+      "text": "Why not review the losses?"
+    },
+    {
+      "start": 36.13,
+      "end": 38.1,
+      "text": "That plus-ten call from before"
+    },
+    {
+      "start": 38.1,
+      "end": 40.96,
+      "text": "still loses seventy times in a hundred."
+    },
+    {
+      "start": 40.96,
+      "end": 43.18,
+      "text": "Every one, a good decision."
+    },
+    {
+      "start": 43.18,
+      "end": 47.26,
+      "text": "Study only your losses... you mostly study good calls."
+    },
+    {
+      "start": 47.26,
+      "end": 50.47,
+      "text": "So losses are a bad filter."
+    },
+    {
+      "start": 50.47,
+      "end": 52.91,
+      "text": "Once you've reviewed a spot, don't cram it."
+    },
+    {
+      "start": 52.91,
+      "end": 57.21,
+      "text": "Decide it fresh now... then check it again later."
+    },
+    {
+      "start": 57.21,
+      "end": 60.29,
+      "text": "Spaced practice beats cramming:"
+    },
+    {
+      "start": 60.29,
+      "end": 63.25,
+      "text": "a review of hundreds of experiments shows it."
+    },
+    {
+      "start": 63.25,
+      "end": 67.46,
+      "text": "And the Academy schedules those checks for you."
+    },
+    {
+      "start": 67.46,
+      "end": 70.48,
+      "text": "So, which hand? The unsure one."
+    },
+    {
+      "start": 70.48,
+      "end": 74.29,
+      "text": "More hands won't fix a decision you never look at."
+    },
+    {
+      "start": 74.29,
+      "end": 77.36,
+      "text": "Review the decisions you weren't sure of..."
+    },
+    {
+      "start": 77.36,
+      "end": 80,
+      "text": "and come back to them later."
+    }
+  ],
+  "transcriptText": "Two hands. In one, you lost a big pot. In the other, you won... but weren't sure of the call. There's time to review one. Which one: the loss... or the unsure one? Pick first.\n\nHere's a better way to keep score. Tag each decision by how confident you felt. Sure. Sure. Not sure. Not whether you won: grey the results out. Every unsure one goes to your review queue.\n\nWhy not review the losses? That plus-ten call from before still loses seventy times in a hundred. Every one, a good decision. Study only your losses... you mostly study good calls. So losses are a bad filter.\n\nOnce you've reviewed a spot, don't cram it. Decide it fresh now... then check it again later. Spaced practice beats cramming: a review of hundreds of experiments shows it. And the Academy schedules those checks for you.\n\nSo, which hand? The unsure one. More hands won't fix a decision you never look at. Review the decisions you weren't sure of... and come back to them later."
 }

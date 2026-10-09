@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-kickers-counterfeit",
-  "video": "/academy/films-v2/b-kickers-counterfeit/34cc6223/b-kickers-counterfeit-1080.mp4",
-  "video720": "/academy/films-v2/b-kickers-counterfeit/34cc6223/b-kickers-counterfeit-720.mp4",
-  "poster": "/academy/films-v2/b-kickers-counterfeit/34cc6223/b-kickers-counterfeit-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-kickers-counterfeit/34cc6223/b-kickers-counterfeit-rule.jpg",
-  "captions": "/academy/films-v2/b-kickers-counterfeit/34cc6223/b-kickers-counterfeit.vtt",
-  "transcript": "/academy/films-v2/b-kickers-counterfeit/34cc6223/b-kickers-counterfeit.transcript.txt",
+  "video": "/academy/films-v2/b-kickers-counterfeit/bd6b01c2/b-kickers-counterfeit-1080.mp4",
+  "video720": "/academy/films-v2/b-kickers-counterfeit/bd6b01c2/b-kickers-counterfeit-720.mp4",
+  "poster": "/academy/films-v2/b-kickers-counterfeit/bd6b01c2/b-kickers-counterfeit-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-kickers-counterfeit/bd6b01c2/b-kickers-counterfeit-rule.jpg",
+  "captions": "/academy/films-v2/b-kickers-counterfeit/bd6b01c2/b-kickers-counterfeit.vtt",
+  "transcript": "/academy/films-v2/b-kickers-counterfeit/bd6b01c2/b-kickers-counterfeit.transcript.txt",
   "durationSeconds": 101,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,173 @@
     "upNext": 95.68,
     "first": null
   },
-  "version": "34cc6223"
+  "version": "bd6b01c2",
+  "cues": [
+    {
+      "start": 1.19,
+      "end": 2.52,
+      "text": "You flop two pair."
+    },
+    {
+      "start": 2.52,
+      "end": 5,
+      "text": "A card comes that doesn't help them..."
+    },
+    {
+      "start": 5,
+      "end": 6.96,
+      "text": "and you lose. How?"
+    },
+    {
+      "start": 6.96,
+      "end": 10.64,
+      "text": "The flop: ace, three, nine."
+    },
+    {
+      "start": 10.64,
+      "end": 14.86,
+      "text": "You hold ace-three. Ace Andy holds ace-king."
+    },
+    {
+      "start": 14.86,
+      "end": 17.63,
+      "text": "The turn: the nine of hearts."
+    },
+    {
+      "start": 17.63,
+      "end": 21.39,
+      "text": "Still winning... or does Andy win now?"
+    },
+    {
+      "start": 21.39,
+      "end": 23.24,
+      "text": "On the flop, you're ahead."
+    },
+    {
+      "start": 23.24,
+      "end": 26.39,
+      "text": "Aces and threes beat Andy's pair of aces."
+    },
+    {
+      "start": 26.39,
+      "end": 28.64,
+      "text": "Then the nine pairs the board..."
+    },
+    {
+      "start": 28.64,
+      "end": 30.95,
+      "text": "and everyone gets that pair."
+    },
+    {
+      "start": 30.95,
+      "end": 34.89,
+      "text": "Your best five: aces and nines, with a three."
+    },
+    {
+      "start": 34.89,
+      "end": 38.15,
+      "text": "Andy's: aces and nines, with a king."
+    },
+    {
+      "start": 38.15,
+      "end": 40.76,
+      "text": "Your pair of threes doesn't count anymore."
+    },
+    {
+      "start": 40.76,
+      "end": 42.04,
+      "text": "It's counterfeited."
+    },
+    {
+      "start": 42.04,
+      "end": 47.18,
+      "text": "And Andy's king beats your three."
+    },
+    {
+      "start": 47.18,
+      "end": 50.3,
+      "text": "Andy's cards didn't change. Yours got worse."
+    },
+    {
+      "start": 50.3,
+      "end": 52.46,
+      "text": "Now the extreme version."
+    },
+    {
+      "start": 52.46,
+      "end": 54.08,
+      "text": "You hold pocket fours."
+    },
+    {
+      "start": 54.08,
+      "end": 58.13,
+      "text": "The board: king, king, nine, nine, queen."
+    },
+    {
+      "start": 58.13,
+      "end": 61.31,
+      "text": "Your best five is the board itself..."
+    },
+    {
+      "start": 61.31,
+      "end": 63.04,
+      "text": "your fours don't play."
+    },
+    {
+      "start": 63.04,
+      "end": 66.12,
+      "text": "Jack-deuce plays the board too. Split."
+    },
+    {
+      "start": 66.12,
+      "end": 69.66,
+      "text": "Any ace? It beats you."
+    },
+    {
+      "start": 69.66,
+      "end": 72.24,
+      "text": "Against every hand they could hold..."
+    },
+    {
+      "start": 72.24,
+      "end": 77.08,
+      "text": "990... 457 beat you."
+    },
+    {
+      "start": 77.08,
+      "end": 81.29,
+      "text": "The rest tie. Not one is worse."
+    },
+    {
+      "start": 81.29,
+      "end": 82.56,
+      "text": "And with the same pair,"
+    },
+    {
+      "start": 82.56,
+      "end": 84.1,
+      "text": "the kicker decides."
+    },
+    {
+      "start": 84.1,
+      "end": 90.76,
+      "text": "Ace-king beats ace-jack... king over jack."
+    },
+    {
+      "start": 90.76,
+      "end": 92.17,
+      "text": "So when the board pairs, ask..."
+    },
+    {
+      "start": 92.17,
+      "end": 95.68,
+      "text": "does my hand still use my cards?"
+    },
+    {
+      "start": 95.68,
+      "end": 101,
+      "text": "Up next: board shapes."
+    }
+  ],
+  "transcriptText": "You flop two pair. A card comes that doesn't help them... and you lose. How? The flop: ace, three, nine. You hold ace-three. Ace Andy holds ace-king. The turn: the nine of hearts. Still winning... or does Andy win now?\n\nOn the flop, you're ahead. Aces and threes beat Andy's pair of aces. Then the nine pairs the board... and everyone gets that pair. Your best five: aces and nines, with a three. Andy's: aces and nines, with a king. Your pair of threes doesn't count anymore. It's counterfeited. And Andy's king beats your three.\n\nAndy's cards didn't change. Yours got worse. Now the extreme version. You hold pocket fours. The board: king, king, nine, nine, queen. Your best five is the board itself... your fours don't play. Jack-deuce plays the board too. Split. Any ace? It beats you.\n\nAgainst every hand they could hold... 990... 457 beat you. The rest tie. Not one is worse. And with the same pair, the kicker decides. Ace-king beats ace-jack... king over jack.\n\nSo when the board pairs, ask... does my hand still use my cards? Up next: board shapes."
 }

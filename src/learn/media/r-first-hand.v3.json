@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-first-hand",
-  "video": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-1080.mp4",
-  "video720": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-720.mp4",
-  "poster": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-rule.jpg",
-  "captions": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand.vtt",
-  "transcript": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand.transcript.txt",
+  "video": "/academy/films-v2/r-first-hand/e9c45e32/r-first-hand-1080.mp4",
+  "video720": "/academy/films-v2/r-first-hand/e9c45e32/r-first-hand-720.mp4",
+  "poster": "/academy/films-v2/r-first-hand/e9c45e32/r-first-hand-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-first-hand/e9c45e32/r-first-hand-rule.jpg",
+  "captions": "/academy/films-v2/r-first-hand/e9c45e32/r-first-hand.vtt",
+  "transcript": "/academy/films-v2/r-first-hand/e9c45e32/r-first-hand.transcript.txt",
   "durationSeconds": 68,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,138 @@
     "upNext": 63.7,
     "first": null
   },
-  "version": "13858f2e"
+  "version": "e9c45e32",
+  "cues": [
+    {
+      "start": 2.31,
+      "end": 3.67,
+      "text": "Everything you've learned..."
+    },
+    {
+      "start": 3.67,
+      "end": 5.43,
+      "text": "comes down to one hand."
+    },
+    {
+      "start": 5.43,
+      "end": 7.85,
+      "text": "There's a seat with your name on it."
+    },
+    {
+      "start": 7.85,
+      "end": 10.5,
+      "text": "Ready?"
+    },
+    {
+      "start": 10.5,
+      "end": 12.75,
+      "text": "Before you sit, check your toolbelt."
+    },
+    {
+      "start": 12.75,
+      "end": 14.92,
+      "text": "The deck. The rankings."
+    },
+    {
+      "start": 14.92,
+      "end": 16.2,
+      "text": "Best five."
+    },
+    {
+      "start": 16.2,
+      "end": 19.55,
+      "text": "Blinds, actions, rounds."
+    },
+    {
+      "start": 19.55,
+      "end": 22.41,
+      "text": "Showdown... and side pots."
+    },
+    {
+      "start": 22.41,
+      "end": 26.43,
+      "text": "Every rule you need is already in your hands."
+    },
+    {
+      "start": 26.43,
+      "end": 27.56,
+      "text": "Here's how it works."
+    },
+    {
+      "start": 27.56,
+      "end": 30.68,
+      "text": "Every so often, the hand pauses..."
+    },
+    {
+      "start": 30.68,
+      "end": 32.34,
+      "text": "for a quick rules check."
+    },
+    {
+      "start": 32.34,
+      "end": 34.8,
+      "text": "Who acts first before the flop?"
+    },
+    {
+      "start": 34.8,
+      "end": 39.21,
+      "text": "You do. Heads-up, the button goes first preflop."
+    },
+    {
+      "start": 39.21,
+      "end": 42.43,
+      "text": "Which buttons are legal? What's in the pot?"
+    },
+    {
+      "start": 42.43,
+      "end": 44.34,
+      "text": "Those have right answers."
+    },
+    {
+      "start": 44.34,
+      "end": 48.17,
+      "text": "Tap one, and the hand carries on."
+    },
+    {
+      "start": 48.17,
+      "end": 49.92,
+      "text": "But your poker choices..."
+    },
+    {
+      "start": 49.92,
+      "end": 52.54,
+      "text": "fold, call, or raise..."
+    },
+    {
+      "start": 52.54,
+      "end": 53.93,
+      "text": "those are yours."
+    },
+    {
+      "start": 53.93,
+      "end": 58.07,
+      "text": "Nobody grades them... not even the result."
+    },
+    {
+      "start": 58.07,
+      "end": 59.45,
+      "text": "Ada's sitting down."
+    },
+    {
+      "start": 59.45,
+      "end": 62.41,
+      "text": "You post five, she posts ten."
+    },
+    {
+      "start": 62.41,
+      "end": 63.7,
+      "text": "You've got the button."
+    },
+    {
+      "start": 63.7,
+      "end": 68,
+      "text": "Your first full hand... let's deal."
+    }
+  ],
+  "transcriptText": "Everything you've learned... comes down to one hand. There's a seat with your name on it. Ready?\n\nBefore you sit, check your toolbelt. The deck. The rankings. Best five. Blinds, actions, rounds. Showdown... and side pots. Every rule you need is already in your hands.\n\nHere's how it works. Every so often, the hand pauses... for a quick rules check. Who acts first before the flop? You do. Heads-up, the button goes first preflop. Which buttons are legal? What's in the pot? Those have right answers. Tap one, and the hand carries on.\n\nBut your poker choices... fold, call, or raise... those are yours. Nobody grades them... not even the result.\n\nAda's sitting down. You post five, she posts ten. You've got the button. Your first full hand... let's deal."
 }

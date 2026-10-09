@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 14.64
   },
-  "version": "b4f000c9"
+  "version": "b4f000c9",
+  "cues": [
+    {
+      "start": 1.73,
+      "end": 3.99,
+      "text": "Chapter five. Postflop."
+    },
+    {
+      "start": 3.99,
+      "end": 6.47,
+      "text": "Three cards hit the felt,"
+    },
+    {
+      "start": 6.47,
+      "end": 8.62,
+      "text": "and the real thinking starts."
+    },
+    {
+      "start": 8.62,
+      "end": 11.83,
+      "text": "By the end, you'll think in ranges, read the flop,"
+    },
+    {
+      "start": 11.83,
+      "end": 14.64,
+      "text": "and bet with a reason and a size."
+    },
+    {
+      "start": 14.64,
+      "end": 20,
+      "text": "First up: Ranges, Not Hands."
+    }
+  ],
+  "transcriptText": "Chapter five. Postflop. Three cards hit the felt, and the real thinking starts. By the end, you'll think in ranges, read the flop, and bet with a reason and a size. First up: Ranges, Not Hands."
 }

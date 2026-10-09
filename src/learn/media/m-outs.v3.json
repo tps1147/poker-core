@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-outs",
-  "video": "/academy/films-v2/m-outs/6727fd30/m-outs-1080.mp4",
-  "video720": "/academy/films-v2/m-outs/6727fd30/m-outs-720.mp4",
-  "poster": "/academy/films-v2/m-outs/6727fd30/m-outs-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-outs/6727fd30/m-outs-rule.jpg",
-  "captions": "/academy/films-v2/m-outs/6727fd30/m-outs.vtt",
-  "transcript": "/academy/films-v2/m-outs/6727fd30/m-outs.transcript.txt",
+  "video": "/academy/films-v2/m-outs/9548bc60/m-outs-1080.mp4",
+  "video720": "/academy/films-v2/m-outs/9548bc60/m-outs-720.mp4",
+  "poster": "/academy/films-v2/m-outs/9548bc60/m-outs-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-outs/9548bc60/m-outs-rule.jpg",
+  "captions": "/academy/films-v2/m-outs/9548bc60/m-outs.vtt",
+  "transcript": "/academy/films-v2/m-outs/9548bc60/m-outs.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,163 @@
     "upNext": 88.93,
     "first": null
   },
-  "version": "6727fd30"
+  "version": "9548bc60",
+  "cues": [
+    {
+      "start": 1.15,
+      "end": 5.1,
+      "text": "You need help. How many cards in this deck save you?"
+    },
+    {
+      "start": 5.1,
+      "end": 7.67,
+      "text": "You hold the jack and ten of clubs,"
+    },
+    {
+      "start": 7.67,
+      "end": 11.22,
+      "text": "on nine of clubs, four, two, king."
+    },
+    {
+      "start": 11.22,
+      "end": 14.23,
+      "text": "They've got two pair or better... that's given."
+    },
+    {
+      "start": 14.23,
+      "end": 18.17,
+      "text": "So a straight or a flush wins. Nothing else does."
+    },
+    {
+      "start": 18.17,
+      "end": 21.73,
+      "text": "Pick a number... and lock it in."
+    },
+    {
+      "start": 21.73,
+      "end": 24.14,
+      "text": "Let's count. You can see six cards,"
+    },
+    {
+      "start": 24.14,
+      "end": 26.18,
+      "text": "so 46 are unseen."
+    },
+    {
+      "start": 26.18,
+      "end": 28.49,
+      "text": "Any club makes your flush."
+    },
+    {
+      "start": 28.49,
+      "end": 32.84,
+      "text": "13 clubs, minus the 4 you can see... 9."
+    },
+    {
+      "start": 32.84,
+      "end": 36.42,
+      "text": "Any queen makes your straight. 4 more."
+    },
+    {
+      "start": 36.42,
+      "end": 39.07,
+      "text": "But the queen of clubs is already counted,"
+    },
+    {
+      "start": 39.07,
+      "end": 40.42,
+      "text": "so take one away."
+    },
+    {
+      "start": 40.42,
+      "end": 43.66,
+      "text": "12 outs."
+    },
+    {
+      "start": 43.66,
+      "end": 45.75,
+      "text": "What about a jack, or a ten?"
+    },
+    {
+      "start": 45.75,
+      "end": 49.9,
+      "text": "Sure, they pair you... but a pair still loses here."
+    },
+    {
+      "start": 49.9,
+      "end": 51.25,
+      "text": "Not outs."
+    },
+    {
+      "start": 51.25,
+      "end": 54.29,
+      "text": "Count them anyway and you'd say 18."
+    },
+    {
+      "start": 54.29,
+      "end": 56.84,
+      "text": "Now turn over every river, once each."
+    },
+    {
+      "start": 56.84,
+      "end": 59.99,
+      "text": "12 win... 34 don't."
+    },
+    {
+      "start": 59.99,
+      "end": 64.92,
+      "text": "12 in 46. About 26%."
+    },
+    {
+      "start": 64.92,
+      "end": 68.98,
+      "text": "Your turn. Queen-jack of diamonds, on ten, nine, three."
+    },
+    {
+      "start": 68.98,
+      "end": 73.92,
+      "text": "It's the flop, so 47 unseen, and only a straight wins."
+    },
+    {
+      "start": 73.92,
+      "end": 75.21,
+      "text": "Count first..."
+    },
+    {
+      "start": 75.21,
+      "end": 77.69,
+      "text": "Any king. Any eight."
+    },
+    {
+      "start": 77.69,
+      "end": 78.97,
+      "text": "8 outs."
+    },
+    {
+      "start": 78.97,
+      "end": 81.34,
+      "text": "The queens and jacks just pair you."
+    },
+    {
+      "start": 81.34,
+      "end": 85.04,
+      "text": "8 in 47... about 17%."
+    },
+    {
+      "start": 85.04,
+      "end": 87.08,
+      "text": "An out makes you the winner."
+    },
+    {
+      "start": 87.08,
+      "end": 88.93,
+      "text": "Count each card once."
+    },
+    {
+      "start": 88.93,
+      "end": 93,
+      "text": "Up next: the rule of two and four."
+    }
+  ],
+  "transcriptText": "You need help. How many cards in this deck save you? You hold the jack and ten of clubs, on nine of clubs, four, two, king. They've got two pair or better... that's given. So a straight or a flush wins. Nothing else does. Pick a number... and lock it in.\n\nLet's count. You can see six cards, so 46 are unseen. Any club makes your flush. 13 clubs, minus the 4 you can see... 9. Any queen makes your straight. 4 more. But the queen of clubs is already counted, so take one away. 12 outs.\n\nWhat about a jack, or a ten? Sure, they pair you... but a pair still loses here. Not outs. Count them anyway and you'd say 18. Now turn over every river, once each. 12 win... 34 don't. 12 in 46. About 26%.\n\nYour turn. Queen-jack of diamonds, on ten, nine, three. It's the flop, so 47 unseen, and only a straight wins. Count first... Any king. Any eight. 8 outs. The queens and jacks just pair you. 8 in 47... about 17%. An out makes you the winner. Count each card once. Up next: the rule of two and four."
 }

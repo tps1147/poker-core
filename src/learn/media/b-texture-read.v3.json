@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "b-texture-read",
-  "video": "/academy/films-v2/b-texture-read/0e750fd6/b-texture-read-1080.mp4",
-  "video720": "/academy/films-v2/b-texture-read/0e750fd6/b-texture-read-720.mp4",
-  "poster": "/academy/films-v2/b-texture-read/0e750fd6/b-texture-read-poster.jpg",
-  "ruleCard": "/academy/films-v2/b-texture-read/0e750fd6/b-texture-read-rule.jpg",
-  "captions": "/academy/films-v2/b-texture-read/0e750fd6/b-texture-read.vtt",
-  "transcript": "/academy/films-v2/b-texture-read/0e750fd6/b-texture-read.transcript.txt",
+  "video": "/academy/films-v2/b-texture-read/cf81833c/b-texture-read-1080.mp4",
+  "video720": "/academy/films-v2/b-texture-read/cf81833c/b-texture-read-720.mp4",
+  "poster": "/academy/films-v2/b-texture-read/cf81833c/b-texture-read-poster.jpg",
+  "ruleCard": "/academy/films-v2/b-texture-read/cf81833c/b-texture-read-rule.jpg",
+  "captions": "/academy/films-v2/b-texture-read/cf81833c/b-texture-read.vtt",
+  "transcript": "/academy/films-v2/b-texture-read/cf81833c/b-texture-read.transcript.txt",
   "durationSeconds": 103,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,173 @@
     "upNext": 97.38,
     "first": null
   },
-  "version": "0e750fd6"
+  "version": "cf81833c",
+  "cues": [
+    {
+      "start": 2.31,
+      "end": 6.4,
+      "text": "Five flops. Same deck, same rules..."
+    },
+    {
+      "start": 6.4,
+      "end": 9.05,
+      "text": "...but they're not all equally dangerous."
+    },
+    {
+      "start": 9.05,
+      "end": 10.33,
+      "text": "So here's the question."
+    },
+    {
+      "start": 10.33,
+      "end": 14.12,
+      "text": "On which of these could someone already have a flush?"
+    },
+    {
+      "start": 14.12,
+      "end": 15.98,
+      "text": "Pick one... or more."
+    },
+    {
+      "start": 15.98,
+      "end": 20.12,
+      "text": "Hold that thought."
+    },
+    {
+      "start": 20.12,
+      "end": 21.71,
+      "text": "Every board has a shape,"
+    },
+    {
+      "start": 21.71,
+      "end": 24.42,
+      "text": "and you can read it right off the cards."
+    },
+    {
+      "start": 24.42,
+      "end": 29,
+      "text": "King, seven, deuce... three different suits."
+    },
+    {
+      "start": 29,
+      "end": 33.06,
+      "text": "No pair, no suit, nothing close together."
+    },
+    {
+      "start": 33.06,
+      "end": 34.59,
+      "text": "That's dry."
+    },
+    {
+      "start": 34.59,
+      "end": 37.67,
+      "text": "The best anyone can have here is a set."
+    },
+    {
+      "start": 37.67,
+      "end": 41.15,
+      "text": "Now pair it up. King, king, four."
+    },
+    {
+      "start": 41.15,
+      "end": 43.72,
+      "text": "A paired board lets full houses in..."
+    },
+    {
+      "start": 43.72,
+      "end": 45.19,
+      "text": "...even four of a kind."
+    },
+    {
+      "start": 45.19,
+      "end": 49.33,
+      "text": "But still no straight, and no flush."
+    },
+    {
+      "start": 49.33,
+      "end": 53.76,
+      "text": "Ace, eight, three... all hearts. That's suited."
+    },
+    {
+      "start": 53.76,
+      "end": 56.25,
+      "text": "Any two of the ten hearts that are left"
+    },
+    {
+      "start": 56.25,
+      "end": 58.6,
+      "text": "make a flush right now."
+    },
+    {
+      "start": 58.6,
+      "end": 61.67,
+      "text": "45 combos."
+    },
+    {
+      "start": 61.67,
+      "end": 64.49,
+      "text": "So, back to your pick. Only this one."
+    },
+    {
+      "start": 64.49,
+      "end": 68.53,
+      "text": "One flop in five lets a flush in already."
+    },
+    {
+      "start": 68.53,
+      "end": 70.87,
+      "text": "Nine, eight, seven. That's connected."
+    },
+    {
+      "start": 70.87,
+      "end": 74.33,
+      "text": "Jack-ten, ten-six or six-five..."
+    },
+    {
+      "start": 74.33,
+      "end": 77.46,
+      "text": "48 combos already make a straight."
+    },
+    {
+      "start": 77.46,
+      "end": 79.24,
+      "text": "And the sneaky one."
+    },
+    {
+      "start": 79.24,
+      "end": 82.13,
+      "text": "Jack, ten, four, with two hearts."
+    },
+    {
+      "start": 82.13,
+      "end": 85.02,
+      "text": "No straight or flush is possible yet."
+    },
+    {
+      "start": 85.02,
+      "end": 88.84,
+      "text": "But 55 combos are drawing to a flush..."
+    },
+    {
+      "start": 88.84,
+      "end": 92.59,
+      "text": "...and 48 to an open-ended straight."
+    },
+    {
+      "start": 92.59,
+      "end": 94.27,
+      "text": "So read the shape first."
+    },
+    {
+      "start": 94.27,
+      "end": 97.38,
+      "text": "What's possible now... and what's still coming."
+    },
+    {
+      "start": 97.38,
+      "end": 103,
+      "text": "Up next: the Math Spine."
+    }
+  ],
+  "transcriptText": "Five flops. Same deck, same rules... ...but they're not all equally dangerous. So here's the question. On which of these could someone already have a flush? Pick one... or more. Hold that thought.\n\nEvery board has a shape, and you can read it right off the cards. King, seven, deuce... three different suits. No pair, no suit, nothing close together. That's dry. The best anyone can have here is a set. Now pair it up. King, king, four. A paired board lets full houses in... ...even four of a kind. But still no straight, and no flush.\n\nAce, eight, three... all hearts. That's suited. Any two of the ten hearts that are left make a flush right now. 45 combos.\n\nSo, back to your pick. Only this one. One flop in five lets a flush in already. Nine, eight, seven. That's connected. Jack-ten, ten-six or six-five... 48 combos already make a straight. And the sneaky one. Jack, ten, four, with two hearts. No straight or flush is possible yet. But 55 combos are drawing to a flush... ...and 48 to an open-ended straight.\n\nSo read the shape first. What's possible now... and what's still coming. Up next: the Math Spine."
 }

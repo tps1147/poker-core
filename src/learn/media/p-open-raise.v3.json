@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-open-raise",
-  "video": "/academy/films-v2/p-open-raise/6caa116c/p-open-raise-1080.mp4",
-  "video720": "/academy/films-v2/p-open-raise/6caa116c/p-open-raise-720.mp4",
-  "poster": "/academy/films-v2/p-open-raise/6caa116c/p-open-raise-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-open-raise/6caa116c/p-open-raise-rule.jpg",
-  "captions": "/academy/films-v2/p-open-raise/6caa116c/p-open-raise.vtt",
-  "transcript": "/academy/films-v2/p-open-raise/6caa116c/p-open-raise.transcript.txt",
+  "video": "/academy/films-v2/p-open-raise/6069718a/p-open-raise-1080.mp4",
+  "video720": "/academy/films-v2/p-open-raise/6069718a/p-open-raise-720.mp4",
+  "poster": "/academy/films-v2/p-open-raise/6069718a/p-open-raise-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-open-raise/6069718a/p-open-raise-rule.jpg",
+  "captions": "/academy/films-v2/p-open-raise/6069718a/p-open-raise.vtt",
+  "transcript": "/academy/films-v2/p-open-raise/6069718a/p-open-raise.transcript.txt",
   "durationSeconds": 103,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,173 @@
     "upNext": 99.06,
     "first": null
   },
-  "version": "6caa116c"
+  "version": "6069718a",
+  "cues": [
+    {
+      "start": 1.31,
+      "end": 3.07,
+      "text": "Ace-eight, folded to you."
+    },
+    {
+      "start": 3.07,
+      "end": 5.3,
+      "text": "Open it, or fold it?"
+    },
+    {
+      "start": 5.3,
+      "end": 7.33,
+      "text": "Always open an ace..."
+    },
+    {
+      "start": 7.33,
+      "end": 12.88,
+      "text": "or does it depend on your seat? Pick one."
+    },
+    {
+      "start": 12.88,
+      "end": 15.99,
+      "text": "Under the gun, 5 players act behind you..."
+    },
+    {
+      "start": 15.99,
+      "end": 18.16,
+      "text": "open about 12%."
+    },
+    {
+      "start": 18.16,
+      "end": 21.96,
+      "text": "Middle position, 4 behind... 16%."
+    },
+    {
+      "start": 21.96,
+      "end": 25.56,
+      "text": "The cutoff, 3 behind... 24%."
+    },
+    {
+      "start": 25.56,
+      "end": 29.4,
+      "text": "The button, 2 behind... 41%."
+    },
+    {
+      "start": 29.4,
+      "end": 33.63,
+      "text": "And ace-eight? It only opens here, on the button."
+    },
+    {
+      "start": 33.63,
+      "end": 37.2,
+      "text": "These charts are a rule of thumb."
+    },
+    {
+      "start": 37.2,
+      "end": 38.88,
+      "text": "Why does the seat matter?"
+    },
+    {
+      "start": 38.88,
+      "end": 42.31,
+      "text": "Jacks or better, or ace-king..."
+    },
+    {
+      "start": 42.31,
+      "end": 45.72,
+      "text": "40 combos, about 3% of hands."
+    },
+    {
+      "start": 45.72,
+      "end": 47.5,
+      "text": "With 5 behind you,"
+    },
+    {
+      "start": 47.5,
+      "end": 50.82,
+      "text": "someone holds one about 14% of the time."
+    },
+    {
+      "start": 50.82,
+      "end": 53.5,
+      "text": "With 2 behind, about 6%."
+    },
+    {
+      "start": 53.5,
+      "end": 57.1,
+      "text": "Fewer players, fewer monsters."
+    },
+    {
+      "start": 57.1,
+      "end": 59.13,
+      "text": "And when you play, raise."
+    },
+    {
+      "start": 59.13,
+      "end": 62.34,
+      "text": "Limp in for 10, and the big blind owes nothing."
+    },
+    {
+      "start": 62.34,
+      "end": 64.23,
+      "text": "They see a flop for free."
+    },
+    {
+      "start": 64.23,
+      "end": 67.88,
+      "text": "Raise to 25, and they owe 15..."
+    },
+    {
+      "start": 67.88,
+      "end": 72.75,
+      "text": "into a final pot of 55. About 27%."
+    },
+    {
+      "start": 72.75,
+      "end": 74.67,
+      "text": "Now they pay to come in,"
+    },
+    {
+      "start": 74.67,
+      "end": 79.05,
+      "text": "and the 15 in the blinds can be yours right now."
+    },
+    {
+      "start": 79.05,
+      "end": 82.8,
+      "text": "Your turn. Seven-six suited, in middle position."
+    },
+    {
+      "start": 82.8,
+      "end": 85.19,
+      "text": "Open or fold?"
+    },
+    {
+      "start": 85.19,
+      "end": 87.86,
+      "text": "It's not in the chart. Fold."
+    },
+    {
+      "start": 87.86,
+      "end": 92.73,
+      "text": "Same hand in the cutoff... it's in. Raise."
+    },
+    {
+      "start": 92.73,
+      "end": 94.42,
+      "text": "So count the players behind you."
+    },
+    {
+      "start": 94.42,
+      "end": 97.02,
+      "text": "Fewer behind, wider range."
+    },
+    {
+      "start": 97.02,
+      "end": 99.06,
+      "text": "And come in raising."
+    },
+    {
+      "start": 99.06,
+      "end": 103,
+      "text": "Up next: defending the blinds."
+    }
+  ],
+  "transcriptText": "Ace-eight, folded to you. Open it, or fold it? Always open an ace... or does it depend on your seat? Pick one.\n\nUnder the gun, 5 players act behind you... open about 12%. Middle position, 4 behind... 16%. The cutoff, 3 behind... 24%. The button, 2 behind... 41%. And ace-eight? It only opens here, on the button. These charts are a rule of thumb.\n\nWhy does the seat matter? Jacks or better, or ace-king... 40 combos, about 3% of hands. With 5 behind you, someone holds one about 14% of the time. With 2 behind, about 6%. Fewer players, fewer monsters.\n\nAnd when you play, raise. Limp in for 10, and the big blind owes nothing. They see a flop for free. Raise to 25, and they owe 15... into a final pot of 55. About 27%. Now they pay to come in, and the 15 in the blinds can be yours right now.\n\nYour turn. Seven-six suited, in middle position. Open or fold? It's not in the chart. Fold. Same hand in the cutoff... it's in. Raise. So count the players behind you. Fewer behind, wider range. And come in raising. Up next: defending the blinds."
 }

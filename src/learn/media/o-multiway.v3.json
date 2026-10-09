@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-multiway",
-  "video": "/academy/films-v2/o-multiway/d9ddd190/o-multiway-1080.mp4",
-  "video720": "/academy/films-v2/o-multiway/d9ddd190/o-multiway-720.mp4",
-  "poster": "/academy/films-v2/o-multiway/d9ddd190/o-multiway-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-multiway/d9ddd190/o-multiway-rule.jpg",
-  "captions": "/academy/films-v2/o-multiway/d9ddd190/o-multiway.vtt",
-  "transcript": "/academy/films-v2/o-multiway/d9ddd190/o-multiway.transcript.txt",
+  "video": "/academy/films-v2/o-multiway/c269f364/o-multiway-1080.mp4",
+  "video720": "/academy/films-v2/o-multiway/c269f364/o-multiway-720.mp4",
+  "poster": "/academy/films-v2/o-multiway/c269f364/o-multiway-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-multiway/c269f364/o-multiway-rule.jpg",
+  "captions": "/academy/films-v2/o-multiway/c269f364/o-multiway.vtt",
+  "transcript": "/academy/films-v2/o-multiway/c269f364/o-multiway.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,148 @@
     "upNext": 91,
     "first": null
   },
-  "version": "d9ddd190"
+  "version": "c269f364",
+  "cues": [
+    {
+      "start": 2.38,
+      "end": 4.84,
+      "text": "Welcome to other tables."
+    },
+    {
+      "start": 4.84,
+      "end": 7.49,
+      "text": "Top pair against one player is strong."
+    },
+    {
+      "start": 7.49,
+      "end": 8.82,
+      "text": "Against three?"
+    },
+    {
+      "start": 8.82,
+      "end": 12.78,
+      "text": "A♦ J♣, on J♥ 7♠ 3♦."
+    },
+    {
+      "start": 12.78,
+      "end": 15.97,
+      "text": "How often is someone already ahead..."
+    },
+    {
+      "start": 15.97,
+      "end": 21.64,
+      "text": "against one, two, or three? Take a guess."
+    },
+    {
+      "start": 21.64,
+      "end": 23.79,
+      "text": "Let's count, against random hands,"
+    },
+    {
+      "start": 23.79,
+      "end": 25.29,
+      "text": "just as an illustration."
+    },
+    {
+      "start": 25.29,
+      "end": 31.46,
+      "text": "One player... 43 of his 1,081 hands are ahead."
+    },
+    {
+      "start": 31.46,
+      "end": 32.69,
+      "text": "4.0%."
+    },
+    {
+      "start": 32.69,
+      "end": 35.37,
+      "text": "A second... 7.8%."
+    },
+    {
+      "start": 35.37,
+      "end": 38.37,
+      "text": "A third... 11.5%."
+    },
+    {
+      "start": 38.37,
+      "end": 40.32,
+      "text": "No future cards."
+    },
+    {
+      "start": 40.32,
+      "end": 45.11,
+      "text": "Each seat just adds hands that already beat you."
+    },
+    {
+      "start": 45.11,
+      "end": 46.02,
+      "text": "Now bluff."
+    },
+    {
+      "start": 46.02,
+      "end": 49.26,
+      "text": "2/3 of the pot needs 40% folds."
+    },
+    {
+      "start": 49.26,
+      "end": 52.93,
+      "text": "Say each player folds 60%, on his own."
+    },
+    {
+      "start": 52.93,
+      "end": 54.89,
+      "text": "Heads-up, that's enough."
+    },
+    {
+      "start": 54.89,
+      "end": 57.72,
+      "text": "Against two, both must fold:"
+    },
+    {
+      "start": 57.72,
+      "end": 61.41,
+      "text": "0.6 × 0.6, 36%."
+    },
+    {
+      "start": 61.41,
+      "end": 64.26,
+      "text": "Against three, 21.6%."
+    },
+    {
+      "start": 64.26,
+      "end": 69.34,
+      "text": "The bluff that works against one fails against two."
+    },
+    {
+      "start": 69.34,
+      "end": 73.64,
+      "text": "Your turn. Two players, each folds 70%."
+    },
+    {
+      "start": 73.64,
+      "end": 75.02,
+      "text": "Both fold?"
+    },
+    {
+      "start": 75.02,
+      "end": 79.39,
+      "text": "0.7 × 0.7... 49%."
+    },
+    {
+      "start": 79.39,
+      "end": 82.72,
+      "text": "Above 40%, so you can bet."
+    },
+    {
+      "start": 82.72,
+      "end": 85.91,
+      "text": "Every extra player is another range to beat."
+    },
+    {
+      "start": 85.91,
+      "end": 91,
+      "text": "Bluff less, and value bet stronger hands."
+    }
+  ],
+  "transcriptText": "Welcome to other tables. Top pair against one player is strong. Against three? A♦ J♣, on J♥ 7♠ 3♦. How often is someone already ahead... against one, two, or three? Take a guess.\n\nLet's count, against random hands, just as an illustration. One player... 43 of his 1,081 hands are ahead. 4.0%. A second... 7.8%. A third... 11.5%. No future cards. Each seat just adds hands that already beat you.\n\nNow bluff. 2/3 of the pot needs 40% folds. Say each player folds 60%, on his own. Heads-up, that's enough. Against two, both must fold: 0.6 × 0.6, 36%. Against three, 21.6%. The bluff that works against one fails against two.\n\nYour turn. Two players, each folds 70%. Both fold? 0.7 × 0.7... 49%. Above 40%, so you can bet. Every extra player is another range to beat. Bluff less, and value bet stronger hands."
 }

@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 13.98
   },
-  "version": "12b8ffac"
+  "version": "12b8ffac",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 4.62,
+      "text": "Chapter one. How a Hand Plays."
+    },
+    {
+      "start": 4.62,
+      "end": 7.76,
+      "text": "The deck, the rankings, the seats,"
+    },
+    {
+      "start": 7.76,
+      "end": 9.5,
+      "text": "the betting, the showdown."
+    },
+    {
+      "start": 9.5,
+      "end": 11.7,
+      "text": "By the end, you'll play a full hand"
+    },
+    {
+      "start": 11.7,
+      "end": 13.98,
+      "text": "without a single question about the rules."
+    },
+    {
+      "start": 13.98,
+      "end": 19,
+      "text": "First up: The Deck, fifty-two cards."
+    }
+  ],
+  "transcriptText": "Chapter one. How a Hand Plays. The deck, the rankings, the seats, the betting, the showdown. By the end, you'll play a full hand without a single question about the rules. First up: The Deck, fifty-two cards."
 }

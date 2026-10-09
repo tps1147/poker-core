@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-position-value",
-  "video": "/academy/films-v2/p-position-value/01d177b0/p-position-value-1080.mp4",
-  "video720": "/academy/films-v2/p-position-value/01d177b0/p-position-value-720.mp4",
-  "poster": "/academy/films-v2/p-position-value/01d177b0/p-position-value-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-position-value/01d177b0/p-position-value-rule.jpg",
-  "captions": "/academy/films-v2/p-position-value/01d177b0/p-position-value.vtt",
-  "transcript": "/academy/films-v2/p-position-value/01d177b0/p-position-value.transcript.txt",
+  "video": "/academy/films-v2/p-position-value/b14e7198/p-position-value-1080.mp4",
+  "video720": "/academy/films-v2/p-position-value/b14e7198/p-position-value-720.mp4",
+  "poster": "/academy/films-v2/p-position-value/b14e7198/p-position-value-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-position-value/b14e7198/p-position-value-rule.jpg",
+  "captions": "/academy/films-v2/p-position-value/b14e7198/p-position-value.vtt",
+  "transcript": "/academy/films-v2/p-position-value/b14e7198/p-position-value.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,178 @@
     "upNext": 94.41,
     "first": null
   },
-  "version": "01d177b0"
+  "version": "b14e7198",
+  "cues": [
+    {
+      "start": 2.26,
+      "end": 3.51,
+      "text": "Welcome to preflop."
+    },
+    {
+      "start": 3.51,
+      "end": 6.62,
+      "text": "Which hands, from which seat, for how much."
+    },
+    {
+      "start": 6.62,
+      "end": 8.91,
+      "text": "Let's start with the seat."
+    },
+    {
+      "start": 8.91,
+      "end": 11.1,
+      "text": "Same cards, same flop..."
+    },
+    {
+      "start": 11.1,
+      "end": 13.34,
+      "text": "so why is one seat easier?"
+    },
+    {
+      "start": 13.34,
+      "end": 16.09,
+      "text": "Does the seat only matter before the flop..."
+    },
+    {
+      "start": 16.09,
+      "end": 18.81,
+      "text": "or does acting last help on every street?"
+    },
+    {
+      "start": 18.81,
+      "end": 21.32,
+      "text": "Make your pick."
+    },
+    {
+      "start": 21.32,
+      "end": 23.68,
+      "text": "Six seats, blinds 5 and 10."
+    },
+    {
+      "start": 23.68,
+      "end": 26.5,
+      "text": "Before the flop, under the gun goes first,"
+    },
+    {
+      "start": 26.5,
+      "end": 28.47,
+      "text": "with five players behind."
+    },
+    {
+      "start": 28.47,
+      "end": 33.27,
+      "text": "Then four... three... two... one."
+    },
+    {
+      "start": 33.27,
+      "end": 35.33,
+      "text": "The big blind acts last."
+    },
+    {
+      "start": 35.33,
+      "end": 37.83,
+      "text": "The button raises to 25."
+    },
+    {
+      "start": 37.83,
+      "end": 40.37,
+      "text": "The big blind calls 15 more."
+    },
+    {
+      "start": 40.37,
+      "end": 42.71,
+      "text": "That makes the pot 55."
+    },
+    {
+      "start": 42.71,
+      "end": 45.69,
+      "text": "Then the flop... and the order flips."
+    },
+    {
+      "start": 45.69,
+      "end": 47.73,
+      "text": "Now the big blind acts first."
+    },
+    {
+      "start": 47.73,
+      "end": 51.31,
+      "text": "The button acts last."
+    },
+    {
+      "start": 51.31,
+      "end": 52.98,
+      "text": "Same hand, twice."
+    },
+    {
+      "start": 52.98,
+      "end": 55.85,
+      "text": "Ace-jack, on ten, seven, two."
+    },
+    {
+      "start": 55.85,
+      "end": 59.1,
+      "text": "In the big blind, you go first, knowing nothing."
+    },
+    {
+      "start": 59.1,
+      "end": 61.54,
+      "text": "On the button, the big blind checks..."
+    },
+    {
+      "start": 61.54,
+      "end": 63.61,
+      "text": "and you choose knowing that."
+    },
+    {
+      "start": 63.61,
+      "end": 67.05,
+      "text": "Same cards. You just know more."
+    },
+    {
+      "start": 67.05,
+      "end": 70.64,
+      "text": "Heads-up, the button acts last on 3 of 4 rounds."
+    },
+    {
+      "start": 70.64,
+      "end": 76.55,
+      "text": "100 flops... 300 choices made after seeing theirs."
+    },
+    {
+      "start": 76.55,
+      "end": 80.13,
+      "text": "Your turn. Cutoff against big blind, after the flop."
+    },
+    {
+      "start": 80.13,
+      "end": 82.19,
+      "text": "Who acts last?"
+    },
+    {
+      "start": 82.19,
+      "end": 85.91,
+      "text": "The cutoff. The big blind has to go first."
+    },
+    {
+      "start": 85.91,
+      "end": 88.27,
+      "text": "So position matters on every street."
+    },
+    {
+      "start": 88.27,
+      "end": 90.84,
+      "text": "Acting last is information."
+    },
+    {
+      "start": 90.84,
+      "end": 94.41,
+      "text": "And middle position? It's also called the hijack."
+    },
+    {
+      "start": 94.41,
+      "end": 98,
+      "text": "Up next: starting hands."
+    }
+  ],
+  "transcriptText": "Welcome to preflop. Which hands, from which seat, for how much. Let's start with the seat. Same cards, same flop... so why is one seat easier? Does the seat only matter before the flop... or does acting last help on every street? Make your pick.\n\nSix seats, blinds 5 and 10. Before the flop, under the gun goes first, with five players behind. Then four... three... two... one. The big blind acts last. The button raises to 25. The big blind calls 15 more. That makes the pot 55. Then the flop... and the order flips. Now the big blind acts first. The button acts last.\n\nSame hand, twice. Ace-jack, on ten, seven, two. In the big blind, you go first, knowing nothing. On the button, the big blind checks... and you choose knowing that. Same cards. You just know more. Heads-up, the button acts last on 3 of 4 rounds. 100 flops... 300 choices made after seeing theirs.\n\nYour turn. Cutoff against big blind, after the flop. Who acts last? The cutoff. The big blind has to go first. So position matters on every street. Acting last is information. And middle position? It's also called the hijack. Up next: starting hands."
 }

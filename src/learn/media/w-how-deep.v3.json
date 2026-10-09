@@ -2,12 +2,12 @@
   "format": "academy-film-v2",
   "id": "w-how-deep",
   "sourceId": "w-deep",
-  "video": "/academy/films-v2/w-how-deep/b430b1ad/w-how-deep-1080.mp4",
-  "video720": "/academy/films-v2/w-how-deep/b430b1ad/w-how-deep-720.mp4",
-  "poster": "/academy/films-v2/w-how-deep/b430b1ad/w-how-deep-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-how-deep/b430b1ad/w-how-deep-rule.jpg",
-  "captions": "/academy/films-v2/w-how-deep/b430b1ad/w-how-deep.vtt",
-  "transcript": "/academy/films-v2/w-how-deep/b430b1ad/w-how-deep.transcript.txt",
+  "video": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-1080.mp4",
+  "video720": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-720.mp4",
+  "poster": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-rule.jpg",
+  "captions": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep.vtt",
+  "transcript": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -25,5 +25,188 @@
     "upNext": 87.09,
     "first": null
   },
-  "version": "b430b1ad"
+  "version": "b3c63248",
+  "cues": [
+    {
+      "start": 0.94,
+      "end": 2.07,
+      "text": "You know the rules."
+    },
+    {
+      "start": 2.07,
+      "end": 5.51,
+      "text": "So, how many different ways can a hand start?"
+    },
+    {
+      "start": 5.51,
+      "end": 10.05,
+      "text": "Ten? A hundred? A thousand? Ten thousand?"
+    },
+    {
+      "start": 10.05,
+      "end": 11.54,
+      "text": "Here's the count."
+    },
+    {
+      "start": 11.54,
+      "end": 13.33,
+      "text": "Fifty-two cards make..."
+    },
+    {
+      "start": 13.33,
+      "end": 18.44,
+      "text": "thirteen hundred and twenty-six different two-card starts."
+    },
+    {
+      "start": 18.44,
+      "end": 20.72,
+      "text": "But many of them are the same hand."
+    },
+    {
+      "start": 20.72,
+      "end": 22.37,
+      "text": "King-queen of hearts"
+    },
+    {
+      "start": 22.37,
+      "end": 25.34,
+      "text": "plays just like king-queen of spades."
+    },
+    {
+      "start": 25.34,
+      "end": 29.15,
+      "text": "So they fold into one hundred and sixty-nine kinds."
+    },
+    {
+      "start": 29.15,
+      "end": 30.91,
+      "text": "Thirteen pairs..."
+    },
+    {
+      "start": 30.91,
+      "end": 32.42,
+      "text": "seventy-eight suited..."
+    },
+    {
+      "start": 32.42,
+      "end": 35.38,
+      "text": "and seventy-eight offsuit."
+    },
+    {
+      "start": 35.38,
+      "end": 36.42,
+      "text": "Now deal the flop."
+    },
+    {
+      "start": 36.42,
+      "end": 37.81,
+      "text": "For your two cards,"
+    },
+    {
+      "start": 37.81,
+      "end": 41.48,
+      "text": "there are nineteen thousand six hundred possible flops."
+    },
+    {
+      "start": 41.48,
+      "end": 43.36,
+      "text": "Add the turn and the river..."
+    },
+    {
+      "start": 43.36,
+      "end": 46.91,
+      "text": "and it's over two million boards."
+    },
+    {
+      "start": 46.91,
+      "end": 48.36,
+      "text": "And that's just the cards."
+    },
+    {
+      "start": 48.36,
+      "end": 50.35,
+      "text": "There are four betting rounds."
+    },
+    {
+      "start": 50.35,
+      "end": 53.7,
+      "text": "Preflop, the flop, the turn and the river."
+    },
+    {
+      "start": 53.7,
+      "end": 56.05,
+      "text": "At every one, you decide."
+    },
+    {
+      "start": 56.05,
+      "end": 58.5,
+      "text": "Fold, call or raise."
+    },
+    {
+      "start": 58.5,
+      "end": 61.65,
+      "text": "So the same hand plays differently in every spot."
+    },
+    {
+      "start": 61.65,
+      "end": 63.6,
+      "text": "King-queen on the button..."
+    },
+    {
+      "start": 63.6,
+      "end": 66.48,
+      "text": "in the big blind, facing a raise..."
+    },
+    {
+      "start": 66.48,
+      "end": 67.91,
+      "text": "or facing an all-in."
+    },
+    {
+      "start": 67.91,
+      "end": 71.13,
+      "text": "Each spot has its own lesson."
+    },
+    {
+      "start": 71.13,
+      "end": 73.68,
+      "text": "That's why poker is simple to learn..."
+    },
+    {
+      "start": 73.68,
+      "end": 75.27,
+      "text": "and deep to master."
+    },
+    {
+      "start": 75.27,
+      "end": 77.24,
+      "text": "Should you call this bet?"
+    },
+    {
+      "start": 77.24,
+      "end": 79.47,
+      "text": "That's the Math Spine."
+    },
+    {
+      "start": 79.47,
+      "end": 82.06,
+      "text": "Which hands should you play from this seat?"
+    },
+    {
+      "start": 82.06,
+      "end": 83.51,
+      "text": "That's Preflop."
+    },
+    {
+      "start": 83.51,
+      "end": 86.09,
+      "text": "We'll take it one idea at a time."
+    },
+    {
+      "start": 86.09,
+      "end": 91,
+      "text": "Up next: how Flop52 makes you better."
+    }
+  ],
+  "transcriptText": "You know the rules. So, how many different ways can a hand start? Ten? A hundred? A thousand? Ten thousand? Here's the count. Fifty-two cards make... thirteen hundred and twenty-six different two-card starts.\n\nBut many of them are the same hand. King-queen of hearts plays just like king-queen of spades. So they fold into one hundred and sixty-nine kinds. Thirteen pairs... seventy-eight suited... and seventy-eight offsuit.\n\nNow deal the flop. For your two cards, there are nineteen thousand six hundred possible flops. Add the turn and the river... and it's over two million boards.\n\nAnd that's just the cards. There are four betting rounds. Preflop, the flop, the turn and the river. At every one, you decide. Fold, call or raise. So the same hand plays differently in every spot. King-queen on the button... in the big blind, facing a raise... or facing an all-in. Each spot has its own lesson.\n\nThat's why poker is simple to learn... and deep to master. Should you call this bet? That's the Math Spine. Which hands should you play from this seat? That's Preflop. We'll take it one idea at a time. Up next: how Flop52 makes you better."
 }

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-variance",
-  "video": "/academy/films-v2/m-variance/07d23729/m-variance-1080.mp4",
-  "video720": "/academy/films-v2/m-variance/07d23729/m-variance-720.mp4",
-  "poster": "/academy/films-v2/m-variance/07d23729/m-variance-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-variance/07d23729/m-variance-rule.jpg",
-  "captions": "/academy/films-v2/m-variance/07d23729/m-variance.vtt",
-  "transcript": "/academy/films-v2/m-variance/07d23729/m-variance.transcript.txt",
+  "video": "/academy/films-v2/m-variance/9cdb88bc/m-variance-1080.mp4",
+  "video720": "/academy/films-v2/m-variance/9cdb88bc/m-variance-720.mp4",
+  "poster": "/academy/films-v2/m-variance/9cdb88bc/m-variance-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-variance/9cdb88bc/m-variance-rule.jpg",
+  "captions": "/academy/films-v2/m-variance/9cdb88bc/m-variance.vtt",
+  "transcript": "/academy/films-v2/m-variance/9cdb88bc/m-variance.transcript.txt",
   "durationSeconds": 84,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,138 @@
     "upNext": 84,
     "first": null
   },
-  "version": "07d23729"
+  "version": "9cdb88bc",
+  "cues": [
+    {
+      "start": 1.31,
+      "end": 4.53,
+      "text": "This call wins you 10 chips a time... on average."
+    },
+    {
+      "start": 4.53,
+      "end": 5.87,
+      "text": "Make it ten times."
+    },
+    {
+      "start": 5.87,
+      "end": 8.14,
+      "text": "How often are you still behind?"
+    },
+    {
+      "start": 8.14,
+      "end": 13.25,
+      "text": "Guess first... anywhere from 0 to 100%."
+    },
+    {
+      "start": 13.25,
+      "end": 14.33,
+      "text": "Meet two players."
+    },
+    {
+      "start": 14.33,
+      "end": 16.76,
+      "text": "Blue makes a good call, worth +10."
+    },
+    {
+      "start": 16.76,
+      "end": 20.18,
+      "text": "Coral makes a bad one, worth −10."
+    },
+    {
+      "start": 20.18,
+      "end": 22.35,
+      "text": "Both win 30% of the time."
+    },
+    {
+      "start": 22.35,
+      "end": 26.03,
+      "text": "After ten calls, Blue's behind 38% of the time."
+    },
+    {
+      "start": 26.03,
+      "end": 28.85,
+      "text": "Coral's ahead 35%."
+    },
+    {
+      "start": 28.85,
+      "end": 31.93,
+      "text": "Sit a thousand players in Coral's seat for ten calls..."
+    },
+    {
+      "start": 31.93,
+      "end": 35.56,
+      "text": "and about 350 are winning."
+    },
+    {
+      "start": 35.56,
+      "end": 37.07,
+      "text": "Now turn the dial."
+    },
+    {
+      "start": 37.07,
+      "end": 41.2,
+      "text": "After a hundred calls, Blue's behind just 11%."
+    },
+    {
+      "start": 41.2,
+      "end": 43.63,
+      "text": "Coral's still ahead 22%."
+    },
+    {
+      "start": 43.63,
+      "end": 47.45,
+      "text": "After a thousand... Blue's almost never behind."
+    },
+    {
+      "start": 47.45,
+      "end": 49.98,
+      "text": "Coral's ahead about 1%."
+    },
+    {
+      "start": 49.98,
+      "end": 54.24,
+      "text": "The luck washes out, and the decision shows."
+    },
+    {
+      "start": 54.24,
+      "end": 57.45,
+      "text": "So what should Blue expect after a hundred calls?"
+    },
+    {
+      "start": 57.45,
+      "end": 61.95,
+      "text": "+10, a hundred times... +1,000."
+    },
+    {
+      "start": 61.95,
+      "end": 66.48,
+      "text": "But a typical swing is about 917, either way."
+    },
+    {
+      "start": 66.48,
+      "end": 68.96,
+      "text": "So an ordinary run lands anywhere from"
+    },
+    {
+      "start": 68.96,
+      "end": 74.54,
+      "text": "about +83 to +1,917."
+    },
+    {
+      "start": 74.54,
+      "end": 77.91,
+      "text": "So ten good results don't prove a good player."
+    },
+    {
+      "start": 77.91,
+      "end": 79.89,
+      "text": "A few hands show luck."
+    },
+    {
+      "start": 79.89,
+      "end": 84,
+      "text": "Thousands show the decision."
+    }
+  ],
+  "transcriptText": "This call wins you 10 chips a time... on average. Make it ten times. How often are you still behind? Guess first... anywhere from 0 to 100%.\n\nMeet two players. Blue makes a good call, worth +10. Coral makes a bad one, worth −10. Both win 30% of the time. After ten calls, Blue's behind 38% of the time. Coral's ahead 35%. Sit a thousand players in Coral's seat for ten calls... and about 350 are winning.\n\nNow turn the dial. After a hundred calls, Blue's behind just 11%. Coral's still ahead 22%. After a thousand... Blue's almost never behind. Coral's ahead about 1%. The luck washes out, and the decision shows.\n\nSo what should Blue expect after a hundred calls? +10, a hundred times... +1,000. But a typical swing is about 917, either way. So an ordinary run lands anywhere from about +83 to +1,917.\n\nSo ten good results don't prove a good player. A few hands show luck. Thousands show the decision."
 }

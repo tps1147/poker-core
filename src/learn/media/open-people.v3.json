@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 13.71
   },
-  "version": "2e89d1b0"
+  "version": "2e89d1b0",
+  "cues": [
+    {
+      "start": 1.76,
+      "end": 3.95,
+      "text": "Chapter seven. Reading People."
+    },
+    {
+      "start": 3.95,
+      "end": 6.88,
+      "text": "Every bet, check and call"
+    },
+    {
+      "start": 6.88,
+      "end": 9.1,
+      "text": "says something about the hand behind it."
+    },
+    {
+      "start": 9.1,
+      "end": 11.52,
+      "text": "By the end, you'll narrow ranges"
+    },
+    {
+      "start": 11.52,
+      "end": 13.71,
+      "text": "and adjust to the player in front of you."
+    },
+    {
+      "start": 13.71,
+      "end": 20,
+      "text": "First up: Narrowing Ranges Street by Street."
+    }
+  ],
+  "transcriptText": "Chapter seven. Reading People. Every bet, check and call says something about the hand behind it. By the end, you'll narrow ranges and adjust to the player in front of you. First up: Narrowing Ranges Street by Street."
 }
