@@ -196,10 +196,16 @@ check("filmOwnPause and filmTurnPlan: the definition's own pause wins only for i
   assert.equal(filmOwnPause(stage, "p-three-bet"), null, "another film's pause never applies");
   assert.equal(filmOwnPause({ pause: { at: 14.4, spot: {} } }, "m-pot-odds"), null, "a v1 pause names no v2 film");
   assert.equal(filmOwnPause(stage, "m-pot-odds"), stage.pause);
-  assert.deepEqual(filmTurnPlan(stage, pot), { at: null, atEnd: true });
-  assert.deepEqual(filmTurnPlan({ pause: { ...stage.pause, at: 70, anchor: "yourTurn" } }, pot), { at: 70, atEnd: false });
-  assert.deepEqual(filmTurnPlan(null, pot, { cues: [{ start: 65.56, end: 68, text: "Call or fold?" }] }), { at: 68, atEnd: false });
-  assert.deepEqual(filmTurnPlan({ kind: "film" }, pot, { cues: parseVtt(VTT) }), { at: 72.64, atEnd: false });
+  // filmTurnPlan is filmAskPlan read as { at, atEnd } (filmAskPlan.test.mjs checks the rule itself):
+  // the definition's own `at` is where the beat starts, never the pause point.
+  const end = filmTurnPlan(stage, pot);
+  assert.equal(end.atEnd, true);
+  assert.ok(end.at < pot.anchors.upNext, "an end ask lands before upNext");
+  assert.deepEqual(filmTurnPlan({ pause: { ...stage.pause, at: 65.56, anchor: "yourTurn" } }, pot), { at: 72.28, atEnd: false }, "after Call or fold? is said, not on the anchor");
+  assert.deepEqual(filmTurnPlan(null, pot), { at: 72.28, atEnd: false });
+  assert.deepEqual(filmTurnPlan(null, pot, { replay: true }), { at: null, atEnd: false }, "a replay never asks");
+  const unmeasured = { ...pot, id: "not-a-film" };
+  assert.deepEqual(filmTurnPlan(null, unmeasured, { cues: parseVtt(VTT) }), { at: 72.64, atEnd: false }, "unmeasured: the asking cue's end");
 });
 
 console.log(`academyLoop ok (${checks} checks): the 59-lesson path, fresh evidence, tally, why, place, next, Your-turn pause`);

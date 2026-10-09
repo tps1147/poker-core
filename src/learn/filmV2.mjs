@@ -19,6 +19,7 @@
 import { hasWatched } from "./filmWatch.mjs";
 import { NODES, TRACKS, PATHS } from "./academyTree.mjs";
 import { nodeState } from "./nodeState.mjs";
+import { FILM_SPEECH } from "./filmSpeech.mjs";
 
 export const LESSON_ANCHORS = Object.freeze(["hook", "yourTurn", "rule", "upNext"]);
 export const OPENER_ANCHORS = Object.freeze(["first"]);
@@ -202,16 +203,202 @@ export function filmOwnPause(stage, filmId) {
   return pause && filmId && pause.film === filmId ? pause : null;
 }
 
-// Where the film asks: { at, atEnd }. The definition's own pause wins whenever it is written for this
-// film: its `at`, or with `at` null and `anchor` "end", the film plays out to its stop, then asks.
-// Otherwise filmPauseAt.
-export function filmTurnPlan(stage, media, { cues = null } = {}) {
-  const own = filmOwnPause(stage, media?.id);
-  if (own) {
-    const at = typeof own.at === "number" && Number.isFinite(own.at) ? own.at : null;
-    return { at, atEnd: at == null && own.anchor === "end" };
+// THE ASK RULE (2026-10-08, Tyler: the questions asked at the end "break the video timing"). One
+// plan, read by the web and the app alike, says when a film asks its "Your turn" question:
+//
+//   { askAt, holdFrameAt, resumeTo, mode, cue }
+//   mode         "pause"  the film asks mid-film (its yourTurn beat) and plays its reveal after
+//                "end"    the film plays out its last spoken line before upNext, then asks, and the
+//                         lesson goes straight on (the film's own "up next" card never plays)
+//                "none"   the film does not ask (a replay, an opener, a film with no Your turn)
+//   askAt        playback crossing it asks (seconds; null for "none")
+//   holdFrameAt  the frame the card holds over (the player seeks there as it asks): askAt, or when
+//                the picture is already moving at askAt (a reveal, or the wipe into the up-next
+//                card, can start under the last word) the still frame that movement starts from.
+//                So a mid-film card holds the end of the question and an end card keeps the rule
+//                card on screen. Measured in FILM_SPEECH.motion.
+//   resumeTo     where the film plays on from after the pick ("pause": holdFrameAt, into the reveal);
+//                null for "end" (the lesson moves to its next step) and for "none"
+//   cue          { start, end } the caption cue the ask follows (the question, or the last line
+//                before upNext): the card's prompt reads the cues up to its end, and a film left
+//                with its question unanswered starts again from its start (askEntry)
+//
+// WHERE: never inside a spoken word. The caption cues are gapless (a cue ends where the next one
+// starts), so the ask is placed on the film's measured speech (FILM_SPEECH, filmSpeech.mjs): the
+// end of the spoken span holding the cue's last word, plus ASK_TAIL (or half the silence to the next
+// word when that silence is shorter).
+//   "pause"  the cue is the film's question: the first cue from the yourTurn anchor that asks (ends
+//            in "?" or a trailing "..."), within PAUSE_WINDOW seconds; failing that, the cue the
+//            anchor starts. A cue whose sentence runs on (ends in a comma) takes the rest of its
+//            sentence with it. Where a film sets its spot out without a question mark, QUESTION_CUES
+//            names the cue by hand (the last line before the reveal; checked against the film's
+//            version, so a re-cut film falls back to the rule). The definition's own `at` is the
+//            beat's START (canon yourTurn), never the pause point.
+//   "end"    the cue is the last line the film speaks before its up-next: before upNext, and
+//            before the cue that says "Up next" when a film speaks it ahead of its anchor. The ask
+//            lands at least END_GUARD before that point and never before the line's last word ends;
+//            the films start their wipe into the up-next card up to half a second before it, so
+//            the held frame steps back off a wipe already under way.
+// Without measured speech (a film not measured yet, or re-cut since) the cue's own end stands in
+// for its last word's end.
+//
+// ONCE PER WATCH: a replay never asks. A first watch asks when playback crosses askAt; a user seek
+// back before askAt re-arms it, nothing else does (askGate).
+export const ASK_TAIL = 0.12;
+export const END_GUARD = 0.25;
+const ASK_NONE = Object.freeze({ askAt: null, holdFrameAt: null, resumeTo: null, mode: "none", cue: null });
+
+// The question cue (its start, seconds) of the films whose spot is set out without a "?" in a cue,
+// read off each film's own words (2026-10-08): the last line before the film starts answering.
+export const QUESTION_CUES = Object.freeze({
+  "m-rule-2-4": { version: "30da67e0", at: 68.38 },      // "Pick the rule first."
+  "m-implied-odds": { version: "f161571d", at: 73.94 },  // "Pot 60, bet 20, 90 behind."
+  "m-ev": { version: "9228bc79", at: 65.4 },             // "They shove 40 into 150."
+  "f-ranges": { version: "bfc3ed10", at: 86.09 },        // "Drag your split first... then watch it fill."
+  "f-cbet": { version: "66348276", at: 72.09 },          // "Read the bars."
+  "f-bet-sizing": { version: "a6ebea8d", at: 74.72 },    // "A river where you want his weaker pairs to call."
+  "x-fold-equity": { version: "4958f7f9", at: 63.41 },   // "He folds a quarter, you hit a quarter... both given."
+  "f-value-betting": { version: "91de8a6f", at: 76.08 }, // "Sort the callers first."
+  "f-playing-draws": { version: "dc8e5c57", at: 70.1 },  // "He bets 60 into 120, with 300 behind."
+});
+
+const r3 = (v) => Math.round(v * 1000) / 1000;
+const unfinished = (text) => /[,;:—-]\s*$/.test(text);
+
+// A film's measured speech while it is current for this media ({ version, upNextLine, cues,
+// speech }), or null.
+export function filmSpeech(media) {
+  const id = nodeIdOfFilm(media?.id) || media?.id;
+  const entry = id ? FILM_SPEECH[id] : null;
+  if (!entry) return null;
+  if (media?.version && entry.version && entry.version !== media.version) return null;
+  return entry;
+}
+
+// The cues the rule reads ({ start, end, lastOnset, asks, runsOn }): the measured ones when present,
+// else `cues` (parseVtt of the film's WebVTT) or the media's own timing captions.
+function askCues(media, measured, cues) {
+  if (measured) return measured.cues.map(([start, end, lastOnset, q, on]) => ({ start, end, lastOnset, asks: q === 1, runsOn: on === 1 }));
+  const list = Array.isArray(cues) ? cues : cuesOf(media);
+  return list.map((cue) => ({ start: cue.start, end: cue.end, lastOnset: null, asks: asks(String(cue.text || "")), runsOn: unfinished(String(cue.text || "")) }));
+}
+
+// When the cue's last word has been said, and when the next word starts (Infinity: none).
+function spokenAround(list, cue, spans) {
+  const next = list[list.indexOf(cue) + 1];
+  if (!spans || cue.lastOnset == null) return { end: cue.end, nextStart: next ? next.start : Infinity };
+  const onset = cue.lastOnset;
+  const span = spans.find(([s, e]) => s <= onset + 0.05 && e > onset) || spans.find(([s]) => s >= onset - 0.05);
+  const end = span ? Math.max(span[1], onset) : cue.end;
+  const after = spans.find(([s]) => s > end + 0.001);
+  return { end, nextStart: after ? after[0] : Infinity };
+}
+
+// A mid-film hold may sit this far inside the last word's fading tail (the resume replays it).
+const HOLD_SLACK = 0.1;
+const placeAfter = (end, nextStart) => end + Math.min(ASK_TAIL, Math.max(0, (nextStart - end) / 2));
+
+// The frame to hold at an ask: askAt itself unless the picture is moving there (a wipe or a reveal
+// already under way); then the still frame the movement starts from, when that is no earlier than
+// `floor` (the end of the question's last word, or the start of the end line). Unmeasured: askAt.
+function stillAt(at, measured, floor) {
+  const moving = (measured?.motion || []).find(([a, b]) => at > a + 0.001 && at <= b + 0.001);
+  return moving && moving[0] >= floor - 0.001 ? r3(moving[0]) : at;
+}
+
+// The question cue of a "pause" film.
+function questionCue(media, list, beat, measured) {
+  const named = QUESTION_CUES[nodeIdOfFilm(media?.id) || media?.id];
+  if (named && measured && named.version === media?.version) {
+    const cue = list.find((x) => Math.abs(x.start - named.at) < 0.02);
+    if (cue) return cue;
   }
-  return { at: filmPauseAt(media, { cues }), atEnd: false };
+  const window = list.filter((x) => x.start >= beat - 0.05 && x.start <= beat + PAUSE_WINDOW);
+  let cue = window.find((x) => x.asks) || list.find((x) => x.start <= beat + 0.05 && x.end > beat) || window[0] || null;
+  while (cue && cue.runsOn && list[list.indexOf(cue) + 1]) cue = list[list.indexOf(cue) + 1];
+  return cue;
+}
+
+// The plan for one watch of one film. `stage`: the lesson's film stage (its `pause` is the
+// definition's own Your turn when written for this film). `replay`: the run has the film watched.
+// `cues`: parseVtt of the film's WebVTT, read only when the film has no measured speech. `speech`:
+// overrides the measured speech (null: none), for tests.
+export function filmAskPlan(stage, media, { replay = false, cues = null, speech } = {}) {
+  const c = canon(media);
+  if (replay || c.kind === "opener") return ASK_NONE;
+  const own = filmOwnPause(stage, media?.id);
+  const measured = speech === undefined ? filmSpeech(media) : speech;
+  const list = askCues(media, measured, cues);
+  const spans = measured?.speech || null;
+  const beat = c.anchors.yourTurn ?? num(own?.at);
+
+  if (beat != null && own?.anchor !== "end") {
+    const cue = questionCue(media, list, beat, measured);
+    if (!cue) return { askAt: r3(beat), holdFrameAt: r3(beat), resumeTo: r3(beat), mode: "pause", cue: null };
+    const { end, nextStart } = spokenAround(list, cue, spans);
+    const askAt = r3(placeAfter(end, nextStart));
+    const holdFrameAt = stillAt(askAt, measured, end - HOLD_SLACK);
+    return { askAt, holdFrameAt, resumeTo: holdFrameAt, mode: "pause", cue: { start: cue.start, end: cue.end } };
+  }
+
+  if (own?.anchor === "end") {
+    const line = num(measured?.upNextLine);
+    const upNext = c.anchors.upNext ?? c.duration;
+    const stop = line != null && (upNext == null || line < upNext) ? line : upNext;
+    if (stop == null) return ASK_NONE;
+    const before = list.filter((x) => x.start < stop - 0.05);
+    const cue = before[before.length - 1];
+    if (!cue) { const at = r3(Math.max(0, stop - END_GUARD)); return { askAt: at, holdFrameAt: at, resumeTo: null, mode: "end", cue: null }; }
+    const { end, nextStart } = spokenAround(list, cue, spans);
+    const askAt = r3(Math.max(Math.min(end, stop), Math.min(placeAfter(end, nextStart), stop - END_GUARD)));
+    return { askAt, holdFrameAt: stillAt(askAt, measured, cue.start), resumeTo: null, mode: "end", cue: { start: cue.start, end: Math.min(cue.end, stop) } };
+  }
+  return ASK_NONE;
+}
+
+// THE ASK GATE: the one-ask-per-watch rule as playback sees it, shared by both players. Feed it the
+// playhead on every time update and every user seek; it says when to ask.
+//   tick(prev, now, playing)  true once, when playing playback crosses askAt (prev < askAt <= now in
+//                             a step under a second: a jump past it is a seek, not a crossing)
+//   seek(to)                  a user seek (scrub, skip, restart): one back before askAt re-arms it.
+//                             The player's own seeks (holding the frame, resuming) are not reported.
+//   lead(now, playing)        seconds to the ask while it is armed and at most ASK_LOOKAHEAD away,
+//                             so a player that polls can time the pause to the frame
+//   armed                     whether the next crossing asks
+// A replay's plan is "none": its gate never asks, and no seek re-arms it.
+export const ASK_LOOKAHEAD = 0.6;
+export function askGate(plan) {
+  const askAt = plan && plan.mode !== "none" && num(plan.askAt) != null ? plan.askAt : null;
+  let armed = askAt != null;
+  return {
+    get armed() { return armed; },
+    get askAt() { return askAt; },
+    tick(prev, now, playing = true) {
+      if (!armed || !playing || num(prev) == null || num(now) == null) return false;
+      if (prev < askAt && now >= askAt && now - prev < 1) { armed = false; return true; }
+      return false;
+    },
+    seek(to) { if (askAt != null && num(to) != null && to < askAt - 0.01) armed = true; },
+    lead(now, playing = true) {
+      if (!armed || !playing || num(now) == null) return null;
+      const left = askAt - now;
+      return left >= 0 && left <= ASK_LOOKAHEAD ? left : null;
+    },
+  };
+}
+
+// Where a film entered at `at` starts: at or past an unanswered ask, from the start of the asking
+// cue (so the learner hears the question again and the film asks), never playing on past it.
+export function askEntry(plan, at, { answered = false } = {}) {
+  const from = Math.max(0, num(at) ?? 0);
+  if (!plan || plan.mode === "none" || answered || num(plan.askAt) == null || from < plan.askAt - 0.3) return from;
+  return Math.max(0, Math.min(plan.cue?.start ?? plan.askAt - 2, plan.askAt - 0.5));
+}
+
+// The older reading, { at, atEnd }, for callers that still take it: `at` is filmAskPlan's askAt.
+export function filmTurnPlan(stage, media, { cues = null, replay = false } = {}) {
+  const plan = filmAskPlan(stage, media, { cues, replay });
+  return { at: plan.askAt, atEnd: plan.mode === "end" };
 }
 
 // THE FEEDBACK VOICE (silent until the sound-library pass): the moments that speak, and the lines
