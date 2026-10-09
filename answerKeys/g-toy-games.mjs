@@ -1,3 +1,5 @@
+// Content version 2 (2026-10-09): the film stage hands off at its end instead of re-asking the
+// film's own question (endAsk "skip"); every key is unchanged. Version 1: answerKeys/previous.
 // Answer keys for g-toy-games (academy v2), for the server worker: copy into pokerServer/src/data/lessonRuns
 // as g-toy-games.v1.js (CommonJS). This folder is not shipped (package.json "files" is src only), so the
 // web bundle never receives a key. Stage indexes match src/learn/lessons/academy/g-toy-games.mjs.
@@ -5,7 +7,7 @@
 // and the takeaway; this entry adds the why stage (index 2) and the film's "Your turn" key.
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
-  lessonId: "g-toy-games", node: "g-toy-games", contentVersion: 1, flow: "film-first", access: "pro", conceptId: null,
+  lessonId: "g-toy-games", node: "g-toy-games", contentVersion: 2, flow: "film-first", access: "pro", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "tg-why"}, {kind: "decision", spotId: "tg-guided"}, {kind: "decision", spotId: "tg-practice"}, {kind: "decision", spotId: "tg-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "tg-turn", decision: "estimate", bands: ["never", "sometimes", "always"], key: {band: "sometimes"} },
   why: { stage: 2, spotId: "tg-why", options: ["mix", "computers", "king-folds"], key: { option: "mix" } },

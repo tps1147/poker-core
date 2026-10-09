@@ -30,11 +30,9 @@ const keysOf = async (node) => (await import(pathToFileURL(join(ROOT, "answerKey
 const TABLE_READS = Object.freeze({
   "dk-practice": "which of your two nines is higher: the hero's own cards",
   "sb-fresh": "who posts the small blind: the button seat",
-  "fh-guided": "who acts first: the button and the big blind",
+  "fh-guided": "what a call costs: the blinds the button and the big blind posted",
   "hu-guided": "who acts first: the button and the big blind",
   "ic-practice": "the middle stack: three stacks at the table",
-  "sm-guided": "players behind you: the six seats",
-  "sm-practice": "the full-table seat with the same job: the six seats",
   "pos2-practice": "fold or raise from the first seat: the hero's cards and seat",
   "sh1-guided": "fold or raise from the first seat: the hero's cards and seat",
   "rfi1-practice-behind": "players behind you: the six seats",

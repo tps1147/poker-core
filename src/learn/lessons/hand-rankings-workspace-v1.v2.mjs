@@ -17,7 +17,7 @@ const definition = {
   sourceLessonId: "lesson-hand-rankings-001", videoLessonId: "lesson-hand-rankings-001",
   coach: "knox", narrator: "nathan", access: "free", template: "table-literacy",
   title: "Name the hand first.", kicker: "Cards before chips.",
-  trail: ["Learn", "Table literacy", "Hand rankings"],
+  trail: ["Learn", "Table literacy", "Name the hand first."],
   course: { chapter: "Table literacy" },
   meta: { minutes: 4 },
   media: "media/hand-rankings-workspace-v1.v2.json",

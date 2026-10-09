@@ -1,7 +1,9 @@
-// Math 1, Chance as a Share (m-chance-as-share), v2 lesson. Mina's film pauses at its yourTurn
-// anchor (61.51 s, "Your turn. How often is it an ace?") for the "Your turn" spot; the guided hand
-// plays that same spot (4 of 52, 1 in 13, about 7.7%). Practice and fresh are the plan's Checks:
-// a red card (50%), then a jack, queen or king (12 of 52, about 23.1%), a changed count.
+// Math 1, Chance as a Share (m-chance-as-share), v2 lesson, content version 2. Mina's film pauses at
+// its yourTurn anchor (61.51 s, "Your turn. How often is it an ace?") for the "Your turn" spot,
+// `turnSpot` (4 of 52, 1 in 13, about 7.7%); the film answers it right after the pause.
+// v2 (2026-10-09, no repeated question): guided asks for two ranks at once, a king or an ace (8 of
+// 52, about 15.4%), not the film's ace or heart; practice and fresh are the plan's Checks: a red card
+// (50%), then a jack, queen or king (12 of 52, about 23.1%), a changed count.
 // Keys: answerKeys/m-chance-as-share.mjs (package root, not shipped).
 import { bands, huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
@@ -9,14 +11,24 @@ const ACE = bands(["4", "About 4%"], ["7.7", "About 7.7%: 1 in 13"], ["25", "Abo
 const SPOT = { street: "preflop", hero: ["9s", "6d"] };
 const table = (id) => huHand(id, { hero: SPOT.hero, pot: 0, blinds: [5, 10] });
 
+// The film's own question (asked at the pause, answered in the film).
+const turnSpot = {
+  scene: "deck",
+  decision: "estimate", ...SPOT, bands: ACE, dockPrompt: "How often is it an ace?",
+  title: "Your turn: an ace?",
+  prompt: "One card, face down, from a full shuffled 52-card deck. How often is it an ace?",
+  hint: "Count the cards you want, then divide by all the cards there are.",
+  explanation: "Four aces out of 52 cards: 4 ÷ 52 is 1 in 13, about 7.7%. In 100 draws, shuffling back each time, expect about 8 aces.",
+};
+
 const spots = {
   "cs-guided": {
     scene: "deck",
-    decision: "estimate", ...SPOT, bands: ACE, dockPrompt: "How often is it an ace?",
-    title: "Your turn: an ace?",
-    prompt: "One card, face down, from a full shuffled 52-card deck. How often is it an ace?",
-    hint: "Count the cards you want, then divide by all the cards there are.",
-    explanation: "Four aces out of 52 cards: 4 ÷ 52 is 1 in 13, about 7.7%. In 100 draws, shuffling back each time, expect about 8 aces.",
+    decision: "estimate", ...SPOT, bands: bands(["8", "About 8%"], ["15", "About 15%"], ["50", "About 50%"]), dockPrompt: "How often is it a king or an ace?",
+    title: "Two ranks count.",
+    prompt: "Kings count now, and so do aces. You turn over one card from a full shuffled deck. How often is it a king or an ace?",
+    hint: "Count every card that counts: the kings and the aces. Then divide by 52.",
+    explanation: "Four kings and four aces: 8 of 52, which is 2 in 13, about 15.4%. Twice the share of aces alone. In 100 draws, shuffling back each time, expect about 15.",
   },
   "cs-practice": {
     scene: "deck",
@@ -37,15 +49,15 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "m-chance-as-share", film: "m-chance-as-share", coach: "knox", access: "free", track: "The Math Spine", minutes: 3,
+  node: "m-chance-as-share", version: 2, film: "m-chance-as-share", coach: "knox", access: "free", track: "The Math Spine", minutes: 3,
   title: "A chance is a share.", kicker: "Repeat it, and the share shows up.",
   assumptions: "One card from a full, shuffled 52-card deck, with nothing else known; the cards in front of you play no part. A chance is the outcomes you want out of all of them, and it shows over many repeats, never in one draw.",
   feedback: { found: "You found the share.", missed: "Let’s count it together.", open: "Here’s the thinking." },
   stages: v2Stages({
     welcome: { heading: "How often is it a heart?", em: "Rarely, one in four, or half?", lead: "Watch Knox turn a deck into chances, then find three shares yourself.", cta: "Watch with Knox" },
-    film: { upNext: "Play Knox’s spot", film: "m-chance-as-share", at: 61.51, spot: spots["cs-guided"] },
+    film: { upNext: "Try a new share", film: "m-chance-as-share", at: 61.51, spot: turnSpot },
     hands: [
-      { id: "cs-guided", label: "Knox’s spot", coachLine: "The film’s ace. Your answer." },
+      { id: "cs-guided", label: "Guided spot", coachLine: "Kings and aces both count." },
       { id: "cs-practice", label: "Practice", coachLine: "A red card this time." },
       { id: "cs-fresh", label: "Fresh spot", coachLine: "Three ranks at once." },
     ],

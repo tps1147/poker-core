@@ -37,7 +37,7 @@ const blinds = { do: "blinds", sb: 5, bb: 10 };
 const fold = (seat) => ({ do: "act", seat, action: "fold" });
 // The table facts at each decision: no board, the pot before the hero's call is potBefore + bet, and
 // `call` is what the hero still owes on top of the posted blind.
-const guided = { street: "preflop", board: [], hero: ["Jc", "Tc"], potBefore: 25, bet: 15, call: 15 };
+const guided = { street: "preflop", board: [], hero: ["Jc", "Tc"], potBefore: 25, bet: 25, call: 25 };
 const practice = { street: "preflop", board: [], hero: ["Kd", "4c"], potBefore: 25, bet: 20, call: 20 };
 const fresh = { street: "preflop", board: [], hero: ["9s", "8s"], potBefore: 25, bet: 10, call: 10 };
 
@@ -52,7 +52,7 @@ const definition = {
   sourceLessonId: "lesson-blind-defense-001", videoLessonId: "lesson-blind-defense-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "preflop",
   title: "Defend with a reason.", kicker: "Price, position and playability.",
-  trail: ["Learn", "Preflop discipline", "Blind defense"],
+  trail: ["Learn", "Preflop discipline", "Defend with a reason."],
   course: { chapter: "Preflop discipline" },
   meta: { minutes: 4 },
   assumptions: "Six-handed, blinds of 5 and 10, everyone starts with 1,000 (100 big blinds), no antes and no rake. You are in the big blind, one player raises before you and everyone else folds. You choose between folding and calling; re-raising is a later lesson. The price is your call divided by the pot after you call. Each opener’s range is given in the hand, a rule of thumb this lesson states, never read from anyone’s hidden cards. Each hand stops once you act, so no flop is dealt.",
@@ -70,14 +70,14 @@ const definition = {
       pause: { at: 73.99, anchor: "yourTurn", film: "p-blind-defense", spotId: "bd1-turn",
         spot: { decision: "count", range: [0, 100], unit: "chips", prompt: "You are the big blind. The button raises to 40. What do you owe?", title: "Your turn: what do you owe?", explanation: "40 minus your 10 is 30. The final pot is 85, so your price is about 35%: a bigger raise, a worse price." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-blind-defense.mjs).
-    { kind: "why", label: "Why", spotId: "bd1-why", prompt: "Why defend jack-ten suited here?",
+    { kind: "why", label: "Why", spotId: "bd1-why", prompt: "Why do you owe only 30 when the button raises to 40?",
       options: [
-        { id: "a", text: "The 10 you posted is yours, so you protect it.", fix: "The posted 10 is already in the pot. It improves your price, but the hand still has to earn the call." },
-        { id: "b", text: "Your 15 buys a share of 55, about 27%, and the hand plays well against a wide range.", fix: "Right. The blind helps the price; the hand earns the call." },
-        { id: "c", text: "15 ÷ 40 is a cheap price.", fix: "Count your own call: 15 ÷ 55, about 27%." },
+        { id: "a", text: "The 10 you posted is yours, so you protect it.", fix: "The posted 10 is already in the pot. It makes calling cheaper; it doesn’t make the call." },
+        { id: "b", text: "Your 10 is already in, so you owe 30, and calling makes an 85 pot: about 35%.", fix: "Right. The blind helps the price, and a bigger raise still makes it worse." },
+        { id: "c", text: "30 ÷ 40 is your price.", fix: "Count your own call in the final pot: 30 ÷ 85, about 35%." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "bd1-guided", hand: "bd1-guided", role: "guided",
-      coachLine: "The jack-ten suited. You decide the defense.", next: "Try a practice hand" },
+      coachLine: "Jack-ten suited. You decide the defense.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-price", hand: "bd1-practice", role: "practice",
       coachLine: "A new raise from an earlier seat. Price it first.", next: "Now decide the defense", feedback: priceFeedback },
     { kind: "decision", label: "Practice", spotId: "bd1-practice-call", hand: "bd1-practice", role: "practice",
@@ -94,8 +94,8 @@ const definition = {
   spots: {
     "bd1-guided": {
       decision: "action", choices: ["fold", "call"], ...guided,
-      title: "Sol raises to 25 from the button. Fold or call?",
-      prompt: "The jack-ten suited in the big blind. Rae, Ned and Ivy fold, Sol raises to 25 from the button, and Kit folds from the small blind. The pot is 40 and you owe 15 more, so calling makes a 55-chip pot, a price of about 27%. Assume Sol opens a wide range from the button. After the flop you act first on every street. Call 15, or fold?",
+      title: "Sol raises to 35 from the button. Fold or call?",
+      prompt: "Jack-ten suited in the big blind. Rae, Ned and Ivy fold, Sol raises to 35 from the button, and Kit folds from the small blind. The pot is 50 and you owe 25 more, so calling makes a 75-chip pot, a price of about 33%. Assume Sol opens a wide range from the button. After the flop you act first on every street. Call 25, or fold?",
       hint: "Weigh all three: how much of the final pot your call pays, who acts first after the flop, and what your two cards can become.",
       explanation: "Your blind is already in, so 15 more buys a share of a 55-chip pot: about 27%. Jack-ten suited can make straights, flushes and strong pair-plus-draw hands, and a wide button range holds plenty of hands it does not fear. You will act first after the flop, but the price and the playability give the hand a reason to continue, so calling is the defense under this lesson’s assumptions.",
       note: NOTE,
@@ -151,7 +151,7 @@ const definition = {
         fold("UTG"),
         fold("MP"),
         fold("CO"),
-        { do: "act", seat: "BTN", action: "raise", to: 25 },
+        { do: "act", seat: "BTN", action: "raise", to: 35 },
         fold("SB"),
         { do: "decide", spotId: "bd1-guided" },
         { do: "act", seat: "hero", action: "answer", spotId: "bd1-guided" },

@@ -1,4 +1,5 @@
-// h-range-narrowing, Narrowing Ranges Street by Street (Reading People), academy v2 definition.
+// h-range-narrowing, Narrowing Ranges Street by Street (Reading People), academy v2 definition,
+// content version 2.
 // Film: src-academy-h-range-narrowing-v2 (95 s). canon.yourTurn = "yourTurn" at 64.31 s: "Your turn.
 // Same range, new flop: queen, six, three. 171 live. Same rule. How many call? 79... and 92 fold."
 // Plan: people.md (h-range-narrowing). His range is the Postflop track's illustrative caller range
@@ -6,7 +7,9 @@
 // draw; he calls the turn with eights or better or a straight draw. Counts leave your own two cards
 // out, as the film does. These are reads of his actions, never of his cards.
 //   Your turn   flop Q♦ 6♣ 3♠: 171 live, 79 call -> about 80
-//   Guided      the film's river J♥ 8♣ 4♦ 2♠ K♥: 82 left, 18 / 48 / 16 -> one pair is the biggest group
+//   Guided      a new line, 9♠ 8♠ 4♦ 2♣ K♥, same rules: 186 -> 170 -> 119 -> 79 -> 79 left, 15 / 18 / 46
+//               -> missed draws are the biggest group (v2, 2026-10-09: v1 sorted the film's own 82
+//               on J♥ 8♣ 4♦ 2♠ K♥)
 //   Practice    after his flop and turn calls on J♥ 8♣ 4♦ 2♠, which hand still fits -> T♥ 9♥
 //   Fresh       flop T♦ 5♠ 2♣, same range and rule: 162 live, 98 call -> about 100 (changed flop)
 // Keys: answerKeys/h-range-narrowing.mjs. Every count is enumerated in test/academyLessonsB.test.mjs.
@@ -24,13 +27,13 @@ const turnSpot = {
   explanation: "79 call: 6 two pair or better, 15 top pair, 54 weaker pairs and 4 draws. The other 92 hit nothing and fold.",
 };
 
-const guided = { street: "river", hero: ["Ah", "Qh"], board: ["Jh", "8c", "4d", "2s", "Kh"] };
+const guided = { street: "river", hero: ["Ah", "Qd"], board: ["9s", "8s", "4d", "2c", "Kh"] };
 const practice = { street: "turn", hero: ["Ac", "Kd"], board: ["Jh", "8c", "4d", "2s"] };
 const fresh = { street: "flop", hero: ["Ac", "Kd"], board: ["Td", "5s", "2c"] };
 
 const definition = {
   ...definitionBase({
-    node: "h-range-narrowing", conceptId: "t5-range-narrowing", coach: "sera", title: "Every action takes hands out.", kicker: "Keep the list, not one guess.",
+    node: "h-range-narrowing", version: 2, conceptId: "t5-range-narrowing", coach: "sera", title: "Every action takes hands out.", kicker: "Keep the list, not one guess.",
     track: "people", chapter: "Reading People", minutes: 5, feedback,
     assumptions: "Heads-up. Before the flop he calls with an illustrative range of 186 combos, the Postflop track’s caller range. On the flop he calls a bet with any pair or draw; on the turn with eights or better or a straight draw. Both are rules of thumb for this exercise, not his real habits. Counts leave your own two cards out, as the film does. Every count comes from his actions, never from his hidden cards.",
   }),
@@ -43,7 +46,7 @@ const definition = {
       { id: "same", text: "It doesn’t really: he can still hold any hand he called with before the flop.", fix: "Ranges don’t stay the same after the flop. His call removed every hand that hit nothing." },
       { id: "cards", text: "The three flop cards removed most of his combos.", fix: "The flop cards only took 186 to 171. His call took out the next 92." },
     ]),
-    decision("rn-guided", "rn-guided", "guided", "Sera’s river", "Sera’s river. Sort what is left.", "Try a practice hand", { feedback }),
+    decision("rn-guided", "rn-guided", "guided", "Sera’s river", "Sera’s river, a new board. Sort what is left.", "Try a practice hand", { feedback }),
     decision("rn-practice", "rn-practice", "practice", "Practice", "Two calls in. Which hand still fits?", "Try a fresh hand", { feedback }),
     decision("rn-fresh", "rn-fresh", "fresh", "Fresh hand", "A new flop. Count the callers.", "See your recap", { feedback }),
     takeaway({
@@ -58,10 +61,10 @@ const definition = {
       decision: "estimate", ...guided,
       bands: bands(["strong", "Two pair or better"], ["one-pair", "One pair"], ["missed", "Missed draws"]),
       dockPrompt: "Which group is biggest?",
-      title: "82 combos left. Which group is biggest?",
-      prompt: "Sera’s river: J♥ 8♣ 4♦ 2♠ K♥. He called before the flop, on the flop and on the turn, and 82 of his combos are left. Which group holds the most of them?",
-      hint: "His turn call needed eights or better or a straight draw. What do most of those hands hold now?",
-      explanation: "One pair: 48 of the 82. Then 18 two pair or better and 16 missed draws. None of his hands holds nothing, because every one had to keep calling.",
+      title: "79 combos left. Which group is biggest?",
+      prompt: "Sera’s river: 9♠ 8♠ 4♦ 2♣ K♥. Same range and rules: he called before the flop, on the flop and on the turn, and 79 of his combos are left. Which group holds the most of them?",
+      hint: "His turn call needed eights or better or a straight draw. On a flop as connected as 9♠ 8♠, how many of his calls were drawing?",
+      explanation: "Missed draws: 46 of the 79. Then 18 with one pair and 15 with two pair or better. The connected flop kept every straight draw calling, and the river missed them all.",
     },
     "rn-practice": {
       decision: "estimate", ...practice,

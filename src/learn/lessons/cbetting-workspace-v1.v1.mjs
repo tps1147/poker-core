@@ -9,7 +9,8 @@
 //
 // Three heads-up hands on the flop. You raised before the flop on the button and Ace Andy called
 // from the big blind, so he acts first after the flop and checks to you:
-//   Vale's hand  A♣ Q♦ on K♦ 7♣ 2♠: check, or a small c-bet of 20 into 60.
+//   Guided      A♥ J♦ on Q♠ 6♦ 2♣: check, or a small c-bet of 20 into 60 (content version 3: no
+//               longer the film's own A♣ Q♦ on K♦ 7♣ 2♠, which the film works through itself).
 //   Practice     K♣ Q♠ on 8♥ 7♥ 6♦: which range the flop favors, then check or c-bet 20 into 60.
 //   Fresh hand   K♥ Q♥ on A♦ 8♣ 3♠: which range the flop favors, then check or c-bet 15 into 45.
 // Who a flop favors is judged from the ranges the lesson assumes (stated in `assumptions` and in
@@ -35,17 +36,17 @@ const readFeedback = { found: "You read the flop.", missed: "Let’s picture bot
 const actFeedback = { found: "You weighed both conditions.", missed: "Let’s check both conditions.", open: "Here’s the thinking." };
 
 // Checked to you on the flop: no bet is faced, nothing is owed.
-const guided = { street: "flop", hero: ["Ac", "Qd"], board: ["Kd", "7c", "2s"], potBefore: 60, bet: 0, call: 0 };
+const guided = { street: "flop", hero: ["Ah", "Jd"], board: ["Qs", "6d", "2c"], potBefore: 60, bet: 0, call: 0 };
 const practice = { street: "flop", hero: ["Kc", "Qs"], board: ["8h", "7h", "6d"], potBefore: 60, bet: 0, call: 0 };
 const fresh = { street: "flop", hero: ["Kh", "Qh"], board: ["Ad", "8c", "3s"], potBefore: 45, bet: 0, call: 0 };
 
 const definition = {
-  id: "cbetting-workspace-v1", version: 2, flow: "film-first",
+  id: "cbetting-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t3-cbetting",
   sourceLessonId: "lesson-cbetting-001", videoLessonId: "lesson-cbetting-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Earn the c-bet.", kicker: "Bet when the flop favors your range.",
-  trail: ["Learn", "Postflop fundamentals", "C-betting"],
+  trail: ["Learn", "Postflop fundamentals", "Earn the c-bet."],
   course: { chapter: "Postflop fundamentals" },
   meta: { minutes: 4 },
   assumptions: "Heads-up, on the flop. You raised before the flop on the button and Ace Andy called from the big blind, so he acts first and checks to you. The pots and stacks are given for the exercise; Knox speaks no amount. The ranges are assumptions, never read from anyone’s cards: your raise holds the strongest hands, big pairs and strong aces and kings, because Ace Andy would re-raise most of his; his call holds more small and middle pairs, suited connectors and middling aces. Who a flop favors, and whether the board cooperates, are judged from those assumed ranges and the three board cards. A small c-bet is a third of the pot. Each hand stops once you act: no turn is dealt and Ace Andy’s cards stay hidden.",
@@ -66,11 +67,11 @@ const definition = {
     { kind: "why", label: "Why", spotId: "cb1-why", prompt: "Why is the c-bet earned here?",
       options: [
         { id: "a", text: "The dry flop favors your range, and the board lets a small bet work.", fix: "Right. Your range, and a dry board: the small bet is earned." },
-        { id: "b", text: "You raised before the flop, so you always c-bet.", fix: "Raising first is not the reason. On nine-seven-six with two diamonds, the same raise checks." },
-        { id: "c", text: "Ace-queen has the best kicker.", fix: "Ace-queen has no pair yet. The range advantage earns the bet, not the hand." },
+        { id: "b", text: "You raised before the flop, so you always c-bet.", fix: "Raising first is not the reason. On nine-seven-six, the same raise checks." },
+        { id: "c", text: "Ace-ten has an ace, so it always bets.", fix: "Ace-ten has no pair yet. The range advantage earns the bet, not the hand." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "cb1-guided", hand: "cb1-guided", role: "guided",
-      coachLine: "The hand. Ace Andy checks to you.", next: "Try a practice hand",
+      coachLine: "A new flop. Ace Andy checks to you.", next: "Try a practice hand",
       feedback: actFeedback },
     { kind: "decision", label: "Practice", spotId: "cb1-practice-read", hand: "cb1-practice", role: "practice",
       coachLine: "A different flop. Read it before you bet.", next: "Now decide the c-bet",
@@ -93,11 +94,11 @@ const definition = {
     "cb1-guided": {
       decision: "action", choices: ["check", "bet"], sizes: { bet: 20 }, ...guided,
       title: "Check, or c-bet 20?",
-      prompt: `the hand. You raised, Ace Andy called, and he checks to you on king-seven-two in three suits. The pot is 60 and ace-queen has no pair yet. With the assumed ranges from the film, check, or c-bet 20?`,
+      prompt: `A new flop for the film's plan. You raised, Ace Andy called, and he checks to you on queen-six-two in three suits. The pot is 60 and ace-jack has no pair yet. With the assumed ranges from the film, check, or c-bet 20?`,
       hint: ACT_HINT,
-      explanation: "King-seven-two in three suits is dry: no flush draw and no straight draw. By the assumed ranges, your raise holds more strong kings and overpairs, and Ace Andy’s call misses this board often. Your range has the advantage and the board cooperates, so a small c-bet of 20 is earned under this lesson’s assumptions, even though ace-queen has no pair yet. It does not promise the bet wins; it is the rule applied to these ranges.",
+      explanation: "Queen-six-two in three suits is dry: no flush draw and no straight draw. By the assumed ranges, your raise holds more strong queens and overpairs, and Ace Andy’s call misses this board often. Your range has the advantage and the board cooperates, so a small c-bet of 20 is earned under this lesson’s assumptions, even though ace-jack has no pair yet. It does not promise the bet wins; it is the rule applied to these ranges.",
       note: NOTE,
-      focus: ["Kd", "7c", "2s"], hear: 5,
+      focus: ["Qs", "6d", "2c"], hear: 5,
     },
     "cb1-practice-read": {
       decision: "estimate", bands: READ_BANDS, dockPrompt: READ_DOCK, ...practice,

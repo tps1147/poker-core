@@ -26,7 +26,7 @@ const seats = (stack) => ({ hero: { name: "You", stack }, opponent: { name: "Ace
 
 // The table facts at each decision. Nothing is owed (Ace Andy checked), so the pot is potBefore.
 // The two sizes are the stated givens: a third of the pot and three quarters of the pot.
-const guided = { street: "flop", hero: ["Ah", "Kd"], board: ["Ks", "7c", "2d"], potBefore: 120, sizes: { bet: 40, "large-bet": 90 } };
+const guided = { street: "flop", hero: ["Ah", "Kd"], board: ["Ks", "7c", "2d"], potBefore: 300, sizes: { bet: 100, "large-bet": 225 } };
 const practice = { street: "turn", hero: ["Qh", "Jh"], board: ["Kh", "Th", "4c", "2s"], potBefore: 240, sizes: { bet: 80, "large-bet": 180 } };
 const fresh = { street: "flop", hero: ["Kh", "Qh"], board: ["As", "8d", "3c"], potBefore: 180, sizes: { bet: 60, "large-bet": 135 } };
 const labels = ({ sizes }) => ({ bet: `Small bet ${sizes.bet}`, "large-bet": `Large bet ${sizes["large-bet"]}` });
@@ -39,7 +39,7 @@ const definition = {
   sourceLessonId: "lesson-bet-sizing-001", videoLessonId: "lesson-bet-sizing-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Size tells the story.", kicker: "One size for every board is a leak.",
-  trail: ["Learn", "Postflop fundamentals", "Bet sizing"],
+  trail: ["Learn", "Postflop fundamentals", "Size tells the story."],
   course: { chapter: "Postflop fundamentals" },
   meta: { minutes: 4 },
   assumptions: "Heads-up after the flop, 1,000 behind for both players, no rake. In every hand you raised before the flop, Ace Andy called from the big blind, and he checks to you. You have already decided to bet; the question is only the size. The two sizes are given for the exercise: a small bet of a third of the pot or a large bet of three quarters of the pot. Ace Andy’s range, and how it answers each size, is stated in each hand as an assumption for the exercise, not a solver’s answer, and nothing is read from his hidden cards. Each hand stops once you bet, so no more cards are dealt and no cards are shown.",
@@ -57,14 +57,14 @@ const definition = {
       pause: { at: 73.95, anchor: "yourTurn", film: "f-bet-sizing", spotId: "bs1-turn",
         spot: { decision: "estimate", bands: [{ id: "third", label: "A third of the pot" }, { id: "three-quarters", label: "Three-quarters of the pot" }], prompt: "A river where you want his weaker pairs to call. Which size?", title: "Your turn: which size?", explanation: "A third offers him a price of 1/5; three-quarters, 3/10. To keep those pairs calling, bet the third." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-bet-sizing.mjs).
-    { kind: "why", label: "Why", spotId: "bs1-why", prompt: "On ace-king, king-seven-two, why is the small bet right?",
+    { kind: "why", label: "Why", spotId: "bs1-why", prompt: "Why bet a third on the river to keep his weaker pairs calling?",
       options: [
         { id: "a", text: "Bet small to make his bluffs fold cheaply.", fix: "The job here is value from worse hands, not folds." },
-        { id: "b", text: "His weaker kings and pairs call 40 more often than 90, so the small bet keeps worse hands paying.", fix: "Right. Size for the hands you want to call." },
+        { id: "b", text: "A third gives him a one-fifth price, so more of his weaker pairs call than at three-quarters.", fix: "Right. Size for the hands you want to call." },
         { id: "c", text: "Bigger bets always win more.", fix: "A big bet folds the worse hands you want calling. Size for the job." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "bs1-guided", hand: "bs1-guided", role: "guided",
-      coachLine: "The flop. You pick the size.", next: "Try a practice hand" },
+      coachLine: "A new flop. You pick the size.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "bs1-practice", hand: "bs1-practice", role: "practice",
       coachLine: "A draw this time. Pick the size.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "bs1-fresh", hand: "bs1-fresh", role: "fresh",
@@ -78,9 +78,9 @@ const definition = {
     "bs1-guided": {
       decision: "action", choices: ["bet", "large-bet"], choiceLabels: labels(guided), ...guided,
       title: "Ace Andy checks. Which size tells your story?",
-      prompt: "The hand: ace-king on a king, seven, two flop, pot 120, and Ace Andy checks. For this exercise his range is capped: he would have re-raised aces, kings and ace-king, so he holds weaker kings, sevens, small pairs and hands that missed. His weaker kings and pairs call a small bet more often than a large one. Small bet 40, or large bet 90?",
+      prompt: "Ace-king on a king, seven, two flop, pot 300, and Ace Andy checks. For this exercise his range is capped: he would have re-raised aces, kings and ace-king, so he holds weaker kings, sevens, small pairs and hands that missed. His weaker kings and pairs call a small bet more often than a large one. Small bet 100, or large bet 225?",
       hint: "Ask who pays you. Which hands in his range are worse than yours, and which size keeps them putting chips in?",
-      explanation: "Top pair with the best kicker is ahead of almost all of a capped range. His weaker kings and pairs call 40 more often than 90, so the small bet keeps the hands you beat paying, and his missed hands still pay to see the turn. A large bet folds the worse hands you want in. That is the small-bet story: pressure a capped range and deny cheap equity without risking much.",
+      explanation: "Top pair with the best kicker is ahead of almost all of a capped range. His weaker kings and pairs call 100 more often than 225, so the small bet keeps the hands you beat paying, and his missed hands still pay to see the turn. A large bet folds the worse hands you want in. That is the small-bet story: pressure a capped range and deny cheap equity without risking much.",
       note: NOTE,
       focus: ["Ah", "Kd", "Ks"], hear: 1,
     },
@@ -108,7 +108,7 @@ const definition = {
     "bs1-guided": {
       id: "bs1-guided", layout: "heads-up", seats: seats(1000), button: "hero",
       hero: guided.hero, opponent: {},
-      start: { street: "flop", board: guided.board, pot: 120, dealt: "held" },
+      start: { street: "flop", board: guided.board, pot: 300, dealt: "held" },
       intro: [
         { do: "deal" },
         { do: "street", cards: guided.board },

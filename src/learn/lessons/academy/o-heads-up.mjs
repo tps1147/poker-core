@@ -1,4 +1,4 @@
-// o-heads-up, Heads-Up Play (Other Tables), academy v2 definition.
+// o-heads-up, Heads-Up Play (Other Tables), academy v2 definition, content version 2.
 // Film: src-academy-o-heads-up-v2 (70 s). canon.yourTurn is null, so the film plays to its stop and
 // then asks its own question: "When only one opponent is left, should you still wait for the same
 // strong hands?" (the film: no, play wider).
@@ -8,7 +8,8 @@
 // first before the flop and last on every street after.
 //   Your turn   same strong hands heads-up -> no, play wider
 //   Guided      who acts first before the flop heads-up -> the button (small blind)
-//   Practice    what the blinds cost a hand heads-up -> 0.75 big blind
+//   Practice    what the blinds cost a hand three-handed, one step before heads-up -> 1.5 ÷ 3 = 0.5
+//               big blind (v2, 2026-10-09: v1 asked the film's own heads-up 0.75 against 0.17)
 //   Fresh       heads-up against six-handed: 0.75 ÷ 0.25 -> 3 times as much (changed table size)
 // Keys: answerKeys/o-heads-up.mjs. Every number: test/academyLessonsB.test.mjs.
 import { definitionBase, welcome, filmStage, whyStage, decision, huHand, bands, takeaway } from "./kit.mjs";
@@ -32,21 +33,21 @@ const fresh = preflop(["Js", "7s"]);
 
 const definition = {
   ...definitionBase({
-    node: "o-heads-up", coach: "knox", title: "Heads-up, play wider.", kicker: "But every chip still needs a reason.",
+    node: "o-heads-up", version: 2, coach: "knox", title: "Heads-up, play wider.", kicker: "But every chip still needs a reason.",
     track: "formats", chapter: "Other Tables", minutes: 4, feedback,
     assumptions: "Blinds of one small blind and one big blind, worth 1.5 big blinds a round, no antes and no rake. A round is one hand per player at the table, so the blinds cost 1.5 ÷ (number of players) big blinds a hand on average. Heads-up the button posts the small blind. Each hand stops before the flop.",
   }),
   stages: [
     welcome("Heads-up, play wider.", "But every chip still needs a reason.",
       "With one opponent left, the rules change shape and waiting gets expensive. Watch Knox, then read three heads-up hands.", "Knox"),
-    filmStage({ film: "o-heads-up", at: null, spotId: "hu-turn", spot: turnSpot, upNext: "Play Knox’s heads-up hand" }),
+    filmStage({ film: "o-heads-up", at: null, endAsk: "skip", spotId: "hu-turn", spot: turnSpot, upNext: "Play Knox’s heads-up hand" }),
     whyStage("hu-why", "Why play wider heads-up?", [
       { id: "cost", text: "Waiting costs 0.75 big blind a hand, 4.5 times a full table, and only one player can hold a better hand.", fix: "Right. The nit bleeds away; the player who never stops raising gets picked off." },
       { id: "same", text: "Strong hands are strong anywhere, so the hands you play don’t change.", fix: "Not heads-up. With one opponent, fewer hands beat you, and waiting costs 4.5 times as much." },
       { id: "acts-first", text: "Because heads-up the button acts first on every street.", fix: "The button acts first only before the flop, then last on every street after." },
     ]),
     decision("hu-guided", "hu-guided", "guided", "Knox’s hand", "Knox’s heads-up hand. Who acts first?", "Try a practice hand", { feedback: { ...feedback, missed: "Heads-up, the button is the small blind." } }),
-    decision("hu-practice", "hu-practice", "practice", "Practice", "What does waiting cost?", "Try a fresh hand", { feedback }),
+    decision("hu-practice", "hu-practice", "practice", "Practice", "Three left. What does waiting cost?", "Try a fresh hand", { feedback }),
     decision("hu-fresh", "hu-fresh", "fresh", "Fresh hand", "Compare with six-handed.", "See your recap", { feedback }),
     takeaway({
       heading: "Wider, with a reason.",
@@ -68,12 +69,12 @@ const definition = {
     "hu-practice": {
       scene: "question",
       decision: "estimate", ...practice,
-      bands: bands(["bb-017", "About 0.17 big blind"], ["bb-075", "0.75 big blind"], ["bb-150", "1.5 big blinds"]),
+      bands: bands(["bb-025", "0.25 big blind"], ["bb-050", "0.5 big blind"], ["bb-150", "1.5 big blinds"]),
       dockPrompt: "What do the blinds cost a hand?",
-      title: "What do the blinds cost a hand?",
-      prompt: "Each round costs you 1.5 big blinds in blinds. At a full table of 9 that is about 0.17 big blind a hand. Heads-up, about how much is it a hand?",
-      hint: "Heads-up, a round is only two hands.",
-      explanation: "0.75 big blind: 1.5 ÷ 2. That is 4.5 times the full table’s 1.5 ÷ 9, so waiting for the same strong hands costs 4.5 times as much.",
+      title: "Three left. What do the blinds cost?",
+      prompt: "Each round costs you 1.5 big blinds in blinds. The table is down to three players. About how much do the blinds cost you a hand?",
+      hint: "A round is one hand per player: three hands here.",
+      explanation: "0.5 big blind: 1.5 ÷ 3, up from about 0.17 at a full table of 9. Heads-up it climbs again, to 0.75. Every seat that leaves makes waiting dearer.",
     },
     "hu-fresh": {
       scene: "question",

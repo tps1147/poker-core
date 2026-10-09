@@ -1,4 +1,4 @@
-// y-bankroll, Bankroll (The Player), academy v2 definition.
+// y-bankroll, Bankroll (The Player), academy v2 definition, content version 2.
 // Film: src-academy-y-bankroll-v2 (89 s). canon.yourTurn is null, so the film plays to its stop and
 // then asks its own question: "You win more sessions than you lose. Can you still go broke?" (yes).
 // Plan: player.md (y-bankroll). Chips and buy-ins in a stated toy model, never money advice: each
@@ -6,9 +6,11 @@
 // the whole bankroll from N buy-ins is (45/55)^N = (9/11)^N: 5 -> 36.7%, 10 -> 13.4%, 20 -> 1.8%,
 // 40 -> 0.033%.
 //   Your turn   can a winning player go broke -> yes (from 5 buy-ins, 36.7% in the model)
-//   Guided      2,000 chips at a 100-chip game -> 20 buy-ins
-//   Practice    2,000 chips: the 100-chip game (20, 1.8%) or the 50-chip game (40, 0.033%), which
-//               keeps the model's chance under 1% -> the 50-chip game
+//   Guided      600 chips at a 60-chip game -> 10 buy-ins (13.4% in the model)
+//   Practice    3,200 chips: the 160-chip game (20, 1.8%) or the 80-chip game (40, 0.033%), which
+//               keeps the model's chance under 1% -> the 80-chip game
+//   v2 (2026-10-09): v1's guided and practice used the film's own 2,000 chips (100-chip game -> 20
+//   buy-ins; 100 against 50 -> the 50-chip game); both now count new bankrolls.
 //   Fresh       1,500 chips: the 150-chip game (10, 13.4%) or the 75-chip game (20, 1.8%), which
 //               keeps it under 5% -> the 75-chip game (changed amounts)
 // Keys: answerKeys/y-bankroll.mjs. Every number: test/academyLessonsB.test.mjs.
@@ -33,14 +35,14 @@ const fresh = preflop(["9c", "9d"]);
 
 const definition = {
   ...definitionBase({
-    node: "y-bankroll", conceptId: "t6-bankroll", coach: "mina", title: "Count it in buy-ins.", kicker: "A bad run should be a dip, not the end.",
+    node: "y-bankroll", version: 2, conceptId: "t6-bankroll", coach: "mina", title: "Count it in buy-ins.", kicker: "A bad run should be a dip, not the end.",
     track: "player", chapter: "The Player", minutes: 4, feedback,
     assumptions: "Chips in a toy model, not money advice. A buy-in is the chips one game asks you to sit down with. In the model each session wins or loses exactly one buy-in, and this player wins 55% of sessions. Under it, the chance of ever losing the whole bankroll from N buy-ins is (45 ÷ 55) to the power N. The bankrolls and games are examples. Each hand at the table stops before the flop.",
   }),
   stages: [
     welcome("Count it in buy-ins.", "A bad run should be a dip, not the end.",
       "This is about chips in a toy model, not money advice. Watch Mina count a bankroll in buy-ins, then size three games.", "Mina"),
-    filmStage({ film: "y-bankroll", at: null, spotId: "br-turn", spot: turnSpot, upNext: "Count Mina’s bankroll" }),
+    filmStage({ film: "y-bankroll", at: null, endAsk: "skip", spotId: "br-turn", spot: turnSpot, upNext: "Count Mina’s bankroll" }),
     whyStage("br-why", "Why can a winning player still go broke?", [
       { id: "cushion", text: "His edge is an average. A normal bad run can take a short bankroll before the average shows.", fix: "Right. From 5 buy-ins, 36.7%; from 40, 0.033%. Same player, a bigger cushion." },
       { id: "not-winner", text: "He can’t: if he goes broke, he wasn’t really a winning player.", fix: "He wins 55% of sessions in the model and still goes broke 36.7% of the time from 5 buy-ins. Winning and going broke can both happen." },
@@ -59,23 +61,23 @@ const definition = {
   spots: {
     "br-guided": {
       scene: "question",
-      decision: "estimate", ...guided, bankroll: 2000, buyIn: 100,
-      bands: bands(["bi-10", "10 buy-ins"], ["bi-20", "20 buy-ins"], ["bi-40", "40 buy-ins"]),
+      decision: "estimate", ...guided, bankroll: 600, buyIn: 60,
+      bands: bands(["bi-6", "6 buy-ins"], ["bi-10", "10 buy-ins"], ["bi-60", "60 buy-ins"]),
       dockPrompt: "How many buy-ins?",
-      title: "2,000 chips, a 100-chip game.",
-      prompt: "Mina’s example: a bankroll of 2,000 chips, at a game with a 100-chip buy-in. How many buy-ins is that?",
-      hint: "Divide the bankroll by one buy-in.",
-      explanation: "2,000 ÷ 100 = 20 buy-ins. In the toy model, from 20 buy-ins this player loses it all 1.8% of the time.",
+      title: "600 chips, a 60-chip game.",
+      prompt: "Mina’s example: a bankroll of 600 chips, at a game with a 60-chip buy-in. How many buy-ins is that?",
+      hint: "Divide the bankroll by one buy-in, not by 100.",
+      explanation: "600 ÷ 60 = 10 buy-ins. In the toy model, from 10 buy-ins this player loses it all 13.4% of the time: a thin cushion.",
     },
     "br-practice": {
       scene: "question",
-      decision: "estimate", ...practice, bankroll: 2000, games: [100, 50], under: 1,
-      bands: bands(["game-100", "The 100-chip game"], ["game-50", "The 50-chip game"]),
+      decision: "estimate", ...practice, bankroll: 3200, games: [160, 80], under: 1,
+      bands: bands(["game-160", "The 160-chip game"], ["game-80", "The 80-chip game"]),
       dockPrompt: "Which game keeps it under 1%?",
-      title: "2,000 chips. Which game?",
-      prompt: "The same 2,000 chips. Two games: one with a 100-chip buy-in, one with a 50-chip buy-in. In the toy model, which keeps the chance of losing it all under 1%?",
+      title: "3,200 chips. Which game?",
+      prompt: "A bankroll of 3,200 chips. Two games: one with a 160-chip buy-in, one with an 80-chip buy-in. In the toy model, which keeps the chance of losing it all under 1%?",
       hint: "Count the buy-ins for each game, then find its row.",
-      explanation: "The 50-chip game: 2,000 ÷ 50 = 40 buy-ins, 0.033% in the model. At the 100-chip game it is 20 buy-ins and 1.8%.",
+      explanation: "The 80-chip game: 3,200 ÷ 80 = 40 buy-ins, 0.033% in the model. At the 160-chip game it is 20 buy-ins and 1.8%.",
     },
     "br-fresh": {
       scene: "question",
@@ -89,8 +91,8 @@ const definition = {
     },
   },
   hands: {
-    "br-guided": huHand("br-guided", { ...guided, pot: 0, blinds: [1, 2], stack: 100, decisions: ["br-guided"] }),
-    "br-practice": huHand("br-practice", { ...practice, pot: 0, blinds: [25, 50], stack: 2000, decisions: ["br-practice"] }),
+    "br-guided": huHand("br-guided", { ...guided, pot: 0, blinds: [1, 2], stack: 60, decisions: ["br-guided"] }),
+    "br-practice": huHand("br-practice", { ...practice, pot: 0, blinds: [25, 50], stack: 3200, decisions: ["br-practice"] }),
     "br-fresh": huHand("br-fresh", { ...fresh, pot: 0, blinds: [25, 50], stack: 1500, decisions: ["br-fresh"] }),
   },
 };

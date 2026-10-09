@@ -127,7 +127,7 @@ export const RECALL_BANK = Object.freeze([
   ready("f-pot-control", "Checks: fresh (pc-fresh)", "Medium hand, small pot: two streets of value, and take the free card when you are last.",
     "Flop pot 60. You bet half the pot on the flop, check the turn behind and bet half the pot on the river, and both bets are called. How big is the final pot?", ["120", "240", "480"], 1),
   ready("f-playing-draws", "Checks: fresh (pd-fresh)", "Price first; then ask what the stacks let you win later, and whether a raise wins it now.",
-    "6♣ 5♣ on K♣ 9♣ 2♦. He moves all-in for 100 into 100, so you see the turn and the river, and 378 of the 1,081 runouts make your flush. Call or fold?", ["Call", "Fold"], 0),
+    "8♦ 7♦ on J♦ 5♦ 2♠. He moves all-in for 100 into 100, so you see the turn and the river, and 378 of the 1,081 runouts make your flush. Call or fold?", ["Call", "Fold"], 0),
 
   // ── 6 Pressure
   ready("x-fold-equity", "Checks: fresh (sb1-fresh, kept)", "Break-even = bet ÷ (pot + bet). A semi-bluff adds the chance you hit when called.",
