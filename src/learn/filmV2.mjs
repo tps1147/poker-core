@@ -226,13 +226,13 @@ export function filmOwnPause(stage, filmId) {
 // WHERE: never inside a spoken word. The caption cues are gapless (a cue ends where the next one
 // starts), so the ask is placed on the film's measured speech (FILM_SPEECH, filmSpeech.mjs): the
 // end of the spoken span holding the cue's last word, plus ASK_TAIL (or half the silence to the next
-// word when that silence is shorter).
+// word when that silence is shorter), and never onto the next cue's caption (burned into the film).
 //   "pause"  the cue is the film's question: the first cue from the yourTurn anchor that asks (ends
 //            in "?" or a trailing "..."), within PAUSE_WINDOW seconds; failing that, the cue the
 //            anchor starts. A cue whose sentence runs on (ends in a comma) takes the rest of its
 //            sentence with it. Where a film sets its spot out without a question mark, QUESTION_CUES
-//            names the cue by hand (the last line before the reveal; checked against the film's
-//            version, so a re-cut film falls back to the rule). The definition's own `at` is the
+//            names the cue by hand (the last line before the reveal, by its start; only over the
+//            film's current measurements, so a re-timed film without that cue falls back to the rule). The definition's own `at` is the
 //            beat's START (canon yourTurn), never the pause point.
 //   "end"    the cue is the last line the film speaks before its up-next: before upNext, and
 //            before the cue that says "Up next" when a film speaks it ahead of its anchor. The ask
@@ -251,15 +251,15 @@ const ASK_NONE = Object.freeze({ askAt: null, holdFrameAt: null, resumeTo: null,
 // The question cue (its start, seconds) of the films whose spot is set out without a "?" in a cue,
 // read off each film's own words (2026-10-08): the last line before the film starts answering.
 export const QUESTION_CUES = Object.freeze({
-  "m-rule-2-4": { version: "30da67e0", at: 68.38 },      // "Pick the rule first."
-  "m-implied-odds": { version: "f161571d", at: 73.94 },  // "Pot 60, bet 20, 90 behind."
-  "m-ev": { version: "9228bc79", at: 65.4 },             // "They shove 40 into 150."
-  "f-ranges": { version: "bfc3ed10", at: 86.09 },        // "Drag your split first... then watch it fill."
-  "f-cbet": { version: "66348276", at: 72.09 },          // "Read the bars."
-  "f-bet-sizing": { version: "a6ebea8d", at: 74.72 },    // "A river where you want his weaker pairs to call."
-  "x-fold-equity": { version: "4958f7f9", at: 63.41 },   // "He folds a quarter, you hit a quarter... both given."
-  "f-value-betting": { version: "91de8a6f", at: 76.08 }, // "Sort the callers first."
-  "f-playing-draws": { version: "dc8e5c57", at: 70.1 },  // "He bets 60 into 120, with 300 behind."
+  "m-rule-2-4": { at: 68.38 },      // "Pick the rule first."
+  "m-implied-odds": { at: 73.94 },  // "Pot 60, bet 20, 90 behind."
+  "m-ev": { at: 65.4 },             // "They shove 40 into 150."
+  "f-ranges": { at: 86.09 },        // "Drag your split first... then watch it fill."
+  "f-cbet": { at: 72.09 },          // "Read the bars."
+  "f-bet-sizing": { at: 74.72 },    // "A river where you want his weaker pairs to call."
+  "x-fold-equity": { at: 63.41 },   // "He folds a quarter, you hit a quarter... both given."
+  "f-value-betting": { at: 76.08 }, // "Sort the callers first."
+  "f-playing-draws": { at: 70.1 },  // "He bets 60 into 120, with 300 behind."
 });
 
 const r3 = (v) => Math.round(v * 1000) / 1000;
@@ -283,20 +283,25 @@ function askCues(media, measured, cues) {
   return list.map((cue) => ({ start: cue.start, end: cue.end, lastOnset: null, asks: asks(String(cue.text || "")), runsOn: unfinished(String(cue.text || "")) }));
 }
 
-// When the cue's last word has been said, and when the next word starts (Infinity: none).
+// When the cue's last word has been said, when the next word starts, and when the next caption
+// shows (Infinity: none).
 function spokenAround(list, cue, spans) {
   const next = list[list.indexOf(cue) + 1];
-  if (!spans || cue.lastOnset == null) return { end: cue.end, nextStart: next ? next.start : Infinity };
+  const caption = next ? next.start : Infinity;
+  if (!spans || cue.lastOnset == null) return { end: cue.end, nextStart: caption, caption };
   const onset = cue.lastOnset;
   const span = spans.find(([s, e]) => s <= onset + 0.05 && e > onset) || spans.find(([s]) => s >= onset - 0.05);
   const end = span ? Math.max(span[1], onset) : cue.end;
   const after = spans.find(([s]) => s > end + 0.001);
-  return { end, nextStart: after ? after[0] : Infinity };
+  return { end, nextStart: after ? after[0] : Infinity, caption };
 }
 
 // A mid-film hold may sit this far inside the last word's fading tail (the resume replays it).
 const HOLD_SLACK = 0.1;
-const placeAfter = (end, nextStart) => end + Math.min(ASK_TAIL, Math.max(0, (nextStart - end) / 2));
+// After the word: ASK_TAIL, or half the silence to the next word, and never onto the next caption
+// (the films burn their captions in: a frame past the next cue's start would show the next line).
+const CAPTION_LEAD = 0.02;
+const placeAfter = ({ end, nextStart, caption }) => Math.max(end, Math.min(end + Math.min(ASK_TAIL, Math.max(0, (nextStart - end) / 2)), caption - CAPTION_LEAD));
 
 // The frame to hold at an ask: askAt itself unless the picture is moving there (a wipe or a reveal
 // already under way); then the still frame the movement starts from, when that is no earlier than
@@ -309,7 +314,7 @@ function stillAt(at, measured, floor) {
 // The question cue of a "pause" film.
 function questionCue(media, list, beat, measured) {
   const named = QUESTION_CUES[nodeIdOfFilm(media?.id) || media?.id];
-  if (named && measured && named.version === media?.version) {
+  if (named && measured) {
     const cue = list.find((x) => Math.abs(x.start - named.at) < 0.02);
     if (cue) return cue;
   }
@@ -335,8 +340,9 @@ export function filmAskPlan(stage, media, { replay = false, cues = null, speech 
   if (beat != null && own?.anchor !== "end") {
     const cue = questionCue(media, list, beat, measured);
     if (!cue) return { askAt: r3(beat), holdFrameAt: r3(beat), resumeTo: r3(beat), mode: "pause", cue: null };
-    const { end, nextStart } = spokenAround(list, cue, spans);
-    const askAt = r3(placeAfter(end, nextStart));
+    const said = spokenAround(list, cue, spans);
+    const { end } = said;
+    const askAt = r3(placeAfter(said));
     const holdFrameAt = stillAt(askAt, measured, end - HOLD_SLACK);
     return { askAt, holdFrameAt, resumeTo: holdFrameAt, mode: "pause", cue: { start: cue.start, end: cue.end } };
   }
@@ -349,8 +355,8 @@ export function filmAskPlan(stage, media, { replay = false, cues = null, speech 
     const before = list.filter((x) => x.start < stop - 0.05);
     const cue = before[before.length - 1];
     if (!cue) { const at = r3(Math.max(0, stop - END_GUARD)); return { askAt: at, holdFrameAt: at, resumeTo: null, mode: "end", cue: null }; }
-    const { end, nextStart } = spokenAround(list, cue, spans);
-    const askAt = r3(Math.max(Math.min(end, stop), Math.min(placeAfter(end, nextStart), stop - END_GUARD)));
+    const said = spokenAround(list, cue, spans);
+    const askAt = r3(Math.max(Math.min(said.end, stop), Math.min(placeAfter(said), stop - END_GUARD)));
     return { askAt, holdFrameAt: stillAt(askAt, measured, cue.start), resumeTo: null, mode: "end", cue: { start: cue.start, end: Math.min(cue.end, stop) } };
   }
   return ASK_NONE;
@@ -363,7 +369,8 @@ export function filmAskPlan(stage, media, { replay = false, cues = null, speech 
 //   seek(to)                  a user seek (scrub, skip, restart): one back before askAt re-arms it.
 //                             The player's own seeks (holding the frame, resuming) are not reported.
 //   lead(now, playing)        seconds to the ask while it is armed and at most ASK_LOOKAHEAD away,
-//                             so a player that polls can time the pause to the frame
+//                             so a player that polls can time the pause to the frame (a timer
+//                             that fires a hair early ticks short and is set again from lead)
 //   armed                     whether the next crossing asks
 // A replay's plan is "none": its gate never asks, and no seek re-arms it.
 export const ASK_LOOKAHEAD = 0.6;

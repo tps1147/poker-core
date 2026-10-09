@@ -74,6 +74,9 @@ check("askAt is after the cue's last word, never inside a spoken word", () => {
     assert.ok(!inSpeech(f.timing, askAt), `${f.node}: askAt ${askAt} is inside speech`);
     // No word starts between the cue's end-of-speech and the ask.
     assert.ok(!f.timing.speech.some(([s]) => s > end + 1e-6 && s <= askAt), `${f.node}: a word starts before the ask`);
+    // The captions are burned in: the held frame never shows the next line's caption.
+    const next = f.timing.cues[f.timing.cues.findIndex(([s]) => s === cue.start) + 1];
+    if (next && end < next[0]) assert.ok(askAt < next[0] && f.plan.holdFrameAt < next[0], `${f.node}: ${askAt} shows the next caption (${next[0]})`);
   }
 });
 
@@ -102,8 +105,7 @@ check("the end ask follows the last line before upNext; the mid-film ask follows
     assert.equal(f.plan.resumeTo, f.plan.holdFrameAt, `${f.node}: resumes from the held frame`);
   }
   for (const [id, named] of Object.entries(QUESTION_CUES)) {
-    assert.equal(named.version, mediaOf(id).version, `${id}: QUESTION_CUES names a cue of an older cut`);
-    assert.ok(FILM_SPEECH[id].cues.some(([s]) => s === named.at), `${id}: ${named.at} is a cue start`);
+    assert.ok(FILM_SPEECH[id].cues.some(([s]) => s === named.at), `${id}: QUESTION_CUES names ${named.at}, no longer a cue start (re-timed film?)`);
     assert.equal(FILMS.find((f) => f.node === id).plan.cue.start, named.at);
   }
 });
