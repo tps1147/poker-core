@@ -260,6 +260,7 @@ check("several pauses: each on its own anchor, after its words, before its word,
       assert.ok(!moving(f.timing, p.holdFrameAt), `${p.key}: a moving frame`);
       assert.equal(p.resumeTo, p.holdFrameAt, `${p.key}: resumes from the held frame, into the film's own press`);
       assert.ok(!f.timing.speech.some(([s]) => s > p.holdFrameAt + 1e-6 && s < p.askAt - 1e-6), `${p.key}: no word starts between the held frame and the ask`);
+      assert.ok(!inSpeech(f.timing, p.askAt), `${p.key}: askAt ${p.askAt} is inside speech (a run-on "you bet" pauses before the run)`);
       // One lit button: an action pause enables exactly one choice; the prediction enables both.
       if (p.spot.decision === "action") assert.equal(p.spot.enabled.length, 1, `${p.key}: one lit button`);
       else assert.ok(p.predict && !p.spot.enabled, `${p.key}: a prediction, either answer goes on`);

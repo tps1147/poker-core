@@ -443,15 +443,20 @@ export function pauseBases(stage, media, { replay = false, cues = null, speech }
     const before = num(t?.before) ?? (nextCue ? nextCue.start : at);
     // The voice before the `before` word: the last spoken span that starts ahead of it (unmeasured:
     // a beat before the word).
+    // Where the voice runs on into the word without a break ("you bet", one spoken span), the pause
+    // comes before that whole run: after the span ahead of it, and clear of the run's start.
     let end = Math.max(at, before - 0.3);
+    let runStart = before;
     if (spans) {
-      const span = spans.filter(([s]) => s < before - 0.05).at(-1);
-      if (span) end = Math.max(at, Math.min(span[1], before));
+      const i = spans.findLastIndex(([s]) => s < before - 0.05);
+      let span = i >= 0 ? spans[i] : null;
+      if (span && span[1] > before + 0.05 && i > 0 && spans[i - 1][1] > at) { runStart = span[0]; span = spans[i - 1]; }
+      if (span) end = Math.max(at, Math.min(span[1], runStart));
     }
     // Held before the word, and before the next caption (burned in) when that comes first.
-    const limit = Math.min((nextCue ? nextCue.start : Infinity) - CAPTION_LEAD, before - WORD_LEAD);
+    const limit = Math.min((nextCue ? nextCue.start : Infinity) - CAPTION_LEAD, runStart - WORD_LEAD);
     const floor = Math.min(end, limit);
-    const askAt = r3(Math.max(floor, Math.min(floor + Math.min(ASK_TAIL, Math.max(0, (before - floor) / 2)), limit)));
+    const askAt = r3(Math.max(floor, Math.min(floor + Math.min(ASK_TAIL, Math.max(0, (runStart - floor) / 2)), limit)));
     out.push({ mode: "pause", key: entry.anchor, at, before, cue: cue ? { start: cue.start, end: cue.end } : null, askAt, wordEnd: floor, floor, limit, measured, entry });
   }
   return out.sort((a, b) => a.at - b.at);
