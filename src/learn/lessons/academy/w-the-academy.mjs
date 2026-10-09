@@ -1,22 +1,37 @@
-// Welcome 5, How Flop52 Makes You Better (w-the-academy, film w-the-academy, rendered as w-academy), v2 lesson. The film has no
-// yourTurn anchor; the guided hand asks its predict question (watch 100, or decide 10 and check).
-// Practice is the plan's comprehension check (what comes right after you decide); the fresh hand
-// is the plan's Transfer, the loop in order, asked at a changed place in the ring.
+// Welcome 5, How Flop52 Makes You Better (w-the-academy, film w-the-academy, rendered as w-academy), v2 lesson,
+// content version 2. The film has no yourTurn anchor; it asks and answers its predict question
+// (watch 100, or decide 10 and check), so the lesson skips the end ask. The guided question follows
+// the film's reason for bringing a lesson back: which review plan keeps an idea (reviews spaced
+// over days, not one more viewing or ten reviews in one day). Practice is the plan's comprehension
+// check (what comes right after you decide); the fresh hand is the plan's Transfer, the loop in
+// order, asked at a changed place in the ring.
 // Keys: answerKeys/w-the-academy.mjs (package root, not shipped).
 import { bands, huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const table = (id) => huHand(id, { hero: ["Jc", "Tc"], pot: 0, blinds: [5, 10] });
 const SPOT = { street: "preflop", hero: ["Jc", "Tc"] };
 
+// The film's own question (it asks and answers it on screen), kept as it plays.
+const turnSpot = {
+  scene: "question",
+  decision: "estimate", ...SPOT,
+  bands: bands(["watch", "Watch 100 lessons"], ["decide", "Decide 10 hands and check each one"]), dockPrompt: "Which makes you better?",
+  title: "Watch, or decide?",
+  prompt: "You could watch a hundred poker lessons, or play ten hands and check each decision. Which makes you better?",
+  hint: "Think about what your memory keeps: something you watched, or something you had to work out.",
+  explanation: "Deciding, then checking why, is what makes you better. Watching alone fades; a decision you made and checked holds on.",
+};
+
 const spots = {
   "wa-guided": {
     scene: "question",
     decision: "estimate", ...SPOT,
-    bands: bands(["watch", "Watch 100 lessons"], ["decide", "Decide 10 hands and check each one"]), dockPrompt: "Which makes you better?",
-    title: "Watch, or decide?",
-    prompt: "You could watch a hundred poker lessons, or play ten hands and check each decision. Which makes you better?",
-    hint: "Think about what your memory keeps: something you watched, or something you had to work out.",
-    explanation: "Deciding, then checking why, is what makes you better. Watching alone fades; a decision you made and checked holds on.",
+    bands: bands(["once", "Watch the film once more tonight"], ["cram", "Review it ten times today"], ["spaced", "Review it again over the next few days"]),
+    dockPrompt: "Which keeps it longest?",
+    title: "Make it stick.",
+    prompt: "You learn one idea today and want to still know it next month. Which plan keeps it longest?",
+    hint: "In the film, one line fades after a single viewing. What lifts the other line back up?",
+    explanation: "One viewing fades, and ten reviews in one day fade with it. Reviews spread over days each lift it back up. That’s why a Flop52 lesson comes back days later.",
   },
   "wa-practice": {
     scene: "question",
@@ -39,14 +54,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "w-the-academy", film: "w-the-academy", coach: "knox", access: "free", track: "Welcome to Poker", minutes: 3,
+  node: "w-the-academy", version: 2, film: "w-the-academy", coach: "knox", access: "free", track: "Welcome to Poker", minutes: 3,
   title: "How Flop52 makes you better.", kicker: "Watching alone isn't enough.",
   assumptions: "The loop: learn an idea, decide with it, see why, try it in a new spot, prove it later. The film's forgetting curve is an illustration with no rates. The table here is only a frame for the questions.",
   stages: v2Stages({
     welcome: { heading: "How do you get better?", em: "Pick one, and hold onto it.", lead: "Watch how a Flop52 lesson works, then answer three quick questions about it.", cta: "Watch with Knox" },
-    film: { upNext: "Answer Knox’s question", film: "w-the-academy", at: null, spot: spots["wa-guided"] },
+    film: { upNext: "Answer Knox’s question", film: "w-the-academy", at: null, endAsk: "skip", spot: turnSpot },
     hands: [
-      { id: "wa-guided", label: "Knox’s question", coachLine: "The film’s question. Your pick." },
+      { id: "wa-guided", label: "Knox’s question", coachLine: "Make it stick. Your pick." },
       { id: "wa-practice", label: "Practice", coachLine: "One step of the loop." },
       { id: "wa-fresh", label: "Fresh question", coachLine: "The loop, from another side." },
     ],

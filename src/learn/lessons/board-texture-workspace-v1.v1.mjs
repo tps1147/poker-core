@@ -41,8 +41,8 @@ const DRAWS = [
   { id: "none", label: "No flush or straight draw" },
 ];
 const TEXTURE = [{ id: "dry", label: "Dry" }, { id: "wet", label: "Wet" }];
-const DRAWS_DOCK = "Which draws can this flop give?";
-const TEXTURE_DOCK = "Is this flop dry or wet?";
+const DRAWS_DOCK = "Draws a player can hold right now";
+const TEXTURE_DOCK = "This flop is…";
 const DRAWS_HINT = "Count the suits on the flop first. Then check whether any two flop cards fit inside one five-card straight.";
 const NOTE = "The hand stops before you act. This lesson reads the flop; choosing the bet is the next lesson.";
 const textureFeedback = { found: "You named the texture.", missed: "Let’s name it together.", open: "Here’s the read." };
@@ -53,7 +53,7 @@ const definition = {
   sourceLessonId: "lesson-board-texture-001", videoLessonId: "lesson-board-texture-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Read the flop before you bet.", kicker: "How much can change?",
-  trail: ["Learn", "Postflop fundamentals", "Board texture"],
+  trail: ["Learn", "Postflop fundamentals", "Read the flop before you bet."],
   course: { chapter: "Postflop fundamentals" },
   meta: { minutes: 4 },
   assumptions: "Heads-up, blinds of 5 and 10, 1,000 each before the hand, no antes and no rake. You raised to 30 on the button and Ace Andy called from the big blind, so the pot is 60 and you each have 970. He checks the flop to you. Knox names ranks only, so the suits, your cards and the amounts are given for the exercise. In this lesson a draw means four cards to a flush (two of a suit on the flop) or four cards to a straight (open-ended or with one gap) that some two-card hand could hold right now; draws that need both the turn and the river do not count. Dry and wet follow the two examples. A wet flop, like jack-ten-nine, already lets some hand make a straight and gives combo draws, a flush draw and a straight draw together. A dry flop, like ace-seven-two in three suits, lets no hand make a straight and gives no flush draw; it can still leave a few straight draws, which is why Knox says fewer draws, not none. Each flop in this lesson is clearly one or the other. Nothing is read from anyone’s hidden cards, and no ranges are assumed. Each hand stops before you act.",
@@ -72,14 +72,14 @@ const definition = {
       pause: { at: 74.88, anchor: "yourTurn", film: "f-board-texture", spotId: "bt1-turn",
         spot: { decision: "estimate", bands: [{ id: "raiser", label: "The raiser" }, { id: "caller", label: "The caller" }], prompt: "Queen, queen, five. Whose range does this flop hit?", title: "Your turn: whose flop?", explanation: "Top pair or better is 19.5% of the raiser’s range and 7.6% of the caller’s: the raiser’s flop." } } },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/f-board-texture.mjs).
-    { kind: "why", label: "Why", spotId: "bt1-why", prompt: "Why is jack-ten-nine wet?",
+    { kind: "why", label: "Why", spotId: "bt1-why", prompt: "Why is queen-queen-five the raiser’s flop?",
       options: [
-        { id: "a", text: "It is wet because the cards are high.", fix: "High cards alone can be dry, like king-seven-two. Connected and suited cards make a board wet." },
-        { id: "b", text: "It is only wet for whoever holds the best hand right now.", fix: "Wet describes the board for every range: what is possible now and what is still coming." },
-        { id: "c", text: "Straights are possible, and flush and straight draws are live: a lot can change on the turn.", fix: "Right. Made straights, flush draws and straight draws are all live." },
+        { id: "a", text: "Paired flops always favor the caller.", fix: "Not this one. The aces and kings sit with the raiser, so more of his range hits it." },
+        { id: "b", text: "Whoever holds the better hand right now owns the flop.", fix: "A flop favors a range, not one hand: what share of each range hits it." },
+        { id: "c", text: "More of the raiser’s range has top pair or better here: 19.5% against 7.6%.", fix: "Right. The caller would have re-raised his best hands, so the strong ones sit with the raiser." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "bt1-guided-draws", hand: "bt1-guided", role: "guided",
-      coachLine: "The wet board. Read it before you bet.", next: "Now name the texture" },
+      coachLine: "A connected flop. Read it before you bet.", next: "Now name the texture" },
     { kind: "decision", label: "Knox’s hand", spotId: "bt1-guided-texture", hand: "bt1-guided", role: "guided",
       coachLine: "You found the draws. Now name the board.", next: "Try a practice hand", feedback: textureFeedback },
     { kind: "decision", label: "Practice", spotId: "bt1-practice-draws", hand: "bt1-practice", role: "practice",
@@ -100,7 +100,7 @@ const definition = {
       decision: "estimate", ...guided,
       bands: DRAWS, dockPrompt: DRAWS_DOCK,
       title: "Which draws can this flop give?",
-      prompt: "The jack-ten-nine, with the suits given: jack and ten of spades, nine of hearts. You raised to 30 on the button with ace-queen, Ace Andy called, and he checks to you. The pot is 60. Before you bet, read the flop: which draws could any player hold right now?",
+      prompt: "A new flop: the jack and ten of spades, and the nine of hearts. You raised to 30 on the button with ace-queen, Ace Andy called, and he checks to you. The pot is 60. Before you bet, read the flop: which draws could any player hold right now?",
       hint: DRAWS_HINT,
       explanation: "Two spades are showing, so any two spades make a flush draw. Jack, ten and nine all fit inside one straight, so hands like king-queen and queen-eight already have a straight and many more hold straight draws. A hand like eight-six of spades holds both at once: that is a combo draw.",
       focus: ["Js", "Ts", "9h"], hear: 3,
@@ -110,7 +110,7 @@ const definition = {
       bands: TEXTURE, dockPrompt: TEXTURE_DOCK,
       title: "Is this flop dry or wet?",
       prompt: "Take the draws you just found on jack-ten-nine. Is this flop dry or wet?",
-      hint: "Compare it with the two examples: which one has fewer draws and fewer strong connections, and which one creates straights and combo draws?",
+      hint: "Count what this flop creates: straights already made, flush draws and straight draws. Few of them is dry; many is wet.",
       explanation: "It is a wet board. Straights are already possible, flush draws and straight draws both exist, and some hands hold both at once. A lot can change on the turn.",
       note: NOTE,
       focus: ["Js", "Ts", "9h"], hear: 2,
@@ -129,8 +129,8 @@ const definition = {
       bands: TEXTURE, dockPrompt: TEXTURE_DOCK,
       title: "Is this flop dry or wet?",
       prompt: "Take the draws you just found on king-eight-three. Is this flop dry or wet?",
-      hint: "Compare it with the two examples: which one has fewer draws and fewer strong connections, and which one creates straights and combo draws?",
-      explanation: "Like the ace-seven-two in three suits, no hand can make a straight here and there is no flush draw. This flop gives no draw at all, so it is dry: less can change on the turn.",
+      hint: "Count what this flop creates: straights already made, flush draws and straight draws. Few of them is dry; many is wet.",
+      explanation: "No hand can make a straight here and there is no flush draw. This flop gives no draw at all, so it is dry: less can change on the turn.",
       note: NOTE,
       focus: ["Kc", "8d", "3h"], hear: 1,
     },

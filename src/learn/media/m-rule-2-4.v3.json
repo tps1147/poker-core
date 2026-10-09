@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-rule-2-4",
-  "video": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-1080.mp4",
-  "video720": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-720.mp4",
-  "poster": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4-rule.jpg",
-  "captions": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4.vtt",
-  "transcript": "/academy/films-v2/m-rule-2-4/901e6fad/m-rule-2-4.transcript.txt",
+  "video": "/academy/films-v2/m-rule-2-4/c8a673f5/m-rule-2-4-1080.mp4",
+  "video720": "/academy/films-v2/m-rule-2-4/c8a673f5/m-rule-2-4-720.mp4",
+  "poster": "/academy/films-v2/m-rule-2-4/c8a673f5/m-rule-2-4-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-rule-2-4/c8a673f5/m-rule-2-4-rule.jpg",
+  "captions": "/academy/films-v2/m-rule-2-4/c8a673f5/m-rule-2-4.vtt",
+  "transcript": "/academy/films-v2/m-rule-2-4/c8a673f5/m-rule-2-4.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,163 @@
     "upNext": 93.58,
     "first": null
   },
-  "version": "901e6fad"
+  "version": "c8a673f5",
+  "cues": [
+    {
+      "start": 1.24,
+      "end": 4.18,
+      "text": "Two cards to come, with a flush draw."
+    },
+    {
+      "start": 4.18,
+      "end": 7.04,
+      "text": "So you multiply by four... right?"
+    },
+    {
+      "start": 7.04,
+      "end": 10.82,
+      "text": "Here's the catch. Same flop, two bets."
+    },
+    {
+      "start": 10.82,
+      "end": 13.17,
+      "text": "Up top, they go all-in."
+    },
+    {
+      "start": 13.17,
+      "end": 15.42,
+      "text": "Below, they bet half the pot."
+    },
+    {
+      "start": 15.42,
+      "end": 19.74,
+      "text": "Which rule fits each? Make your picks."
+    },
+    {
+      "start": 19.74,
+      "end": 21.23,
+      "text": "Only a diamond wins here."
+    },
+    {
+      "start": 21.23,
+      "end": 25.19,
+      "text": "Nine are still unseen, so that's 9 outs."
+    },
+    {
+      "start": 25.19,
+      "end": 27.73,
+      "text": "All-in, nobody can bet again."
+    },
+    {
+      "start": 27.73,
+      "end": 30.46,
+      "text": "You see the turn and the river for one price."
+    },
+    {
+      "start": 30.46,
+      "end": 34.01,
+      "text": "9 × 4... about 36%."
+    },
+    {
+      "start": 34.01,
+      "end": 36.44,
+      "text": "A normal bet only buys the turn."
+    },
+    {
+      "start": 36.44,
+      "end": 38.22,
+      "text": "Miss, and they can bet again."
+    },
+    {
+      "start": 38.22,
+      "end": 42.74,
+      "text": "So it's 9 × 2... about 18%."
+    },
+    {
+      "start": 42.74,
+      "end": 44.23,
+      "text": "Are these shortcuts any good?"
+    },
+    {
+      "start": 44.23,
+      "end": 49.73,
+      "text": "One card, exactly: 9 in 47... about 19%."
+    },
+    {
+      "start": 49.73,
+      "end": 53.47,
+      "text": "Both cards? Deal every turn and river pair,"
+    },
+    {
+      "start": 53.47,
+      "end": 55.99,
+      "text": "all 1,081 of them."
+    },
+    {
+      "start": 55.99,
+      "end": 60.15,
+      "text": "378 bring a diamond. 35%."
+    },
+    {
+      "start": 60.15,
+      "end": 62.81,
+      "text": "Close enough to decide with."
+    },
+    {
+      "start": 62.81,
+      "end": 67.09,
+      "text": "Your turn. Ten-nine of hearts, on eight, seven, two..."
+    },
+    {
+      "start": 67.09,
+      "end": 68.38,
+      "text": "and they shove all-in."
+    },
+    {
+      "start": 68.38,
+      "end": 70.02,
+      "text": "Pick the rule first."
+    },
+    {
+      "start": 70.02,
+      "end": 72.78,
+      "text": "8 outs, and you see both cards."
+    },
+    {
+      "start": 72.78,
+      "end": 76.01,
+      "text": "× 4... 32%."
+    },
+    {
+      "start": 76.01,
+      "end": 79.44,
+      "text": "Exactly? 31.5%."
+    },
+    {
+      "start": 79.44,
+      "end": 81.04,
+      "text": "Big draws run high, though."
+    },
+    {
+      "start": 81.04,
+      "end": 87.12,
+      "text": "15 outs × 4 says 60... it's really about 54%."
+    },
+    {
+      "start": 87.12,
+      "end": 89.62,
+      "text": "So, × 2 for one card."
+    },
+    {
+      "start": 89.62,
+      "end": 93.58,
+      "text": "× 4 only when you see both for this price."
+    },
+    {
+      "start": 93.58,
+      "end": 97,
+      "text": "Up next: equity."
+    }
+  ],
+  "transcriptText": "Two cards to come, with a flush draw. So you multiply by four... right? Here's the catch. Same flop, two bets. Up top, they go all-in. Below, they bet half the pot. Which rule fits each? Make your picks.\n\nOnly a diamond wins here. Nine are still unseen, so that's 9 outs. All-in, nobody can bet again. You see the turn and the river for one price. 9 × 4... about 36%. A normal bet only buys the turn. Miss, and they can bet again. So it's 9 × 2... about 18%.\n\nAre these shortcuts any good? One card, exactly: 9 in 47... about 19%. Both cards? Deal every turn and river pair, all 1,081 of them. 378 bring a diamond. 35%. Close enough to decide with.\n\nYour turn. Ten-nine of hearts, on eight, seven, two... and they shove all-in. Pick the rule first. 8 outs, and you see both cards. × 4... 32%. Exactly? 31.5%. Big draws run high, though. 15 outs × 4 says 60... it's really about 54%. So, × 2 for one card. × 4 only when you see both for this price. Up next: equity."
 }

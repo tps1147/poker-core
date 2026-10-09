@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 15.19
   },
-  "version": "ad0344de"
+  "version": "ad0344de",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 4.35,
+      "text": "Chapter two. Reading the Board."
+    },
+    {
+      "start": 4.35,
+      "end": 6.98,
+      "text": "Five shared cards,"
+    },
+    {
+      "start": 6.98,
+      "end": 9.47,
+      "text": "and every one of them can change the hand."
+    },
+    {
+      "start": 9.47,
+      "end": 12.11,
+      "text": "By the end, you'll know what you have,"
+    },
+    {
+      "start": 12.11,
+      "end": 15.19,
+      "text": "what beats you, and what could still come."
+    },
+    {
+      "start": 15.19,
+      "end": 22,
+      "text": "First up: Made Hands and Draws."
+    }
+  ],
+  "transcriptText": "Chapter two. Reading the Board. Five shared cards, and every one of them can change the hand. By the end, you'll know what you have, what beats you, and what could still come. First up: Made Hands and Draws."
 }

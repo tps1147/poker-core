@@ -60,7 +60,7 @@ const definition = {
   sourceLessonId: "lesson-3betting-001", videoLessonId: "lesson-3betting-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "preflop",
   title: "Know why you 3-bet.", kicker: "A 3-bet is not a bigger call.",
-  trail: ["Learn", "Preflop discipline", "3-betting"],
+  trail: ["Learn", "Preflop discipline", "Know why you 3-bet."],
   course: { chapter: "Preflop discipline" },
   meta: { minutes: 4 },
   assumptions: "Six-handed, blinds of 5 and 10, everyone starts with 1,000 (100 big blinds), no antes and no rake. One player opens with a raise to 25 and everyone before you folds. Opening ranges are not stated; each hand names who opened and from where. The 3-bet sizes are given for the exercise: 75 (three times the open) on the button, 100 (four times) from the blinds. In the small blind the plan for this exercise is 3-bet or fold. The job of each 3-bet follows the two jobs, value and pressure, not a solver, and nothing is read from anyone’s hidden cards. Each hand stops once you act, so no flop is dealt.",

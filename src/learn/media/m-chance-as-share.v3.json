@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-chance-as-share",
-  "video": "/academy/films-v2/m-chance-as-share/2b1add36/m-chance-as-share-1080.mp4",
-  "video720": "/academy/films-v2/m-chance-as-share/2b1add36/m-chance-as-share-720.mp4",
-  "poster": "/academy/films-v2/m-chance-as-share/2b1add36/m-chance-as-share-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-chance-as-share/2b1add36/m-chance-as-share-rule.jpg",
-  "captions": "/academy/films-v2/m-chance-as-share/2b1add36/m-chance-as-share.vtt",
-  "transcript": "/academy/films-v2/m-chance-as-share/2b1add36/m-chance-as-share.transcript.txt",
+  "video": "/academy/films-v2/m-chance-as-share/6db9b83a/m-chance-as-share-1080.mp4",
+  "video720": "/academy/films-v2/m-chance-as-share/6db9b83a/m-chance-as-share-720.mp4",
+  "poster": "/academy/films-v2/m-chance-as-share/6db9b83a/m-chance-as-share-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-chance-as-share/6db9b83a/m-chance-as-share-rule.jpg",
+  "captions": "/academy/films-v2/m-chance-as-share/6db9b83a/m-chance-as-share.vtt",
+  "transcript": "/academy/films-v2/m-chance-as-share/6db9b83a/m-chance-as-share.transcript.txt",
   "durationSeconds": 92,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,163 @@
     "upNext": 87.73,
     "first": null
   },
-  "version": "2b1add36"
+  "version": "6db9b83a",
+  "cues": [
+    {
+      "start": 2.17,
+      "end": 3.76,
+      "text": "Welcome to the Math Spine..."
+    },
+    {
+      "start": 3.76,
+      "end": 6.58,
+      "text": "...where cards turn into chances."
+    },
+    {
+      "start": 6.58,
+      "end": 9.57,
+      "text": "One card, face down, from a shuffled deck."
+    },
+    {
+      "start": 9.57,
+      "end": 11.49,
+      "text": "How often is it a heart?"
+    },
+    {
+      "start": 11.49,
+      "end": 15.49,
+      "text": "Rarely... one time in four... or half the time?"
+    },
+    {
+      "start": 15.49,
+      "end": 18.04,
+      "text": "Make your guess."
+    },
+    {
+      "start": 18.04,
+      "end": 21.93,
+      "text": "52 cards. Four suits, 13 of each."
+    },
+    {
+      "start": 21.93,
+      "end": 25.98,
+      "text": "13 of them are hearts... and 39 aren't."
+    },
+    {
+      "start": 25.98,
+      "end": 28.89,
+      "text": "So hearts are 13 out of 52."
+    },
+    {
+      "start": 28.89,
+      "end": 32.01,
+      "text": "That's one quarter... 25%."
+    },
+    {
+      "start": 32.01,
+      "end": 34.07,
+      "text": "One time in four."
+    },
+    {
+      "start": 34.07,
+      "end": 38.94,
+      "text": "Put another way, three misses for every hit."
+    },
+    {
+      "start": 38.94,
+      "end": 41.19,
+      "text": "Now draw a card 100 times,"
+    },
+    {
+      "start": 41.19,
+      "end": 43.2,
+      "text": "shuffling it back in each time."
+    },
+    {
+      "start": 43.2,
+      "end": 45.68,
+      "text": "You'd expect about 25 hearts."
+    },
+    {
+      "start": 45.68,
+      "end": 48.42,
+      "text": "Any single draw can go either way."
+    },
+    {
+      "start": 48.42,
+      "end": 50.94,
+      "text": "Repeat it, and the share shows up."
+    },
+    {
+      "start": 50.94,
+      "end": 52.03,
+      "text": "Here's the trap."
+    },
+    {
+      "start": 52.03,
+      "end": 54,
+      "text": "30% sounds like “no”."
+    },
+    {
+      "start": 54,
+      "end": 57.5,
+      "text": "But 30% is 30 times in 100..."
+    },
+    {
+      "start": 57.5,
+      "end": 58.93,
+      "text": "...three times in ten."
+    },
+    {
+      "start": 58.93,
+      "end": 61.51,
+      "text": "It happens."
+    },
+    {
+      "start": 61.51,
+      "end": 64.39,
+      "text": "Your turn. How often is it an ace?"
+    },
+    {
+      "start": 64.39,
+      "end": 67.84,
+      "text": "Four aces in 52 cards."
+    },
+    {
+      "start": 67.84,
+      "end": 72.08,
+      "text": "4 over 52... is 1 in 13."
+    },
+    {
+      "start": 72.08,
+      "end": 74.61,
+      "text": "About 7.7%."
+    },
+    {
+      "start": 74.61,
+      "end": 78.64,
+      "text": "So in 100 draws, expect about 8."
+    },
+    {
+      "start": 78.64,
+      "end": 80.4,
+      "text": "A chance is a share."
+    },
+    {
+      "start": 80.4,
+      "end": 84.1,
+      "text": "The outcomes you want, out of all of them."
+    },
+    {
+      "start": 84.1,
+      "end": 87.73,
+      "text": "Repeat it... and that share is what you get."
+    },
+    {
+      "start": 87.73,
+      "end": 92,
+      "text": "Up next: outs."
+    }
+  ],
+  "transcriptText": "Welcome to the Math Spine... ...where cards turn into chances. One card, face down, from a shuffled deck. How often is it a heart? Rarely... one time in four... or half the time? Make your guess.\n\n52 cards. Four suits, 13 of each. 13 of them are hearts... and 39 aren't. So hearts are 13 out of 52. That's one quarter... 25%. One time in four. Put another way, three misses for every hit.\n\nNow draw a card 100 times, shuffling it back in each time. You'd expect about 25 hearts. Any single draw can go either way. Repeat it, and the share shows up. Here's the trap. 30% sounds like “no”. But 30% is 30 times in 100... ...three times in ten. It happens.\n\nYour turn. How often is it an ace? Four aces in 52 cards. 4 over 52... is 1 in 13. About 7.7%. So in 100 draws, expect about 8.\n\nA chance is a share. The outcomes you want, out of all of them. Repeat it... and that share is what you get. Up next: outs."
 }

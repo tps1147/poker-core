@@ -1,3 +1,6 @@
+// Content version 2 (2026-10-09): the film asks and answers its own question at its end, so the
+// lesson no longer asks it again over the frozen frame (film stage endAsk "skip"; filmV2 "handoff").
+// Version 1 stays registered on the server for older builds.
 // y-study, How to Study (The Player), academy v2 definition.
 // Film: src-academy-y-study-v2 (80 s). canon.yourTurn is null, so the film plays to its stop and then
 // asks its own question: "Which one: the loss... or the unsure one?" (the film: the unsure one).
@@ -31,14 +34,14 @@ const fresh = preflop(["8c", "8h"]);
 
 const definition = {
   ...definitionBase({
-    node: "y-study", coach: "mina", title: "Study the unsure decisions.", kicker: "Then come back to them later.",
+    node: "y-study", version: 2, coach: "mina", title: "Study the unsure decisions.", kicker: "Then come back to them later.",
     track: "player", chapter: "The Player", minutes: 4, feedback,
     assumptions: "Each hand in a session log is tagged by how sure you felt about the decision, sure or not sure, and its result is greyed out. A result says nothing about the decision on its own: a +10 call still loses 70 times in 100. Each hand at the table stops before the flop.",
   }),
   stages: [
     welcome("Study the unsure decisions.", "Then come back to them later.",
       "Which hand should you review: the one you lost, or the one you weren’t sure about? Watch Mina sort a session, then sort three logs.", "Mina"),
-    filmStage({ film: "y-study", at: null, spotId: "sd-turn", spot: turnSpot, upNext: "Sort Mina’s session" }),
+    filmStage({ film: "y-study", at: null, endAsk: "skip", spotId: "sd-turn", spot: turnSpot, upNext: "Sort Mina’s session" }),
     whyStage("sd-why", "Why review the unsure one?", [
       { id: "unsure", text: "Good calls lose often, so losses mostly show good decisions. Being unsure marks one that might be wrong.", fix: "Right. Tag how sure you were, not whether you won." },
       { id: "more-hands", text: "Neither: playing more hands improves you faster than reviewing.", fix: "More hands won’t fix a decision you never look at. Review the unsure ones." },

@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 14.27
   },
-  "version": "6018863f"
+  "version": "6018863f",
+  "cues": [
+    {
+      "start": 1.73,
+      "end": 3.97,
+      "text": "Chapter eight. Game Theory."
+    },
+    {
+      "start": 3.97,
+      "end": 6.71,
+      "text": "Tiny games with exact answers,"
+    },
+    {
+      "start": 6.71,
+      "end": 9.18,
+      "text": "and what they teach about the full one."
+    },
+    {
+      "start": 9.18,
+      "end": 12.23,
+      "text": "By the end, you'll see why balance works,"
+    },
+    {
+      "start": 12.23,
+      "end": 14.27,
+      "text": "and when to leave it on purpose."
+    },
+    {
+      "start": 14.27,
+      "end": 19,
+      "text": "First up: Poker in Miniature."
+    }
+  ],
+  "transcriptText": "Chapter eight. Game Theory. Tiny games with exact answers, and what they teach about the full one. By the end, you'll see why balance works, and when to leave it on purpose. First up: Poker in Miniature."
 }

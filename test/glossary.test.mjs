@@ -11,7 +11,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { GLOSSARY, glossaryTerm, termsIn, lintableCaptions, prereqHits, synonymHits } from "../src/learn/glossary.mjs";
-import { NODES, filmFolderOfNode } from "../src/learn/index.mjs";
+import { NODES, filmSourceDir } from "../src/learn/index.mjs";
 
 let checks = 0;
 const check = (name, fn) => { fn(); checks += 1; };
@@ -19,8 +19,8 @@ const FILMS = process.env.ACADEMY_FILMS_DIR || "C:/Users/tps11/Documents/Codex/2
 
 // lesson node -> terms its captions use before the node that introduces them.
 const KNOWN_PREREQ_HITS = Object.freeze({
-  "w-what-is-poker": ["best five", "straight"],
-  "w-luck-and-skill": ["all-in", "straight", "river", "flush"],
+  "w-what-is-poker": ["best five", "straight", "flop", "the turn", "river"],
+  "w-luck-and-skill": ["all-in", "straight", "river", "flush", "buy-in"],
   "w-how-deep": ["suited", "offsuit", "flop", "the turn", "river", "preflop", "button", "big blind", "all-in"],
   "r-the-deck": ["straight", "showdown", "flush"],
   "r-seats-blinds": ["flop", "street"],
@@ -85,7 +85,7 @@ if (!existsSync(FILMS)) {
     const synonyms = [];
     const missing = [];
     for (const node of NODES) {
-      const file = join(FILMS, `src-academy-${filmFolderOfNode(node.id)}-v2`, "timing.json");
+      const file = join(FILMS, filmSourceDir(node.id), "timing.json");
       if (!existsSync(file)) { missing.push(node.id); continue; }
       const captions = JSON.parse(readFileSync(file, "utf8")).captions || [];
       for (const h of prereqHits(node.id, captions)) {

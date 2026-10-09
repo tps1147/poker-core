@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-starting-hands",
-  "video": "/academy/films-v2/p-starting-hands/fcffa5a8/p-starting-hands-1080.mp4",
-  "video720": "/academy/films-v2/p-starting-hands/fcffa5a8/p-starting-hands-720.mp4",
-  "poster": "/academy/films-v2/p-starting-hands/fcffa5a8/p-starting-hands-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-starting-hands/fcffa5a8/p-starting-hands-rule.jpg",
-  "captions": "/academy/films-v2/p-starting-hands/fcffa5a8/p-starting-hands.vtt",
-  "transcript": "/academy/films-v2/p-starting-hands/fcffa5a8/p-starting-hands.transcript.txt",
+  "video": "/academy/films-v2/p-starting-hands/ced936fa/p-starting-hands-1080.mp4",
+  "video720": "/academy/films-v2/p-starting-hands/ced936fa/p-starting-hands-720.mp4",
+  "poster": "/academy/films-v2/p-starting-hands/ced936fa/p-starting-hands-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-starting-hands/ced936fa/p-starting-hands-rule.jpg",
+  "captions": "/academy/films-v2/p-starting-hands/ced936fa/p-starting-hands.vtt",
+  "transcript": "/academy/films-v2/p-starting-hands/ced936fa/p-starting-hands.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,148 @@
     "upNext": 93.88,
     "first": null
   },
-  "version": "fcffa5a8"
+  "version": "ced936fa",
+  "cues": [
+    {
+      "start": 1.43,
+      "end": 5.31,
+      "text": "Seven-two of spades... and ace-king of spades."
+    },
+    {
+      "start": 5.31,
+      "end": 6.83,
+      "text": "Both suited."
+    },
+    {
+      "start": 6.83,
+      "end": 10.67,
+      "text": "How often does a suited hand make a flush by the river?"
+    },
+    {
+      "start": 10.67,
+      "end": 14.2,
+      "text": "Take a guess."
+    },
+    {
+      "start": 14.2,
+      "end": 15.61,
+      "text": "First, the map."
+    },
+    {
+      "start": 15.61,
+      "end": 19.65,
+      "text": "169 kinds of starting hand..."
+    },
+    {
+      "start": 19.65,
+      "end": 24.93,
+      "text": "and 1,326 ways to be dealt one."
+    },
+    {
+      "start": 24.93,
+      "end": 30.64,
+      "text": "A pair comes 6 ways, suited 4, offsuit 12."
+    },
+    {
+      "start": 30.64,
+      "end": 32.37,
+      "text": "Now the flush."
+    },
+    {
+      "start": 32.37,
+      "end": 35.21,
+      "text": "Two suited cards make one by the river"
+    },
+    {
+      "start": 35.21,
+      "end": 39.95,
+      "text": "about 6.4%... 1 time in 16."
+    },
+    {
+      "start": 39.95,
+      "end": 43.15,
+      "text": "Same for seven-two as for ace-king."
+    },
+    {
+      "start": 43.15,
+      "end": 49.05,
+      "text": "And a pocket pair flops a set or better about 12%."
+    },
+    {
+      "start": 49.05,
+      "end": 50.96,
+      "text": "King-seven of spades in the cutoff."
+    },
+    {
+      "start": 50.96,
+      "end": 53.99,
+      "text": "Under the gun raises to 25..."
+    },
+    {
+      "start": 53.99,
+      "end": 56.06,
+      "text": "and you owe 25."
+    },
+    {
+      "start": 56.06,
+      "end": 61.07,
+      "text": "By a common rule of thumb, their range is 142 combos."
+    },
+    {
+      "start": 61.07,
+      "end": 65.39,
+      "text": "30 of them out-kick your king. About 21%."
+    },
+    {
+      "start": 65.39,
+      "end": 69.6,
+      "text": "King-seven wins small pots there, and loses big ones."
+    },
+    {
+      "start": 69.6,
+      "end": 72.46,
+      "text": "By the chart, that's a fold."
+    },
+    {
+      "start": 72.46,
+      "end": 74.55,
+      "text": "Same hand on the button, folded to you?"
+    },
+    {
+      "start": 74.55,
+      "end": 77.18,
+      "text": "Now it's an open."
+    },
+    {
+      "start": 77.18,
+      "end": 81.46,
+      "text": "Your turn. Nine-eight of hearts, on the button, folded to you."
+    },
+    {
+      "start": 81.46,
+      "end": 84.05,
+      "text": "Open, or fold?"
+    },
+    {
+      "start": 84.05,
+      "end": 87.54,
+      "text": "Open. Connected, suited, and in position."
+    },
+    {
+      "start": 87.54,
+      "end": 91,
+      "text": "Play hands that make big hands, from seats that let you."
+    },
+    {
+      "start": 91,
+      "end": 93.88,
+      "text": "Suited is a bonus, not a ticket."
+    },
+    {
+      "start": 93.88,
+      "end": 97,
+      "text": "Up next: opening by position."
+    }
+  ],
+  "transcriptText": "Seven-two of spades... and ace-king of spades. Both suited. How often does a suited hand make a flush by the river? Take a guess.\n\nFirst, the map. 169 kinds of starting hand... and 1,326 ways to be dealt one. A pair comes 6 ways, suited 4, offsuit 12. Now the flush. Two suited cards make one by the river about 6.4%... 1 time in 16. Same for seven-two as for ace-king. And a pocket pair flops a set or better about 12%.\n\nKing-seven of spades in the cutoff. Under the gun raises to 25... and you owe 25. By a common rule of thumb, their range is 142 combos. 30 of them out-kick your king. About 21%. King-seven wins small pots there, and loses big ones. By the chart, that's a fold. Same hand on the button, folded to you? Now it's an open.\n\nYour turn. Nine-eight of hearts, on the button, folded to you. Open, or fold? Open. Connected, suited, and in position. Play hands that make big hands, from seats that let you. Suited is a bonus, not a ticket. Up next: opening by position."
 }

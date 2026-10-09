@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-implied-odds",
-  "video": "/academy/films-v2/m-implied-odds/600b8b03/m-implied-odds-1080.mp4",
-  "video720": "/academy/films-v2/m-implied-odds/600b8b03/m-implied-odds-720.mp4",
-  "poster": "/academy/films-v2/m-implied-odds/600b8b03/m-implied-odds-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-implied-odds/600b8b03/m-implied-odds-rule.jpg",
-  "captions": "/academy/films-v2/m-implied-odds/600b8b03/m-implied-odds.vtt",
-  "transcript": "/academy/films-v2/m-implied-odds/600b8b03/m-implied-odds.transcript.txt",
+  "video": "/academy/films-v2/m-implied-odds/3349008f/m-implied-odds-1080.mp4",
+  "video720": "/academy/films-v2/m-implied-odds/3349008f/m-implied-odds-720.mp4",
+  "poster": "/academy/films-v2/m-implied-odds/3349008f/m-implied-odds-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-implied-odds/3349008f/m-implied-odds-rule.jpg",
+  "captions": "/academy/films-v2/m-implied-odds/3349008f/m-implied-odds.vtt",
+  "transcript": "/academy/films-v2/m-implied-odds/3349008f/m-implied-odds.transcript.txt",
   "durationSeconds": 94,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,138 @@
     "upNext": 89.14,
     "first": null
   },
-  "version": "600b8b03"
+  "version": "3349008f",
+  "cues": [
+    {
+      "start": 1.09,
+      "end": 2.6,
+      "text": "The price says fold."
+    },
+    {
+      "start": 2.6,
+      "end": 5.56,
+      "text": "Can chips you win later change that?"
+    },
+    {
+      "start": 5.56,
+      "end": 8.27,
+      "text": "Pick one. Always call a draw..."
+    },
+    {
+      "start": 8.27,
+      "end": 10.46,
+      "text": "or only if you can win enough later?"
+    },
+    {
+      "start": 10.46,
+      "end": 12.96,
+      "text": "Hold that thought."
+    },
+    {
+      "start": 12.96,
+      "end": 16.2,
+      "text": "Eight-seven of spades, on a two-spade board."
+    },
+    {
+      "start": 16.2,
+      "end": 20.25,
+      "text": "They bet 45 into 100, with 300 behind."
+    },
+    {
+      "start": 20.25,
+      "end": 22.7,
+      "text": "Call, and the pot's 190."
+    },
+    {
+      "start": 22.7,
+      "end": 26.39,
+      "text": "Your price... 23.7%."
+    },
+    {
+      "start": 26.39,
+      "end": 31.65,
+      "text": "Nine spades left, of 46 cards... 19.6%."
+    },
+    {
+      "start": 31.65,
+      "end": 34.83,
+      "text": "The price alone says fold."
+    },
+    {
+      "start": 34.83,
+      "end": 38.79,
+      "text": "But when a spade lands, you can win more of their stack."
+    },
+    {
+      "start": 38.79,
+      "end": 43.04,
+      "text": "Your call, divided by your chance, minus the pot."
+    },
+    {
+      "start": 43.04,
+      "end": 48.2,
+      "text": "230 − 190... 40."
+    },
+    {
+      "start": 48.2,
+      "end": 53.54,
+      "text": "Win 40 more when you hit, and your price drops to 19.6%."
+    },
+    {
+      "start": 53.54,
+      "end": 55.94,
+      "text": "Exactly your chance."
+    },
+    {
+      "start": 55.94,
+      "end": 60.22,
+      "text": "Over 46 rivers, you break even."
+    },
+    {
+      "start": 60.22,
+      "end": 62.79,
+      "text": "Now give them only 25 behind."
+    },
+    {
+      "start": 62.79,
+      "end": 65.19,
+      "text": "You can't win chips they don't have."
+    },
+    {
+      "start": 65.19,
+      "end": 71.25,
+      "text": "Best case, 20.9%. Still too high. Fold."
+    },
+    {
+      "start": 71.25,
+      "end": 73.94,
+      "text": "Your turn. Jack-ten, four outs."
+    },
+    {
+      "start": 73.94,
+      "end": 76.87,
+      "text": "Pot 60, bet 20, 90 behind."
+    },
+    {
+      "start": 76.87,
+      "end": 82.47,
+      "text": "You'd need 130 more... only 90's there. Fold."
+    },
+    {
+      "start": 82.47,
+      "end": 85.2,
+      "text": "So... always call a draw? No."
+    },
+    {
+      "start": 85.2,
+      "end": 89.14,
+      "text": "Count what you can still win, and stop at their stack."
+    },
+    {
+      "start": 89.14,
+      "end": 94,
+      "text": "Up next: stack-to-pot ratio."
+    }
+  ],
+  "transcriptText": "The price says fold. Can chips you win later change that? Pick one. Always call a draw... or only if you can win enough later? Hold that thought.\n\nEight-seven of spades, on a two-spade board. They bet 45 into 100, with 300 behind. Call, and the pot's 190. Your price... 23.7%. Nine spades left, of 46 cards... 19.6%. The price alone says fold.\n\nBut when a spade lands, you can win more of their stack. Your call, divided by your chance, minus the pot. 230 − 190... 40. Win 40 more when you hit, and your price drops to 19.6%. Exactly your chance. Over 46 rivers, you break even.\n\nNow give them only 25 behind. You can't win chips they don't have. Best case, 20.9%. Still too high. Fold.\n\nYour turn. Jack-ten, four outs. Pot 60, bet 20, 90 behind. You'd need 130 more... only 90's there. Fold. So... always call a draw? No. Count what you can still win, and stop at their stack. Up next: stack-to-pot ratio."
 }

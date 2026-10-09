@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-value-betting",
-  "video": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-1080.mp4",
-  "video720": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-720.mp4",
-  "poster": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-rule.jpg",
-  "captions": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting.vtt",
-  "transcript": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting.transcript.txt",
+  "video": "/academy/films-v2/f-value-betting/a963637c/f-value-betting-1080.mp4",
+  "video720": "/academy/films-v2/f-value-betting/a963637c/f-value-betting-720.mp4",
+  "poster": "/academy/films-v2/f-value-betting/a963637c/f-value-betting-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-value-betting/a963637c/f-value-betting-rule.jpg",
+  "captions": "/academy/films-v2/f-value-betting/a963637c/f-value-betting.vtt",
+  "transcript": "/academy/films-v2/f-value-betting/a963637c/f-value-betting.transcript.txt",
   "durationSeconds": 92,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,138 @@
     "upNext": 87.5,
     "first": null
   },
-  "version": "012adcdc"
+  "version": "a963637c",
+  "cues": [
+    {
+      "start": 1.27,
+      "end": 4.75,
+      "text": "Top pair on the river. Check and hope... or bet?"
+    },
+    {
+      "start": 4.75,
+      "end": 9.25,
+      "text": "You've got ace-jack, on jack, nine, five, three, deuce."
+    },
+    {
+      "start": 9.25,
+      "end": 12.18,
+      "text": "The pot's 200, and he checks to you."
+    },
+    {
+      "start": 12.18,
+      "end": 15.94,
+      "text": "Check... or bet 100?"
+    },
+    {
+      "start": 15.94,
+      "end": 19.35,
+      "text": "Don't guess. Look at the hands he could have here..."
+    },
+    {
+      "start": 19.35,
+      "end": 24,
+      "text": "128 of them. That's an illustration, not a read."
+    },
+    {
+      "start": 24,
+      "end": 28.32,
+      "text": "Rule of thumb: he calls 100 with a pair of nines or better."
+    },
+    {
+      "start": 28.32,
+      "end": 32.77,
+      "text": "54 hands step forward. Now sort them against yours."
+    },
+    {
+      "start": 32.77,
+      "end": 35.75,
+      "text": "38 are worse... you beat them."
+    },
+    {
+      "start": 35.75,
+      "end": 39.07,
+      "text": "1 ties: the other ace-jack."
+    },
+    {
+      "start": 39.07,
+      "end": 44.05,
+      "text": "And 15 beat you... the sets, and the wheel."
+    },
+    {
+      "start": 44.05,
+      "end": 46.49,
+      "text": "Now add it up, ignoring raises."
+    },
+    {
+      "start": 46.49,
+      "end": 51.06,
+      "text": "38 calls win you 100 each. 15 cost you 100."
+    },
+    {
+      "start": 51.06,
+      "end": 55.83,
+      "text": "That's +2,300... about 42.6 a call."
+    },
+    {
+      "start": 55.83,
+      "end": 59.31,
+      "text": "Check instead, and the worse hands pay you nothing."
+    },
+    {
+      "start": 59.31,
+      "end": 63.39,
+      "text": "You leave 3,800 behind, to save 1,500."
+    },
+    {
+      "start": 63.39,
+      "end": 66.81,
+      "text": "Worse hands are 70.4% of the calls."
+    },
+    {
+      "start": 66.81,
+      "end": 70.02,
+      "text": "More than half... so you bet."
+    },
+    {
+      "start": 70.02,
+      "end": 73.15,
+      "text": "Your turn. Same river, one change:"
+    },
+    {
+      "start": 73.15,
+      "end": 76.08,
+      "text": "now he only calls with two pair or better."
+    },
+    {
+      "start": 76.08,
+      "end": 77.8,
+      "text": "Sort the callers first."
+    },
+    {
+      "start": 77.8,
+      "end": 79.84,
+      "text": "Every one of them beats you..."
+    },
+    {
+      "start": 79.84,
+      "end": 82.96,
+      "text": "so betting only loses chips. Check."
+    },
+    {
+      "start": 82.96,
+      "end": 85.71,
+      "text": "So bet when more than half the hands that call"
+    },
+    {
+      "start": 85.71,
+      "end": 87.5,
+      "text": "are worse than yours."
+    },
+    {
+      "start": 87.5,
+      "end": 92,
+      "text": "Up next: pot control."
+    }
+  ],
+  "transcriptText": "Top pair on the river. Check and hope... or bet? You've got ace-jack, on jack, nine, five, three, deuce. The pot's 200, and he checks to you. Check... or bet 100?\n\nDon't guess. Look at the hands he could have here... 128 of them. That's an illustration, not a read. Rule of thumb: he calls 100 with a pair of nines or better. 54 hands step forward. Now sort them against yours. 38 are worse... you beat them. 1 ties: the other ace-jack. And 15 beat you... the sets, and the wheel.\n\nNow add it up, ignoring raises. 38 calls win you 100 each. 15 cost you 100. That's +2,300... about 42.6 a call. Check instead, and the worse hands pay you nothing. You leave 3,800 behind, to save 1,500. Worse hands are 70.4% of the calls. More than half... so you bet.\n\nYour turn. Same river, one change: now he only calls with two pair or better. Sort the callers first. Every one of them beats you... so betting only loses chips. Check. So bet when more than half the hands that call are worse than yours. Up next: pot control."
 }

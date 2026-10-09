@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-pot-odds",
-  "video": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-1080.mp4",
-  "video720": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-720.mp4",
-  "poster": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds-rule.jpg",
-  "captions": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds.vtt",
-  "transcript": "/academy/films-v2/m-pot-odds/8e90a9e1/m-pot-odds.transcript.txt",
+  "video": "/academy/films-v2/m-pot-odds/01b020d5/m-pot-odds-1080.mp4",
+  "video720": "/academy/films-v2/m-pot-odds/01b020d5/m-pot-odds-720.mp4",
+  "poster": "/academy/films-v2/m-pot-odds/01b020d5/m-pot-odds-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-pot-odds/01b020d5/m-pot-odds-rule.jpg",
+  "captions": "/academy/films-v2/m-pot-odds/01b020d5/m-pot-odds.vtt",
+  "transcript": "/academy/films-v2/m-pot-odds/01b020d5/m-pot-odds.transcript.txt",
   "durationSeconds": 89,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,143 @@
     "upNext": 89,
     "first": null
   },
-  "version": "8e90a9e1"
+  "version": "01b020d5",
+  "cues": [
+    {
+      "start": 1.33,
+      "end": 3.71,
+      "text": "30%. Is that enough?"
+    },
+    {
+      "start": 3.71,
+      "end": 6.04,
+      "text": "It's the river, 100 in the pot,"
+    },
+    {
+      "start": 6.04,
+      "end": 8.14,
+      "text": "and they go all-in for 50."
+    },
+    {
+      "start": 8.14,
+      "end": 11.41,
+      "text": "You win 30% against their range."
+    },
+    {
+      "start": 11.41,
+      "end": 15.34,
+      "text": "So... call 50, or fold?"
+    },
+    {
+      "start": 15.34,
+      "end": 19.58,
+      "text": "100 was in. Their 50 makes 150."
+    },
+    {
+      "start": 19.58,
+      "end": 22.92,
+      "text": "Call, and it's 200... the final pot."
+    },
+    {
+      "start": 22.92,
+      "end": 25.23,
+      "text": "Your 50 is a quarter of it."
+    },
+    {
+      "start": 25.23,
+      "end": 28.34,
+      "text": "That's your price... 25%."
+    },
+    {
+      "start": 28.34,
+      "end": 32.45,
+      "text": "Win 1 time in 4 to break even."
+    },
+    {
+      "start": 32.45,
+      "end": 33.32,
+      "text": "Here's the trap."
+    },
+    {
+      "start": 33.32,
+      "end": 37.35,
+      "text": "Leave your call out, and it's 50 in 150..."
+    },
+    {
+      "start": 37.35,
+      "end": 39.02,
+      "text": "about 33%."
+    },
+    {
+      "start": 39.02,
+      "end": 42.18,
+      "text": "Your 30 looks short. It isn't."
+    },
+    {
+      "start": 42.18,
+      "end": 44.08,
+      "text": "Your call is in the pot."
+    },
+    {
+      "start": 44.08,
+      "end": 48.68,
+      "text": "30% beats a 25% price."
+    },
+    {
+      "start": 48.68,
+      "end": 50.9,
+      "text": "Make this call 100 times."
+    },
+    {
+      "start": 50.9,
+      "end": 56.11,
+      "text": "About 30 win, at 150 each... 4,500."
+    },
+    {
+      "start": 56.11,
+      "end": 60.18,
+      "text": "70 lose 50 each... 3,500."
+    },
+    {
+      "start": 60.18,
+      "end": 61.62,
+      "text": "You're up 1,000."
+    },
+    {
+      "start": 61.62,
+      "end": 65.56,
+      "text": "10 chips a call, on average, versus folding."
+    },
+    {
+      "start": 65.56,
+      "end": 68.67,
+      "text": "Your turn. Now they go all-in for 100."
+    },
+    {
+      "start": 68.67,
+      "end": 72.64,
+      "text": "Still 30%. Call or fold?"
+    },
+    {
+      "start": 72.64,
+      "end": 78.03,
+      "text": "The final pot's 300... your price, about 33%."
+    },
+    {
+      "start": 78.03,
+      "end": 80.46,
+      "text": "30 falls short. Fold."
+    },
+    {
+      "start": 80.46,
+      "end": 83.64,
+      "text": "Price is your call over the final pot."
+    },
+    {
+      "start": 83.64,
+      "end": 89,
+      "text": "Call when your chance is at least the price."
+    }
+  ],
+  "transcriptText": "30%. Is that enough? It's the river, 100 in the pot, and they go all-in for 50. You win 30% against their range. So... call 50, or fold?\n\n100 was in. Their 50 makes 150. Call, and it's 200... the final pot. Your 50 is a quarter of it. That's your price... 25%. Win 1 time in 4 to break even.\n\nHere's the trap. Leave your call out, and it's 50 in 150... about 33%. Your 30 looks short. It isn't. Your call is in the pot. 30% beats a 25% price.\n\nMake this call 100 times. About 30 win, at 150 each... 4,500. 70 lose 50 each... 3,500. You're up 1,000. 10 chips a call, on average, versus folding.\n\nYour turn. Now they go all-in for 100. Still 30%. Call or fold? The final pot's 300... your price, about 33%. 30 falls short. Fold. Price is your call over the final pot. Call when your chance is at least the price."
 }

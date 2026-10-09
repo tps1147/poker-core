@@ -1,10 +1,12 @@
-// g-balance, Balance and Indifference (Game Theory), academy v2 definition.
+// g-balance, Balance and Indifference (Game Theory), academy v2 definition, content version 2.
 // Film: src-academy-g-balance-v2 (97 s). canon.yourTurn = "yourTurn" at 66.15 s: "Your turn. Pot 120,
 // bet 80, 25 value hands. 200 to 80: 5 to 2... so 10 bluffs. His call: 57.1 − 57.1. Zero."
 // Plan: theory.md (g-balance). Bluffs ÷ all bets = bet ÷ (pot + 2·bet); value : bluffs =
 // (pot + bet) : bet. "Balanced" is a ratio, not a coin flip.
 //   Your turn   pot 120, bet 80, 25 value -> 10 bluffs (caller's call worth 0)
-//   Guided      the film's worked pot-size bet: pot 100, bet 100, 20 value -> 10 bluffs
+//   Guided      a pot-size bet on new numbers: pot 80, bet 80, 18 value -> 9 bluffs (1 in 3). v2
+//               (2026-10-09): v1 replayed the film's opening question and worked example (pot 100,
+//               bet 100, 20 value -> 10 bluffs)
 //   Practice    half pot: pot 100, bet 50, 24 value -> 8 bluffs (1 in 4)
 //   Fresh       pot 90, bet 60 (2/3 pot), 20 value -> 8 bluffs (2 in 7), changed size and count
 // Keys: answerKeys/g-balance.mjs. Every number: test/academyLessonsB.test.mjs.
@@ -30,7 +32,7 @@ const fresh = river(["As", "9s"], ["9h", "7c", "5s", "3d", "2h"]);
 
 const definition = {
   ...definitionBase({
-    node: "g-balance", coach: "knox", title: "Balance is a ratio.", kicker: "Leave his call worth nothing.",
+    node: "g-balance", version: 2, coach: "knox", title: "Balance is a ratio.", kicker: "Leave his call worth nothing.",
     track: "theory", chapter: "Game Theory", minutes: 5, feedback,
     assumptions: "Heads-up rivers, no rake. You bet with a range of value hands, which beat any call, and bluffs, which lose to any call. His hand beats only a bluff. You choose how many bluffs go with the value hands you are given. Each hand stops before you bet.",
   }),
@@ -55,13 +57,13 @@ const definition = {
   ],
   spots: {
     "ba-guided": {
-      decision: "estimate", ...guided, pot: 100, betSize: 100, value: 20,
-      bands: bluffBands(5, 10, 20),
-      dockPrompt: "How many bluffs go with 20 value hands?",
+      decision: "estimate", ...guided, pot: 80, betSize: 80, value: 18,
+      bands: bluffBands(6, 9, 18),
+      dockPrompt: "How many bluffs go with 18 value hands?",
       title: "Pot-size bet. How many bluffs?",
-      prompt: "Knox’s river: pot 100, checked to you. You bet 100 with 20 value hands. How many bluffs balance them?",
-      hint: "At a pot-size bet, the bet over the pot plus two bets is 1/3.",
-      explanation: "10 bluffs: 10 of 30 bets is 1/3. His call wins 200 against a bluff and loses 100 against value: 10/30 × 200 − 20/30 × 100 = 66.7 − 66.7 = 0.",
+      prompt: "Knox’s river: pot 80, checked to you. You bet 80 with 18 value hands. How many bluffs balance them?",
+      hint: "Value to bluffs is the pot plus the bet, to the bet: 160 to 80.",
+      explanation: "9 bluffs: 160 to 80 is 2 to 1, and 80 ÷ (80 + 160) = 1/3, 9 of 27 bets. His call wins 160 against a bluff and loses 80 against value: 9/27 × 160 − 18/27 × 80 = 53.3 − 53.3 = 0.",
     },
     "ba-practice": {
       decision: "estimate", ...practice, pot: 100, betSize: 50, value: 24,
@@ -83,7 +85,7 @@ const definition = {
     },
   },
   hands: {
-    "ba-guided": huHand("ba-guided", { ...guided, pot: 100, decisions: ["ba-guided"] }),
+    "ba-guided": huHand("ba-guided", { ...guided, pot: 80, decisions: ["ba-guided"] }),
     "ba-practice": huHand("ba-practice", { ...practice, pot: 100, decisions: ["ba-practice"] }),
     "ba-fresh": huHand("ba-fresh", { ...fresh, pot: 90, decisions: ["ba-fresh"] }),
   },

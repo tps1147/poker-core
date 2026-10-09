@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "h-player-types",
-  "video": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-1080.mp4",
-  "video720": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-720.mp4",
-  "poster": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-poster.jpg",
-  "ruleCard": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-rule.jpg",
-  "captions": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types.vtt",
-  "transcript": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types.transcript.txt",
+  "video": "/academy/films-v2/h-player-types/c4940563/h-player-types-1080.mp4",
+  "video720": "/academy/films-v2/h-player-types/c4940563/h-player-types-720.mp4",
+  "poster": "/academy/films-v2/h-player-types/c4940563/h-player-types-poster.jpg",
+  "ruleCard": "/academy/films-v2/h-player-types/c4940563/h-player-types-rule.jpg",
+  "captions": "/academy/films-v2/h-player-types/c4940563/h-player-types.vtt",
+  "transcript": "/academy/films-v2/h-player-types/c4940563/h-player-types.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 87.1,
     "first": null
   },
-  "version": "24eeaaf5"
+  "version": "c4940563",
+  "cues": [
+    {
+      "start": 1.4,
+      "end": 2.54,
+      "text": "Online, you can't see his face."
+    },
+    {
+      "start": 2.54,
+      "end": 4.44,
+      "text": "So what can you see?"
+    },
+    {
+      "start": 4.44,
+      "end": 6.96,
+      "text": "What he does. Try this."
+    },
+    {
+      "start": 6.96,
+      "end": 9.02,
+      "text": "Call, call, call."
+    },
+    {
+      "start": 9.02,
+      "end": 10.92,
+      "text": "Fold, fold, raise."
+    },
+    {
+      "start": 10.92,
+      "end": 16.68,
+      "text": "Raise, raise, raise. Who's who?"
+    },
+    {
+      "start": 16.68,
+      "end": 18.33,
+      "text": "Two habits tell you most:"
+    },
+    {
+      "start": 18.33,
+      "end": 21.99,
+      "text": "how many hands he plays, and how many he raises."
+    },
+    {
+      "start": 21.99,
+      "end": 24.9,
+      "text": "Per 100 hands, our balanced baseline"
+    },
+    {
+      "start": 24.9,
+      "end": 27.43,
+      "text": "plays 24 and raises 19."
+    },
+    {
+      "start": 27.43,
+      "end": 31.68,
+      "text": "Illustrations. Real players vary."
+    },
+    {
+      "start": 31.68,
+      "end": 32.49,
+      "text": "Meet the cast."
+    },
+    {
+      "start": 32.49,
+      "end": 36.96,
+      "text": "Rookie Bob, the calling station, plays 45, raises 6."
+    },
+    {
+      "start": 36.96,
+      "end": 39.75,
+      "text": "Slow Steve, the nit, plays 12."
+    },
+    {
+      "start": 39.75,
+      "end": 42.53,
+      "text": "Solid Sarah, tight and aggressive."
+    },
+    {
+      "start": 42.53,
+      "end": 45.62,
+      "text": "Aggressive Alex, loose and aggressive."
+    },
+    {
+      "start": 45.62,
+      "end": 47.98,
+      "text": "Tricky Tom checks big hands."
+    },
+    {
+      "start": 47.98,
+      "end": 50.8,
+      "text": "Lucky Larry chases draws."
+    },
+    {
+      "start": 50.8,
+      "end": 55.56,
+      "text": "And Mathematical Mike, the shark, close to the baseline."
+    },
+    {
+      "start": 55.56,
+      "end": 57.77,
+      "text": "But a sample isn't a type."
+    },
+    {
+      "start": 57.77,
+      "end": 62.25,
+      "text": "A true 22% player, seen for 100 hands,"
+    },
+    {
+      "start": 62.25,
+      "end": 67.86,
+      "text": "can show anywhere from 13.7% to 30.3%."
+    },
+    {
+      "start": 67.86,
+      "end": 71.69,
+      "text": "After 1,000, the error's 1.3 points."
+    },
+    {
+      "start": 71.69,
+      "end": 74.47,
+      "text": "Now it's a read."
+    },
+    {
+      "start": 74.47,
+      "end": 77.3,
+      "text": "So: call, call, call, the station."
+    },
+    {
+      "start": 77.3,
+      "end": 80.07,
+      "text": "Fold, fold, raise, the nit."
+    },
+    {
+      "start": 80.07,
+      "end": 82.9,
+      "text": "Raise, raise, raise, the LAG."
+    },
+    {
+      "start": 82.9,
+      "end": 85.09,
+      "text": "Type players by what they do,"
+    },
+    {
+      "start": 85.09,
+      "end": 87.1,
+      "text": "over enough hands to trust it."
+    },
+    {
+      "start": 87.1,
+      "end": 91,
+      "text": "Next: beating each type."
+    }
+  ],
+  "transcriptText": "Online, you can't see his face. So what can you see? What he does. Try this. Call, call, call. Fold, fold, raise. Raise, raise, raise. Who's who?\n\nTwo habits tell you most: how many hands he plays, and how many he raises. Per 100 hands, our balanced baseline plays 24 and raises 19. Illustrations. Real players vary.\n\nMeet the cast. Rookie Bob, the calling station, plays 45, raises 6. Slow Steve, the nit, plays 12. Solid Sarah, tight and aggressive. Aggressive Alex, loose and aggressive. Tricky Tom checks big hands. Lucky Larry chases draws. And Mathematical Mike, the shark, close to the baseline.\n\nBut a sample isn't a type. A true 22% player, seen for 100 hands, can show anywhere from 13.7% to 30.3%. After 1,000, the error's 1.3 points. Now it's a read.\n\nSo: call, call, call, the station. Fold, fold, raise, the nit. Raise, raise, raise, the LAG. Type players by what they do, over enough hands to trust it. Next: beating each type."
 }

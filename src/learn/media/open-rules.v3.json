@@ -1,13 +1,14 @@
 {
   "format": "academy-film-v2",
   "id": "open-rules",
-  "video": "/academy/films-v2/open-rules/12b8ffac/open-rules-1080.mp4",
-  "video720": "/academy/films-v2/open-rules/12b8ffac/open-rules-720.mp4",
-  "poster": "/academy/films-v2/open-rules/12b8ffac/open-rules-poster.jpg",
+  "source": "src-academy-open-rules-v3",
+  "video": "/academy/films-v2/open-rules/97d81a6f/open-rules-1080.mp4",
+  "video720": "/academy/films-v2/open-rules/97d81a6f/open-rules-720.mp4",
+  "poster": "/academy/films-v2/open-rules/97d81a6f/open-rules-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-rules/12b8ffac/open-rules.vtt",
-  "transcript": "/academy/films-v2/open-rules/12b8ffac/open-rules.transcript.txt",
-  "durationSeconds": 19,
+  "captions": "/academy/films-v2/open-rules/97d81a6f/open-rules.vtt",
+  "transcript": "/academy/films-v2/open-rules/97d81a6f/open-rules.transcript.txt",
+  "durationSeconds": 23,
   "captionsBurnedIn": true,
   "frame": {
     "w": 1080,
@@ -22,7 +23,60 @@
     "yourTurn": null,
     "rule": null,
     "upNext": null,
-    "first": 13.98
+    "first": 18.9
   },
-  "version": "12b8ffac"
+  "version": "97d81a6f",
+  "cues": [
+    {
+      "start": 1.54,
+      "end": 4.27,
+      "text": "Chapter one. How a hand plays."
+    },
+    {
+      "start": 4.27,
+      "end": 5.94,
+      "text": "Two cards for you."
+    },
+    {
+      "start": 5.94,
+      "end": 7.43,
+      "text": "Three on the flop..."
+    },
+    {
+      "start": 7.43,
+      "end": 8.87,
+      "text": "one on the turn..."
+    },
+    {
+      "start": 8.87,
+      "end": 9.75,
+      "text": "one on the river."
+    },
+    {
+      "start": 9.75,
+      "end": 13.21,
+      "text": "Learn the deck, the rankings, the seats,"
+    },
+    {
+      "start": 13.21,
+      "end": 14.95,
+      "text": "the betting and the showdown..."
+    },
+    {
+      "start": 14.95,
+      "end": 16.49,
+      "text": "and you'll play any hand"
+    },
+    {
+      "start": 16.49,
+      "end": 18.9,
+      "text": "without a single question about the rules."
+    },
+    {
+      "start": 18.9,
+      "end": 23,
+      "text": "First up: the deck."
+    }
+  ],
+  "transcriptText": "Chapter one. How a hand plays. Two cards for you. Three on the flop... one on the turn... one on the river. Learn the deck, the rankings, the seats, the betting and the showdown... and you'll play any hand without a single question about the rules. First up: the deck."
 }

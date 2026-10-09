@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-all-in-side-pots",
-  "video": "/academy/films-v2/r-all-in-side-pots/38951e20/r-all-in-side-pots-1080.mp4",
-  "video720": "/academy/films-v2/r-all-in-side-pots/38951e20/r-all-in-side-pots-720.mp4",
-  "poster": "/academy/films-v2/r-all-in-side-pots/38951e20/r-all-in-side-pots-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-all-in-side-pots/38951e20/r-all-in-side-pots-rule.jpg",
-  "captions": "/academy/films-v2/r-all-in-side-pots/38951e20/r-all-in-side-pots.vtt",
-  "transcript": "/academy/films-v2/r-all-in-side-pots/38951e20/r-all-in-side-pots.transcript.txt",
+  "video": "/academy/films-v2/r-all-in-side-pots/d6eb5817/r-all-in-side-pots-1080.mp4",
+  "video720": "/academy/films-v2/r-all-in-side-pots/d6eb5817/r-all-in-side-pots-720.mp4",
+  "poster": "/academy/films-v2/r-all-in-side-pots/d6eb5817/r-all-in-side-pots-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-all-in-side-pots/d6eb5817/r-all-in-side-pots-rule.jpg",
+  "captions": "/academy/films-v2/r-all-in-side-pots/d6eb5817/r-all-in-side-pots.vtt",
+  "transcript": "/academy/films-v2/r-all-in-side-pots/d6eb5817/r-all-in-side-pots.transcript.txt",
   "durationSeconds": 90,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,163 @@
     "upNext": 84.79,
     "first": null
   },
-  "version": "38951e20"
+  "version": "d6eb5817",
+  "cues": [
+    {
+      "start": 2,
+      "end": 4.03,
+      "text": "Ada's all-in for fifty."
+    },
+    {
+      "start": 4.03,
+      "end": 6.41,
+      "text": "By the river, the pot's a thousand."
+    },
+    {
+      "start": 6.41,
+      "end": 7.96,
+      "text": "So how much can she win?"
+    },
+    {
+      "start": 7.96,
+      "end": 11.24,
+      "text": "Pick your number first."
+    },
+    {
+      "start": 11.24,
+      "end": 13.13,
+      "text": "Start with two players."
+    },
+    {
+      "start": 13.13,
+      "end": 15.41,
+      "text": "You're all-in for four hundred."
+    },
+    {
+      "start": 15.41,
+      "end": 17.15,
+      "text": "They've got a thousand..."
+    },
+    {
+      "start": 17.15,
+      "end": 19.75,
+      "text": "but only four hundred can call you."
+    },
+    {
+      "start": 19.75,
+      "end": 25.35,
+      "text": "The pot's eight hundred. The rest stays put."
+    },
+    {
+      "start": 25.35,
+      "end": 27.09,
+      "text": "Now four players."
+    },
+    {
+      "start": 27.09,
+      "end": 30.75,
+      "text": "Ada's in for fifty, Bo a hundred and fifty,"
+    },
+    {
+      "start": 30.75,
+      "end": 33.21,
+      "text": "Cy and Di four hundred each."
+    },
+    {
+      "start": 33.21,
+      "end": 35.92,
+      "text": "Cut a line at every all-in..."
+    },
+    {
+      "start": 35.92,
+      "end": 37.99,
+      "text": "each layer is its own pot."
+    },
+    {
+      "start": 37.99,
+      "end": 39.72,
+      "text": "Two hundred for all four."
+    },
+    {
+      "start": 39.72,
+      "end": 42.61,
+      "text": "Three hundred for Bo, Cy and Di."
+    },
+    {
+      "start": 42.61,
+      "end": 46.65,
+      "text": "Five hundred for just Cy and Di."
+    },
+    {
+      "start": 46.65,
+      "end": 49.88,
+      "text": "So Ada can win two hundred. No more."
+    },
+    {
+      "start": 49.88,
+      "end": 51.37,
+      "text": "Flip the cards."
+    },
+    {
+      "start": 51.37,
+      "end": 55.72,
+      "text": "Bo's queens full wins the main pot and side pot one."
+    },
+    {
+      "start": 55.72,
+      "end": 57.22,
+      "text": "Five hundred."
+    },
+    {
+      "start": 57.22,
+      "end": 62.01,
+      "text": "Ada's sevens full is second best... and wins nothing."
+    },
+    {
+      "start": 62.01,
+      "end": 66.06,
+      "text": "Di's two pair beats Cy's pair for the biggest pot."
+    },
+    {
+      "start": 66.06,
+      "end": 69.11,
+      "text": "Five hundred."
+    },
+    {
+      "start": 69.11,
+      "end": 70.26,
+      "text": "One last thing."
+    },
+    {
+      "start": 70.26,
+      "end": 71.96,
+      "text": "You shove six hundred..."
+    },
+    {
+      "start": 71.96,
+      "end": 74.98,
+      "text": "they call all-in for two hundred fifty."
+    },
+    {
+      "start": 74.98,
+      "end": 77.34,
+      "text": "Only five hundred is in play..."
+    },
+    {
+      "start": 77.34,
+      "end": 80.34,
+      "text": "and three hundred fifty comes straight back to you."
+    },
+    {
+      "start": 80.34,
+      "end": 84.79,
+      "text": "Win only what you matched. The rest is a side pot."
+    },
+    {
+      "start": 84.79,
+      "end": 90,
+      "text": "Up next: your first full hand."
+    }
+  ],
+  "transcriptText": "Ada's all-in for fifty. By the river, the pot's a thousand. So how much can she win? Pick your number first.\n\nStart with two players. You're all-in for four hundred. They've got a thousand... but only four hundred can call you. The pot's eight hundred. The rest stays put.\n\nNow four players. Ada's in for fifty, Bo a hundred and fifty, Cy and Di four hundred each. Cut a line at every all-in... each layer is its own pot. Two hundred for all four. Three hundred for Bo, Cy and Di. Five hundred for just Cy and Di.\n\nSo Ada can win two hundred. No more. Flip the cards. Bo's queens full wins the main pot and side pot one. Five hundred. Ada's sevens full is second best... and wins nothing. Di's two pair beats Cy's pair for the biggest pot. Five hundred.\n\nOne last thing. You shove six hundred... they call all-in for two hundred fifty. Only five hundred is in play... and three hundred fifty comes straight back to you. Win only what you matched. The rest is a side pot. Up next: your first full hand."
 }

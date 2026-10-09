@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "x-fold-equity",
-  "video": "/academy/films-v2/x-fold-equity/dd4bb32c/x-fold-equity-1080.mp4",
-  "video720": "/academy/films-v2/x-fold-equity/dd4bb32c/x-fold-equity-720.mp4",
-  "poster": "/academy/films-v2/x-fold-equity/dd4bb32c/x-fold-equity-poster.jpg",
-  "ruleCard": "/academy/films-v2/x-fold-equity/dd4bb32c/x-fold-equity-rule.jpg",
-  "captions": "/academy/films-v2/x-fold-equity/dd4bb32c/x-fold-equity.vtt",
-  "transcript": "/academy/films-v2/x-fold-equity/dd4bb32c/x-fold-equity.transcript.txt",
+  "video": "/academy/films-v2/x-fold-equity/97be1e19/x-fold-equity-1080.mp4",
+  "video720": "/academy/films-v2/x-fold-equity/97be1e19/x-fold-equity-720.mp4",
+  "poster": "/academy/films-v2/x-fold-equity/97be1e19/x-fold-equity-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-fold-equity/97be1e19/x-fold-equity-rule.jpg",
+  "captions": "/academy/films-v2/x-fold-equity/97be1e19/x-fold-equity.vtt",
+  "transcript": "/academy/films-v2/x-fold-equity/97be1e19/x-fold-equity.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,148 @@
     "upNext": 89,
     "first": null
   },
-  "version": "dd4bb32c"
+  "version": "97be1e19",
+  "cues": [
+    {
+      "start": 2.21,
+      "end": 4.03,
+      "text": "Welcome to Pressure."
+    },
+    {
+      "start": 4.03,
+      "end": 8.86,
+      "text": "Eight-seven of diamonds, on king, ten, three, two."
+    },
+    {
+      "start": 8.86,
+      "end": 11.79,
+      "text": "100 in the pot, and he checks."
+    },
+    {
+      "start": 11.79,
+      "end": 14.62,
+      "text": "He might fold. You might hit."
+    },
+    {
+      "start": 14.62,
+      "end": 18.55,
+      "text": "Bet 75, or check?"
+    },
+    {
+      "start": 18.55,
+      "end": 22.88,
+      "text": "Two branches. He folds 40% of the time..."
+    },
+    {
+      "start": 22.88,
+      "end": 25.44,
+      "text": "a given. You take the 100."
+    },
+    {
+      "start": 25.44,
+      "end": 28.5,
+      "text": "Or he calls the 75 he owes,"
+    },
+    {
+      "start": 28.5,
+      "end": 30.2,
+      "text": "and the pot ends at 250."
+    },
+    {
+      "start": 30.2,
+      "end": 33.13,
+      "text": "You hit one time in five."
+    },
+    {
+      "start": 33.13,
+      "end": 36.19,
+      "text": "Called, you lose 25 on average."
+    },
+    {
+      "start": 36.19,
+      "end": 39.14,
+      "text": "Together... +25."
+    },
+    {
+      "start": 39.14,
+      "end": 43.72,
+      "text": "Checking wins 20."
+    },
+    {
+      "start": 43.72,
+      "end": 47.78,
+      "text": "Make that bet 100 times: +2,500."
+    },
+    {
+      "start": 47.78,
+      "end": 49.55,
+      "text": "Now take the outs away."
+    },
+    {
+      "start": 49.55,
+      "end": 52.4,
+      "text": "Same folds... −500."
+    },
+    {
+      "start": 52.4,
+      "end": 55.72,
+      "text": "A pure bluff needs 42.9%."
+    },
+    {
+      "start": 55.72,
+      "end": 59.9,
+      "text": "The outs make this bet beat the check."
+    },
+    {
+      "start": 59.9,
+      "end": 63.41,
+      "text": "Your turn. Pot 160, bet 100."
+    },
+    {
+      "start": 63.41,
+      "end": 67.44,
+      "text": "He folds a quarter, you hit a quarter... both given."
+    },
+    {
+      "start": 67.44,
+      "end": 70.83,
+      "text": "Break-even: 38.5%."
+    },
+    {
+      "start": 70.83,
+      "end": 72.56,
+      "text": "Called, −10."
+    },
+    {
+      "start": 72.56,
+      "end": 75.51,
+      "text": "The bet's worth 32.5."
+    },
+    {
+      "start": 75.51,
+      "end": 79.31,
+      "text": "Checking, 40. Check."
+    },
+    {
+      "start": 79.31,
+      "end": 83.83,
+      "text": "So a bet wins two ways... they fold, or you hit."
+    },
+    {
+      "start": 83.83,
+      "end": 87.47,
+      "text": "Break-even is the bet over the pot plus the bet."
+    },
+    {
+      "start": 87.47,
+      "end": 89,
+      "text": "Count both."
+    },
+    {
+      "start": 89,
+      "end": 93,
+      "text": "Up next: bluffing with a story."
+    }
+  ],
+  "transcriptText": "Welcome to Pressure. Eight-seven of diamonds, on king, ten, three, two. 100 in the pot, and he checks. He might fold. You might hit. Bet 75, or check?\n\nTwo branches. He folds 40% of the time... a given. You take the 100. Or he calls the 75 he owes, and the pot ends at 250. You hit one time in five. Called, you lose 25 on average. Together... +25. Checking wins 20.\n\nMake that bet 100 times: +2,500. Now take the outs away. Same folds... −500. A pure bluff needs 42.9%. The outs make this bet beat the check.\n\nYour turn. Pot 160, bet 100. He folds a quarter, you hit a quarter... both given. Break-even: 38.5%. Called, −10. The bet's worth 32.5. Checking, 40. Check.\n\nSo a bet wins two ways... they fold, or you hit. Break-even is the bet over the pot plus the bet. Count both. Up next: bluffing with a story."
 }

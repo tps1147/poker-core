@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-spr",
-  "video": "/academy/films-v2/m-spr/a3be7a5c/m-spr-1080.mp4",
-  "video720": "/academy/films-v2/m-spr/a3be7a5c/m-spr-720.mp4",
-  "poster": "/academy/films-v2/m-spr/a3be7a5c/m-spr-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-spr/a3be7a5c/m-spr-rule.jpg",
-  "captions": "/academy/films-v2/m-spr/a3be7a5c/m-spr.vtt",
-  "transcript": "/academy/films-v2/m-spr/a3be7a5c/m-spr.transcript.txt",
+  "video": "/academy/films-v2/m-spr/66303b2a/m-spr-1080.mp4",
+  "video720": "/academy/films-v2/m-spr/66303b2a/m-spr-720.mp4",
+  "poster": "/academy/films-v2/m-spr/66303b2a/m-spr-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-spr/66303b2a/m-spr-rule.jpg",
+  "captions": "/academy/films-v2/m-spr/66303b2a/m-spr.vtt",
+  "transcript": "/academy/films-v2/m-spr/66303b2a/m-spr.transcript.txt",
   "durationSeconds": 94,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,153 @@
     "upNext": 89.83,
     "first": null
   },
-  "version": "a3be7a5c"
+  "version": "66303b2a",
+  "cues": [
+    {
+      "start": 1.15,
+      "end": 2.84,
+      "text": "You flop top pair."
+    },
+    {
+      "start": 2.84,
+      "end": 4.9,
+      "text": "All-in... or careful?"
+    },
+    {
+      "start": 4.9,
+      "end": 8.41,
+      "text": "Pick one. Does it depend on the cards..."
+    },
+    {
+      "start": 8.41,
+      "end": 10.33,
+      "text": "or on the stacks too?"
+    },
+    {
+      "start": 10.33,
+      "end": 12.82,
+      "text": "Hold that thought."
+    },
+    {
+      "start": 12.82,
+      "end": 14.54,
+      "text": "The pot's 150."
+    },
+    {
+      "start": 14.54,
+      "end": 18.08,
+      "text": "You've got 600, your rival has 900."
+    },
+    {
+      "start": 18.08,
+      "end": 21.53,
+      "text": "But you can only win what the smaller stack has."
+    },
+    {
+      "start": 21.53,
+      "end": 24.17,
+      "text": "So 600 is your effective stack."
+    },
+    {
+      "start": 24.17,
+      "end": 29.05,
+      "text": "In pots, 600 over 150... is four."
+    },
+    {
+      "start": 29.05,
+      "end": 32.62,
+      "text": "That's your stack-to-pot ratio... your SPR."
+    },
+    {
+      "start": 32.62,
+      "end": 36.86,
+      "text": "Not their stack. Not both."
+    },
+    {
+      "start": 36.86,
+      "end": 38.66,
+      "text": "Bet the pot and get called."
+    },
+    {
+      "start": 38.66,
+      "end": 40.96,
+      "text": "The pot's 450."
+    },
+    {
+      "start": 40.96,
+      "end": 44.12,
+      "text": "Bet the pot again... and you're all-in."
+    },
+    {
+      "start": 44.12,
+      "end": 48.77,
+      "text": "Two bets, and the pot's 1,350."
+    },
+    {
+      "start": 48.77,
+      "end": 54.09,
+      "text": "At an SPR of 1, one bet gets it all in... three pots."
+    },
+    {
+      "start": 54.09,
+      "end": 56.48,
+      "text": "At 13, three bets..."
+    },
+    {
+      "start": 56.48,
+      "end": 59.29,
+      "text": "and the pot grows 27 times."
+    },
+    {
+      "start": 59.29,
+      "end": 62.19,
+      "text": "Shallow, one good pair is enough."
+    },
+    {
+      "start": 62.19,
+      "end": 64.56,
+      "text": "Deep, it often isn't..."
+    },
+    {
+      "start": 64.56,
+      "end": 66.91,
+      "text": "but a pocket pair flops a set or better"
+    },
+    {
+      "start": 66.91,
+      "end": 70.54,
+      "text": "about 11.8% of the time."
+    },
+    {
+      "start": 70.54,
+      "end": 75.94,
+      "text": "Your turn. You've got 1,000, they've got 240, pot 120."
+    },
+    {
+      "start": 75.94,
+      "end": 79.31,
+      "text": "Which stack counts? The smaller one."
+    },
+    {
+      "start": 79.31,
+      "end": 83.56,
+      "text": "SPR 2... two bets and you're all-in."
+    },
+    {
+      "start": 83.56,
+      "end": 86.61,
+      "text": "So, cards or stacks? Both."
+    },
+    {
+      "start": 86.61,
+      "end": 89.83,
+      "text": "SPR counts the bets you have left."
+    },
+    {
+      "start": 89.83,
+      "end": 94,
+      "text": "Up next: why acting last wins."
+    }
+  ],
+  "transcriptText": "You flop top pair. All-in... or careful? Pick one. Does it depend on the cards... or on the stacks too? Hold that thought.\n\nThe pot's 150. You've got 600, your rival has 900. But you can only win what the smaller stack has. So 600 is your effective stack. In pots, 600 over 150... is four. That's your stack-to-pot ratio... your SPR. Not their stack. Not both.\n\nBet the pot and get called. The pot's 450. Bet the pot again... and you're all-in. Two bets, and the pot's 1,350.\n\nAt an SPR of 1, one bet gets it all in... three pots. At 13, three bets... and the pot grows 27 times. Shallow, one good pair is enough. Deep, it often isn't... but a pocket pair flops a set or better about 11.8% of the time.\n\nYour turn. You've got 1,000, they've got 240, pot 120. Which stack counts? The smaller one. SPR 2... two bets and you're all-in. So, cards or stacks? Both. SPR counts the bets you have left. Up next: why acting last wins."
 }

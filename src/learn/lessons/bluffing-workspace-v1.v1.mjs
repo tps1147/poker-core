@@ -51,7 +51,7 @@ const definition = {
   sourceLessonId: "lesson-bluffing-001", videoLessonId: "lesson-bluffing-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
   title: "Bluff with a story they can fold to.", kicker: "Not because you missed.",
-  trail: ["Learn", "Pressure", "Bluffing"],
+  trail: ["Learn", "Pressure", "Bluff with a story they can fold to."],
   course: { chapter: "Pressure" },
   meta: { minutes: 5 },
   assumptions: "Heads-up, no rake. Each player started the hand with 1,000. In every hand you raised before the flop and bet the flop and the turn, and Ace Andy called both bets, so the pot is 300 with 850 behind each, and he checks the river to you. The pot, the stacks, that line and the 200 bet size are given for the exercise; Knox does not speak them. What Ace Andy holds is described only as a read, labelled given in each hand, never taken from his hidden cards. Poor showdown value is the description, not an equity figure. His cards are shown only at a showdown the hand reaches after your answer.",
@@ -93,7 +93,7 @@ const definition = {
     "bl1-guided": {
       decision: "action", choices: ["check", "bet"], sizes: SIZES, ...guided,
       title: "Checked to you. Check or bet?",
-      prompt: "The hand: ace-jack of spades, and nothing made on this river. The pot is 300. You raised before the flop and bet the flop and the turn; Ace Andy called both and checks. Given read: his range is capped, with many one-pair hands. Check, or bet 200?",
+      prompt: "Ace-jack of spades, and nothing made on this river. The pot is 300. You raised before the flop and bet the flop and the turn; Ace Andy called both and checks. Given read: his range is capped, with many one-pair hands. Check, or bet 200?",
       hint: "Ask the two questions in order. What strong hands does your line represent? Which of his hands that beat ace-jack could fold?",
       explanation: "Ace-jack has poor showdown value: checked down, it loses to every pair he holds. Your line represents strong king-x, ace-king, ace-queen and overpairs, and your ace makes ace-king and aces less likely in his hand. Against the given capped range with many one-pair hands, a bet of 200 asks better hands, such as a queen or an eight, to fold. Both questions have an answer, so under this lesson’s assumptions the bet has a story and a target.",
       note: `${ONE_HAND} His cards stay hidden in the hand.`,

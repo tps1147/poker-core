@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "x-bluffing",
-  "video": "/academy/films-v2/x-bluffing/9c0c9e10/x-bluffing-1080.mp4",
-  "video720": "/academy/films-v2/x-bluffing/9c0c9e10/x-bluffing-720.mp4",
-  "poster": "/academy/films-v2/x-bluffing/9c0c9e10/x-bluffing-poster.jpg",
-  "ruleCard": "/academy/films-v2/x-bluffing/9c0c9e10/x-bluffing-rule.jpg",
-  "captions": "/academy/films-v2/x-bluffing/9c0c9e10/x-bluffing.vtt",
-  "transcript": "/academy/films-v2/x-bluffing/9c0c9e10/x-bluffing.transcript.txt",
+  "video": "/academy/films-v2/x-bluffing/3149d43b/x-bluffing-1080.mp4",
+  "video720": "/academy/films-v2/x-bluffing/3149d43b/x-bluffing-720.mp4",
+  "poster": "/academy/films-v2/x-bluffing/3149d43b/x-bluffing-poster.jpg",
+  "ruleCard": "/academy/films-v2/x-bluffing/3149d43b/x-bluffing-rule.jpg",
+  "captions": "/academy/films-v2/x-bluffing/3149d43b/x-bluffing.vtt",
+  "transcript": "/academy/films-v2/x-bluffing/3149d43b/x-bluffing.transcript.txt",
   "durationSeconds": 85,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,143 @@
     "upNext": 81.22,
     "first": null
   },
-  "version": "9c0c9e10"
+  "version": "3149d43b",
+  "cues": [
+    {
+      "start": 1.12,
+      "end": 2.15,
+      "text": "Your draw missed."
+    },
+    {
+      "start": 2.15,
+      "end": 7.99,
+      "text": "Jack-nine, on queen, ten, five, four, two..."
+    },
+    {
+      "start": 7.99,
+      "end": 9.09,
+      "text": "jack high."
+    },
+    {
+      "start": 9.09,
+      "end": 12.14,
+      "text": "150 in the pot, and he checks."
+    },
+    {
+      "start": 12.14,
+      "end": 13.75,
+      "text": "Is that a reason to bluff?"
+    },
+    {
+      "start": 13.75,
+      "end": 17.11,
+      "text": "Bet 100, or check?"
+    },
+    {
+      "start": 17.11,
+      "end": 18.34,
+      "text": "Rewind the hand."
+    },
+    {
+      "start": 18.34,
+      "end": 21.9,
+      "text": "You raised, bet the flop, bet the turn..."
+    },
+    {
+      "start": 21.9,
+      "end": 23.75,
+      "text": "and he called twice."
+    },
+    {
+      "start": 23.75,
+      "end": 26.14,
+      "text": "That story says queens or better."
+    },
+    {
+      "start": 26.14,
+      "end": 30.44,
+      "text": "His range: 102 combos, an illustration."
+    },
+    {
+      "start": 30.44,
+      "end": 34.3,
+      "text": "Rule of thumb: he calls with top pair or better."
+    },
+    {
+      "start": 34.3,
+      "end": 37.02,
+      "text": "The other 77 fold..."
+    },
+    {
+      "start": 37.02,
+      "end": 40.55,
+      "text": "and 74 of them beat you."
+    },
+    {
+      "start": 40.55,
+      "end": 42.86,
+      "text": "Break-even is 40%."
+    },
+    {
+      "start": 42.86,
+      "end": 46.03,
+      "text": "He folds 75.5%."
+    },
+    {
+      "start": 46.03,
+      "end": 48.57,
+      "text": "That's about 88.7 a bluff."
+    },
+    {
+      "start": 48.57,
+      "end": 52.38,
+      "text": "Checking: 4.4. Bet."
+    },
+    {
+      "start": 52.38,
+      "end": 54.81,
+      "text": "This time, he calls with queen-jack."
+    },
+    {
+      "start": 54.81,
+      "end": 58.61,
+      "text": "One sample... one of the 25 calls the math counted."
+    },
+    {
+      "start": 58.61,
+      "end": 61.86,
+      "text": "The verdict stays bet."
+    },
+    {
+      "start": 61.86,
+      "end": 65.29,
+      "text": "Same river... a station who calls with any pair."
+    },
+    {
+      "start": 65.29,
+      "end": 69.19,
+      "text": "18 fold... 17.6%."
+    },
+    {
+      "start": 69.19,
+      "end": 73.88,
+      "text": "The bluff loses 55.9 a try. Check."
+    },
+    {
+      "start": 73.88,
+      "end": 78.01,
+      "text": "So bluff when the story holds and the hands that fold beat you."
+    },
+    {
+      "start": 78.01,
+      "end": 81.22,
+      "text": "A call is one sample, not the grade."
+    },
+    {
+      "start": 81.22,
+      "end": 85,
+      "text": "Up next: defending against bets."
+    }
+  ],
+  "transcriptText": "Your draw missed. Jack-nine, on queen, ten, five, four, two... jack high. 150 in the pot, and he checks. Is that a reason to bluff? Bet 100, or check?\n\nRewind the hand. You raised, bet the flop, bet the turn... and he called twice. That story says queens or better. His range: 102 combos, an illustration. Rule of thumb: he calls with top pair or better. The other 77 fold... and 74 of them beat you.\n\nBreak-even is 40%. He folds 75.5%. That's about 88.7 a bluff. Checking: 4.4. Bet. This time, he calls with queen-jack. One sample... one of the 25 calls the math counted. The verdict stays bet.\n\nSame river... a station who calls with any pair. 18 fold... 17.6%. The bluff loses 55.9 a try. Check. So bluff when the story holds and the hands that fold beat you. A call is one sample, not the grade. Up next: defending against bets."
 }

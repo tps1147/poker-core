@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-showdown",
-  "video": "/academy/films-v2/r-showdown/ba5f7196/r-showdown-1080.mp4",
-  "video720": "/academy/films-v2/r-showdown/ba5f7196/r-showdown-720.mp4",
-  "poster": "/academy/films-v2/r-showdown/ba5f7196/r-showdown-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-showdown/ba5f7196/r-showdown-rule.jpg",
-  "captions": "/academy/films-v2/r-showdown/ba5f7196/r-showdown.vtt",
-  "transcript": "/academy/films-v2/r-showdown/ba5f7196/r-showdown.transcript.txt",
+  "video": "/academy/films-v2/r-showdown/6fceeda3/r-showdown-1080.mp4",
+  "video720": "/academy/films-v2/r-showdown/6fceeda3/r-showdown-720.mp4",
+  "poster": "/academy/films-v2/r-showdown/6fceeda3/r-showdown-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-showdown/6fceeda3/r-showdown-rule.jpg",
+  "captions": "/academy/films-v2/r-showdown/6fceeda3/r-showdown.vtt",
+  "transcript": "/academy/films-v2/r-showdown/6fceeda3/r-showdown.transcript.txt",
   "durationSeconds": 104,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,178 @@
     "upNext": 97.7,
     "first": null
   },
-  "version": "ba5f7196"
+  "version": "6fceeda3",
+  "cues": [
+    {
+      "start": 2.11,
+      "end": 5.06,
+      "text": "Four players. Andy bets sixty..."
+    },
+    {
+      "start": 5.06,
+      "end": 6.56,
+      "text": "and everyone folds."
+    },
+    {
+      "start": 6.56,
+      "end": 10.75,
+      "text": "The pot is his. Nobody saw his cards."
+    },
+    {
+      "start": 10.75,
+      "end": 13.94,
+      "text": "So... can you win a pot without showing?"
+    },
+    {
+      "start": 13.94,
+      "end": 16.06,
+      "text": "Yes... or no?"
+    },
+    {
+      "start": 16.06,
+      "end": 19.01,
+      "text": "Make your pick."
+    },
+    {
+      "start": 19.01,
+      "end": 22.42,
+      "text": "Watch. Andy slides his cards into the muck,"
+    },
+    {
+      "start": 22.42,
+      "end": 25.84,
+      "text": "face down... and still wins."
+    },
+    {
+      "start": 25.84,
+      "end": 26.85,
+      "text": "So, yes."
+    },
+    {
+      "start": 26.85,
+      "end": 30.14,
+      "text": "If the hand goes to showdown, someone shows first."
+    },
+    {
+      "start": 30.14,
+      "end": 31.7,
+      "text": "Called on the river?"
+    },
+    {
+      "start": 31.7,
+      "end": 35.43,
+      "text": "The last player to bet or raise shows first."
+    },
+    {
+      "start": 35.43,
+      "end": 36.88,
+      "text": "That's Andy."
+    },
+    {
+      "start": 36.88,
+      "end": 38.21,
+      "text": "Checked through?"
+    },
+    {
+      "start": 38.21,
+      "end": 41.49,
+      "text": "The first seat left of the button shows first."
+    },
+    {
+      "start": 41.49,
+      "end": 43.7,
+      "text": "That's you."
+    },
+    {
+      "start": 43.7,
+      "end": 48.04,
+      "text": "Now the board: king, king, nine, nine, ace."
+    },
+    {
+      "start": 48.04,
+      "end": 51.85,
+      "text": "You hold queen-jack. Andy, queen-ten."
+    },
+    {
+      "start": 51.85,
+      "end": 53.65,
+      "text": "Neither hand plays."
+    },
+    {
+      "start": 53.65,
+      "end": 56.66,
+      "text": "Same best five... so the pot splits."
+    },
+    {
+      "start": 56.66,
+      "end": 59.44,
+      "text": "Three hundred, a hundred and fifty each."
+    },
+    {
+      "start": 59.44,
+      "end": 61.49,
+      "text": "Now change one card."
+    },
+    {
+      "start": 61.49,
+      "end": 65.42,
+      "text": "Give Andy nine-two, and it's nines full of kings."
+    },
+    {
+      "start": 65.42,
+      "end": 68.35,
+      "text": "The whole pot is his."
+    },
+    {
+      "start": 68.35,
+      "end": 71.89,
+      "text": "Ties can split a pot between any number of players."
+    },
+    {
+      "start": 71.89,
+      "end": 76.05,
+      "text": "Ten, nine, eight, two, two."
+    },
+    {
+      "start": 76.05,
+      "end": 79.36,
+      "text": "You and Bo make the same jack-high straight."
+    },
+    {
+      "start": 79.36,
+      "end": 81.95,
+      "text": "Andy's aces are just two pair."
+    },
+    {
+      "start": 81.95,
+      "end": 84.95,
+      "text": "So four hundred fifty splits..."
+    },
+    {
+      "start": 84.95,
+      "end": 89.86,
+      "text": "two hundred twenty-five each."
+    },
+    {
+      "start": 89.86,
+      "end": 93.19,
+      "text": "So... you win when everyone folds,"
+    },
+    {
+      "start": 93.19,
+      "end": 95.91,
+      "text": "or with the best five at showdown."
+    },
+    {
+      "start": 95.91,
+      "end": 97.7,
+      "text": "Exact ties split."
+    },
+    {
+      "start": 97.7,
+      "end": 104,
+      "text": "Up next: all-ins and side pots."
+    }
+  ],
+  "transcriptText": "Four players. Andy bets sixty... and everyone folds. The pot is his. Nobody saw his cards. So... can you win a pot without showing? Yes... or no? Make your pick.\n\nWatch. Andy slides his cards into the muck, face down... and still wins. So, yes. If the hand goes to showdown, someone shows first. Called on the river? The last player to bet or raise shows first. That's Andy. Checked through? The first seat left of the button shows first. That's you.\n\nNow the board: king, king, nine, nine, ace. You hold queen-jack. Andy, queen-ten. Neither hand plays. Same best five... so the pot splits. Three hundred, a hundred and fifty each. Now change one card. Give Andy nine-two, and it's nines full of kings. The whole pot is his.\n\nTies can split a pot between any number of players. Ten, nine, eight, two, two. You and Bo make the same jack-high straight. Andy's aces are just two pair. So four hundred fifty splits... two hundred twenty-five each.\n\nSo... you win when everyone folds, or with the best five at showdown. Exact ties split. Up next: all-ins and side pots."
 }

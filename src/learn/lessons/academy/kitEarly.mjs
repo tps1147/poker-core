@@ -63,9 +63,14 @@ export function ringHand(id, { position, hero, board = [], pot = 0, acts = [], b
 }
 
 // The stage list, in defs-b's v2 shape (lessons/academy/kit.mjs). `film`: { film, at, spot, upNext }
-// where `at` is canon.yourTurn (null: the film plays to its stop, then asks, anchor "end") and
-// `spot` is the "Your turn" spot, the same spot and numbers the guided hand then plays. `hands` are
-// [guided, practice, fresh], each { id, label, coachLine }. `why`: { prompt, options }.
+// where `at` is canon.yourTurn (null: the film plays to its stop, anchor "end") and `spot` is the
+// film's own question (its "Your turn" spot). The guided hand follows the film's idea on different
+// cards, numbers or seats, never the same spot (scripts/lib/stageRepeats.mjs). `endAsk` is the end
+// ask policy of an "end" film (filmV2 filmAskPlan): "skip" when the film has already asked and
+// answered its question (the lesson hands off to the next step), "variant" when `spot` is a
+// transfer the film never answered. `pauses` ([{ anchor, spotId, spot, predict }], 2026-10-09) lists a
+// film's several in-film pauses instead (filmV2 multiPause): each asks at its anchor, over the frame the
+// film draws its own card on, and `predict` marks a prediction that is never graded wrong. `hands` are [guided, practice, fresh], each { id, label, coachLine }. `why`: { prompt, options }.
 export function v2Stages({ welcome, film, hands, why, takeaway }) {
   const [guided, practice, fresh] = hands;
   const decision = (hand, role, next) => ({ kind: "decision", label: hand.label, spotId: hand.id, hand: hand.id, role, coachLine: hand.coachLine, next });
@@ -74,7 +79,10 @@ export function v2Stages({ welcome, film, hands, why, takeaway }) {
   return [
     { kind: "welcome", label: "Welcome", ...welcome },
     { kind: "film", label: "Film", upNext: film.upNext, media: film.film,
-      pause: { at: film.at ?? null, anchor: film.at == null ? "end" : "yourTurn", film: film.film, spotId: turnId, spot: film.spot } },
+      pause: film.pauses?.length
+        // Several in-film pauses (filmV2 multiPause): the first stands as the stage's own Your turn.
+        ? { at: film.at ?? null, anchor: "pauses", film: film.film, spotId: film.pauses[0].spotId, spot: film.pauses[0].spot, pauses: film.pauses }
+        : { at: film.at ?? null, anchor: film.at == null ? "end" : "yourTurn", film: film.film, spotId: turnId, spot: film.spot, ...(film.endAsk ? { endAsk: film.endAsk } : {}) } },
     { kind: "why", label: "Why", spotId: whyId, prompt: why.prompt, options: why.options },
     decision(guided, "guided", "Try a practice hand"),
     decision(practice, "practice", "Try a fresh hand"),
@@ -89,9 +97,11 @@ export function v2Stages({ welcome, film, hands, why, takeaway }) {
 export const options = (...triples) => triples.map(([id, text, fix]) => ({ id, text, fix }));
 
 // The definition's fixed fields for a node lesson (defs-b's definitionBase fields).
-export function v2Lesson({ node, film, coach, access, title, kicker, track, minutes = 4, assumptions, feedback, stages, spots, hands, conceptId = null }) {
+// `version` is the content version (answerKeys/<node>.mjs contentVersion): bumped whenever the stages
+// or the keys change, the old version staying registered on the server for old builds.
+export function v2Lesson({ node, version = 1, film, coach, access, title, kicker, track, minutes = 4, assumptions, feedback, stages, spots, hands, conceptId = null }) {
   return {
-    id: node, node, version: 1, flow: "film-first", format: "academy-v2",
+    id: node, node, version, flow: "film-first", format: "academy-v2",
     conceptId, sourceLessonId: node, videoLessonId: node,
     coach, narrator: TRACK_NARRATOR[NODES.find((item) => item.id === node)?.track] || null, access, template: track, title, kicker,
     trail: ["Learn", track, title], course: { chapter: track },

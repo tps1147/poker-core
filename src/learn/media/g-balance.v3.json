@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "g-balance",
-  "video": "/academy/films-v2/g-balance/48cba6ed/g-balance-1080.mp4",
-  "video720": "/academy/films-v2/g-balance/48cba6ed/g-balance-720.mp4",
-  "poster": "/academy/films-v2/g-balance/48cba6ed/g-balance-poster.jpg",
-  "ruleCard": "/academy/films-v2/g-balance/48cba6ed/g-balance-rule.jpg",
-  "captions": "/academy/films-v2/g-balance/48cba6ed/g-balance.vtt",
-  "transcript": "/academy/films-v2/g-balance/48cba6ed/g-balance.transcript.txt",
+  "video": "/academy/films-v2/g-balance/54b75631/g-balance-1080.mp4",
+  "video720": "/academy/films-v2/g-balance/54b75631/g-balance-720.mp4",
+  "poster": "/academy/films-v2/g-balance/54b75631/g-balance-poster.jpg",
+  "ruleCard": "/academy/films-v2/g-balance/54b75631/g-balance-rule.jpg",
+  "captions": "/academy/films-v2/g-balance/54b75631/g-balance.vtt",
+  "transcript": "/academy/films-v2/g-balance/54b75631/g-balance.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,113 @@
     "upNext": 91.29,
     "first": null
   },
-  "version": "48cba6ed"
+  "version": "54b75631",
+  "cues": [
+    {
+      "start": 1.25,
+      "end": 3.66,
+      "text": "You bet the pot with 20 value hands."
+    },
+    {
+      "start": 3.66,
+      "end": 5.8,
+      "text": "How many bluffs go with them?"
+    },
+    {
+      "start": 5.8,
+      "end": 12.11,
+      "text": "None, 10, 20? Make your guess."
+    },
+    {
+      "start": 12.11,
+      "end": 14.09,
+      "text": "Bluffs, as a share of your bets,"
+    },
+    {
+      "start": 14.09,
+      "end": 17.62,
+      "text": "equal the bet ÷ (pot + 2 bets)."
+    },
+    {
+      "start": 17.62,
+      "end": 22.56,
+      "text": "Half pot: 1 bet in 4 is a bluff."
+    },
+    {
+      "start": 22.56,
+      "end": 26.59,
+      "text": "Pot size: 1 in 3."
+    },
+    {
+      "start": 26.59,
+      "end": 30.44,
+      "text": "Twice the pot: 2 in 5."
+    },
+    {
+      "start": 30.44,
+      "end": 34.72,
+      "text": "Bigger bets carry more bluffs."
+    },
+    {
+      "start": 34.72,
+      "end": 38.05,
+      "text": "Pot 100, bet 100, 20 value hands."
+    },
+    {
+      "start": 38.05,
+      "end": 42.9,
+      "text": "Add 10 bluffs. 10 of 30: a third."
+    },
+    {
+      "start": 42.9,
+      "end": 48.69,
+      "text": "Calling wins 200 against a bluff, loses 100 against value."
+    },
+    {
+      "start": 48.69,
+      "end": 54.77,
+      "text": "66.7 − 66.7... zero."
+    },
+    {
+      "start": 54.77,
+      "end": 57.95,
+      "text": "One more bluff, and calling wins."
+    },
+    {
+      "start": 57.95,
+      "end": 60.66,
+      "text": "One fewer, folding wins."
+    },
+    {
+      "start": 60.66,
+      "end": 66.15,
+      "text": "Balanced is a ratio, not a coin flip."
+    },
+    {
+      "start": 66.15,
+      "end": 72.05,
+      "text": "Your turn. Pot 120, bet 80, 25 value hands."
+    },
+    {
+      "start": 72.05,
+      "end": 76.77,
+      "text": "200 to 80: 5 to 2... so 10 bluffs."
+    },
+    {
+      "start": 76.77,
+      "end": 85.9,
+      "text": "His call: 57.1 − 57.1. Zero."
+    },
+    {
+      "start": 85.9,
+      "end": 91.29,
+      "text": "Bluffs ÷ all bets = bet ÷ (pot + 2 bets)."
+    },
+    {
+      "start": 91.29,
+      "end": 97,
+      "text": "Up next: when to exploit."
+    }
+  ],
+  "transcriptText": "You bet the pot with 20 value hands. How many bluffs go with them? None, 10, 20? Make your guess.\n\nBluffs, as a share of your bets, equal the bet ÷ (pot + 2 bets). Half pot: 1 bet in 4 is a bluff. Pot size: 1 in 3. Twice the pot: 2 in 5. Bigger bets carry more bluffs.\n\nPot 100, bet 100, 20 value hands. Add 10 bluffs. 10 of 30: a third. Calling wins 200 against a bluff, loses 100 against value. 66.7 − 66.7... zero. One more bluff, and calling wins. One fewer, folding wins. Balanced is a ratio, not a coin flip.\n\nYour turn. Pot 120, bet 80, 25 value hands. 200 to 80: 5 to 2... so 10 bluffs. His call: 57.1 − 57.1. Zero. Bluffs ÷ all bets = bet ÷ (pot + 2 bets). Up next: when to exploit."
 }

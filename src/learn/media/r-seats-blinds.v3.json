@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-seats-blinds",
-  "video": "/academy/films-v2/r-seats-blinds/00ac0b77/r-seats-blinds-1080.mp4",
-  "video720": "/academy/films-v2/r-seats-blinds/00ac0b77/r-seats-blinds-720.mp4",
-  "poster": "/academy/films-v2/r-seats-blinds/00ac0b77/r-seats-blinds-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-seats-blinds/00ac0b77/r-seats-blinds-rule.jpg",
-  "captions": "/academy/films-v2/r-seats-blinds/00ac0b77/r-seats-blinds.vtt",
-  "transcript": "/academy/films-v2/r-seats-blinds/00ac0b77/r-seats-blinds.transcript.txt",
+  "video": "/academy/films-v2/r-seats-blinds/20321f70/r-seats-blinds-1080.mp4",
+  "video720": "/academy/films-v2/r-seats-blinds/20321f70/r-seats-blinds-720.mp4",
+  "poster": "/academy/films-v2/r-seats-blinds/20321f70/r-seats-blinds-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-seats-blinds/20321f70/r-seats-blinds-rule.jpg",
+  "captions": "/academy/films-v2/r-seats-blinds/20321f70/r-seats-blinds.vtt",
+  "transcript": "/academy/films-v2/r-seats-blinds/20321f70/r-seats-blinds.transcript.txt",
   "durationSeconds": 89,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,148 @@
     "upNext": 85.43,
     "first": null
   },
-  "version": "00ac0b77"
+  "version": "20321f70",
+  "cues": [
+    {
+      "start": 2.13,
+      "end": 5.21,
+      "text": "Before anyone sees a single card..."
+    },
+    {
+      "start": 5.21,
+      "end": 8.73,
+      "text": "there are already fifteen chips in the pot."
+    },
+    {
+      "start": 8.73,
+      "end": 10.3,
+      "text": "So whose chips are they?"
+    },
+    {
+      "start": 10.3,
+      "end": 13.61,
+      "text": "The house's... or two of the players'?"
+    },
+    {
+      "start": 13.61,
+      "end": 17.22,
+      "text": "Make your guess. We'll come back to it."
+    },
+    {
+      "start": 17.22,
+      "end": 20.11,
+      "text": "See this little disc? That's the button."
+    },
+    {
+      "start": 20.11,
+      "end": 21.62,
+      "text": "It marks the dealer seat,"
+    },
+    {
+      "start": 21.62,
+      "end": 25,
+      "text": "and after every hand it moves one seat clockwise."
+    },
+    {
+      "start": 25,
+      "end": 28.54,
+      "text": "The two seats after it pay before the cards come out."
+    },
+    {
+      "start": 28.54,
+      "end": 31.23,
+      "text": "The small blind puts in five."
+    },
+    {
+      "start": 31.23,
+      "end": 33.45,
+      "text": "The big blind puts in ten."
+    },
+    {
+      "start": 33.45,
+      "end": 37.28,
+      "text": "Five plus ten... that's your fifteen."
+    },
+    {
+      "start": 37.28,
+      "end": 41.81,
+      "text": "Before the flop, the seat right after the big blind acts first."
+    },
+    {
+      "start": 41.81,
+      "end": 44.6,
+      "text": "Then the action goes around the table..."
+    },
+    {
+      "start": 44.6,
+      "end": 47.23,
+      "text": "and the two blinds act last."
+    },
+    {
+      "start": 47.23,
+      "end": 49.4,
+      "text": "Next hand, the button moves on,"
+    },
+    {
+      "start": 49.4,
+      "end": 51.23,
+      "text": "and the blinds move with it."
+    },
+    {
+      "start": 51.23,
+      "end": 56.5,
+      "text": "Over one lap of the table, everyone pays each blind once."
+    },
+    {
+      "start": 56.5,
+      "end": 59.47,
+      "text": "Nobody gets a free ride."
+    },
+    {
+      "start": 59.47,
+      "end": 62.13,
+      "text": "Now shrink the table to two players."
+    },
+    {
+      "start": 62.13,
+      "end": 65.81,
+      "text": "That's heads-up, Flop52's own game."
+    },
+    {
+      "start": 65.81,
+      "end": 68.66,
+      "text": "Here, the button posts the small blind."
+    },
+    {
+      "start": 68.66,
+      "end": 71.21,
+      "text": "It acts first before the flop..."
+    },
+    {
+      "start": 71.21,
+      "end": 75.22,
+      "text": "and last on every street after."
+    },
+    {
+      "start": 75.22,
+      "end": 76.75,
+      "text": "So, back to your guess."
+    },
+    {
+      "start": 76.75,
+      "end": 81.3,
+      "text": "Those fifteen chips belong to two players, not the house."
+    },
+    {
+      "start": 81.3,
+      "end": 84.12,
+      "text": "Whoever wins the pot takes them all."
+    },
+    {
+      "start": 84.12,
+      "end": 89,
+      "text": "Up next: what you can do on your turn."
+    }
+  ],
+  "transcriptText": "Before anyone sees a single card... there are already fifteen chips in the pot. So whose chips are they? The house's... or two of the players'? Make your guess. We'll come back to it.\n\nSee this little disc? That's the button. It marks the dealer seat, and after every hand it moves one seat clockwise. The two seats after it pay before the cards come out. The small blind puts in five. The big blind puts in ten. Five plus ten... that's your fifteen.\n\nBefore the flop, the seat right after the big blind acts first. Then the action goes around the table... and the two blinds act last. Next hand, the button moves on, and the blinds move with it. Over one lap of the table, everyone pays each blind once. Nobody gets a free ride.\n\nNow shrink the table to two players. That's heads-up, Flop52's own game. Here, the button posts the small blind. It acts first before the flop... and last on every street after.\n\nSo, back to your guess. Those fifteen chips belong to two players, not the house. Whoever wins the pot takes them all. Up next: what you can do on your turn."
 }

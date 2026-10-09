@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 14.25
   },
-  "version": "27ef2a02"
+  "version": "27ef2a02",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 3.69,
+      "text": "Chapter four. Preflop."
+    },
+    {
+      "start": 3.69,
+      "end": 6.63,
+      "text": "Every hand starts with one decision,"
+    },
+    {
+      "start": 6.63,
+      "end": 9.37,
+      "text": "before a single shared card is dealt."
+    },
+    {
+      "start": 9.37,
+      "end": 11.93,
+      "text": "By the end, you'll know which hands to play,"
+    },
+    {
+      "start": 11.93,
+      "end": 14.25,
+      "text": "from which seat, and for how much."
+    },
+    {
+      "start": 14.25,
+      "end": 20,
+      "text": "First up: Why Acting Last Wins."
+    }
+  ],
+  "transcriptText": "Chapter four. Preflop. Every hand starts with one decision, before a single shared card is dealt. By the end, you'll know which hands to play, from which seat, and for how much. First up: Why Acting Last Wins."
 }

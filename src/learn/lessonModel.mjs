@@ -232,6 +232,17 @@ export function chipScore(definition, run) {
 
 // ---- recap rows ---------------------------------------------------------------------------------
 const cap = (text) => (text ? text[0].toUpperCase() + text.slice(1).toLowerCase() : "");
+// A choice's own words inside a recap sentence: only a plain first word drops its capital. Cards and
+// hands ("A♦ Q♦", "Q-9", "K-K"), short capitals ("LAG", "SPR") and names ("Ace Andy") keep theirs:
+// lower-casing the whole label printed "a♦ q♦" and "q-9".
+const NAMES = new Set(["Ace", "Ada", "Andy", "Bo", "Di", "Knox", "Sera", "Mina", "Rae", "Ned", "Ivy", "Sol", "Kit", "Blue", "Coral", "Nichalia"]);
+export function inSentence(text) {
+  const t = String(text ?? "");
+  if (!t || /^[2-9TJQKA](?:[♠♥♦♣]|-|$)/.test(t) || /^[A-Z]{2}/.test(t) || /^\d/.test(t)) return t;
+  const first = t.match(/^[A-Za-z’']+/)?.[0] || "";
+  if (NAMES.has(first) || !/^[A-Z][a-z’']*$/.test(first)) return t;
+  return t[0].toLowerCase() + t.slice(1);
+}
 
 export function handName(cards) {
   if (!Array.isArray(cards) || cards.length !== 5) return null;
@@ -258,8 +269,8 @@ export function recapRows(definition, run) {
       let fact = null;
       if (spot.decision === "best-five") fact = handName(answer?.expected?.cards || answer?.response?.cards);
       else if (spot.decision === "count") fact = answer?.response?.value != null ? `${answer.response.value}${spot.unit ? ` ${spot.unit}` : ""}` : null;
-      else if (spot.decision === "estimate") fact = answer?.response?.band ? answerText("estimate", answer.response, spot).toLowerCase() : null;
-      else if (spot.decision === "action") fact = answer?.action ? (["fold", "check", "call"].includes(answer.action) ? answer.action : actionLabel(spot, answer.action).toLowerCase()) : null;
+      else if (spot.decision === "estimate") fact = answer?.response?.band ? inSentence(answerText("estimate", answer.response, spot)) : null;
+      else if (spot.decision === "action") fact = answer?.action ? (["fold", "check", "call"].includes(answer.action) ? answer.action : inSentence(actionLabel(spot, answer.action))) : null;
       return { stage, spot, answer, attempts, fact, words: attemptWords(attempts, answer) };
     });
     const missed = parts.some((part) => part.words === "missed" || part.words === "not played");
@@ -291,7 +302,10 @@ export function entryState(definition, run) {
 export function filmMeta(definition, media) {
   const seconds = Math.round(media?.durationSeconds || 30);
   const hands = lessonHands(definition).length;
-  return { seconds, hands, minutes: definition.meta?.minutes ?? null };
+  // A lesson whose every spot is a question moment (spot.scene: no table) asks questions, not hands.
+  const spots = decisionStages(definition).map((stage) => definition.spots?.[stage.spotId]);
+  const noun = spots.length && spots.every((spot) => spotScene(spot)) ? "question" : "hand";
+  return { seconds, hands, noun, minutes: definition.meta?.minutes ?? null };
 }
 
 // ---- the hand step (HandStep.js) ----------------------------------------------------------------

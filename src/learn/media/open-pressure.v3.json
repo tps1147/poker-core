@@ -24,5 +24,38 @@
     "upNext": null,
     "first": 13.99
   },
-  "version": "aaab733a"
+  "version": "aaab733a",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 5.02,
+      "text": "Chapter six. Pressure and Defense."
+    },
+    {
+      "start": 5.02,
+      "end": 7.94,
+      "text": "Bets that win pots without the best hand,"
+    },
+    {
+      "start": 7.94,
+      "end": 9.82,
+      "text": "and the calls that stop them."
+    },
+    {
+      "start": 9.82,
+      "end": 12.5,
+      "text": "By the end, you'll make others fold,"
+    },
+    {
+      "start": 12.5,
+      "end": 13.99,
+      "text": "and know when not to."
+    },
+    {
+      "start": 13.99,
+      "end": 19,
+      "text": "First up: Fold Equity and Semi-Bluffs."
+    }
+  ],
+  "transcriptText": "Chapter six. Pressure and Defense. Bets that win pots without the best hand, and the calls that stop them. By the end, you'll make others fold, and know when not to. First up: Fold Equity and Semi-Bluffs."
 }

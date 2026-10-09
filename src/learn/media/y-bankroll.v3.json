@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "y-bankroll",
-  "video": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-1080.mp4",
-  "video720": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-720.mp4",
-  "poster": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-poster.jpg",
-  "ruleCard": "/academy/films-v2/y-bankroll/9474684d/y-bankroll-rule.jpg",
-  "captions": "/academy/films-v2/y-bankroll/9474684d/y-bankroll.vtt",
-  "transcript": "/academy/films-v2/y-bankroll/9474684d/y-bankroll.transcript.txt",
+  "video": "/academy/films-v2/y-bankroll/9350c311/y-bankroll-1080.mp4",
+  "video720": "/academy/films-v2/y-bankroll/9350c311/y-bankroll-720.mp4",
+  "poster": "/academy/films-v2/y-bankroll/9350c311/y-bankroll-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-bankroll/9350c311/y-bankroll-rule.jpg",
+  "captions": "/academy/films-v2/y-bankroll/9350c311/y-bankroll.vtt",
+  "transcript": "/academy/films-v2/y-bankroll/9350c311/y-bankroll.transcript.txt",
   "durationSeconds": 89,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,148 @@
     "upNext": 84.9,
     "first": null
   },
-  "version": "9474684d"
+  "version": "9350c311",
+  "cues": [
+    {
+      "start": 2.26,
+      "end": 3.6,
+      "text": "Welcome to The Player..."
+    },
+    {
+      "start": 3.6,
+      "end": 6.43,
+      "text": "the skills that protect everything else."
+    },
+    {
+      "start": 6.43,
+      "end": 8.16,
+      "text": "Here's a question."
+    },
+    {
+      "start": 8.16,
+      "end": 10.88,
+      "text": "You win more sessions than you lose."
+    },
+    {
+      "start": 10.88,
+      "end": 12.78,
+      "text": "Can you still go broke?"
+    },
+    {
+      "start": 12.78,
+      "end": 17.95,
+      "text": "No... or yes?"
+    },
+    {
+      "start": 17.95,
+      "end": 20.06,
+      "text": "First, count your bankroll in buy-ins."
+    },
+    {
+      "start": 20.06,
+      "end": 22.24,
+      "text": "Say you've got 2,000 chips."
+    },
+    {
+      "start": 22.24,
+      "end": 26.09,
+      "text": "With a 100-chip buy-in, that's 20 buy-ins."
+    },
+    {
+      "start": 26.09,
+      "end": 30.6,
+      "text": "At a 50-chip game, it's 40."
+    },
+    {
+      "start": 30.6,
+      "end": 32.12,
+      "text": "Now, a toy model."
+    },
+    {
+      "start": 32.12,
+      "end": 37.21,
+      "text": "Each session, you win or lose exactly one buy-in."
+    },
+    {
+      "start": 37.21,
+      "end": 40.19,
+      "text": "This player wins 55% of them..."
+    },
+    {
+      "start": 40.19,
+      "end": 43.46,
+      "text": "an edge of a tenth of a buy-in a session."
+    },
+    {
+      "start": 43.46,
+      "end": 46.22,
+      "text": "A winning player."
+    },
+    {
+      "start": 46.22,
+      "end": 49.35,
+      "text": "So how often does this player ever lose it all?"
+    },
+    {
+      "start": 49.35,
+      "end": 53.8,
+      "text": "From 5 buy-ins... 36.7%."
+    },
+    {
+      "start": 53.8,
+      "end": 56.74,
+      "text": "From 10... 13.4%."
+    },
+    {
+      "start": 56.74,
+      "end": 59.29,
+      "text": "From 20... 1.8%."
+    },
+    {
+      "start": 59.29,
+      "end": 64.18,
+      "text": "From 40... 0.033%."
+    },
+    {
+      "start": 64.18,
+      "end": 65.99,
+      "text": "Same player, same edge."
+    },
+    {
+      "start": 65.99,
+      "end": 69.39,
+      "text": "Only the cushion changed."
+    },
+    {
+      "start": 69.39,
+      "end": 70.21,
+      "text": "So yes."
+    },
+    {
+      "start": 70.21,
+      "end": 74.74,
+      "text": "A winning player can still go broke, with too few buy-ins."
+    },
+    {
+      "start": 74.74,
+      "end": 78.52,
+      "text": "This is chips in a toy model, not money advice."
+    },
+    {
+      "start": 78.52,
+      "end": 80.71,
+      "text": "Count in buy-ins..."
+    },
+    {
+      "start": 80.71,
+      "end": 84.9,
+      "text": "and keep enough that a bad run is a dip, not the end."
+    },
+    {
+      "start": 84.9,
+      "end": 89,
+      "text": "Up next: tilt."
+    }
+  ],
+  "transcriptText": "Welcome to The Player... the skills that protect everything else. Here's a question. You win more sessions than you lose. Can you still go broke? No... or yes?\n\nFirst, count your bankroll in buy-ins. Say you've got 2,000 chips. With a 100-chip buy-in, that's 20 buy-ins. At a 50-chip game, it's 40.\n\nNow, a toy model. Each session, you win or lose exactly one buy-in. This player wins 55% of them... an edge of a tenth of a buy-in a session. A winning player.\n\nSo how often does this player ever lose it all? From 5 buy-ins... 36.7%. From 10... 13.4%. From 20... 1.8%. From 40... 0.033%. Same player, same edge. Only the cushion changed.\n\nSo yes. A winning player can still go broke, with too few buy-ins. This is chips in a toy model, not money advice. Count in buy-ins... and keep enough that a bad run is a dip, not the end. Up next: tilt."
 }

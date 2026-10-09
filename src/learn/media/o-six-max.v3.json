@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-six-max",
-  "video": "/academy/films-v2/o-six-max/6a6c4cab/o-six-max-1080.mp4",
-  "video720": "/academy/films-v2/o-six-max/6a6c4cab/o-six-max-720.mp4",
-  "poster": "/academy/films-v2/o-six-max/6a6c4cab/o-six-max-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-six-max/6a6c4cab/o-six-max-rule.jpg",
-  "captions": "/academy/films-v2/o-six-max/6a6c4cab/o-six-max.vtt",
-  "transcript": "/academy/films-v2/o-six-max/6a6c4cab/o-six-max.transcript.txt",
+  "video": "/academy/films-v2/o-six-max/169dd6d8/o-six-max-1080.mp4",
+  "video720": "/academy/films-v2/o-six-max/169dd6d8/o-six-max-720.mp4",
+  "poster": "/academy/films-v2/o-six-max/169dd6d8/o-six-max-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-six-max/169dd6d8/o-six-max-rule.jpg",
+  "captions": "/academy/films-v2/o-six-max/169dd6d8/o-six-max.vtt",
+  "transcript": "/academy/films-v2/o-six-max/169dd6d8/o-six-max.transcript.txt",
   "durationSeconds": 63,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,128 @@
     "upNext": 63,
     "first": null
   },
-  "version": "6a6c4cab"
+  "version": "169dd6d8",
+  "cues": [
+    {
+      "start": 2.18,
+      "end": 4.81,
+      "text": "First to act, at a full table..."
+    },
+    {
+      "start": 4.81,
+      "end": 7.34,
+      "text": "and first to act at six-handed."
+    },
+    {
+      "start": 7.34,
+      "end": 10.31,
+      "text": "Should you open the same hands from both?"
+    },
+    {
+      "start": 10.31,
+      "end": 14.34,
+      "text": "Take a guess."
+    },
+    {
+      "start": 14.34,
+      "end": 15.94,
+      "text": "Opening is really about the players"
+    },
+    {
+      "start": 15.94,
+      "end": 17.94,
+      "text": "still to act behind you."
+    },
+    {
+      "start": 17.94,
+      "end": 20.59,
+      "text": "Full table, the first seat has eight behind."
+    },
+    {
+      "start": 20.59,
+      "end": 22.8,
+      "text": "Six-handed, only five."
+    },
+    {
+      "start": 22.8,
+      "end": 23.97,
+      "text": "That's the same job"
+    },
+    {
+      "start": 23.97,
+      "end": 26.67,
+      "text": "as the fourth seat at a full table..."
+    },
+    {
+      "start": 26.67,
+      "end": 29.06,
+      "text": "not the first."
+    },
+    {
+      "start": 29.06,
+      "end": 30.28,
+      "text": "Count the danger."
+    },
+    {
+      "start": 30.28,
+      "end": 34.28,
+      "text": "A premium hand, jacks or better or ace-king,"
+    },
+    {
+      "start": 34.28,
+      "end": 36.38,
+      "text": "is 3% of hands."
+    },
+    {
+      "start": 36.38,
+      "end": 39.37,
+      "text": "With eight players behind you, someone holds one"
+    },
+    {
+      "start": 39.37,
+      "end": 41.75,
+      "text": "about 22% of the time."
+    },
+    {
+      "start": 41.75,
+      "end": 44.06,
+      "text": "With five, about 14%."
+    },
+    {
+      "start": 44.06,
+      "end": 48.69,
+      "text": "From the button, with two left, about 6%."
+    },
+    {
+      "start": 48.69,
+      "end": 49.27,
+      "text": "Your turn."
+    },
+    {
+      "start": 49.27,
+      "end": 51.39,
+      "text": "Six-handed, from the cutoff..."
+    },
+    {
+      "start": 51.39,
+      "end": 52.79,
+      "text": "three players behind."
+    },
+    {
+      "start": 52.79,
+      "end": 56.27,
+      "text": "Fewer hands to get through, so you open more."
+    },
+    {
+      "start": 56.27,
+      "end": 59.18,
+      "text": "Fewer seats means fewer players to beat."
+    },
+    {
+      "start": 59.18,
+      "end": 63,
+      "text": "Count who's behind you, then open wider."
+    }
+  ],
+  "transcriptText": "First to act, at a full table... and first to act at six-handed. Should you open the same hands from both? Take a guess.\n\nOpening is really about the players still to act behind you. Full table, the first seat has eight behind. Six-handed, only five. That's the same job as the fourth seat at a full table... not the first.\n\nCount the danger. A premium hand, jacks or better or ace-king, is 3% of hands. With eight players behind you, someone holds one about 22% of the time. With five, about 14%. From the button, with two left, about 6%.\n\nYour turn. Six-handed, from the cutoff... three players behind. Fewer hands to get through, so you open more. Fewer seats means fewer players to beat. Count who's behind you, then open wider."
 }

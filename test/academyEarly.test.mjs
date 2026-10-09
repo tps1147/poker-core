@@ -9,6 +9,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as learn from "../src/learn/index.mjs";
+import { lessonRepeats } from "../scripts/lib/stageRepeats.mjs";
 
 const require = createRequire(import.meta.url);
 const { evaluateHand, compareHands } = require("../src/eval/pokerEvaluator.js");
@@ -37,7 +38,7 @@ const MP = "check-math-preflop.mjs";
 // A key is one of the spot's own answers: a band, a choice, a value inside the range, or five cards.
 const kindOf = (spot) => spot.kind ?? spot.decision;
 const keyFits = (spot, k) => kindOf(spot) === "estimate" ? spot.bands.some((b) => (b.id ?? b) === k.band)
-  : kindOf(spot) === "action" ? spot.choices.includes(k.action)
+  : kindOf(spot) === "action" ? spot.choices.some((c) => (c?.id ?? c) === k.action)
     : kindOf(spot) === "count" ? Number.isInteger(k.value) && k.value >= spot.range[0] && k.value <= spot.range[1]
       : kindOf(spot) === "best-five" ? k.cards?.length === 5 && k.cards.every((c) => [...spot.hero, ...spot.board].includes(c)) : false;
 const PF = "check-postflop-to-formats.mjs";
@@ -253,7 +254,10 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
   check(`${node}: shape, film, why and takeaway`, () => {
     assert.deepEqual(def.stages.map((s) => s.kind), ["welcome", "film", "why", "decision", "decision", "decision", "takeaway"]);
     assert.deepEqual(def.stages.slice(3, 6).map((s) => s.role), ["guided", "practice", "fresh"]);
-    assert.deepEqual([def.node, def.version, def.flow, def.format, def.filmVersion], [node, 1, "film-first", "academy-v2", 2]);
+    // Content version 2 (2026-10-09): the guided hand left the film's own question, and an end film
+    // hands off instead of asking it again. Version 1 stays registered on the server.
+    // Content version 3 for w-what-is-poker (2026-10-09): the welcome rebuild's v3 film, four pauses.
+    assert.deepEqual([def.node, def.version, def.flow, def.format, def.filmVersion], [node, node === "w-what-is-poker" ? 3 : 2, "film-first", "academy-v2", 2]);
     assert.equal(def.access, lessonSlot(node).access, "the curriculum's tier");
     assert.deepEqual(validateDefinitionHands(def), []);
     for (const hand of lessonHands(def)) { const w = walkHand(def, hand.hand); assert.ok(w.finished, `${hand.hand} finishes`); assert.deepEqual(w.reached, [hand.hand]); }
@@ -262,9 +266,18 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     assert.equal(def.media, filmIdOfNode(node));
     assert.equal(film.pause.film, filmIdOfNode(node), "the media id, not the render folder");
     assert.equal(film.pause.at, anchors.yourTurn, "canon.yourTurn, or null");
-    assert.equal(film.pause.anchor, anchors.yourTurn == null ? "end" : "yourTurn");
+    if (anchors.pauses) {
+      // Several in-film pauses (filmV2 multiPause): one per film anchor, in film order, the first the stage's own.
+      assert.equal(film.pause.anchor, "pauses");
+      assert.deepEqual(film.pause.pauses.map((p) => p.anchor), Object.keys(anchors.pauses));
+      assert.deepEqual([film.pause.spotId, film.pause.spot], [film.pause.pauses[0].spotId, film.pause.pauses[0].spot]);
+      for (const p of film.pause.pauses) assert.match(p.spotId, /-turn(-\w+)?$/, "each pause is its own <prefix>-turn spot");
+    } else assert.equal(film.pause.anchor, anchors.yourTurn == null ? "end" : "yourTurn");
+    // Every end film here asks its question first and answers it itself: the lesson skips the end ask.
+    assert.equal(film.pause.endAsk, anchors.yourTurn == null ? "skip" : undefined, "an end film hands off");
     const guided = def.stages[3].spotId;
-    assert.deepEqual(film.pause.spot, def.spots[guided], "the Your turn spot is the guided spot, same numbers");
+    assert.ok(film.pause.spot && film.pause.spot !== def.spots[guided], "the film's question is its own spot");
+    assert.deepEqual(lessonRepeats(def), [], "no step repeats the film's question or another step");
     assert.equal(film.pause.spotId, guided.replace(/-guided$/, "-turn"));
     const why = def.stages[2];
     assert.equal(why.options.length, 3);
@@ -287,9 +300,24 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     assert.notEqual(JSON.stringify([f.hero, f.board, f.potBefore, f.bet, f.prompt]), JSON.stringify([g.hero, g.board, g.potBefore, g.bet, g.prompt]), "the fresh spot is changed");
   });
   check(`${node}: the key file matches the definition`, () => {
-    assert.deepEqual([keys.lessonId, keys.node, keys.contentVersion, keys.access], [node, node, 1, def.access]);
+    assert.deepEqual([keys.lessonId, keys.node, keys.contentVersion, keys.access], [node, node, def.version, def.access]);
     assert.deepEqual(keys.stages.map((s) => s.spotId || s.kind), def.stages.map((s) => s.spotId || s.kind));
+    // The film's own question keeps its key (an end film that skips its ask never sends one).
     assert.deepEqual([keys.film.stage, keys.film.at, keys.film.spotId], [1, def.stages[1].pause.at, def.stages[1].pause.spotId]);
+    assert.ok(keyFits(def.stages[1].pause.spot, keys.film.key), "the film key is one of its question's answers");
+    // The other pauses' keys (filmPauses), each on the film stage, its spot id and anchor the definition's.
+    const rest = (def.stages[1].pause.pauses || []).slice(1);
+    assert.deepEqual((keys.filmPauses || []).map((k) => [k.stage, k.spotId, k.anchor]), rest.map((p) => [1, p.spotId, p.anchor]));
+    for (const [i, k] of (keys.filmPauses || []).entries()) {
+      assert.ok(keyFits(rest[i].spot, k.key), `${k.spotId} key is one of its answers`);
+      assert.equal(k.predict === true, rest[i].predict === true, `${k.spotId}: a prediction on both sides`);
+    }
+    // One lit button per action pause, and it is the key: the film's hand cannot be lost.
+    for (const [i, p] of (def.stages[1].pause.pauses || []).entries()) {
+      if (p.spot.decision !== "action") continue;
+      const k = i === 0 ? keys.film : keys.filmPauses[i - 1];
+      assert.deepEqual(p.spot.enabled, [k.key.action], `${p.spotId}: only the key's button is lit`);
+    }
     const ids = def.stages[2].options.map((o) => o.id);
     assert.deepEqual(keys.why.options, ids);
     assert.ok(ids.includes(keys.why.key.option) && ids.includes(keys.why.misconception) && keys.why.misconception !== keys.why.key.option);
@@ -297,7 +325,6 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
       assert.equal(def.stages[k.stage].spotId, id);
       assert.ok(keyFits(def.spots[id], k.key), `${id} key is one of its answers`);
     }
-    assert.deepEqual(keys.film.key, keys.spots[def.stages[3].spotId].key, "the film spot's key is the guided key");
   });
 }
 
@@ -326,32 +353,88 @@ check("best five: the unique best five of the seven", () => {
   }
   // the fresh five uses exactly one hole card
   assert.equal(keyOf("r-best-five", "b5-fresh").cards.filter((c) => spotOf("r-best-five", "b5-fresh").hero.includes(c)).length, 1);
-  assert.equal(keyOf("r-best-five", "b5-guided").cards.filter((c) => ["Ac", "Ad"].includes(c)).length, 0);
+  // r-best-five v2: the film's question (pocket aces on 9-8-7-6-5) is its own spot; none of the aces play.
+  const b5film = K["r-best-five"].def.stages[1].pause.spot;
+  const b5filmBest = bestFive([...b5film.hero, ...b5film.board]);
+  assert.equal(b5filmBest.length, 1);
+  assert.deepEqual([...b5filmBest[0]].sort(), [...K["r-best-five"].keys.film.key.cards].sort());
+  assert.equal(K["r-best-five"].keys.film.key.cards.filter((c) => b5film.hero.includes(c)).length, 0);
+  // guided: Q♣ Q♦ on K♥ J♥ 9♥ 6♥ 2♥, the board's flush is the best five: none of the queens play.
+  const b5g = spotOf("r-best-five", "b5-guided");
+  assert.equal(ev(keyOf("r-best-five", "b5-guided").cards).name, "Flush");
+  assert.equal(keyOf("r-best-five", "b5-guided").cards.filter((c) => b5g.hero.includes(c)).length, 0);
+  // practice: Q♠ 8♦ against Q♣ J♥ on Q♥ T♠ 7♦ 5♣ 3♠, the same pair: his jack kicker wins.
+  const b5p = spotOf("r-best-five", "b5-practice");
+  assert.deepEqual([ev([...b5p.hero, ...b5p.board]).name, ev([...b5p.versus, ...b5p.board]).name], ["One Pair", "One Pair"]);
+  assert.equal(winnerOf(b5p), "andy"); assert.equal(keyOf("r-best-five", "b5-practice").band, "andy");
 });
 
 check("welcome: counts and the plan's comprehension answers", () => {
-  // w-luck-and-skill: 26 of 44 rivers win for A♣ J♦ against Q♥ 9♥ on J♥ T♥ 4♣ 2♠, no ties.
+  // The film's own question in each welcome lesson (content version 2: it left the guided hand).
+  const filmSpot = (node) => K[node].def.stages[1].pause.spot;
+  const filmKey = (node) => K[node].keys.film.key;
+  // River counts: [rivers, wins for the hero, ties], every unseen card once.
+  const riverCount = (s) => {
+    const rivers = unseen([...s.hero, ...s.versus, ...s.board]);
+    const res = rivers.map((r) => compareHands(ev([...s.hero, ...s.board, r]), ev([...s.versus, ...s.board, r])));
+    return [rivers.length, res.filter((x) => x > 0).length, res.filter((x) => x === 0).length];
+  };
+  const loses = (s, r) => compareHands(ev([...s.hero, ...s.board, r]), ev([...s.versus, ...s.board, r])) < 0;
+  // w-luck-and-skill, the film: 26 of 44 rivers win for A♣ J♦ against Q♥ 9♥ on J♥ T♥ 4♣ 2♠, no ties.
+  assert.deepEqual(riverCount(filmSpot("w-luck-and-skill")), [44, 26, 0]);
+  assert.equal(filmKey("w-luck-and-skill").value, 26);
+  assert.ok(near((1000 * 26) / 44 - 500, 90.9090909090909));
+  // guided: A♦ A♣ against 8♠ 7♠ on K♠ 9♠ 2♦ 4♥: only the 9 spades lose, 35 of 44 win.
   const s = spotOf("w-luck-and-skill", "wl-guided");
-  const rivers = unseen([...s.hero, ...s.versus, ...s.board]);
-  const res = rivers.map((r) => compareHands(ev([...s.hero, ...s.board, r]), ev([...s.versus, ...s.board, r])));
-  assert.deepEqual([rivers.length, res.filter((x) => x > 0).length, res.filter((x) => x === 0).length], [44, 26, 0]);
-  assert.equal(keyOf("w-luck-and-skill", "wl-guided").value, 26);
-  assert.ok(near((1000 * 26) / 44 - 500, 90.9090909090909) && keyOf("w-luck-and-skill", "wl-practice").band === "avg");
-  assert.ok(compareHands(ev([...s.hero, ...s.board, "Kd"]), ev([...s.versus, ...s.board, "Kd"])) < 0, "the K♦ is one of his rivers");
-  assert.ok((600 * 26) / 44 - 300 > 0 && keyOf("w-luck-and-skill", "wl-fresh").band === "no");
-  assert.equal(Math.round((600 * 26) / 44 - 300), 55);
+  assert.deepEqual(riverCount(s), [44, 35, 0]);
+  assert.deepEqual(unseen([...s.hero, ...s.versus, ...s.board]).filter((r) => loses(s, r)).map((r) => r[1]), Array(9).fill("s"));
+  assert.equal(keyOf("w-luck-and-skill", "wl-guided").value, 35);
+  // practice: the same hand lost to the 3♠; pot 440, 220 each: 440 × 35 ÷ 44 − 220 = +130.
+  const p = spotOf("w-luck-and-skill", "wl-practice");
+  assert.deepEqual([p.hero, p.board, p.versus, K["w-luck-and-skill"].def.hands["wl-practice"].start.pot], [s.hero, s.board, s.versus, 440]);
+  assert.ok(loses(p, "3s"), "the 3♠ is one of his rivers");
+  assert.equal((440 * 35) / 44 - 220, 130); assert.equal(keyOf("w-luck-and-skill", "wl-practice").band, "avg");
+  // fresh: T♠ T♥ against A♣ 5♣ on 8♣ 7♦ 3♣ 2♥, 330 each, lost to the 9♣: still 29 of 44, +105.
+  const f = spotOf("w-luck-and-skill", "wl-fresh");
+  assert.deepEqual(riverCount(f), [44, 29, 0]);
+  assert.ok(loses(f, "9c"), "the 9♣ is one of his rivers");
+  assert.equal(K["w-luck-and-skill"].def.hands["wl-fresh"].start.pot, 660);
+  assert.equal((660 * 29) / 44 - 330, 105); assert.equal(keyOf("w-luck-and-skill", "wl-fresh").band, "no");
+  // w-what-is-poker, the film: K♥ Q♥'s straight beats A♣ J♦'s pair of jacks.
   assert.ok(compareHands(ev(["Kh", "Qh", "Jh", "Tc", "4h", "2s", "9d"]), ev(["Ac", "Jd", "Jh", "Tc", "4h", "2s", "9d"])) > 0);
-  // w-how-deep
+  // Content version 3: the film's WHO WINS? prediction (its last pause) keys who the film shows winning.
+  const wins = K["w-what-is-poker"].keys.filmPauses.find((k) => k.spotId === "wip-turn-wins");
+  assert.equal(winnerOf({ ...K["w-what-is-poker"].def.stages[1].pause.pauses.at(-1).spot, versus: ["Ac", "Jd"] }), "you"); assert.equal(wins.key.band, "you");
+  assert.equal(wins.predict, true, "a prediction: recorded, never graded wrong");
+  assert.deepEqual(K["w-what-is-poker"].keys.filmPauses.map((k) => k.key.action ?? k.key.band), ["call", "bet", "you"]);
+  assert.equal(filmKey("w-what-is-poker").action, "call");
+  // guided: 7♥ 6♥'s straight beats K♠ K♦'s three kings on 8♥ 5♣ K♣ 2♥ 9♠.
+  const g = spotOf("w-what-is-poker", "wip-guided");
+  assert.deepEqual([ev([...g.hero, ...g.board]).name, ev([...g.versus, ...g.board]).name], ["Three of a Kind", "Straight"]);
+  assert.equal(winnerOf(g), "andy"); assert.equal(keyOf("w-what-is-poker", "wip-guided").band, "andy");
+  // w-how-deep, the film: 1,326 two-card starts, folding into 169 kinds.
   assert.equal((52 * 51) / 2, 1326); assert.equal(13 + 78 + 78, 169); assert.equal((13 * 12) / 2, 78);
-  assert.deepEqual([keyOf("w-how-deep", "wd-guided").band, keyOf("w-how-deep", "wd-practice").band], ["1326", "169"]);
+  assert.equal(filmKey("w-how-deep").band, "1326");
+  // guided: a pair of aces is 4 × 3 ÷ 2 = 6 starts; practice: ace-king is 4 × 4 = 16 (4 suited, 12 offsuit).
+  const aces = DECK.filter((c) => c[0] === "A");
+  const kings = DECK.filter((c) => c[0] === "K");
+  assert.equal(aces.flatMap((a, i) => aces.slice(i + 1).map((b) => [a, b])).length, 6);
+  const ak = aces.flatMap((a) => kings.map((k) => [a, k]));
+  assert.deepEqual([ak.length, ak.filter(([a, k]) => a[1] === k[1]).length], [16, 4]);
+  assert.deepEqual([keyOf("w-how-deep", "wd-guided").band, keyOf("w-how-deep", "wd-practice").band], ["6", "16"]);
   assert.equal(NODES.find((n) => n.id === "f-bet-sizing").track, "postflop");
   assert.equal(keyOf("w-how-deep", "wd-fresh").band, "postflop");
+  // w-history guided: 4 × 200 at the table, 20 in fees: 780 left between the players.
+  assert.equal(4 * 200 - 20, 780); assert.equal(keyOf("w-history", "wh-guided").band, "780");
+  // practice: a 150 pot, 75 of it yours, a 5 fee: 70 won from the other players.
+  assert.equal(150 - 75 - 5, 70); assert.equal(keyOf("w-history", "wh-practice").band, "70");
   // comprehension answers stated in the plan
   const welcome = readFileSync(join(PLANS, "welcome.md"), "utf8");
-  assert.ok(welcome.includes("Who takes the chips you lose? (the other players)") && keyOf("w-history", "wh-guided").band === "players");
-  assert.ok(welcome.includes("(decide better over many hands)") && keyOf("w-history", "wh-practice").band === "better");
+  assert.ok(welcome.includes("Who takes the chips you lose? (the other players)") && filmKey("w-history").band === "players");
   assert.ok(welcome.includes("the buy-ins, minus a fee") && keyOf("w-history", "wh-fresh").band === "buyins");
-  assert.ok(welcome.includes("DECIDE 10 AND CHECK") && keyOf("w-the-academy", "wa-guided").band === "decide");
+  assert.ok(welcome.includes("DECIDE 10 AND CHECK") && filmKey("w-the-academy").band === "decide");
+  // w-the-academy guided: reviews spaced over days, each lifting the curve back up.
+  assert.ok(welcome.includes("each stamp lifts it back up") && keyOf("w-the-academy", "wa-guided").band === "spaced");
   const LOOP = ["Learn the idea", "Decide with it", "See why", "Try a new spot", "Prove it later"];
   assert.ok(LOOP.every((step) => welcome.includes(step)));
   assert.equal(LOOP[LOOP.indexOf("Decide with it") + 1], "See why"); assert.equal(keyOf("w-the-academy", "wa-practice").band, "why");
@@ -367,68 +450,140 @@ check("welcome: counts and the plan's comprehension answers", () => {
 check("rules: seats, order, pots and legal actions", () => {
   assert.equal("9c"[0], "9d"[0]); assert.equal(ev(["9c", "2d", "4h", "7s", "Kc"]).rank, ev(["9d", "2c", "4h", "7s", "Kc"]).rank);
   assert.equal(keyOf("r-the-deck", "dk-practice").band, "equal");
+  // r-the-deck v2: the film's split (A♠ K♦ against A♥ K♣) is its own spot; the guided K♠ J♦ against
+  // K♥ J♣ on K♦ 8♣ 8♥ 5♠ 2♣ is the same two pair and kicker for both: a split.
+  const dkFilm = K["r-the-deck"].def.stages[1].pause.spot;
+  assert.equal(winnerOf(dkFilm), "split"); assert.equal(K["r-the-deck"].keys.film.key.band, "split");
+  const dkg = spotOf("r-the-deck", "dk-guided");
+  assert.equal(ev([...dkg.hero, ...dkg.board]).name, "Two Pair");
+  assert.equal(winnerOf(dkg), "split"); assert.equal(keyOf("r-the-deck", "dk-guided").band, "split");
   // blinds: posted by two players; heads-up the button posts the small blind and acts first preflop
   const blindsOf = (hand) => stateAfter(hand, expandScript(hand).findIndex((x) => x.do === "decide"));
+  // r-seats-blinds v2 guided: blinds of 10 and 20, you in the big blind: 20 of the 30 are yours.
+  const big = blindsOf(K["r-seats-blinds"].def.hands["sb-guided"]);
+  assert.equal(big.pot, 30);
+  const bigIds = big.seats.map((x) => x.id); const bigBtn = bigIds.indexOf(big.dealerId);
+  assert.equal(bigIds[(bigBtn + 2) % bigIds.length], "hero", "you are two seats after the button: the big blind");
+  assert.equal(big.seats.find((x) => x.id === "hero").currentBet, 20); assert.equal(keyOf("r-seats-blinds", "sb-guided").band, "twenty");
+  assert.ok(big.seats.filter((x) => x.currentBet > 0).every((x) => x.id !== big.dealerId), "the blinds are two players’ chips, the button posts none");
+  // practice: the button moved one seat on from you, so you are the first seat after it: the small blind, 5.
   const six = blindsOf(K["r-seats-blinds"].def.hands["sb-practice"]);
   assert.equal(six.pot, 15);
   const ids = six.seats.map((x) => x.id); const btn = ids.indexOf(six.dealerId);
-  assert.equal(six.seats.find((x) => x.currentBet === 5).id, ids[(btn + 1) % ids.length], "the seat right after the button");
+  assert.equal(ids[(btn + 1) % ids.length], "hero", "you sit right after the button");
+  assert.equal(six.seats.find((x) => x.currentBet === 5).id, "hero");
   assert.equal(six.seats.find((x) => x.currentBet === 10).id, ids[(btn + 2) % ids.length]);
-  assert.equal(keyOf("r-seats-blinds", "sb-practice").band, "next");
-  assert.ok(six.seats.filter((x) => x.currentBet > 0).every((x) => x.id !== six.dealerId) && keyOf("r-seats-blinds", "sb-guided").band === "players");
+  assert.equal(keyOf("r-seats-blinds", "sb-practice").band, "small");
+  // fresh: heads-up with the button on Ace Andy: he posts the small blind, you the big blind.
   const hu = blindsOf(K["r-seats-blinds"].def.hands["sb-fresh"]);
-  assert.equal(hu.seats.find((x) => x.id === "hero").currentBet, 5); assert.equal(keyOf("r-seats-blinds", "sb-fresh").band, "you");
+  assert.equal(hu.dealerId, "opponent");
+  assert.deepEqual([hu.seats.find((x) => x.id === "opponent").currentBet, hu.seats.find((x) => x.id === "hero").currentBet], [5, 10]);
+  assert.equal(keyOf("r-seats-blinds", "sb-fresh").band, "andy");
+  // r-first-hand v2: the film's question (who acts first before the flop: you, on the button) is its
+  // own spot; the guided hand asks what a call costs there: 10 − 5 = 5 more.
   const fh = blindsOf(K["r-first-hand"].def.hands["fh-guided"]);
-  assert.equal(fh.currentTurnId, "hero"); assert.equal(keyOf("r-first-hand", "fh-guided").band, "you");
+  assert.equal(fh.currentTurnId, "hero"); assert.equal(K["r-first-hand"].keys.film.key.band, "you");
+  const fhHero = fh.seats.find((x) => x.id === "hero"); const fhAda = fh.seats.find((x) => x.id === "opponent");
+  assert.deepEqual([fhHero.currentBet, fhAda.currentBet], [5, 10]);
+  assert.equal(fhAda.currentBet - fhHero.currentBet, 5); assert.equal(keyOf("r-first-hand", "fh-guided").band, "five");
   // order after the flop: the first seat left of the button still in
   const POSTFLOP = ["SB", "BB", "UTG", "MP", "CO", "BTN"];
   const first = (seats) => POSTFLOP.find((s) => seats.includes(s));
-  assert.equal(first(["BB", "BTN"]), "BB"); assert.equal(keyOf("r-streets", "st-guided").band, "andy");
-  assert.equal(first(["SB", "BB", "CO"]), "SB"); assert.equal(keyOf("r-streets", "st-practice").band, "sb");
+  // r-streets v2: the film's flop (you on the button, Ace Andy the big blind) is its own spot: he acts first.
+  assert.equal(first(["BB", "BTN"]), "BB"); assert.equal(K["r-streets"].keys.film.key.band, "andy");
+  // guided: Ace Andy on the button, you the big blind, he bet the flop last: you still act first on the turn.
+  const stg = blindsOf(K["r-streets"].def.hands["st-guided"]);
+  assert.deepEqual([stg.dealerId, stg.street], ["opponent", "turn"]);
+  assert.equal(first(["BB", "BTN"]), "BB"); assert.equal(keyOf("r-streets", "st-guided").band, "you");
+  // practice: the big blind, middle position and the cutoff (you) see the flop: the big blind first.
+  const stp = blindsOf(K["r-streets"].def.hands["st-practice"]);
+  assert.equal(stp.pot, 95);
+  assert.equal(stp.seats.filter((x) => !x.folded).length, 3);
+  assert.equal(first(["BB", "MP", "CO"]), "BB"); assert.equal(keyOf("r-streets", "st-practice").band, "bb");
   assert.equal(first(["UTG", "CO", "BTN"]), "UTG"); assert.equal(keyOf("r-streets", "st-fresh").band, "utg");
   // nothing owed on the flop: check or bet are the legal choices
   const fp = stateAfter(K["r-first-hand"].def.hands["fh-practice"], expandScript(K["r-first-hand"].def.hands["fh-practice"]).length);
   assert.equal(fp.currentBet, 0); assert.equal(keyOf("r-first-hand", "fh-practice").band, "checkbet");
   assert.equal(40 + 40 + 30 + 30, keyOf("r-first-hand", "fh-fresh").value);
-  // side pots
+  // side pots: a player can win every layer up to his own all-in (each layer: the chips between two
+  // all-in lines, from every player who put in at least the upper line's worth).
+  const canWin = (put, who) => Object.values(put).reduce((t, v) => t + Math.min(v, put[who]), 0);
+  // r-all-in-side-pots v2: the film's question (Ada all-in for 50 in a 1,000 pot) is its own spot: 200.
   const put = { A: 50, B: 150, C: 400, D: 400 };
-  assert.equal(Object.values(put).reduce((t, v) => t + Math.min(v, put.A), 0), keyOf("r-all-in-side-pots", "ap-guided").value);
+  assert.equal(canWin(put, "A"), K["r-all-in-side-pots"].keys.film.key.value);
   assert.equal(Object.values(put).reduce((t, v) => t + v, 0), 1000);
+  // guided: Ada 60, Bo 200, you and Di 500 (1,260): Bo can win 240 + 420 = 660.
+  const four = { A: 60, B: 200, C: 500, D: 500 };
+  assert.equal(Object.values(four).reduce((t, v) => t + v, 0), 1260);
+  assert.equal(K["r-all-in-side-pots"].def.hands["ap-guided"].start.pot, 1260);
+  assert.equal(60 * 4 + (200 - 60) * 3, 660);
+  assert.equal(canWin(four, "B"), keyOf("r-all-in-side-pots", "ap-guided").value);
   const three = { A: 100, B: 300, C: 300 };
   assert.equal([three.B, three.C].reduce((t, v) => t + (v - three.A), 0), keyOf("r-all-in-side-pots", "ap-practice").value);
   assert.equal(800 - Math.min(800, 300), keyOf("r-all-in-side-pots", "ap-fresh").value);
-  assert.equal(keyOf("r-showdown", "sd-guided").band, "yes");
+  // r-showdown v2: the film's question (Ace Andy bets, everyone folds) is its own spot: yes, he wins.
+  // guided: you bet the river with nine high and Ace Andy folds: one player left, no showdown, no show.
+  assert.equal(K["r-showdown"].keys.film.key.band, "yes");
+  const sdg = blindsOf(K["r-showdown"].def.hands["sd-guided"]);
+  assert.deepEqual(sdg.seats.filter((x) => !x.folded).map((x) => x.id), ["hero"]);
+  assert.equal(sdg.pot, 140 + 70);
+  assert.equal(ev([...spotOf("r-showdown", "sd-guided").hero, ...spotOf("r-showdown", "sd-guided").board]).name, "High Card");
+  assert.equal(keyOf("r-showdown", "sd-guided").band, "no");
+  // practice: K♠ K♥ (three kings) against 9♦ 2♣ on 5♣ 6♦ 7♥ 8♠ K♣: his nine makes a straight and wins.
+  const sdp = spotOf("r-showdown", "sd-practice");
+  assert.deepEqual([ev([...sdp.hero, ...sdp.board]).name, ev([...sdp.versus, ...sdp.board]).name], ["Three of a Kind", "Straight"]);
+  assert.equal(winnerOf(sdp), "andy"); assert.equal(keyOf("r-showdown", "sd-practice").band, "andy");
 });
 
 check("board: draws, nuts, what beats you, shapes", () => {
+  // v2 (2026-10-09): the film's own question (pause.spot) keeps its v1 key; the hands are new spots.
+  const filmOf = (node) => K[node].def.stages[1].pause.spot;
+  const filmKeyOf = (node) => K[node].keys.film.key;
+  const mvFilm = filmOf("b-made-vs-draw");
+  assert.equal(ev([...mvFilm.hero, ...mvFilm.board]).name, "High Card");
+  assert.equal([...mvFilm.hero, ...mvFilm.board].filter((c) => c[1] === "h").length, 4);
+  assert.equal(unseen([...mvFilm.hero, ...mvFilm.board]).filter((c) => c[1] === "h").length, 9);
+  assert.equal(filmKeyOf("b-made-vs-draw").band, "draw");
+  // guided 9♥ 8♥ on 9♣ 6♥ 2♥: a pair of nines made, four hearts still a draw
   const mv = spotOf("b-made-vs-draw", "mv-guided");
-  assert.equal(ev([...mv.hero, ...mv.board]).name, "High Card");
+  assert.equal(ev([...mv.hero, ...mv.board]).name, "One Pair");
   assert.equal([...mv.hero, ...mv.board].filter((c) => c[1] === "h").length, 4);
-  assert.equal(unseen([...mv.hero, ...mv.board]).filter((c) => c[1] === "h").length, 9);
-  assert.equal(keyOf("b-made-vs-draw", "mv-guided").band, "draw");
+  assert.equal(keyOf("b-made-vs-draw", "mv-guided").band, "pair");
+  // practice A♣ T♦ on K♣ 8♣ 3♣: 9 flush cards of 47; fresh 9♣ 7♣ on J♦ T♥ 3♠: 4 eights
+  assert.deepEqual(["mv-practice", "mv-fresh"].map((id) => keyOf("b-made-vs-draw", id).value), [9, 4]);
   for (const id of ["mv-practice", "mv-fresh"]) { const s = spotOf("b-made-vs-draw", id); assert.equal(completingCards(s.hero, s.board, s.target).length, keyOf("b-made-vs-draw", id).value, id); }
-  // the nuts
-  const nutsKey = { kk: "KK", 99: "99", 33: "33" };
-  for (const id of ["nu-guided", "nu-practice", "nu-fresh"]) {
-    const { hands } = nutsOf(spotOf("b-the-nuts", id).board);
-    const want = nutsKey[keyOf("b-the-nuts", id).band];
-    assert.ok(hands.length > 0 && hands.every((h) => h[0][0] + h[1][0] === want), `${id}: ${want}`);
+  // the nuts: the film's K-K, then Q-9 (a straight over the guided set), A♦ Q♦ (the flush), 3-3 (quads)
+  const nutsKey = { kk: "KK", q9: "9Q", aq: "AQ", 33: "33" };
+  const ranksOf = (h) => [h[0][0], h[1][0]].sort().join("");
+  for (const [id, spot, k] of [["nu-turn", filmOf("b-the-nuts"), filmKeyOf("b-the-nuts")], ...["nu-guided", "nu-practice", "nu-fresh"].map((x) => [x, spotOf("b-the-nuts", x), keyOf("b-the-nuts", x)])]) {
+    const { hands } = nutsOf(spot.board);
+    const want = nutsKey[k.band];
+    assert.ok(hands.length > 0 && hands.every((h) => ranksOf(h) === want), `${id}: ${want}`);
   }
+  assert.equal(nutsOf(spotOf("b-the-nuts", "nu-guided").board).best.name, "Straight");
+  assert.ok(compareHands(ev(["Qd", "9d", ...spotOf("b-the-nuts", "nu-guided").board]), ev(["9s", "7s", ...spotOf("b-the-nuts", "nu-guided").board])) > 0, "Q-9 over 9-7");
+  assert.deepEqual(nutsOf(spotOf("b-the-nuts", "nu-practice").board).hands, [["Qd", "Ad"]], "only A♦ Q♦");
   const fb = spotOf("b-the-nuts", "nu-fresh").board;
   const notQuads = combos(unseen(fb)).filter((h) => ev([...h, ...fb]).name !== "Four of a Kind");
   let second = null; let secondHands = [];
   for (const h of notQuads) { const x = ev([...h, ...fb]); const c = second ? compareHands(x, second) : 1; if (c > 0) { second = x; secondHands = [h]; } else if (c === 0) secondHands.push(h); }
   assert.ok(secondHands.every((h) => h[0][0] === "K" && h[1][0] === "K"), "kings full is second best");
   // what beats you
+  const tally = (spot) => { const m = ev([...spot.hero, ...spot.board]); const r = combos(unseen([...spot.hero, ...spot.board])).map((h) => compareHands(ev([...h, ...spot.board]), m)); return [r.length, r.filter((x) => x > 0).length, r.filter((x) => x === 0).length]; };
+  const beatNames = (hero, board) => { const m = ev([...hero, ...board]); return new Set(combos(unseen([...hero, ...board])).filter((h) => compareHands(ev([...h, ...board]), m) > 0).map((h) => ev([...h, ...board]).name)); };
+  // the film's A♥ Q♦: 63 beat, 6 tie
+  assert.deepEqual(tally(filmOf("b-what-beats-you")), [1035, 63, 6]);
+  assert.equal(filmKeyOf("b-what-beats-you").band, "60");
+  // guided Q♠ 8♠ on Q♥ 8♣ 3♦: only the 5 sets beat two pair, 4 queen-eights tie
   const wb = spotOf("b-what-beats-you", "wb-guided");
-  const mine = ev([...wb.hero, ...wb.board]);
-  const theirs = combos(unseen([...wb.hero, ...wb.board])).map((h) => compareHands(ev([...h, ...wb.board]), mine));
-  assert.deepEqual([theirs.length, theirs.filter((x) => x > 0).length, theirs.filter((x) => x === 0).length], [1035, 63, 6]);
-  assert.equal(keyOf("b-what-beats-you", "wb-guided").band, "60");
+  assert.deepEqual(tally(wb), [1081, 5, 4]);
+  assert.deepEqual([...beatNames(wb.hero, wb.board)], ["Three of a Kind"]);
+  assert.equal(keyOf("b-what-beats-you", "wb-guided").band, "5");
+  // practice A♠ T♦ on T♠ 6♠ 2♦, turn J♠: flushes are the one new family
   const wr = spotOf("b-what-beats-you", "wb-practice");
-  const mineR = ev([...wr.hero, ...wr.board]);
-  const beatR = new Set(combos(unseen([...wr.hero, ...wr.board])).filter((h) => compareHands(ev([...h, ...wr.board]), mineR) > 0).map((h) => ev([...h, ...wr.board]).name));
-  assert.ok(beatR.has("Flush") && beatR.has("Straight") && !beatR.has("Full House")); assert.equal(keyOf("b-what-beats-you", "wb-practice").band, "fs");
+  const flopBeat = beatNames(wr.hero, wr.board.slice(0, 3)); const turnBeat = beatNames(wr.hero, wr.board);
+  assert.deepEqual([...turnBeat].filter((x) => !flopBeat.has(x)), ["Flush"]);
+  assert.ok(!turnBeat.has("Straight") && !turnBeat.has("Full House")); assert.equal(keyOf("b-what-beats-you", "wb-practice").band, "fl");
   const wf = spotOf("b-what-beats-you", "wb-fresh");
   const mineF = ev([...wf.hero, ...wf.board]);
   const beats = (h) => compareHands(ev([...h, ...wf.board]), mineF) > 0;
@@ -436,25 +591,49 @@ check("board: draws, nuts, what beats you, shapes", () => {
   // shapes
   const flop = { k72: ["Kd", "7c", "2s"], kk4: ["Kh", "Kc", "4d"], a83: ["Ah", "8h", "3h"], 987: ["9c", "8d", "7s"], jt4: ["Jh", "Th", "4c"] };
   const withFlush = Object.entries(flop).filter(([, b]) => possible(b).has("Flush")).map(([id]) => id);
-  assert.deepEqual(withFlush, ["a83"]); assert.equal(keyOf("b-texture-read", "tx-guided").band, "a83");
+  assert.deepEqual(withFlush, ["a83"]); assert.equal(filmKeyOf("b-texture-read").band, "a83");
   assert.equal(combos(unseen(flop.a83)).filter((h) => ev([...h, ...flop.a83]).name === "Flush").length, 45);
   const p987 = possible(flop[987]);
-  assert.ok(p987.has("Straight") && !p987.has("Flush") && !p987.has("Full House")); assert.equal(keyOf("b-texture-read", "tx-practice").band, "straight");
+  assert.ok(p987.has("Straight") && !p987.has("Flush") && !p987.has("Full House"));
   assert.equal(combos(unseen(flop[987])).filter((h) => ev([...h, ...flop[987]]).name === "Straight").length, 48);
+  // guided: five new flops, a straight only on T♥ 9♣ 6♦ (eight-seven, 16 combos)
+  const flop2 = { q72: ["Qh", "7d", "2c"], aa5: ["As", "Ah", "5d"], k83: ["Kc", "8c", "3c"], t96: ["Th", "9c", "6d"], j84: ["Jd", "8s", "4h"] };
+  assert.deepEqual(spotOf("b-texture-read", "tx-guided").bands.map((b) => b.id), Object.keys(flop2));
+  assert.ok(Object.values(flop2).flat().every((c) => !spotOf("b-texture-read", "tx-guided").hero.includes(c)), "no flop card in your hand");
+  const withStraight = Object.entries(flop2).filter(([, b]) => possible(b).has("Straight")).map(([id]) => id);
+  assert.deepEqual(withStraight, ["t96"]); assert.equal(keyOf("b-texture-read", "tx-guided").band, "t96");
+  assert.equal(combos(unseen(flop2.t96)).filter((h) => ev([...h, ...flop2.t96]).name === "Straight").length, 16);
+  // practice 8♥ 7♥ 2♠: a set is possible, no straight or flush yet
+  const p872 = possible(spotOf("b-texture-read", "tx-practice").board);
+  assert.ok(p872.has("Three of a Kind") && !p872.has("Straight") && !p872.has("Flush")); assert.equal(keyOf("b-texture-read", "tx-practice").band, "set");
   const p66 = possible(spotOf("b-texture-read", "tx-fresh").board);
   assert.ok(p66.has("Four of a Kind") && !p66.has("Flush") && !p66.has("Straight")); assert.equal(keyOf("b-texture-read", "tx-fresh").band, "quads");
-  // the counterfeit: on the turn both best fives are aces and nines, and the king plays
+  // the counterfeit: on the film's turn both best fives are aces and nines, and the king plays
+  const kcFilm = filmOf("b-kickers-counterfeit");
+  assert.equal(ev([...kcFilm.hero, ...kcFilm.board]).name, "Two Pair");
+  assert.ok(compareHands(ev([...kcFilm.hero, ...kcFilm.board.slice(0, 3)]), ev([...kcFilm.versus, ...kcFilm.board.slice(0, 3)])) > 0, "ahead on the flop");
+  assert.equal(winnerOf(kcFilm), filmKeyOf("b-kickers-counterfeit").band); assert.equal(winnerOf(kcFilm), "andy");
+  // guided K♠ 9♥ against A♦ K♥: the 4♥ pairs below your nines, and you stay ahead
   const kc = spotOf("b-kickers-counterfeit", "kc-guided");
-  assert.equal(ev([...kc.hero, ...kc.board]).name, "Two Pair");
   assert.ok(compareHands(ev([...kc.hero, ...kc.board.slice(0, 3)]), ev([...kc.versus, ...kc.board.slice(0, 3)])) > 0, "ahead on the flop");
+  assert.equal(winnerOf(kc), "you"); assert.equal(keyOf("b-kickers-counterfeit", "kc-guided").band, "you");
+  // practice J♠ 4♥ against J♦ 6♣: ahead on the flop, behind on the turn (counterfeited), split on the Q♠ river
+  const kp = spotOf("b-kickers-counterfeit", "kc-practice");
+  const atStreet = (n) => compareHands(ev([...kp.hero, ...kp.board.slice(0, n)]), ev([...kp.versus, ...kp.board.slice(0, n)]));
+  assert.deepEqual([atStreet(3) > 0, atStreet(4) < 0, atStreet(5) === 0], [true, true, true]);
+  assert.equal(keyOf("b-kickers-counterfeit", "kc-practice").band, "split");
 });
 
 check("math: shares and expected totals", () => {
   const pct = (n, d) => Math.round((1000 * n) / d) / 10;
-  assert.equal(pct(4, 52), 7.7); assert.equal(keyOf("m-chance-as-share", "cs-guided").band, "7.7");
+  const filmKey = (node) => K[node].keys.film.key;
+  assert.equal(pct(4, 52), 7.7); assert.equal(filmKey("m-chance-as-share").band, "7.7");
+  const isKA = DECK.filter((c) => c[0] === "K" || c[0] === "A").length;
+  assert.equal(isKA, 8); assert.equal(pct(isKA, 52), 15.4); assert.equal(keyOf("m-chance-as-share", "cs-guided").band, "15");
   assert.equal(pct(26, 52), 50); assert.equal(keyOf("m-chance-as-share", "cs-practice").band, "50");
   assert.equal(pct(12, 52), 23.1); assert.equal(keyOf("m-chance-as-share", "cs-fresh").band, "23");
-  assert.equal(10 * 100, Number(keyOf("m-variance", "va-guided").band));
+  assert.equal(10 * 100, Number(filmKey("m-variance").band));
+  assert.equal(-20 * 30, -600); assert.equal(keyOf("m-variance", "va-guided").band, "minus600");
   assert.ok(-10 < 0 && keyOf("m-variance", "va-practice").band === "no");
   assert.equal(25 * 200, Number(keyOf("m-variance", "va-fresh").band));
   asserts(MP, 'check(n, "A SD after 100 ≈ 917", Math.round(sd1 * 10), 917);');
@@ -464,33 +643,58 @@ check("math: shares and expected totals", () => {
 });
 
 check("postflop: value bets, pot control and draws", () => {
-  // value betting: every hand that calls with two pair or better beats top pair
-  const vb = spotOf("f-value-betting", "vb-guided");
-  const mine = ev([...vb.hero, ...vb.board]);
-  const callers = combos(unseen([...vb.hero, ...vb.board])).filter((h) => ev([...h, ...vb.board]).rank >= RANK["Two Pair"]);
-  assert.ok(callers.length > 0 && callers.every((h) => compareHands(ev([...h, ...vb.board]), mine) > 0));
-  assert.equal(keyOf("f-value-betting", "vb-guided").action, "check");
+  const filmSpot = (node) => K[node].def.stages[1].pause.spot;
+  const filmKey = (node) => K[node].keys.film.key;
+  // value betting (v2): the film's question, every caller with two pair or better beats top pair
+  const vt = filmSpot("f-value-betting");
+  const mineT = ev([...vt.hero, ...vt.board]);
+  const callersT = combos(unseen([...vt.hero, ...vt.board])).filter((h) => ev([...h, ...vt.board]).rank >= RANK["Two Pair"]);
+  assert.ok(callersT.length > 0 && callersT.every((h) => compareHands(ev([...h, ...vt.board]), mineT) > 0));
+  assert.equal(filmKey("f-value-betting").action, "check");
+  // the film's own first river (38 of 54 worse), which no step replays
   asserts(PF, 'check("value: 128 live, 54 call", vr.length === 128 && calls.length === 54');
   asserts(PF, 'check("value: 38 worse, 1 tie, 15 better", w === 38 && t === 1 && l === 15');
   assert.ok(38 / 54 > 1 / 2 && near(38 * 100 - 15 * 100, 2300) && Math.round(10 * 2300 / 54) / 10 === 42.6 && pct2(38, 54) === "70.4");
+  // guided: Q♠ T♥, he calls 80 only with a better queen (A-Q, K-Q, Q-J) or two pair or better
+  const vb = spotOf("f-value-betting", "vb-guided");
+  assert.deepEqual([vb.hero, vb.board, vb.potBefore, vb.sizes.bet], [["Qs", "Th"], ["Qd", "9c", "5h", "4s", "2d"], 160, 80]);
+  const mine = ev([...vb.hero, ...vb.board]);
+  const pool = combos(unseen([...vb.hero, ...vb.board]));
+  const betterQueen = (h) => h.some((c) => c[0] === "Q") && h.some((c) => "AKJ".includes(c[0])) && ev([...h, ...vb.board]).rank < RANK["Two Pair"];
+  const callers = pool.filter((h) => betterQueen(h) || ev([...h, ...vb.board]).rank >= RANK["Two Pair"]);
+  assert.ok(callers.length > 0 && callers.every((h) => compareHands(ev([...h, ...vb.board]), mine) > 0), "every caller beats Q♠ T♥");
+  assert.ok(pool.some((h) => h.some((c) => c[0] === "Q") && compareHands(ev([...h, ...vb.board]), mine) < 0), "the worse queens fold");
+  assert.equal(keyOf("f-value-betting", "vb-guided").action, "check");
+  // practice: A♣ 9♣, 24 of 36 callers worse (given), bet 60 into 120
+  assert.equal(ev([...spotOf("f-value-betting", "vb-practice").hero, ...spotOf("f-value-betting", "vb-practice").board]).name, "One Pair");
+  assert.ok(24 / 36 > 1 / 2 && pct2(24, 36) === "66.7" && 24 * 60 - 12 * 60 === 720 && 720 / 36 === 20);
   assert.equal(keyOf("f-value-betting", "vb-practice").action, "bet");
   assert.ok(18 / 40 < 1 / 2); assert.equal(keyOf("f-value-betting", "vb-fresh").action, "check");
-  // pot control
+  // pot control (v2): the film's question is his choice; the guided seat flips it to yours
   asserts(PF, 'eqQ("three half-pot bets", 100 * 2 * 2 * 2, 800)');
   asserts(PF, 'eqQ("two half-pot bets", 100 * 2 * 2, 400)');
   assert.equal(pct2(2, 46), "4.3");
-  assert.equal(keyOf("f-pot-control", "pc-guided").band, "him");
+  assert.equal(filmKey("f-pot-control").band, "him");
+  const pcg = K["f-pot-control"].def.hands["pc-guided"];
+  assert.ok(pcg.button === "hero" && pcg.script.some((s) => s.do === "act" && s.seat === "opponent" && s.action === "check"), "guided: he checks, you are last to act");
+  assert.equal(keyOf("f-pot-control", "pc-guided").band, "you");
+  assert.equal(80 + 40 + 40, spotOf("f-pot-control", "pc-practice").potBefore, "practice: 40 called on an 80 flop");
   assert.equal(keyOf("f-pot-control", "pc-practice").action, "check");
   assert.equal(60 * 2 * 2, keyOf("f-pot-control", "pc-fresh").value);
-  // playing draws: price, needed later, and the all-in runouts
+  // playing draws (v2): price, needed later, and the all-in runouts, on the film's draw and the new one
+  const needed = (outs, pot, bet) => bet / (outs / 47) - (pot + bet + bet);
+  const pt = filmSpot("f-playing-draws");
+  assert.equal(completingCards(pt.hero, pt.board, "flush").length, 9);
+  assert.ok(near(price(120, 60), 0.25) && Math.ceil(needed(9, 120, 60)) === 74 && 74 <= 300); assert.equal(filmKey("f-playing-draws").action, "call");
   const pd = spotOf("f-playing-draws", "pd-guided");
+  assert.deepEqual([pd.hero, pd.board], [["8d", "7d"], ["Jd", "5d", "2s"]]);
+  for (const id of ["pd-practice", "pd-fresh"]) assert.deepEqual([spotOf("f-playing-draws", id).hero, spotOf("f-playing-draws", id).board], [pd.hero, pd.board], `${id}: the same flush draw as guided`);
   const outs = completingCards(pd.hero, pd.board, "flush").length;
   assert.equal(outs, 9); assert.equal(pct2(9, 47), "19.1");
-  const needed = (pot, bet) => bet / (outs / 47) - (pot + bet + bet);
-  assert.ok(near(price(120, 60), 0.25) && Math.ceil(needed(120, 60)) === 74 && 74 <= 300); assert.equal(keyOf("f-playing-draws", "pd-guided").action, "call");
-  assert.ok(Math.round(10 * needed(100, 50)) / 10 === 61.1 && Math.ceil(needed(100, 50)) === 62 && 62 > 40); assert.equal(keyOf("f-playing-draws", "pd-practice").action, "fold");
+  assert.ok(pct2(40, 180) === "22.2" && price(100, 40) > 9 / 47 && Math.ceil(needed(outs, 100, 40)) === 29 && 29 <= 250); assert.equal(keyOf("f-playing-draws", "pd-guided").action, "call");
+  assert.ok(pct2(80, 280) === "28.6" && Math.round(10 * needed(outs, 120, 80)) / 10 === 137.8 && Math.ceil(needed(outs, 120, 80)) === 138 && 138 > 60); assert.equal(keyOf("f-playing-draws", "pd-practice").action, "fold");
   const left = unseen([...pd.hero, ...pd.board]);
-  const flushRuns = combos(left).filter((two) => [...pd.hero, ...pd.board, ...two].filter((c) => c[1] === "c").length >= 5).length;
+  const flushRuns = combos(left).filter((two) => [...pd.hero, ...pd.board, ...two].filter((c) => c[1] === "d").length >= 5).length;
   assert.deepEqual([left.length, combos(left).length, flushRuns], [47, 1081, 378]);
   assert.ok(flushRuns / 1081 > price(100, 100) && pct2(378, 1081) === "35.0"); assert.equal(keyOf("f-playing-draws", "pd-fresh").action, "call");
 });

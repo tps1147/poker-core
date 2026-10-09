@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-ranges",
-  "video": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-1080.mp4",
-  "video720": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-720.mp4",
-  "poster": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-rule.jpg",
-  "captions": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges.vtt",
-  "transcript": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges.transcript.txt",
+  "video": "/academy/films-v2/f-ranges/4c90f76c/f-ranges-1080.mp4",
+  "video720": "/academy/films-v2/f-ranges/4c90f76c/f-ranges-720.mp4",
+  "poster": "/academy/films-v2/f-ranges/4c90f76c/f-ranges-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-ranges/4c90f76c/f-ranges-rule.jpg",
+  "captions": "/academy/films-v2/f-ranges/4c90f76c/f-ranges.vtt",
+  "transcript": "/academy/films-v2/f-ranges/4c90f76c/f-ranges.transcript.txt",
   "durationSeconds": 106,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,173 @@
     "upNext": 101.47,
     "first": null
   },
-  "version": "9d34a0eb"
+  "version": "4c90f76c",
+  "cues": [
+    {
+      "start": 2.16,
+      "end": 3.3,
+      "text": "Welcome to Postflop."
+    },
+    {
+      "start": 3.3,
+      "end": 6.81,
+      "text": "After the flop, stop guessing hands..."
+    },
+    {
+      "start": 6.81,
+      "end": 9.78,
+      "text": "and start thinking in ranges."
+    },
+    {
+      "start": 9.78,
+      "end": 13.27,
+      "text": "You raise with A♠ Q♠, and he calls."
+    },
+    {
+      "start": 13.27,
+      "end": 15.01,
+      "text": "Which hand does he have?"
+    },
+    {
+      "start": 15.01,
+      "end": 18.21,
+      "text": "Sevens? Ace-jack? King-queen?"
+    },
+    {
+      "start": 18.21,
+      "end": 21.03,
+      "text": "Pick one."
+    },
+    {
+      "start": 21.03,
+      "end": 24.3,
+      "text": "Here's the catch. He doesn't hold one hand."
+    },
+    {
+      "start": 24.3,
+      "end": 27.42,
+      "text": "He holds every hand his call allows."
+    },
+    {
+      "start": 27.42,
+      "end": 30.21,
+      "text": "That's his range... an illustration."
+    },
+    {
+      "start": 30.21,
+      "end": 35.89,
+      "text": "A pair comes 6 ways. Suited, 4. Offsuit, 12."
+    },
+    {
+      "start": 35.89,
+      "end": 39.23,
+      "text": "Add them up: 186 combos."
+    },
+    {
+      "start": 39.23,
+      "end": 42.46,
+      "text": "Your A♠ Q♠ block some."
+    },
+    {
+      "start": 42.46,
+      "end": 46.03,
+      "text": "Now it's 168."
+    },
+    {
+      "start": 46.03,
+      "end": 49.4,
+      "text": "Then the flop. T♦ 7♣ 3♥."
+    },
+    {
+      "start": 49.4,
+      "end": 52.28,
+      "text": "Those cards can't be in his hand either."
+    },
+    {
+      "start": 52.28,
+      "end": 55.9,
+      "text": "145 left. Sort them."
+    },
+    {
+      "start": 55.9,
+      "end": 58.34,
+      "text": "9, two pair or better."
+    },
+    {
+      "start": 58.34,
+      "end": 61.75,
+      "text": "29, top pair or an overpair."
+    },
+    {
+      "start": 61.75,
+      "end": 65.77,
+      "text": "46 weaker pairs. 12 draws."
+    },
+    {
+      "start": 65.77,
+      "end": 67.46,
+      "text": "49 with nothing."
+    },
+    {
+      "start": 67.46,
+      "end": 68.81,
+      "text": "Your guess?"
+    },
+    {
+      "start": 68.81,
+      "end": 72.82,
+      "text": "Sevens is 3 combos... about 2%."
+    },
+    {
+      "start": 72.82,
+      "end": 76.05,
+      "text": "But pair or better? 84."
+    },
+    {
+      "start": 76.05,
+      "end": 81.05,
+      "text": "About 58%. A share, not a hand."
+    },
+    {
+      "start": 81.05,
+      "end": 83.85,
+      "text": "Your turn. Same range, new flop."
+    },
+    {
+      "start": 83.85,
+      "end": 86.09,
+      "text": "J♣ 9♦ 2♥."
+    },
+    {
+      "start": 86.09,
+      "end": 90.23,
+      "text": "Drag your split first... then watch it fill."
+    },
+    {
+      "start": 90.23,
+      "end": 92.3,
+      "text": "146 live."
+    },
+    {
+      "start": 92.3,
+      "end": 97.22,
+      "text": "Pair or better: 93... about 64%."
+    },
+    {
+      "start": 97.22,
+      "end": 98.45,
+      "text": "So put him on a range."
+    },
+    {
+      "start": 98.45,
+      "end": 101.47,
+      "text": "Then ask what share of it beats you."
+    },
+    {
+      "start": 101.47,
+      "end": 106,
+      "text": "Up next: board texture."
+    }
+  ],
+  "transcriptText": "Welcome to Postflop. After the flop, stop guessing hands... and start thinking in ranges. You raise with A♠ Q♠, and he calls. Which hand does he have? Sevens? Ace-jack? King-queen? Pick one.\n\nHere's the catch. He doesn't hold one hand. He holds every hand his call allows. That's his range... an illustration. A pair comes 6 ways. Suited, 4. Offsuit, 12. Add them up: 186 combos. Your A♠ Q♠ block some. Now it's 168.\n\nThen the flop. T♦ 7♣ 3♥. Those cards can't be in his hand either. 145 left. Sort them. 9, two pair or better. 29, top pair or an overpair. 46 weaker pairs. 12 draws. 49 with nothing. Your guess? Sevens is 3 combos... about 2%. But pair or better? 84. About 58%. A share, not a hand.\n\nYour turn. Same range, new flop. J♣ 9♦ 2♥. Drag your split first... then watch it fill. 146 live. Pair or better: 93... about 64%. So put him on a range. Then ask what share of it beats you. Up next: board texture."
 }

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-live",
-  "video": "/academy/films-v2/o-live/dee99376/o-live-1080.mp4",
-  "video720": "/academy/films-v2/o-live/dee99376/o-live-720.mp4",
-  "poster": "/academy/films-v2/o-live/dee99376/o-live-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-live/dee99376/o-live-rule.jpg",
-  "captions": "/academy/films-v2/o-live/dee99376/o-live.vtt",
-  "transcript": "/academy/films-v2/o-live/dee99376/o-live.transcript.txt",
+  "video": "/academy/films-v2/o-live/e5e7403c/o-live-1080.mp4",
+  "video720": "/academy/films-v2/o-live/e5e7403c/o-live-720.mp4",
+  "poster": "/academy/films-v2/o-live/e5e7403c/o-live-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-live/e5e7403c/o-live-rule.jpg",
+  "captions": "/academy/films-v2/o-live/e5e7403c/o-live.vtt",
+  "transcript": "/academy/films-v2/o-live/e5e7403c/o-live.transcript.txt",
   "durationSeconds": 66,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,133 @@
     "upNext": 66,
     "first": null
   },
-  "version": "dee99376"
+  "version": "e5e7403c",
+  "cues": [
+    {
+      "start": 2.3,
+      "end": 4.94,
+      "text": "Online, the software keeps the rules for you."
+    },
+    {
+      "start": 4.94,
+      "end": 7.83,
+      "text": "At a real table, you keep them yourself."
+    },
+    {
+      "start": 7.83,
+      "end": 9.65,
+      "text": "Are they the same rules?"
+    },
+    {
+      "start": 9.65,
+      "end": 12.39,
+      "text": "Take a guess."
+    },
+    {
+      "start": 12.39,
+      "end": 14.31,
+      "text": "Three habits keep you safe."
+    },
+    {
+      "start": 14.31,
+      "end": 15.77,
+      "text": "Say it out loud."
+    },
+    {
+      "start": 15.77,
+      "end": 19.73,
+      "text": "Your words count, so “raise” means raise."
+    },
+    {
+      "start": 19.73,
+      "end": 22.06,
+      "text": "Put your chips out in one motion,"
+    },
+    {
+      "start": 22.06,
+      "end": 23.89,
+      "text": "or announce the amount first."
+    },
+    {
+      "start": 23.89,
+      "end": 27.25,
+      "text": "Going back to the stack for more is a string bet."
+    },
+    {
+      "start": 27.25,
+      "end": 31.02,
+      "text": "And facing a bet, one big chip with nothing said"
+    },
+    {
+      "start": 31.02,
+      "end": 33.65,
+      "text": "is only a call."
+    },
+    {
+      "start": 33.65,
+      "end": 35.15,
+      "text": "Protect your cards with a chip,"
+    },
+    {
+      "start": 35.15,
+      "end": 37.11,
+      "text": "and act only in turn."
+    },
+    {
+      "start": 37.11,
+      "end": 38.53,
+      "text": "And tells?"
+    },
+    {
+      "start": 38.53,
+      "end": 43.26,
+      "text": "A shaking hand or a long stare is weak evidence."
+    },
+    {
+      "start": 43.26,
+      "end": 47.36,
+      "text": "What someone bets, and how, says far more."
+    },
+    {
+      "start": 47.36,
+      "end": 50.5,
+      "text": "Read the betting first."
+    },
+    {
+      "start": 50.5,
+      "end": 51.04,
+      "text": "Your turn."
+    },
+    {
+      "start": 51.04,
+      "end": 54.73,
+      "text": "Facing a bet, a player pushes one big chip forward"
+    },
+    {
+      "start": 54.73,
+      "end": 56.16,
+      "text": "and says nothing."
+    },
+    {
+      "start": 56.16,
+      "end": 57.91,
+      "text": "Call or raise?"
+    },
+    {
+      "start": 57.91,
+      "end": 59.38,
+      "text": "A call."
+    },
+    {
+      "start": 59.38,
+      "end": 61.86,
+      "text": "At a live table, say what you do,"
+    },
+    {
+      "start": 61.86,
+      "end": 66,
+      "text": "move once, and let the betting do the talking."
+    }
+  ],
+  "transcriptText": "Online, the software keeps the rules for you. At a real table, you keep them yourself. Are they the same rules? Take a guess.\n\nThree habits keep you safe. Say it out loud. Your words count, so “raise” means raise. Put your chips out in one motion, or announce the amount first. Going back to the stack for more is a string bet. And facing a bet, one big chip with nothing said is only a call.\n\nProtect your cards with a chip, and act only in turn. And tells? A shaking hand or a long stare is weak evidence. What someone bets, and how, says far more. Read the betting first.\n\nYour turn. Facing a bet, a player pushes one big chip forward and says nothing. Call or raise? A call. At a live table, say what you do, move once, and let the betting do the talking."
 }

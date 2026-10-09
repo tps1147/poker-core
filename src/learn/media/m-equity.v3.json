@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "m-equity",
-  "video": "/academy/films-v2/m-equity/8eda1408/m-equity-1080.mp4",
-  "video720": "/academy/films-v2/m-equity/8eda1408/m-equity-720.mp4",
-  "poster": "/academy/films-v2/m-equity/8eda1408/m-equity-poster.jpg",
-  "ruleCard": "/academy/films-v2/m-equity/8eda1408/m-equity-rule.jpg",
-  "captions": "/academy/films-v2/m-equity/8eda1408/m-equity.vtt",
-  "transcript": "/academy/films-v2/m-equity/8eda1408/m-equity.transcript.txt",
+  "video": "/academy/films-v2/m-equity/b53f5321/m-equity-1080.mp4",
+  "video720": "/academy/films-v2/m-equity/b53f5321/m-equity-720.mp4",
+  "poster": "/academy/films-v2/m-equity/b53f5321/m-equity-poster.jpg",
+  "ruleCard": "/academy/films-v2/m-equity/b53f5321/m-equity-rule.jpg",
+  "captions": "/academy/films-v2/m-equity/b53f5321/m-equity.vtt",
+  "transcript": "/academy/films-v2/m-equity/b53f5321/m-equity.transcript.txt",
   "durationSeconds": 85,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,143 @@
     "upNext": 85,
     "first": null
   },
-  "version": "8eda1408"
+  "version": "b53f5321",
+  "cues": [
+    {
+      "start": 1.24,
+      "end": 3.3,
+      "text": "230 chips in the middle."
+    },
+    {
+      "start": 3.3,
+      "end": 5.05,
+      "text": "How many are yours?"
+    },
+    {
+      "start": 5.05,
+      "end": 6.46,
+      "text": "Guess first."
+    },
+    {
+      "start": 6.46,
+      "end": 8.72,
+      "text": "The 80 you put in..."
+    },
+    {
+      "start": 8.72,
+      "end": 12.62,
+      "text": "all or nothing... or a share?"
+    },
+    {
+      "start": 12.62,
+      "end": 13.42,
+      "text": "Here's the spot."
+    },
+    {
+      "start": 13.42,
+      "end": 16.92,
+      "text": "King-jack of clubs, two clubs on the board,"
+    },
+    {
+      "start": 16.92,
+      "end": 18.88,
+      "text": "and you're both all-in."
+    },
+    {
+      "start": 18.88,
+      "end": 21.28,
+      "text": "You put in 80, they put in 80,"
+    },
+    {
+      "start": 21.28,
+      "end": 24.16,
+      "text": "and 70 came from players who folded."
+    },
+    {
+      "start": 24.16,
+      "end": 28.22,
+      "text": "One card to come... 46 you haven't seen."
+    },
+    {
+      "start": 28.22,
+      "end": 31.2,
+      "text": "Say any club wins it. That's nine."
+    },
+    {
+      "start": 31.2,
+      "end": 37.37,
+      "text": "Nine in 46... about 19.6%."
+    },
+    {
+      "start": 37.37,
+      "end": 42.39,
+      "text": "So your share is 19.6% of 230..."
+    },
+    {
+      "start": 42.39,
+      "end": 45.1,
+      "text": "45 chips, on average."
+    },
+    {
+      "start": 45.1,
+      "end": 47.83,
+      "text": "The 80 you put in? Not yours anymore."
+    },
+    {
+      "start": 47.83,
+      "end": 52.1,
+      "text": "What you paid isn't what you own."
+    },
+    {
+      "start": 52.1,
+      "end": 54.97,
+      "text": "Check it. Deal every river once."
+    },
+    {
+      "start": 54.97,
+      "end": 59.36,
+      "text": "9 win you 230. 37 win nothing."
+    },
+    {
+      "start": 59.36,
+      "end": 64.02,
+      "text": "That's 2,070 chips over 46 rivers..."
+    },
+    {
+      "start": 64.02,
+      "end": 68.06,
+      "text": "45 each. That's your equity."
+    },
+    {
+      "start": 68.06,
+      "end": 70.83,
+      "text": "Your turn. A pot of 150,"
+    },
+    {
+      "start": 70.83,
+      "end": 73.94,
+      "text": "and you win about 40% against their range."
+    },
+    {
+      "start": 73.94,
+      "end": 75.73,
+      "text": "Your share?"
+    },
+    {
+      "start": 75.73,
+      "end": 76.88,
+      "text": "60 chips."
+    },
+    {
+      "start": 76.88,
+      "end": 79.91,
+      "text": "Equity is your chance times the pot."
+    },
+    {
+      "start": 79.91,
+      "end": 85,
+      "text": "Up next... what it costs to chase it."
+    }
+  ],
+  "transcriptText": "230 chips in the middle. How many are yours? Guess first. The 80 you put in... all or nothing... or a share?\n\nHere's the spot. King-jack of clubs, two clubs on the board, and you're both all-in. You put in 80, they put in 80, and 70 came from players who folded. One card to come... 46 you haven't seen. Say any club wins it. That's nine. Nine in 46... about 19.6%.\n\nSo your share is 19.6% of 230... 45 chips, on average. The 80 you put in? Not yours anymore. What you paid isn't what you own.\n\nCheck it. Deal every river once. 9 win you 230. 37 win nothing. That's 2,070 chips over 46 rivers... 45 each. That's your equity.\n\nYour turn. A pot of 150, and you win about 40% against their range. Your share? 60 chips. Equity is your chance times the pot. Up next... what it costs to chase it."
 }

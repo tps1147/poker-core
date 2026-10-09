@@ -2,12 +2,12 @@
   "format": "academy-film-v2",
   "id": "w-the-academy",
   "sourceId": "w-academy",
-  "video": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-1080.mp4",
-  "video720": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-720.mp4",
-  "poster": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-the-academy/79e16695/w-the-academy-rule.jpg",
-  "captions": "/academy/films-v2/w-the-academy/79e16695/w-the-academy.vtt",
-  "transcript": "/academy/films-v2/w-the-academy/79e16695/w-the-academy.transcript.txt",
+  "video": "/academy/films-v2/w-the-academy/5109e8cf/w-the-academy-1080.mp4",
+  "video720": "/academy/films-v2/w-the-academy/5109e8cf/w-the-academy-720.mp4",
+  "poster": "/academy/films-v2/w-the-academy/5109e8cf/w-the-academy-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-the-academy/5109e8cf/w-the-academy-rule.jpg",
+  "captions": "/academy/films-v2/w-the-academy/5109e8cf/w-the-academy.vtt",
+  "transcript": "/academy/films-v2/w-the-academy/5109e8cf/w-the-academy.transcript.txt",
   "durationSeconds": 86,
   "captionsBurnedIn": true,
   "frame": {
@@ -25,5 +25,173 @@
     "upNext": 82.32,
     "first": null
   },
-  "version": "79e16695"
+  "version": "5109e8cf",
+  "cues": [
+    {
+      "start": 1.21,
+      "end": 2.77,
+      "text": "Quick question before we start."
+    },
+    {
+      "start": 2.77,
+      "end": 6.02,
+      "text": "You could watch a hundred poker lessons..."
+    },
+    {
+      "start": 6.02,
+      "end": 9.37,
+      "text": "or play ten hands, and check each one."
+    },
+    {
+      "start": 9.37,
+      "end": 11.38,
+      "text": "Which one makes you better?"
+    },
+    {
+      "start": 11.38,
+      "end": 14.98,
+      "text": "Pick one... and hold onto it."
+    },
+    {
+      "start": 14.98,
+      "end": 16.23,
+      "text": "Here's how Flop52 works."
+    },
+    {
+      "start": 16.23,
+      "end": 18.39,
+      "text": "It's a loop, with five steps."
+    },
+    {
+      "start": 18.39,
+      "end": 20.81,
+      "text": "First, you learn one idea,"
+    },
+    {
+      "start": 20.81,
+      "end": 22.65,
+      "text": "in a short film like this one."
+    },
+    {
+      "start": 22.65,
+      "end": 24.92,
+      "text": "Then you decide with it yourself."
+    },
+    {
+      "start": 24.92,
+      "end": 27.51,
+      "text": "Fold, call, or raise."
+    },
+    {
+      "start": 27.51,
+      "end": 29.15,
+      "text": "Then you see why."
+    },
+    {
+      "start": 29.15,
+      "end": 31.03,
+      "text": "Not whether you won the hand..."
+    },
+    {
+      "start": 31.03,
+      "end": 35.18,
+      "text": "but why the decision holds up."
+    },
+    {
+      "start": 35.18,
+      "end": 38.16,
+      "text": "Next, you try the same idea in a new spot..."
+    },
+    {
+      "start": 38.16,
+      "end": 41.34,
+      "text": "so you learn the idea, not just one answer."
+    },
+    {
+      "start": 41.34,
+      "end": 44.53,
+      "text": "Then, days later, it comes back."
+    },
+    {
+      "start": 44.53,
+      "end": 46.21,
+      "text": "Can you still do it?"
+    },
+    {
+      "start": 46.21,
+      "end": 47.95,
+      "text": "That's when you prove it,"
+    },
+    {
+      "start": 47.95,
+      "end": 51.43,
+      "text": "at the table, against a rival."
+    },
+    {
+      "start": 51.43,
+      "end": 52.83,
+      "text": "Why bring it back?"
+    },
+    {
+      "start": 52.83,
+      "end": 55.73,
+      "text": "Because one viewing fades."
+    },
+    {
+      "start": 55.73,
+      "end": 57.43,
+      "text": "Watch something once..."
+    },
+    {
+      "start": 57.43,
+      "end": 58.87,
+      "text": "and it slips away."
+    },
+    {
+      "start": 58.87,
+      "end": 62.57,
+      "text": "But practise it again, spaced out over days,"
+    },
+    {
+      "start": 62.57,
+      "end": 65.47,
+      "text": "and each review lifts it back up."
+    },
+    {
+      "start": 65.47,
+      "end": 68.59,
+      "text": "That's what holds on."
+    },
+    {
+      "start": 68.59,
+      "end": 70.43,
+      "text": "So... back to your pick."
+    },
+    {
+      "start": 70.43,
+      "end": 73.04,
+      "text": "Watching alone isn't enough."
+    },
+    {
+      "start": 73.04,
+      "end": 76.81,
+      "text": "Deciding, and checking why, is what makes you better."
+    },
+    {
+      "start": 76.81,
+      "end": 79.9,
+      "text": "Learn it, decide it, see why,"
+    },
+    {
+      "start": 79.9,
+      "end": 82.32,
+      "text": "try it new, prove it later."
+    },
+    {
+      "start": 82.32,
+      "end": 86,
+      "text": "Now, let's start with the deck."
+    }
+  ],
+  "transcriptText": "Quick question before we start. You could watch a hundred poker lessons... or play ten hands, and check each one. Which one makes you better? Pick one... and hold onto it.\n\nHere's how Flop52 works. It's a loop, with five steps. First, you learn one idea, in a short film like this one. Then you decide with it yourself. Fold, call, or raise. Then you see why. Not whether you won the hand... but why the decision holds up.\n\nNext, you try the same idea in a new spot... so you learn the idea, not just one answer. Then, days later, it comes back. Can you still do it? That's when you prove it, at the table, against a rival.\n\nWhy bring it back? Because one viewing fades. Watch something once... and it slips away. But practise it again, spaced out over days, and each review lifts it back up. That's what holds on.\n\nSo... back to your pick. Watching alone isn't enough. Deciding, and checking why, is what makes you better. Learn it, decide it, see why, try it new, prove it later. Now, let's start with the deck."
 }

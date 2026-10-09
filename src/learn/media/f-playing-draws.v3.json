@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-playing-draws",
-  "video": "/academy/films-v2/f-playing-draws/bde04ad3/f-playing-draws-1080.mp4",
-  "video720": "/academy/films-v2/f-playing-draws/bde04ad3/f-playing-draws-720.mp4",
-  "poster": "/academy/films-v2/f-playing-draws/bde04ad3/f-playing-draws-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-playing-draws/bde04ad3/f-playing-draws-rule.jpg",
-  "captions": "/academy/films-v2/f-playing-draws/bde04ad3/f-playing-draws.vtt",
-  "transcript": "/academy/films-v2/f-playing-draws/bde04ad3/f-playing-draws.transcript.txt",
+  "video": "/academy/films-v2/f-playing-draws/3d7ecf38/f-playing-draws-1080.mp4",
+  "video720": "/academy/films-v2/f-playing-draws/3d7ecf38/f-playing-draws-720.mp4",
+  "poster": "/academy/films-v2/f-playing-draws/3d7ecf38/f-playing-draws-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-playing-draws/3d7ecf38/f-playing-draws-rule.jpg",
+  "captions": "/academy/films-v2/f-playing-draws/3d7ecf38/f-playing-draws.vtt",
+  "transcript": "/academy/films-v2/f-playing-draws/3d7ecf38/f-playing-draws.transcript.txt",
   "durationSeconds": 99,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,168 @@
     "upNext": 93.92,
     "first": null
   },
-  "version": "bde04ad3"
+  "version": "3d7ecf38",
+  "cues": [
+    {
+      "start": 1.15,
+      "end": 5.11,
+      "text": "A flush draw faces a bet. Call, raise, or fold?"
+    },
+    {
+      "start": 5.11,
+      "end": 8.67,
+      "text": "Six-five of clubs, on king, nine, deuce."
+    },
+    {
+      "start": 8.67,
+      "end": 11.2,
+      "text": "He bets 50 into 100."
+    },
+    {
+      "start": 11.2,
+      "end": 13.28,
+      "text": "Make your pick."
+    },
+    {
+      "start": 13.28,
+      "end": 15.05,
+      "text": "Any club makes your flush."
+    },
+    {
+      "start": 15.05,
+      "end": 17.93,
+      "text": "Nine outs, of 47 unseen."
+    },
+    {
+      "start": 17.93,
+      "end": 21.4,
+      "text": "On the next card... 19.1%."
+    },
+    {
+      "start": 21.4,
+      "end": 24.19,
+      "text": "Call 50, and the pot is 200."
+    },
+    {
+      "start": 24.19,
+      "end": 26.73,
+      "text": "Your price... 25%."
+    },
+    {
+      "start": 26.73,
+      "end": 29.34,
+      "text": "On price alone, the draw is short."
+    },
+    {
+      "start": 29.34,
+      "end": 30.47,
+      "text": "So what's missing?"
+    },
+    {
+      "start": 30.47,
+      "end": 33.84,
+      "text": "You'd need to win about 61.1 more chips"
+    },
+    {
+      "start": 33.84,
+      "end": 35.18,
+      "text": "later, when you hit."
+    },
+    {
+      "start": 35.18,
+      "end": 38.55,
+      "text": "So, at least 62."
+    },
+    {
+      "start": 38.55,
+      "end": 40.83,
+      "text": "Now let the stacks decide."
+    },
+    {
+      "start": 40.83,
+      "end": 43.89,
+      "text": "40 behind? That's all you can win later."
+    },
+    {
+      "start": 43.89,
+      "end": 47.25,
+      "text": "Short of 62... fold."
+    },
+    {
+      "start": 47.25,
+      "end": 51.23,
+      "text": "400 behind? Room to win it. Call."
+    },
+    {
+      "start": 51.23,
+      "end": 53.31,
+      "text": "And if his 50 is all-in?"
+    },
+    {
+      "start": 53.31,
+      "end": 56.53,
+      "text": "No more betting, and you see both cards."
+    },
+    {
+      "start": 56.53,
+      "end": 61.95,
+      "text": "378 of the 1,081 runouts make your flush."
+    },
+    {
+      "start": 61.95,
+      "end": 67.72,
+      "text": "35%... more than 25. Call."
+    },
+    {
+      "start": 67.72,
+      "end": 70.1,
+      "text": "Your turn. Nine outs again."
+    },
+    {
+      "start": 70.1,
+      "end": 74.58,
+      "text": "He bets 60 into 120, with 300 behind."
+    },
+    {
+      "start": 74.58,
+      "end": 77.12,
+      "text": "Your price? 25%."
+    },
+    {
+      "start": 77.12,
+      "end": 80.49,
+      "text": "Needed later? At least 74..."
+    },
+    {
+      "start": 80.49,
+      "end": 83.65,
+      "text": "and 300 leaves room. Call."
+    },
+    {
+      "start": 83.65,
+      "end": 87.08,
+      "text": "And the raise? Next track."
+    },
+    {
+      "start": 87.08,
+      "end": 88.44,
+      "text": "Price first."
+    },
+    {
+      "start": 88.44,
+      "end": 91.52,
+      "text": "Then ask what the stacks let you win later..."
+    },
+    {
+      "start": 91.52,
+      "end": 93.92,
+      "text": "and whether a raise wins it now."
+    },
+    {
+      "start": 93.92,
+      "end": 99,
+      "text": "Up next: fold equity."
+    }
+  ],
+  "transcriptText": "A flush draw faces a bet. Call, raise, or fold? Six-five of clubs, on king, nine, deuce. He bets 50 into 100. Make your pick.\n\nAny club makes your flush. Nine outs, of 47 unseen. On the next card... 19.1%. Call 50, and the pot is 200. Your price... 25%. On price alone, the draw is short. So what's missing? You'd need to win about 61.1 more chips later, when you hit. So, at least 62.\n\nNow let the stacks decide. 40 behind? That's all you can win later. Short of 62... fold. 400 behind? Room to win it. Call. And if his 50 is all-in? No more betting, and you see both cards. 378 of the 1,081 runouts make your flush. 35%... more than 25. Call.\n\nYour turn. Nine outs again. He bets 60 into 120, with 300 behind. Your price? 25%. Needed later? At least 74... and 300 leaves room. Call. And the raise? Next track. Price first. Then ask what the stacks let you win later... and whether a raise wins it now. Up next: fold equity."
 }

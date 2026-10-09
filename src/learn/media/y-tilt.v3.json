@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "y-tilt",
-  "video": "/academy/films-v2/y-tilt/e15c24ed/y-tilt-1080.mp4",
-  "video720": "/academy/films-v2/y-tilt/e15c24ed/y-tilt-720.mp4",
-  "poster": "/academy/films-v2/y-tilt/e15c24ed/y-tilt-poster.jpg",
-  "ruleCard": "/academy/films-v2/y-tilt/e15c24ed/y-tilt-rule.jpg",
-  "captions": "/academy/films-v2/y-tilt/e15c24ed/y-tilt.vtt",
-  "transcript": "/academy/films-v2/y-tilt/e15c24ed/y-tilt.transcript.txt",
+  "video": "/academy/films-v2/y-tilt/48671bfa/y-tilt-1080.mp4",
+  "video720": "/academy/films-v2/y-tilt/48671bfa/y-tilt-720.mp4",
+  "poster": "/academy/films-v2/y-tilt/48671bfa/y-tilt-poster.jpg",
+  "ruleCard": "/academy/films-v2/y-tilt/48671bfa/y-tilt-rule.jpg",
+  "captions": "/academy/films-v2/y-tilt/48671bfa/y-tilt.vtt",
+  "transcript": "/academy/films-v2/y-tilt/48671bfa/y-tilt.transcript.txt",
   "durationSeconds": 87,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 87,
     "first": null
   },
-  "version": "e15c24ed"
+  "version": "48671bfa",
+  "cues": [
+    {
+      "start": 1.31,
+      "end": 3.82,
+      "text": "Three good calls. Three losses."
+    },
+    {
+      "start": 3.82,
+      "end": 7.47,
+      "text": "Same spot, a fourth time... what do you do?"
+    },
+    {
+      "start": 7.47,
+      "end": 10.91,
+      "text": "Stop calling? Or keep making the right call?"
+    },
+    {
+      "start": 10.91,
+      "end": 13.14,
+      "text": "Pick one."
+    },
+    {
+      "start": 13.14,
+      "end": 16.24,
+      "text": "It's the river. They go all-in for fifty."
+    },
+    {
+      "start": 16.24,
+      "end": 18.75,
+      "text": "Call, and the pot is two hundred."
+    },
+    {
+      "start": 18.75,
+      "end": 21.18,
+      "text": "You win thirty percent of the time."
+    },
+    {
+      "start": 21.18,
+      "end": 24.46,
+      "text": "Your price: fifty out of two hundred..."
+    },
+    {
+      "start": 24.46,
+      "end": 25.77,
+      "text": "twenty-five percent."
+    },
+    {
+      "start": 25.77,
+      "end": 28.88,
+      "text": "Thirty's more, so the call pays..."
+    },
+    {
+      "start": 28.88,
+      "end": 32.14,
+      "text": "plus ten a call, on average."
+    },
+    {
+      "start": 32.14,
+      "end": 34.52,
+      "text": "You call... and lose."
+    },
+    {
+      "start": 34.52,
+      "end": 36.79,
+      "text": "Again... and again."
+    },
+    {
+      "start": 36.79,
+      "end": 39.73,
+      "text": "It feels personal. It isn't."
+    },
+    {
+      "start": 39.73,
+      "end": 42.79,
+      "text": "Win thirty percent, lose seventy."
+    },
+    {
+      "start": 42.79,
+      "end": 46.92,
+      "text": "Three losses in a row? About thirty-four percent."
+    },
+    {
+      "start": 46.92,
+      "end": 50.12,
+      "text": "Five in a row? Nearly seventeen percent."
+    },
+    {
+      "start": 50.12,
+      "end": 52.81,
+      "text": "Knox, our coach, shrugs."
+    },
+    {
+      "start": 52.81,
+      "end": 57.83,
+      "text": "Same chance, same price... still plus ten."
+    },
+    {
+      "start": 57.83,
+      "end": 59.51,
+      "text": "Tilt isn't only anger."
+    },
+    {
+      "start": 59.51,
+      "end": 62.41,
+      "text": "It's results steering your decisions..."
+    },
+    {
+      "start": 62.41,
+      "end": 64,
+      "text": "and it's usually quiet."
+    },
+    {
+      "start": 64,
+      "end": 67.44,
+      "text": "Calling less after losses. Chasing them."
+    },
+    {
+      "start": 67.44,
+      "end": 68.97,
+      "text": "Playing on to win it back."
+    },
+    {
+      "start": 68.97,
+      "end": 71.65,
+      "text": "Folding a good call to dodge the feeling."
+    },
+    {
+      "start": 71.65,
+      "end": 76.43,
+      "text": "Each is something you do... so you can notice it."
+    },
+    {
+      "start": 76.43,
+      "end": 78.69,
+      "text": "So, the fourth time? Keep calling."
+    },
+    {
+      "start": 78.69,
+      "end": 80.61,
+      "text": "It's still plus ten."
+    },
+    {
+      "start": 80.61,
+      "end": 83.41,
+      "text": "Grade the decision by the math..."
+    },
+    {
+      "start": 83.41,
+      "end": 87,
+      "text": "not the last three results."
+    }
+  ],
+  "transcriptText": "Three good calls. Three losses. Same spot, a fourth time... what do you do? Stop calling? Or keep making the right call? Pick one.\n\nIt's the river. They go all-in for fifty. Call, and the pot is two hundred. You win thirty percent of the time. Your price: fifty out of two hundred... twenty-five percent. Thirty's more, so the call pays... plus ten a call, on average.\n\nYou call... and lose. Again... and again. It feels personal. It isn't. Win thirty percent, lose seventy. Three losses in a row? About thirty-four percent. Five in a row? Nearly seventeen percent. Knox, our coach, shrugs. Same chance, same price... still plus ten.\n\nTilt isn't only anger. It's results steering your decisions... and it's usually quiet. Calling less after losses. Chasing them. Playing on to win it back. Folding a good call to dodge the feeling. Each is something you do... so you can notice it.\n\nSo, the fourth time? Keep calling. It's still plus ten. Grade the decision by the math... not the last three results."
 }

@@ -2,40 +2,41 @@
   "w-history/wh-guided": {
     "scene": "question",
     "lessonId": "w-history",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
-        "house",
-        "players"
+        "800",
+        "780",
+        "600"
       ],
       "key": {
-        "band": "players"
+        "band": "780"
       }
     }
   },
   "w-history/wh-practice": {
     "scene": "question",
     "lessonId": "w-history",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
       "bands": [
-        "luck",
-        "better",
-        "peek"
+        "150",
+        "75",
+        "70"
       ],
       "key": {
-        "band": "better"
+        "band": "70"
       }
     }
   },
   "w-history/wh-fresh": {
     "scene": "question",
     "lessonId": "w-history",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -52,41 +53,41 @@
   "w-how-deep/wd-guided": {
     "scene": "deck",
     "lessonId": "w-how-deep",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
-        "169",
-        "1326",
-        "2652"
+        "4",
+        "6",
+        "12"
       ],
       "key": {
-        "band": "1326"
+        "band": "6"
       }
     }
   },
   "w-how-deep/wd-practice": {
     "scene": "deck",
     "lessonId": "w-how-deep",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
       "bands": [
-        "13",
-        "169",
-        "1326"
+        "4",
+        "12",
+        "16"
       ],
       "key": {
-        "band": "169"
+        "band": "16"
       }
     }
   },
   "w-how-deep/wd-fresh": {
     "scene": "question",
     "lessonId": "w-how-deep",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -103,23 +104,24 @@
   "w-the-academy/wa-guided": {
     "scene": "question",
     "lessonId": "w-the-academy",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
-        "watch",
-        "decide"
+        "once",
+        "cram",
+        "spaced"
       ],
       "key": {
-        "band": "decide"
+        "band": "spaced"
       }
     }
   },
   "w-the-academy/wa-practice": {
     "scene": "question",
     "lessonId": "w-the-academy",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
@@ -136,7 +138,7 @@
   "w-the-academy/wa-fresh": {
     "scene": "question",
     "lessonId": "w-the-academy",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -153,43 +155,43 @@
   "b-texture-read/tx-guided": {
     "scene": "deck",
     "lessonId": "b-texture-read",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
-        "k72",
-        "kk4",
-        "a83",
-        "987",
-        "jt4"
+        "q72",
+        "aa5",
+        "k83",
+        "t96",
+        "j84"
       ],
       "key": {
-        "band": "a83"
+        "band": "t96"
       }
     }
   },
   "m-chance-as-share/cs-guided": {
     "scene": "deck",
     "lessonId": "m-chance-as-share",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
-        "4",
-        "7.7",
-        "25"
+        "8",
+        "15",
+        "50"
       ],
       "key": {
-        "band": "7.7"
+        "band": "15"
       }
     }
   },
   "m-chance-as-share/cs-practice": {
     "scene": "deck",
     "lessonId": "m-chance-as-share",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
@@ -206,7 +208,7 @@
   "m-chance-as-share/cs-fresh": {
     "scene": "deck",
     "lessonId": "m-chance-as-share",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -223,24 +225,24 @@
   "m-variance/va-guided": {
     "scene": "question",
     "lessonId": "m-variance",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
-        "10",
-        "100",
-        "1000"
+        "minus20",
+        "even",
+        "minus600"
       ],
       "key": {
-        "band": "1000"
+        "band": "minus600"
       }
     }
   },
   "m-variance/va-practice": {
     "scene": "question",
     "lessonId": "m-variance",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
@@ -256,7 +258,7 @@
   "m-variance/va-fresh": {
     "scene": "question",
     "lessonId": "m-variance",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -273,7 +275,7 @@
   "h-player-types/pt-guided": {
     "scene": "question",
     "lessonId": "h-player-types",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
@@ -290,7 +292,7 @@
   "h-player-types/pt-practice": {
     "scene": "question",
     "lessonId": "h-player-types",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
@@ -300,14 +302,14 @@
         "station"
       ],
       "key": {
-        "band": "lag"
+        "band": "tag"
       }
     }
   },
   "h-player-types/pt-fresh": {
     "scene": "question",
     "lessonId": "h-player-types",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -323,40 +325,40 @@
   "y-bankroll/br-guided": {
     "scene": "question",
     "lessonId": "y-bankroll",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
       "bands": [
+        "bi-6",
         "bi-10",
-        "bi-20",
-        "bi-40"
+        "bi-60"
       ],
       "key": {
-        "band": "bi-20"
+        "band": "bi-10"
       }
     }
   },
   "y-bankroll/br-practice": {
     "scene": "question",
     "lessonId": "y-bankroll",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
       "bands": [
-        "game-100",
-        "game-50"
+        "game-160",
+        "game-80"
       ],
       "key": {
-        "band": "game-50"
+        "band": "game-80"
       }
     }
   },
   "y-bankroll/br-fresh": {
     "scene": "question",
     "lessonId": "y-bankroll",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -372,7 +374,7 @@
   "y-tilt/tl-guided": {
     "scene": "question",
     "lessonId": "y-tilt",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "action",
@@ -388,7 +390,7 @@
   "y-tilt/tl-practice": {
     "scene": "question",
     "lessonId": "y-tilt",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "action",
@@ -404,7 +406,7 @@
   "y-tilt/tl-fresh": {
     "scene": "question",
     "lessonId": "y-tilt",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "action",
@@ -420,7 +422,7 @@
   "y-study/sd-guided": {
     "scene": "question",
     "lessonId": "y-study",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 3,
       "decision": "estimate",
@@ -437,7 +439,7 @@
   "y-study/sd-practice": {
     "scene": "question",
     "lessonId": "y-study",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
@@ -453,7 +455,7 @@
   "y-study/sd-fresh": {
     "scene": "question",
     "lessonId": "y-study",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",
@@ -470,24 +472,24 @@
   "o-heads-up/hu-practice": {
     "scene": "question",
     "lessonId": "o-heads-up",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 4,
       "decision": "estimate",
       "bands": [
-        "bb-017",
-        "bb-075",
+        "bb-025",
+        "bb-050",
         "bb-150"
       ],
       "key": {
-        "band": "bb-075"
+        "band": "bb-050"
       }
     }
   },
   "o-heads-up/hu-fresh": {
     "scene": "question",
     "lessonId": "o-heads-up",
-    "contentVersion": 1,
+    "contentVersion": 2,
     "entry": {
       "stage": 5,
       "decision": "estimate",

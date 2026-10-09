@@ -26,7 +26,7 @@ const definition = {
   sourceLessonId: "lesson-betting-actions-001", videoLessonId: "lesson-betting-actions-001",
   coach: "knox", narrator: "nathan", access: "free", template: "table-literacy",
   title: "Every action has a job.", kicker: "Reason, then the button.",
-  trail: ["Learn", "Table literacy", "Betting actions"],
+  trail: ["Learn", "Table literacy", "Every action has a job."],
   course: { chapter: "Table literacy" },
   meta: { minutes: 3 },
   assumptions: "Heads-up. Each hand gives you a read on Ace Andy’s bet and on your own hand, stated in the prompt. The read is supplied for the exercise, never worked out from his hidden cards, and the right job follows from that read. No more cards are dealt after you choose.",
@@ -41,11 +41,11 @@ const definition = {
       // the board's queen), so its chapter names that beat's first step, 7.1 s, as a time.
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Three jobs" }, { beat: "deal", label: "See the price" }, { at: 7.1, label: "Read the hand" }, { beat: "decision", label: "Choose the job" }] },
     // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/r-actions.mjs).
-    { kind: "why", label: "Why", spotId: "act2-why", prompt: "Why is calling, not checking, your passive choice here?",
+    { kind: "why", label: "Why", spotId: "act2-why", prompt: "Once Ada bets 40, why is check gone?",
       options: [
-        { id: "a", text: "Raising is never allowed once someone has bet.", fix: "Raising is allowed after a bet. Here it is the wrong job: the hands that continue mostly beat you." },
-        { id: "b", text: "Ace Andy bet 30, so something is owed: a call matches it, and a check needs nothing owed.", fix: "Right. A bet is owed, so check is gone: a call matches it." },
-        { id: "c", text: "Checking and calling are the same thing: both stay in without raising.", fix: "A check costs nothing and only works when nothing is owed. A call puts in the 30." },
+        { id: "a", text: "Checking is only allowed on the first betting round.", fix: "You can check on any round, as long as nothing is owed." },
+        { id: "b", text: "Her 40 is owed now: you can fold, call the 40 or raise, and a check needs nothing owed.", fix: "Right. Something is owed, so check is gone: a call matches it." },
+        { id: "c", text: "Checking and calling are the same thing: both stay in without raising.", fix: "A check costs nothing and only works when nothing is owed. A call puts in the 40." },
       ] },
     { kind: "decision", label: "Knox’s hand", spotId: "act2-guided", hand: "act2-guided", role: "guided",
       coachLine: "The flop. You pick the job.", next: "Try a practice hand" },

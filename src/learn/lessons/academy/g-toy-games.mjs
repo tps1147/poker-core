@@ -1,3 +1,6 @@
+// Content version 2 (2026-10-09): the film asks and answers its own question at its end, so the
+// lesson no longer asks it again over the frozen frame (film stage endAsk "skip"; filmV2 "handoff").
+// Version 1 stays registered on the server for older builds.
 // g-toy-games, Poker in Miniature (Game Theory), academy v2 definition.
 // Film: src-academy-g-toy-games-v2 (88 s), Kuhn poker: J < Q < K, one chip each (pot 2), one bet
 // of 1. canon.yourTurn is null, so the film plays to its stop and then asks its own question:
@@ -35,14 +38,14 @@ const fresh = { street: "river", hero: ["Kc", "Jh"], board: ["Ks", "8d", "6c", "
 
 const definition = {
   ...definitionBase({
-    node: "g-toy-games", coach: "knox", title: "Bluff at the right rate.", kicker: "Poker, in three cards.",
+    node: "g-toy-games", version: 2, coach: "knox", title: "Bluff at the right rate.", kicker: "Poker, in three cards.",
     track: "theory", chapter: "Game Theory", minutes: 5, feedback,
     assumptions: "The film plays Kuhn poker: three cards, one chip each, one bet of 1, and the higher card wins. At the table, the same idea on a Hold'em river: a range made only of best hands and bluffs bets half the pot, and his hand can beat only a bluff. What he bluffs is given in each hand, never read from his cards. Each hand stops once you act.",
   }),
   stages: [
     welcome("Bluff at the right rate.", "Poker, in three cards.",
       "A game with three cards shows why bluffing at the right rate is required, not optional. Watch Knox play it, then take the same rates to the table.", "Knox"),
-    filmStage({ film: "g-toy-games", at: null, spotId: "tg-turn", spot: turnSpot, upNext: "Play Knox’s river" }),
+    filmStage({ film: "g-toy-games", at: null, endAsk: "skip", spotId: "tg-turn", spot: turnSpot, upNext: "Play Knox’s river" }),
     whyStage("tg-why", "Why does the jack bet sometimes?", [
       { id: "mix", text: "Never bluff and he folds to every bet; always bluff and he calls. The mix leaves him nothing to gain.", fix: "Right. One bet in 4 is a bluff, and his queen calls 1 time in 3." },
       { id: "computers", text: "Because a computer says so; the reason doesn’t matter at a real table.", fix: "Game theory isn’t only for computers. Three cards and one bet: you can check every line by hand, as the film did." },

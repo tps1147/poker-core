@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "o-tournaments-icm",
-  "video": "/academy/films-v2/o-tournaments-icm/b616bace/o-tournaments-icm-1080.mp4",
-  "video720": "/academy/films-v2/o-tournaments-icm/b616bace/o-tournaments-icm-720.mp4",
-  "poster": "/academy/films-v2/o-tournaments-icm/b616bace/o-tournaments-icm-poster.jpg",
-  "ruleCard": "/academy/films-v2/o-tournaments-icm/b616bace/o-tournaments-icm-rule.jpg",
-  "captions": "/academy/films-v2/o-tournaments-icm/b616bace/o-tournaments-icm.vtt",
-  "transcript": "/academy/films-v2/o-tournaments-icm/b616bace/o-tournaments-icm.transcript.txt",
+  "video": "/academy/films-v2/o-tournaments-icm/49844754/o-tournaments-icm-1080.mp4",
+  "video720": "/academy/films-v2/o-tournaments-icm/49844754/o-tournaments-icm-720.mp4",
+  "poster": "/academy/films-v2/o-tournaments-icm/49844754/o-tournaments-icm-poster.jpg",
+  "ruleCard": "/academy/films-v2/o-tournaments-icm/49844754/o-tournaments-icm-rule.jpg",
+  "captions": "/academy/films-v2/o-tournaments-icm/49844754/o-tournaments-icm.vtt",
+  "transcript": "/academy/films-v2/o-tournaments-icm/49844754/o-tournaments-icm.transcript.txt",
   "durationSeconds": 92.5,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 89.5,
     "first": 7.12
   },
-  "version": "b616bace"
+  "version": "49844754",
+  "cues": [
+    {
+      "start": 2.02,
+      "end": 3.13,
+      "text": "Three players left."
+    },
+    {
+      "start": 3.13,
+      "end": 7.12,
+      "text": "5,000 chips, 3,000, 2,000."
+    },
+    {
+      "start": 7.12,
+      "end": 9.78,
+      "text": "First place takes half the prize pool,"
+    },
+    {
+      "start": 9.78,
+      "end": 13.05,
+      "text": "second 30%, third 20%."
+    },
+    {
+      "start": 13.05,
+      "end": 15.54,
+      "text": "Is every chip worth the same money?"
+    },
+    {
+      "start": 15.54,
+      "end": 19.41,
+      "text": "Take a guess."
+    },
+    {
+      "start": 19.41,
+      "end": 21.9,
+      "text": "Chips say 50, 30, 20."
+    },
+    {
+      "start": 21.9,
+      "end": 24.58,
+      "text": "But prize money pays for finishing places,"
+    },
+    {
+      "start": 24.58,
+      "end": 25.72,
+      "text": "not chips."
+    },
+    {
+      "start": 25.72,
+      "end": 28.46,
+      "text": "Work out everyone's chances of each place,"
+    },
+    {
+      "start": 28.46,
+      "end": 31.29,
+      "text": "and the shares come out 38.4%..."
+    },
+    {
+      "start": 31.29,
+      "end": 35,
+      "text": "32.8%... 28.9%."
+    },
+    {
+      "start": 35,
+      "end": 36.6,
+      "text": "Flatter than the chips."
+    },
+    {
+      "start": 36.6,
+      "end": 39.5,
+      "text": "The big stack's chips are each worth less."
+    },
+    {
+      "start": 39.5,
+      "end": 43.01,
+      "text": "The short stack's are worth more."
+    },
+    {
+      "start": 43.01,
+      "end": 45.44,
+      "text": "Now the short stack goes all-in"
+    },
+    {
+      "start": 45.44,
+      "end": 49.38,
+      "text": "against the big stack, a pure coin flip."
+    },
+    {
+      "start": 49.38,
+      "end": 51.02,
+      "text": "Fair in chips."
+    },
+    {
+      "start": 51.02,
+      "end": 55.49,
+      "text": "Win, and their share climbs to 35.4%."
+    },
+    {
+      "start": 55.49,
+      "end": 59.4,
+      "text": "Lose, he's out in third with 20%."
+    },
+    {
+      "start": 59.4,
+      "end": 62.9,
+      "text": "Average... 27.7%."
+    },
+    {
+      "start": 62.9,
+      "end": 67.51,
+      "text": "Less than the 28.9% he had by folding."
+    },
+    {
+      "start": 67.51,
+      "end": 70.92,
+      "text": "Your turn. The big stack calls the same flip."
+    },
+    {
+      "start": 70.92,
+      "end": 73.89,
+      "text": "Before... 38.4%."
+    },
+    {
+      "start": 73.89,
+      "end": 77.8,
+      "text": "After, on average... 38.1%."
+    },
+    {
+      "start": 77.8,
+      "end": 79.4,
+      "text": "Both lose money."
+    },
+    {
+      "start": 79.4,
+      "end": 82.48,
+      "text": "The player who sat out gains."
+    },
+    {
+      "start": 82.48,
+      "end": 85.16,
+      "text": "In tournaments, chips aren't money."
+    },
+    {
+      "start": 85.16,
+      "end": 86.78,
+      "text": "Survival has a price,"
+    },
+    {
+      "start": 86.78,
+      "end": 92.5,
+      "text": "so call tighter near the payouts."
+    }
+  ],
+  "transcriptText": "Three players left. 5,000 chips, 3,000, 2,000. First place takes half the prize pool, second 30%, third 20%. Is every chip worth the same money? Take a guess.\n\nChips say 50, 30, 20. But prize money pays for finishing places, not chips. Work out everyone's chances of each place, and the shares come out 38.4%... 32.8%... 28.9%. Flatter than the chips. The big stack's chips are each worth less. The short stack's are worth more.\n\nNow the short stack goes all-in against the big stack, a pure coin flip. Fair in chips. Win, and their share climbs to 35.4%. Lose, he's out in third with 20%. Average... 27.7%. Less than the 28.9% he had by folding.\n\nYour turn. The big stack calls the same flip. Before... 38.4%. After, on average... 38.1%. Both lose money. The player who sat out gains. In tournaments, chips aren't money. Survival has a price, so call tighter near the payouts."
 }

@@ -20,8 +20,11 @@ export const streetOf = (board) => STREETS[board.length];
 export const huSeats = (stack, name = "Ace Andy") => ({ hero: { name: "You", stack }, opponent: { name, stack, botId: null } });
 
 // The film stage with its "Your turn" pause.
-export function filmStage({ film, at, anchor = at == null ? "end" : "yourTurn", spotId, spot, upNext = "Play the coach’s hand" }) {
-  return { kind: "film", label: "Film", upNext, media: film, pause: { at, anchor, film, spotId, spot } };
+// `endAsk` (an "end" film only): "skip" when the film has already asked and answered its question at
+// its end (the lesson hands off to the next step without asking it again), "variant" when `spot` is
+// a transfer the film never answered (filmV2 filmAskPlan).
+export function filmStage({ film, at, anchor = at == null ? "end" : "yourTurn", spotId, spot, upNext = "Play the coach’s hand", endAsk = null }) {
+  return { kind: "film", label: "Film", upNext, media: film, pause: { at, anchor, film, spotId, spot, ...(endAsk ? { endAsk } : {}) } };
 }
 
 // The why stage: one tap from three reasons. `spotId` is "<lesson prefix>-why" (the prefix of the
@@ -83,9 +86,11 @@ export function takeaway({ heading, rule, lead, labels }) {
 }
 
 // The fields every v2 definition shares.
-export function definitionBase({ node, conceptId = null, coach, access = "pro", title, kicker, track, chapter, minutes = 5, assumptions, feedback }) {
+// `version` is the content version (answerKeys/<node>.mjs contentVersion): bumped whenever the stages
+// or the keys change, the old version staying registered on the server for old builds.
+export function definitionBase({ node, version = 1, conceptId = null, coach, access = "pro", title, kicker, track, chapter, minutes = 5, assumptions, feedback }) {
   return {
-    id: node, node, version: 1, flow: "film-first", format: "academy-v2",
+    id: node, node, version, flow: "film-first", format: "academy-v2",
     conceptId, sourceLessonId: node, videoLessonId: node,
     coach, narrator: TRACK_NARRATOR[track] || null, access, template: track, title, kicker,
     trail: ["Learn", chapter, title], course: { chapter },

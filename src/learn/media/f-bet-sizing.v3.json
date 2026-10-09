@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-bet-sizing",
-  "video": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-1080.mp4",
-  "video720": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-720.mp4",
-  "poster": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing-rule.jpg",
-  "captions": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing.vtt",
-  "transcript": "/academy/films-v2/f-bet-sizing/96b4e5b7/f-bet-sizing.transcript.txt",
+  "video": "/academy/films-v2/f-bet-sizing/c6b22f62/f-bet-sizing-1080.mp4",
+  "video720": "/academy/films-v2/f-bet-sizing/c6b22f62/f-bet-sizing-720.mp4",
+  "poster": "/academy/films-v2/f-bet-sizing/c6b22f62/f-bet-sizing-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-bet-sizing/c6b22f62/f-bet-sizing-rule.jpg",
+  "captions": "/academy/films-v2/f-bet-sizing/c6b22f62/f-bet-sizing.vtt",
+  "transcript": "/academy/films-v2/f-bet-sizing/c6b22f62/f-bet-sizing.transcript.txt",
   "durationSeconds": 105,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,158 @@
     "upNext": 100.41,
     "first": null
   },
-  "version": "96b4e5b7"
+  "version": "c6b22f62",
+  "cues": [
+    {
+      "start": 1.36,
+      "end": 5.49,
+      "text": "Same hand, two sizes. Which one does the job?"
+    },
+    {
+      "start": 5.49,
+      "end": 9.72,
+      "text": "Kings, on jack, eight, three, deuce..."
+    },
+    {
+      "start": 9.72,
+      "end": 11.48,
+      "text": "and two hearts are out there."
+    },
+    {
+      "start": 11.48,
+      "end": 13.22,
+      "text": "The pot's 120."
+    },
+    {
+      "start": 13.22,
+      "end": 16.29,
+      "text": "You want to stop a flush draw calling cheaply."
+    },
+    {
+      "start": 16.29,
+      "end": 19.13,
+      "text": "40, or 90?"
+    },
+    {
+      "start": 19.13,
+      "end": 20.45,
+      "text": "Bet a third of the pot."
+    },
+    {
+      "start": 20.45,
+      "end": 25.33,
+      "text": "If he calls, his call is 1/5 of the final pot..."
+    },
+    {
+      "start": 25.33,
+      "end": 26.82,
+      "text": "that's his price."
+    },
+    {
+      "start": 26.82,
+      "end": 31.14,
+      "text": "A bluff that size needs a fold 1 time in 4."
+    },
+    {
+      "start": 31.14,
+      "end": 35.24,
+      "text": "Half pot... a quarter, and a third."
+    },
+    {
+      "start": 35.24,
+      "end": 39.17,
+      "text": "The full pot... a third, and a half."
+    },
+    {
+      "start": 39.17,
+      "end": 42.81,
+      "text": "Every size moves both."
+    },
+    {
+      "start": 42.81,
+      "end": 46.35,
+      "text": "Now sit in his seat, holding two hearts."
+    },
+    {
+      "start": 46.35,
+      "end": 53.58,
+      "text": "9 more are left, of 46 cards he can't see... 19.6%."
+    },
+    {
+      "start": 53.58,
+      "end": 57.98,
+      "text": "Facing 40, his price is 40 of 200."
+    },
+    {
+      "start": 57.98,
+      "end": 60.52,
+      "text": "20%... close to fair."
+    },
+    {
+      "start": 60.52,
+      "end": 63.98,
+      "text": "Facing 90, it's 90 of 300."
+    },
+    {
+      "start": 63.98,
+      "end": 68.31,
+      "text": "30%... now he loses about 31 chips a call."
+    },
+    {
+      "start": 68.31,
+      "end": 70.87,
+      "text": "Bigger works here because of his price..."
+    },
+    {
+      "start": 70.87,
+      "end": 73.95,
+      "text": "not because bigger wins more."
+    },
+    {
+      "start": 73.95,
+      "end": 74.72,
+      "text": "Your turn."
+    },
+    {
+      "start": 74.72,
+      "end": 78.56,
+      "text": "A river where you want his weaker pairs to call."
+    },
+    {
+      "start": 78.56,
+      "end": 82.95,
+      "text": "A third... 1/5, and a quarter."
+    },
+    {
+      "start": 82.95,
+      "end": 88.47,
+      "text": "Three-quarters... 3/10, and 3/7."
+    },
+    {
+      "start": 88.47,
+      "end": 91.91,
+      "text": "To keep those pairs calling, bet the third."
+    },
+    {
+      "start": 91.91,
+      "end": 94.33,
+      "text": "So pick the size from the job."
+    },
+    {
+      "start": 94.33,
+      "end": 97.61,
+      "text": "Charge draws, invite worse hands,"
+    },
+    {
+      "start": 97.61,
+      "end": 100.41,
+      "text": "or make folds cheap to win."
+    },
+    {
+      "start": 100.41,
+      "end": 105,
+      "text": "Up next: value betting."
+    }
+  ],
+  "transcriptText": "Same hand, two sizes. Which one does the job? Kings, on jack, eight, three, deuce... and two hearts are out there. The pot's 120. You want to stop a flush draw calling cheaply. 40, or 90?\n\nBet a third of the pot. If he calls, his call is 1/5 of the final pot... that's his price. A bluff that size needs a fold 1 time in 4. Half pot... a quarter, and a third. The full pot... a third, and a half. Every size moves both.\n\nNow sit in his seat, holding two hearts. 9 more are left, of 46 cards he can't see... 19.6%. Facing 40, his price is 40 of 200. 20%... close to fair. Facing 90, it's 90 of 300. 30%... now he loses about 31 chips a call. Bigger works here because of his price... not because bigger wins more.\n\nYour turn. A river where you want his weaker pairs to call. A third... 1/5, and a quarter. Three-quarters... 3/10, and 3/7. To keep those pairs calling, bet the third. So pick the size from the job. Charge draws, invite worse hands, or make folds cheap to win. Up next: value betting."
 }
