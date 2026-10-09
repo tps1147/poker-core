@@ -1,22 +1,34 @@
-// Math 7, Variance and Sample Size (m-variance), v2 lesson. Mina's film pauses at its yourTurn
-// anchor (54.24 s, "So what should Blue expect after a hundred calls?") for an ungraded guess; the
-// guided hand plays that same spot (+10 a call, 100 calls: +1,000). Practice is the plan's Checks
-// decision (ahead after 10 calls of a −10 play: was it good?); the fresh hand changes the size and
-// the count (+25 a call, 200 calls). Keys: answerKeys/m-variance.mjs (package root, not shipped).
+// Math 7, Variance and Sample Size (m-variance), v2 lesson, content version 2. Mina's film pauses at
+// its yourTurn anchor (54.24 s, "So what should Blue expect after a hundred calls?") for an ungraded
+// guess, `turnSpot` (+10 a call, 100 calls: +1,000); the film answers it right after the pause.
+// v2 (2026-10-09, no repeated question): guided turns the sign, a call that loses 20 on average,
+// made 30 times (−600: a losing play does not even out); practice is the plan's Checks decision
+// (ahead after 10 calls of a −10 play: was it good?); the fresh hand changes the size and the count
+// (+25 a call, 200 calls). Keys: answerKeys/m-variance.mjs (package root, not shipped).
 import { bands, huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const HUNDRED = bands(["10", "+10"], ["100", "+100"], ["1000", "+1,000"]);
 const SPOT = { street: "preflop", hero: ["Ks", "Jd"] };
 const table = (id) => huHand(id, { hero: SPOT.hero, pot: 0, blinds: [5, 10] });
 
+// The film's own question (asked at the pause, answered in the film).
+const turnSpot = {
+  scene: "question",
+  decision: "estimate", ...SPOT, bands: HUNDRED, dockPrompt: "Expected total after 100 calls",
+  title: "Your turn: a hundred calls.",
+  prompt: "Blue’s call is worth +10 chips on average. Blue makes it a hundred times. What should Blue expect to be up, in total?",
+  hint: "Expected total = the average per call × the number of calls.",
+  explanation: "+10 a call, a hundred times, is +1,000 expected. Any real run swings around that: a typical swing is about 917 either way, so an ordinary run lands from about +83 to +1,917.",
+};
+
 const spots = {
   "va-guided": {
     scene: "question",
-    decision: "estimate", ...SPOT, bands: HUNDRED, dockPrompt: "Expected total after 100 calls",
-    title: "Your turn: a hundred calls.",
-    prompt: "Blue’s call is worth +10 chips on average. Blue makes it a hundred times. What should Blue expect to be up, in total?",
-    hint: "Expected total = the average per call × the number of calls.",
-    explanation: "+10 a call, a hundred times, is +1,000 expected. Any real run swings around that: a typical swing is about 917 either way, so an ordinary run lands from about +83 to +1,917.",
+    decision: "estimate", ...SPOT, bands: bands(["minus20", "−20"], ["even", "About 0: it evens out"], ["minus600", "−600"]), dockPrompt: "Expected total after 30 calls",
+    title: "A losing call, 30 times.",
+    prompt: "This call loses 20 chips on average. You make it 30 times. What should you expect, in total?",
+    hint: "The rule works for a loss too: the average per call × the number of calls.",
+    explanation: "−20 × 30 is −600 expected. A lucky run can hide the loss for a while, but luck doesn’t cancel it: the loss is in the average, and it grows with every call.",
   },
   "va-practice": {
     scene: "question",
@@ -31,20 +43,20 @@ const spots = {
     decision: "estimate", ...SPOT, bands: bands(["25", "+25"], ["200", "+200"], ["5000", "+5,000"]), dockPrompt: "Expected total after 200 calls",
     title: "New size, new count.",
     prompt: "A call is worth +25 chips on average. You make it 200 times. What should you expect to be up, in total?",
-    hint: "Average per call × number of calls, as Blue did.",
+    hint: "Average per call × number of calls, as before.",
     explanation: "+25 × 200 is +5,000 expected. The real total will swing around it; the more calls, the less the swing matters next to the average.",
   },
 };
 
 const definition = v2Lesson({
-  node: "m-variance", film: "m-variance", coach: "knox", access: "pro", track: "The Math Spine", minutes: 3,
+  node: "m-variance", version: 2, film: "m-variance", coach: "knox", access: "pro", track: "The Math Spine", minutes: 3,
   title: "A few hands show luck.", kicker: "Thousands show the decision.",
   assumptions: "Each call’s average value is given. Expected totals are the average times the number of calls; the film’s probabilities are exact binomial figures, never simulated, and no result grades a decision.",
   stages: v2Stages({
     welcome: { heading: "How often are you behind?", em: "Guess first.", lead: "Watch Blue and Coral make the same calls a thousand times, then work out three totals.", cta: "Watch with Knox" },
-    film: { upNext: "Play Knox’s spot", film: "m-variance", at: 54.24, spot: spots["va-guided"] },
+    film: { upNext: "Try a new total", film: "m-variance", at: 54.24, spot: turnSpot },
     hands: [
-      { id: "va-guided", label: "Knox’s spot", coachLine: "The film’s hundred calls." },
+      { id: "va-guided", label: "Guided spot", coachLine: "A losing call this time." },
       { id: "va-practice", label: "Practice", coachLine: "A lucky run. Judge the play." },
       { id: "va-fresh", label: "Fresh spot", coachLine: "A new size and count." },
     ],

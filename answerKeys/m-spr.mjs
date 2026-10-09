@@ -6,9 +6,12 @@
 //     spr1-guided-ratio 2 -> 3, spr1-guided-bets 3 -> 4, spr1-practice-ratio 4 -> 5
 //     spr1-practice-bets 5 -> 6, spr1-fresh-ratio 6 -> 7, spr1-fresh-bets 7 -> 8
 //     the existing keys are unchanged. The registry validator must also admit the why stage.
+//   - content version 3 (2026-10-09): the practice hand moved off the film's own numbers (1,200
+//     against 300, pot 150): the same SPR of 2 and two bets, so every key is the same as version 2,
+//     which stays registered (answerKeys/previous/m-spr.v2.mjs).
 // Recomputed in test/academyEarly.test.mjs.
 export default {
-  lessonId: "spr-workspace-v1", node: "m-spr", contentVersion: 2, fromVersion: 1, additions: true,
+  lessonId: "spr-workspace-v1", node: "m-spr", contentVersion: 3, fromVersion: 1, additions: true,
   stageShift: { from: 2, by: 1 },
   film: { stage: 1, at: 70.54, filmId: "m-spr", spotId: "spr1-turn", decision: "count", range: [0, 20], key: { value: 2, tolerance: 0 } },
   why: { stage: 2, spotId: "spr1-why", options: ["a", "b", "c"], key: { option: "b" }, misconception: "c" },

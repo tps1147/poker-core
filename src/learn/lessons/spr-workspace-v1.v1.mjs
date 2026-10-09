@@ -1,3 +1,7 @@
+// Content version 3 (2026-10-09): the practice hand left the film's own "Your turn" numbers (1,000
+// against 240, pot 120): it is now 1,200 against 300 with a pot of 150, the same SPR of 2 and two
+// bets, so its keys and band ids are unchanged. Version 2 stays registered for older builds.
+//
 // Lesson 10, Stack-to-pot ratio, content version 1: a new lesson, film-first from the start
 // (learn-flow-2026-09-16 SPEC, RECIPE). Mina's film is one contiguous interval of her original
 // clip, 0 to 21.0 s, four sentences: what SPR tells you, the formula (effective stack divided by
@@ -27,11 +31,11 @@ const BETS_HINT = "A pot-sized bet matches the pot, and after a call the pot is 
 const NOTE = "No more cards are dealt in this lesson. SPR measures the room left; it does not decide the hand for you.";
 // No bet is faced on any hand: Ace Andy checks, so the pot is the pot before any bet.
 const guided = { hero: ["Ad", "Kc"], board: ["Ks", "8h", "3c"], street: "flop", potBefore: 300, bet: 0, call: 0 };
-const practice = { hero: ["Qh", "Jh"], board: ["Qc", "7d", "2s"], street: "flop", potBefore: 120, bet: 0, call: 0 };
+const practice = { hero: ["Qh", "Jh"], board: ["Qc", "7d", "2s"], street: "flop", potBefore: 150, bet: 0, call: 0 };
 const fresh = { hero: ["As", "Ts"], board: ["Ah", "9c", "5d"], street: "flop", potBefore: 100, bet: 0, call: 0 };
 
 const definition = {
-  id: "spr-workspace-v1", version: 2, flow: "film-first",
+  id: "spr-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-spr",
   sourceLessonId: "lesson-spr-001", videoLessonId: "lesson-spr-001",
   coach: "knox", narrator: "nathan", access: "pro", template: "deeper-math",
@@ -105,9 +109,9 @@ const definition = {
       bands: [{ id: "about-2", label: "About 2" }, { id: "about-8", label: "About 8" }, { id: "about-10", label: "About 10" }],
       dockPrompt: RATIO_DOCK,
       title: "What is the SPR?",
-      prompt: "Queen-jack on a queen-seven-two flop. The pot is 120. You have 1,000 behind and Ace Andy has 240. Ace Andy checks. What is the stack-to-pot ratio?",
+      prompt: "Queen-jack on a queen-seven-two flop. The pot is 150. You have 1,200 behind and Ace Andy has 300. Ace Andy checks. What is the stack-to-pot ratio?",
       hint: RATIO_HINT,
-      explanation: "Ace Andy can put in only 240 more, so 240 is the effective stack. 240 ÷ 120 is an SPR of 2. Your 1,000 gives about 8 and both stacks together give about 10, but the other 760 of yours cannot be matched in this hand.",
+      explanation: "Ace Andy can put in only 300 more, so 300 is the effective stack. 300 ÷ 150 is an SPR of 2. Your 1,200 gives 8 and both stacks together give 10, but the other 900 of yours cannot be matched in this hand.",
       note: NOTE,
       hear: 1,
     },
@@ -116,9 +120,9 @@ const definition = {
       bands: BETS_BANDS,
       dockPrompt: BETS_DOCK,
       title: "How much room is left?",
-      prompt: "The pot is 120 and the effective stack is 240. Suppose every bet from here is the size of the pot and is called. How many bets until the effective stack is all in?",
+      prompt: "Now count the room. With 150 in the middle and 300 that can still go in, how many pot-sized bets, each one called, put the effective stack all in?",
       hint: BETS_HINT,
-      explanation: "Bet the pot, 120, and after the call the pot is 360 with 120 left behind. The next bet is all in, and it is smaller than the pot. Two bets and the effective stack is in: still not many future bets.",
+      explanation: "Bet the pot, 150, and after the call the pot is 450 with 150 left behind. The next bet is all in, and it is smaller than the pot. Two bets and the effective stack is in: still not many future bets.",
       note: NOTE,
       hear: 2,
     },
@@ -162,9 +166,9 @@ const definition = {
       ],
     },
     "spr1-practice": {
-      id: "spr1-practice", layout: "heads-up", seats: seats(1000, 240), button: "hero",
+      id: "spr1-practice", layout: "heads-up", seats: seats(1200, 300), button: "hero",
       hero: practice.hero, opponent: {},
-      start: { street: "flop", board: practice.board, pot: 120, dealt: "deal" },
+      start: { street: "flop", board: practice.board, pot: 150, dealt: "deal" },
       script: [
         { do: "pause", ms: 400 },
         { do: "act", seat: "opponent", action: "check" },

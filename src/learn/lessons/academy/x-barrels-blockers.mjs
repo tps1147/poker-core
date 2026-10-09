@@ -1,9 +1,10 @@
-// x-barrels-blockers, Barrels and Blockers (Pressure and Defense), academy v2 definition.
+// x-barrels-blockers, Barrels and Blockers (Pressure and Defense), academy v2 definition, content version 2.
 // Film: src-academy-x-barrels-blockers-v2 (84 s). canon.yourTurn = "yourTurn" at 64.66 s: "Your turn.
 // Sort two bluff cards. The A♠ blocks his calls. Better bluff. The 9♦ blocks his folds. Worse bluff."
 // Plan: pressure.md (x-barrels-blockers). The river is K♠ 9♠ 4♦ 2♠ 7♥ after the film's line.
 //   Your turn   A♠ or 9♦ as the bluff card -> the A♠
-//   Guided      the film's barrel plan: pot 100, 350 behind -> half pot, 50 -> 100 -> 200 = 350
+//   Guided      pot 80, 585 behind -> three-quarters of the pot, 60 -> 150 -> 375 = 585 (v2, 2026-10-09:
+//               v1 replayed the film's own plan, pot 100 and 350 behind at half pot)
 //   Practice    pot 50, 650 behind -> pot-size bets, 50 -> 150 -> 450 = 650 (changed size)
 //   Fresh       J♥ 5♣ on T♣ 9♦ 8♠ 4♥ 2♣, he calls every straight and folds 30 one-pair combos
 //               (given): the J♥ takes his straights from 48 to 40, folds 30/78 = 38.5% -> 30/70 =
@@ -31,7 +32,7 @@ const fresh = { street: "river", hero: ["Jh", "5c"], board: ["Tc", "9d", "8s", "
 
 const definition = {
   ...definitionBase({
-    node: "x-barrels-blockers", conceptId: "t4-barreling-blockers", coach: "knox", title: "Plan three streets.", kicker: "Bluff with the card that blocks his calls.",
+    node: "x-barrels-blockers", version: 2, conceptId: "t4-barreling-blockers", coach: "knox", title: "Plan three streets.", kicker: "Bluff with the card that blocks his calls.",
     track: "pressure", chapter: "Pressure and Defense", minutes: 5, feedback,
     assumptions: "Heads-up, no rake. A barrel plan bets the same share of the pot on the flop, the turn and the river, and every call adds the same amount to the pot. Stacks are given in each hand. On the river, what he calls and folds with is given as a rule for this exercise, and his combo counts are an illustration, never read from his cards. A break-even bluff of 100 into 150 needs 100 ÷ 250 = 40% folds.",
   }),
@@ -57,12 +58,12 @@ const definition = {
   spots: {
     "bk-guided": {
       decision: "estimate", ...guided,
-      bands: sizeBands(25, 50, 100),
+      bands: sizeBands(40, 60, 80),
       dockPrompt: "Which flop bet fits three streets?",
-      title: "Pot 100, 350 behind. Which flop bet?",
-      prompt: "Knox’s plan: the pot is 100 and you each have 350 behind. He checks the flop. You want three bets, one per street, the same share of the pot each time, with all 350 in by the river. Which flop bet?",
-      hint: "Each call adds your bet twice. Try half the pot: what is the next pot, and the next bet?",
-      explanation: "Half the pot: 50, then 100 into 200, then 200 into 400. 50 + 100 + 200 = 350, and the pot ends at 100 + 2 × 350 = 800. Stack to pot is 350 ÷ 100 = 3.5.",
+      title: "Pot 80, 585 behind. Which flop bet?",
+      prompt: "Knox’s plan: the pot is 80 and you each have 585 behind. He checks the flop. You want three bets, one per street, the same share of the pot each time, with all 585 in by the river. Which flop bet?",
+      hint: "Each call adds your bet twice. Build the three bets for each choice: the next pot, then the next bet.",
+      explanation: "Three-quarters of the pot: 60, then 150 into 200, then 375 into 500. 60 + 150 + 375 = 585, and the pot ends at 80 + 2 × 585 = 1,250. Half the pot reaches only 40 + 80 + 160 = 280. Pot-size bets, 80 then 240, leave just 265 for a river bet of 720.",
       focus: ["As", "Ks", "9s"],
     },
     "bk-practice": {
@@ -84,7 +85,7 @@ const definition = {
     },
   },
   hands: {
-    "bk-guided": huHand("bk-guided", { ...guided, pot: 100, stack: 350, decisions: ["bk-guided"] }),
+    "bk-guided": huHand("bk-guided", { ...guided, pot: 80, stack: 585, decisions: ["bk-guided"] }),
     "bk-practice": huHand("bk-practice", { ...practice, pot: 50, stack: 650, decisions: ["bk-practice"] }),
     "bk-fresh": huHand("bk-fresh", { ...fresh, pot: 150, stack: 600, decisions: ["bk-fresh"], answer: "bk-fresh", sizes: { bet: 100 } }),
   },

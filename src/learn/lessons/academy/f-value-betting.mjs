@@ -1,29 +1,43 @@
-// Postflop 5, Value Betting (f-value-betting), v2 lesson. Vale's film pauses at its yourTurn anchor
-// (70.02 s, "Same river, one change: now he only calls with two pair or better") for an ungraded
-// guess; the guided hand plays that same river (A♥ J♦ on J♣ 9♠ 5♦ 3♥ 2♣, pot 200: every caller
-// beats you, so check). Practice is the film's main spot (calls with nines or better: 38 of 54 worse,
-// bet); the fresh hand is a thinner river with a changed size and count, where checking is right.
-// Caller counts are given illustrations, never a read. Keys: answerKeys/f-value-betting.mjs (package root, not shipped).
+// Postflop 5, Value Betting (f-value-betting), v2 lesson, content version 2. Vale's film pauses at
+// its yourTurn anchor (70.02 s, "Same river, one change: now he only calls with two pair or better")
+// for an ungraded guess: A♥ J♦ on J♣ 9♠ 5♦ 3♥ 2♣, pot 200, every caller beats you, so check.
+// v2 (2026-10-09): no step replays the film's river any more. The guided hand follows the film's
+// one change on a new river (Q♠ T♥ on Q♦ 9♣ 5♥ 4♠ 2♦, pot 160: he calls 80 only with a better
+// queen or two pair or better, so every caller beats you: check). Practice is a new bet spot with
+// given counts (A♣ 9♣ on 9♥ 7♠ 4♦ 3♣ 2♥, pot 120: 24 of 36 callers worse, bet 60); the fresh hand
+// is the thinner river, where checking is right. Caller counts are given illustrations, never a
+// read. Keys: answerKeys/f-value-betting.mjs (package root, not shipped).
 import { huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const RIVER = { street: "river", hero: ["Ah", "Jd"], board: ["Jc", "9s", "5d", "3h", "2c"], potBefore: 200, bet: 0, call: 0 };
+const guided = { street: "river", hero: ["Qs", "Th"], board: ["Qd", "9c", "5h", "4s", "2d"], potBefore: 160, bet: 0, call: 0 };
+const practice = { street: "river", hero: ["Ac", "9c"], board: ["9h", "7s", "4d", "3c", "2h"], potBefore: 120, bet: 0, call: 0 };
 const fresh = { street: "river", hero: ["Ks", "Qd"], board: ["Kh", "8c", "6d", "4s", "2h"], potBefore: 150, bet: 0, call: 0 };
 const BET = (amount) => ({ bet: amount });
 
+// The film's own question (its "Your turn" spot), as the film asks it.
+const turnSpot = {
+  decision: "action", choices: ["check", "bet"], ...RIVER, sizes: BET(100),
+  title: "Your turn: one change.",
+  prompt: "Same river: A♥ J♦ on J♣ 9♠ 5♦ 3♥ 2♣, pot 200, and he checks to you. One change, given: he now calls 100 only with two pair or better. Check, or bet 100?",
+  hint: "Sort the hands that call first. How many of them are worse than your top pair?",
+  explanation: "Two pair or better all beat top pair, so every hand that calls beats you and every worse hand folds. A bet only loses chips: check.",
+};
+
 const spots = {
   "vb-guided": {
-    decision: "action", choices: ["check", "bet"], ...RIVER, sizes: BET(100),
-    title: "Your turn: one change.",
-    prompt: "Same river: A♥ J♦ on J♣ 9♠ 5♦ 3♥ 2♣, pot 200, and he checks to you. One change, given: he now calls 100 only with two pair or better. Check, or bet 100?",
-    hint: "Sort the hands that call first. How many of them are worse than your top pair?",
-    explanation: "Two pair or better all beat top pair, so every hand that calls beats you and every worse hand folds. A bet only loses chips: check.",
+    decision: "action", choices: ["check", "bet"], ...guided, sizes: BET(80),
+    title: "Who calls a queen?",
+    prompt: "Q♠ T♥ on Q♦ 9♣ 5♥ 4♠ 2♦, pot 160, and he checks to you. Given: he calls 80 only with a better queen (A-Q, K-Q, Q-J) or two pair or better. Check, or bet 80?",
+    hint: "List the hands that call. Does any of them lose to Q♠ T♥?",
+    explanation: "A better queen beats yours on the kicker, and two pair or better beats one pair. Every hand that calls beats you, and the worse queens fold: check.",
   },
   "vb-practice": {
-    decision: "action", choices: ["check", "bet"], ...RIVER, sizes: BET(100),
+    decision: "action", choices: ["check", "bet"], ...practice, sizes: BET(60),
     title: "Check and hope, or bet?",
-    prompt: "A♥ J♦ on J♣ 9♠ 5♦ 3♥ 2♣, pot 200, and he checks. Given: he calls 100 with a pair of nines or better, 54 hands, and 38 of them are worse than yours, 1 ties and 15 beat you. Check, or bet 100?",
+    prompt: "A♣ 9♣ on 9♥ 7♠ 4♦ 3♣ 2♥, pot 120, and he checks. Given: 36 hands would call a bet of 60, and 24 of them are worse than yours; the other 12 beat you. Check, or bet 60?",
     hint: "Compare the worse callers with half of all the callers.",
-    explanation: "38 of the 54 callers are worse: 70.4%, more than half, so bet. Ignoring raises, 38 × 100 won against 15 × 100 lost is +2,300 over those calls, about 42.6 a call. A check wins nothing more from the 38.",
+    explanation: "24 of the 36 callers are worse: 66.7%, more than half, so bet. Ignoring raises, 24 × 60 won against 12 × 60 lost is +720 over those calls, 20 a call. A check wins nothing more from the 24.",
   },
   "vb-fresh": {
     decision: "action", choices: ["check", "bet"], ...fresh, sizes: BET(75),
@@ -35,16 +49,16 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "f-value-betting", film: "f-value-betting", coach: "knox", access: "pro", track: "Postflop", minutes: 4,
+  node: "f-value-betting", version: 2, film: "f-value-betting", coach: "knox", access: "pro", track: "Postflop", minutes: 4,
   title: "Bet when worse hands call.", kicker: "Not to trap. Not to hope.",
   assumptions: "Heads-up on the river; he checks to you. Which hands call is given for each exercise as an illustration, never a read of his cards, and raises are ignored. A value bet earns when more than half of the hands that call are worse than yours.",
   feedback: { found: "That’s the value read.", missed: "Let’s sort the callers.", open: "Here’s the thinking." },
   stages: v2Stages({
     welcome: { heading: "Top pair on the river.", em: "Check and hope, or bet?", lead: "Watch Knox sort the hands that call, then decide three rivers at the table.", cta: "Watch with Knox" },
-    film: { upNext: "Play Knox’s river", film: "f-value-betting", at: 70.02, spot: spots["vb-guided"] },
+    film: { upNext: "Sort the callers", film: "f-value-betting", at: 70.02, spot: turnSpot },
     hands: [
-      { id: "vb-guided", label: "Knox’s river", coachLine: "The film’s one change. Your call." },
-      { id: "vb-practice", label: "Practice", coachLine: "The film’s first river." },
+      { id: "vb-guided", label: "Sort the callers", coachLine: "A new river. Sort the callers first." },
+      { id: "vb-practice", label: "Practice", coachLine: "Count the worse callers." },
       { id: "vb-fresh", label: "Fresh hand", coachLine: "A thinner river." },
     ],
     why: { prompt: "Why check top pair here?",
@@ -58,8 +72,8 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "vb-guided": huHand("vb-guided", { hero: RIVER.hero, board: RIVER.board, pot: 200, acts: [{ seat: "opponent", action: "check" }], answer: { sizes: BET(100) } }),
-    "vb-practice": huHand("vb-practice", { hero: RIVER.hero, board: RIVER.board, pot: 200, acts: [{ seat: "opponent", action: "check" }], answer: { sizes: BET(100) } }),
+    "vb-guided": huHand("vb-guided", { hero: guided.hero, board: guided.board, pot: 160, acts: [{ seat: "opponent", action: "check" }], answer: { sizes: BET(80) } }),
+    "vb-practice": huHand("vb-practice", { hero: practice.hero, board: practice.board, pot: 120, acts: [{ seat: "opponent", action: "check" }], answer: { sizes: BET(60) } }),
     "vb-fresh": huHand("vb-fresh", { hero: fresh.hero, board: fresh.board, pot: 150, acts: [{ seat: "opponent", action: "check" }], answer: { sizes: BET(75) } }),
   },
 });

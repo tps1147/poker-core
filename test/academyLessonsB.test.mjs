@@ -12,6 +12,7 @@ import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import * as learn from "../src/learn/index.mjs";
+import { lessonRepeats } from "../scripts/lib/stageRepeats.mjs";
 
 const require = createRequire(import.meta.url);
 const { evaluateHand } = require("../src/eval/pokerEvaluator.js");
@@ -244,7 +245,13 @@ for (const d of ACADEMY_V2_LATER_LESSONS) {
     const node = NODES.find((n) => n.id === id);
     assert.ok(node && LATER_TRACKS.includes(node.track), `${id} is a later-track node`);
     assert.equal(d.node, id); assert.equal(lessonOfNode(id), id, "curriculum opens it by node id");
-    assert.equal(d.media, id, "the media id is the node"); assert.equal(d.flow, "film-first"); assert.equal(d.version, 1);
+    assert.equal(d.media, id, "the media id is the node"); assert.equal(d.flow, "film-first");
+    // Version 2 (2026-10-09) where a step left the film's question or an end film hands off; the
+    // key file carries the same version (checked below) and the server keeps version 1 registered.
+    assert.equal(d.version, d.stages[1].pause.endAsk || lessonRepeats(d).length ? 2 : KEYS[id].contentVersion);
+    assert.ok([1, 2].includes(d.version));
+    assert.deepEqual(lessonRepeats(d), [], "no step repeats the film's question or another step");
+    assert.equal(d.stages[1].pause.endAsk, FILM_TURN[id] == null ? "skip" : undefined, "an end film hands off");
     assert.equal(d.conceptId, node.legacy?.concept ?? null, "concept id from the tree");
     assert.ok(["free", "pro"].includes(d.access) && d.coach && d.title && d.assumptions && d.feedback.found && d.feedback.missed && d.feedback.open);
   });
@@ -390,28 +397,38 @@ check("x-bluffing: the v2 film's verdict, 77 of 102 fold against a 40% break-eve
 });
 
 check("x-mdf: keep pot ÷ (pot + bet) of the range", () => {
-  for (const [spotId, pot, bet, range] of [["md-turn", 90, 60, 35], ["md-guided", 100, 75, 42], ["md-practice", 100, 50, 30], ["md-fresh", 120, 40, 32]]) {
+  for (const [spotId, pot, bet, range] of [["md-turn", 90, 60, 35], ["md-guided", 60, 90, 40], ["md-practice", 100, 50, 30], ["md-fresh", 120, 40, 32]]) {
     const spot = spotOf("x-mdf", spotId);
     assert.equal(spot.range, range);
     const keep = mdf(pot, bet).mul(range); assert.equal(keep.d, 1n, `${spotId} whole combos`);
     assert.equal(keyOf("x-mdf", spotId), `keep-${keep}`);
     eqQ(mdf(pot, bet).add(beFold(pot, bet)), 1, `${spotId} MDF + break-even = 1`);
   }
-  // The guided spot's "fold 60% and his bluffs make 30 each".
-  eqQ(q("0.6").mul(100).sub(q("0.4").mul(75)), 30, "bluffer at 60% folds");
+  // The guided overbet's "fold 70%: +15 a bluff" (v2; the film's own 100 / 75 / 42 river is not reused).
+  eqQ(q("0.7").mul(60).sub(q("0.3").mul(90)), 15, "bluffer at 70% folds");
+  eqQ(mdf(60, 90).mul(40), 16, "keep 16 of 40"); eqQ(q(40).sub(16), 24, "fold the weakest 24");
   assert.equal(whyKey("x-mdf"), "mdf");
   assert.equal(Number(beFold(90, 60).mul(35).num()), 14, "the near-miss keeps 14");
 });
 
 check("x-check-raise: hand classes, outs and the raise's price", () => {
-  eqQ(q(70 - 20).div(60 + 70 + 70), q(1, 4), "his price to call the raise");
-  assert.equal(60 + 20 + 20, 100, "just calling makes 100");
-  const [six, seven, tens, nine] = [["6c", "6h", "9s", "6d", "2c"], ["7h", "7c", "9s", "6d", "2c"], ["Ts", "9s", "Js", "8d", "3s"], ["9d", "9s", "Qh", "7c", "4s"]];
-  assert.equal(ev(six).rank, RANK.trips, "a set");
-  assert.equal(ev(seven).rank, RANK.pair); assert.ok(ri("7h") < ri("9s"), "sevens are below the top card");
-  assert.equal(ev(nine).rank, RANK.pair); assert.ok(ri("9d") < ri("Qh"), "nines are below the queen");
-  assert.equal(completingCards(["Ts", "9s"], ["Js", "8d", "3s"], "straight").length, 15, "15 outs to a straight or better");
-  assert.equal(unseen(tens).length, 47);
+  // The film's question (v2): 60 / 20 / raise to 70, sevens on 9♠ 6♦ 2♣.
+  eqQ(q(70 - 20).div(60 + 70 + 70), q(1, 4), "the film's price to call the raise");
+  assert.equal(ev(["7h", "7c", "9s", "6d", "2c"]).rank, RANK.pair); assert.ok(ri("7h") < ri("9s"), "sevens are below the top card");
+  // The three hands (v2): each its own flop and money, each raise priced at 25% for him.
+  const crHands = { "cr-guided": [100, 40, 130, 360, 180], "cr-practice": [140, 50, 170, 480, 240], "cr-fresh": [120, 45, 150, 420, 210] };
+  for (const [spotId, [pot, bet, raise, raised, called]] of Object.entries(crHands)) {
+    const spot = spotOf("x-check-raise", spotId);
+    assert.deepEqual([spot.potBefore, spot.bet, spot.sizes.raise], [pot, bet, raise], spotId);
+    eqQ(q(raise - bet).div(pot + raise + raise), q(1, 4), `${spotId}: his price to call the raise`);
+    assert.equal(pot + raise + raise, raised); assert.equal(pot + bet + bet, called);
+    assert.ok(!(pot === 60 && bet === 20) && raise !== 70, `${spotId}: not the film's money`);
+  }
+  const [five, qj, eight] = [["5c", "5h", "Ks", "9d", "5d"], ["Qh", "Jh", "Th", "9c", "4h"], ["8d", "8s", "Jh", "6c", "3s"]];
+  assert.equal(ev(five).rank, RANK.trips, "a set");
+  assert.equal(ev(eight).rank, RANK.pair); assert.ok(ri("8d") < ri("Jh"), "eights are below the jack");
+  assert.equal(completingCards(["Qh", "Jh"], ["Th", "9c", "4h"], "straight").length, 15, "15 outs to a straight or better");
+  assert.equal(unseen(qj).length, 47);
   assert.deepEqual(["cr-turn", "cr-guided", "cr-practice", "cr-fresh"].map((s) => keyOf("x-check-raise", s)), ["call", "raise", "raise", "call"]);
   assert.equal(whyKey("x-check-raise"), "folds-worse");
 });
@@ -424,8 +441,10 @@ check("x-barrels-blockers: the three-street sizes and the blocker counts", () =>
     assert.equal(good.length, 1, `${spotId}: one size fits`);
     return good[0].id;
   };
-  assert.equal(keyOf("x-barrels-blockers", "bk-guided"), fits("bk-guided", 100, 350));
-  eqQ(plan(100, q(1, 2)).final, 800, "pot ends at 800"); eqQ(q(350, 100), q(7, 2), "SPR 3.5");
+  assert.equal(keyOf("x-barrels-blockers", "bk-guided"), fits("bk-guided", 80, 585));
+  eqQ(plan(80, q(3, 4)).final, 1250, "pot ends at 1,250"); eqQ(plan(80, q(1, 2)).total, 280, "half pot reaches 280");
+  assert.equal(585 - 80 - 240, 265, "pot-size bets, 80 then 240, leave 265"); eqQ(q(80).add(160).add(480), 720, "for a river bet of 720");
+  eqQ(plan(100, q(1, 2)).final, 800, "the film's plan: pot ends at 800"); eqQ(q(350, 100), q(7, 2), "the film's SPR 3.5");
   assert.equal(keyOf("x-barrels-blockers", "bk-practice"), fits("bk-practice", 50, 650));
   eqQ(plan(50, q(1, 2)).total, 175, "half pot reaches 175");
   eqQ(q(100).add(q(250).mul(2)), 600, "twice the pot puts 600 in by the turn");
@@ -453,9 +472,17 @@ check("h-range-narrowing: every count enumerated from the caller range", () => {
   const s1 = live(CALLER, fl), s2 = s1.filter((h) => flopRule(h, fl)), s3 = s2.filter((h) => !h.includes("2s")).filter(turnRule), s4 = s3.filter((h) => !h.includes("Kh"));
   assert.deepEqual([live(CALLER, []).length, s1.length, s2.length, s3.length, s4.length], [186, 162, 118, 85, 82]);
   const t4 = tally(s4, rv);
-  assert.deepEqual([t4.strong, t4.top + t4.pair, t4.draw, t4.air], [18, 48, 16, 0]);
-  const biggest = [["strong", t4.strong], ["one-pair", t4.top + t4.pair], ["missed", t4.draw]].sort((a, b) => b[1] - a[1])[0][0];
+  assert.deepEqual([t4.strong, t4.top + t4.pair, t4.draw, t4.air], [18, 48, 16, 0], "the film's river sort");
+  // Guided (v2): the same range and rules on a new line, 9♠ 8♠ 4♦ / 2♣ / K♥.
+  const gf = ["9s", "8s", "4d"], gt = [...gf, "2c"], gr = [...gt, "Kh"];
+  const gTurn = (h) => { const x = tier(h, gt); if (x === "strong" || x === "top") return true; if (x === "pair") return best([...h, ...gt])[1] >= ri("8"); return straightDraw([...h, ...gt]); };
+  const g1 = live(CALLER, gf), g2 = g1.filter((h) => flopRule(h, gf)), g3 = g2.filter((h) => !h.includes("2c")).filter(gTurn), g4 = g3.filter((h) => !h.includes("Kh"));
+  assert.deepEqual([g1.length, g2.length, g3.length, g4.length], [170, 119, 79, 79]);
+  const gs = tally(g4, gr);
+  assert.deepEqual([gs.strong, gs.top + gs.pair, gs.draw, gs.air], [15, 18, 46, 0]);
+  const biggest = [["strong", gs.strong], ["one-pair", gs.top + gs.pair], ["missed", gs.draw]].sort((a, b) => b[1] - a[1])[0][0];
   assert.equal(keyOf("h-range-narrowing", "rn-guided"), biggest);
+  assert.equal(spotOf("h-range-narrowing", "rn-guided").board.join(" "), gr.join(" "));
   const near = (n, spotId) => spotOf("h-range-narrowing", spotId).bands.map((b) => b.id).sort((a, b) => Math.abs(n - Number(a.split("-")[1])) - Math.abs(n - Number(b.split("-")[1])))[0];
   const tf = ["Qd", "6c", "3s"], tl = live(CALLER, tf), tt = tally(tl, tf);
   assert.deepEqual([tl.length, tl.length - tt.air, tt.air, tt.strong, tt.top, tt.pair, tt.draw], [171, 79, 92, 6, 15, 54, 4]);
@@ -475,8 +502,13 @@ check("h-range-narrowing: every count enumerated from the caller range", () => {
 check("h-player-types: the habits table and the sample bands", () => {
   const types = { station: [45, 6], nit: [12, 10], tag: [22, 18], lag: [34, 27], balanced: [24, 19] };
   const nearest = (played, raised, ids) => ids.sort((a, b) => Math.hypot(types[a][0] - played, types[a][1] - raised) - Math.hypot(types[b][0] - played, types[b][1] - raised))[0];
-  assert.equal(keyOf("h-player-types", "pt-guided"), nearest(45, 6, ["station", "nit", "lag"]));
-  assert.equal(keyOf("h-player-types", "pt-practice"), nearest(34, 27, ["tag", "lag", "station"]));
+  // v2: new players read against the cast, not the film's own cards (45 / 6, 34 / 27).
+  assert.equal(keyOf("h-player-types", "pt-guided"), nearest(50, 8, ["station", "nit", "lag"]));
+  assert.equal(keyOf("h-player-types", "pt-practice"), nearest(19, 15, ["tag", "lag", "station"]));
+  for (const [spotId, played, raised] of [["pt-guided", 50, 8], ["pt-practice", 19, 15]]) {
+    const spot = spotOf("h-player-types", spotId); assert.deepEqual([spot.played, spot.raised], [played, raised]);
+    assert.ok(!Object.values(types).some(([p, r]) => p === played && r === raised), `${spotId} is not a cast card`);
+  }
   assert.equal(keyOf("h-player-types", "pt-turn"), "nit");
   assert.ok(types.nit[0] < types.balanced[0] && types.nit[1] / types.nit[0] > 0.8, "the nit plays few and raises most");
   const se = (p, n) => Math.sqrt((p * (1 - p)) / n);
@@ -496,13 +528,22 @@ check("h-exploits: one break-even, a different given habit each time", () => {
   assert.equal(keyOf("h-exploits", "ex-turn"), bluff(90, 60, "0.2").gt(0) ? "bet" : "check");
   eqQ(beFold(90, 30), q(1, 4), "a 30 bluff needs 25%"); assert.ok(q("0.2").lt(q(1, 4)));
   const value = (bet, worse) => q(worse).mul(bet).sub(q(1).sub(worse).mul(bet));
-  eqQ(value(60, "0.6"), 12, "station value"); eqQ(value(60, "0.2"), -36, "nit value");
-  assert.equal(keyOf("h-exploits", "ex-guided"), "bet"); assert.equal(keyOf("h-exploits", "ex-practice"), "check");
+  eqQ(value(60, "0.6"), 12, "the film's station value"); eqQ(value(60, "0.2"), -36, "the film's nit value");
+  // v2: guided is a thin value bet of 70 into 100 against the station (55% of his calls worse)
+  const g = spotOf("h-exploits", "ex-guided");
+  assert.deepEqual([g.potBefore ?? def("h-exploits").hands["ex-guided"].start.pot, g.sizes.bet, g.given.worseCalls], [100, 70, 55]);
+  eqQ(value(70, "0.55"), 7, "+7 a call"); assert.equal(keyOf("h-exploits", "ex-guided"), value(70, "0.55").gt(0) ? "bet" : "check");
+  // v2: practice is a bluff of 50 into 80 against the nit (folds 65%)
+  const p = spotOf("h-exploits", "ex-practice");
+  assert.deepEqual([def("h-exploits").hands["ex-practice"].start.pot, p.sizes.bet, p.given.foldRate], [80, 50, 65]);
+  eqQ(beFold(80, 50), q(5, 13), "38.5%"); assert.equal(pct(beFold(80, 50)), 38.5); assert.ok(q("0.65").gt(beFold(80, 50)));
+  eqQ(bluff(80, 50, "0.65"), q("34.5"), "+34.5"); assert.equal(keyOf("h-exploits", "ex-practice"), bluff(80, 50, "0.65").gt(0) ? "bet" : "check");
   eqQ(price(120, 80), q(2, 7), "28.6%"); assert.equal(pct(q(2, 7)), 28.6);
   const lag = q(1, 2).mul(200).sub(q(1, 2).mul(80)); eqQ(lag, 60, "+60");
   assert.equal(keyOf("h-exploits", "ex-fresh"), lag.gt(0) ? "call" : "fold");
-  const hands = { "ex-guided": ["9h", "9c", "Kh", "8d", "5c", "3s", "2h"], "ex-practice": ["Th", "9d", "Ts", "7h", "4c", "3d", "2c"], "ex-fresh": ["Jc", "Jd", "Ad", "9s", "6h", "4c", "2d"] };
-  for (const cards of Object.values(hands)) assert.equal(ev(cards).rank, RANK.pair, "a one-pair bluff-catcher or medium pair");
+  const hands = { "ex-guided": ["8h", "8c", "Qd", "7s", "5h", "3c", "2d"], "ex-fresh": ["Jc", "Jd", "Ad", "9s", "6h", "4c", "2d"] };
+  for (const cards of Object.values(hands)) assert.equal(ev(cards).rank, RANK.pair, "a medium pair or a one-pair bluff-catcher");
+  assert.ok(ev(["9s", "8s", "Ac", "Kd", "6h", "3s", "2c"]).rank < RANK.pair, "practice: nothing, a pure bluff");
   assert.equal(whyKey("h-exploits"), "folds");
 });
 
@@ -534,7 +575,7 @@ check("g-toy-games: Kuhn poker verified by best response, and the same rates at 
 });
 
 check("g-balance: bluffs ÷ all bets = bet ÷ (pot + 2·bet), and the caller is indifferent", () => {
-  for (const [spotId, pot, bet, value] of [["ba-turn", 120, 80, 25], ["ba-guided", 100, 100, 20], ["ba-practice", 100, 50, 24], ["ba-fresh", 90, 60, 20]]) {
+  for (const [spotId, pot, bet, value] of [["ba-turn", 120, 80, 25], ["ba-guided", 80, 80, 18], ["ba-practice", 100, 50, 24], ["ba-fresh", 90, 60, 20]]) {
     const s = bluffShare(pot, bet);
     const bluffs = q(value).mul(s).div(q(1).sub(s)); assert.equal(bluffs.d, 1n, `${spotId} whole bluffs`);
     assert.equal(keyOf("g-balance", spotId), `bluffs-${bluffs}`);
@@ -542,6 +583,8 @@ check("g-balance: bluffs ÷ all bets = bet ÷ (pot + 2·bet), and the caller is 
     eqQ(bluffs.div(total).mul(pot + bet).sub(q(value).div(total).mul(bet)), 0, `${spotId} call worth 0`);
     eqQ(q(pot + bet, bet), q(value).div(bluffs), `${spotId} value : bluffs = (pot + bet) : bet`);
   }
+  { const g = spotOf("g-balance", "ba-guided"); assert.deepEqual([g.pot, g.betSize, g.value], [80, 80, 18], "the guided spot is not the film's 100 / 100 / 20"); }
+  assert.equal(Number(q(9, 27).mul(160).num().toFixed(1)), 53.3); assert.equal(Number(q(18, 27).mul(80).num().toFixed(1)), 53.3);
   eqQ(bluffShare(120, 80), q(2, 7), "2/7"); eqQ(beFold(120, 80), q(2, 5), "the near-miss uses 2/5");
   eqQ(bluffShare(100, 50), q(1, 4)); eqQ(bluffShare(100, 100), q(1, 3)); eqQ(bluffShare(100, 200), q(2, 5));
   assert.equal(Number(q(2000, 35).num().toFixed(1)), 57.1); assert.equal(Number(q(8 * 150, 28).num().toFixed(1)), 42.9);
@@ -550,8 +593,17 @@ check("g-balance: bluffs ÷ all bets = bet ÷ (pot + 2·bet), and the caller is 
 
 check("g-gto-to-exploit: one formula, a measured input, and the weight of the evidence", () => {
   const callPot = (s) => q(s).mul(200).sub(q(1).sub(s).mul(100));
-  eqQ(callPot(q(1, 3)), 0, "balanced"); eqQ(callPot("0.1"), -70, "under-bluffer"); eqQ(callPot("0.5"), 50, "over-bluffer");
-  assert.equal(keyOf("g-gto-to-exploit", "ge-guided"), "fold"); assert.equal(keyOf("g-gto-to-exploit", "ge-practice"), "call");
+  eqQ(callPot(q(1, 3)), 0, "balanced"); eqQ(callPot("0.1"), -70, "the film's under-bluffer"); eqQ(callPot("0.5"), 50, "the film's over-bluffer");
+  // v2: the guided and practice hands take the formula to new sizes and measured rates.
+  const callAt = (pot, bet, s) => q(s).mul(q(pot).add(bet)).sub(q(1).sub(s).mul(bet));
+  for (const [spotId, pot, bet, share, ev] of [["ge-guided", 100, 50, "0.15", -20], ["ge-practice", 120, 90, "0.4", 30]]) {
+    const spot = spotOf("g-gto-to-exploit", spotId);
+    assert.deepEqual([spot.potBefore, spot.bet, spot.call, spot.given.bluffShare], [pot, bet, bet, Number(q(share).mul(100))]);
+    eqQ(callAt(pot, bet, bluffShare(pot, bet)), 0, `${spotId} balanced is worth 0`);
+    eqQ(callAt(pot, bet, share), ev, `${spotId} call EV`);
+    assert.equal(keyOf("g-gto-to-exploit", spotId), callAt(pot, bet, share).gt(0) ? "call" : "fold");
+  }
+  eqQ(bluffShare(100, 50), q(1, 4), "balanced at half pot 25%"); eqQ(bluffShare(120, 90), q(3, 10), "balanced at 90 into 120 30%");
   const p5 = q(2, 3).pow(5), p15 = q(2, 3).pow(15), p20 = q(2, 3).pow(20);
   eqQ(p5, q(32, 243), "(2/3)^5"); assert.equal(pct(p5), 13.2); assert.equal(pct(p15, 2), 0.23); assert.equal(pct(p20, 3), 0.03);
   // Weak evidence (a balanced bettor shows it more than 5% of the time) keeps the default call;
@@ -567,9 +619,12 @@ check("y-bankroll: buy-ins and the toy model's ruin rows", () => {
   assert.deepEqual([5, 10, 20].map((n) => pct(ruin(n))), [36.7, 13.4, 1.8]); assert.equal(pct(ruin(40), 3), 0.033);
   eqQ(q("0.55").sub("0.45"), q(1, 10), "edge");
   assert.equal(keyOf("y-bankroll", "br-turn"), ruin(5).gt(0) ? "yes" : "no");
-  assert.equal(keyOf("y-bankroll", "br-guided"), `bi-${2000 / 100}`);
+  // v2: new bankrolls, not the film's 2,000 (20 buy-ins at 100, 40 at 50).
+  assert.equal(keyOf("y-bankroll", "br-guided"), `bi-${600 / 60}`); assert.equal(pct(ruin(10)), 13.4, "a thin cushion");
   const pick = (bank, games, under) => games.filter((g) => ruin(bank / g).lt(q(under, 100)));
-  assert.deepEqual(pick(2000, [100, 50], 1), [50]); assert.equal(keyOf("y-bankroll", "br-practice"), "game-50");
+  assert.deepEqual(pick(3200, [160, 80], 1), [80]); assert.equal(keyOf("y-bankroll", "br-practice"), "game-80");
+  assert.deepEqual([3200 / 160, 3200 / 80], [20, 40]);
+  for (const spotId of ["br-guided", "br-practice"]) assert.notEqual(spotOf("y-bankroll", spotId).bankroll, 2000, `${spotId} is not the film's bankroll`);
   assert.deepEqual(pick(1500, [150, 75], 5), [75]); assert.equal(keyOf("y-bankroll", "br-fresh"), "game-75");
   assert.equal(whyKey("y-bankroll"), "cushion");
 });
@@ -577,7 +632,11 @@ check("y-bankroll: buy-ins and the toy model's ruin rows", () => {
 check("y-tilt: price against chance, whatever the streak", () => {
   const decide = (pot, bet, win) => (q(win).gt(price(pot, bet)) ? "call" : "fold");
   eqQ(price(100, 50), q(1, 4)); eqQ(callEV(100, 50, "0.3"), 10, "+10");
-  assert.equal(keyOf("y-tilt", "tl-turn"), decide(100, 50, "0.3")); assert.equal(keyOf("y-tilt", "tl-guided"), decide(100, 50, "0.3"));
+  assert.equal(keyOf("y-tilt", "tl-turn"), decide(100, 50, "0.3"));
+  // v2: guided leaves the film's 50 into 100 at 30%: after one loss, all-in 70 into 140 at 35%
+  const tg = spotOf("y-tilt", "tl-guided");
+  assert.deepEqual([tg.potBefore, tg.bet, tg.given.equity, tg.given.lossesInRow], [140, 70, 35, 1]);
+  eqQ(price(140, 70), q(1, 4)); eqQ(callEV(140, 70, "0.35"), 28, "+28"); assert.equal(keyOf("y-tilt", "tl-guided"), decide(140, 70, "0.35"));
   eqQ(price(120, 60), q(1, 4)); eqQ(callEV(120, 60, "0.2"), -12, "−12"); assert.equal(keyOf("y-tilt", "tl-practice"), decide(120, 60, "0.2"));
   eqQ(price(150, 50), q(1, 5)); eqQ(callEV(150, 50, "0.25"), q("12.5"), "+12.5"); assert.equal(keyOf("y-tilt", "tl-fresh"), decide(150, 50, "0.25"));
   assert.equal(pct(q("0.7").pow(3)), 34.3); assert.equal(pct(q("0.7").pow(5)), 16.8);
@@ -597,14 +656,30 @@ check("o-multiway: hands ahead against random hands, and folds that multiply", (
   const hands = pairsOf(unseen(hero, board));
   const ahead = hands.filter((h) => learn.compareHands ? learn.compareHands(ev([...h, ...board]), mine) > 0 : require("../src/eval/pokerEvaluator.js").compareHands(ev([...h, ...board]), mine) > 0).length;
   assert.equal(hands.length, 1081); assert.equal(ahead, 43); assert.equal(pct(q(43, 1081)), 4.0);
-  // 7.8% and 11.5% (two and three opponents) are enumerated exactly by the plan script below.
-  assert.equal(keyOf("o-multiway", "mw-guided"), "p11");
+  // The film's 7.8% and 11.5% (two and three opponents) are enumerated exactly by the plan script below.
+  // Guided (v2): second pair, 9♠ 8♠ on K♦ 9♣ 4♥, against one and against two random hands, every deal.
+  {
+    const gh = ["9s", "8s"], gb = ["Kd", "9c", "4h"];
+    assert.deepEqual(spotOf("o-multiway", "mw-guided").board, gb); assert.deepEqual(spotOf("o-multiway", "mw-guided").hero, gh);
+    const gm = ev([...gh, ...gb]); const cmp = require("../src/eval/pokerEvaluator.js").compareHands;
+    const gs = pairsOf(unseen(gh, gb)); const up = gs.map((h) => cmp(ev([...h, ...gb]), gm) > 0);
+    assert.equal(up.filter(Boolean).length, 201); assert.equal(pct(q(201, 1081)), 18.6);
+    let deals = 0, safe = 0;
+    for (let a = 0; a < gs.length; a += 1) for (let b = a + 1; b < gs.length; b += 1) {
+      if (gs[b].includes(gs[a][0]) || gs[b].includes(gs[a][1])) continue;
+      deals += 1; if (!up[a] && !up[b]) safe += 1;
+    }
+    assert.deepEqual([deals, safe], [535095, 352014]); assert.equal(pct(q(deals - safe, deals)), 34.2);
+    assert.equal(keyOf("o-multiway", "mw-guided"), "p34");
+  }
   const need = (pot, bet) => beFold(pot, bet);
-  eqQ(need(90, 60), q(2, 5)); eqQ(need(90, 45), q(1, 3));
+  eqQ(need(90, 60), q(2, 5)); eqQ(need(90, 45), q(1, 3)); eqQ(need(90, 30), q(1, 4));
   const all = (f, n) => q(f).pow(n);
   assert.equal(keyOf("o-multiway", "mw-turn"), all("0.7", 2).gt(need(90, 60)) ? "bet" : "check"); eqQ(all("0.7", 2), q("0.49"), "49%");
-  assert.equal(keyOf("o-multiway", "mw-practice"), all("0.6", 3).gt(need(90, 60)) ? "bet" : "check"); eqQ(all("0.6", 3), q("0.216"), "21.6%");
-  assert.equal(keyOf("o-multiway", "mw-fresh"), all("0.6", 2).gt(need(90, 45)) ? "bet" : "check"); eqQ(all("0.6", 2), q("0.36"), "36%");
+  eqQ(all("0.6", 3), q("0.216"), "the film's 21.6%"); eqQ(all("0.6", 2), q("0.36"), "the film's 36%");
+  assert.equal(keyOf("o-multiway", "mw-practice"), all("0.65", 3).gt(need(90, 45)) ? "bet" : "check"); eqQ(all("0.65", 3), q("0.274625"), "27.5%"); assert.equal(pct(all("0.65", 3)), 27.5);
+  assert.ok(all("0.65", 2).gt(need(90, 45)), "two of them at 65% would be enough");
+  assert.equal(keyOf("o-multiway", "mw-fresh"), all("0.55", 2).gt(need(90, 30)) ? "bet" : "check"); eqQ(all("0.55", 2), q("0.3025"), "30.25%");
   eqQ(all("0.7", 3), q("0.343"), "three at 70%");
   assert.equal(whyKey("o-multiway"), "both");
 });
@@ -612,7 +687,9 @@ check("o-multiway: hands ahead against random hands, and folds that multiply", (
 check("o-heads-up: what waiting costs, and who acts when", () => {
   const cost = (players) => q(3, 2).div(players);
   assert.equal(Number(cost(9).num().toFixed(2)), 0.17); eqQ(cost(2), q(3, 4)); eqQ(cost(2).div(cost(9)), q(9, 2), "4.5 times");
-  assert.equal(keyOf("o-heads-up", "hu-practice"), "bb-075");
+  // v2: practice prices the three-handed table, not the film's heads-up 0.75 against 0.17.
+  eqQ(cost(3), q(1, 2), "0.5 three-handed"); assert.ok(cost(3).gt(cost(9)) && cost(3).lt(cost(2)), "between a full table and heads-up");
+  assert.equal(keyOf("o-heads-up", "hu-practice"), `bb-0${Number(cost(3).mul(100))}`);
   eqQ(cost(2).div(cost(6)), 3, "3 times six-handed"); assert.equal(keyOf("o-heads-up", "hu-fresh"), "x3");
   assert.equal(pct(q(78, 1326)), 5.9); assert.equal(13 * 6, 78);
   assert.equal(keyOf("o-heads-up", "hu-guided"), "button"); assert.equal(keyOf("o-heads-up", "hu-turn"), "wider");
@@ -624,9 +701,21 @@ check("o-tournaments-icm: prize shares by the Harville recursion", () => {
   assert.deepEqual(now.map((x) => pct(x)), [38.4, 32.8, 28.9]); eqQ(now.reduce((a, b) => a.add(b)), 1, "sum");
   assert.equal(pct(win[2]), 35.4); assert.equal(pct(lose[2]), 20.0);
   const avg = (i, w = q(1, 2)) => w.mul(win[i]).add(q(1).sub(w).mul(lose[i]));
-  assert.equal(pct(avg(2)), 27.7); assert.ok(avg(2).lt(now[2])); assert.equal(keyOf("o-tournaments-icm", "ic-guided"), "fold");
+  assert.equal(pct(avg(2)), 27.7, "the film's short stack"); assert.ok(avg(2).lt(now[2]));
   assert.equal(pct(avg(0)), 38.1); assert.ok(avg(0).lt(now[0])); assert.equal(keyOf("o-tournaments-icm", "ic-turn"), "loses");
-  assert.equal(pct(avg(1)), 34.1); assert.ok(avg(1).gt(now[1])); assert.equal(keyOf("o-tournaments-icm", "ic-practice"), "gains");
+  assert.equal(pct(avg(1)), 34.1, "the film's middle stack"); assert.ok(avg(1).gt(now[1]));
+  // v2: guided and practice on a new table, 6,500 / 2,500 / 1,000, the same payouts.
+  {
+    const n2 = icm([6500, 2500, 1000], PAY), w2 = icm([5500, 2500, 2000], PAY), l2 = icm([7500, 2500, 0], PAY);
+    eqQ(n2.reduce((a, b) => a.add(b)), 1, "new table sums to 1");
+    assert.deepEqual(n2.map((x) => pct(x)), [42.4, 32.4, 25.2]);
+    assert.deepEqual([pct(w2[2]), pct(l2[2]), pct(w2[1]), pct(l2[1])], [29.1, 20.0, 31.2, 35.0]);
+    const half = (i) => q(1, 2).mul(w2[i]).add(q(1, 2).mul(l2[i]));
+    assert.equal(pct(half(2)), 24.6); assert.ok(half(2).lt(n2[2])); assert.equal(keyOf("o-tournaments-icm", "ic-guided"), half(2).gt(n2[2]) ? "call" : "fold");
+    assert.equal(pct(half(1)), 33.1); assert.ok(half(1).gt(n2[1])); assert.equal(keyOf("o-tournaments-icm", "ic-practice"), half(1).gt(n2[1]) ? "gains" : "loses");
+    for (const spotId of ["ic-guided", "ic-practice"]) assert.deepEqual(spotOf("o-tournaments-icm", spotId).stacks, [6500, 2500, 1000]);
+    assert.equal(def("o-tournaments-icm").hands["ic-guided"].seats[0].stack, 1000); assert.equal(def("o-tournaments-icm").hands["ic-practice"].seats[0].stack, 2500);
+  }
   const fresh = avg(2, q(55, 100));
   assert.equal(pct(fresh), 28.5); assert.ok(fresh.lt(now[2])); assert.ok(q(55, 100).mul(4000).gt(2000), "chip-positive");
   assert.equal(keyOf("o-tournaments-icm", "ic-fresh"), "fold");
@@ -640,11 +729,15 @@ check("o-six-max: players still to act behind each seat", () => {
   const SIX = ["UTG", "MP", "CO", "BTN", "SB", "BB"];
   const behind = (seat, folded = []) => SIX.slice(SIX.indexOf(seat) + 1).filter((s) => !folded.includes(s)).length;
   assert.equal(keyOf("o-six-max", "sm-turn"), `behind-${behind("CO")}`);
-  assert.equal(keyOf("o-six-max", "sm-guided"), `behind-${behind("UTG")}`);
-  assert.equal(keyOf("o-six-max", "sm-fresh"), `behind-${behind("MP", ["UTG"])}`);
+  // v2: no step reuses the film's own count (the six-handed first seat's 5, the full table's fourth seat).
+  assert.equal(keyOf("o-six-max", "sm-guided"), `behind-${behind("MP", ["UTG"])}`);
+  assert.equal(keyOf("o-six-max", "sm-fresh"), `behind-${behind("SB", ["UTG", "MP", "CO", "BTN"])}`);
   const fullBehind = (seatNumber) => 9 - seatNumber; // seat 1 is first to act at a full table of 9
-  assert.equal(fullBehind(1), 8); assert.equal(fullBehind(4), behind("UTG"));
-  assert.equal(keyOf("o-six-max", "sm-practice"), "seat-4");
+  assert.equal(fullBehind(1), 8); assert.equal(fullBehind(4), behind("UTG"), "the film's match");
+  const seat = [1, 2, 3, 4, 5, 6, 7, 8].filter((n) => fullBehind(n) === behind("MP", ["UTG"]));
+  assert.deepEqual(seat, [5]); assert.equal(keyOf("o-six-max", "sm-practice"), `seat-${seat[0]}`);
+  const d6 = def("o-six-max");
+  assert.deepEqual([d6.hands["sm-guided"].position, d6.hands["sm-practice"].position, d6.hands["sm-fresh"].position], ["MP", "MP", "SB"]);
   assert.equal(pct(q(40, 1326)), 3.0); assert.equal(6 * 4 + 16, 40, "JJ, QQ, KK, AA and AK: 24 + 16 combos");
   assert.equal(whyKey("o-six-max"), "behind");
 });

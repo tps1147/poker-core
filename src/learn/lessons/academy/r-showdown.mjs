@@ -1,30 +1,44 @@
-// Rules 7, Showdown and Split Pots (r-showdown), v2 lesson. The film has no yourTurn anchor; the
-// guided hand is its hook: Ace Andy bets, everyone folds, and he mucks face down. Practice is the
-// film's split (Q♠ J♦ against Q♥ T♣ on K♣ K♦ 9♥ 9♠ A♥); the fresh hand is the plan's Transfer, a
-// new showdown where the learner taps the winner or a split (the board's two pair, an ace kicker).
+// Rules 7, Showdown and Split Pots (r-showdown), v2 lesson (content version 2). The film has no
+// yourTurn anchor: it asks its own question (Ace Andy bets, everyone folds, he mucks face down: does
+// he win?) and answers it, so the lesson does not re-ask it (`turnSpot`, endAsk "skip"). The guided
+// hand follows that idea from the other seat: you bet the river with nine high and Ace Andy folds: do
+// you have to show? Practice is a showdown the film does not show (your set of kings against his
+// straight, one of his cards playing); the fresh hand is the plan's Transfer, a new showdown where the
+// learner taps the winner or a split (the board's two pair, an ace kicker).
 // Keys: answerKeys/r-showdown.mjs (package root, not shipped).
 import { bands, huHand, options, v2Lesson, v2Stages } from "./kitEarly.mjs";
 
 const WHO = bands(["you", "You"], ["andy", "Ace Andy"], ["split", "Split pot"]);
-const guided = { street: "flop", hero: ["8c", "6c"], board: ["Ad", "Jh", "5s"] };
-const practice = { street: "river", hero: ["Qs", "Jd"], board: ["Kc", "Kd", "9h", "9s", "Ah"], versus: ["Qh", "Tc"] };
+const film = { street: "flop", hero: ["8c", "6c"], board: ["Ad", "Jh", "5s"] };
+const guided = { street: "river", hero: ["9s", "8s"], board: ["Kd", "Tc", "4h", "2s", "3c"] };
+const practice = { street: "river", hero: ["Ks", "Kh"], board: ["5c", "6d", "7h", "8s", "Kc"], versus: ["9d", "2c"] };
 const fresh = { street: "river", hero: ["As", "2d"], board: ["Qs", "Qh", "7c", "7d", "3s"], versus: ["Kh", "Jc"] };
+
+// The film's own question (asked and answered in the film).
+const turnSpot = {
+  decision: "estimate", ...film, potBefore: 120, bet: 60, call: 60,
+  bands: bands(["yes", "Yes: everyone else folded"], ["no", "No: he must show to win"]), dockPrompt: "If you fold, does he win?",
+  title: "Can you win without showing?",
+  prompt: "Ace Andy bets 60 into 120 on the flop. Say you fold, and he slides his cards into the muck face down. Does he win the pot?",
+  hint: "A pot is won at a showdown, or when everyone else has folded.",
+  explanation: "Yes. When everyone else folds there is no showdown: the last player in takes the pot, and nobody sees his cards.",
+};
 
 const spots = {
   "sd-guided": {
-    decision: "estimate", ...guided, potBefore: 120, bet: 60, call: 60,
-    bands: bands(["yes", "Yes: everyone else folded"], ["no", "No: he must show to win"]), dockPrompt: "If you fold, does he win?",
-    title: "Can you win without showing?",
-    prompt: "Ace Andy bets 60 into 120 on the flop. Say you fold, and he slides his cards into the muck face down. Does he win the pot?",
-    hint: "A pot is won at a showdown, or when everyone else has folded.",
-    explanation: "Yes. When everyone else folds there is no showdown: the last player in takes the pot, and nobody sees his cards.",
+    decision: "estimate", ...guided, potBefore: 140, bet: 70,
+    bands: bands(["yes", "Yes: you must show to win"], ["no", "No: he folded, the pot is yours"]), dockPrompt: "Do you have to show?",
+    title: "Your bet, his fold.",
+    prompt: "You missed with 9♠ 8♠ and bet 70 into 140 on the river anyway. Ace Andy folds. Do you have to show your nine high to take the pot?",
+    hint: "Is there a showdown when only one player is left in the hand?",
+    explanation: "No. He folded, so there is no showdown: the pot is yours and your cards can go into the muck face down. Nobody ever has to show a hand that wins by a fold.",
   },
   "sd-practice": {
     decision: "estimate", ...practice, bands: WHO, dockPrompt: "Who wins at showdown?",
     title: "Called on the river.",
-    prompt: "You hold Q♠ J♦. Ace Andy holds Q♥ T♣. The board is K♣ K♦ 9♥ 9♠ A♥, and the pot is 300. Who wins?",
-    hint: "Build each best five. Does either player’s own card make it better than the board?",
-    explanation: "The board’s K-K-9-9-A is the best five for both of you; neither queen, jack nor ten beats the ace. Same five, so the 300 splits, 150 each.",
+    prompt: "You hold K♠ K♥. Ace Andy holds 9♦ 2♣. The board is 5♣ 6♦ 7♥ 8♠ K♣, and the pot is 240. Who wins?",
+    hint: "Build each best five. Can one of his cards finish something on this board?",
+    explanation: "You have three kings, but his 9♦ completes 5-6-7-8-9, a straight, and a straight beats three of a kind. One of his cards plays, and the 240 is his.",
   },
   "sd-fresh": {
     decision: "estimate", ...fresh, bands: WHO, dockPrompt: "Who wins at showdown?",
@@ -36,14 +50,14 @@ const spots = {
 };
 
 const definition = v2Lesson({
-  node: "r-showdown", film: "r-showdown", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 3,
+  node: "r-showdown", version: 2, film: "r-showdown", coach: "knox", access: "free", track: "How a Hand Plays", minutes: 3,
   title: "Fold, or the best five.", kicker: "Exact ties split.",
   assumptions: "A pot is won when everyone else folds, with no cards shown, or at showdown by the best five. Exact ties split the pot evenly. Showdown hands are shown in the question.",
   stages: v2Stages({
     welcome: { heading: "Can you win without showing?", em: "Yes, or no?", lead: "Watch three showdowns, then call the winner, or the split, at the table.", cta: "Watch with Knox" },
-    film: { upNext: "Play Knox’s hand", film: "r-showdown", at: null, spot: spots["sd-guided"] },
+    film: { upNext: "Play your river", film: "r-showdown", at: null, endAsk: "skip", spot: turnSpot },
     hands: [
-      { id: "sd-guided", label: "Knox’s hand", coachLine: "The film’s fold. Who wins?" },
+      { id: "sd-guided", label: "Your river", coachLine: "You bet, he folds. Show?" },
       { id: "sd-practice", label: "Practice", coachLine: "A showdown this time." },
       { id: "sd-fresh", label: "Fresh hand", coachLine: "New board. Winner or split?" },
     ],
@@ -58,8 +72,8 @@ const definition = v2Lesson({
   }),
   spots,
   hands: {
-    "sd-guided": huHand("sd-guided", { hero: guided.hero, board: guided.board, pot: 120, acts: [{ seat: "opponent", action: "bet", amount: 60 }] }),
-    "sd-practice": huHand("sd-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 300 }),
+    "sd-guided": huHand("sd-guided", { hero: guided.hero, board: guided.board, pot: 140, acts: [{ seat: "hero", action: "bet", amount: 70 }, { seat: "opponent", action: "fold" }] }),
+    "sd-practice": huHand("sd-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 240 }),
     "sd-fresh": huHand("sd-fresh", { hero: fresh.hero, board: fresh.board, versus: fresh.versus, pot: 200 }),
   },
 });

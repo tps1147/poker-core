@@ -1,10 +1,12 @@
-// x-mdf, Defending Against Bets (Pressure and Defense), academy v2 definition 1.
+// x-mdf, Defending Against Bets (Pressure and Defense), academy v2 definition, content version 2.
 // Film: src-academy-x-mdf-v2 (91 s). canon.yourTurn = "yourTurn" at 66.97 s: "Your turn. 90 in the
 // pot, he bets 60, 35 combos." The film reveals 90 ÷ 150 = 3/5 and "Defend 21".
 // Plan: docs/v1-feature/academy/plans/pressure.md (x-mdf). Keep at least pot ÷ (pot + bet) of your
-// range; the range sizes (42, 35 and the new ones here) are given illustrations, labelled.
+// range; the range sizes (the film's 42 and 35, the 40, 30 and 32 here) are given illustrations, labelled.
 //   Your turn   pot 90, bet 60, 35 combos -> keep 21 (3/5)
-//   Guided      the film's worked river: pot 100, bet 75, 42 combos -> keep 24 (4/7)
+//   Guided      an overbet, 90 into 60, 40 combos -> keep 16 (2/5). v2 (2026-10-09): v1 replayed the
+//               film's worked river (pot 100, bet 75, 42 combos, keep 24), so the guided hand now
+//               takes the rule to a size the film never works.
 //   Practice    pot 100, bet 50 (half pot), 30 combos -> keep 20 (2/3)
 //   Fresh       pot 120, bet 40 (a third of the pot), 32 combos -> keep 24 (3/4), changed size and count
 // Keys: answerKeys/x-mdf.mjs. Every number: test/academyLessonsB.test.mjs.
@@ -23,13 +25,13 @@ const turnSpot = {
   explanation: "Keep 90 ÷ (90 + 60) = 90 ÷ 150 = 3/5 of your range. 3/5 of 35 is 21: defend 21 and fold the weakest 14.",
 };
 
-const guided = river(["Jd", "Jc"], ["Qs", "8d", "5c", "3h", "2s"], 100, 75);
+const guided = river(["Jd", "Jc"], ["Qs", "8d", "5c", "3h", "2s"], 60, 90);
 const practice = river(["Kc", "Tc"], ["Ah", "Td", "6h", "4s", "2c"], 100, 50);
 const fresh = river(["Qs", "9s"], ["Kh", "9c", "7d", "4c", "2h"], 120, 40);
 
 const definition = {
   ...definitionBase({
-    node: "x-mdf", conceptId: "t4-mdf-bluffcatch", coach: "knox", title: "Defend enough.", kicker: "Fold too much and any bluff wins.",
+    node: "x-mdf", version: 2, conceptId: "t4-mdf-bluffcatch", coach: "knox", title: "Defend enough.", kicker: "Fold too much and any bluff wins.",
     track: "pressure", chapter: "Pressure and Defense", minutes: 5,
     assumptions: "Heads-up, no rake. He bets into you on the river and you either keep a hand (call) or fold it. Your range is given as a count of combos, an illustration, never read from his cards. The rule is the default, minimum defense: keep at least pot ÷ (pot + bet) of your range, so his bluffs earn nothing. It is not a law: a player who never bluffs is the next track’s question.",
   }),
@@ -42,7 +44,7 @@ const definition = {
       { id: "beaten", text: "Because only 21 of my combos beat the hands he bets for value.", fix: "Defending isn’t about beating his value bets. It’s how much you keep so his bluffs earn nothing." },
       { id: "breakeven", text: "His bluff needs 60 ÷ 150 = 40% folds, so I keep 40% of my range.", fix: "40% is the share you can fold. You keep the other 60%: 21 of 35." },
     ]),
-    decision("md-guided", "md-guided", "guided", "Knox’s river", "Knox’s river. Count what you keep.", "Try a practice hand"),
+    decision("md-guided", "md-guided", "guided", "Knox’s river", "Knox’s river. A bet bigger than the pot.", "Try a practice hand"),
     decision("md-practice", "md-practice", "practice", "Practice", "A smaller bet. Same rule.", "Try a fresh hand"),
     decision("md-fresh", "md-fresh", "fresh", "Fresh hand", "Your count.", "See your recap"),
     takeaway({
@@ -54,13 +56,13 @@ const definition = {
   ],
   spots: {
     "md-guided": {
-      decision: "estimate", ...guided, range: 42,
-      bands: keepBands(18, 24, 42),
+      decision: "estimate", ...guided, range: 40,
+      bands: keepBands(16, 24, 40),
       dockPrompt: "How many combos do you keep?",
-      title: "He bets 75 into 100. How many do you keep?",
-      prompt: "Knox’s river. The pot is 100 and Ace Andy bets 75. Your range is 42 combos (an illustration). How many must you keep?",
-      hint: "Pot over the pot plus the bet, then take that share of 42.",
-      explanation: "100 ÷ (100 + 75) = 100 ÷ 175 = 4/7. 4/7 of 42 is 24: keep 24, fold the weakest 18. Fold 60% instead and his bluffs make 30 each.",
+      title: "He bets 90 into 60. How many do you keep?",
+      prompt: "Knox’s river. The pot is 60 and Ace Andy bets 90, more than the pot. Your range is 40 combos (an illustration). How many must you keep?",
+      hint: "Pot over the pot plus the bet, then take that share of 40.",
+      explanation: "60 ÷ (60 + 90) = 60 ÷ 150 = 2/5. 2/5 of 40 is 16: keep 16, fold the weakest 24. Fold 70% instead and each bluff wins 60 seven times in 10 and loses 90 three times: +15 a bluff.",
       focus: ["Jd", "Jc"],
     },
     "md-practice": {
@@ -83,7 +85,7 @@ const definition = {
     },
   },
   hands: {
-    "md-guided": huHand("md-guided", { ...guided, pot: 100, bet: 75, decisions: ["md-guided"] }),
+    "md-guided": huHand("md-guided", { ...guided, pot: 60, bet: 90, decisions: ["md-guided"] }),
     "md-practice": huHand("md-practice", { ...practice, pot: 100, bet: 50, decisions: ["md-practice"] }),
     "md-fresh": huHand("md-fresh", { ...fresh, pot: 120, bet: 40, decisions: ["md-fresh"] }),
   },

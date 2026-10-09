@@ -5,7 +5,10 @@
 //   - askAt falls at or after the end of the last word of its cue, and never inside spoken words
 //   - askAt comes before upNext (and before a spoken "Up next" line)
 //   - the held frame is still (never a frame of a wipe or a reveal in motion), at or before askAt
-//   - "pause" resumes into the reveal from the held frame; "end" never resumes
+//   - "pause" resumes into the reveal from the held frame; "end" and "handoff" never resume
+//   - every end film here asked and answered its own question already: it hands off (no ask)
+//   - the held frame is the settled one measured on the 1080 render (FILM_SPEECH hold): still,
+//     after the last word, before the next word and caption; the card's placement is measured too
 //   - one ask per watch, played through with askGate at a player's poll steps; a resume never
 //     re-asks; a user seek back before the ask re-arms it on a first watch; a replay never asks
 //   node test/filmAskPlan.test.mjs
@@ -16,7 +19,7 @@ import { FILM_SPEECH } from "../src/learn/filmSpeech.mjs";
 
 const {
   FILM_FIRST_LESSONS, ACADEMY_V2_EARLY_LESSONS, ACADEMY_V2_LATER_LESSONS, nodeOfLesson, canon,
-  filmAskPlan, askGate, askEntry, filmSpeech, QUESTION_CUES, ASK_LOOKAHEAD, filmOwnPause,
+  filmAskPlan, askGate, askEntry, filmSpeech, QUESTION_CUES, ASK_LOOKAHEAD, filmOwnPause, askBasis, HOLD_SLACK, filmTurnPlan,
 } = learn;
 
 const ALL = [...FILM_FIRST_LESSONS, ...ACADEMY_V2_EARLY_LESSONS, ...ACADEMY_V2_LATER_LESSONS];
@@ -53,14 +56,25 @@ check("59 films, each measured for its published version", () => {
   }
 });
 
-check("modes: 31 ask mid-film, 25 at the end, 3 never ask", () => {
+check("modes: 31 ask mid-film, 25 hand off at the end, 3 never ask", () => {
   const by = (mode) => FILMS.filter((f) => f.plan.mode === mode).map((f) => f.node);
   assert.equal(by("pause").length, 31);
-  assert.equal(by("end").length, 25);
+  assert.equal(by("end").length, 0, "no end film re-asks the question it already answered");
+  assert.equal(by("handoff").length, 25);
+  for (const f of FILMS.filter((x) => x.plan.mode === "handoff")) {
+    assert.equal(filmOwnPause(f.stage, f.media.id).endAsk, "skip", f.node);
+    assert.equal(f.plan.cardPlacement, null, `${f.node}: nothing asked, no card`);
+    assert.equal(filmTurnPlan(f.stage, f.media).at, null);
+  }
+  // The "end" mode still asks for a definition whose end spot is a transfer (or that predates endAsk).
+  const end = FILMS.find((x) => x.plan.mode === "handoff");
+  const variant = { ...end.stage, pause: { ...end.stage.pause, endAsk: "variant" } };
+  assert.equal(filmAskPlan(variant, end.media).mode, "end");
+  assert.equal(filmAskPlan(variant, end.media).cardPlacement, "bottom");
   assert.deepEqual(by("none").sort(), ["r-actions", "r-hand-rankings", "x-bluffing"], "the three v1-built lessons carry no v2 pause");
   for (const f of FILMS) {
     const own = filmOwnPause(f.stage, f.media.id);
-    if (own?.anchor === "end") assert.equal(f.plan.mode, "end", f.node);
+    if (own?.anchor === "end") assert.equal(f.plan.mode, own.endAsk === "skip" ? "handoff" : "end", f.node);
     if (f.plan.mode === "pause") assert.ok(canon(f.media).anchors.yourTurn != null, `${f.node} has a yourTurn beat`);
   }
 });
@@ -90,7 +104,7 @@ check("askAt comes before upNext, and before a spoken Up next line", () => {
 });
 
 check("the end ask follows the last line before upNext; the mid-film ask follows its question", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode === "end")) {
+  for (const f of FILMS.filter((x) => x.plan.mode === "end" || x.plan.mode === "handoff")) {
     const c = canon(f.media);
     const stop = Math.min(c.anchors.upNext, f.timing.upNextLine ?? Infinity);
     const before = f.timing.cues.filter(([s]) => s < stop - 0.05);
@@ -110,13 +124,29 @@ check("the end ask follows the last line before upNext; the mid-film ask follows
   }
 });
 
-check("the held frame is still, and never later than the ask", () => {
+check("the held frame is the settled one: measured, still, after the word, before the next word and caption", () => {
   for (const f of FILMS.filter((x) => x.plan.mode !== "none")) {
     const { askAt, holdFrameAt, cue } = f.plan;
-    assert.ok(holdFrameAt <= askAt, f.node);
+    const basis = askBasis(f.stage, f.media);
+    assert.ok(f.timing.hold && Math.abs(f.timing.hold[0] - cue.start) < 0.02, `${f.node}: the held frame is measured for this ask (rerun sync-film-speech)`);
+    assert.equal(holdFrameAt, f.timing.hold[1]);
+    assert.ok(holdFrameAt <= askAt + 1e-9, `${f.node}: the film rests on the held frame when it asks`);
+    // A frame's middle: a seek there shows exactly that frame.
+    assert.ok(Math.abs(holdFrameAt * 30 - Math.floor(holdFrameAt * 30) - 0.5) < 0.02, `${f.node}: ${holdFrameAt} is a frame's middle`);
     assert.ok(!moving(f.timing, holdFrameAt), `${f.node}: holds ${holdFrameAt}, a moving frame`);
-    if (f.plan.mode === "end") assert.ok(holdFrameAt >= cue.start, `${f.node}: holds its last line's frame (the rule card)`);
-    else assert.ok(holdFrameAt >= wordEnd(f.timing, cue) - 0.1 - 1e-6, `${f.node}: a resume replays at most the last word's tail`);
+    assert.ok(holdFrameAt < basis.limit + 1e-6 || holdFrameAt < basis.wordEnd, `${f.node}: before the next word, caption and stop`);
+    if (f.plan.mode === "pause") {
+      assert.ok(holdFrameAt >= wordEnd(f.timing, cue) - HOLD_SLACK - 1e-6, `${f.node}: a resume replays at most the last word's tail`);
+      assert.ok(!f.timing.speech.some(([s]) => s > wordEnd(f.timing, cue) + 1e-6 && s <= holdFrameAt), `${f.node}: no word starts before the held frame`);
+    } else assert.ok(holdFrameAt >= cue.start, `${f.node}: holds its last line's frame (the rule card)`);
+    if (f.plan.mode === "handoff") assert.equal(f.plan.cardPlacement, null);
+    else assert.ok(["top", "bottom"].includes(f.plan.cardPlacement) && f.plan.cardPlacement === f.timing.hold[2], f.node);
+  }
+  // The card turns before the pause: where a film's card comes in after the question's last word
+  // (p-starting-hands, p-open-raise, p-position-value), the hold waits for it to land.
+  for (const id of ["p-starting-hands", "p-open-raise", "p-position-value"]) {
+    const f = FILMS.find((x) => x.node === id);
+    assert.ok(f.plan.holdFrameAt > wordEnd(f.timing, f.plan.cue) + 0.25, `${id}: holds after the card lands`);
   }
 });
 
@@ -153,7 +183,7 @@ check("one ask per watch, timed to the frame, never again after the resume", () 
       const run = playThrough(f.plan, stop, { step });
       assert.equal(run.asks, 1, `${f.node} at ${step}s polls: ${run.asks} asks`);
       assert.ok(Math.abs(run.at[0] - f.plan.askAt) < 1e-6, `${f.node}: asked at ${run.at[0]}, not ${f.plan.askAt}`);
-      if (f.plan.mode === "end") assert.ok(run.left, `${f.node}: the end ask goes straight on`);
+      if (f.plan.mode !== "pause") assert.ok(run.left, `${f.node}: the end goes straight on`);
     }
     // A native seek that lands a hair early never re-asks.
     if (f.plan.mode === "pause") assert.equal(playThrough(f.plan, stop, { slip: 0.4 }).asks, 1, `${f.node}: re-asked after an early-landing resume`);
@@ -194,9 +224,9 @@ check("askEntry: entering at or past an unanswered ask starts at its cue", () =>
   assert.equal(askEntry(end.plan, end.plan.askAt), end.plan.cue.start);
 });
 
-check("the reported fix: b-the-nuts asks after its rule line, over the rule card, before the wipe", () => {
+check("the reported fix: b-the-nuts hands off after its rule line, over the rule card, before the wipe", () => {
   const f = FILMS.find((x) => x.node === "b-the-nuts");
-  assert.equal(f.plan.mode, "end");
+  assert.equal(f.plan.mode, "handoff");
   assert.ok(f.plan.askAt > 91 && f.plan.askAt < 91.46 - 0.2, `askAt ${f.plan.askAt}`);
   assert.ok(f.plan.holdFrameAt < 91.26, "before the flip wipe into the up-next card");
 });
