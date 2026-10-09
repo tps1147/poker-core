@@ -398,7 +398,10 @@ check("entryState and filmMeta", () => {
   assert.equal(entryState(outs, { furthest: 2, stage: 1, watched: { 1: true } }).resumeStep, 2, "a watched film resumes on the hands");
   assert.equal(entryState(outs, { furthest: outs.stages.length - 1 }).status, "complete");
   const media = readMedia(outs);
-  assert.deepEqual(filmMeta(outs, media), { seconds: Math.round(media.durationSeconds), hands: 3, minutes: outs.meta.minutes });
+  assert.deepEqual(filmMeta(outs, media), { seconds: Math.round(media.durationSeconds), hands: 3, noun: "hand", minutes: outs.meta.minutes });
+  // A lesson whose every spot is a question moment (spot.scene) counts questions, not hands.
+  const asked = { ...outs, spots: Object.fromEntries(Object.entries(outs.spots).map(([id, spot]) => [id, { ...spot, scene: "question" }])) };
+  assert.equal(filmMeta(asked, media).noun, "question");
 });
 
 check("labels: actionLabel (choiceLabels win), answerText, cardText, handName", () => {
