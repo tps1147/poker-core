@@ -31,6 +31,11 @@ const FILMS = ALL.map((definition) => {
   return { definition, node, media, stage, plan: filmAskPlan(stage, media), timing: FILM_SPEECH[node] };
 });
 
+// The one film that pauses several times (2026-10-09, w-what-is-poker v3: three YOUR TURN presses and
+// a WHO WINS? prediction) is checked on its own below; every other check reads the single-ask films.
+const MULTI = FILMS.filter((f) => f.plan.pauses.length > 1);
+const SINGLE = FILMS.filter((f) => f.plan.pauses.length <= 1);
+
 let checks = 0;
 const check = (name, fn) => {
   try { fn(); checks += 1; } catch (error) { console.error(`FAIL ${name}`); throw error; }
@@ -56,11 +61,16 @@ check("59 films, each measured for its published version", () => {
   }
 });
 
-check("modes: 31 ask mid-film, 25 hand off at the end, 3 never ask", () => {
-  const by = (mode) => FILMS.filter((f) => f.plan.mode === mode).map((f) => f.node);
+check("modes: 31 ask mid-film, 24 hand off at the end, 3 never ask, 1 pauses four times", () => {
+  const by = (mode) => SINGLE.filter((f) => f.plan.mode === mode).map((f) => f.node);
+  assert.deepEqual(MULTI.map((f) => [f.node, f.plan.pauses.length]), [["w-what-is-poker", 4]]);
   assert.equal(by("pause").length, 31);
   assert.equal(by("end").length, 0, "no end film re-asks the question it already answered");
-  assert.equal(by("handoff").length, 25);
+  assert.equal(by("handoff").length, 24);
+  for (const f of SINGLE) {
+    assert.equal(f.plan.pauses.length, f.plan.mode === "none" ? 0 : 1, `${f.node}: the single ask is its one pause`);
+    if (f.plan.pauses.length) assert.equal(f.plan.pauses[0].askAt, f.plan.askAt);
+  }
   for (const f of FILMS.filter((x) => x.plan.mode === "handoff")) {
     assert.equal(filmOwnPause(f.stage, f.media.id).endAsk, "skip", f.node);
     assert.equal(f.plan.cardPlacement, null, `${f.node}: nothing asked, no card`);
@@ -72,7 +82,7 @@ check("modes: 31 ask mid-film, 25 hand off at the end, 3 never ask", () => {
   assert.equal(filmAskPlan(variant, end.media).mode, "end");
   assert.equal(filmAskPlan(variant, end.media).cardPlacement, "bottom");
   assert.deepEqual(by("none").sort(), ["r-actions", "r-hand-rankings", "x-bluffing"], "the three v1-built lessons carry no v2 pause");
-  for (const f of FILMS) {
+  for (const f of SINGLE) {
     const own = filmOwnPause(f.stage, f.media.id);
     if (own?.anchor === "end") assert.equal(f.plan.mode, own.endAsk === "skip" ? "handoff" : "end", f.node);
     if (f.plan.mode === "pause") assert.ok(canon(f.media).anchors.yourTurn != null, `${f.node} has a yourTurn beat`);
@@ -80,7 +90,7 @@ check("modes: 31 ask mid-film, 25 hand off at the end, 3 never ask", () => {
 });
 
 check("askAt is after the cue's last word, never inside a spoken word", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode !== "none")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode !== "none")) {
     const { askAt, cue } = f.plan;
     assert.ok(cue, `${f.node} names its cue`);
     const end = wordEnd(f.timing, cue);
@@ -95,7 +105,7 @@ check("askAt is after the cue's last word, never inside a spoken word", () => {
 });
 
 check("askAt comes before upNext, and before a spoken Up next line", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode !== "none")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode !== "none")) {
     const c = canon(f.media);
     assert.ok(f.plan.askAt < c.anchors.upNext, `${f.node}: ${f.plan.askAt} >= upNext ${c.anchors.upNext}`);
     if (f.timing.upNextLine != null) assert.ok(f.plan.askAt < f.timing.upNextLine, `${f.node}: asks after "Up next" starts`);
@@ -104,14 +114,14 @@ check("askAt comes before upNext, and before a spoken Up next line", () => {
 });
 
 check("the end ask follows the last line before upNext; the mid-film ask follows its question", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode === "end" || x.plan.mode === "handoff")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode === "end" || x.plan.mode === "handoff")) {
     const c = canon(f.media);
     const stop = Math.min(c.anchors.upNext, f.timing.upNextLine ?? Infinity);
     const before = f.timing.cues.filter(([s]) => s < stop - 0.05);
     assert.equal(f.plan.cue.start, before.at(-1)[0], `${f.node}: the last line before the up-next`);
     assert.equal(f.plan.resumeTo, null, `${f.node}: an end ask never resumes the film`);
   }
-  for (const f of FILMS.filter((x) => x.plan.mode === "pause")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode === "pause")) {
     const row = f.timing.cues.find(([s]) => s === f.plan.cue.start);
     const named = QUESTION_CUES[f.node];
     assert.ok(row[3] === 1 || named || row[0] <= canon(f.media).anchors.yourTurn + 0.05 || f.timing.cues[f.timing.cues.indexOf(row) - 1][4] === 1,
@@ -125,7 +135,7 @@ check("the end ask follows the last line before upNext; the mid-film ask follows
 });
 
 check("the held frame is the settled one: measured, still, after the word, before the next word and caption", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode !== "none")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode !== "none")) {
     const { askAt, holdFrameAt, cue } = f.plan;
     const basis = askBasis(f.stage, f.media);
     assert.ok(f.timing.hold && Math.abs(f.timing.hold[0] - cue.start) < 0.02, `${f.node}: the held frame is measured for this ask (rerun sync-film-speech)`);
@@ -166,8 +176,9 @@ function playThrough(plan, to, opts = {}) {
     if (gate.tick(prev, now, true)) {
       asks += 1;
       out.push(now);
-      if (plan.resumeTo == null) return { asks, at: out, left: true };
-      now = plan.resumeTo; // the player's own seek: not reported to the gate
+      const asked = gate.current || plan;
+      if (asked.resumeTo == null) return { asks, at: out, left: true };
+      now = asked.resumeTo; // the player's own seek: not reported to the gate
       if (opts.slip) now -= opts.slip; // a native seek can land early
       continue;
     }
@@ -177,7 +188,7 @@ function playThrough(plan, to, opts = {}) {
 }
 
 check("one ask per watch, timed to the frame, never again after the resume", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode !== "none")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode !== "none")) {
     const stop = canon(f.media).anchors.upNext;
     for (const step of [0.25, 0.1, 0.5]) {
       const run = playThrough(f.plan, stop, { step });
@@ -192,7 +203,7 @@ check("one ask per watch, timed to the frame, never again after the resume", () 
 });
 
 check("a user seek back before the ask re-arms it on a first watch; a replay never asks", () => {
-  for (const f of FILMS.filter((x) => x.plan.mode === "pause")) {
+  for (const f of SINGLE.filter((x) => x.plan.mode === "pause")) {
     const stop = canon(f.media).anchors.upNext;
     assert.equal(playThrough(f.plan, stop, { rewindAfterAsk: true }).asks, 2, `${f.node}: rewinding past the ask asks again`);
   }
@@ -206,7 +217,7 @@ check("a user seek back before the ask re-arms it on a first watch; a replay nev
     assert.equal(gate.armed, false, `${f.node}: a replay's seek never arms an ask`);
   }
   // A jump past the ask (a seek forward) is not a crossing.
-  const f = FILMS.find((x) => x.plan.mode === "pause");
+  const f = SINGLE.find((x) => x.plan.mode === "pause");
   const gate = askGate(f.plan);
   assert.equal(gate.tick(f.plan.askAt - 5, f.plan.askAt + 1, true), false);
   assert.equal(gate.tick(f.plan.askAt - 0.1, f.plan.askAt + 0.1, false), false, "paused playback never asks");
@@ -229,6 +240,54 @@ check("the reported fix: b-the-nuts hands off after its rule line, over the rule
   assert.equal(f.plan.mode, "handoff");
   assert.ok(f.plan.askAt > 91 && f.plan.askAt < 91.46 - 0.2, `askAt ${f.plan.askAt}`);
   assert.ok(f.plan.holdFrameAt < 91.26, "before the flip wipe into the up-next card");
+});
+
+check("several pauses: each on its own anchor, after its words, before its word, on a settled frame, one lit button", () => {
+  for (const f of MULTI) {
+    const listed = f.stage.pause.pauses;
+    const holds = f.timing.holds;
+    assert.equal(f.timing.hold, null, `${f.node}: the single hold stays empty`);
+    assert.equal(holds.length, listed.length, `${f.node}: one measured hold per pause (rerun sync-film-speech)`);
+    f.plan.pauses.forEach((p, i) => {
+      const timed = f.media.pauses.find((x) => x.anchor === listed[i].anchor);
+      assert.deepEqual([p.key, p.spotId, p.spot, p.mode], [listed[i].anchor, listed[i].spotId, listed[i].spot, "pause"]);
+      assert.equal(p.predict, listed[i].predict === true);
+      assert.equal(p.holdFrameAt, holds[i][1], `${p.key}: the measured held frame`);
+      assert.equal(p.cardPlacement, holds[i][2]);
+      assert.ok(p.askAt > timed.at && p.askAt < timed.before, `${p.key}: asks after its anchor ${timed.at}, before its word ${timed.before} (${p.askAt})`);
+      assert.ok(p.holdFrameAt <= p.askAt + 1e-9 && p.holdFrameAt > timed.at, `${p.key}: holds ${p.holdFrameAt}, inside its beat`);
+      assert.ok(Math.abs(p.holdFrameAt * 30 - Math.floor(p.holdFrameAt * 30) - 0.5) < 0.02, `${p.key}: a frame's middle`);
+      assert.ok(!moving(f.timing, p.holdFrameAt), `${p.key}: a moving frame`);
+      assert.equal(p.resumeTo, p.holdFrameAt, `${p.key}: resumes from the held frame, into the film's own press`);
+      assert.ok(!f.timing.speech.some(([s]) => s > p.holdFrameAt + 1e-6 && s < p.askAt - 1e-6), `${p.key}: no word starts between the held frame and the ask`);
+      // One lit button: an action pause enables exactly one choice; the prediction enables both.
+      if (p.spot.decision === "action") assert.equal(p.spot.enabled.length, 1, `${p.key}: one lit button`);
+      else assert.ok(p.predict && !p.spot.enabled, `${p.key}: a prediction, either answer goes on`);
+      if (i) assert.ok(p.askAt > f.plan.pauses[i - 1].askAt + 1, "in film order");
+    });
+    assert.equal(f.plan.askAt, f.plan.pauses[0].askAt, "the single-ask shape is the first pause's");
+    const stop = canon(f.media).anchors.upNext;
+    for (const step of [0.25, 0.1, 0.5]) {
+      const run = playThrough(f.plan, stop, { step });
+      assert.equal(run.asks, listed.length, `${f.node} at ${step}s polls: ${run.asks} asks`);
+      run.at.forEach((t, i) => assert.ok(Math.abs(t - f.plan.pauses[i].askAt) < 1e-6, `asked at ${t}, not ${f.plan.pauses[i].askAt}`));
+    }
+    assert.equal(playThrough(f.plan, stop, { slip: 0.4 }).asks, listed.length, "an early-landing resume never re-asks");
+    // A user seek back before the second pause re-arms only the pauses after it.
+    const gate = askGate(f.plan);
+    const [a, b] = f.plan.pauses;
+    assert.ok(gate.tick(a.askAt - 0.1, a.askAt, true) && gate.current === a && gate.index === 0);
+    assert.ok(gate.tick(b.askAt - 0.1, b.askAt, true) && gate.current === b);
+    gate.seek(b.askAt - 3);
+    assert.equal(gate.tick(a.askAt - 0.1, a.askAt, true), false, "the first stays spent");
+    assert.equal(gate.tick(b.askAt - 0.1, b.askAt, true), true, "the second asks again");
+    // Entering past an unanswered pause starts at its cue; answered pauses are passed.
+    assert.equal(askEntry(f.plan, b.askAt + 1, { answered: [a.key] }), askEntry(b, b.askAt + 1));
+    assert.equal(askEntry(f.plan, b.askAt + 1, { answered: [] }), askEntry(a, b.askAt + 1));
+    assert.equal(askEntry(f.plan, b.askAt + 1, { answered: true }), b.askAt + 1);
+    assert.equal(filmAskPlan(f.stage, f.media, { replay: true }).mode, "none", "a replay never asks");
+    assert.deepEqual(filmAskPlan(f.stage, f.media, { replay: true }).pauses, []);
+  }
 });
 
 console.log(`filmAskPlan ok (${checks} checks): ${FILMS.filter((f) => f.plan.mode !== "none").length} asking films, one ask per watch`);

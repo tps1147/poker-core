@@ -39,6 +39,15 @@ export const FILM_FOLDER_ALIASES = Object.freeze({
 // node (or null): a media id, a folder name or a render id ("academy-w-luck-v2") all resolve.
 export const filmIdOfNode = (nodeId) => nodeId;
 export const filmFolderOfNode = (nodeId) => FILM_FOLDER_ALIASES[nodeId] || nodeId;
+// The film's source folder in the motion-draft work folder (tooling only): src-academy-<folder>-v2,
+// except the films the welcome rebuild cut as v3 (2026-10-09), whose timing.json, words.json and
+// voice track live in their own folder. A published v3 media file names it too (`source`).
+export const FILM_SOURCE_DIRS = Object.freeze({
+  "w-what-is-poker": "src-academy-w-what-is-poker-v3",
+  "open-welcome": "src-academy-open-welcome-v3",
+  "open-rules": "src-academy-open-rules-v3",
+});
+export const filmSourceDir = (filmId) => FILM_SOURCE_DIRS[filmId] || `src-academy-${filmFolderOfNode(filmId)}-v2`;
 export function nodeIdOfFilm(filmId) {
   const bare = String(filmId || "").replace(/^academy-/, "").replace(/-v\d+$/, "");
   const aliased = Object.keys(FILM_FOLDER_ALIASES).find((nodeId) => FILM_FOLDER_ALIASES[nodeId] === bare);
@@ -362,6 +371,8 @@ export function askBasis(stage, media, { replay = false, cues = null, speech } =
   const c = canon(media);
   if (replay || c.kind === "opener") return null;
   const own = filmOwnPause(stage, media?.id);
+  // A film with several listed pauses is planned by pauseBases, one basis per pause.
+  if (multiPause(stage, media?.id)) return null;
   const measured = speech === undefined ? filmSpeech(media) : speech;
   const list = askCues(media, measured, cues);
   const spans = measured?.speech || null;
@@ -399,11 +410,89 @@ function measuredHold(measured, cue) {
   return { at: hold[1], place: hold[2] === "top" ? "top" : "bottom" };
 }
 
+// SEVERAL PAUSES IN ONE FILM (2026-10-09, the welcome rebuild's Lesson 1: three YOUR TURN presses
+// and a WHO WINS? prediction, each drawn by the film itself with one lit button). The definition's
+// film stage lists them, `pause.pauses: [{ anchor, spotId, spot, predict }]` (pause.anchor
+// "pauses"), and the film's v3 media file times them: `pauses: [{ anchor, at, before }]`, each at
+// its anchor (the beat starts and the film's card shows) and held BEFORE the `before` word (the
+// spoken "call" / "bet" the film's own press lands on, or the line that answers the prediction), so
+// the learner presses first and the film's press follows. Each pause's held frame is measured like
+// the single ask's (scripts/sync-film-speech.mjs, FILM_SPEECH `holds`: [[at, held, placement]]).
+export const multiPause = (stage, mediaId) => {
+  const own = filmOwnPause(stage, mediaId);
+  return own && Array.isArray(own.pauses) && own.pauses.length ? own.pauses : null;
+};
+
+// The basis of each listed pause ({ mode: "pause", key, at, before, cue, askAt, wordEnd, floor,
+// limit, measured, entry }), in film order; pauses the media cannot time are left out.
+export function pauseBases(stage, media, { replay = false, cues = null, speech } = {}) {
+  const c = canon(media);
+  const entries = multiPause(stage, media?.id);
+  if (replay || c.kind === "opener" || !entries) return [];
+  const measured = speech === undefined ? filmSpeech(media) : speech;
+  const list = askCues(media, measured, cues);
+  const spans = measured?.speech || null;
+  const timed = Array.isArray(media?.pauses) ? media.pauses : [];
+  const out = [];
+  for (const entry of entries) {
+    const t = timed.find((p) => p && p.anchor === entry.anchor);
+    const at = num(t?.at) ?? anchorSeconds(media, entry.anchor);
+    if (at == null) continue;
+    const cue = list.find((x) => x.start <= at + 0.05 && x.end > at) || list.find((x) => x.start >= at - 0.05) || null;
+    const nextCue = list.find((x) => x.start > at + 0.05) || null;
+    const before = num(t?.before) ?? (nextCue ? nextCue.start : at);
+    // The voice before the `before` word: the last spoken span that starts ahead of it (unmeasured:
+    // a beat before the word).
+    let end = Math.max(at, before - 0.3);
+    if (spans) {
+      const span = spans.filter(([s]) => s < before - 0.05).at(-1);
+      if (span) end = Math.max(at, Math.min(span[1], before));
+    }
+    // Held before the word, and before the next caption (burned in) when that comes first.
+    const limit = Math.min((nextCue ? nextCue.start : Infinity) - CAPTION_LEAD, before - WORD_LEAD);
+    const floor = Math.min(end, limit);
+    const askAt = r3(Math.max(floor, Math.min(floor + Math.min(ASK_TAIL, Math.max(0, (before - floor) / 2)), limit)));
+    out.push({ mode: "pause", key: entry.anchor, at, before, cue: cue ? { start: cue.start, end: cue.end } : null, askAt, wordEnd: floor, floor, limit, measured, entry });
+  }
+  return out.sort((a, b) => a.at - b.at);
+}
+
+// The measured held frame of one listed pause (FILM_SPEECH holds [[at, held, placement]]).
+function measuredPauseHold(measured, at) {
+  const holds = Array.isArray(measured?.holds) ? measured.holds : [];
+  const hold = holds.find((h) => Array.isArray(h) && Math.abs(h[0] - at) <= 0.02 && num(h[1]) != null);
+  return hold ? { at: hold[1], place: hold[2] === "top" ? "top" : "bottom" } : null;
+}
+
 // The plan for one watch of one film. `stage`: the lesson's film stage (its `pause` is the
 // definition's own Your turn when written for this film). `replay`: the run has the film watched.
 // `cues`: parseVtt of the film's WebVTT, read only when the film has no measured speech. `speech`:
 // overrides the measured speech (null: none), for tests.
+// The plan keeps its single-ask shape ({ askAt, holdFrameAt, resumeTo, mode, cue, cardPlacement })
+// and carries every ask the watch makes as `pauses`, in film order: [] when the film asks nothing,
+// [that one ask] for a single-ask film (with its `key`, `spotId` and `spot`), and one entry per
+// listed pause for a several-pause film, whose top-level fields are then its first pause's. Each
+// entry adds { key, spotId, spot, predict }: the pause's anchor, the spot it asks and whether it is
+// a prediction (never graded wrong).
 export function filmAskPlan(stage, media, opts = {}) {
+  const several = pauseBases(stage, media, opts);
+  if (several.length) {
+    const pauses = several.map((b) => {
+      const hold = measuredPauseHold(b.measured, b.at);
+      const holdFrameAt = hold ? hold.at : stillAt(b.askAt, b.measured, b.wordEnd - HOLD_SLACK);
+      const askAt = holdFrameAt > b.askAt ? holdFrameAt : b.askAt;
+      return { askAt, holdFrameAt, resumeTo: holdFrameAt, mode: "pause", cue: b.cue, cardPlacement: hold?.place || "bottom",
+        key: b.key, spotId: b.entry.spotId || null, spot: b.entry.spot || null, predict: b.entry.predict === true };
+    });
+    return { ...pauses[0], pauses };
+  }
+  const plan = singleAskPlan(stage, media, opts);
+  if (plan.mode === "none") return { ...plan, pauses: [] };
+  const own = filmOwnPause(stage, media?.id);
+  return { ...plan, pauses: [{ ...plan, key: plan.mode === "pause" ? "yourTurn" : "end", spotId: own?.spotId || null, spot: own?.spot || null, predict: false }] };
+}
+
+function singleAskPlan(stage, media, opts) {
   const basis = askBasis(stage, media, opts);
   if (!basis) return ASK_NONE;
   const { mode, cue, measured } = basis;
@@ -415,6 +504,9 @@ export function filmAskPlan(stage, media, opts = {}) {
   const cardPlacement = mode === "handoff" ? null : hold?.place || "bottom";
   return { askAt, holdFrameAt, resumeTo: mode === "pause" ? holdFrameAt : null, mode, cue, cardPlacement };
 }
+
+// Every ask of a watch, in film order (filmAskPlan's `pauses`).
+export const filmAskPlans = (stage, media, opts = {}) => filmAskPlan(stage, media, opts).pauses;
 
 // THE ASK GATE: the one-ask-per-watch rule as playback sees it, shared by both players. Feed it the
 // playhead on every time update and every user seek; it says when to ask (for a "handoff" plan:
@@ -429,15 +521,24 @@ export function filmAskPlan(stage, media, opts = {}) {
 //   armed                     whether the next crossing asks
 // A replay's plan is "none": its gate never asks, and no seek re-arms it.
 export const ASK_LOOKAHEAD = 0.6;
+// A plan with several `pauses` gets one gate per pause, run together: `tick` is true when playback
+// crosses any armed pause, and `current` names the pause that asked (the player holds its frame,
+// shows its spot and resumes from its resumeTo); a user seek back re-arms every pause after it.
+// `current` on a single gate is the plan itself once it has asked.
 export function askGate(plan) {
+  const list = Array.isArray(plan?.pauses) && plan.pauses.length > 1 ? plan.pauses : null;
+  if (list) return askGates(list);
   const askAt = plan && plan.mode !== "none" && num(plan.askAt) != null ? plan.askAt : null;
   let armed = askAt != null;
+  let current = null;
   return {
     get armed() { return armed; },
     get askAt() { return askAt; },
+    get current() { return current; },
+    get index() { return current ? 0 : -1; },
     tick(prev, now, playing = true) {
       if (!armed || !playing || num(prev) == null || num(now) == null) return false;
-      if (prev < askAt && now >= askAt && now - prev < 1) { armed = false; return true; }
+      if (prev < askAt && now >= askAt && now - prev < 1) { armed = false; current = plan; return true; }
       return false;
     },
     seek(to) { if (askAt != null && num(to) != null && to < askAt - 0.01) armed = true; },
@@ -449,10 +550,38 @@ export function askGate(plan) {
   };
 }
 
+function askGates(list) {
+  const gates = list.map((p) => askGate({ ...p, pauses: undefined }));
+  let index = -1;
+  return {
+    get armed() { return gates.some((g) => g.armed); },
+    get askAt() { return gates.find((g) => g.armed)?.askAt ?? null; },
+    get current() { return index >= 0 ? list[index] : null; },
+    get index() { return index; },
+    tick(prev, now, playing = true) {
+      for (let i = 0; i < gates.length; i += 1) if (gates[i].tick(prev, now, playing)) { index = i; return true; }
+      return false;
+    },
+    seek(to) { for (const g of gates) g.seek(to); },
+    lead(now, playing = true) {
+      const leads = gates.map((g) => g.lead(now, playing)).filter((v) => v != null);
+      return leads.length ? Math.min(...leads) : null;
+    },
+  };
+}
+
 // Where a film entered at `at` starts: at or past an unanswered ask, from the start of the asking
 // cue (so the learner hears the question again and the film asks), never playing on past it.
+// A plan with several `pauses`: the first unanswered pause at or before `at` is the one it backs up
+// to; `answered` is then true (all answered), or the list of answered pause keys.
 export function askEntry(plan, at, { answered = false } = {}) {
   const from = Math.max(0, num(at) ?? 0);
+  if (Array.isArray(plan?.pauses) && plan.pauses.length > 1) {
+    if (answered === true) return from;
+    const done = new Set(Array.isArray(answered) ? answered : []);
+    const open = plan.pauses.find((p) => !done.has(p.key) && num(p.askAt) != null && from >= p.askAt - 0.3);
+    return open ? askEntry(open, from) : from;
+  }
   if (!plan || plan.mode === "none" || answered || num(plan.askAt) == null || from < plan.askAt - 0.3) return from;
   return Math.max(0, Math.min(plan.cue?.start ?? plan.askAt - 2, plan.askAt - 0.5));
 }

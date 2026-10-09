@@ -1,25 +1,31 @@
 {
- "source": "claude-motion-draft-2026-10-06/src-academy-<film>-v2/timing.json and the film's RuleCard, extracted 2026-10-08",
+ "source": "claude-motion-draft-2026-10-06/src-academy-<film>-v2/timing.json and the film's RuleCard, extracted 2026-10-08; w-what-is-poker from src-academy-w-what-is-poker-v3 and the luck, history and best-five re-cuts, 2026-10-09",
  "films": {
   "w-what-is-poker": {
    "film": "w-what-is-poker",
-   "duration": 74,
+   "duration": 114,
    "canon": {
-    "hook": "whatDecides",
-    "yourTurn": null,
-    "rule": "betterDecisions",
+    "hook": "twoCards",
+    "yourTurn": "yourTurn1",
+    "rule": "better",
     "upNext": "upNext"
    },
-   "yourTurn": null,
-   "yourTurnCaption": null,
-   "rule": 61.98,
-   "upNext": 69.52,
+   "yourTurn": 33.47,
+   "yourTurnCaption": "For now... call.",
+   "rule": 102.33,
+   "upNext": 108.11,
    "ruleCaptions": [
-    "better decisions take the chips.",
-    "That's what Flop52 teaches you,",
-    "one idea at a time."
+    "the better decisions take the chips.",
+    "That's what you'll learn here,",
+    "one decision at a time."
    ],
-   "ruleCard": null
+   "ruleCard": null,
+   "pauses": {
+    "yourTurn1": 33.47,
+    "yourTurn2": 51.83,
+    "yourTurn3": 71.33,
+    "whoWins": 75.77
+   }
   },
   "w-history": {
    "film": "w-history",
@@ -32,8 +38,8 @@
    },
    "yourTurn": null,
    "yourTurnCaption": null,
-   "rule": 82.73,
-   "upNext": 87.26,
+   "rule": 84.3,
+   "upNext": 89.14,
    "ruleCaptions": [
     "Poker's played against people,",
     "and it's won by thinking."
@@ -42,7 +48,7 @@
   },
   "w-luck-and-skill": {
    "film": "w-luck",
-   "duration": 87,
+   "duration": 98,
    "canon": {
     "hook": "hook",
     "yourTurn": null,
@@ -51,7 +57,7 @@
    },
    "yourTurn": null,
    "yourTurnCaption": null,
-   "rule": 81.89,
+   "rule": 92.45,
    "upNext": null,
    "ruleCaptions": [
     "Luck decides a hand. Skill decides a thousand."
@@ -151,7 +157,7 @@
   },
   "r-best-five": {
    "film": "r-best-five",
-   "duration": 98,
+   "duration": 102,
    "canon": {
     "hook": "howMany",
     "yourTurn": null,
@@ -160,8 +166,8 @@
    },
    "yourTurn": null,
    "yourTurnCaption": null,
-   "rule": 88.56,
-   "upNext": 94.31,
+   "rule": 92.8,
+   "upNext": 98.55,
    "ruleCaptions": [
     "Best five of seven. Use two, one, or none."
    ],

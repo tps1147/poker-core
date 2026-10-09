@@ -1,7 +1,7 @@
 // Copy every published academy-film-v2 media file (publish/films-v2/<id>/<id>.v3.json) into
 // src/learn/media/<id>.v3.json, as f99fe0e did for the first three, with the film's words EMBEDDED:
 //   cues            [{ start, end, text }] the caption cues, parsed from the published <id>.vtt in the
-//                   film's version folder (else from src-academy-<source>-v2/timing.json captions)
+//                   film's version folder (else from the json's `source` folder, or src-academy-<source>-v2/timing.json captions)
 //   transcriptText  the published <id>.transcript.txt (else the cue texts joined)
 // so no client has to fetch the VTT or the transcript at run time (the CDN cached those without CORS
 // headers, 2026-10-09). The captions / transcript URLs stay for a fallback. Clients import the files
@@ -31,7 +31,7 @@ function words(id, json) {
   const vtt = join(vdir, `${id}.vtt`), txt = join(vdir, `${id}.transcript.txt`);
   let cues = existsSync(vtt) ? parseVtt(readFileSync(vtt, "utf8")) : [];
   if (!cues.length) {
-    const tp = join(work, `src-academy-${json.sourceId || id}-v2`, "timing.json");
+    const tp = join(work, json.source || `src-academy-${json.sourceId || id}-v2`, "timing.json");
     if (existsSync(tp)) cues = (JSON.parse(readFileSync(tp, "utf8")).captions || []).map((c) => ({ start: c.start, end: c.end, text: c.text }));
   }
   cues = cues.filter((c) => Number.isFinite(c.start) && Number.isFinite(c.end) && c.text).map((c) => ({ start: r3(c.start), end: r3(c.end), text: c.text }));

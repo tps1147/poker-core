@@ -194,7 +194,7 @@ check("filmPauseAt lands after the film asks, not on the anchor", () => {
   assert.equal(pot.anchors.yourTurn, 65.56);
   assert.equal(filmPauseAt(pot, { cues }), 72.64);
   assert.equal(filmPauseAt(pot, { cues, explicit: 70 }), 70);
-  assert.equal(filmPauseAt(media("w-what-is-poker"), { cues }), null, "no yourTurn anchor: no pause");
+  assert.equal(filmPauseAt(media("w-history"), { cues }), null, "no yourTurn anchor: no pause");
   assert.equal(filmPauseAt({ ...pot, cues: undefined }), 65.56, "no cues: on the anchor");
   assert.equal(filmPauseAt(pot), 72.64, "the embedded cues stand in for the VTT");
   assert.equal(PAUSE_WINDOW, 15);

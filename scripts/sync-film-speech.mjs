@@ -38,6 +38,9 @@
 //               half of that frame the card covers ("bottom" or "top"): the bottom, unless the
 //               film's own content (edge density over INK, REGIONS) sits there and the top is all
 //               but empty (TOP_EMPTY, TOP_MARGIN). Null when the film does not ask.
+//   holds       a film with several pauses (filmV2 pauseBases): [pauseAt, at, placement] per pause,
+//               each measured the same way in its own window (from the end of the voice before the
+//               pause's `before` word to just before that word), and `hold` stays null.
 //
 //   node scripts/sync-film-speech.mjs [workDir]   (or FILMS_V2_WORK; default: the Codex motion draft)
 // Needs ffmpeg on the PATH for the picture.
@@ -46,7 +49,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { NODES } from "../src/learn/academyTree.mjs";
-import { filmFolderOfNode, askBasis, HOLD_SLACK } from "../src/learn/filmV2.mjs";
+import { filmSourceDir, askBasis, pauseBases, HOLD_SLACK } from "../src/learn/filmV2.mjs";
 import { academyLesson } from "../src/learn/lessons/index.mjs";
 import { lessonOfNode } from "../src/learn/curriculum.mjs";
 
@@ -63,6 +66,7 @@ const FH = 96;
 const MOTION = 2;
 const MOTION_PEAK = 3;
 const MOTION_AFTER_TURN = 30;
+const MOTION_AFTER_PAUSE = 3;
 const MOTION_BEFORE_END = 12;
 // The held frame: still means a change under STILL (mean of 0-255 grey at HW x HH) against both
 // neighbouring frames; a mid-film hold may step back at most HOLD_SLACK (filmV2) before its window.
@@ -234,11 +238,12 @@ const missing = [];
 const report = [];
 for (const node of NODES) {
   const id = node.id;
-  const dir = join(work, `src-academy-${filmFolderOfNode(id)}-v2`);
   const mediaPath = join(root, "src", "learn", "media", `${id}.v3.json`);
-  if (!existsSync(join(dir, "timing.json")) || !existsSync(mediaPath)) { missing.push(id); continue; }
+  const media = existsSync(mediaPath) ? JSON.parse(readFileSync(mediaPath, "utf8")) : null;
+  // The film's source folder: the one its media names (a v3 re-cut), else src-academy-<folder>-v2.
+  const dir = join(work, media?.source || filmSourceDir(id));
+  if (!existsSync(join(dir, "timing.json")) || !media) { missing.push(id); continue; }
   const timing = JSON.parse(readFileSync(join(dir, "timing.json"), "utf8"));
-  const media = JSON.parse(readFileSync(mediaPath, "utf8"));
   const wav = join(work, "public", timing.audio);
   const video = join(work, "publish", "films-v2", id, String(media.version), `${id}-1080.mp4`);
   if (!existsSync(wav)) { missing.push(`${id} (no ${timing.audio})`); continue; }
@@ -251,13 +256,27 @@ for (const node of NODES) {
   const upNext = Number.isFinite(media.anchors?.upNext) ? media.anchors.upNext : duration;
   const end = line && line.start < upNext ? line.start : upNext;
   const windows = [];
-  if (Number.isFinite(media.anchors?.yourTurn)) windows.push([r2(media.anchors.yourTurn), r2(Math.min(duration, media.anchors.yourTurn + MOTION_AFTER_TURN))]);
+  const definition = academyLesson(lessonOfNode(id));
+  const stage = definition?.stages?.find((st) => st.kind === "film") || null;
+  // A film with several pauses: a window over each (its anchor to MOTION_AFTER_PAUSE past its word).
+  const listed = stage ? pauseBases(stage, { ...media, id }, { speech: null }) : [];
+  if (listed.length) for (const b of listed) windows.push([r2(b.at), r2(Math.min(duration, b.before + MOTION_AFTER_PAUSE))]);
+  else if (Number.isFinite(media.anchors?.yourTurn)) windows.push([r2(media.anchors.yourTurn), r2(Math.min(duration, media.anchors.yourTurn + MOTION_AFTER_TURN))]);
   windows.push([r2(Math.max(0, end - MOTION_BEFORE_END)), r2(Math.min(duration, upNext + 0.5))]);
   const moving = windows.flatMap(([a, b]) => motion(video, a, b));
   const entry = { version: media.version || null, upNextLine: line ? r2(line.start) : null, cues: cueRows(cues, words, speech), speech, windows, motion: moving, hold: null };
-  const definition = academyLesson(lessonOfNode(id));
-  const stage = definition?.stages?.find((st) => st.kind === "film") || null;
-  const basis = stage ? askBasis(stage, { ...media, id }, { speech: entry }) : null;
+  // Each listed pause's held frame: the settled frame in its window, measured like the single ask's.
+  if (listed.length) {
+    entry.holds = [];
+    for (const b of pauseBases(stage, { ...media, id }, { speech: entry })) {
+      const held = settledFrame(video, b);
+      const at = r3((held.k + 0.5) / FPS);
+      const place = placement(video, held.k);
+      entry.holds.push([b.at, at, place.place]);
+      report.push({ id, mode: b.mode, key: b.key, cue: b.cue?.start ?? null, wordEnd: r3(b.wordEnd), askAt: b.askAt, limit: r3(b.limit), at, how: held.how, still: held.still, ...place });
+    }
+  }
+  const basis = stage && !listed.length ? askBasis(stage, { ...media, id }, { speech: entry }) : null;
   if (basis?.cue) {
     const held = settledFrame(video, basis);
     const at = r3((held.k + 0.5) / FPS);
@@ -275,14 +294,15 @@ const body = Object.keys(out).sort().map((id) => `  ${JSON.stringify(id)}: {
     speech: ${JSON.stringify(out[id].speech)},
     windows: ${JSON.stringify(out[id].windows)},
     motion: ${JSON.stringify(out[id].motion)},
-    hold: ${JSON.stringify(out[id].hold)},
+    hold: ${JSON.stringify(out[id].hold)},${out[id].holds ? `
+    holds: ${JSON.stringify(out[id].holds)},` : ""}
   },`).join("\n");
 writeFileSync(join(root, "src", "learn", "filmSpeech.mjs"), `// GENERATED by scripts/sync-film-speech.mjs from the films' voice tracks and pictures: do not edit
 // by hand. Per lesson film (node id), in seconds: the v3 media version it was measured for; each
 // caption cue as [start, end, lastOnset, asks, unfinished]; the start of its "Up next" line; the
 // voice as spoken spans [start, end]; where the picture moves, [start, end], inside the measured
-// windows; and the held "Your turn" frame, [cueStart, at, placement]. The script says how each is
-// measured.
+// windows; and the held "Your turn" frame, [cueStart, at, placement] (a film with several pauses:
+// holds, one [pauseAt, at, placement] per pause). The script says how each is measured.
 export const FILM_SPEECH = Object.freeze({
 ${body}
 });

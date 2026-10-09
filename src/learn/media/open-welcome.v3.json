@@ -1,13 +1,14 @@
 {
   "format": "academy-film-v2",
   "id": "open-welcome",
-  "video": "/academy/films-v2/open-welcome/ee4c3946/open-welcome-1080.mp4",
-  "video720": "/academy/films-v2/open-welcome/ee4c3946/open-welcome-720.mp4",
-  "poster": "/academy/films-v2/open-welcome/ee4c3946/open-welcome-poster.jpg",
+  "source": "src-academy-open-welcome-v3",
+  "video": "/academy/films-v2/open-welcome/fb9a2be2/open-welcome-1080.mp4",
+  "video720": "/academy/films-v2/open-welcome/fb9a2be2/open-welcome-720.mp4",
+  "poster": "/academy/films-v2/open-welcome/fb9a2be2/open-welcome-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-welcome/ee4c3946/open-welcome.vtt",
-  "transcript": "/academy/films-v2/open-welcome/ee4c3946/open-welcome.transcript.txt",
-  "durationSeconds": 20,
+  "captions": "/academy/films-v2/open-welcome/fb9a2be2/open-welcome.vtt",
+  "transcript": "/academy/films-v2/open-welcome/fb9a2be2/open-welcome.transcript.txt",
+  "durationSeconds": 21,
   "captionsBurnedIn": true,
   "frame": {
     "w": 1080,
@@ -22,35 +23,45 @@
     "yourTurn": null,
     "rule": null,
     "upNext": null,
-    "first": 14.07
+    "first": 17.63
   },
-  "version": "ee4c3946",
+  "version": "fb9a2be2",
   "cues": [
     {
-      "start": 1.76,
-      "end": 4.36,
-      "text": "Welcome. This is where it starts."
+      "start": 1.54,
+      "end": 2.09,
+      "text": "Welcome."
     },
     {
-      "start": 4.36,
-      "end": 7.35,
-      "text": "Five short lessons on what poker is,"
+      "start": 2.09,
+      "end": 5.94,
+      "text": "Every great player started exactly where you are..."
     },
     {
-      "start": 7.35,
-      "end": 11.07,
-      "text": "where it came from, and why skill beats luck over time."
+      "start": 5.94,
+      "end": 9,
+      "text": "two cards, and no idea what to do with them."
     },
     {
-      "start": 11.07,
-      "end": 14.07,
-      "text": "By the end, you'll know what the game rewards."
+      "start": 9,
+      "end": 10.62,
+      "text": "Five short lessons."
     },
     {
-      "start": 14.07,
-      "end": 20,
-      "text": "First up: What Poker Really Is."
+      "start": 10.62,
+      "end": 15.52,
+      "text": "What the game is, why skill wins, and how deep it goes."
+    },
+    {
+      "start": 15.52,
+      "end": 18.68,
+      "text": "And in about a minute, you'll play your first hand."
+    },
+    {
+      "start": 18.68,
+      "end": 21,
+      "text": "Let's deal you in."
     }
   ],
-  "transcriptText": "Welcome. This is where it starts. Five short lessons on what poker is, where it came from, and why skill beats luck over time. By the end, you'll know what the game rewards. First up: What Poker Really Is."
+  "transcriptText": "Welcome. Every great player started exactly where you are... two cards, and no idea what to do with them. Five short lessons. What the game is, why skill wins, and how deep it goes. And in about a minute, you'll play your first hand. Let's deal you in."
 }

@@ -85,7 +85,10 @@ export function signature(spot = {}, hand = null) {
 export function askingStages(definition) {
   const out = [];
   for (const stage of definition.stages || []) {
-    if (stage.kind === "film" && stage.pause?.spot) {
+    if (stage.kind === "film" && Array.isArray(stage.pause?.pauses) && stage.pause.pauses.length) {
+      // A film with several pauses (filmV2 multiPause): each pause's spot is one of the film's questions.
+      for (const p of stage.pause.pauses) if (p?.spot) out.push({ role: "film", id: p.spotId || "film", spot: p.spot, signature: signature(p.spot), prompt: p.spot.prompt || "" });
+    } else if (stage.kind === "film" && stage.pause?.spot) {
       out.push({ role: "film", id: stage.pause.spotId || "film", spot: stage.pause.spot, signature: signature(stage.pause.spot), prompt: stage.pause.spot.prompt || "" });
     } else if (stage.kind === "why") {
       out.push({ role: "why", id: stage.spotId, spot: null, signature: null, prompt: stage.prompt || "" });

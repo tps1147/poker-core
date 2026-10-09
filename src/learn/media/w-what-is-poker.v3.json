@@ -1,13 +1,14 @@
 {
   "format": "academy-film-v2",
   "id": "w-what-is-poker",
-  "video": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-1080.mp4",
-  "video720": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-720.mp4",
-  "poster": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker-rule.jpg",
-  "captions": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker.vtt",
-  "transcript": "/academy/films-v2/w-what-is-poker/f365a071/w-what-is-poker.transcript.txt",
-  "durationSeconds": 74,
+  "source": "src-academy-w-what-is-poker-v3",
+  "video": "/academy/films-v2/w-what-is-poker/57422654/w-what-is-poker-1080.mp4",
+  "video720": "/academy/films-v2/w-what-is-poker/57422654/w-what-is-poker-720.mp4",
+  "poster": "/academy/films-v2/w-what-is-poker/57422654/w-what-is-poker-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-what-is-poker/57422654/w-what-is-poker-rule.jpg",
+  "captions": "/academy/films-v2/w-what-is-poker/57422654/w-what-is-poker.vtt",
+  "transcript": "/academy/films-v2/w-what-is-poker/57422654/w-what-is-poker.transcript.txt",
+  "durationSeconds": 114,
   "captionsBurnedIn": true,
   "frame": {
     "w": 1080,
@@ -18,164 +19,270 @@
     }
   },
   "anchors": {
-    "hook": 10.15,
-    "yourTurn": null,
-    "rule": 61.98,
-    "upNext": 69.52,
-    "first": null
+    "hook": 0.93,
+    "yourTurn": 33.47,
+    "rule": 102.33,
+    "upNext": 108.11,
+    "first": null,
+    "yourTurn1": 33.47,
+    "yourTurn2": 51.83,
+    "yourTurn3": 71.33,
+    "whoWins": 75.77
   },
-  "version": "f365a071",
+  "pauses": [
+    {
+      "anchor": "yourTurn1",
+      "at": 33.47,
+      "before": 34.59
+    },
+    {
+      "anchor": "yourTurn2",
+      "at": 51.83,
+      "before": 52.98
+    },
+    {
+      "anchor": "yourTurn3",
+      "at": 71.33,
+      "before": 72.93
+    },
+    {
+      "anchor": "whoWins",
+      "at": 75.77,
+      "before": 76.61
+    }
+  ],
+  "version": "57422654",
   "cues": [
     {
-      "start": 2.15,
-      "end": 5.33,
-      "text": "Welcome to the table. Let's start with a question."
+      "start": 0.93,
+      "end": 4.03,
+      "text": "Two cards. Only you get to see them."
     },
     {
-      "start": 5.33,
-      "end": 7.96,
-      "text": "Fifty-two cards in the deck..."
+      "start": 4.03,
+      "end": 6.62,
+      "text": "And that's where every hand of poker begins."
     },
     {
-      "start": 7.96,
-      "end": 10.15,
-      "text": "two of them are yours."
+      "start": 6.62,
+      "end": 9.1,
+      "text": "So let's not talk about it..."
     },
     {
-      "start": 10.15,
-      "end": 13.33,
-      "text": "So what actually decides who wins?"
+      "start": 9.1,
+      "end": 10.89,
+      "text": "let's play one. Right now."
     },
     {
-      "start": 13.33,
-      "end": 14.66,
-      "text": "Is it the cards..."
+      "start": 10.89,
+      "end": 14.8,
+      "text": "I'll tell you what you need, the moment you need it."
     },
     {
-      "start": 14.66,
-      "end": 16.96,
-      "text": "or the decisions you make with them?"
+      "start": 14.8,
+      "end": 17.67,
+      "text": "This is Ada. She has two cards too..."
     },
     {
-      "start": 16.96,
-      "end": 18.97,
-      "text": "Hold that thought."
+      "start": 17.67,
+      "end": 19.61,
+      "text": "but you can't see hers."
     },
     {
-      "start": 18.97,
-      "end": 20.36,
-      "text": "You see your two cards."
+      "start": 19.61,
+      "end": 21.73,
+      "text": "The chips in the middle are the pot."
     },
     {
-      "start": 20.36,
-      "end": 22,
-      "text": "Nobody else does."
+      "start": 21.73,
+      "end": 23.55,
+      "text": "That's what you're playing for."
     },
     {
-      "start": 22,
-      "end": 24.71,
-      "text": "Then five shared cards come out in the middle."
+      "start": 23.55,
+      "end": 26.99,
+      "text": "Every time it's your turn, you get three choices."
     },
     {
-      "start": 24.71,
-      "end": 25.77,
-      "text": "Three at once,"
+      "start": 26.99,
+      "end": 28.69,
+      "text": "Fold, and you're out."
     },
     {
-      "start": 25.77,
-      "end": 27.17,
-      "text": "then one..."
+      "start": 28.69,
+      "end": 31.06,
+      "text": "Call, and you match the bet."
     },
     {
-      "start": 27.17,
-      "end": 28.39,
-      "text": "then one more."
+      "start": 31.06,
+      "end": 33.47,
+      "text": "Raise, and you make it bigger."
     },
     {
-      "start": 28.39,
-      "end": 30.64,
-      "text": "And everyone gets to use them."
+      "start": 33.47,
+      "end": 36.16,
+      "text": "For now... call."
     },
     {
-      "start": 30.64,
-      "end": 33.6,
-      "text": "Every time it's your turn, you make a choice."
+      "start": 36.16,
+      "end": 37.85,
+      "text": "Now the shared cards."
     },
     {
-      "start": 33.6,
-      "end": 37.51,
-      "text": "Fold... call... or raise."
+      "start": 37.85,
+      "end": 39.6,
+      "text": "Three come out at once."
     },
     {
-      "start": 37.51,
-      "end": 39.31,
-      "text": "If the hand goes all the way,"
+      "start": 39.6,
+      "end": 40.92,
+      "text": "That's the flop..."
     },
     {
-      "start": 39.31,
-      "end": 41.48,
-      "text": "the best five cards win."
+      "start": 40.92,
+      "end": 42.88,
+      "text": "and they belong to both of you."
     },
     {
-      "start": 41.48,
-      "end": 45.07,
-      "text": "Here, your straight beats their pair of jacks."
+      "start": 42.88,
+      "end": 44,
+      "text": "Look what you've got."
     },
     {
-      "start": 45.07,
-      "end": 47.71,
-      "text": "But you don't always need the best hand."
+      "start": 44,
+      "end": 47.48,
+      "text": "King, queen, jack, ten."
     },
     {
-      "start": 47.71,
-      "end": 49.53,
-      "text": "Get everyone else to fold,"
+      "start": 47.48,
+      "end": 50.32,
+      "text": "One more card in a row, and that's a straight."
     },
     {
-      "start": 49.53,
-      "end": 53.71,
-      "text": "and the pot is yours, without showing a thing."
+      "start": 50.32,
+      "end": 51.83,
+      "text": "Ada bets."
     },
     {
-      "start": 53.71,
-      "end": 55.52,
-      "text": "So, back to the question."
+      "start": 51.83,
+      "end": 54.59,
+      "text": "Stay in... call."
     },
     {
-      "start": 55.52,
-      "end": 58.25,
-      "text": "Any single hand can go either way."
+      "start": 54.59,
+      "end": 56.8,
+      "text": "One more card. The turn."
     },
     {
-      "start": 58.25,
-      "end": 59.39,
-      "text": "That's the luck."
+      "start": 56.8,
+      "end": 60.8,
+      "text": "Nothing for either of you, so you both check..."
     },
     {
-      "start": 59.39,
-      "end": 61.98,
+      "start": 60.8,
+      "end": 63.39,
+      "text": "that just means passing, with no bet."
+    },
+    {
+      "start": 63.39,
+      "end": 67.41,
+      "text": "And the last card... the river."
+    },
+    {
+      "start": 67.41,
+      "end": 67.86,
+      "text": "Nine."
+    },
+    {
+      "start": 67.86,
+      "end": 71.33,
+      "text": "King down to nine... that's your straight."
+    },
+    {
+      "start": 71.33,
+      "end": 75.77,
+      "text": "This time, you bet."
+    },
+    {
+      "start": 75.77,
+      "end": 76.61,
+      "text": "Cards up."
+    },
+    {
+      "start": 76.61,
+      "end": 79.75,
+      "text": "Ada has ace-jack. A pair of jacks."
+    },
+    {
+      "start": 79.75,
+      "end": 82.58,
+      "text": "Your straight beats it, and the pot is yours."
+    },
+    {
+      "start": 82.58,
+      "end": 84.62,
+      "text": "Best five cards wins."
+    },
+    {
+      "start": 84.62,
+      "end": 86.07,
+      "text": "But here's the secret..."
+    },
+    {
+      "start": 86.07,
+      "end": 88.01,
+      "text": "you don't always need the best hand."
+    },
+    {
+      "start": 88.01,
+      "end": 90.21,
+      "text": "Bet, and if everyone else folds,"
+    },
+    {
+      "start": 90.21,
+      "end": 93.91,
+      "text": "the pot is yours, without showing a thing."
+    },
+    {
+      "start": 93.91,
+      "end": 96.35,
+      "text": "So... what decides who wins?"
+    },
+    {
+      "start": 96.35,
+      "end": 98.19,
+      "text": "In one hand, the cards."
+    },
+    {
+      "start": 98.19,
+      "end": 100.37,
+      "text": "Ada could just as easily have hit."
+    },
+    {
+      "start": 100.37,
+      "end": 102.33,
       "text": "But over hundreds of hands..."
     },
     {
-      "start": 61.98,
-      "end": 64.55,
-      "text": "better decisions take the chips."
+      "start": 102.33,
+      "end": 104.64,
+      "text": "the better decisions take the chips."
     },
     {
-      "start": 64.55,
-      "end": 67.37,
-      "text": "That's what Flop52 teaches you,"
+      "start": 104.64,
+      "end": 106.09,
+      "text": "That's what you'll learn here,"
     },
     {
-      "start": 67.37,
-      "end": 69.52,
-      "text": "one idea at a time."
+      "start": 106.09,
+      "end": 108.11,
+      "text": "one decision at a time."
     },
     {
-      "start": 69.52,
-      "end": 74,
-      "text": "Up next: the deck itself."
+      "start": 108.11,
+      "end": 114,
+      "text": "Up next: luck and skill."
     }
   ],
-  "transcriptText": "Welcome to the table. Let's start with a question. Fifty-two cards in the deck... two of them are yours. So what actually decides who wins? Is it the cards... or the decisions you make with them? Hold that thought. You see your two cards. Nobody else does. Then five shared cards come out in the middle. Three at once, then one... then one more. And everyone gets to use them. Every time it's your turn, you make a choice. Fold... call... or raise. If the hand goes all the way, the best five cards win. Here, your straight beats their pair of jacks. But you don't always need the best hand. Get everyone else to fold, and the pot is yours, without showing a thing. So, back to the question. Any single hand can go either way. That's the luck. But over hundreds of hands... better decisions take the chips. That's what Flop52 teaches you, one idea at a time. Up next: the deck itself."
+  "transcriptText": "Two cards. Only you get to see them. And that's where every hand of poker begins. So let's not talk about it... let's play one. Right now. I'll tell you what you need, the moment you need it.\n\nThis is Ada. She has two cards too... but you can't see hers. The chips in the middle are the pot. That's what you're playing for. Every time it's your turn, you get three choices. Fold, and you're out. Call, and you match the bet. Raise, and you make it bigger. For now... call.\n\nNow the shared cards. Three come out at once. That's the flop... and they belong to both of you. Look what you've got. King, queen, jack, ten. One more card in a row, and that's a straight. Ada bets. Stay in... call.\n\nOne more card. The turn. Nothing for either of you, so you both check... that just means passing, with no bet. And the last card... the river. Nine. King down to nine... that's your straight. This time, you bet.\n\nCards up. Ada has ace-jack. A pair of jacks. Your straight beats it, and the pot is yours. Best five cards wins. But here's the secret... you don't always need the best hand. Bet, and if everyone else folds, the pot is yours, without showing a thing.\n\nSo... what decides who wins? In one hand, the cards. Ada could just as easily have hit. But over hundreds of hands... the better decisions take the chips. That's what you'll learn here, one decision at a time. Up next: luck and skill."
 }

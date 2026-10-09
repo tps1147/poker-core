@@ -68,7 +68,9 @@ export function ringHand(id, { position, hero, board = [], pot = 0, acts = [], b
 // cards, numbers or seats, never the same spot (scripts/lib/stageRepeats.mjs). `endAsk` is the end
 // ask policy of an "end" film (filmV2 filmAskPlan): "skip" when the film has already asked and
 // answered its question (the lesson hands off to the next step), "variant" when `spot` is a
-// transfer the film never answered. `hands` are [guided, practice, fresh], each { id, label, coachLine }. `why`: { prompt, options }.
+// transfer the film never answered. `pauses` ([{ anchor, spotId, spot, predict }], 2026-10-09) lists a
+// film's several in-film pauses instead (filmV2 multiPause): each asks at its anchor, over the frame the
+// film draws its own card on, and `predict` marks a prediction that is never graded wrong. `hands` are [guided, practice, fresh], each { id, label, coachLine }. `why`: { prompt, options }.
 export function v2Stages({ welcome, film, hands, why, takeaway }) {
   const [guided, practice, fresh] = hands;
   const decision = (hand, role, next) => ({ kind: "decision", label: hand.label, spotId: hand.id, hand: hand.id, role, coachLine: hand.coachLine, next });
@@ -77,7 +79,10 @@ export function v2Stages({ welcome, film, hands, why, takeaway }) {
   return [
     { kind: "welcome", label: "Welcome", ...welcome },
     { kind: "film", label: "Film", upNext: film.upNext, media: film.film,
-      pause: { at: film.at ?? null, anchor: film.at == null ? "end" : "yourTurn", film: film.film, spotId: turnId, spot: film.spot, ...(film.endAsk ? { endAsk: film.endAsk } : {}) } },
+      pause: film.pauses?.length
+        // Several in-film pauses (filmV2 multiPause): the first stands as the stage's own Your turn.
+        ? { at: film.at ?? null, anchor: "pauses", film: film.film, spotId: film.pauses[0].spotId, spot: film.pauses[0].spot, pauses: film.pauses }
+        : { at: film.at ?? null, anchor: film.at == null ? "end" : "yourTurn", film: film.film, spotId: turnId, spot: film.spot, ...(film.endAsk ? { endAsk: film.endAsk } : {}) } },
     { kind: "why", label: "Why", spotId: whyId, prompt: why.prompt, options: why.options },
     decision(guided, "guided", "Try a practice hand"),
     decision(practice, "practice", "Try a fresh hand"),

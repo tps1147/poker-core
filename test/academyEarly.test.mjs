@@ -38,7 +38,7 @@ const MP = "check-math-preflop.mjs";
 // A key is one of the spot's own answers: a band, a choice, a value inside the range, or five cards.
 const kindOf = (spot) => spot.kind ?? spot.decision;
 const keyFits = (spot, k) => kindOf(spot) === "estimate" ? spot.bands.some((b) => (b.id ?? b) === k.band)
-  : kindOf(spot) === "action" ? spot.choices.includes(k.action)
+  : kindOf(spot) === "action" ? spot.choices.some((c) => (c?.id ?? c) === k.action)
     : kindOf(spot) === "count" ? Number.isInteger(k.value) && k.value >= spot.range[0] && k.value <= spot.range[1]
       : kindOf(spot) === "best-five" ? k.cards?.length === 5 && k.cards.every((c) => [...spot.hero, ...spot.board].includes(c)) : false;
 const PF = "check-postflop-to-formats.mjs";
@@ -256,7 +256,8 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     assert.deepEqual(def.stages.slice(3, 6).map((s) => s.role), ["guided", "practice", "fresh"]);
     // Content version 2 (2026-10-09): the guided hand left the film's own question, and an end film
     // hands off instead of asking it again. Version 1 stays registered on the server.
-    assert.deepEqual([def.node, def.version, def.flow, def.format, def.filmVersion], [node, 2, "film-first", "academy-v2", 2]);
+    // Content version 3 for w-what-is-poker (2026-10-09): the welcome rebuild's v3 film, four pauses.
+    assert.deepEqual([def.node, def.version, def.flow, def.format, def.filmVersion], [node, node === "w-what-is-poker" ? 3 : 2, "film-first", "academy-v2", 2]);
     assert.equal(def.access, lessonSlot(node).access, "the curriculum's tier");
     assert.deepEqual(validateDefinitionHands(def), []);
     for (const hand of lessonHands(def)) { const w = walkHand(def, hand.hand); assert.ok(w.finished, `${hand.hand} finishes`); assert.deepEqual(w.reached, [hand.hand]); }
@@ -265,7 +266,13 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     assert.equal(def.media, filmIdOfNode(node));
     assert.equal(film.pause.film, filmIdOfNode(node), "the media id, not the render folder");
     assert.equal(film.pause.at, anchors.yourTurn, "canon.yourTurn, or null");
-    assert.equal(film.pause.anchor, anchors.yourTurn == null ? "end" : "yourTurn");
+    if (anchors.pauses) {
+      // Several in-film pauses (filmV2 multiPause): one per film anchor, in film order, the first the stage's own.
+      assert.equal(film.pause.anchor, "pauses");
+      assert.deepEqual(film.pause.pauses.map((p) => p.anchor), Object.keys(anchors.pauses));
+      assert.deepEqual([film.pause.spotId, film.pause.spot], [film.pause.pauses[0].spotId, film.pause.pauses[0].spot]);
+      for (const p of film.pause.pauses) assert.match(p.spotId, /-turn(-\w+)?$/, "each pause is its own <prefix>-turn spot");
+    } else assert.equal(film.pause.anchor, anchors.yourTurn == null ? "end" : "yourTurn");
     // Every end film here asks its question first and answers it itself: the lesson skips the end ask.
     assert.equal(film.pause.endAsk, anchors.yourTurn == null ? "skip" : undefined, "an end film hands off");
     const guided = def.stages[3].spotId;
@@ -298,6 +305,19 @@ for (const def of ACADEMY_V2_EARLY_LESSONS) {
     // The film's own question keeps its key (an end film that skips its ask never sends one).
     assert.deepEqual([keys.film.stage, keys.film.at, keys.film.spotId], [1, def.stages[1].pause.at, def.stages[1].pause.spotId]);
     assert.ok(keyFits(def.stages[1].pause.spot, keys.film.key), "the film key is one of its question's answers");
+    // The other pauses' keys (filmPauses), each on the film stage, its spot id and anchor the definition's.
+    const rest = (def.stages[1].pause.pauses || []).slice(1);
+    assert.deepEqual((keys.filmPauses || []).map((k) => [k.stage, k.spotId, k.anchor]), rest.map((p) => [1, p.spotId, p.anchor]));
+    for (const [i, k] of (keys.filmPauses || []).entries()) {
+      assert.ok(keyFits(rest[i].spot, k.key), `${k.spotId} key is one of its answers`);
+      assert.equal(k.predict === true, rest[i].predict === true, `${k.spotId}: a prediction on both sides`);
+    }
+    // One lit button per action pause, and it is the key: the film's hand cannot be lost.
+    for (const [i, p] of (def.stages[1].pause.pauses || []).entries()) {
+      if (p.spot.decision !== "action") continue;
+      const k = i === 0 ? keys.film : keys.filmPauses[i - 1];
+      assert.deepEqual(p.spot.enabled, [k.key.action], `${p.spotId}: only the key's button is lit`);
+    }
     const ids = def.stages[2].options.map((o) => o.id);
     assert.deepEqual(keys.why.options, ids);
     assert.ok(ids.includes(keys.why.key.option) && ids.includes(keys.why.misconception) && keys.why.misconception !== keys.why.key.option);
@@ -382,7 +402,12 @@ check("welcome: counts and the plan's comprehension answers", () => {
   assert.equal((660 * 29) / 44 - 330, 105); assert.equal(keyOf("w-luck-and-skill", "wl-fresh").band, "no");
   // w-what-is-poker, the film: K♥ Q♥'s straight beats A♣ J♦'s pair of jacks.
   assert.ok(compareHands(ev(["Kh", "Qh", "Jh", "Tc", "4h", "2s", "9d"]), ev(["Ac", "Jd", "Jh", "Tc", "4h", "2s", "9d"])) > 0);
-  assert.equal(winnerOf(filmSpot("w-what-is-poker")), "you"); assert.equal(filmKey("w-what-is-poker").band, "you");
+  // Content version 3: the film's WHO WINS? prediction (its last pause) keys who the film shows winning.
+  const wins = K["w-what-is-poker"].keys.filmPauses.find((k) => k.spotId === "wip-turn-wins");
+  assert.equal(winnerOf({ ...K["w-what-is-poker"].def.stages[1].pause.pauses.at(-1).spot, versus: ["Ac", "Jd"] }), "you"); assert.equal(wins.key.band, "you");
+  assert.equal(wins.predict, true, "a prediction: recorded, never graded wrong");
+  assert.deepEqual(K["w-what-is-poker"].keys.filmPauses.map((k) => k.key.action ?? k.key.band), ["call", "bet", "you"]);
+  assert.equal(filmKey("w-what-is-poker").action, "call");
   // guided: 7♥ 6♥'s straight beats K♠ K♦'s three kings on 8♥ 5♣ K♣ 2♥ 9♠.
   const g = spotOf("w-what-is-poker", "wip-guided");
   assert.deepEqual([ev([...g.hero, ...g.board]).name, ev([...g.versus, ...g.board]).name], ["Three of a Kind", "Straight"]);

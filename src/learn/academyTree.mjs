@@ -43,12 +43,13 @@ const L = (concept, lesson = null, verdict = null) => ({ legacy: { concept, less
 const P = (topic = null, opponent = null) => ({ practice: { topic, opponent } });
 
 export const NODES = Object.freeze([
-  // ── 0 Welcome (new, animated, no prerequisites)
+  // ── 0 Welcome (new, animated, no prerequisites). Order 2026-10-09 (the welcome rebuild): What Poker Really Is,
+  // Luck and Skill, How Deep, The Academy, then A Short History last as a bonus (its film ends "Up next: the deck").
   node("w-what-is-poker", "welcome", "What Poker Really Is", [], "Poker is a game of hidden cards and chip decisions, won by deciding better than the other players over many hands.", "Poker is mostly about being dealt good cards.", ["film", "table"]),
-  node("w-history", "welcome", "A Short History", ["w-what-is-poker"], "From 1800s riverboat games to Texas Hold'em, the World Series and computers that beat the best pros: the game kept rewarding better thinking.", "Poker is a casino game like slots, where the house picks the winner.", ["film"]),
   node("w-luck-and-skill", "welcome", "Luck Decides a Hand, Skill Decides a Thousand", ["w-what-is-poker"], "One hand can go either way; across many hands the better decisions take the chips.", "A loss means the decision was bad, a win means it was good.", ["film", "toy"]),
   node("w-how-deep", "welcome", "How Deep the Game Goes", ["w-luck-and-skill"], "1,326 starting combinations, four betting rounds and hidden information make poker a game you can study for life, one idea at a time.", "Poker is simple once you know the hand rankings.", ["film"]),
   node("w-the-academy", "welcome", "How Flop52 Makes You Better", ["w-how-deep"], "The path: learn an idea, decide with it, see why, try it in a new spot, then prove it later and at the table.", "Watching lessons is the same as learning them.", ["film", "toy"]),
+  node("w-history", "welcome", "A Short History", ["w-what-is-poker"], "From 1800s riverboat games to Texas Hold'em, the World Series and computers that beat the best pros: the game kept rewarding better thinking.", "Poker is a casino game like slots, where the house picks the winner.", ["film"]),
 
   // ── 1 Rules
   node("r-the-deck", "rules", "The Deck: 52 Cards", ["w-what-is-poker"], "Four suits, thirteen ranks, no jokers; suits never outrank each other in Hold'em.", "Some suits are worth more than others.", ["table", "toy"]),

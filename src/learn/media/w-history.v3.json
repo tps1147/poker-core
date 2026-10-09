@@ -1,12 +1,13 @@
 {
   "format": "academy-film-v2",
   "id": "w-history",
-  "video": "/academy/films-v2/w-history/e24725aa/w-history-1080.mp4",
-  "video720": "/academy/films-v2/w-history/e24725aa/w-history-720.mp4",
-  "poster": "/academy/films-v2/w-history/e24725aa/w-history-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-history/e24725aa/w-history-rule.jpg",
-  "captions": "/academy/films-v2/w-history/e24725aa/w-history.vtt",
-  "transcript": "/academy/films-v2/w-history/e24725aa/w-history.transcript.txt",
+  "source": "src-academy-w-history-v2",
+  "video": "/academy/films-v2/w-history/9d7cbafd/w-history-1080.mp4",
+  "video720": "/academy/films-v2/w-history/9d7cbafd/w-history-720.mp4",
+  "poster": "/academy/films-v2/w-history/9d7cbafd/w-history-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-history/9d7cbafd/w-history-rule.jpg",
+  "captions": "/academy/films-v2/w-history/9d7cbafd/w-history.vtt",
+  "transcript": "/academy/films-v2/w-history/9d7cbafd/w-history.transcript.txt",
   "durationSeconds": 93,
   "captionsBurnedIn": true,
   "frame": {
@@ -20,11 +21,11 @@
   "anchors": {
     "hook": 1.37,
     "yourTurn": null,
-    "rule": 82.73,
-    "upNext": 87.26,
+    "rule": 84.3,
+    "upNext": 89.14,
     "first": null
   },
-  "version": "e24725aa",
+  "version": "9d7cbafd",
   "cues": [
     {
       "start": 1.37,
@@ -138,74 +139,74 @@
     },
     {
       "start": 56.59,
-      "end": 60.94,
+      "end": 60.83,
       "text": "programs beat top pros at no-limit Hold'em."
     },
     {
-      "start": 60.94,
-      "end": 63.38,
+      "start": 60.83,
+      "end": 63.4,
       "text": "So... back to your guess."
     },
     {
-      "start": 63.38,
-      "end": 65.24,
+      "start": 63.4,
+      "end": 65.52,
       "text": "Slots pay the house."
     },
     {
-      "start": 65.24,
-      "end": 68.29,
+      "start": 65.52,
+      "end": 68.73,
       "text": "But in poker, the chips move between players,"
     },
     {
-      "start": 68.29,
-      "end": 70.73,
+      "start": 68.73,
+      "end": 71.22,
       "text": "and the house just takes a small fee."
     },
     {
-      "start": 70.73,
-      "end": 72.55,
+      "start": 71.22,
+      "end": 73.33,
       "text": "So who takes your chips?"
     },
     {
-      "start": 72.55,
-      "end": 74.19,
+      "start": 73.33,
+      "end": 75.29,
       "text": "The other players."
     },
     {
-      "start": 74.19,
-      "end": 77.56,
+      "start": 75.29,
+      "end": 78.66,
       "text": "And every era rewarded the same thing..."
     },
     {
-      "start": 77.56,
-      "end": 78.99,
+      "start": 78.66,
+      "end": 80.32,
       "text": "better decisions."
     },
     {
-      "start": 78.99,
-      "end": 81.67,
+      "start": 80.32,
+      "end": 83.07,
       "text": "Even the computers won by deciding better,"
     },
     {
-      "start": 81.67,
-      "end": 82.73,
+      "start": 83.07,
+      "end": 84.3,
       "text": "not by luck."
     },
     {
-      "start": 82.73,
-      "end": 84.83,
+      "start": 84.3,
+      "end": 86.25,
       "text": "Poker's played against people,"
     },
     {
-      "start": 84.83,
-      "end": 87.26,
+      "start": 86.25,
+      "end": 89.14,
       "text": "and it's won by thinking."
     },
     {
-      "start": 87.26,
+      "start": 89.14,
       "end": 93,
-      "text": "Up next: luck and skill."
+      "text": "Up next: the deck."
     }
   ],
-  "transcriptText": "Riverboats... Texas... and a computer. What do they have in common? Make a guess first. In poker, who takes your chips? The house... or the other players? Hold that guess. By about 1830, poker was played on Mississippi riverboats.\n\nThe first games used just 20 cards. Later, the full 52-card deck took over. Tradition says Texas Hold'em began in Texas, in the early 1900s. Two cards each... five shared. It reached Las Vegas in the 1960s, and a world championship began there in 1970.\n\nIn 2003, an amateur who qualified online won that championship. Three years later, the field was more than ten times bigger. Then computers learned the game. In 2017... and again in 2019, programs beat top pros at no-limit Hold'em.\n\nSo... back to your guess. Slots pay the house. But in poker, the chips move between players, and the house just takes a small fee. So who takes your chips? The other players. And every era rewarded the same thing... better decisions. Even the computers won by deciding better, not by luck. Poker's played against people, and it's won by thinking. Up next: luck and skill."
+  "transcriptText": "Riverboats... Texas... and a computer. What do they have in common? Make a guess first. In poker, who takes your chips? The house... or the other players? Hold that guess. By about 1830, poker was played on Mississippi riverboats.\n\nThe first games used just 20 cards. Later, the full 52-card deck took over. Tradition says Texas Hold'em began in Texas, in the early 1900s. Two cards each... five shared. It reached Las Vegas in the 1960s, and a world championship began there in 1970.\n\nIn 2003, an amateur who qualified online won that championship. Three years later, the field was more than ten times bigger. Then computers learned the game. In 2017... and again in 2019, programs beat top pros at no-limit Hold'em.\n\nSo... back to your guess. Slots pay the house. But in poker, the chips move between players, and the house just takes a small fee. So who takes your chips? The other players. And every era rewarded the same thing... better decisions. Even the computers won by deciding better, not by luck. Poker's played against people, and it's won by thinking. Up next: the deck."
 }

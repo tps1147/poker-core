@@ -2,13 +2,14 @@
   "format": "academy-film-v2",
   "id": "w-luck-and-skill",
   "sourceId": "w-luck",
-  "video": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-1080.mp4",
-  "video720": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-720.mp4",
-  "poster": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill-rule.jpg",
-  "captions": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill.vtt",
-  "transcript": "/academy/films-v2/w-luck-and-skill/59cc9cb5/w-luck-and-skill.transcript.txt",
-  "durationSeconds": 87,
+  "source": "src-academy-w-luck-v2",
+  "video": "/academy/films-v2/w-luck-and-skill/0bf148b0/w-luck-and-skill-1080.mp4",
+  "video720": "/academy/films-v2/w-luck-and-skill/0bf148b0/w-luck-and-skill-720.mp4",
+  "poster": "/academy/films-v2/w-luck-and-skill/0bf148b0/w-luck-and-skill-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-luck-and-skill/0bf148b0/w-luck-and-skill-rule.jpg",
+  "captions": "/academy/films-v2/w-luck-and-skill/0bf148b0/w-luck-and-skill.vtt",
+  "transcript": "/academy/films-v2/w-luck-and-skill/0bf148b0/w-luck-and-skill.transcript.txt",
+  "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
     "w": 1080,
@@ -21,11 +22,11 @@
   "anchors": {
     "hook": 1.18,
     "yourTurn": null,
-    "rule": 81.89,
-    "upNext": 87,
+    "rule": 92.45,
+    "upNext": 98,
     "first": null
   },
-  "version": "59cc9cb5",
+  "version": "0bf148b0",
   "cues": [
     {
       "start": 1.18,
@@ -154,24 +155,44 @@
     },
     {
       "start": 70.22,
-      "end": 75.69,
+      "end": 75.34,
       "text": "Over a thousand hands, that's more than ninety thousand."
     },
     {
-      "start": 75.69,
-      "end": 79.05,
+      "start": 75.34,
+      "end": 78.82,
       "text": "So... did you play it wrong? Not necessarily."
     },
     {
-      "start": 79.05,
-      "end": 81.89,
+      "start": 78.82,
+      "end": 81.74,
       "text": "Losing this hand didn't make the call wrong."
     },
     {
-      "start": 81.89,
-      "end": 87,
+      "start": 81.74,
+      "end": 83.39,
+      "text": "And it's not just math."
+    },
+    {
+      "start": 83.39,
+      "end": 87.23,
+      "text": "At the World Series, players known in advance as skilled"
+    },
+    {
+      "start": 87.23,
+      "end": 89.88,
+      "text": "made about thirty percent on their buy-ins..."
+    },
+    {
+      "start": 89.88,
+      "end": 92.45,
+      "text": "everyone else lost about fifteen."
+    },
+    {
+      "start": 92.45,
+      "end": 98,
       "text": "Luck decides a hand. Skill decides a thousand."
     }
   ],
-  "transcriptText": "You got your chips in ahead... and lost. Did you play it wrong? Pick an answer first. Yes, you lost... or not necessarily?\n\nHere's the hand. You've got ace-jack on a jack-high board. Top pair. Ace Andy moves all-in for five hundred... you call, and the pot's a thousand. Then Andy shows queen-nine of hearts. He needs a heart... a king or an eight for the straight... or a queen.\n\nNow look at every card that could come on the river. There are forty-four. Twenty-six win for you... eighteen win for him. But this time, the river's the seven of hearts. He makes a flush, and wins this hand.\n\nSo play this same spot again... and again. A hundred players, all making this call. After one hand, forty-one are behind. After ten, eighteen. After a hundred, three. After a thousand? Basically none. On average, this call earns you about ninety-one chips a hand. Over a thousand hands, that's more than ninety thousand.\n\nSo... did you play it wrong? Not necessarily. Losing this hand didn't make the call wrong. Luck decides a hand. Skill decides a thousand."
+  "transcriptText": "You got your chips in ahead... and lost. Did you play it wrong? Pick an answer first. Yes, you lost... or not necessarily?\n\nHere's the hand. You've got ace-jack on a jack-high board. Top pair. Ace Andy moves all-in for five hundred... you call, and the pot's a thousand. Then Andy shows queen-nine of hearts. He needs a heart... a king or an eight for the straight... or a queen.\n\nNow look at every card that could come on the river. There are forty-four. Twenty-six win for you... eighteen win for him. But this time, the river's the seven of hearts. He makes a flush, and wins this hand.\n\nSo play this same spot again... and again. A hundred players, all making this call. After one hand, forty-one are behind. After ten, eighteen. After a hundred, three. After a thousand? Basically none. On average, this call earns you about ninety-one chips a hand. Over a thousand hands, that's more than ninety thousand.\n\nSo... did you play it wrong? Not necessarily. Losing this hand didn't make the call wrong. And it's not just math. At the World Series, players known in advance as skilled made about thirty percent on their buy-ins... everyone else lost about fifteen. Luck decides a hand. Skill decides a thousand."
 }

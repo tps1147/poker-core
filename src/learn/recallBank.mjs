@@ -38,14 +38,14 @@ export const RECALL_BANK = Object.freeze([
   // ── 0 Welcome: the plans' comprehension taps
   ready("w-what-is-poker", "Checks: comprehension tap", "Cards decide a hand. Decisions decide a thousand.",
     "How many of the shared cards on the table can you use?", ["Two", "Three", "All five"], 2),
-  ready("w-history", "Checks: comprehension tap", "Poker is played against people, not the house. Better thinking has always won.",
-    "Who takes the chips you lose at poker?", ["The house", "The other players", "Nobody"], 1),
   ready("w-luck-and-skill", "Checks: comprehension tap", "Judge the decision by what happens over many hands, not by this one.",
     "You lose one hand where you were ahead. What does that tell you about your decision?", ["It was a bad decision", "Nothing, by itself", "It was a good decision"], 1),
   ready("w-how-deep", "Checks: comprehension tap", "Simple to learn, deep to master: one idea at a time.",
     "Is the same hand always played the same way?", ["Yes, always", "No, it depends on the spot"], 1),
   ready("w-the-academy", "Checks: comprehension tap", "Learn it, decide it, see why, try it new, prove it later.",
     "Why does a lesson come back days later?", ["To prove you still know it", "Because you got it wrong", "To earn points"], 0),
+  ready("w-history", "Checks: comprehension tap", "Poker is played against people, not the house. Better thinking has always won.",
+    "Who takes the chips you lose at poker?", ["The house", "The other players", "Nobody"], 1),
 
   // ── 1 Rules
   ready("r-the-deck", "Checks: fresh", "52 cards: 13 ranks × 4 suits. Ranks matter. Suits only matter for flushes.",
