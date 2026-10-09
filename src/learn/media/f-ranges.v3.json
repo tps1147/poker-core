@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-ranges",
-  "video": "/academy/films-v2/f-ranges/bfc3ed10/f-ranges-1080.mp4",
-  "video720": "/academy/films-v2/f-ranges/bfc3ed10/f-ranges-720.mp4",
-  "poster": "/academy/films-v2/f-ranges/bfc3ed10/f-ranges-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-ranges/bfc3ed10/f-ranges-rule.jpg",
-  "captions": "/academy/films-v2/f-ranges/bfc3ed10/f-ranges.vtt",
-  "transcript": "/academy/films-v2/f-ranges/bfc3ed10/f-ranges.transcript.txt",
+  "video": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-1080.mp4",
+  "video720": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-720.mp4",
+  "poster": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges-rule.jpg",
+  "captions": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges.vtt",
+  "transcript": "/academy/films-v2/f-ranges/9d34a0eb/f-ranges.transcript.txt",
   "durationSeconds": 106,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 101.47,
     "first": null
   },
-  "version": "bfc3ed10"
+  "version": "9d34a0eb"
 }

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-first-hand",
-  "video": "/academy/films-v2/r-first-hand/f9c2820d/r-first-hand-1080.mp4",
-  "video720": "/academy/films-v2/r-first-hand/f9c2820d/r-first-hand-720.mp4",
-  "poster": "/academy/films-v2/r-first-hand/f9c2820d/r-first-hand-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-first-hand/f9c2820d/r-first-hand-rule.jpg",
-  "captions": "/academy/films-v2/r-first-hand/f9c2820d/r-first-hand.vtt",
-  "transcript": "/academy/films-v2/r-first-hand/f9c2820d/r-first-hand.transcript.txt",
+  "video": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-1080.mp4",
+  "video720": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-720.mp4",
+  "poster": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand-rule.jpg",
+  "captions": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand.vtt",
+  "transcript": "/academy/films-v2/r-first-hand/13858f2e/r-first-hand.transcript.txt",
   "durationSeconds": 68,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 63.7,
     "first": null
   },
-  "version": "f9c2820d"
+  "version": "13858f2e"
 }

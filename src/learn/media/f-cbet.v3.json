@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-cbet",
-  "video": "/academy/films-v2/f-cbet/66348276/f-cbet-1080.mp4",
-  "video720": "/academy/films-v2/f-cbet/66348276/f-cbet-720.mp4",
-  "poster": "/academy/films-v2/f-cbet/66348276/f-cbet-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-cbet/66348276/f-cbet-rule.jpg",
-  "captions": "/academy/films-v2/f-cbet/66348276/f-cbet.vtt",
-  "transcript": "/academy/films-v2/f-cbet/66348276/f-cbet.transcript.txt",
+  "video": "/academy/films-v2/f-cbet/22406e88/f-cbet-1080.mp4",
+  "video720": "/academy/films-v2/f-cbet/22406e88/f-cbet-720.mp4",
+  "poster": "/academy/films-v2/f-cbet/22406e88/f-cbet-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-cbet/22406e88/f-cbet-rule.jpg",
+  "captions": "/academy/films-v2/f-cbet/22406e88/f-cbet.vtt",
+  "transcript": "/academy/films-v2/f-cbet/22406e88/f-cbet.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 93.53,
     "first": null
   },
-  "version": "66348276"
+  "version": "22406e88"
 }

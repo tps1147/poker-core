@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "r-hand-rankings",
-  "video": "/academy/films-v2/r-hand-rankings/d5bed0f1/r-hand-rankings-1080.mp4",
-  "video720": "/academy/films-v2/r-hand-rankings/d5bed0f1/r-hand-rankings-720.mp4",
-  "poster": "/academy/films-v2/r-hand-rankings/d5bed0f1/r-hand-rankings-poster.jpg",
-  "ruleCard": "/academy/films-v2/r-hand-rankings/d5bed0f1/r-hand-rankings-rule.jpg",
-  "captions": "/academy/films-v2/r-hand-rankings/d5bed0f1/r-hand-rankings.vtt",
-  "transcript": "/academy/films-v2/r-hand-rankings/d5bed0f1/r-hand-rankings.transcript.txt",
+  "video": "/academy/films-v2/r-hand-rankings/6858b7b4/r-hand-rankings-1080.mp4",
+  "video720": "/academy/films-v2/r-hand-rankings/6858b7b4/r-hand-rankings-720.mp4",
+  "poster": "/academy/films-v2/r-hand-rankings/6858b7b4/r-hand-rankings-poster.jpg",
+  "ruleCard": "/academy/films-v2/r-hand-rankings/6858b7b4/r-hand-rankings-rule.jpg",
+  "captions": "/academy/films-v2/r-hand-rankings/6858b7b4/r-hand-rankings.vtt",
+  "transcript": "/academy/films-v2/r-hand-rankings/6858b7b4/r-hand-rankings.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 93.01,
     "first": null
   },
-  "version": "d5bed0f1"
+  "version": "6858b7b4"
 }

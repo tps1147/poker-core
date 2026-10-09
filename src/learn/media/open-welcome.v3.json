@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "open-welcome",
-  "video": "/academy/films-v2/open-welcome/10fe8ed6/open-welcome-1080.mp4",
-  "video720": "/academy/films-v2/open-welcome/10fe8ed6/open-welcome-720.mp4",
-  "poster": "/academy/films-v2/open-welcome/10fe8ed6/open-welcome-poster.jpg",
+  "video": "/academy/films-v2/open-welcome/ee4c3946/open-welcome-1080.mp4",
+  "video720": "/academy/films-v2/open-welcome/ee4c3946/open-welcome-720.mp4",
+  "poster": "/academy/films-v2/open-welcome/ee4c3946/open-welcome-poster.jpg",
   "ruleCard": null,
-  "captions": "/academy/films-v2/open-welcome/10fe8ed6/open-welcome.vtt",
-  "transcript": "/academy/films-v2/open-welcome/10fe8ed6/open-welcome.transcript.txt",
+  "captions": "/academy/films-v2/open-welcome/ee4c3946/open-welcome.vtt",
+  "transcript": "/academy/films-v2/open-welcome/ee4c3946/open-welcome.transcript.txt",
   "durationSeconds": 20,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": null,
     "first": 14.07
   },
-  "version": "10fe8ed6"
+  "version": "ee4c3946"
 }

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "p-position-value",
-  "video": "/academy/films-v2/p-position-value/aa853078/p-position-value-1080.mp4",
-  "video720": "/academy/films-v2/p-position-value/aa853078/p-position-value-720.mp4",
-  "poster": "/academy/films-v2/p-position-value/aa853078/p-position-value-poster.jpg",
-  "ruleCard": "/academy/films-v2/p-position-value/aa853078/p-position-value-rule.jpg",
-  "captions": "/academy/films-v2/p-position-value/aa853078/p-position-value.vtt",
-  "transcript": "/academy/films-v2/p-position-value/aa853078/p-position-value.transcript.txt",
+  "video": "/academy/films-v2/p-position-value/01d177b0/p-position-value-1080.mp4",
+  "video720": "/academy/films-v2/p-position-value/01d177b0/p-position-value-720.mp4",
+  "poster": "/academy/films-v2/p-position-value/01d177b0/p-position-value-poster.jpg",
+  "ruleCard": "/academy/films-v2/p-position-value/01d177b0/p-position-value-rule.jpg",
+  "captions": "/academy/films-v2/p-position-value/01d177b0/p-position-value.vtt",
+  "transcript": "/academy/films-v2/p-position-value/01d177b0/p-position-value.transcript.txt",
   "durationSeconds": 98,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 94.41,
     "first": null
   },
-  "version": "aa853078"
+  "version": "01d177b0"
 }

@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "f-value-betting",
-  "video": "/academy/films-v2/f-value-betting/91de8a6f/f-value-betting-1080.mp4",
-  "video720": "/academy/films-v2/f-value-betting/91de8a6f/f-value-betting-720.mp4",
-  "poster": "/academy/films-v2/f-value-betting/91de8a6f/f-value-betting-poster.jpg",
-  "ruleCard": "/academy/films-v2/f-value-betting/91de8a6f/f-value-betting-rule.jpg",
-  "captions": "/academy/films-v2/f-value-betting/91de8a6f/f-value-betting.vtt",
-  "transcript": "/academy/films-v2/f-value-betting/91de8a6f/f-value-betting.transcript.txt",
+  "video": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-1080.mp4",
+  "video720": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-720.mp4",
+  "poster": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-poster.jpg",
+  "ruleCard": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting-rule.jpg",
+  "captions": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting.vtt",
+  "transcript": "/academy/films-v2/f-value-betting/012adcdc/f-value-betting.transcript.txt",
   "durationSeconds": 92,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 87.5,
     "first": null
   },
-  "version": "91de8a6f"
+  "version": "012adcdc"
 }

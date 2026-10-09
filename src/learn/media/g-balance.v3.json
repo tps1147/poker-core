@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "g-balance",
-  "video": "/academy/films-v2/g-balance/263e75bd/g-balance-1080.mp4",
-  "video720": "/academy/films-v2/g-balance/263e75bd/g-balance-720.mp4",
-  "poster": "/academy/films-v2/g-balance/263e75bd/g-balance-poster.jpg",
-  "ruleCard": "/academy/films-v2/g-balance/263e75bd/g-balance-rule.jpg",
-  "captions": "/academy/films-v2/g-balance/263e75bd/g-balance.vtt",
-  "transcript": "/academy/films-v2/g-balance/263e75bd/g-balance.transcript.txt",
+  "video": "/academy/films-v2/g-balance/48cba6ed/g-balance-1080.mp4",
+  "video720": "/academy/films-v2/g-balance/48cba6ed/g-balance-720.mp4",
+  "poster": "/academy/films-v2/g-balance/48cba6ed/g-balance-poster.jpg",
+  "ruleCard": "/academy/films-v2/g-balance/48cba6ed/g-balance-rule.jpg",
+  "captions": "/academy/films-v2/g-balance/48cba6ed/g-balance.vtt",
+  "transcript": "/academy/films-v2/g-balance/48cba6ed/g-balance.transcript.txt",
   "durationSeconds": 97,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 91.29,
     "first": null
   },
-  "version": "263e75bd"
+  "version": "48cba6ed"
 }

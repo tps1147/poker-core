@@ -1,12 +1,12 @@
 {
   "format": "academy-film-v2",
   "id": "h-player-types",
-  "video": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-1080.mp4",
-  "video720": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-720.mp4",
-  "poster": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-poster.jpg",
-  "ruleCard": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types-rule.jpg",
-  "captions": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types.vtt",
-  "transcript": "/academy/films-v2/h-player-types/dc6c86d1/h-player-types.transcript.txt",
+  "video": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-1080.mp4",
+  "video720": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-720.mp4",
+  "poster": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-poster.jpg",
+  "ruleCard": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types-rule.jpg",
+  "captions": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types.vtt",
+  "transcript": "/academy/films-v2/h-player-types/24eeaaf5/h-player-types.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -24,5 +24,5 @@
     "upNext": 87.1,
     "first": null
   },
-  "version": "dc6c86d1"
+  "version": "24eeaaf5"
 }
