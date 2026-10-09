@@ -21,23 +21,23 @@ const practice = { hero: ["8s", "8d"], board: ["Ad", "8h", "3c", "Qs", "5h"], ve
 const fresh = { hero: ["7c", "6c"], board: ["Kd", "9s", "4c", "2h"] };
 
 // The film's four pauses, each the button the film itself lights (Fold, Call 5, Raise preflop; Fold,
-// Call 20, Raise on the flop; Fold, Check, Bet 40 on the river), only that one enabled.
-const act = (id, label) => ({ id, label });
+// Call 20, Raise on the flop; Fold, Check, Bet 40 on the river), only that one enabled. `labels` names a
+// choice as the film draws it.
 const turn1 = {
   decision: "action", street: "preflop", hero: film.hero, board: [], potBefore: 15, call: 5,
-  choices: [act("fold", "Fold"), act("call", "Call 5"), act("raise", "Raise")], enabled: ["call"],
+  choices: ["fold", "call", "raise"], labels: { call: "Call 5" }, enabled: ["call"],
   title: "Your turn", dockPrompt: "Your turn. Call 5.",
   prompt: "Ada has 10 in, you have 5. Call 5 to stay in the hand.",
 };
 const turn2 = {
   decision: "action", street: "flop", hero: film.hero, board: film.board.slice(0, 3), potBefore: 20, bet: 20, call: 20,
-  choices: [act("fold", "Fold"), act("call", "Call 20"), act("raise", "Raise")], enabled: ["call"],
+  choices: ["fold", "call", "raise"], labels: { call: "Call 20" }, enabled: ["call"],
   title: "Your turn", dockPrompt: "Your turn. Call 20.",
   prompt: "King, queen, jack, ten: one card from a straight. Ada bets 20. Call 20 to see the turn.",
 };
 const turn3 = {
   decision: "action", street: "river", hero: film.hero, board: film.board, potBefore: 60, bet: 40,
-  choices: [act("fold", "Fold"), act("check", "Check"), act("bet", "Bet 40")], enabled: ["bet"],
+  choices: ["fold", "check", "bet"], labels: { bet: "Bet 40" }, enabled: ["bet"],
   title: "Your turn", dockPrompt: "Your turn. Bet 40.",
   prompt: "The nine makes your straight, king down to nine. Ada checks. Bet 40.",
 };
