@@ -41,7 +41,7 @@ const spots = {
     explanation: "Check or bet. With nothing owed there is nothing to call or raise: check costs nothing, and a bet starts the betting. Folding is allowed but gives the pot away for free.",
   },
   "fh-fresh": {
-    decision: "count", street: "flop", hero: HERO, board: FLOP, potBefore: 80, bet: 30, call: 30, range: [0, 400], unit: "chips",
+    decision: "count", street: "flop", hero: HERO, board: FLOP, potBefore: 80, bet: 30, call: 30, range: [0, 400], step: 10, unit: "chips",
     title: "Rules check: what’s in the pot?",
     prompt: "You raised to 40 before the flop and Ada called. On the flop she bets 30. If you call, how much is in the pot?",
     hint: "Before the flop you each put in 40. Then add her 30 and your 30.",

@@ -14,7 +14,7 @@ const PRACTICE = { street: "river", hero: ["Ac", "Qc"], board: ["Kd", "Td", "6s"
 
 // The film's own question (asked and answered in the film).
 const turnSpot = {
-  decision: "count", ...RIVER, range: [0, 1000], unit: "chips",
+  decision: "count", ...RIVER, range: [0, 1000], step: 10, unit: "chips",
   title: "How much can Ada win?",
   prompt: "Four players. Ada is all-in for 50, Bo for 150, and you and Di put in 400 each: 1,000 in all. If Ada has the best hand, how much can she win?",
   hint: "Cut a line at Ada’s 50. Each player can put at most 50 into the pot she can win.",
@@ -23,21 +23,21 @@ const turnSpot = {
 
 const spots = {
   "ap-guided": {
-    decision: "count", ...GUIDED, range: [0, 1500], unit: "chips",
+    decision: "count", ...GUIDED, range: [0, 1500], step: 10, unit: "chips",
     title: "How much can Bo win?",
     prompt: "Four players. Ada is all-in for 60, Bo for 200, and you and Di put in 500 each: 1,260 in all. If Bo has the best hand, how much can he win?",
     hint: "Cut a line at Ada’s 60 and another at Bo’s 200. Bo can win every layer up to his own line.",
     explanation: "The main pot is 60 from each of four players: 240. Side pot one is the next 140 from Bo, you and Di: 420. Bo is in both, so he can win 240 + 420 = 660. The last 600 is between you and Di.",
   },
   "ap-practice": {
-    decision: "count", ...PRACTICE, range: [0, 1000], unit: "chips",
+    decision: "count", ...PRACTICE, range: [0, 1000], step: 10, unit: "chips",
     title: "Build the side pot.",
     prompt: "Three players. A is all-in for 100, B for 300, and you cover both and call 300. The main pot holds 300. How big is the side pot that only B and you can win?",
     hint: "Take 100 from each player for the main pot. What is left of B’s 300 and yours?",
     explanation: "Each player puts 100 in the main pot: 300 for A, B and you. B and you each have 200 more in, so the side pot is 2 × 200 = 400. 300 + 400 is all 700.",
   },
   "ap-fresh": {
-    decision: "count", street: "turn", hero: ["Ah", "Kh"], board: ["Kc", "9d", "4s", "2h"], range: [0, 1000], unit: "chips",
+    decision: "count", street: "turn", hero: ["Ah", "Kh"], board: ["Kc", "9d", "4s", "2h"], range: [0, 1000], step: 10, unit: "chips",
     title: "The chips nobody matched.",
     prompt: "You move all-in for 800. Ace Andy calls, all-in for 300. How many of your chips come straight back to you?",
     hint: "Only what he can match is in play. Count what he matched, then what is left of your 800.",

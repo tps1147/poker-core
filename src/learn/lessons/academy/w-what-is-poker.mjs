@@ -39,11 +39,11 @@ const spots = {
     explanation: "Your two eights and the 8♥ make three eights. Ace Andy has a pair of aces with a king. Three of a kind beats one pair, so you win.",
   },
   "wip-fresh": {
-    decision: "estimate", street: "turn", ...fresh, potBefore: 120, bet: 60, call: 60,
+    decision: "estimate", street: "turn", ...fresh, potBefore: 90, bet: 45, call: 45,
     bands: bands(["andy", "Ace Andy, without showing"], ["show", "Nobody yet: he must show to win"], ["split", "Split pot"]),
     dockPrompt: "If you fold here, who takes the pot?",
     title: "The other way to win.",
-    prompt: "A new hand. Ace Andy bets 60 into 120 on the turn, and you are thinking of folding 7♣ 6♣. If you fold, his cards stay face down. Who takes the pot?",
+    prompt: "A new hand. Ace Andy bets 45 into 90 on the turn, and you are thinking of folding 7♣ 6♣. If you fold, his cards stay face down. Who takes the pot?",
     hint: "A pot is won in two ways: the best five at showdown, or everyone else folding.",
     explanation: "When everyone else folds, the last player in wins the pot without showing a card. Ace Andy never needed the best hand here, only a fold.",
   },
@@ -74,7 +74,7 @@ const definition = v2Lesson({
   hands: {
     "wip-guided": huHand("wip-guided", { hero: guided.hero, board: guided.board, versus: guided.versus, pot: 240, seats: seatsHU("Ace Andy", 880, 880) }),
     "wip-practice": huHand("wip-practice", { hero: practice.hero, board: practice.board, versus: practice.versus, pot: 160, seats: seatsHU("Ace Andy", 920, 920) }),
-    "wip-fresh": huHand("wip-fresh", { hero: fresh.hero, board: fresh.board, pot: 120, seats: seatsHU("Ace Andy", 940, 940), acts: [{ seat: "opponent", action: "bet", amount: 60 }] }),
+    "wip-fresh": huHand("wip-fresh", { hero: fresh.hero, board: fresh.board, pot: 90, seats: seatsHU("Ace Andy", 955, 955), acts: [{ seat: "opponent", action: "bet", amount: 45 }] }),
   },
 });
 

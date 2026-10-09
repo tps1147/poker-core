@@ -39,7 +39,7 @@ const spots = {
     explanation: "Check behind. Three bets are called mostly by aces and better, which beat your jacks; two bets still get paid once by his weaker pairs. The check is a free card: the river costs nothing, and 2 jacks of 46 unseen cards, about 4.3%, give you a set.",
   },
   "pc-fresh": {
-    decision: "count", street: "flop", hero: ["8c", "8d"], board: ["Qh", "7s", "2c"], range: [0, 1000], unit: "chips",
+    decision: "count", street: "flop", hero: ["8c", "8d"], board: ["Qh", "7s", "2c"], range: [0, 1000], step: 10, unit: "chips",
     title: "Two streets, a new pot.",
     prompt: "A new hand. The flop pot is 60 and you are last to act with 8♣ 8♦. You bet half the pot on the flop, check the turn behind, and bet half the pot on the river; he calls both bets. How big is the final pot?",
     hint: "A half-pot bet that is called doubles the pot. How many times does it double here?",
