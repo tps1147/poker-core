@@ -2,12 +2,12 @@
   "format": "academy-film-v2",
   "id": "w-how-deep",
   "sourceId": "w-deep",
-  "video": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-1080.mp4",
-  "video720": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-720.mp4",
-  "poster": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-poster.jpg",
-  "ruleCard": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep-rule.jpg",
-  "captions": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep.vtt",
-  "transcript": "/academy/films-v2/w-how-deep/b3c63248/w-how-deep.transcript.txt",
+  "video": "/academy/films-v2/w-how-deep/1bfcfe59/w-how-deep-1080.mp4",
+  "video720": "/academy/films-v2/w-how-deep/1bfcfe59/w-how-deep-720.mp4",
+  "poster": "/academy/films-v2/w-how-deep/1bfcfe59/w-how-deep-poster.jpg",
+  "ruleCard": "/academy/films-v2/w-how-deep/1bfcfe59/w-how-deep-rule.jpg",
+  "captions": "/academy/films-v2/w-how-deep/1bfcfe59/w-how-deep.vtt",
+  "transcript": "/academy/films-v2/w-how-deep/1bfcfe59/w-how-deep.transcript.txt",
   "durationSeconds": 91,
   "captionsBurnedIn": true,
   "frame": {
@@ -25,7 +25,7 @@
     "upNext": 87.09,
     "first": null
   },
-  "version": "b3c63248",
+  "version": "1bfcfe59",
   "cues": [
     {
       "start": 0.94,
