@@ -18,6 +18,7 @@ const {
   computeEquity,
   computePotOdds,
 } = require('../insights/handInsightsMath');
+const { simulatedEquity } = require('./simEquity');
 
 // RULE TABLE (documented constants — the whole v1 grading policy lives here).
 //
@@ -158,7 +159,8 @@ const classifyAction = (action, toCall, amount) => {
 // Mirror useHandInsights: strength from the engine, outs only for a genuine
 // 4-card flush draw plus straight outs, gated off when a straight+ is already
 // made (the made straight's own ranks would still read as a draw).
-const computeInsight = (engine, holeCards, board, phase) => {
+// price: { toCall, pot } of the decision, so a simulated run-out can shape the range facing a bet.
+const computeInsight = (engine, holeCards, board, phase, price = null) => {
   const strength = clamp01(engine.evaluateHandStrength(holeCards, board));
   let totalOuts = 0;
   if (board.length === 3 || board.length === 4) {
@@ -177,6 +179,12 @@ const computeInsight = (engine, holeCards, board, phase) => {
       const draw = engine.evaluateDrawingHands(allCards);
       totalOuts = combineOuts(flushOuts, (draw && draw.straightOuts) || 0);
     }
+  }
+  // From the flop on, the hand is run out against the opponent (simEquity.js) when the engine can
+  // evaluate hands; the strength score is the fallback (and what test stubs without an evaluator get).
+  if (board.length >= 3 && typeof engine.evaluateHand === 'function') {
+    const sim = simulatedEquity(holeCards, board, { toCall: price ? price.toCall : 0, pot: price ? price.pot : 0 });
+    if (sim !== null) return { strength, totalOuts, equityPct: Math.round(sim), equityBasis: 'simulated' };
   }
   const equity = computeEquity({ totalOuts, phase, strength });
   return { strength, totalOuts, equityPct: equity.pct, equityBasis: equity.basis };
@@ -322,7 +330,7 @@ const gradeHand = (timeline, insightEngine) => {
     let insight;
     try {
       const board = normalizeCards(frame.boardCards) || [];
-      insight = computeInsight(insightEngine, holeCards, board, frame.phase);
+      insight = computeInsight(insightEngine, holeCards, board, frame.phase, { toCall: frame.toCall, pot: frame.potBefore });
     } catch (error) {
       return; // an engine hiccup must never take down the whole review
     }
