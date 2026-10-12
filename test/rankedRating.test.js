@@ -42,16 +42,29 @@ assert.strictEqual(held.shieldArena, null);
 const floor = computeRankedOutcome({ winner: { rating: 300, matches: 30 }, loser: { rating: 105, matches: 30 }, hands: 8 }).loser;
 assert.strictEqual(floor.after, 100);
 // Play rating and form.
-assert.strictEqual(playRatingFor(70), 1000);
-assert.strictEqual(playRatingFor(80), 1500);
-const form = computeRankedOutcome({ winner: { rating: 1000, matches: 30, accuracyPct: 80, graded: 6, form: 1000 }, loser: { rating: 1000, matches: 30 }, hands: 8 }).winner;
-assert.strictEqual(form.form, 1150);
-assert.ok(describeRankedSteps(form.steps).some((l) => /Played like 1,500/.test(l)));
+assert.strictEqual(playRatingFor(80), 1000);
+assert.strictEqual(playRatingFor(90), 1400);
+assert.strictEqual(playRatingFor(100), 1800);
+const form = computeRankedOutcome({ winner: { rating: 1000, matches: 30, accuracyPct: 90, graded: 6, form: 1000 }, loser: { rating: 1000, matches: 30 }, hands: 8 }).winner;
+assert.strictEqual(form.form, 1120);
+assert.ok(describeRankedSteps(form.steps).some((l) => /Played like 1,400/.test(l)));
+// Only contested decisions count toward play.
+const { playFromReview } = require('../src/rating');
+const fake = { hands: [{ decisions: [
+  { action: 'check', grade: 'good', metrics: { equityPct: 40, toCall: 0 } },
+  { action: 'call', grade: 'blunder', metrics: { equityPct: 20, toCall: 100 } },
+  { action: 'raise', grade: 'good', metrics: { equityPct: 70, toCall: 0 } },
+  { action: 'call', grade: 'good', metrics: { equityPct: null, toCall: 50 } },
+] }] };
+assert.deepStrictEqual(playFromReview(fake), { accuracyPct: 57, graded: 2 }); // (0.15 + 1) / 2, rounded
 
-// Simulated equity: T8 on Q-3-2 is about a third, never the 12% the strength score gave.
+// Simulated equity: T8 on Q-3-2 is about a third against a random hand, a little less against a
+// half-pot betting range, never the 12% the strength score gave (a mistake to call, not a blunder).
 const c = (s) => s.match(/../g).map((x) => ({ rank: x[0], suit: x[1] }));
+const vsRandom = simulatedEquity(c('Th8c'), c('2s3cQh'));
+assert.ok(vsRandom > 29 && vsRandom < 38, `T8 on Q32 vs random ~ a third, got ${vsRandom}`);
 const t8 = simulatedEquity(c('Th8c'), c('2s3cQh'), { toCall: 50, pot: 100 });
-assert.ok(t8 > 28 && t8 < 40, `T8 on Q32 ~ a third, got ${t8}`);
+assert.ok(t8 > 22 && t8 < vsRandom, `T8 on Q32 facing half pot is below vs-random, got ${t8}`);
 assert.strictEqual(simulatedEquity(c('Th8c'), c('2s3cQh'), { toCall: 50, pot: 100 }), t8, 'deterministic');
 assert.ok(simulatedEquity(c('AsAh'), c('Kd7c2s')) > 80);
 assert.strictEqual(simulatedEquity(c('AhKh'), c('2h7h9cQhJs')), 100);

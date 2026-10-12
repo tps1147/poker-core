@@ -8,9 +8,11 @@
 //   2. THE BASE is Elo's: K x (result - expected), expected from the two ratings.
 //      K follows experience: 40 for the first 15 ranked matches (the rating is still finding
 //      you), 24 after, 16 from 1,800 up (strong ratings move steadily).
-//   3. HOW YOU PLAYED SETS THE SIZE. The match's graded decisions become a PLAY RATING: the
-//      rating a player with that accuracy usually holds (accuracy 70% plays like 1,000; each
-//      point is worth 50). Played above your rating: a win gains more, a loss costs less. Played
+//   3. HOW YOU PLAYED SETS THE SIZE. The match's CONTESTED decisions (a bet to face, or a bet or
+//      raise of your own: the checks and blind completions every hand has are left out, they
+//      would read everyone as near-perfect) become a PLAY RATING (playFromReview): accuracy 80%
+//      plays like 1,000 and each point is worth 40, so 90% is 1,400 and 100% is 1,800. These two
+//      numbers are a first calibration and get tuned on real matches. Played above your rating: a win gains more, a loss costs less. Played
 //      below it: a win gains less, a loss costs more. At most 25% either way, and only when the
 //      match gave at least MIN_GRADED graded decisions (fewer is not enough to judge).
 //   4. SHORT MATCHES COUNT LESS. Decided in 1 or 2 hands (a coin-flip shove), the move is 0.6x.
@@ -37,9 +39,9 @@ const RULES = Object.freeze({
   CAP: 40,
   FLOOR: 100,
   FORM_WEIGHT: 0.3,
-  // accuracy -> play rating: 70% is 1,000, each point 50.
-  ACC_AT_1000: 70,
-  POINTS_PER_ACC: 50,
+  // contested accuracy -> play rating: 80% is 1,000, each point 40.
+  ACC_AT_1000: 80,
+  POINTS_PER_ACC: 40,
   PLAY_MIN: 100,
   PLAY_MAX: 2600,
 });
@@ -64,6 +66,24 @@ const playRatingFor = (accuracyPct) => {
   if (a === null) return null;
   return Math.round(clamp(1000 + (a - RULES.ACC_AT_1000) * RULES.POINTS_PER_ACC, RULES.PLAY_MIN, RULES.PLAY_MAX));
 };
+
+// A Match Review (poker-core review buildMatchReview) -> { accuracyPct, graded } over the
+// contested decisions only. Scored with the review's own GRADE_SCORE.
+function playFromReview(review) {
+  const { GRADE_SCORE } = require('../review/gradeDecisions');
+  let sum = 0;
+  let n = 0;
+  for (const hand of (review && review.hands) || []) {
+    for (const d of hand.decisions || []) {
+      const m = d.metrics || {};
+      const contested = m.equityPct != null && ((Number(m.toCall) || 0) > 0 || d.action === 'raise' || d.action === 'bet');
+      if (!contested || !(d.grade in GRADE_SCORE)) continue;
+      sum += GRADE_SCORE[d.grade];
+      n += 1;
+    }
+  }
+  return { accuracyPct: n ? Math.round((sum / n) * 100) : null, graded: n };
+}
 
 // One side. me: { rating, matches, accuracyPct, graded, form, shieldArena }, opp: { rating }.
 // -> { before, after, delta, k, base, play, factor, steps[], form, shieldArena }
@@ -161,4 +181,4 @@ function describeRankedSteps(steps = []) {
   }).filter(Boolean);
 }
 
-module.exports = { RANKED_RULES: RULES, computeRankedOutcome, playRatingFor, describeRankedSteps };
+module.exports = { RANKED_RULES: RULES, computeRankedOutcome, playRatingFor, playFromReview, describeRankedSteps };

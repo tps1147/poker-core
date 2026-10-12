@@ -4,12 +4,14 @@
 // T8 on Q-3-2 scored 12% when it has about 35% against a random hand, so an ordinary call was
 // graded a blunder (production audit, 2026-10-12). This runs the hand out instead.
 //
-// THE OPPONENT IS NOT A RANDOM HAND. Facing a bet, the opponent holds something more often than
-// a random hand does, so every sampled opponent hand that holds nothing (no pair, no draw) on
-// the current board is kept with probability 1 - min(0.6, toCall / pot): a half-pot bet keeps
-// about two thirds of them, a pot-sized bet or bigger keeps 40%. Not facing a bet, the opponent
-// is a random hand.
-//
+// THE OPPONENT IS NOT A RANDOM HAND. Facing a bet, the opponent's range leans to the hands that
+// bet: each sampled opponent hand is scored on the current board (high card 0.15, a pair 0.35 to
+// 0.6 by its rank, a four-card draw 0.45, two pair 0.75, trips 0.85, a straight or better 0.95)
+// and kept with probability 0.2 + 0.8 x score^(3 x bet/pot). Facing a half-pot bet a top pair is
+// kept about twice as often as a hand with nothing; facing a pot-sized bet or more the range is
+// mostly two pair and up. The 0.2 floor is the bluffs: every betting range has some. Not facing
+// a bet, the opponent is a random hand.
+
 // DETERMINISTIC. The sampler is seeded from the cards and the price, so the phone and the server
 // grade the same decision to the same number and a review never changes between two openings.
 
@@ -24,6 +26,7 @@ const SUIT_OF = { s: '♠', h: '♥', d: '♦', c: '♣', spades: '♠', hearts:
 const suitOf = (suit) => (SUITS.includes(suit) ? suit : SUIT_OF[String(suit || '').toLowerCase()] || null);
 const asCard = (c) => (c && suitOf(c.suit) ? { rank: c.rank, suit: suitOf(c.suit) } : null);
 const keyOf = (c) => `${c.rank}${c.suit}`;
+const BLUFF_FLOOR = 0.2;
 
 // mulberry32: small, fast, seedable.
 function rng(seed) {
@@ -43,11 +46,25 @@ function hashSeed(text) {
   return h >>> 0;
 }
 
-// Does this opponent hand hold anything on this board: a pair or better, or a four-card flush or
-// open straight draw? Used only to shape the range facing a bet.
-function holdsSomething(hole, board) {
+// How much an opponent hand likes this board, 0..1 (see the range note above).
+function holdingScore(hole, board) {
   const made = evaluateHand(hole.concat(board));
-  if (made && made.rank >= 1) return true;
+  // pokerEvaluator ranks: 1 high card, 2 pair, 3 two pair, 4 trips, 5 straight and up.
+  const rank = made ? made.rank : 1;
+  if (rank >= 5) return 0.95;
+  if (rank === 4) return 0.85;
+  if (rank === 3) return 0.75;
+  if (rank === 2) {
+    const boardRanks = board.map((c) => RANKS.indexOf(c.rank));
+    const top = Math.max(...boardRanks);
+    const pairRank = typeof made.value === 'number' ? made.value : -1;
+    return pairRank >= top ? 0.6 : 0.35 + 0.2 * Math.max(0, pairRank) / 12;
+  }
+  return holdsDraw(hole, board) ? 0.45 : 0.15;
+}
+
+// A four-card flush draw or open-ended straight draw that uses a hole card.
+function holdsDraw(hole, board) {
   const cards = hole.concat(board);
   const suits = {};
   cards.forEach((c) => { suits[c.suit] = (suits[c.suit] || 0) + 1; });
@@ -65,7 +82,7 @@ function holdsSomething(hole, board) {
 
 // hole: 2 engine cards, board: 3-5 engine cards. -> equity percent (0-100), or null if the cards
 // cannot be read. trials: the number of opponent hands and run-outs kept.
-function simulatedEquity(holeIn, boardIn, { toCall = 0, pot = 0, trials = 600 } = {}) {
+function simulatedEquity(holeIn, boardIn, { toCall = 0, pot = 0, trials = 500 } = {}) {
   if (!Array.isArray(holeIn) || holeIn.length !== 2 || !Array.isArray(boardIn) || boardIn.length < 3) return null;
   const hole = holeIn.map(asCard);
   const board = boardIn.map(asCard);
@@ -74,13 +91,13 @@ function simulatedEquity(holeIn, boardIn, { toCall = 0, pot = 0, trials = 600 } 
   if (used.size !== hole.length + board.length) return null;
   const rest = DECK.filter((c) => !used.has(keyOf(c)));
   if (rest.length !== 52 - used.size) return null;
-  const keepNothing = toCall > 0 && pot > 0 ? 1 - Math.min(0.6, toCall / pot) : 1;
+  const shape = toCall > 0 && pot > 0 ? 3 * Math.min(1.5, toCall / pot) : 0;
   const next = rng(hashSeed(`${hole.map(keyOf).join('')}|${board.map(keyOf).join('')}|${toCall}|${pot}`));
   const need = 5 - board.length;
   let score = 0;
   let kept = 0;
   let draws = 0;
-  while (kept < trials && draws < trials * 6) {
+  while (kept < trials && draws < trials * 25) {
     draws += 1;
     // Partial Fisher-Yates: the first 2 + need cards of a shuffled copy.
     const deck = rest.slice();
@@ -89,7 +106,7 @@ function simulatedEquity(holeIn, boardIn, { toCall = 0, pot = 0, trials = 600 } 
       const t = deck[i]; deck[i] = deck[j]; deck[j] = t;
     }
     const opp = [deck[0], deck[1]];
-    if (keepNothing < 1 && !holdsSomething(opp, board) && next() > keepNothing) continue;
+    if (shape > 0 && next() > BLUFF_FLOOR + (1 - BLUFF_FLOOR) * holdingScore(opp, board) ** shape) continue;
     const runout = board.concat(deck.slice(2, 2 + need));
     const mine = evaluateHand(hole.concat(runout));
     const theirs = evaluateHand(opp.concat(runout));
@@ -101,4 +118,4 @@ function simulatedEquity(holeIn, boardIn, { toCall = 0, pot = 0, trials = 600 } 
   return kept ? Math.round((1000 * score) / kept) / 10 : null;
 }
 
-module.exports = { simulatedEquity, holdsSomething };
+module.exports = { simulatedEquity, holdingScore };

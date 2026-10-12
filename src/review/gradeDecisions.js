@@ -225,7 +225,9 @@ const gradeOne = ({ kind, phase, toCall, potBefore, neededPct, insight }) => {
     const price = priceLine(potBefore, toCall, insight.equityPct, neededPct);
     if (
       insight.strength < GRADE_RULES.DRAW_CALL_STRENGTH_MAX &&
-      insight.equityBasis === 'outs' &&
+      // A draw: counted outs, priced by outs or by the simulated run-out (2026-10-12).
+      insight.totalOuts > 0 &&
+      (insight.equityBasis === 'outs' || insight.equityBasis === 'simulated') &&
       diff >= 0
     ) {
       return { grade: 'brilliant', note: `Priced-in draw call — called ${toCall} ${price}` };
