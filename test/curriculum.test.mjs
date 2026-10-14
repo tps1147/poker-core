@@ -184,7 +184,10 @@ check("the chapter hand and the chapter's standing", () => {
 check("covers, art and leak fixes", () => {
   const { LESSON_COVERS, lessonCover, COVER_ASPECT } = learn;
   for (const id of COURSE_ORDER) assert.ok(LESSON_COVERS[id], `${id} has a cover`);
-  for (const id of Object.keys(LESSON_COVERS)) assert.ok(COURSE_ORDER.includes(id), `${id} is a shipped lesson`);
+  const lessonIds = NODES.map((n) => n.legacy?.lesson || n.id);
+  for (const id of Object.keys(LESSON_COVERS)) assert.ok(lessonIds.includes(id), `${id} is a tree lesson`);
+  for (const id of lessonIds) assert.ok(LESSON_COVERS[id], `${id} has a cover`);
+  assert.deepEqual(lessonCover("w-what-is-poker"), { still: "/academy/covers/w-what-is-poker.jpg", loop: null });
   assert.deepEqual(lessonCover("pot-odds-workspace-v2"), {
     still: "/academy/covers/pot-odds-workspace-v2.jpg",
     loop: "/academy/covers/pot-odds-workspace-v2.mp4",
@@ -201,6 +204,11 @@ check("covers, art and leak fixes", () => {
   for (const ch of LEGACY_CHAPTERS) assert.ok(CHAPTER_ART[ch.id], `${ch.id} (retired) keeps its art`);
   assert.deepEqual(chapterArt("pressure"), { still: "/academy/chapters/pressure.jpg", loop: null });
   assert.equal(chapterArt("math"), null, "a track has no art yet; apps fall back");
+  const { TRACK_ART, trackArt } = learn;
+  for (const t of TRACKS) assert.ok(TRACK_ART[t.id], `${t.id} has a world`);
+  assert.deepEqual(trackArt("welcome"), { still: "/academy/arenas/welcome.jpg", loop: null });
+  assert.deepEqual(trackArt("rules"), { still: "/academy/chapters/table-literacy.jpg", loop: null });
+  assert.equal(trackArt("nope"), null);
   assert.ok(CHAPTER_HAND_ART.still && CHAPTER_HAND_ART.seal);
   const { RING_MEDALS, ringMedal, LEAK_LESSONS, leakFix } = learn;
   for (const key of Object.keys(RING_MEDALS)) assert.ok(ringMedal(key), `${key} wears a medallion`);
