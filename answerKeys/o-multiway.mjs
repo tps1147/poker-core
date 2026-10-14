@@ -10,7 +10,7 @@
 // at 65%, a half-pot bluff -> 27.5%, check. mw-fresh: two players at 55%, a third-pot bluff ->
 // 30.25%, bet. The keys' actions are unchanged; the film and why keys too.
 export default {
-  lessonId: "o-multiway", node: "o-multiway", contentVersion: 2, flow: "film-first", access: "pro", conceptId: "t6-multiway",
+  lessonId: "o-multiway", node: "o-multiway", contentVersion: 2, flow: "film-first", access: "free", conceptId: "t6-multiway",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "mw-why"}, {kind: "decision", spotId: "mw-guided"}, {kind: "decision", spotId: "mw-practice"}, {kind: "decision", spotId: "mw-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: 69.34, spotId: "mw-turn", decision: "action", choices: ["check", "bet"], key: {action: "bet"} },
   why: { stage: 2, spotId: "mw-why", options: ["both", "more-value", "each"], key: { option: "both" } },

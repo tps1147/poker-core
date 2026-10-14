@@ -70,16 +70,21 @@ check("old lesson ids map to nodes through legacy.lesson, both ways", () => {
   assert.equal(lessonOfNode("nope"), null);
 });
 
-check("the gate: every shipped lesson keeps its tier; new lessons follow their track's level", () => {
+check("the gate: every shipped lesson keeps its tier; new lessons follow their track's rule", () => {
   for (const d of FILM_FIRST_LESSONS) assert.equal(lessonSlot(d.id).access, d.access, `${d.id} keeps ${d.access}`);
   const access = (id) => lessonSlot(id).access;
   for (const t of ["welcome", "rules", "board"]) for (const s of TRACK_CHAPTERS.find((c) => c.id === t).lessons) assert.equal(s.access, "free", s.node);
   assert.equal(access("m-chance-as-share"), "free", "preview: a new first lesson is free");
   assert.equal(access("m-variance"), "pro", "preview: a new later lesson is Pro");
   assert.equal(access("f-value-betting"), "pro");
-  assert.equal(access("y-bankroll"), "pro", "intermediate is Pro");
   assert.equal(access("o-live"), "pro");
-  assert.equal(access("f-ranges"), "pro", "a shipped definition's tier wins over the preview rule");
+  // The free and Pro split (Oct 14 2026): first lessons of People, Game Theory and Other Tables are
+  // free, The Player is free whole, and so are the postflop and pressure openers.
+  for (const id of ["f-ranges", "x-fold-equity", "h-range-narrowing", "g-toy-games", "o-multiway", "y-bankroll", "y-tilt", "y-study"]) assert.equal(access(id), "free", id);
+  for (const id of ["h-player-types", "g-balance", "o-heads-up"]) assert.equal(access(id), "pro", id);
+  const all = TRACK_CHAPTERS.flatMap((c) => c.lessons);
+  assert.equal(all.filter((s) => s.access === "free").length, 35, "35 free");
+  assert.equal(all.filter((s) => s.access === "pro").length, 24, "24 Pro");
 });
 
 check("the path: the shipped lessons, in tree order, in their tracks, numbered 1 to 20", () => {
