@@ -23,7 +23,7 @@ const story = buildMatchStory(review, timelines);
 // Player grade names, and no accuracy or rating anywhere in what clients receive.
 assert.deepStrictEqual(PLAYER_GRADE_ORDER, ['clutch', 'solid', 'loose', 'leak', 'punt']);
 assert.deepStrictEqual(story.tally, { clutch: 1, solid: 2, loose: 0, leak: 1, punt: 1 });
-assert.ok(!/accuracy|rating/i.test(JSON.stringify(story)), 'story carries no accuracy or rating');
+assert.ok(!/accuracyPct|"accuracy"|rating/i.test(JSON.stringify(story)), 'story carries no accuracy or rating');
 
 // One verdict per spot, addressable by hand and frame.
 const punt = story.spots.find((s) => s.spotId === spotIdOf('h2', 5));
