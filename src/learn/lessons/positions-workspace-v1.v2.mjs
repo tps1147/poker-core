@@ -29,12 +29,12 @@ const blinds = { do: "blinds", sb: 5, bb: 10 };
 const preflop = (hero) => ({ street: "preflop", board: [], hero, potBefore: 5, bet: 10, call: 10, sizes: OPEN });
 
 const definition = {
-  id: "positions-workspace-v1", version: 2, flow: "film-first",
+  id: "positions-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t0-positions",
   sourceLessonId: "lesson-positions-001", videoLessonId: "lesson-positions-001",
-  coach: "reina", access: "free", template: "preflop",
+  coach: "knox", narrator: "nathan", access: "free", template: "preflop",
   title: "Position is information.", kicker: "Learn the seat, then choose the range.",
-  trail: ["Learn", "Table literacy", "Table positions"],
+  trail: ["Learn", "Table literacy", "Position is information."],
   course: { chapter: "Table literacy" },
   meta: { minutes: 3 },
   assumptions: "Six-handed, blinds of 5 and 10, everyone starts with 1,000 (100 big blinds), no antes and no rake. Nobody has raised before you, and nobody limps: when the action reaches you, you open with a raise to 25 or you fold. The plays follow common six-handed opening ranges for each seat, a rule of thumb this lesson gives you, not something read from anyone’s hidden cards. Each hand stops once you act, so no flop is dealt.",
@@ -42,27 +42,38 @@ const definition = {
   feedback: { found: "You read the seat.", missed: "Let’s look at the seat.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Position is information.", em: "Read the seat first.",
-      lead: "The same two cards play differently from different seats. Watch Reina carry king-nine from the first seat to the button, then play three hands at a six-handed table.",
-      cta: "Watch with Reina" },
-    { kind: "film", label: "Film", upNext: "Play Reina’s hand",
+      lead: "The same two cards play differently from different seats. Watch the film, then play three hands at a six-handed table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // Chapters on the film's own beats (the v1 beats, unchanged), with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the seat" }, { beat: "hand", label: "Read the hand" }, { beat: "move", label: "Move to the button" }, { beat: "range", label: "Choose the range" }] },
-    { kind: "decision", label: "Reina’s hand", spotId: "pos2-guided", hand: "pos2-guided", role: "guided",
-      coachLine: "Reina’s king-nine, now on the button.", next: "Try a practice hand" },
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the seat" }, { beat: "hand", label: "Read the hand" }, { beat: "move", label: "Move to the button" }, { beat: "range", label: "Choose the range" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (p-position-value, canon.yourTurn at 76.55 s).
+      // `film` names the film the time belongs to. Key: answerKeys/p-position-value.mjs.
+      pause: { at: 76.55, anchor: "yourTurn", film: "p-position-value", spotId: "pos2-turn",
+        spot: { decision: "estimate", bands: [{ id: "co", label: "The cutoff" }, { id: "bb", label: "The big blind" }], prompt: "Cutoff against big blind, after the flop. Who acts last?", title: "Your turn: who acts last?", explanation: "The cutoff. After the flop the big blind has to go first, and the cutoff acts after it." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/p-position-value.mjs).
+    { kind: "why", label: "Why", spotId: "pos2-why", prompt: "Why does the cutoff act last against the big blind after the flop?",
+      options: [
+        { id: "a", text: "After the flop the action starts left of the button, so the big blind goes first and the cutoff last.", fix: "Right. The order flips after the flop: the cutoff acts last, knowing what the big blind did." },
+        { id: "b", text: "The big blind posted the most, so it acts last on every street.", fix: "Only before the flop. After the flop the big blind acts first." },
+        { id: "c", text: "Position only matters before the flop.", fix: "Acting last helps on every street: you choose after seeing what they did." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "pos2-guided", hand: "pos2-guided", role: "guided",
+      coachLine: "King-nine, on the button.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "pos2-practice", hand: "pos2-practice", role: "practice",
       coachLine: "New cards. You are first to act.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pos2-fresh", hand: "pos2-fresh", role: "fresh",
       coachLine: "Your seat, your cards, your call.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Seat first, range second.",
       lead: "Before you weigh your cards, count who still acts behind you. Early seats play fewer hands; late seats earn more of the right hands, not every hand.",
-      recapLabels: ["Reina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
     "pos2-guided": {
       decision: "action", choices: ["fold", "raise"], ...preflop(["Kd", "9c"]),
       title: "It folds to you on the button. Fold or raise?",
-      prompt: "Reina’s king-nine offsuit, now on the button. Under the gun, middle position and the cutoff have all folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
+      prompt: "King-nine offsuit on the button. Under the gun, middle position and the cutoff have all folded. The blinds have put in 5 and 10, so 15 is in the pot and you owe 10. Raise to 25, or fold?",
       hint: "Count the players who still act after you, and remember who acts last on every street after the flop.",
       explanation: "Only the small blind and the big blind act after you, and you act last on every street after the flop. With just two players left to wake up with a better king or a strong pair, king-nine offsuit is one of the right hands for this seat, so raising to 25 is the play under this lesson’s assumptions.",
       note: "The hand stops once you act. No flop is dealt in this lesson.",

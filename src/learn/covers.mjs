@@ -33,6 +33,46 @@ export const LESSON_COVERS = Object.freeze({
   "bet-sizing-workspace-v1": Object.freeze({ loop: true }),
   "semibluff-workspace-v1": Object.freeze({ loop: true }),
   "bluffing-workspace-v1": Object.freeze({ loop: true }),
+  // The academy tree's own lessons (keyed by node id), stills only for now.
+  "w-what-is-poker": Object.freeze({ loop: false }),
+  "w-luck-and-skill": Object.freeze({ loop: false }),
+  "w-how-deep": Object.freeze({ loop: false }),
+  "w-the-academy": Object.freeze({ loop: false }),
+  "w-history": Object.freeze({ loop: false }),
+  "r-the-deck": Object.freeze({ loop: false }),
+  "r-best-five": Object.freeze({ loop: false }),
+  "r-seats-blinds": Object.freeze({ loop: false }),
+  "r-streets": Object.freeze({ loop: false }),
+  "r-showdown": Object.freeze({ loop: false }),
+  "r-all-in-side-pots": Object.freeze({ loop: false }),
+  "r-first-hand": Object.freeze({ loop: false }),
+  "b-made-vs-draw": Object.freeze({ loop: false }),
+  "b-the-nuts": Object.freeze({ loop: false }),
+  "b-what-beats-you": Object.freeze({ loop: false }),
+  "b-kickers-counterfeit": Object.freeze({ loop: false }),
+  "b-texture-read": Object.freeze({ loop: false }),
+  "m-chance-as-share": Object.freeze({ loop: false }),
+  "m-variance": Object.freeze({ loop: false }),
+  "f-value-betting": Object.freeze({ loop: false }),
+  "f-pot-control": Object.freeze({ loop: false }),
+  "f-playing-draws": Object.freeze({ loop: false }),
+  "x-mdf": Object.freeze({ loop: false }),
+  "x-check-raise": Object.freeze({ loop: false }),
+  "x-barrels-blockers": Object.freeze({ loop: false }),
+  "h-range-narrowing": Object.freeze({ loop: false }),
+  "h-player-types": Object.freeze({ loop: false }),
+  "h-exploits": Object.freeze({ loop: false }),
+  "g-toy-games": Object.freeze({ loop: false }),
+  "g-balance": Object.freeze({ loop: false }),
+  "g-gto-to-exploit": Object.freeze({ loop: false }),
+  "y-bankroll": Object.freeze({ loop: false }),
+  "y-tilt": Object.freeze({ loop: false }),
+  "y-study": Object.freeze({ loop: false }),
+  "o-multiway": Object.freeze({ loop: false }),
+  "o-heads-up": Object.freeze({ loop: false }),
+  "o-tournaments-icm": Object.freeze({ loop: false }),
+  "o-six-max": Object.freeze({ loop: false }),
+  "o-live": Object.freeze({ loop: false }),
 });
 
 // A lesson's cover as CDN-relative paths, { still, loop } (loop null when it has none), or null
@@ -87,6 +127,30 @@ export function chapterArt(id) {
     still: `/academy/chapters/${id}.jpg`,
     loop: entry.loop ? `/academy/chapters/${id}.mp4` : null,
   };
+}
+
+// Arena art: each academy track's world, shown on its arena chip on Learn, on the web's track
+// plate and at the top of its chapter page (16:9). A track whose retired chapter already has a world
+// reuses it; the rest have their own:
+//   /academy/arenas/<track id>.jpg   the still, 1600 x 900
+export const TRACK_ART = Object.freeze({
+  welcome: "/academy/arenas/welcome.jpg",
+  rules: "/academy/chapters/table-literacy.jpg",
+  board: "/academy/arenas/board.jpg",
+  math: "/academy/chapters/math-spine-1.jpg",
+  preflop: "/academy/chapters/preflop-discipline.jpg",
+  postflop: "/academy/chapters/postflop-fundamentals.jpg",
+  pressure: "/academy/chapters/pressure.jpg",
+  people: "/academy/arenas/people.jpg",
+  theory: "/academy/arenas/theory.jpg",
+  player: "/academy/arenas/player.jpg",
+  formats: "/academy/arenas/formats.jpg",
+});
+
+// A track's world as CDN-relative paths, { still, loop: null }, or null for an unknown track.
+export function trackArt(trackId) {
+  const still = trackId ? TRACK_ART[trackId] : null;
+  return still ? { still, loop: null } : null;
 }
 
 // The chapter hand's own art: its opening (the chip hero at a spotlit table, five cards face down,

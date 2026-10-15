@@ -1,0 +1,61 @@
+{
+  "format": "academy-film-v2",
+  "id": "open-formats",
+  "video": "/academy/films-v2/open-formats/d78f7448/open-formats-1080.mp4",
+  "video720": "/academy/films-v2/open-formats/d78f7448/open-formats-720.mp4",
+  "poster": "/academy/films-v2/open-formats/d78f7448/open-formats-poster.jpg",
+  "ruleCard": null,
+  "captions": "/academy/films-v2/open-formats/d78f7448/open-formats.vtt",
+  "transcript": "/academy/films-v2/open-formats/d78f7448/open-formats.transcript.txt",
+  "durationSeconds": 21,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": null,
+    "yourTurn": null,
+    "rule": null,
+    "upNext": null,
+    "first": 16.01
+  },
+  "version": "d78f7448",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 3.79,
+      "text": "Chapter ten. Other Tables."
+    },
+    {
+      "start": 3.79,
+      "end": 6.16,
+      "text": "Same cards, new rooms."
+    },
+    {
+      "start": 6.16,
+      "end": 11.55,
+      "text": "Crowded pots, heads-up duels, tournaments and the live table."
+    },
+    {
+      "start": 11.55,
+      "end": 14.59,
+      "text": "By the end, you'll know how a hand changes"
+    },
+    {
+      "start": 14.59,
+      "end": 16.01,
+      "text": "when the table does."
+    },
+    {
+      "start": 16.01,
+      "end": 21,
+      "text": "First up: Multiway Pots."
+    }
+  ],
+  "transcriptText": "Chapter ten. Other Tables. Same cards, new rooms. Crowded pots, heads-up duels, tournaments and the live table. By the end, you'll know how a hand changes when the table does. First up: Multiway Pots."
+}

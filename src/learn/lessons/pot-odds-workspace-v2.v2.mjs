@@ -23,12 +23,12 @@ const fresh = { hero: ["6s", "5s"], board: ["Ks", "8d", "4c", "2h"], street: "tu
 const priceFeedback = { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." };
 
 const definition = {
-  id: "pot-odds-workspace-v2", version: 2, flow: "film-first",
+  id: "pot-odds-workspace-v2", version: 3, flow: "film-first",
   conceptId: "t1-pot-odds",
   sourceLessonId: "lesson-pot-odds-001", videoLessonId: "pilot-pot-odds",
-  coach: "mina", access: "free", template: "core-math",
+  coach: "knox", narrator: "nathan", access: "free", template: "core-math",
   title: "Find your price.", kicker: "A small idea. A better decision.",
-  trail: ["Learn", "The math behind the move", "Pot odds"],
+  trail: ["Learn", "The math behind the move", "Find your price."],
   course: { chapter: "The math behind the move" },
   meta: { minutes: 3 },
   assumptions: "Heads-up. Ace Andy is all-in on every hand, so no more betting follows the call, and there is no side pot and no rake. Ties are ignored. The chance of winning is given for the exercise: an estimate of roughly 2% per out with one card to come, counting every card that completes your draw as an out. It is never exact equity read from the cards, and the opponent’s cards stay hidden.",
@@ -36,24 +36,36 @@ const definition = {
   feedback: priceFeedback,
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Find your price.", em: "Then decide.",
-      lead: "A draw is not a reason to call. Watch Mina build the final pot and find the price, then weigh three calls at the table.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      lead: "A draw is not a reason to call. Watch the film, then weigh three calls at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "startingPot", label: "Build the pot" }, { beat: "possibleCall", label: "Add your call" }, { beat: "formula", label: "Cost over pot" }, { beat: "result", label: "Your price" }],
       // The cue boundary before "The call costs 50": "250" ends at 14.02 s and "call" starts at
       // 14.595 s (legacy-voice-audit/mina-absolute-timing.json), so the pause sits in 0.575 s of silence.
-      pause: { at: 14.416666666666666, spot: { kind: "count", range: [0, 99], unit: "%",
-        prompt: "Before Mina says it: your call is 50 and the final pot is 250. What price is that, in percent?" } } },
-    { kind: "decision", label: "Mina’s hand", spotId: "pot2-guided", hand: "pot2-guided", role: "guided",
-      coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand" },
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 14.416666666666666, spot: { kind: "count", range: [0, 99], unit: "%",
+        prompt: "Before Knox says it: your call is 50 and the final pot is 250. What price is that, in percent?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-pot-odds, canon.yourTurn at 65.56 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-pot-odds.mjs.
+      pause: { at: 65.56, anchor: "yourTurn", film: "m-pot-odds", spotId: "pot2-turn",
+        spot: { decision: "action", choices: ["fold", "call"], prompt: "Now they go all-in for 100 into 100. Still 30%. Call or fold?", title: "Your turn: call or fold?", explanation: "The final pot is 300, so the price is 100 ÷ 300, about 33%. 30% falls short: fold." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-pot-odds.mjs).
+    { kind: "why", label: "Why", spotId: "pot2-why", prompt: "Why fold at 30% when they go all-in for 100?",
+      options: [
+        { id: "a", text: "The price is 100 ÷ 200: leave your own call out of the pot.", fix: "Your call goes in the pot too. The final pot is 300, so the price is about 33%." },
+        { id: "b", text: "30% is too small a chance to ever call.", fix: "In the film the same 30% called 50 into 100. A chance only means something next to the price." },
+        { id: "c", text: "Your 100 joins the pot: 100 ÷ 300 is about 33%, above your 30%.", fix: "Right. Count your own call: a 33% price is more than a 30% chance, so fold." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "pot2-guided", hand: "pot2-guided", role: "guided",
+      coachLine: "A new all-in. You make the call.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "pot2-practice", hand: "pot2-practice", role: "practice",
       coachLine: "Same idea, new numbers. Count your own call.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "pot2-fresh", hand: "pot2-fresh", role: "fresh",
       coachLine: "Your pot, your price, your call.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "A price you can explain.",
       lead: "Your call ÷ the final pot, with your own call counted in it. Call when your chance of winning is at least that price.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {

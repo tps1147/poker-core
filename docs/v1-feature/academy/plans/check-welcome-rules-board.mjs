@@ -16,7 +16,7 @@ const { evaluateHand, compareHands } = require("../../../../src/eval/pokerEvalua
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { NODES } from "../../../../src/learn/v1/academyTree.mjs";
+import { NODES } from "../../../../src/learn/academyTree.mjs";
 const HERE = dirname(fileURLToPath(import.meta.url));
 
 let passed = 0;
@@ -548,7 +548,7 @@ const has = (list, a, b) => list.some((h) => (h[0] === a && h[1] === b) || (h[0]
 
 // ── tree sync ─────────────────────────────────────────────────────────────────────────────────────
 // Each node section of PLANS copies its tree fields exactly: prerequisites, formats, objective,
-// misconception and legacy mapping (src/learn/v1/academyTree.mjs, edits accepted 2026-10-06).
+// misconception and legacy mapping (src/learn/academyTree.mjs, edits accepted 2026-10-06).
 function treeSync(plans) {
   const out = [];
   for (const f of plans) {

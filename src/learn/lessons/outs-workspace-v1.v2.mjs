@@ -14,12 +14,12 @@ const practice = { hero: ["Js", "Ts"], board: ["9d", "8c", "2h", "Ks"], street: 
 const fresh = { hero: ["9s", "8s"], board: ["Jd", "7c", "2h", "Ks"], street: "turn", potBefore: 100, bet: 50, call: 50 };
 
 const definition = {
-  id: "outs-workspace-v1", version: 2, flow: "film-first",
+  id: "outs-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-outs-rule-24",
   sourceLessonId: "lesson-outs-001", videoLessonId: "lesson-outs-001",
-  coach: "mina", access: "free", template: "core-math",
+  coach: "knox", narrator: "nathan", access: "free", template: "core-math",
   title: "Count clean outs first.", kicker: "Know what you are drawing to.",
-  trail: ["Learn", "The math behind the move", "Outs"],
+  trail: ["Learn", "The math behind the move", "Count clean outs first."],
   course: { chapter: "The math behind the move" },
   meta: { minutes: 5 },
   assumptions: "Heads-up. For this exercise, every card that completes your draw is a clean out, and the chance of winning is an estimate, roughly 2% per out with one card to come, not exact equity read from the cards.",
@@ -27,15 +27,27 @@ const definition = {
   feedback: { found: "You counted it.", missed: "Let’s count it together.", open: "Here’s the count." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Count clean outs first.", em: "Then act.",
-      lead: "A draw is only worth what it can become. Watch Mina count a flush draw, then count and price three hands at the table.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      lead: "A draw is only worth what it can become. Watch the film, then count and price three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Read the board" }, { beat: "draw", label: "See the draw" }, { beat: "outs", label: "Count the outs" }, { beat: "rule", label: "Build the estimate" }, { beat: "price", label: "Compare the price" }],
-      pause: { at: 16.25, spot: { kind: "count", range: [0, 47], unit: "outs",
-        prompt: "Before Mina says it: how many clean outs does king-queen of hearts have?" } } },
-    { kind: "decision", label: "Mina’s hand", spotId: "outs2-guided-call", hand: "outs2-guided", role: "guided",
-      coachLine: "Mina’s hand. You make the call.", next: "Try a practice hand",
+      // The current film's own in-film guess, kept while the apps still play that film.
+      legacyPause: { at: 16.25, spot: { kind: "count", range: [0, 47], unit: "outs",
+        prompt: "Before Knox says it: how many clean outs does king-queen of hearts have?" } },
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-outs, canon.yourTurn at 64.92 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-outs.mjs.
+      pause: { at: 64.92, anchor: "yourTurn", film: "m-outs", spotId: "outs2-turn",
+        spot: { decision: "count", range: [0, 47], unit: "outs", prompt: "Queen-jack of diamonds on ten, nine, three, and only a straight wins. How many outs?", title: "Your turn: count the outs.", explanation: "Any king or any eight makes the straight: 8 outs. The queens and jacks only pair you." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-outs.mjs).
+    { kind: "why", label: "Why", spotId: "outs2-why", prompt: "Why does queen-jack have only 8 outs here?",
+      options: [
+        { id: "a", text: "Every card that improves the hand counts, so the queens and jacks are outs too.", fix: "A queen or a jack only pairs you, and a pair loses here. Count only the cards that make you the winner." },
+        { id: "b", text: "Any diamond counts too, so it is 8 plus the flush cards.", fix: "No diamond is on the board, so one card can’t make a flush. Only a straight wins." },
+        { id: "c", text: "Only a king or an eight makes the straight: four of each, and nothing else wins.", fix: "Right. Any king, any eight: 8 outs, about 17% of the 47 unseen cards." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "outs2-guided-call", hand: "outs2-guided", role: "guided",
+      coachLine: "A new draw. You make the call.", next: "Try a practice hand",
       feedback: { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." } },
     { kind: "decision", label: "Practice", spotId: "outs2-practice-count", hand: "outs2-practice", role: "practice",
       coachLine: "Same idea, a different draw.", next: "Now decide the call" },
@@ -49,18 +61,18 @@ const definition = {
       feedback: { found: "You found the price.", missed: "Let’s look at the price.", open: "Here’s the thinking." } },
     { kind: "takeaway", label: "Recap", heading: "Outs you can count.",
       lead: "Count the unseen cards that complete your hand, then compare your chance with the price of the call.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
     "outs2-guided-call": {
       decision: "action", choices: ["fold", "call"], previewRule: "price-vs-equity",
       street: "turn", potBefore: 200, bet: 25, call: 25, board: ["As", "7h", "2c", "9h"], hero: ["Kh", "Qh"],
-      given: { equity: 18, outs: 9, source: "Mina’s estimate" },
+      given: { equity: 18, outs: 9, source: "The estimate" },
       title: "Is the call worth it?",
-      prompt: "Mina counted 9 clean outs, roughly 18% with one card to come. Ace Andy bets 25 into 200. Call or fold?",
-      hint: "Your 25-chip call makes a 250-chip pot. 25 ÷ 250 is a 10% price. Compare that with Mina’s 18%.",
-      explanation: "Calling 25 makes a 250-chip pot, a 10% price. Mina’s roughly 18% is above 10%, so the call pays for itself over time under this lesson’s assumptions.",
+      prompt: "You have 9 clean outs, roughly 18% with one card to come. Ace Andy bets 25 into 200. Call or fold?",
+      hint: "Your 25-chip call makes a 250-chip pot. 25 ÷ 250 is a 10% price. Compare that with the 18%.",
+      explanation: "Calling 25 makes a 250-chip pot, a 10% price. The roughly 18% is above 10%, so the call pays for itself over time under this lesson’s assumptions.",
       note: "The river is not dealt in this lesson. The call is right before the card comes.",
       ledger: "price", hear: 5,
     },
@@ -98,7 +110,7 @@ const definition = {
       title: "Call or fold?",
       prompt: "Your count gives you roughly 8% with one card to come. Ace Andy bets 50 into 100. Call or fold?",
       hint: "What does 50 into a final pot of 200 cost?",
-      explanation: "Calling 50 makes a 200-chip pot, a 25% price. Your roughly 8% is well below 25%, so folding this good-looking draw saves chips over time. You give up this pot, and it is still the right decision.",
+      explanation: "Calling 50 makes a 200-chip pot, a 25% price. Your roughly 8% is well below 25%, so folding this thin draw saves chips over time. You give up this pot, and it is still the right decision.",
       ledger: "price", hidePrice: true,
     },
   },

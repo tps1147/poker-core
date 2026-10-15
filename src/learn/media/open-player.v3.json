@@ -1,0 +1,61 @@
+{
+  "format": "academy-film-v2",
+  "id": "open-player",
+  "video": "/academy/films-v2/open-player/4dccb5fb/open-player-1080.mp4",
+  "video720": "/academy/films-v2/open-player/4dccb5fb/open-player-720.mp4",
+  "poster": "/academy/films-v2/open-player/4dccb5fb/open-player-poster.jpg",
+  "ruleCard": null,
+  "captions": "/academy/films-v2/open-player/4dccb5fb/open-player.vtt",
+  "transcript": "/academy/films-v2/open-player/4dccb5fb/open-player.transcript.txt",
+  "durationSeconds": 21,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": null,
+    "yourTurn": null,
+    "rule": null,
+    "upNext": null,
+    "first": 16.17
+  },
+  "version": "4dccb5fb",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 3.74,
+      "text": "Chapter nine. The Player."
+    },
+    {
+      "start": 3.74,
+      "end": 6.8,
+      "text": "The cards are only half of the game."
+    },
+    {
+      "start": 6.8,
+      "end": 10.54,
+      "text": "The other half is you, and that half needs work too."
+    },
+    {
+      "start": 10.54,
+      "end": 13.23,
+      "text": "By the end, you'll protect your bankroll,"
+    },
+    {
+      "start": 13.23,
+      "end": 16.17,
+      "text": "handle tilt, and study with a plan."
+    },
+    {
+      "start": 16.17,
+      "end": 21,
+      "text": "First up: Bankroll."
+    }
+  ],
+  "transcriptText": "Chapter nine. The Player. The cards are only half of the game. The other half is you, and that half needs work too. By the end, you'll protect your bankroll, handle tilt, and study with a plan. First up: Bankroll."
+}

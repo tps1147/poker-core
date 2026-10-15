@@ -1,3 +1,7 @@
+// Content version 3 (2026-10-09): the practice hand left the film's own "Your turn" numbers (1,000
+// against 240, pot 120): it is now 1,200 against 300 with a pot of 150, the same SPR of 2 and two
+// bets, so its keys and band ids are unchanged. Version 2 stays registered for older builds.
+//
 // Lesson 10, Stack-to-pot ratio, content version 1: a new lesson, film-first from the start
 // (learn-flow-2026-09-16 SPEC, RECIPE). Mina's film is one contiguous interval of her original
 // clip, 0 to 21.0 s, four sentences: what SPR tells you, the formula (effective stack divided by
@@ -27,16 +31,16 @@ const BETS_HINT = "A pot-sized bet matches the pot, and after a call the pot is 
 const NOTE = "No more cards are dealt in this lesson. SPR measures the room left; it does not decide the hand for you.";
 // No bet is faced on any hand: Ace Andy checks, so the pot is the pot before any bet.
 const guided = { hero: ["Ad", "Kc"], board: ["Ks", "8h", "3c"], street: "flop", potBefore: 300, bet: 0, call: 0 };
-const practice = { hero: ["Qh", "Jh"], board: ["Qc", "7d", "2s"], street: "flop", potBefore: 120, bet: 0, call: 0 };
+const practice = { hero: ["Qh", "Jh"], board: ["Qc", "7d", "2s"], street: "flop", potBefore: 150, bet: 0, call: 0 };
 const fresh = { hero: ["As", "Ts"], board: ["Ah", "9c", "5d"], street: "flop", potBefore: 100, bet: 0, call: 0 };
 
 const definition = {
-  id: "spr-workspace-v1", version: 1, flow: "film-first",
+  id: "spr-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t1-spr",
   sourceLessonId: "lesson-spr-001", videoLessonId: "lesson-spr-001",
-  coach: "mina", access: "pro", template: "deeper-math",
+  coach: "knox", narrator: "nathan", access: "pro", template: "deeper-math",
   title: "Measure the depth first.", kicker: "Know how much room is left.",
-  trail: ["Learn", "Deeper math", "Stack-to-pot ratio"],
+  trail: ["Learn", "Deeper math", "Measure the depth first."],
   course: { chapter: "Deeper math" },
   meta: { minutes: 4 },
   assumptions: "Heads-up, on the flop. Each stack is what that player has behind, after the chips already in the pot. The effective stack is the smaller of the two stacks. To count the room left, every bet is assumed to be the size of the pot and to be called, and the last bet is all in. No turn or river is dealt and the opponent’s cards stay hidden. The lesson measures the room in a hand; it does not tell you when to commit.",
@@ -44,14 +48,25 @@ const definition = {
   feedback: { found: "You measured it.", missed: "Let’s measure it together.", open: "Here’s the measure." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Measure the depth first.", em: "Then count the bets left.",
-      lead: "Stack-to-pot ratio tells you how much room is left in a hand. Watch Mina define it, then measure three hands at the table.",
-      cta: "Watch with Mina" },
-    { kind: "film", label: "Film", upNext: "Play Mina’s hand",
+      lead: "Stack-to-pot ratio tells you how much room is left in a hand. Watch the film, then measure three hands at the table.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats, with the opening as "Intro".
-      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Find the effective stack" }, { beat: "range", label: "Divide by the pot" }, { beat: "low", label: "Low SPR" }, { beat: "high", label: "High SPR" }] },
-    { kind: "decision", label: "Mina’s hand", spotId: "spr1-guided-ratio", hand: "spr1-guided", role: "guided",
-      coachLine: "Mina’s hand. You measure the room.", next: "Now count the bets" },
-    { kind: "decision", label: "Mina’s hand", spotId: "spr1-guided-bets", hand: "spr1-guided", role: "guided",
+      chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Find the effective stack" }, { beat: "range", label: "Divide by the pot" }, { beat: "low", label: "Low SPR" }, { beat: "high", label: "High SPR" }],
+      // ACADEMY V2: the "Your turn" pause of the node's v2 film (m-spr, canon.yourTurn at 70.54 s).
+      // `film` names the film the time belongs to. Key: answerKeys/m-spr.mjs.
+      pause: { at: 70.54, anchor: "yourTurn", film: "m-spr", spotId: "spr1-turn",
+        spot: { decision: "count", range: [0, 20], unit: "", prompt: "You have 1,000, they have 240, the pot is 120. What is the SPR?", title: "Your turn: the SPR?", explanation: "Only the smaller stack counts: 240 ÷ 120 is an SPR of 2. Two bets and you are all-in." } } },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/m-spr.mjs).
+    { kind: "why", label: "Why", spotId: "spr1-why", prompt: "Why is the SPR 2, not about 8?",
+      options: [
+        { id: "a", text: "Your 1,000 is the stack that counts, so it is about 8.", fix: "You can only win what the smaller stack has. Their 240 is the effective stack." },
+        { id: "b", text: "Only the smaller stack can go in: 240 ÷ 120 is 2, two pot-sized bets.", fix: "Right. The effective stack over the pot: 2, and two bets put it all in." },
+        { id: "c", text: "Nothing changes: only the cards decide how a hand plays.", fix: "The stacks decide too. At an SPR of 2, two bets and the chips are in." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "spr1-guided-ratio", hand: "spr1-guided", role: "guided",
+      coachLine: "A new hand. You measure the room.", next: "Now count the bets" },
+    { kind: "decision", label: "Knox’s hand", spotId: "spr1-guided-bets", hand: "spr1-guided", role: "guided",
       coachLine: "You have the ratio. Now the bets it leaves.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "spr1-practice-ratio", hand: "spr1-practice", role: "practice",
       coachLine: "Same idea. Check both stacks first.", next: "Now count the bets" },
@@ -63,7 +78,7 @@ const definition = {
       coachLine: "Your measure, your count.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Room you can measure.",
       lead: "Divide the effective stack, the smaller of the two, by the pot. The lower the number, the fewer bets are left before the chips are in.",
-      recapLabels: ["Mina’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
@@ -72,7 +87,7 @@ const definition = {
       bands: [{ id: "about-1", label: "About 1" }, { id: "about-3", label: "About 3" }, { id: "about-4", label: "About 4" }],
       dockPrompt: RATIO_DOCK,
       title: "What is the SPR?",
-      prompt: "Mina’s hand: ace-king on a king-eight-three flop. The pot is 300. You have 300 behind and Ace Andy has 900. Ace Andy checks. Take the effective stack and divide it by the pot.",
+      prompt: "Ace-king on a king-eight-three flop. The pot is 300. You have 300 behind and Ace Andy has 900. Ace Andy checks. Take the effective stack and divide it by the pot.",
       hint: RATIO_HINT,
       explanation: "You have 300, so no more than 300 can go in, however much Ace Andy has. The effective stack is 300, and 300 ÷ 300 is an SPR of 1. Dividing Ace Andy’s 900 gives 3 and adding both stacks gives 4, but chips that cannot be matched are never in play.",
       note: NOTE,
@@ -85,7 +100,7 @@ const definition = {
       title: "How much room is left?",
       prompt: "The pot is 300 and the effective stack is 300. Suppose every bet from here is the size of the pot and is called. How many bets until the effective stack is all in?",
       hint: BETS_HINT,
-      explanation: "A pot-sized bet here is 300, which is all you have. One bet and the effective stack is in. That is what Mina means by not many future bets left. It measures the room; it does not say whether to bet, call or fold.",
+      explanation: "A pot-sized bet here is 300, which is all you have. One bet and the effective stack is in. That is what not many future bets left means. It measures the room; it does not say whether to bet, call or fold.",
       note: NOTE,
       hear: 2,
     },
@@ -94,9 +109,9 @@ const definition = {
       bands: [{ id: "about-2", label: "About 2" }, { id: "about-8", label: "About 8" }, { id: "about-10", label: "About 10" }],
       dockPrompt: RATIO_DOCK,
       title: "What is the SPR?",
-      prompt: "Queen-jack on a queen-seven-two flop. The pot is 120. You have 1,000 behind and Ace Andy has 240. Ace Andy checks. What is the stack-to-pot ratio?",
+      prompt: "Queen-jack on a queen-seven-two flop. The pot is 150. You have 1,200 behind and Ace Andy has 300. Ace Andy checks. What is the stack-to-pot ratio?",
       hint: RATIO_HINT,
-      explanation: "Ace Andy can put in only 240 more, so 240 is the effective stack. 240 ÷ 120 is an SPR of 2. Your 1,000 gives about 8 and both stacks together give about 10, but the other 760 of yours cannot be matched in this hand.",
+      explanation: "Ace Andy can put in only 300 more, so 300 is the effective stack. 300 ÷ 150 is an SPR of 2. Your 1,200 gives 8 and both stacks together give 10, but the other 900 of yours cannot be matched in this hand.",
       note: NOTE,
       hear: 1,
     },
@@ -105,9 +120,9 @@ const definition = {
       bands: BETS_BANDS,
       dockPrompt: BETS_DOCK,
       title: "How much room is left?",
-      prompt: "The pot is 120 and the effective stack is 240. Suppose every bet from here is the size of the pot and is called. How many bets until the effective stack is all in?",
+      prompt: "Now count the room. With 150 in the middle and 300 that can still go in, how many pot-sized bets, each one called, put the effective stack all in?",
       hint: BETS_HINT,
-      explanation: "Bet the pot, 120, and after the call the pot is 360 with 120 left behind. The next bet is all in, and it is smaller than the pot. Two bets and the effective stack is in: still not many future bets.",
+      explanation: "Bet the pot, 150, and after the call the pot is 450 with 150 left behind. The next bet is all in, and it is smaller than the pot. Two bets and the effective stack is in: still not many future bets.",
       note: NOTE,
       hear: 2,
     },
@@ -128,7 +143,7 @@ const definition = {
       title: "How much room is left?",
       prompt: "The pot is 100 and the effective stack is 1,300. Suppose every bet from here is the size of the pot and is called. How many bets until the effective stack is all in?",
       hint: BETS_HINT,
-      explanation: "Bet 100 and the pot is 300 with 1,200 behind. Bet 300 and the pot is 900 with 900 behind. Bet 900 and the stacks are in. Three pot-sized bets: one on the flop, one on the turn and one on the river. That is the turn and river pressure Mina means when SPR is high.",
+      explanation: "Bet 100 and the pot is 300 with 1,200 behind. Bet 300 and the pot is 900 with 900 behind. Bet 900 and the stacks are in. Three pot-sized bets: one on the flop, one on the turn and one on the river. That is the turn and river pressure a high SPR leaves room for.",
       note: NOTE,
     },
   },
@@ -151,9 +166,9 @@ const definition = {
       ],
     },
     "spr1-practice": {
-      id: "spr1-practice", layout: "heads-up", seats: seats(1000, 240), button: "hero",
+      id: "spr1-practice", layout: "heads-up", seats: seats(1200, 300), button: "hero",
       hero: practice.hero, opponent: {},
-      start: { street: "flop", board: practice.board, pot: 120, dealt: "deal" },
+      start: { street: "flop", board: practice.board, pot: 150, dealt: "deal" },
       script: [
         { do: "pause", ms: 400 },
         { do: "act", seat: "opponent", action: "check" },

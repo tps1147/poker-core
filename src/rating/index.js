@@ -5,4 +5,5 @@ module.exports = {
   ...require('./journeyProgress'), // buildBotJourney, recordBotMatchResult, calculateAiRatingDelta, …
   ...require('./ratingBands'), // ROOM_RATING_BAND, deriveBandRating, applyRoomRatingBands, normalizeDifficulty
   ...require('./gauntletAccess'), // MASTERY_TARGETS, getGauntletAccess, buildGauntletAccessMap, isBotMasteredByProgress
+  ...require('./ranked'), // RANKED_RULES, computeRankedOutcome, describeRankedSteps, playRatingFor (ranked rating v2)
 };

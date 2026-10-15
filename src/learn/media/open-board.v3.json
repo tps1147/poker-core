@@ -1,0 +1,61 @@
+{
+  "format": "academy-film-v2",
+  "id": "open-board",
+  "video": "/academy/films-v2/open-board/ad0344de/open-board-1080.mp4",
+  "video720": "/academy/films-v2/open-board/ad0344de/open-board-720.mp4",
+  "poster": "/academy/films-v2/open-board/ad0344de/open-board-poster.jpg",
+  "ruleCard": null,
+  "captions": "/academy/films-v2/open-board/ad0344de/open-board.vtt",
+  "transcript": "/academy/films-v2/open-board/ad0344de/open-board.transcript.txt",
+  "durationSeconds": 22,
+  "captionsBurnedIn": true,
+  "frame": {
+    "w": 1080,
+    "h": 1920,
+    "safe": {
+      "top": 40,
+      "bottom": 72
+    }
+  },
+  "anchors": {
+    "hook": null,
+    "yourTurn": null,
+    "rule": null,
+    "upNext": null,
+    "first": 15.19
+  },
+  "version": "ad0344de",
+  "cues": [
+    {
+      "start": 1.7,
+      "end": 4.35,
+      "text": "Chapter two. Reading the Board."
+    },
+    {
+      "start": 4.35,
+      "end": 6.98,
+      "text": "Five shared cards,"
+    },
+    {
+      "start": 6.98,
+      "end": 9.47,
+      "text": "and every one of them can change the hand."
+    },
+    {
+      "start": 9.47,
+      "end": 12.11,
+      "text": "By the end, you'll know what you have,"
+    },
+    {
+      "start": 12.11,
+      "end": 15.19,
+      "text": "what beats you, and what could still come."
+    },
+    {
+      "start": 15.19,
+      "end": 22,
+      "text": "First up: Made Hands and Draws."
+    }
+  ],
+  "transcriptText": "Chapter two. Reading the Board. Five shared cards, and every one of them can change the hand. By the end, you'll know what you have, what beats you, and what could still come. First up: Made Hands and Draws."
+}

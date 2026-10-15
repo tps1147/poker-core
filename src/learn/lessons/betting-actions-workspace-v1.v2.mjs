@@ -21,12 +21,12 @@ const practice = { street: "river", hero: ["7h", "6h"], board: ["Ks", "9h", "5h"
 const fresh = { street: "flop", hero: ["8s", "8h"], board: ["Kc", "8d", "3h"], potBefore: 120, bet: 40, call: 40 };
 
 const definition = {
-  id: "betting-actions-workspace-v1", version: 2, flow: "film-first",
+  id: "betting-actions-workspace-v1", version: 3, flow: "film-first",
   conceptId: "t0-betting-actions",
   sourceLessonId: "lesson-betting-actions-001", videoLessonId: "lesson-betting-actions-001",
-  coach: "ada", access: "free", template: "table-literacy",
+  coach: "knox", narrator: "nathan", access: "free", template: "table-literacy",
   title: "Every action has a job.", kicker: "Reason, then the button.",
-  trail: ["Learn", "Table literacy", "Betting actions"],
+  trail: ["Learn", "Table literacy", "Every action has a job."],
   course: { chapter: "Table literacy" },
   meta: { minutes: 3 },
   assumptions: "Heads-up. Each hand gives you a read on Ace Andy’s bet and on your own hand, stated in the prompt. The read is supplied for the exercise, never worked out from his hidden cards, and the right job follows from that read. No more cards are dealt after you choose.",
@@ -34,28 +34,35 @@ const definition = {
   feedback: { found: "You picked the job.", missed: "Let’s look at the jobs.", open: "Here’s the thinking." },
   stages: [
     { kind: "welcome", label: "Welcome", heading: "Every action has a job.", em: "Pick the job, then the button.",
-      lead: "Folding, calling and raising each do a different job. Watch Ada name the three jobs, then play three hands at the table and choose the job each one needs.",
-      cta: "Watch with Ada" },
-    { kind: "film", label: "Film", upNext: "Play Ada’s hand",
+      lead: "Folding, calling and raising each do a different job. Watch the film, then play three hands at the table and choose the job each one needs.",
+      cta: "Watch with Knox" },
+    { kind: "film", label: "Film", upNext: "Play Knox’s hand",
       // The media rail's chapters on the film's own beats. `hand` is a stepped beat (the queen, then
       // the board's queen), so its chapter names that beat's first step, 7.1 s, as a time.
       chapters: [{ at: 0, label: "Intro" }, { beat: "table", label: "Three jobs" }, { beat: "deal", label: "See the price" }, { at: 7.1, label: "Read the hand" }, { beat: "decision", label: "Choose the job" }] },
-    { kind: "decision", label: "Ada’s hand", spotId: "act2-guided", hand: "act2-guided", role: "guided",
-      coachLine: "Ada’s flop. You pick the job.", next: "Try a practice hand" },
+    // ACADEMY V2: the why step, one tap from three reasons (the key: answerKeys/r-actions.mjs).
+    { kind: "why", label: "Why", spotId: "act2-why", prompt: "Once Ada bets 40, why is check gone?",
+      options: [
+        { id: "a", text: "Checking is only allowed on the first betting round.", fix: "You can check on any round, as long as nothing is owed." },
+        { id: "b", text: "Her 40 is owed now: you can fold, call the 40 or raise, and a check needs nothing owed.", fix: "Right. Something is owed, so check is gone: a call matches it." },
+        { id: "c", text: "Checking and calling are the same thing: both stay in without raising.", fix: "A check costs nothing and only works when nothing is owed. A call puts in the 40." },
+      ] },
+    { kind: "decision", label: "Knox’s hand", spotId: "act2-guided", hand: "act2-guided", role: "guided",
+      coachLine: "The flop. You pick the job.", next: "Try a practice hand" },
     { kind: "decision", label: "Practice", spotId: "act2-practice", hand: "act2-practice", role: "practice",
       coachLine: "Same three buttons. This draw missed.", next: "Try a fresh hand" },
     { kind: "decision", label: "Fresh hand", spotId: "act2-fresh", hand: "act2-fresh", role: "fresh",
       coachLine: "Your read, your button.", next: "See your recap" },
     { kind: "takeaway", label: "Recap", heading: "Reason, then the button.",
       lead: "Name the job before you press: fold to save chips when the hand or the price is wrong, call to keep a hand alive with the pot under control, raise to build value or apply pressure.",
-      recapLabels: ["Ada’s hand", "Practice", "Fresh hand"],
+      recapLabels: ["Knox’s hand", "Practice", "Fresh hand"],
       note: "Your score counts first tries on the fresh hand." },
   ],
   spots: {
     "act2-guided": {
       decision: "action", choices: ["fold", "call", "raise"], sizes: { raise: 90 }, ...guided,
       title: "Which job does this hand need?",
-      prompt: "Ada’s flop. You hold queen-jack and the board is queen, eight, three. Ace Andy bets 30 into 120. For this exercise, treat your top pair with a medium kicker as a hand that is often best right now but loses to stronger queens and overpairs. Fold, call 30 or raise to 90?",
+      prompt: "The flop. You hold queen-jack and the board is queen, eight, three. Ace Andy bets 30 into 120. For this exercise, treat your top pair with a medium kicker as a hand that is often best right now but loses to stronger queens and overpairs. Fold, call 30 or raise to 90?",
       hint: "Ask what each button would do here. What would folding save? What would calling keep alive, and how big would the pot get? What would a raise build, and which hands would keep playing against one?",
       explanation: "Under this read your top pair is often the best hand, so folding gives up a hand that wins too often. A raise to 90 builds a bigger pot, but the hands most willing to keep playing against it are the stronger queens and overpairs that beat you. Calling 30 keeps your hand alive and keeps the pot under control while worse hands stay in. That is the job this hand needs.",
       note: "No more cards are dealt in this lesson. The job is chosen before the turn comes.",

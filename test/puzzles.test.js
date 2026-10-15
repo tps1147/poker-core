@@ -784,7 +784,7 @@ t('pure: no clock, no randomness, no I/O, no platform APIs, only local requires'
     assert.ok(!/Math\.random|Date\.now|performance\.now/.test(code), `${f}: clock or randomness`);
     assert.ok(!/\b(window|document|localStorage|sessionStorage|navigator|fetch|XMLHttpRequest|process\.env)\b/.test(code), `${f}: platform API`);
     const requires = [...code.matchAll(/require\(\s*['"]([^'"]+)['"]\s*\)/g)].map((m) => m[1]);
-    requires.forEach((r) => assert.ok(r.startsWith('./') || r.startsWith('../state/'), `${f} requires ${r}`));
+    requires.forEach((r) => assert.ok(r.startsWith('./') || r.startsWith('../state/') || r === '../eval/pokerEvaluator', `${f} requires ${r}`));
     assert.ok(!/\bimport\b|\bexport\b/.test(code), `${f}: CommonJS only`);
   });
 });

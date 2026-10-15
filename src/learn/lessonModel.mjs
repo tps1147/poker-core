@@ -36,6 +36,30 @@ export const ANSWER_WORDS = Object.freeze({
   estimate: ["Your estimate", "The estimate"], "best-five": ["Your five", "The best five"],
 });
 
+// ---- the spot's scene (2026-10-08) -------------------------------------------------------------
+// A spot may carry `scene`, the one presentation field a definition sets for the hand step:
+//   (absent)    the table: seats, stacks, hero cards, board and pot, the hand's script played out.
+//   "deck"      a question moment about cards drawn from a full 52-card deck ("How often is it
+//               red?", "How many two-card starts?"): a deck is drawn with the question and its
+//               choices, and no seats, stacks or pot.
+//   "question"  a question moment the table plays no part in at all (history, the loop, a
+//               bankroll's buy-ins, a tilt or study call): a plain question card with its choices.
+// The rule for setting it: the spot's question and choices do not depend on any seat, stack, bet,
+// board or hand the table would show. A spot whose question reads the cards or seats in front of
+// the learner keeps the table. The hand still exists and still drives the step (its decide step
+// opens the choices), but a client with a scene does not draw it. `scene` is presentation only: no
+// answer key reads it, and the server registry ignores it (keys are on spotId and stage).
+export const SPOT_SCENES = Object.freeze(["deck", "question"]);
+
+export function spotScene(spot) {
+  return SPOT_SCENES.includes(spot?.scene) ? spot.scene : null;
+}
+
+// The words a scene sets large over its choices: the dock's own prompt, else the spot's title.
+export function scenePrompt(spot) {
+  return spot?.dockPrompt || spot?.title || null;
+}
+
 export function visibleCards(spot) {
   return [...(spot.hero || []), ...(spot.board || [])].filter(Boolean);
 }
@@ -83,6 +107,28 @@ export function segmentForStep(segments, step) {
   return segments.find((segment) => segment.stages.includes(step)) || null;
 }
 
+// ---- the why step (ACADEMY-LEARNING-LOOP 2026-10-07, "Why") ------------------------------------
+// One tap from three reasons after the film's "Your turn": the right one, the lesson's common
+// misconception and a plausible near-miss. The stage shape:
+//   { kind: "why", label, prompt, options: [{ id, text, correct, fix }] }
+// `fix` is the one-line correction a wrong pick shows (on the right option, the line that confirms
+// it). `correct` ships only where a definition may carry its own key; otherwise the server key
+// ({ option }) grades the pick. The table stays held behind the step, as it does behind the film.
+export const WHY_KIND = "why";
+
+export function whyStages(definition) {
+  return (definition?.stages || []).map((stage, index) => ({ ...stage, index })).filter((stage) => stage.kind === WHY_KIND);
+}
+
+// The verdict for a pick: { option, correct, fix }. `key` is the grading key ({ option }) when the
+// stage ships no `correct` flags; with neither, `correct` is null (ungraded, "open").
+export function whyResult(stage, optionId, key = null) {
+  const option = (stage?.options || []).find((item) => item.id === optionId) || null;
+  if (!option) return null;
+  const correct = key?.option != null ? key.option === option.id : typeof option.correct === "boolean" ? option.correct : null;
+  return { option: option.id, correct, fix: option.fix ?? null };
+}
+
 // ---- hands ------------------------------------------------------------------------------------
 export function stageHand(definition, step) {
   const stage = definition.stages[step];
@@ -97,7 +143,7 @@ export function tablePlan(definition, step, run) {
   const stages = definition.stages;
   const stage = stages[step];
   const decisions = decisionStages(definition);
-  if (!stage || stage.kind === "welcome" || stage.kind === "film") return { handId: decisions[0]?.hand ?? null, mode: "held" };
+  if (!stage || stage.kind === "welcome" || stage.kind === "film" || stage.kind === WHY_KIND) return { handId: decisions[0]?.hand ?? null, mode: "held" };
   if (stage.kind === "decision") {
     const handStages = decisions.filter((item) => item.hand === stage.hand);
     const answeredAll = handStages.every((item) => run?.answers?.[item.spotId]);
@@ -186,6 +232,17 @@ export function chipScore(definition, run) {
 
 // ---- recap rows ---------------------------------------------------------------------------------
 const cap = (text) => (text ? text[0].toUpperCase() + text.slice(1).toLowerCase() : "");
+// A choice's own words inside a recap sentence: only a plain first word drops its capital. Cards and
+// hands ("A♦ Q♦", "Q-9", "K-K"), short capitals ("LAG", "SPR") and names ("Ace Andy") keep theirs:
+// lower-casing the whole label printed "a♦ q♦" and "q-9".
+const NAMES = new Set(["Ace", "Ada", "Andy", "Bo", "Di", "Knox", "Sera", "Mina", "Rae", "Ned", "Ivy", "Sol", "Kit", "Blue", "Coral", "Nichalia"]);
+export function inSentence(text) {
+  const t = String(text ?? "");
+  if (!t || /^[2-9TJQKA](?:[♠♥♦♣]|-|$)/.test(t) || /^[A-Z]{2}/.test(t) || /^\d/.test(t)) return t;
+  const first = t.match(/^[A-Za-z’']+/)?.[0] || "";
+  if (NAMES.has(first) || !/^[A-Z][a-z’']*$/.test(first)) return t;
+  return t[0].toLowerCase() + t.slice(1);
+}
 
 export function handName(cards) {
   if (!Array.isArray(cards) || cards.length !== 5) return null;
@@ -212,8 +269,8 @@ export function recapRows(definition, run) {
       let fact = null;
       if (spot.decision === "best-five") fact = handName(answer?.expected?.cards || answer?.response?.cards);
       else if (spot.decision === "count") fact = answer?.response?.value != null ? `${answer.response.value}${spot.unit ? ` ${spot.unit}` : ""}` : null;
-      else if (spot.decision === "estimate") fact = answer?.response?.band ? answerText("estimate", answer.response, spot).toLowerCase() : null;
-      else if (spot.decision === "action") fact = answer?.action ? (["fold", "check", "call"].includes(answer.action) ? answer.action : actionLabel(spot, answer.action).toLowerCase()) : null;
+      else if (spot.decision === "estimate") fact = answer?.response?.band ? inSentence(answerText("estimate", answer.response, spot)) : null;
+      else if (spot.decision === "action") fact = answer?.action ? (["fold", "check", "call"].includes(answer.action) ? answer.action : inSentence(actionLabel(spot, answer.action))) : null;
       return { stage, spot, answer, attempts, fact, words: attemptWords(attempts, answer) };
     });
     const missed = parts.some((part) => part.words === "missed" || part.words === "not played");
@@ -245,7 +302,10 @@ export function entryState(definition, run) {
 export function filmMeta(definition, media) {
   const seconds = Math.round(media?.durationSeconds || 30);
   const hands = lessonHands(definition).length;
-  return { seconds, hands, minutes: definition.meta?.minutes ?? null };
+  // A lesson whose every spot is a question moment (spot.scene: no table) asks questions, not hands.
+  const spots = decisionStages(definition).map((stage) => definition.spots?.[stage.spotId]);
+  const noun = spots.length && spots.every((spot) => spotScene(spot)) ? "question" : "hand";
+  return { seconds, hands, noun, minutes: definition.meta?.minutes ?? null };
 }
 
 // ---- the hand step (HandStep.js) ----------------------------------------------------------------
