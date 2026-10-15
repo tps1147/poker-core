@@ -91,6 +91,46 @@ const spotVerdict = (hand, decision, frame, bigBlind) => {
   };
 };
 
+// The one verdict format every surface uses (table coach, review caption, Retry, the web guest
+// hand): a two-word headline, one line of why, and the chips at stake. Figures are estimates
+// from the Flop52 engine, so the stake line always says "est.".
+const fmt = (n) => Math.round(Number(n) || 0).toLocaleString('en-US');
+const HEADLINE = {
+  clutch: { fold: 'Clutch fold', call: 'Clutch call', check: 'Clutch check', raise: 'Clutch raise', bet: 'Clutch bet' },
+  solid: { fold: 'Good fold', call: 'Good call', check: 'Good check', raise: 'Good raise', bet: 'Good bet' },
+  error: { fold: 'Folded early', call: 'Paid too much', check: 'Missed value', raise: 'Loose raise', bet: 'Loose bet' },
+};
+const verdictCopy = (spot) => {
+  if (!spot) return null;
+  const good = spot.playerGrade === 'clutch' || spot.playerGrade === 'solid';
+  const set = good ? HEADLINE[spot.playerGrade] : HEADLINE.error;
+  const headline = set[spot.action] || (good ? 'Good play' : 'Costly play');
+  const priced = spot.sharePct != null && spot.pricePct != null;
+  let why;
+  if (priced && spot.action === 'fold') {
+    why = good
+      ? `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so letting it go saved chips.`
+      : `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so calling wins more.`;
+  } else if (priced && spot.action === 'call') {
+    why = good
+      ? `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so the call pays.`
+      : `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so folding saves chips.`;
+  } else if (spot.action === 'check' && !good) {
+    why = 'Your hand beats most of what would call, so a bet wins more.';
+  } else if ((spot.action === 'raise' || spot.action === 'bet') && !good) {
+    why = 'Too few worse hands call this, so it risks more than it wins.';
+  } else {
+    why = spot.note || null;
+  }
+  let stake = null;
+  if (!good && spot.costEst != null) {
+    stake = spot.action === 'call'
+      ? `${fmt(spot.costEst)} chips overpaid (est.)`
+      : `${fmt(spot.costEst)} chips left on the table (est.)`;
+  }
+  return { headline, why, stake };
+};
+
 const spotTitle = (spot) =>
   `${PHASE_LABEL[spot.phase] || 'Hand'} ${ACTION_NOUN[spot.action] || 'decision'}`;
 
@@ -213,6 +253,7 @@ module.exports = {
   PUNT_MIN_BIG_BLINDS,
   KEY_MOMENT_LIMIT,
   spotIdOf,
+  verdictCopy,
   buildMatchStory,
   buildMatchStoryFromDocs,
   buildMatchTimeline,

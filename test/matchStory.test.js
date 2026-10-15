@@ -74,3 +74,16 @@ const empty = buildMatchStoryFromDocs([], 'hero', {});
 assert.strictEqual(empty.story.spots.length, 0);
 assert.strictEqual(empty.story.form, null);
 console.log('matchStory: all assertions passed');
+
+// The shared verdict format: two-word headline, one line of why, the chips at stake.
+const { verdictCopy } = require('../src/review');
+assert.deepStrictEqual(verdictCopy(punt), {
+  headline: 'Folded early',
+  why: 'You needed 26% to call and had about 44%, so calling wins more.',
+  stake: '1,008 chips left on the table (est.)',
+});
+assert.strictEqual(verdictCopy(clutch).headline, 'Clutch call');
+assert.strictEqual(verdictCopy(clutch).stake, null);
+assert.strictEqual(verdictCopy({ playerGrade: 'loose', action: 'check', costEst: null }).headline, 'Missed value');
+assert.strictEqual(verdictCopy({ playerGrade: 'solid', action: 'raise' }).headline, 'Good raise');
+console.log('matchStory verdict copy: ok');
