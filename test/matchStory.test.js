@@ -85,5 +85,6 @@ assert.deepStrictEqual(verdictCopy(punt), {
 assert.strictEqual(verdictCopy(clutch).headline, 'Clutch call');
 assert.strictEqual(verdictCopy(clutch).stake, null);
 assert.strictEqual(verdictCopy({ playerGrade: 'loose', action: 'check', costEst: null }).headline, 'Missed value');
-assert.strictEqual(verdictCopy({ playerGrade: 'solid', action: 'raise' }).headline, 'Good raise');
+assert.strictEqual(verdictCopy({ playerGrade: 'solid', action: 'raise', toCall: 200 }).headline, 'Good raise');
+assert.strictEqual(verdictCopy({ playerGrade: 'solid', action: 'raise', toCall: 0 }).headline, 'Good bet');
 console.log('matchStory verdict copy: ok');

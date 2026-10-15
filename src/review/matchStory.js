@@ -100,11 +100,15 @@ const HEADLINE = {
   solid: { fold: 'Good fold', call: 'Good call', check: 'Good check', raise: 'Good raise', bet: 'Good bet' },
   error: { fold: 'Folded early', call: 'Paid too much', check: 'Missed value', raise: 'Loose raise', bet: 'Loose bet' },
 };
+// The engine files an opening bet under 'raise'; players call it a bet.
+const actionWord = (spot) => (spot.action === 'raise' && !(Number(spot.toCall) > 0) ? 'bet' : spot.action);
+
 const verdictCopy = (spot) => {
   if (!spot) return null;
+  const action = actionWord(spot);
   const good = spot.playerGrade === 'clutch' || spot.playerGrade === 'solid';
   const set = good ? HEADLINE[spot.playerGrade] : HEADLINE.error;
-  const headline = set[spot.action] || (good ? 'Good play' : 'Costly play');
+  const headline = set[action] || (good ? 'Good play' : 'Costly play');
   const priced = spot.sharePct != null && spot.pricePct != null;
   let why;
   if (priced && spot.action === 'fold') {
@@ -117,7 +121,7 @@ const verdictCopy = (spot) => {
       : `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so folding saves chips.`;
   } else if (spot.action === 'check' && !good) {
     why = 'Your hand beats most of what would call, so a bet wins more.';
-  } else if ((spot.action === 'raise' || spot.action === 'bet') && !good) {
+  } else if ((action === 'raise' || action === 'bet') && !good) {
     why = 'Too few worse hands call this, so it risks more than it wins.';
   } else {
     why = spot.note || null;
@@ -132,7 +136,7 @@ const verdictCopy = (spot) => {
 };
 
 const spotTitle = (spot) =>
-  `${PHASE_LABEL[spot.phase] || 'Hand'} ${ACTION_NOUN[spot.action] || 'decision'}`;
+  `${PHASE_LABEL[spot.phase] || 'Hand'} ${ACTION_NOUN[actionWord(spot)] || 'decision'}`;
 
 // review: buildMatchReview output. timelinesById: handId -> buildReplayTimeline output.
 // Returns the story the server stores and every client renders.
