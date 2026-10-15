@@ -36,7 +36,7 @@ const fresh = river(["Ac", "5c"], ["Qc", "9c", "3d", "Jh", "6s"], 150, 50);
 
 const definition = {
   ...definitionBase({
-    node: "y-tilt", version: 2, conceptId: "t6-tilt", coach: "mina", title: "Grade the decision.", kicker: "Not the last three results.",
+    node: "y-tilt", access: "free", version: 2, conceptId: "t6-tilt", coach: "mina", title: "Grade the decision.", kicker: "Not the last three results.",
     track: "player", chapter: "The Player", minutes: 4, feedback,
     assumptions: "Heads-up rivers, no rake. In each hand the opponent is all-in, and your chance to win when you call is given, as an estimate for this exercise. The cards already dealt in a streak don’t change the next deal. Each call is judged by its price and its average result, never by how it ends. The hand stops once you act.",
   }),
