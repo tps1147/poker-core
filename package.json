@@ -1,7 +1,7 @@
 {
   "name": "poker-core",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "description": "Shared, no-build CommonJS poker logic (hand evaluation, AI insight engine, match review, hand insights, ratings, state normalization, the puzzle engine) extracted from the Poker.com mobile app and consumed by both the mobile app and the Next.js web app.",
   "main": "src/index.js",
   "exports": {
@@ -24,7 +24,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node test/handInsightsMath.test.js && node test/handLabel.test.js && node test/review.test.js && node test/reviewNarrative.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/honestRead.test.js && node test/compareHands.test.js && node test/gauntletAccess.test.js && node test/puzzles.test.js && node test/puzzlesFeel.test.js && node test/puzzles.esm.test.mjs && node test/loads.test.js && node test/learn.test.mjs && node test/learnLessons.test.mjs && node test/learnWhy.test.mjs && node test/academyEarly.test.mjs && node test/v1/learn/academyTree.test.mjs && node test/curriculum.test.mjs && node test/narrators.test.mjs && node test/nodeState.test.mjs && node test/filmV2.test.mjs && node test/filmAskPlan.test.mjs && node test/lessonRepeats.test.mjs && node test/academyLoop.test.mjs && node test/recall.test.mjs && node test/glossary.test.mjs && node test/academyLessonsB.test.mjs && node test/lessonWalk.test.mjs && node test/spotScenes.test.mjs && node test/academyAudit.test.mjs && node test/arenaClimb.test.js && node test/arenaTable.test.js && node test/social.test.js && node test/rankedRating.test.js",
+    "test": "node test/handInsightsMath.test.js && node test/handLabel.test.js && node test/review.test.js && node test/reviewNarrative.test.js && node test/frameToHeroState.test.js && node test/botRoster.test.js && node test/honestRead.test.js && node test/compareHands.test.js && node test/gauntletAccess.test.js && node test/puzzles.test.js && node test/puzzlesFeel.test.js && node test/puzzles.esm.test.mjs && node test/loads.test.js && node test/learn.test.mjs && node test/learnLessons.test.mjs && node test/learnWhy.test.mjs && node test/academyEarly.test.mjs && node test/v1/learn/academyTree.test.mjs && node test/curriculum.test.mjs && node test/narrators.test.mjs && node test/nodeState.test.mjs && node test/filmV2.test.mjs && node test/filmAskPlan.test.mjs && node test/lessonRepeats.test.mjs && node test/academyLoop.test.mjs && node test/recall.test.mjs && node test/glossary.test.mjs && node test/academyLessonsB.test.mjs && node test/lessonWalk.test.mjs && node test/spotScenes.test.mjs && node test/academyAudit.test.mjs && node test/arenaClimb.test.js && node test/arenaTable.test.js && node test/social.test.js && node test/simEquity.test.js && node test/matchStory.test.js && node test/rankedRating.test.js",
     "sync-v3-media": "node scripts/sync-v3-media.mjs",
     "sync-film-speech": "node scripts/sync-film-speech.mjs"
   },
