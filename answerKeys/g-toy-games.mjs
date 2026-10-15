@@ -7,7 +7,7 @@
 // and the takeaway; this entry adds the why stage (index 2) and the film's "Your turn" key.
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
-  lessonId: "g-toy-games", node: "g-toy-games", contentVersion: 2, flow: "film-first", access: "pro", conceptId: null,
+  lessonId: "g-toy-games", node: "g-toy-games", contentVersion: 2, flow: "film-first", access: "free", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "tg-why"}, {kind: "decision", spotId: "tg-guided"}, {kind: "decision", spotId: "tg-practice"}, {kind: "decision", spotId: "tg-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "tg-turn", decision: "estimate", bands: ["never", "sometimes", "always"], key: {band: "sometimes"} },
   why: { stage: 2, spotId: "tg-why", options: ["mix", "computers", "king-folds"], key: { option: "mix" } },
