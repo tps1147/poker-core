@@ -9,5 +9,7 @@ module.exports = {
   ...require('./matchNarrative'), // buildMatchNarrative, VERDICT_BANDS, verdictFor, signedChips, leakTagCounts
   ...require('./drillFromFrame'), // toDrillPuzzle
   ...require('./frameToHeroState'), // frameToHeroState, buildTerminalFrame
+  ...require('./matchStory'), // buildMatchStory, buildMatchStoryFromDocs, buildMatchTimeline, PLAYER_GRADES, formTierFor (stored verdict per spot)
+  ...require('./liveVerdict'), // liveSpotVerdict, getReviewEngine (the table coach's verdict, same path as the stored story)
   ...require('./gradeTheme'), // GRADE_THEME, GRADE_ORDER, DRILLABLE_GRADES, gradeTheme, LEAK_TAG_COPY, KEY_REASON_LABELS
 };
