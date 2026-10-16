@@ -14,6 +14,7 @@ const { evaluateHand, compareHands } = require('./pokerEvaluator');
 const RANKS = '23456789TJQKA';
 const SUIT_ALIASES = { s: '♠', h: '♥', d: '♦', c: '♣', S: '♠', H: '♥', D: '♦', C: '♣' };
 const NAMES = ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace'];
+const BOARD_HANDS = { 2: 'Pair', 3: 'Two pair', 4: 'Trips' };
 const PLURALS = ['Twos', 'Threes', 'Fours', 'Fives', 'Sixes', 'Sevens', 'Eights', 'Nines', 'Tens', 'Jacks', 'Queens', 'Kings', 'Aces'];
 
 function cleanCard(card) {
@@ -168,6 +169,12 @@ function describeHand(holeCards, boardCards = []) {
   if (playsBoard) return { label: 'Playing the board', made: null, draw: null, tone: 'none' };
   if (onRiver) {
     const high = Math.max(hole[0].r, hole[1].r);
+    // The board holds the made hand and the hero's card only plays as its kicker:
+    // "Two pair on board, ace kicker", never "Ace high".
+    const onBoard = BOARD_HANDS[made.rank];
+    if (onBoard) {
+      return { label: `${onBoard} on board, ${NAMES[high].toLowerCase()} kicker`, made: null, draw: null, tone: 'none' };
+    }
     return { label: `${NAMES[high]} high`, made: null, draw: null, tone: 'none' };
   }
   return { label: 'Nothing yet', made: null, draw: null, tone: 'none' };
