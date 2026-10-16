@@ -7,6 +7,7 @@
 //   require('poker-core/rating')   require('poker-core/state')
 //   require('poker-core/eval')     require('poker-core/ai')
 //   require('poker-core/data')     require('poker-core/puzzles')
+//   require('poker-core/hand-label')
 
 const pokerEvaluator = require('./eval/pokerEvaluator');
 
@@ -28,4 +29,6 @@ module.exports = {
   pokerEvaluator,
   evaluateHand: pokerEvaluator.evaluateHand,
   compareHands: pokerEvaluator.compareHands,
+  // The table's plain-words hand label ("Top pair, weak kicker", "Flush draw").
+  describeHand: require('./eval/handLabel').describeHand,
 };
