@@ -10,11 +10,13 @@
 // from the Flop52 engine, never a solver, and the copy says "est.".
 
 const { costOfDecision } = require('./decisionCost');
-const { GRADE_SCORE } = require('./gradeDecisions');
+const { GRADE_SCORE, GRADE_RULES } = require('./gradeDecisions');
 const { buildReplayTimeline } = require('./replayTimeline');
 const { buildMatchReview } = require('./matchReview');
 
-const STORY_VERSION = 1;
+// 2: spots the engine did not judge carry no grade (playerGrade null) and stay out of the tally,
+// the beads and Form; why lines are written copy, never engine notes.
+const STORY_VERSION = 2;
 
 // Engine grade -> what the player sees. Order is best to worst.
 const PLAYER_GRADES = Object.freeze({
@@ -55,7 +57,7 @@ const spotIdOf = (handId, frameIndex) => `${handId == null ? '' : String(handId)
 
 // What the engine would have done instead, or null when the decision was fine.
 const betterActionFor = (decision, playerGrade) => {
-  if (!decision || playerGrade === 'solid' || playerGrade === 'clutch') return null;
+  if (!decision || !playerGrade || playerGrade === 'solid' || playerGrade === 'clutch') return null;
   const m = decision.metrics || {};
   const facing = Number(m.toCall) > 0;
   if (decision.action === 'check') return 'bet';
@@ -66,10 +68,27 @@ const betterActionFor = (decision, playerGrade) => {
   return null;
 };
 
+// Did the engine actually judge this decision? Every error and Clutch did. A 'good' grade is a
+// judgement only where the engine weighed something: a priced fold or call, or a postflop raise
+// strong enough to be value. Blind completions, preflop opens, plain checks, free calls and
+// bluffs the engine never punishes are shown as actions, not graded.
+const isJudged = (decision, phase) => {
+  if (!decision) return false;
+  if (decision.grade !== 'good') return decision.grade in PLAYER_GRADES;
+  const m = decision.metrics || {};
+  if ((decision.action === 'fold' || decision.action === 'call')
+    && Number(m.toCall) > 0 && m.equityPct != null && m.neededPct != null) return true;
+  if (decision.action === 'raise' && phase && phase !== 'preflop'
+    && Number(m.strength) >= GRADE_RULES.VALUE_STRENGTH) return true;
+  return false;
+};
+
 // One spot's verdict: everything a caption, the "Why" panel, Show best and Retry need.
+// playerGrade is null when the engine did not judge the decision (see isJudged).
 const spotVerdict = (hand, decision, frame, bigBlind) => {
   const costEst = costOfDecision(decision);
-  let playerGrade = (PLAYER_GRADES[decision.grade] || PLAYER_GRADES.good).key;
+  const phase = frame ? frame.phase : null;
+  let playerGrade = isJudged(decision, phase) ? (PLAYER_GRADES[decision.grade] || PLAYER_GRADES.good).key : null;
   if (playerGrade === 'punt' && costEst != null && costEst < PUNT_MIN_BIG_BLINDS * bigBlind) playerGrade = 'leak';
   const m = decision.metrics || {};
   return {
@@ -85,7 +104,7 @@ const spotVerdict = (hand, decision, frame, bigBlind) => {
     toCall: m.toCall == null ? null : Number(m.toCall),
     sharePct: m.equityPct == null ? null : Number(m.equityPct),
     pricePct: m.neededPct == null ? null : Number(m.neededPct),
-    costEst: playerGrade === 'solid' || playerGrade === 'clutch' ? null : costEst,
+    costEst: playerGrade === 'loose' || playerGrade === 'leak' || playerGrade === 'punt' ? costEst : null,
     better: betterActionFor(decision, playerGrade),
     note: decision.note || null,
   };
@@ -100,31 +119,41 @@ const HEADLINE = {
   solid: { fold: 'Good fold', call: 'Good call', check: 'Good check', raise: 'Good raise', bet: 'Good bet' },
   error: { fold: 'Folded early', call: 'Paid too much', check: 'Missed value', raise: 'Loose raise', bet: 'Loose bet' },
 };
-// The engine files an opening bet under 'raise'; players call it a bet.
-const actionWord = (spot) => (spot.action === 'raise' && !(Number(spot.toCall) > 0) ? 'bet' : spot.action);
+// The engine files an opening bet under 'raise'; players call it a bet. Preflop there is no
+// opening bet: the big blind's raise over a limp is still a raise.
+const actionWord = (spot) => (spot.action === 'raise' && !(Number(spot.toCall) > 0) && spot.phase !== 'preflop' ? 'bet' : spot.action);
 
+// Within this many points of the price a call or fold is a coin flip, and the copy says so.
+const CLOSE_PTS = 2;
+
+// One written line of why, by action and outcome. Never the engine's own note.
+const whyLine = (spot, action, good) => {
+  const priced = spot.sharePct != null && spot.pricePct != null;
+  const price = priced ? `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%` : null;
+  const close = priced && Math.abs(Number(spot.sharePct) - Number(spot.pricePct)) <= CLOSE_PTS;
+  if (priced && close && good && (action === 'fold' || action === 'call')) return `${price}, a coin-flip price, so either play is fine.`;
+  if (priced && action === 'fold') return good ? `${price}, so letting it go saved chips.` : `${price}, so calling wins more.`;
+  if (priced && action === 'call') return good ? `${price}, so the call pays.` : `${price}, so folding saves chips.`;
+  if (action === 'check') return good ? 'Checking keeps the pot small with a hand that wants a cheap showdown.' : 'Your hand beats most of what would call, so a bet wins more.';
+  if (action === 'raise' || action === 'bet') {
+    return good ? 'Your hand is ahead of most hands that pay you, so building the pot wins more.'
+      : 'Too few worse hands call this, so it risks more than it wins.';
+  }
+  return null;
+};
+
+const isClose = (spot) => spot.sharePct != null && spot.pricePct != null
+  && Math.abs(Number(spot.sharePct) - Number(spot.pricePct)) <= CLOSE_PTS;
+
+// null for a spot the engine did not judge: it has no verdict to show.
 const verdictCopy = (spot) => {
-  if (!spot) return null;
+  if (!spot || !spot.playerGrade) return null;
   const action = actionWord(spot);
   const good = spot.playerGrade === 'clutch' || spot.playerGrade === 'solid';
   const set = good ? HEADLINE[spot.playerGrade] : HEADLINE.error;
-  const headline = set[action] || (good ? 'Good play' : 'Costly play');
-  const priced = spot.sharePct != null && spot.pricePct != null;
-  let why;
-  if (priced && spot.action === 'fold') {
-    why = good
-      ? `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so letting it go saved chips.`
-      : `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so calling wins more.`;
-  } else if (priced && spot.action === 'call') {
-    why = good
-      ? `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so the call pays.`
-      : `You needed ${fmt(spot.pricePct)}% to call and had about ${fmt(spot.sharePct)}%, so folding saves chips.`;
-  } else if (spot.action === 'check' && !good) {
-    why = 'Your hand beats most of what would call, so a bet wins more.';
-  } else if ((action === 'raise' || action === 'bet') && !good) {
-    why = 'Too few worse hands call this, so it risks more than it wins.';
-  } else {
-    why = spot.note || null;
+  let headline = set[action] || (good ? 'Good play' : 'Costly play');
+  if (good && spot.playerGrade === 'solid' && isClose(spot) && (action === 'fold' || action === 'call')) {
+    headline = action === 'fold' ? 'Close fold' : 'Close call';
   }
   let stake = null;
   if (!good && spot.costEst != null) {
@@ -132,7 +161,33 @@ const verdictCopy = (spot) => {
       ? `${fmt(spot.costEst)} chips overpaid (est.)`
       : `${fmt(spot.costEst)} chips left on the table (est.)`;
   }
-  return { headline, why, stake };
+  return { headline, why: whyLine(spot, action, good), stake };
+};
+
+// Retry's result in the same format: the right answer reads as the better play's own verdict,
+// with the chips it would have kept; a miss names the better play without giving more away.
+const retryCopy = (spot, answer) => {
+  if (!spot || !spot.better) return null;
+  const given = String(answer || '').toLowerCase();
+  const better = spot.better;
+  const aggressive = (a) => a === 'bet' || a === 'raise';
+  const correct = given === better || (aggressive(given) && aggressive(better));
+  const asBetter = { ...spot, action: better === 'bet' ? 'raise' : better };
+  const word = actionWord(asBetter);
+  if (correct) {
+    return {
+      correct: true,
+      headline: HEADLINE.solid[word] || 'Good play',
+      why: whyLine(asBetter, word, true),
+      stake: spot.costEst != null ? `+${fmt(spot.costEst)} chips (est.)` : null,
+    };
+  }
+  return {
+    correct: false,
+    headline: 'Not quite',
+    why: `The better play here was to ${word}. ${whyLine(asBetter, word, true) || ''}`.trim(),
+    stake: null,
+  };
 };
 
 const spotTitle = (spot) =>
@@ -157,6 +212,7 @@ const buildMatchStory = (review, timelinesById = {}) => {
     (hand.decisions || []).forEach((decision) => {
       const spot = spotVerdict(hand, decision, framesByIndex.get(decision.frameIndex), bigBlind);
       spots.push(spot);
+      if (!spot.playerGrade) return; // shown as an action only: no tally, bead or Form
       tally[spot.playerGrade] += 1;
       if (spot.playerGrade === 'clutch') hasClutch = true;
       if (worst == null || PLAYER_GRADE_SEVERITY[spot.playerGrade] > PLAYER_GRADE_SEVERITY[worst]) worst = spot.playerGrade;
@@ -172,7 +228,7 @@ const buildMatchStory = (review, timelinesById = {}) => {
       handNumber: hand.handNumber != null ? hand.handNumber : handIndex + 1,
       net: Number(hand.netChange) || 0,
       // The hand's headline: its worst error, else Clutch when it had one, else Solid.
-      grade: worst === 'solid' && hasClutch ? 'clutch' : worst,
+      grade: (worst === 'solid' || worst == null) && hasClutch ? 'clutch' : worst,
       replayable: hand.replayable !== false,
     });
   });
@@ -258,6 +314,8 @@ module.exports = {
   KEY_MOMENT_LIMIT,
   spotIdOf,
   verdictCopy,
+  retryCopy,
+  isJudged,
   buildMatchStory,
   buildMatchStoryFromDocs,
   buildMatchTimeline,
