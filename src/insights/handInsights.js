@@ -8,6 +8,7 @@
 
 const { normalizeGameState } = require('../state/normalizeGameState');
 const { evaluateHand } = require('../eval/pokerEvaluator');
+const { simulatedEquity } = require('../review/simEquity');
 const {
   normalizeCards,
   combineOuts,
@@ -58,15 +59,24 @@ const computeHandInsights = (gameState, heroId, engine) => {
     }
   }
 
-  const equity = computeEquity({ totalOuts: outs?.total || 0, phase, strength });
-
   // Raw pot excludes current-street bets (same convention AIPlayer uses).
   const potBeforeCall = (normalized.pot || 0)
     + normalized.players.reduce((sum, player) => sum + (player.bet || 0), 0);
-  const potOdds = computePotOdds({
-    callAmount: normalized.availableActions?.toCall || 0,
-    potBeforeCall,
-  });
+  // Capped at the hero's stack, as the grader's toCall is: a short stack can only call what it has.
+  const owed = normalized.availableActions?.toCall || 0;
+  const heroChips = normalized.hero?.chips || 0;
+  const toCall = heroChips > 0 ? Math.min(owed, heroChips) : owed;
+  const potOdds = computePotOdds({ callAmount: toCall, potBeforeCall });
+
+  // From the flop on, the equity is the grader's run-out (simEquity.js) on the same price, so the
+  // HUD, the coach on the felt and the review read the same number for the same decision. The
+  // strength score is not an equity: it read an unpaired flop hand near zero (T8 on Q-3-2 showed
+  // 12% where the hand has 32% against a random hand), about 18 points low on the average flop.
+  // The run-out is still an estimate (a modelled range, a sample), so it stays marked as one.
+  const sim = isPostflop ? simulatedEquity(holeCards, board, { toCall, pot: potBeforeCall }) : null;
+  const equity = sim !== null
+    ? { pct: Math.round(sim), isEstimate: true, basis: 'simulated' }
+    : computeEquity({ totalOuts: outs?.total || 0, phase, strength });
 
   return {
     phase,
@@ -76,6 +86,7 @@ const computeHandInsights = (gameState, heroId, engine) => {
     outs,
     equityPct: equity.pct,
     equityIsEstimate: equity.isEstimate,
+    equityBasis: equity.basis || null,
     potOdds,
     boardTexture: texture ? { ...texture, label: textureLabel(texture) } : null,
     overcards,
