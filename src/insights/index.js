@@ -9,4 +9,5 @@ module.exports = {
   ...require('./handInsightsMath'),
   ...require('./handInsights'), // computeHandInsights
   ...require('./opponentRead'), // createOpponentTracker (+ re-exports)
+  ...require('./feltFacts'), // feltFacts, textureWords (the table coach's facts on the felt)
 };
