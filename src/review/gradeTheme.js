@@ -47,7 +47,7 @@ const gradeTheme = (grade) => GRADE_THEME[grade] || GRADE_THEME.good;
 const LEAK_TAG_COPY = {
   'overfolding-to-aggression': {
     title: 'Folding Under Fire',
-    body: 'You folded clearly profitable calls more than once when the bot bet big. Check the price before letting a hand go.',
+    body: 'You folded clearly profitable calls more than once when your opponent bet big. Check the price before letting a hand go.',
     icon: 'shield-off-outline',
   },
   'chasing-bad-prices': {

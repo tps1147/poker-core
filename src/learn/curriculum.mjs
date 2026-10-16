@@ -92,6 +92,14 @@ const TRACK_TOPIC = Object.freeze({
 
 const levelById = (id) => LEVELS.find((level) => level.id === id) || null;
 
+// The free and Pro split (Oct 14 2026, 35 free / 24 Pro): a track's access rule where it differs
+// from its level's. People, Game Theory and Other Tables open their first lesson free; The Player
+// (bankroll, tilt, study) is free whole. The film-first answer keys carry the same tier, and the
+// server enforces that.
+export const TRACK_ACCESS = Object.freeze({
+  people: "preview", theory: "preview", formats: "preview", player: "free",
+});
+
 // A slot's access: the shipped definition's own tier, else the track level's rule.
 function accessFor(levelAccess, indexInTrack, definition) {
   if (definition?.access === "free" || definition?.access === "pro") return definition.access;
@@ -118,7 +126,7 @@ const nodeSlot = (node, indexInTrack, levelAccess) => {
 // The 11 track chapters, in track order, each with its node slots in tree order.
 export const TRACK_CHAPTERS = Object.freeze(TRACKS.map((track) => {
   const level = TRACK_LEVELS[track.id];
-  const levelAccess = levelById(level)?.access || "pro";
+  const levelAccess = TRACK_ACCESS[track.id] || levelById(level)?.access || "pro";
   const lessons = NODES.filter((node) => node.track === track.id).map((node, i) => nodeSlot(node, i, levelAccess));
   return Object.freeze({
     id: track.id, course: track.id, track: track.id, n: track.n, title: track.title, coach: TRACK_COACH[track.id],

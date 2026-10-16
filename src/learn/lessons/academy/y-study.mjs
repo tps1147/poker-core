@@ -34,7 +34,7 @@ const fresh = preflop(["8c", "8h"]);
 
 const definition = {
   ...definitionBase({
-    node: "y-study", version: 2, coach: "mina", title: "Study the unsure decisions.", kicker: "Then come back to them later.",
+    node: "y-study", access: "free", version: 2, coach: "mina", title: "Study the unsure decisions.", kicker: "Then come back to them later.",
     track: "player", chapter: "The Player", minutes: 4, feedback,
     assumptions: "Each hand in a session log is tagged by how sure you felt about the decision, sure or not sure, and its result is greyed out. A result says nothing about the decision on its own: a +10 call still loses 70 times in 100. Each hand at the table stops before the flop.",
   }),
