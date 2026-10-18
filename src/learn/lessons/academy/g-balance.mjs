@@ -39,7 +39,9 @@ const definition = {
   stages: [
     welcome("Balance is a ratio.", "Leave his call worth nothing.",
       "How many bluffs go with your value bets? Watch Knox find the ratio, then balance three rivers.", "Knox"),
-    filmStage({ film: "g-balance", at: 66.15, spotId: "ba-turn", spot: turnSpot, upNext: "Balance Knox’s river" }),
+    // The film's "? : ? = ?" fades in at 71.65 and its answer starts at 71.92: the card holds the
+    // question, not the empty panel before it (2026-10-18).
+    filmStage({ film: "g-balance", at: 66.15, spotId: "ba-turn", spot: turnSpot, upNext: "Balance Knox’s river", holdAt: 71.85 }),
     whyStage("ba-why", "Why 10 bluffs with 25 value hands?", [
       { id: "ratio", text: "Bluffs ÷ all bets = 80 ÷ (120 + 160) = 2/7, so 10 of 35. His call then gains nothing.", fix: "Right. One more bluff and calling wins; one fewer and folding wins." },
       { id: "random", text: "Balanced means bluffing at random, about half the time.", fix: "Balanced means a ratio, not a coin flip. The bet size sets it: here 10 bluffs to 25 value." },

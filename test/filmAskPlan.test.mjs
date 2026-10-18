@@ -16,10 +16,12 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import * as learn from "../src/learn/index.mjs";
 import { FILM_SPEECH } from "../src/learn/filmSpeech.mjs";
+import { FILM_ENDS } from "../src/learn/filmEnds.mjs";
 
 const {
   FILM_FIRST_LESSONS, ACADEMY_V2_EARLY_LESSONS, ACADEMY_V2_LATER_LESSONS, nodeOfLesson, canon,
   filmAskPlan, askGate, askEntry, filmSpeech, QUESTION_CUES, ASK_LOOKAHEAD, filmOwnPause, askBasis, HOLD_SLACK, filmTurnPlan,
+  filmWipes, filmRest, filmStop, filmHolds, clearOfWipes, WORD_TAIL,
 } = learn;
 
 const ALL = [...FILM_FIRST_LESSONS, ...ACADEMY_V2_EARLY_LESSONS, ...ACADEMY_V2_LATER_LESSONS];
@@ -139,12 +141,21 @@ check("the held frame is the settled one: measured, still, after the word, befor
     const { askAt, holdFrameAt, cue } = f.plan;
     const basis = askBasis(f.stage, f.media);
     assert.ok(f.timing.hold && Math.abs(f.timing.hold[0] - cue.start) < 0.02, `${f.node}: the held frame is measured for this ask (rerun sync-film-speech)`);
-    assert.equal(holdFrameAt, f.timing.hold[1]);
+    // An end ask or a handoff rests on the frame it reached (2026-10-18): the measured hold, or (when
+    // that is far behind the ask, w-how-deep) the frame ahead of the card wipe the last word runs into.
+    // A definition may name the frame itself (pause.holdAt, g-balance: its question fades in late).
+    if (f.stage.pause?.holdAt != null) assert.equal(holdFrameAt, f.stage.pause.holdAt, f.node);
+    else if (f.plan.mode === "pause" || holdFrameAt === f.timing.hold[1]) assert.equal(holdFrameAt, f.timing.hold[1]);
+    else {
+      assert.ok(holdFrameAt > f.timing.hold[1] && askAt - holdFrameAt <= WORD_TAIL + 1e-9, `${f.node}: rests ${holdFrameAt}, the ask at ${askAt}`);
+      assert.ok((filmWipes(f.media) || []).some(([still]) => still === holdFrameAt), `${f.node}: rests ahead of a wipe`);
+    }
+    assert.ok(!(filmWipes(f.media) || []).some(([still, end]) => holdFrameAt > still && holdFrameAt <= end), `${f.node}: holds inside a card wipe`);
     assert.ok(holdFrameAt <= askAt + 1e-9, `${f.node}: the film rests on the held frame when it asks`);
     // A frame's middle: a seek there shows exactly that frame.
     assert.ok(Math.abs(holdFrameAt * 30 - Math.floor(holdFrameAt * 30) - 0.5) < 0.02, `${f.node}: ${holdFrameAt} is a frame's middle`);
     assert.ok(!moving(f.timing, holdFrameAt), `${f.node}: holds ${holdFrameAt}, a moving frame`);
-    assert.ok(holdFrameAt < basis.limit + 1e-6 || holdFrameAt < basis.wordEnd, `${f.node}: before the next word, caption and stop`);
+    assert.ok(holdFrameAt < basis.limit + 1e-6 || holdFrameAt < basis.wordEnd || holdFrameAt <= filmRest(f.media) + 1e-9, `${f.node}: before the next word, caption and stop`);
     if (f.plan.mode === "pause") {
       assert.ok(holdFrameAt >= wordEnd(f.timing, cue) - HOLD_SLACK - 1e-6, `${f.node}: a resume replays at most the last word's tail`);
       assert.ok(!f.timing.speech.some(([s]) => s > wordEnd(f.timing, cue) + 1e-6 && s <= holdFrameAt), `${f.node}: no word starts before the held frame`);
@@ -249,7 +260,9 @@ check("several pauses: each on its own anchor, after its words, before its word,
     assert.equal(f.timing.hold, null, `${f.node}: the single hold stays empty`);
     assert.equal(holds.length, listed.length, `${f.node}: one measured hold per pause (rerun sync-film-speech)`);
     f.plan.pauses.forEach((p, i) => {
-      const timed = f.media.pauses.find((x) => x.anchor === listed[i].anchor);
+      // The definition may time a pause itself (2026-10-18: whoWins, over the film's own WHO WINS? card).
+      const media = f.media.pauses.find((x) => x.anchor === listed[i].anchor);
+      const timed = { at: listed[i].at ?? media.at, before: listed[i].before ?? media.before };
       assert.deepEqual([p.key, p.spotId, p.spot, p.mode], [listed[i].anchor, listed[i].spotId, listed[i].spot, "pause"]);
       assert.equal(p.predict, listed[i].predict === true);
       assert.equal(p.holdFrameAt, holds[i][1], `${p.key}: the measured held frame`);
@@ -289,6 +302,46 @@ check("several pauses: each on its own anchor, after its words, before its word,
     assert.equal(filmAskPlan(f.stage, f.media, { replay: true }).mode, "none", "a replay never asks");
     assert.deepEqual(filmAskPlan(f.stage, f.media, { replay: true }).pauses, []);
   }
+});
+
+// THE END OF EVERY FILM (2026-10-18, Tyler: "the end video transitions are still broken on the video
+// end with the card flipping"): 41 of the 59 films froze inside the giant card wipe into their
+// up-next card, because the watch stopped at the upNext anchor, about half a second into it.
+check("every film rests ahead of its card wipe, and stops once its last word has finished", () => {
+  for (const f of FILMS) {
+    const ends = FILM_ENDS[f.node];
+    assert.ok(ends, `${f.node}: measured (rerun scripts/sync-film-ends.mjs)`);
+    assert.equal(ends.version, f.media.version, `${f.node}: filmEnds.mjs is stale, rerun scripts/sync-film-ends.mjs`);
+    const rest = filmRest(f.media);
+    const stop = filmStop(f.media);
+    const upNext = canon(f.media).anchors.upNext;
+    assert.ok(rest <= upNext && stop <= upNext + 1e-9, `${f.node}: rests ${rest}, stops ${stop}, upNext ${upNext}`);
+    assert.ok(!ends.wipes.some(([still, end]) => rest > still + 1e-9 && rest <= end), `${f.node}: rests inside a wipe`);
+    assert.ok(stop >= rest && stop - rest <= WORD_TAIL + 1e-9, `${f.node}: the tail ${stop - rest}`);
+    if (stop > rest) assert.ok(f.timing.speech.some(([a, b]) => a < rest && b === stop), `${f.node}: a tail is the last word's end`);
+    assert.ok(!f.timing.speech.some(([a, b]) => a < stop - 0.01 && b > stop + 0.01), `${f.node}: stops inside a word`);
+    assert.equal(filmStop(f.media, { replay: true }), stop, `${f.node}: a replay stops there too`);
+    const holds = filmHolds(f.media, f.plan);
+    if (stop > rest) assert.ok(holds.some((h) => h.at === rest && h.until === stop), `${f.node}: holds the rest frame over the tail`);
+    for (const p of f.plan.pauses) {
+      assert.ok(p.askAt <= stop + 1e-9, `${f.node}: asks at ${p.askAt}, past the stop ${stop}`);
+      if (p.mode !== "pause" && p.askAt > p.holdFrameAt) assert.ok(holds.some((h) => h.at === p.holdFrameAt && h.until === p.askAt), `${f.node}: holds the frame until the ask`);
+    }
+  }
+  const moved = FILMS.filter((f) => filmRest(f.media) < canon(f.media).anchors.upNext - 1e-9);
+  assert.ok(moved.length >= 41, `${moved.length} films rest ahead of a wipe at upNext`);
+  assert.equal(clearOfWipes(85.7, [[85.583, 86.383]]), 85.583);
+  assert.equal(clearOfWipes(85.583, [[85.583, 86.383]]), 85.583, "the still frame itself is clear");
+  assert.equal(clearOfWipes(86.5, [[85.583, 86.383]]), 86.5);
+});
+
+check("Welcome lesson 1 asks WHO WINS? over the film's own card, before Cards up", () => {
+  const f = FILMS.find((x) => x.node === "w-what-is-poker");
+  const who = f.plan.pauses.find((p) => p.key === "whoWins");
+  assert.ok(who.askAt >= 75.4 && who.askAt < 75.73, `asks at ${who.askAt}`);
+  assert.ok(who.holdFrameAt >= 75.4 && who.holdFrameAt <= who.askAt, `holds ${who.holdFrameAt}`);
+  assert.equal(who.predict, true);
+  assert.equal(who.resumeTo, who.holdFrameAt, "plays on into Cards up and Ada's ace-jack");
 });
 
 console.log(`filmAskPlan ok (${checks} checks): ${FILMS.filter((f) => f.plan.mode !== "none").length} asking films, one ask per watch`);

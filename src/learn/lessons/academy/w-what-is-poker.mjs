@@ -44,8 +44,8 @@ const turn3 = {
 // WHO WINS? A prediction before the cards are turned: either answer goes on, and the film shows it.
 const whoWins = {
   decision: "estimate", street: "river", hero: film.hero, board: film.board, bands: bands(["you", "You"], ["ada", "Ada"]),
-  title: "Who wins?", dockPrompt: "Cards up. Who wins?",
-  prompt: "Cards up. Your straight against Ada’s two hidden cards. Who wins?",
+  title: "Who wins?", dockPrompt: "Who wins?",
+  prompt: "Your straight against Ada’s two hidden cards. Who wins?",
   explanation: "Ada has ace-jack, a pair of jacks. King, queen, jack, ten, nine is a straight, and a straight beats a pair, so the pot is yours.",
 };
 
@@ -85,7 +85,11 @@ const definition = v2Lesson({
       { anchor: "yourTurn1", spotId: "wip-turn", spot: turn1 },
       { anchor: "yourTurn2", spotId: "wip-turn-2", spot: turn2 },
       { anchor: "yourTurn3", spotId: "wip-turn-3", spot: turn3 },
-      { anchor: "whoWins", spotId: "wip-turn-wins", spot: whoWins, predict: true },
+      // Timed by the film's own WHO WINS? card (settled from 75.40), held before "Cards up." (75.73):
+      // the media's whoWins beat starts on that line and its held frame fell after the card had gone,
+      // with Ada's cards still down under the spoken "Cards up" (2026-10-18). The film turns her cards
+      // over on "Ada has ace-jack" once the learner has picked.
+      { anchor: "whoWins", at: 75.4, before: 75.73, spotId: "wip-turn-wins", spot: whoWins, predict: true },
     ] },
     hands: [
       { id: "wip-guided", label: "Knox’s hand", coachLine: "A new showdown. You read it." },

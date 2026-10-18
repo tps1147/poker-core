@@ -50,10 +50,10 @@ check("anchorProblems: missing, out of order, past the end", () => {
   assert.deepEqual(anchorProblems({ id: "open-board", duration: 20 }), ["missing first"]);
 });
 
-check("filmStop: upNext on a first watch, the end on a replay", () => {
+check("filmStop: upNext (no wipe measured), on a replay too", () => {
   assert.equal(filmStop(v3), 91.4);
   assert.equal(filmStop(v3, { replay: false }), 91.4);
-  assert.equal(filmStop(v3, { replay: true }), 93);
+  assert.equal(filmStop(v3, { replay: true }), 91.4, "a replay never plays the film's own up-next card either");
   assert.equal(filmStop({ duration: 60 }), 60, "no upNext: the end");
   assert.equal(filmStop(null), null);
   assert.equal(filmStop(opener), 18.5, "an opener's own stop is openerStop");
@@ -62,7 +62,7 @@ check("filmStop: upNext on a first watch, the end on a replay", () => {
 check("filmWatched measures the watch share to the stop point", () => {
   assert.equal(filmWatched([[0, 78]], v3), true, "78 of 91.4 is over 85%");
   assert.equal(filmWatched([[0, 77]], v3), false);
-  assert.equal(filmWatched([[0, 78]], v3, { replay: true }), false, "a replay measures to the end");
+  assert.equal(filmWatched([[0, 78]], v3, { replay: true }), true, "a replay measures to the same stop");
   assert.equal(filmWatched([[80, 93]], v3), false, "scrubbing to the end earns nothing");
   assert.equal(filmWatched([[0, 10]], null), false);
 });
