@@ -23,8 +23,10 @@ export const huSeats = (stack, name = "Ace Andy") => ({ hero: { name: "You", sta
 // `endAsk` (an "end" film only): "skip" when the film has already asked and answered its question at
 // its end (the lesson hands off to the next step without asking it again), "variant" when `spot` is
 // a transfer the film never answered (filmV2 filmAskPlan).
-export function filmStage({ film, at, anchor = at == null ? "end" : "yourTurn", spotId, spot, upNext = "Play the coach’s hand", endAsk = null }) {
-  return { kind: "film", label: "Film", upNext, media: film, pause: { at, anchor, film, spotId, spot, ...(endAsk ? { endAsk } : {}) } };
+// `holdAt` (seconds, a frame's middle): the frame the card holds when the film's own question lands
+// after the measured still (a fade the motion measure misses), checked by eye on the film.
+export function filmStage({ film, at, anchor = at == null ? "end" : "yourTurn", spotId, spot, upNext = "Play the coach’s hand", endAsk = null, holdAt = null }) {
+  return { kind: "film", label: "Film", upNext, media: film, pause: { at, anchor, film, spotId, spot, ...(endAsk ? { endAsk } : {}), ...(holdAt != null ? { holdAt } : {}) } };
 }
 
 // The why stage: one tap from three reasons. `spotId` is "<lesson prefix>-why" (the prefix of the

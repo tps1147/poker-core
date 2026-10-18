@@ -13,13 +13,14 @@
 // explicit `anchors` entry always wins over a caption, because the timing.json names are each film's
 // own and are not canonical yet (the anchor pass adds them; anchorProblems lists what is missing).
 //
-// THE WATCH RULE on a v2 film runs to the film's stop point, not its full length: a first watch
-// stops at upNext (before the film's own "up next" end card), so WATCH_SHARE is measured against
-// that stop. A replay runs to the end, can be skipped and scrubbed.
+// THE WATCH RULE on a v2 film runs to the film's stop point, not its full length: a watch stops on
+// the settled frame before the film's own "up next" end card (filmStop), so WATCH_SHARE is measured
+// against that stop. A replay can be skipped and scrubbed.
 import { hasWatched } from "./filmWatch.mjs";
 import { NODES, TRACKS, PATHS } from "./academyTree.mjs";
 import { nodeState } from "./nodeState.mjs";
 import { FILM_SPEECH } from "./filmSpeech.mjs";
+import { FILM_ENDS } from "./filmEnds.mjs";
 
 export const LESSON_ANCHORS = Object.freeze(["hook", "yourTurn", "rule", "upNext"]);
 export const OPENER_ANCHORS = Object.freeze(["first"]);
@@ -98,12 +99,80 @@ export function anchorProblems(media) {
   return out;
 }
 
-// Where playback stops, in seconds: a first watch stops at upNext; a replay runs to the end. With
-// no upNext anchor (or no media), the film's duration; null when that is unknown too.
-export function filmStop(media, { replay = false } = {}) {
+// Where playback stops, and the frame the film rests on there (2026-10-18, Tyler: "the end video
+// transitions are still broken on the video end with the card flipping"). The films sweep a giant
+// card back across the frame and flip it into their up-next card, starting about half a second
+// before the upNext anchor, so stopping AT the anchor froze the film inside that wipe.
+//   filmRest  the frame to rest on: the upNext anchor, moved back to the frame ahead of the wipe
+//             moving there, as measured on the published picture (FILM_ENDS, sync-film-ends.mjs).
+//             Some films speak their "Up next" line over the rule card, before the anchor
+//             (m-equity): the rest stays at the anchor, so the rule plays. A film not measured for
+//             this version falls back on its coarser FILM_SPEECH motion: the run moving at upNext
+//             that starts within WIPE_LEAD before it, less WIPE_SLACK (the card comes in edge-on, a
+//             sliver the coarse measure misses).
+//   filmStop  where the sound stops: the rest, or the end of the last word when it still sounds as
+//             the wipe starts (most films start the wipe a beat before the narrator finishes, up to
+//             WORD_TAIL later), so no word is cut. The player holds the rest frame over that tail
+//             (filmHolds) and pauses there.
+// A replay stops there too: inside a lesson the film's own up-next card (a drawn "Next lesson"
+// button) never plays, the lesson's next step does. An opener runs to its end. With no upNext
+// anchor (or no media), the film's duration; null when that is unknown too. `opts` ({ replay }) is
+// accepted for older callers.
+export const WIPE_LEAD = 0.8;
+export const WIPE_SLACK = 0.15;
+export const WORD_TAIL = 0.6;
+export function filmRest(media, opts = {}) { // eslint-disable-line no-unused-vars
   const c = canon(media);
-  if (replay || c.kind === "opener") return c.duration;
-  return c.anchors.upNext ?? c.duration;
+  if (c.kind === "opener") return c.duration;
+  const upNext = c.anchors.upNext ?? c.duration;
+  if (upNext == null) return null;
+  const wipes = filmWipes(media);
+  if (wipes) return clearOfWipes(upNext, wipes);
+  const wipe = (filmSpeech(media)?.motion || []).find(([a, b]) => a < upNext && a >= upNext - WIPE_LEAD && b > upNext - 0.001);
+  return wipe ? r3(Math.max(0, wipe[0] - WIPE_SLACK)) : upNext;
+}
+export function filmStop(media, opts = {}) {
+  const rest = filmRest(media, opts);
+  if (rest == null || canon(media).kind === "opener") return rest;
+  return wordTail(media, rest);
+}
+
+// `at`, or the end of the word still sounding there when it ends within WORD_TAIL (and before the
+// upNext anchor, past which the next line is speaking).
+function wordTail(media, at) {
+  const upNext = canon(media).anchors.upNext;
+  const span = (filmSpeech(media)?.speech || []).find(([a, b]) => a < at - 0.01 && b > at + 0.01);
+  if (!span || span[1] - at > WORD_TAIL || (upNext != null && span[1] > upNext)) return at;
+  return span[1];
+}
+
+// Where the player freezes the picture while the sound plays on: [{ at, until }], each a still
+// frame `at` (ahead of a card wipe) held until the film pauses at `until` (its stop, or an end ask
+// that waits for the last word). A web player draws the frame over the video; the app dims it.
+export function filmHolds(media, plan = null) {
+  const out = [];
+  const rest = filmRest(media);
+  const stop = filmStop(media);
+  if (rest != null && stop != null && stop > rest) out.push({ at: rest, until: stop });
+  for (const p of plan?.pauses || []) {
+    if (p.mode !== "pause" && num(p.holdFrameAt) != null && p.askAt > p.holdFrameAt + 0.001 && !out.some((h) => h.at === p.holdFrameAt)) out.push({ at: p.holdFrameAt, until: p.askAt });
+  }
+  return out.sort((x, y) => x.at - y.at);
+}
+
+// The film's measured card wipes near its end ([[still, end]], FILM_ENDS) while they were measured
+// for this media version, else null.
+export function filmWipes(media) {
+  const id = nodeIdOfFilm(media?.id) || media?.id;
+  const entry = id ? FILM_ENDS[id] : null;
+  if (!entry || (media?.version && entry.version && entry.version !== media.version)) return null;
+  return entry.wipes;
+}
+
+// `at`, or the frame ahead of the wipe it falls inside.
+export function clearOfWipes(at, wipes) {
+  const inside = (wipes || []).find(([still, end]) => at > still && at <= end + 0.001);
+  return inside ? inside[0] : at;
 }
 
 // Whether the learner has watched the film: WATCH_SHARE of it played, measured to its stop point.
@@ -280,6 +349,8 @@ export function filmOwnPause(stage, filmId) {
 // askAt; a user seek back before askAt re-arms it, nothing else does (askGate).
 export const ASK_TAIL = 0.12;
 export const END_GUARD = 0.25;
+// An end ask or a handoff holds the frame it stopped on when its measured hold lies further back.
+export const END_HOLD_JUMP = 0.3;
 export const END_ASK = Object.freeze({ skip: "skip", variant: "variant" });
 const ASK_NONE = Object.freeze({ askAt: null, holdFrameAt: null, resumeTo: null, mode: "none", cue: null, cardPlacement: null });
 
@@ -388,9 +459,11 @@ export function askBasis(stage, media, { replay = false, cues = null, speech } =
 
   if (own?.anchor === "end") {
     const mode = own.endAsk === END_ASK.skip ? "handoff" : "end";
+    // Before the film's spoken up-next line, and before its stop (filmStop: the still frame ahead of
+    // the wipe into its up-next card), so a handoff never lands inside that wipe.
     const line = num(measured?.upNextLine);
-    const upNext = c.anchors.upNext ?? c.duration;
-    const stop = line != null && (upNext == null || line < upNext) ? line : upNext;
+    const filmEnd = filmStop(media);
+    const stop = line != null && (filmEnd == null || line < filmEnd) ? line : filmEnd;
     if (stop == null) return null;
     const before = list.filter((x) => x.start < stop - 0.05);
     const cue = before[before.length - 1];
@@ -436,11 +509,16 @@ export function pauseBases(stage, media, { replay = false, cues = null, speech }
   const out = [];
   for (const entry of entries) {
     const t = timed.find((p) => p && p.anchor === entry.anchor);
-    const at = num(t?.at) ?? anchorSeconds(media, entry.anchor);
+    // The definition may time a pause itself (entry `at` / `before`, seconds on this film's clock),
+    // over the media's: where the film's own card is up before the line the media times it by.
+    const at = num(entry.at) ?? num(t?.at) ?? anchorSeconds(media, entry.anchor);
     if (at == null) continue;
-    const cue = list.find((x) => x.start <= at + 0.05 && x.end > at) || list.find((x) => x.start >= at - 0.05) || null;
+    const found = list.find((x) => x.start <= at + 0.05 && x.end > at) || list.find((x) => x.start >= at - 0.05) || null;
+    // The asking stretch starts at the pause itself (a return to an unanswered pause backs up to here,
+    // never into the line before it, which may hold an earlier, answered pause).
+    const cue = found ? { ...found, start: Math.max(found.start, at) } : null;
     const nextCue = list.find((x) => x.start > at + 0.05) || null;
-    const before = num(t?.before) ?? (nextCue ? nextCue.start : at);
+    const before = num(entry.before) ?? num(t?.before) ?? (nextCue ? nextCue.start : at);
     // The voice before the `before` word: the last spoken span that starts ahead of it (unmeasured:
     // a beat before the word).
     // Where the voice runs on into the word without a break ("you bet", one spoken span), the pause
@@ -503,9 +581,28 @@ function singleAskPlan(stage, media, opts) {
   const { mode, cue, measured } = basis;
   if (!cue) return { askAt: basis.askAt, holdFrameAt: basis.askAt, resumeTo: mode === "pause" ? basis.askAt : null, mode, cue: null, cardPlacement: mode === "handoff" ? null : "bottom" };
   const hold = measuredHold(measured, cue);
-  const holdFrameAt = hold ? hold.at : stillAt(basis.askAt, measured, mode === "pause" ? basis.wordEnd - HOLD_SLACK : cue.start);
+  let holdFrameAt = hold ? hold.at : stillAt(basis.askAt, measured, mode === "pause" ? basis.wordEnd - HOLD_SLACK : cue.start);
+  // The definition's own frame (pause.holdAt, a question that fades in after the measured still),
+  // inside the same window: after the last word, before the next word, caption and stop.
+  const own = num(stage?.pause?.holdAt);
+  if (own != null && own >= basis.wordEnd - HOLD_SLACK && own < basis.limit) holdFrameAt = own;
   // A settled frame after the ask point: the film plays on to it (no word, no new caption between).
-  const askAt = holdFrameAt > basis.askAt ? holdFrameAt : basis.askAt;
+  let askAt = holdFrameAt > basis.askAt ? holdFrameAt : basis.askAt;
+  // An end ask or a handoff rests on the frame it reached (a measured hold far behind the ask would
+  // jump the picture back), never on a frame inside a card wipe, nor past the film's stop. A last
+  // word still sounding as a wipe starts (w-how-deep, most up-next wipes) finishes first, the
+  // picture held on the frame ahead of the wipe meanwhile (filmHolds).
+  if (mode !== "pause") {
+    const wipes = filmWipes(media) || [];
+    const stop = filmStop(media);
+    const rest = filmRest(media);
+    const said = num(basis.wordEnd);
+    if (askAt - holdFrameAt > END_HOLD_JUMP) holdFrameAt = askAt;
+    askAt = clearOfWipes(askAt, wipes);
+    if (said != null && askAt < said && said - askAt <= WORD_TAIL) askAt = said;
+    holdFrameAt = clearOfWipes(holdFrameAt, wipes);
+    if (stop != null) { askAt = Math.min(askAt, stop); holdFrameAt = Math.min(holdFrameAt, rest ?? stop); }
+  }
   const cardPlacement = mode === "handoff" ? null : hold?.place || "bottom";
   return { askAt, holdFrameAt, resumeTo: mode === "pause" ? holdFrameAt : null, mode, cue, cardPlacement };
 }
