@@ -49,7 +49,7 @@ const fresh = { street: "turn", hero: ["Kd", "Qd"], board: ["Th", "8c", "5s", "3
 
 const definition = {
   ...definitionBase({
-    node: "o-multiway", version: 2, conceptId: "t6-multiway", coach: "knox", title: "Every player is another range.", kicker: "Bluff less, value bet stronger.",
+    node: "o-multiway", access: "free", version: 2, conceptId: "t6-multiway", coach: "knox", title: "Every player is another range.", kicker: "Bluff less, value bet stronger.",
     track: "formats", chapter: "Other Tables", minutes: 5, feedback,
     assumptions: "No rake. Hands ahead of yours are counted against random hands, an illustration, with only the cards you can see removed, and nothing about future cards. Each opponent’s fold rate is given, and each decides on his own, so a bluff wins only when all of them fold. A bet of 2/3 of the pot breaks even at 40% folds, half the pot at 1/3, a third of the pot at 1/4. Each hand stops once you act.",
   }),

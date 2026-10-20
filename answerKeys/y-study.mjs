@@ -7,7 +7,7 @@
 // and the takeaway; this entry adds the why stage (index 2) and the film's "Your turn" key.
 // Every key is recomputed in test/academyLessonsB.test.mjs.
 export default {
-  lessonId: "y-study", node: "y-study", contentVersion: 2, flow: "film-first", access: "pro", conceptId: null,
+  lessonId: "y-study", node: "y-study", contentVersion: 2, flow: "film-first", access: "free", conceptId: null,
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "sd-why"}, {kind: "decision", spotId: "sd-guided"}, {kind: "decision", spotId: "sd-practice"}, {kind: "decision", spotId: "sd-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "sd-turn", decision: "estimate", bands: ["loss", "unsure"], key: {band: "unsure"} },
   why: { stage: 2, spotId: "sd-why", options: ["unsure", "more-hands", "biggest"], key: { option: "unsure" } },

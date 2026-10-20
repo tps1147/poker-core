@@ -49,7 +49,7 @@ const definition = {
   id: "ranges-workspace-v1", version: 2, flow: "film-first",
   conceptId: "t3-ranges",
   sourceLessonId: "lesson-ranges-001", videoLessonId: "lesson-ranges-001",
-  coach: "knox", narrator: "nathan", access: "pro", template: "postflop",
+  coach: "knox", narrator: "nathan", access: "free", template: "postflop",
   title: "Think in ranges.", kicker: "Start broad, then narrow.",
   trail: ["Learn", "Postflop fundamentals", "Think in ranges."],
   course: { chapter: "Postflop fundamentals" },
