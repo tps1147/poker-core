@@ -33,7 +33,7 @@ const fresh = { street: "flop", hero: ["Ac", "Kd"], board: ["Td", "5s", "2c"] };
 
 const definition = {
   ...definitionBase({
-    node: "h-range-narrowing", version: 2, conceptId: "t5-range-narrowing", coach: "sera", title: "Every action takes hands out.", kicker: "Keep the list, not one guess.",
+    node: "h-range-narrowing", access: "free", version: 2, conceptId: "t5-range-narrowing", coach: "sera", title: "Every action takes hands out.", kicker: "Keep the list, not one guess.",
     track: "people", chapter: "Reading People", minutes: 5, feedback,
     assumptions: "Heads-up. Before the flop he calls with an illustrative range of 186 combos, the Postflop track’s caller range. On the flop he calls a bet with any pair or draw; on the turn with eights or better or a straight draw. Both are rules of thumb for this exercise, not his real habits. Counts leave your own two cards out, as the film does. Every count comes from his actions, never from his hidden cards.",
   }),

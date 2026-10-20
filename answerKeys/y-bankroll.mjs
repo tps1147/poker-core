@@ -10,7 +10,7 @@
 // 3,200 chips, the 160- or the 80-chip game under 1% -> game-80. The film, why and fresh keys are
 // unchanged.
 export default {
-  lessonId: "y-bankroll", node: "y-bankroll", contentVersion: 2, flow: "film-first", access: "pro", conceptId: "t6-bankroll",
+  lessonId: "y-bankroll", node: "y-bankroll", contentVersion: 2, flow: "film-first", access: "free", conceptId: "t6-bankroll",
   stages: [{kind: "welcome"}, {kind: "film"}, {kind: "why", spotId: "br-why"}, {kind: "decision", spotId: "br-guided"}, {kind: "decision", spotId: "br-practice"}, {kind: "decision", spotId: "br-fresh"}, {kind: "takeaway"}],
   film: { stage: 1, at: null, spotId: "br-turn", decision: "estimate", bands: ["no", "yes"], key: {band: "yes"} },
   why: { stage: 2, spotId: "br-why", options: ["cushion", "not-winner", "plays-badly"], key: { option: "cushion" } },

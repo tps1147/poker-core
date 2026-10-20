@@ -38,7 +38,7 @@ const fresh = { street: "river", hero: ["Kc", "Jh"], board: ["Ks", "8d", "6c", "
 
 const definition = {
   ...definitionBase({
-    node: "g-toy-games", version: 2, coach: "knox", title: "Bluff at the right rate.", kicker: "Poker, in three cards.",
+    node: "g-toy-games", access: "free", version: 2, coach: "knox", title: "Bluff at the right rate.", kicker: "Poker, in three cards.",
     track: "theory", chapter: "Game Theory", minutes: 5, feedback,
     assumptions: "The film plays Kuhn poker: three cards, one chip each, one bet of 1, and the higher card wins. At the table, the same idea on a Hold'em river: a range made only of best hands and bluffs bets half the pot, and his hand can beat only a bluff. What he bluffs is given in each hand, never read from his cards. Each hand stops once you act.",
   }),

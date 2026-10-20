@@ -35,7 +35,7 @@ const fresh = preflop(["9c", "9d"]);
 
 const definition = {
   ...definitionBase({
-    node: "y-bankroll", version: 2, conceptId: "t6-bankroll", coach: "mina", title: "Count it in buy-ins.", kicker: "A bad run should be a dip, not the end.",
+    node: "y-bankroll", access: "free", version: 2, conceptId: "t6-bankroll", coach: "mina", title: "Count it in buy-ins.", kicker: "A bad run should be a dip, not the end.",
     track: "player", chapter: "The Player", minutes: 4, feedback,
     assumptions: "Chips in a toy model, not money advice. A buy-in is the chips one game asks you to sit down with. In the model each session wins or loses exactly one buy-in, and this player wins 55% of sessions. Under it, the chance of ever losing the whole bankroll from N buy-ins is (45 ÷ 55) to the power N. The bankrolls and games are examples. Each hand at the table stops before the flop.",
   }),
