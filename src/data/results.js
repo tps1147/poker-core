@@ -8,6 +8,11 @@
 //   crown     Crown Hour          outcome place of N       centrepiece final-table slice, medal
 //   friend    friend match        outcome win | loss       centrepiece head-to-head bar, Rematch
 //
+// Coach lines: the server sends coachLineId "result.<mode>.<outcome>" and both apps print the same
+// copy from resultLine(id, index) -> { id, headline, text } (two-word headline, one line of why, no
+// figures). resultLineId(mode, payload) picks the outcome key: ranked/gauntlet/friend win | loss,
+// sixmax first | podium | out, crown win | final | out.
+//
 // House rule: a result never carries a rating figure or its breakdown. FORBIDDEN_RESULT_FIELDS
 // lists the keys that must never reach a result payload; stripForbidden() removes them (deeply) and
 // the server's tests assert they are absent.
@@ -61,6 +66,41 @@ function resultSkeleton(mode, payload = {}) {
   };
 }
 
+const RESULT_LINES = Object.freeze({
+  'result.ranked.win': [['Good climb', 'You took the spots that mattered. The ring moves.'], ['Clean win', 'Patient early, sharp when it counted.'], ['Earned it', 'They had chances. You gave them none.']],
+  'result.ranked.loss': [['One spot', 'It turned on one hand. The review shows which.'], ['Close one', 'The play was there. The cards went the other way.'], ['Learn it', 'One decision cost the most. Fix that and this flips.']],
+  'result.sixmax.first': [['Table taken', 'Five players, one left standing. That was you.'], ['Top seat', 'You read the whole table tonight.']],
+  'result.sixmax.podium': [['Podium finish', 'Top three at a full table. Good work.'], ['Deep run', 'You outlasted most of the table.']],
+  'result.sixmax.out': [['Early exit', 'Six-max rewards patience. Pick your spots.'], ['Next table', 'The big pot found you first. It happens.']],
+  'result.gauntlet.win': [['Road opens', 'They will not forget that one.'], ['Beaten fair', 'You found their tell and used it.']],
+  'result.gauntlet.loss': [['Not yet', 'They showed you their game. Now you know it.'], ['Try again', 'Watch the tell this time.']],
+  'result.crown.win': [['The crown', 'Last one standing in Crown Hour.']],
+  'result.crown.final': [['Final table', 'You reached the last six. That is a run.'], ['Deep run', 'A final table in Crown Hour. Next time, the crown.']],
+  'result.crown.out': [['Good hour', 'Crown Hour runs again tomorrow.']],
+  'result.friend.win': [['Bragging rights', 'You took this one. They will want a rematch.']],
+  'result.friend.loss': [['Rematch time', 'They got you this time. Run it back.']],
+});
+
+function resultLineId(mode, payload = {}) {
+  if (mode === 'sixmax') {
+    const place = Number(payload.place) || 0;
+    return `result.sixmax.${place === 1 ? 'first' : place && place <= 3 ? 'podium' : 'out'}`;
+  }
+  if (mode === 'crown') {
+    const place = Number(payload.place) || 0;
+    return `result.crown.${place === 1 ? 'win' : place && place <= 6 ? 'final' : 'out'}`;
+  }
+  if (!MODE_META[mode]) return null;
+  return `result.${mode}.${payload.outcome === 'win' ? 'win' : 'loss'}`;
+}
+
+function resultLine(id, index = 0) {
+  const lines = RESULT_LINES[id];
+  if (!lines) return null;
+  const i = ((Math.floor(Number(index) || 0) % lines.length) + lines.length) % lines.length;
+  return { id, headline: lines[i][0], text: lines[i][1] };
+}
+
 function stripForbidden(value) {
   if (Array.isArray(value)) return value.map(stripForbidden);
   if (!value || typeof value !== 'object') return value;
@@ -72,4 +112,7 @@ function stripForbidden(value) {
   return out;
 }
 
-module.exports = { RESULT_MODES, RESULT_MODE_META: MODE_META, FORBIDDEN_RESULT_FIELDS, resultSkeleton, stripForbidden };
+module.exports = {
+  RESULT_MODES, RESULT_MODE_META: MODE_META, FORBIDDEN_RESULT_FIELDS, RESULT_LINES,
+  resultSkeleton, resultLineId, resultLine, stripForbidden,
+};

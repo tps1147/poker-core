@@ -76,6 +76,18 @@ assert.equal(d.resultSkeleton('nope', {}), null);
 const clean = d.stripForbidden({ outcome: 'win', ratingDelta: 14, seal: { before: { lit: 3 }, rating: 1200 }, list: [{ newRating: 1 }] });
 assert.deepEqual(clean, { outcome: 'win', seal: { before: { lit: 3 } }, list: [{}] });
 
+assert.equal(d.resultLineId('ranked', { outcome: 'win' }), 'result.ranked.win');
+assert.equal(d.resultLineId('sixmax', { place: 3 }), 'result.sixmax.podium');
+assert.equal(d.resultLineId('crown', { place: 5, of: 40 }), 'result.crown.final');
+for (const mode of d.RESULT_MODES) for (const payload of [{ outcome: 'win' }, { outcome: 'loss' }, { place: 1 }, { place: 2 }, { place: 9 }]) {
+  const id = d.resultLineId(mode, payload);
+  const line = d.resultLine(id, 7);
+  assert.ok(line && line.headline && line.text, `${id}: has a line`);
+  assert.equal(line.headline.split(' ').length, 2, `${id}: two-word headline`);
+}
+for (const [id, lines] of Object.entries(d.RESULT_LINES)) for (const [h, t] of lines) assert.ok(!/\d|\+/.test(h + t), `${id}: no figures`);
+assert.equal(d.resultLine('nope'), null);
+
 // The arc.
 assert.deepEqual(d.ARC_TRACKS.map((t) => t.id), ['climb', 'craft', 'study', 'rivals', 'events']);
 for (const t of d.ARC_TRACKS) for (const st of t.steps) {
