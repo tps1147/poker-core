@@ -10,6 +10,13 @@
 //                    canonicalKey/equityForTopPercent helpers
 //   arenaClimb     — the eight arenas' rating gates and sigils, arenaClimb(rating), sigilLattice
 //   arenaTable     — the Stats table: seats, each arena's table decor and motif, dealer seat, rank band
+//   (2.0 "The World")
+//   arenaClimb     — also the seal: sealFor(rating), sealChange(before, after), SEAL_QUARTERS
+//   collectibles   — The Case catalog: COLLECTIBLES, DEFAULT_EQUIPPED, unlocksForSeal, storyFor
+//   results        — result modes, resultSkeleton(mode, payload), FORBIDDEN_RESULT_FIELDS
+//   achievementArc — ARC_TRACKS, arcStep, arcNewlyDone
+//   placement      — PLACEMENT_MATCHES, STAMPS, stampFor, placementLine, placementSummary
+//   character      — Your Chip: CHARACTER_OPTIONS, DEFAULT_CHARACTER, normalizeCharacter
 
 module.exports = {
   ...require('./archetypeScout'),
@@ -17,4 +24,9 @@ module.exports = {
   ...require('./preflopEquity'),
   ...require('./arenaClimb'),
   ...require('./arenaTable'),
+  ...require('./collectibles'),
+  ...require('./results'),
+  ...require('./achievementArc'),
+  ...require('./placement'),
+  ...require('./character'),
 };
