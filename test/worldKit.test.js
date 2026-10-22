@@ -26,6 +26,11 @@ assert.equal(ring.closed, false);
 ring = w.sealRing({ fill: 1, gold: true });
 assert.ok(ring.closed && ring.segments.every((s) => s.color === w.RING_GOLD.on), 'gold at the Throne');
 assert.equal(w.sealRing({ fill: 0.5 }).lit, 26);
+const day = w.sealRing({ lit: 5, mode: 'light' });
+assert.equal(day.segments[20].color, '#efcdbf', 'unlit cards are pale by day');
+for (const s of w.RING_SUITS) assert.ok(/^#[0-9a-f]{6}$/.test(s.offLight), `${s.glyph}: a day tint`);
+assert.ok(w.sealRing({ lit: 3, mode: 'light', gold: true }).segments.every((s) => /^#/.test(s.color)), 'every segment has a colour');
+assert.equal(day.segments[0].color, w.RING_SUITS[0].on, 'lit cards keep their colour by day');
 
 for (const pose of CHARACTER_OPTIONS.poses) for (const hat of CHARACTER_OPTIONS.hats) {
   const rig = w.chipRig({ pose, hat });

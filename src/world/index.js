@@ -84,17 +84,20 @@ const CARD_SHEEN = Object.freeze({
 });
 
 // ── the seal ────────────────────────────────────────────────────────────────
+// `off` is an unlit card by lamplight; `offLight` the same card on the cream room, where the dark
+// off colours would read heavier than the lit ones.
 const RING_SUITS = Object.freeze([
-  Object.freeze({ glyph: '♠', on: '#8a8a8a', off: '#3a3a3a' }),
-  Object.freeze({ glyph: '♥', on: '#e06a3e', off: '#5a2412' }),
-  Object.freeze({ glyph: '♦', on: '#3fa08e', off: '#143a33' }),
-  Object.freeze({ glyph: '♣', on: '#6f7fe6', off: '#1c2660' }),
+  Object.freeze({ glyph: '♠', on: '#8a8a8a', off: '#3a3a3a', offLight: '#d9d4ca' }),
+  Object.freeze({ glyph: '♥', on: '#e06a3e', off: '#5a2412', offLight: '#efcdbf' }),
+  Object.freeze({ glyph: '♦', on: '#3fa08e', off: '#143a33', offLight: '#c6e0d8' }),
+  Object.freeze({ glyph: '♣', on: '#6f7fe6', off: '#1c2660', offLight: '#d0d4f2' }),
 ]);
-const RING_GOLD = Object.freeze({ on: '#e6cd9b', off: '#5a4a2a' });
+const RING_GOLD = Object.freeze({ on: '#e6cd9b', off: '#5a4a2a', offLight: '#ece2cc' });
 
-// opts: { lit (0..52) | fill (0..1), gold }. Box 120x120, centre 60,60. Each segment is a 5.6x9
+// opts: { lit (0..52) | fill (0..1), gold, mode ('dark' | 'light') }. Box 120x120, centre 60,60. Each segment is a 5.6x9
 // rounded rect at y 5..14 rotated by `angle` about the centre (index 0 at the top, clockwise).
-function sealRing({ lit, fill, gold = false } = {}) {
+function sealRing({ lit, fill, gold = false, mode = 'dark' } = {}) {
+  const offKey = mode === 'light' ? 'offLight' : 'off';
   const n = Number.isFinite(lit) ? Math.max(0, Math.min(52, Math.round(lit))) : Math.max(0, Math.min(52, Math.round((Number(fill) || 0) * 52)));
   const segments = [];
   for (let i = 0; i < 52; i += 1) {
@@ -102,7 +105,7 @@ function sealRing({ lit, fill, gold = false } = {}) {
     const on = i < n;
     segments.push({
       i, suit, on, angle: (i / 52) * 360,
-      color: gold ? (on ? RING_GOLD.on : RING_GOLD.off) : RING_SUITS[suit][on ? 'on' : 'off'],
+      color: gold ? (on ? RING_GOLD.on : RING_GOLD[offKey]) : RING_SUITS[suit][on ? 'on' : offKey],
       rect: { x: 57.2, y: 5, width: 5.6, height: 9, rx: 1.2 },
     });
   }
