@@ -1,19 +1,49 @@
-# poker-core
+<p align="center">
+  <img src="./docs/readme/banner.jpg" alt="Flop52: a poker table on a round stage in an opera-house arena under a crown" width="100%" />
+</p>
 
-Shared, **no-build, all-CommonJS** poker logic for the Poker.com stack. This is
-the single source of truth for poker rules, the AI insight engine, Match Review,
-hand insights, ratings, and game-state normalization — consumed by both the
-**mobile app** (Metro / React Native) and the **Next.js web app** (turbopack),
-and runnable under **plain node** for tests.
+<h3 align="center">The rules, the review and the lessons, written once.</h3>
+
+<p align="center">
+  Shared poker logic for Flop52: the app, the web and the server all run the same code.
+</p>
+
+<p align="center">
+  <img alt="Zero dependencies" src="https://img.shields.io/badge/dependencies-0-101c2b?style=flat-square" />
+  <img alt="No build step" src="https://img.shields.io/badge/build-none-101c2b?style=flat-square" />
+  <img alt="CommonJS and ES modules" src="https://img.shields.io/badge/modules-CJS%20%2B%20.mjs-101c2b?style=flat-square&logo=nodedotjs&logoColor=d6b780" />
+  <img alt="Plain node tests" src="https://img.shields.io/badge/tests-plain%20node-d6b780?style=flat-square" />
+  <img alt="Private" src="https://img.shields.io/badge/repo-private-0984fa?style=flat-square" />
+</p>
+
+<br />
+
+## What Flop52 is
+
+Flop52 is ranked poker that teaches you to make good decisions, with lessons, real matches and a review of every one. It is a skill game you climb, not a casino you visit: **learn** a decision, make it in a **ranked** match, then **review** whether you got it right. Chips are play money.
+
+## This repository
+
+`poker-core` is the single source of truth for the poker that every Flop52 surface shares: rules and hand evaluation, the insight engine, Match Review, hand insights, ratings, puzzles, the film-first lessons, game-state normalization and the 2.0 World data and tokens. It is consumed by the **mobile app** (Metro / React Native), the **Next.js web app** (Turbopack) and the **server**, and runs under **plain node** for tests.
 
 Every module is CommonJS (`require` / `module.exports`), except the film-first
 lessons under `src/learn`, which are `.mjs` ES modules (see "Learn" below).
 There is no `type` field in `package.json`, no transpile step, and no
-dependencies — Metro, turbopack, and node all consume the files directly.
+dependencies: Metro, Turbopack and node all consume the files directly.
+
+> [!NOTE]
+> How a player rating moves is proprietary. Keep it out of comments, docs and anything that could reach a player.
+
+| Repository | Role | Ships to |
+| :-- | :-- | :-- |
+| [Poker.com](https://github.com/tps1147/Poker.com) | The iPhone and Android app | App Store, Google Play |
+| [Flop52-web](https://github.com/tps1147/Flop52-web) | flop52s.com and the browser app | Vercel |
+| [pokerServer](https://github.com/tps1147/pokerServer) | API, live tables, matchmaking, accounts | Heroku |
+| **[poker-core](https://github.com/tps1147/poker-core)** | Shared poker logic, review and lessons | Vendored into all three |
 
 ## Install / consume
 
-It's a plain folder package (workspace / file dependency). Import by subpath:
+Each consumer pins a packed archive in its own `vendor/` folder (`file:vendor/poker-core-0.1.0.tgz`) and refreshes it with its `scripts/vendor-core.cjs`. Import by subpath:
 
 ```js
 const { buildMatchReview, gradeHand, buildReplayTimeline } = require('poker-core/review');
@@ -236,3 +266,9 @@ mobile app was modified. The ESM→CJS conversions changed only module boundarie
 mobile app's original `useHandInsights` / `useOpponentRead` React hooks can be
 reimplemented as thin wrappers over `computeHandInsights` / `createOpponentTracker`.
 ```
+
+<br />
+
+<p align="center">
+  <sub>Flop52 by Bitblur LLC · Private and proprietary</sub>
+</p>
