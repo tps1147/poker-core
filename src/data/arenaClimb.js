@@ -11,6 +11,15 @@
 //   sigilLattice(id, progress) -> 169 cells { mark (the sigil has it), lit (earned) }, lit from the
 //                                sigil's centre out in proportion to progress: the next arena's
 //                                sigil resolves as the player climbs toward it.
+//
+// THE SEAL (2.0, "The World"): the 52 ring around the current arena's art. Thirteen cards per suit,
+// filled clockwise from the top (spades first). Each quarter the ring closes grants that arena's
+// suit reward; the fourth (clubs) is the gate itself. At the Heart Throne the ring turns gold.
+// No figure is ever shown from it: the seal is the only read of the climb a player sees.
+//
+//   sealFor(rating)            -> { arenaIndex, arenaId, quarter (0..4), fill (k/52), lit (0..52), gold }
+//   sealChange(before, after)  -> { before, after, quartersCrossed [{arenaIndex, quarter}], gateCrossed,
+//                                   promotedTo (arena id | null), demoted }
 
 const ARENAS = Object.freeze([
   Object.freeze({ id: 'rabbits-burrow', name: "Rabbit's Burrow", minRating: 0 }),
@@ -187,4 +196,52 @@ function sigilLattice(id, progress = 0) {
   return cells;
 }
 
-module.exports = { ARENAS, SIGILS, SIGIL_SIZE, ARENA_NUMERALS: ROMAN, arenaClimb, sigilLattice };
+const SEAL_CARDS = 52;
+// The four quarters, in fill order, and what closing each one grants in that arena. Q4 (clubs) is
+// the gate: crossing it is the promotion, and the next arena's back deals in.
+const SEAL_QUARTERS = Object.freeze([
+  Object.freeze({ quarter: 1, suit: 'spades', glyph: '\u2660', reward: 'felt', label: 'Felt tint' }),
+  Object.freeze({ quarter: 2, suit: 'hearts', glyph: '\u2665', reward: 'protector', label: 'Arena protector' }),
+  Object.freeze({ quarter: 3, suit: 'diamonds', glyph: '\u2666', reward: 'title', label: 'Arena title' }),
+  Object.freeze({ quarter: 4, suit: 'clubs', glyph: '\u2663', reward: 'gate', label: 'The gate opens' }),
+]);
+
+function sealFor(rating) {
+  const climb = arenaClimb(rating);
+  if (climb.top) {
+    return { arenaIndex: climb.index, arenaId: climb.current.id, quarter: 4, fill: 1, lit: SEAL_CARDS, gold: true };
+  }
+  // Floor, not round: a card lights only once it is earned, so the ring never shows the gate
+  // closed while the rating is still under it.
+  const lit = Math.min(SEAL_CARDS - 1, Math.floor(climb.progress * SEAL_CARDS + 1e-9));
+  const fill = lit / SEAL_CARDS;
+  return { arenaIndex: climb.index, arenaId: climb.current.id, quarter: Math.floor(lit / 13), fill, lit, gold: false };
+}
+
+// What a rating move did to the seal: the quarters closed on the way up (across arenas, in order)
+// and whether a gate was crossed. A fall reports demoted and grants nothing.
+function sealChange(beforeRating, afterRating) {
+  const before = sealFor(beforeRating);
+  const after = sealFor(afterRating);
+  const quartersCrossed = [];
+  const rank = (s) => s.arenaIndex * 4 + s.quarter;
+  for (let k = rank(before) + 1; k <= rank(after); k += 1) {
+    const arenaIndex = Math.floor((k - 1) / 4);
+    const quarter = ((k - 1) % 4) + 1;
+    if (arenaIndex < ARENAS.length - 1 || quarter < 4) quartersCrossed.push({ arenaIndex, quarter });
+  }
+  const gateCrossed = after.arenaIndex > before.arenaIndex;
+  return {
+    before,
+    after,
+    quartersCrossed,
+    gateCrossed,
+    promotedTo: gateCrossed ? after.arenaId : null,
+    demoted: after.arenaIndex < before.arenaIndex,
+  };
+}
+
+module.exports = {
+  ARENAS, SIGILS, SIGIL_SIZE, ARENA_NUMERALS: ROMAN, arenaClimb, sigilLattice,
+  SEAL_CARDS, SEAL_QUARTERS, sealFor, sealChange,
+};
