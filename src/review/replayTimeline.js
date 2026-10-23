@@ -49,7 +49,8 @@ const buildReplayTimeline = (handDoc, heroUserId) => {
   if (!handDoc || typeof handDoc !== 'object' || heroUserId == null) return null;
   const players = Array.isArray(handDoc.players) ? handDoc.players : null;
   const actions = Array.isArray(handDoc.actions) ? handDoc.actions : null;
-  if (!players || players.length !== 2 || !actions || actions.length === 0) return null;
+  if (!players || players.length < 2 || !actions || actions.length === 0) return null;
+  if (players.length > 2) return buildMultiwayTimeline(handDoc, heroUserId, players, actions);
 
   const heroDoc = players.find((p) => p && String(p.userId) === String(heroUserId));
   const oppDoc = players.find((p) => p && String(p.userId) !== String(heroUserId));
@@ -160,6 +161,109 @@ const buildReplayTimeline = (handDoc, heroUserId) => {
     streets,
     frames,
     summary,
+  };
+};
+
+// A six-max hand (2.0 finish, Oct 23 2026): the same timeline shape, read against the field.
+// Each player's stack and bet are folded separately; toCall is the biggest bet in front of the
+// hero, oppStack the deepest live opponent's stack, and the "opponent" is the last player still
+// in against the hero (the one a review talks about). An ante goes to the pot without counting
+// toward the bet. A hero decision is judged only when one opponent is left in the pot: the
+// grading reads equity against one player, so a three-way spot is shown, never graded.
+// Amounts are deltas, as in heads-up docs (the server converts the table's raise-to totals).
+const buildMultiwayTimeline = (handDoc, heroUserId, players, actions) => {
+  const heroDoc = players.find((p) => p && String(p.userId) === String(heroUserId));
+  if (!heroDoc) return null;
+  const others = players.filter((p) => p && p !== heroDoc);
+  const idOf = (p) => String(p.userId);
+  const community = Array.isArray(handDoc.communityCards) ? handDoc.communityCards : [];
+  const bigBlindAction = actions.find((a) => a && String(a.action).toLowerCase() === 'big blind');
+  const bigBlind = bigBlindAction ? toNumber(bigBlindAction.amount) : 100;
+
+  const stacks = {};
+  const committed = {};
+  const folded = new Set();
+  players.forEach((p) => { stacks[idOf(p)] = toNumber(p.startingChips); committed[idOf(p)] = 0; });
+  const heroId = idOf(heroDoc);
+  let currentRound = 'preflop';
+  let pot = 0;
+  const frames = [];
+  let lastFacing = null;
+
+  for (let i = 0; i < actions.length; i++) {
+    const raw = actions[i];
+    if (!raw || typeof raw !== 'object') return null;
+    const pid = String(raw.playerId);
+    if (!(pid in stacks)) return null;
+    const phase = typeof raw.phase === 'string' ? raw.phase : 'preflop';
+    const round = ROUND_FOR_PHASE[phase] || 'preflop';
+    if (round !== currentRound) {
+      Object.keys(committed).forEach((k) => { committed[k] = 0; });
+      currentRound = round;
+    }
+    const action = String(raw.action || '').toLowerCase();
+    const amount = Math.max(0, toNumber(raw.amount));
+    const live = others.filter((p) => !folded.has(idOf(p)));
+    const biggest = Math.max(0, ...live.map((p) => committed[idOf(p)]));
+    const toCall = pid === heroId ? Math.min(Math.max(0, biggest - committed[heroId]), Math.max(0, stacks[heroId])) : 0;
+    const potBefore = pot;
+    const heroStack = stacks[heroId];
+    const oppStack = Math.max(0, ...live.map((p) => stacks[idOf(p)]));
+
+    pot += amount;
+    stacks[pid] -= amount;
+    if (action !== 'ante') committed[pid] += amount;
+    if (action === 'fold') folded.add(pid);
+
+    const isHero = pid === heroId;
+    if (isHero && live.length >= 1) lastFacing = live;
+    frames.push({
+      index: i,
+      phase,
+      boardCards: community.slice(0, VISIBLE_BOARD_COUNT[round] || 0),
+      actor: phase === 'blinds' ? 'blinds' : (isHero ? 'hero' : 'opponent'),
+      action: raw.action,
+      amount,
+      potBefore,
+      potAfter: pot,
+      heroStack,
+      oppStack,
+      toCall,
+      liveOpponents: live.length,
+      actorName: isHero ? null : ((players.find((p) => idOf(p) === pid) || {}).username || null),
+      isHeroDecision: isHero && phase !== 'blinds' && live.length === 1,
+    });
+  }
+
+  const streets = {
+    flop: community.length >= 3 ? community.slice(0, 3) : null,
+    turn: community.length >= 4 ? community.slice(0, 4) : null,
+    river: community.length >= 5 ? community.slice(0, 5) : null,
+  };
+  // The opponent: whoever was still in at the end against the hero, else the last one the hero faced.
+  const stillIn = others.filter((p) => !folded.has(idOf(p)));
+  const winnerDoc = handDoc.winner && typeof handDoc.winner === 'object' ? handDoc.winner : null;
+  const oppDoc = stillIn.find((p) => winnerDoc && idOf(p) === String(winnerDoc.userId))
+    || stillIn[0] || (lastFacing && lastFacing[lastFacing.length - 1]) || others[0];
+  const showdownOccurred = !!(handDoc.showdown && handDoc.showdown.occurred);
+  return {
+    hero: { seat: heroDoc.seat || seatOf(heroDoc), cards: Array.isArray(heroDoc.cards) ? heroDoc.cards : [] },
+    opponent: {
+      seat: oppDoc.seat || seatOf(oppDoc),
+      // Cards only when they were shown down.
+      cards: showdownOccurred && !folded.has(idOf(oppDoc)) && Array.isArray(oppDoc.cards) ? oppDoc.cards : [],
+      name: oppDoc.username || null,
+    },
+    field: players.length,
+    bigBlind,
+    streets,
+    frames,
+    summary: {
+      winner: winnerDoc ? (String(winnerDoc.userId) === heroId ? 'hero' : 'opponent') : null,
+      wonBy: (winnerDoc && winnerDoc.handName) || (showdownOccurred ? null : 'fold'),
+      netChange: toNumber(heroDoc.netChange),
+      showdown: showdownOccurred,
+    },
   };
 };
 
