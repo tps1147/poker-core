@@ -117,24 +117,25 @@ assert.deepEqual([sum.played, sum.done, sum.best, sum.trend], [4, false, 'SHARP'
 assert.deepEqual(d.normalizeCharacter({ chip: '#3f9b6b', hat: 'laser' }), { chip: '#3f9b6b', edge: '#f3ecdf', hat: 'cap', hatColor: '#d6b780' });
 console.log('worldData checks passed');
 
-// The player avatar: photo or character, four bodies, parts that open with the climb.
+// The player avatar: always a character, four bodies, parts that open with the climb.
 assert.deepEqual(d.AVATAR_BODIES.map((b) => b.id), ['chip', 'card', 'button', 'deck']);
-assert.deepEqual(d.normalizeAvatar(null), { look: 'photo', body: 'chip', parts: { head: null, face: null, held: null, companion: null, stand: null } });
+assert.deepEqual(d.normalizeAvatar(null), { look: 'character', body: 'chip', parts: { head: null, face: null, held: null, companion: null, stand: null } });
 assert.deepEqual(
   d.normalizeAvatar({ look: 'character', body: 'deck', parts: { head: 'shades', face: 'shades', held: 'sword', stand: 'laser' } }),
   { look: 'character', body: 'deck', parts: { head: null, face: 'shades', held: 'sword', companion: null, stand: null } },
   'a part only fits its own slot, unknown parts drop',
 );
-assert.equal(d.normalizeAvatar({ look: 'hologram', body: 'dice' }).look, 'photo');
+assert.equal(d.normalizeAvatar({ look: 'photo', body: 'dice' }).look, 'character', 'the photo look is gone');
 assert.equal(d.normalizeAvatar({ body: 'dice' }).body, 'chip');
 assert.equal(d.partOpen('crown', 0), false, 'the crown waits for the Heart Throne');
 assert.equal(d.partOpen('crown', 7), true);
 assert.equal(d.partOpen('visor', 0), true);
 assert.equal(d.partOpen('nope', 7), false);
 assert.deepEqual([0, 1, 2, 3, 4, 5, 6, 7, 99].map((i) => d.standLift(i)), [0, 0, 1, 1, 2, 2, 3, 3, 3], 'stand height follows rank');
-assert.deepEqual(d.avatarFor({ profileImage: 'basepfp3' }), { kind: 'photo', image: 'basepfp3' });
-assert.deepEqual(d.avatarFor({}), { kind: 'monogram' });
-assert.deepEqual(d.avatarFor({ profileImage: 'basepfp3', avatar: { look: 'photo', body: 'card' } }), { kind: 'photo', image: 'basepfp3' });
+const plain = { kind: 'character', body: 'chip', parts: { head: null, face: null, held: null, companion: null, stand: null }, lift: 0 };
+assert.deepEqual(d.avatarFor({ profileImage: 'basepfp3' }), plain, 'a photo no longer shows: the character replaced it');
+assert.deepEqual(d.avatarFor({}), plain);
+assert.equal(d.avatarFor({ avatar: { look: 'photo', body: 'card' } }).body, 'card');
 assert.deepEqual(
   d.avatarFor({ profileImage: 'x', reachedArena: 2, avatar: { look: 'character', body: 'button', parts: { head: 'crown', companion: 'puppy', stand: 'stool' } } }),
   { kind: 'character', body: 'button', parts: { head: null, face: null, held: null, companion: 'puppy', stand: 'stool' }, lift: 1 },
