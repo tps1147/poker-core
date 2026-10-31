@@ -17,6 +17,7 @@
 //   achievementArc — ARC_TRACKS, arcStep, arcNewlyDone
 //   placement      — PLACEMENT_MATCHES, STAMPS, stampFor, placementLine, placementSummary
 //   character      — Your Chip: CHARACTER_OPTIONS, DEFAULT_CHARACTER, normalizeCharacter
+//   avatar         — the player avatar: AVATAR_LOOKS/BODIES/SLOTS/PARTS, normalizeAvatar, avatarFor
 
 module.exports = {
   ...require('./archetypeScout'),
@@ -29,4 +30,5 @@ module.exports = {
   ...require('./achievementArc'),
   ...require('./placement'),
   ...require('./character'),
+  ...require('./avatar'),
 };
